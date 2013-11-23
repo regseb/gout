@@ -1,0 +1,19 @@
+body {
+    font-family: Verdana, sans-serif;
+    font-size: 10px;
+}
+
+a:link {
+    color: white;
+    text-decoration: none;
+}
+a:visited {
+    font-style: italic;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+article {
+    position: absolute;
+}

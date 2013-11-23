@@ -1,0 +1,32 @@
+.tv {
+    color: white;
+}
+.tv ul {
+    list-style-type: none;
+    margin: 10px;
+    padding-left: 0;
+}
+.tv li {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.tv li > img {
+    margin-right: 2px;
+}
+.tv span {
+    border-radius: 2px;
+    margin-right: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+.tv .films          { background-color: #e51400; }
+.tv .telefilms      { background-color: #a20025; }
+.tv .series-tv      { background-color: #1ba1e2; }
+.tv .divertissement { background-color: #aa00ff; }
+.tv .documentaires  { background-color: #fa6800; }
+.tv .magazine       { background-color: #0050ef; }
+.tv .sport          { background-color: #008a00; }
+.tv .unknown        { background-color: #647687; }
