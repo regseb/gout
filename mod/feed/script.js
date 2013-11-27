@@ -78,7 +78,7 @@ var feed = {
             // Si l'actualite n'est pas affichee.
             if (!$('#' + id + ' li[data-guid="' + item.guid + '"]').length) {
                 // Trouver la future position chronologique de l'actualite.
-                var pos = 0;
+                var pos = -1;
                 $('#' + id + ' > ul > li').each(function(i) {
                     if (item.date < Number($(this).attr('data-date')))
                         pos = i;
@@ -100,7 +100,7 @@ var feed = {
                     if ('' !== item.desc)
                         $(li).append($('<span>').html(item.desc));
 
-                    if (0 === pos)
+                    if (-1 === pos)
                         $('#' + id + ' > ul').prepend(li).fadeIn('slow');
                     else
                         $('#' + id + ' > ul > li:eq(' + pos + ')').after(li)
