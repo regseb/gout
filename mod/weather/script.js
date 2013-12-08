@@ -1,6 +1,5 @@
-// TODO Dessiner une fleche pour indiquer l'orientation du vent.
-// TODO Dessiner un thermometre pour les temperatures.
-// TODO Ne pas afficher le niveau d'alerte, si celui-ci est vert ou jaune.
+// TODO Afficher une fleche pour indiquer l'orientation du vent.
+// TODO Afficher un thermometre pour les temperatures.
 // TODO Dessiner un symbol pour les alertes : vent, froid, orages, canicule,
 //      pluie, avalanche, inondation, neige-verglas, vagues-submersion.
 // TODO Afficher le meteo du jour sur la meme ligne que le nom de la ville.
@@ -8,20 +7,22 @@ var weather = {
     'apps': { },
     'last': null,
 
-    'create': function(id, args) {
+    'create': function(id, url) {
         "use strict";
-        $('#' + id).css('background-color', args.color);
-        weather.apps[id] = { 'appid': args.appid,
-                             'city': args.city,
-                             'departement': args.departement };
+        $.getJSON(url + '/config.json', function(args) {
+            $('#' + id).css('background-color', args.color);
+            weather.apps[id] = { 'appid': args.appid,
+                                 'city': args.city,
+                                 'departement': args.departement };
 
-        if (null === weather.last) {
-            // Mettre a jour toutes les trois heures (3 * 60 * 60 * 1000).
-            weather.last = Date.now();
-            setInterval(weather.update, 10800000);
-            document.addEventListener('visibilitychange', weather.update);
-        }
-        weather.load(id, weather.apps[id]);
+            if (null === weather.last) {
+                // Mettre a jour toutes les trois heures (3 * 60 * 60 * 1000).
+                weather.last = Date.now();
+                setInterval(weather.update, 10800000);
+                document.addEventListener('visibilitychange', weather.update);
+            }
+            weather.load(id, weather.apps[id]);
+        });
     }, // create()
 
     'update': function() {
@@ -128,9 +129,10 @@ var weather = {
 
         p = $('<p>');
 
-        $(p).append($('<span>').text(
+        $(p).append($('<span>').addClass('temp')
+                               .text(
                 Math.round(data.temp.min - 273.15) + ' / ' +
-                Math.round(data.temp.max - 273.15) + ' \u00B0C'));
+                Math.round(data.temp.max - 273.15) + ' \u00b0C'));
 
         var deg = data.wind.deg + 360 % 360;
         var dir = '';
@@ -143,13 +145,14 @@ var weather = {
         else if (deg < 292.5) dir = 'ouest';
         else if (deg < 337.5) dir = 'nord-est';
         else                  dir = 'nord';
-        $(p).append($('<span>').text(Math.round(data.wind.speed * 3.6) +
+        $(p).append($('<span>').addClass('wind')
+                               .text(Math.round(data.wind.speed * 3.6) +
                                      ' km/h ' + dir));
 
         $(li).append(p);
 
         $('#' + id + ' ul').append(li);
-    }, // add()
+    } // add()
 }; // weather
 
 core.mod.weather = weather;

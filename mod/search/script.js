@@ -1,29 +1,31 @@
-// TODO Proposer une liste de moteurs de recherche.
 var search = {
     'apps': { },
 
-    'create': function(id, args) {
+    'create': function(id, url) {
         "use strict";
-        $('#' + id + ' img')
-            .attr({ 'height': args.coord.h * 10 - 2,
-                    'width': args.coord.h * 10 - 2 });
-        $('#' + id + ' input')
-            .css({ 'height': args.coord.h * 10 - 2,
-                   'width': args.coord.w * 10 - args.coord.h * 10 - 6 });
-        search.apps[id] = args.engines;
+        $.getJSON(url + '/config.json', function(args) {
+            var height = parseInt($('#' + id).css('height'), 10);
+            var width = parseInt($('#' + id).css('width'), 10);
+            $('#' + id + ' img').attr({ 'height': height - 2,
+                                        'width': height - 2 });
+            $('#' + id + ' input').css({ 'height': height - 2,
+                                         'width': width - height - 6 });
+            search.apps[id] = args.engines;
 
-        $('#' + id + ' p img').click(search.propose);
-        for (var i = 0; i < search.apps[id].length; ++i) {
-            var engine = search.apps[id][i];
-            $('#' + id + ' ul').append(
-                    $('<li>').append($('<img>')
-                            .attr({ 'src': engine.icon,
-                                    'alt': '',
-                                    'data-index': i }))
-                             .append(engine.title)
-                            .click(search.change));
-        }
-        $('#' + id + ' ul li:first img').click();
+            $('#' + id + ' p img').click(search.propose);
+            for (var i = 0; i < search.apps[id].length; ++i) {
+                var engine = search.apps[id][i];
+                engine.icon = url + '/' + engine.icon;
+                $('#' + id + ' ul').append(
+                        $('<li>').append($('<img>')
+                                .attr({ 'src': engine.icon,
+                                        'alt': '',
+                                        'data-index': i }))
+                                 .append(engine.title)
+                                 .click(search.change));
+            }
+            $('#' + id + ' ul li:first img').click();
+        });
     }, // create()
 
     'propose': function(event) {

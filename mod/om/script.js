@@ -1,5 +1,3 @@
-// TODO Agrandir le "cercle" du logo de la Ligue 1.
-// TODO Ajouter le bonhomme en bas a droite du logo de la Coupe de la Ligue.
 var om = {
     'IMG_DIR': 'mod/om/img/',
     'TOURNAMENTS': { '11': { 'img': 'ligue1',
@@ -25,9 +23,11 @@ var om = {
 
     'last': null,
 
-    'create': function(id, args) {
+    'create': function(id, url) {
         "use strict";
-        $('#' + id).css('background-color', args.color);
+        $.getJSON(url + '/config.json', function(args) {
+            $('#' + id).css('background-color', args.color);
+        });
 
         if (null === om.last) {
             // Mettre a jour toutes les 24 heures (24 * 60 * 60 * 1000).
@@ -58,43 +58,59 @@ var om = {
               encodeURIComponent('http://www.om.net/fr/Saison/102001/' +
                                  'Calendrier_Resultats'),
               function(data) {
-            var RE = /\/([0-9]+)\.png$/;
+            data = om.extract(data);
 
-            var last = $('#calendar-last-match', data);
-            var link = 'http://www.om.net' + $('a:first', last).attr('href');
-            var tournament = $('.competition img:first', last).attr('src');
-            tournament = om.TOURNAMENTS[RE.exec(tournament)[1]];
-            var teams_score = $('.competition span', last).text();
+            // Afficher le dernier match joue.
+            var tournament = om.TOURNAMENTS[data.last.tournament];
             $('.om p:first img').attr({ 'src': om.IMG_DIR + tournament.img +
                                                '.svg',
                                         'alt': tournament.name,
                                         'title': tournament.name });
-            $('.om p:first a').text(teams_score)
-                              .attr('href', link);
+            $('.om p:first a').text(data.last.teams_score)
+                              .attr('href', data.last.link);
 
-            var next = $('#calendar-next-match', data);
-            link = 'http://www.om.net' + $('a:first', next).attr('href');
-            tournament = $('.competition img:first', next).attr('src');
-            tournament = om.TOURNAMENTS[RE.exec(tournament)[1]];
-            var teams = $('h2', next).text();
-            var time = new Date($('time', next).attr('datetime'));
-            var channel = $('.tv img', next).attr('src');
-            channel = om.CHANNELS[RE.exec(channel)[1]];
+            // Afficher le prochain match.
+            tournament = om.TOURNAMENTS[data.next.tournament];
+            var channel = om.CHANNELS[data.next.channel];
             $('.om p:last img:first').attr({ 'src': om.IMG_DIR +
                                                     tournament.img + '.svg',
                                              'alt': tournament.name,
                                              'title': tournament.name });
-            $('.om p:last a').text(teams)
-                             .attr('href', link);
-            $('.om p:last time').text(time.format('dd/MM HH:mm'))
-                                .attr('title', time.format('EEEEE dd MMMMM' +
-                                                           ' yyyy HH:mm'));
+            $('.om p:last a').text(data.next.teams)
+                             .attr('href', data.next.link);
+            $('.om p:last time').text(data.next.time.format('dd/MM HH:mm'))
+                                .attr('title',
+                                      data.next.time.format('EEEEE dd MMMMM' +
+                                                            ' yyyy HH:mm'));
             $('.om p:last img:last').attr({ 'src': om.IMG_DIR + channel.img +
                                                    '.svg',
                                             'alt': channel.name,
                                             'title': channel.name });
         }, 'html');
     }, // load()
+
+    'extract': function(data) {
+        "use strict";
+        var RE = /\/([0-9]+)\.png$/;
+        var last = $('#calendar-last-match', data);
+        var next = $('#calendar-next-match', data);
+        return {
+            'last': {
+                'link': 'http://www.om.net' + $('a:first', last).attr('href'),
+                'tournament': RE.exec($('.competition img:first',
+                                        last).attr('src'))[1],
+                'teams_score': $('.competition span', last).text()
+            },
+            'next': {
+                'link': 'http://www.om.net' + $('a:first', next).attr('href'),
+                'tournament': RE.exec($('.competition img:first',
+                                        next).attr('src'))[1],
+                'teams': $('h2', next).text(),
+                'time': new Date($('time', next).attr('datetime')),
+                'channel': RE.exec($('.tv img', next).attr('src'))[1]
+            }
+        };
+    } // extract()
 }; // om
 
 core.mod.om = om;

@@ -72,3 +72,22 @@
 .weather li span {
     display: block;
 }
+.weather .temp {
+    background-image: url("mod/weather/icons/temp.svg");
+    background-position: 0 center;
+    background-repeat: no-repeat;
+    padding-left: 10px;
+}
+.weather .wind:before {
+    background-image: url("mod/weather/icons/wind.svg");
+    background-position: 0 center;
+    background-repeat: no-repeat;
+    content: "";
+width: 200%;
+	height: 200%;
+	top: -50%;
+	left: -50%;
+	z-index: -1;
+	transform: rotate(-30deg);
+position: absolute;
+}

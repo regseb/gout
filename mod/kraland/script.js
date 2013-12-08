@@ -2,32 +2,34 @@ var kraland = {
     'apps': { },
     'last': null,
 
-    'create': function(id, args) {
+    'create': function(id, url) {
         "use strict";
-        $('#' + id).css('background-color', args.color);
-        kraland.apps[id] = { 'size': args.size,
-                             'selection': args.selection };
+        $.getJSON(url + '/config.json', function(args) {
+            $('#' + id).css('background-color', args.color);
+            kraland.apps[id] = { 'size': args.size,
+                                 'selection': args.selection };
 
-        $.ajax({
-            'url': 'gout.php?url=' +
-                   encodeURIComponent('http://www.kraland.org/main.php?p=4_4') +
-                   '&id=' + id,
-            'beforeSend': function(xhr) {
-                xhr.overrideMimeType('text/html; charset=ISO-8859-1');
-            },
-            'success': function(data) {
-                kraland.apps[id].t = $('#report-col3 input[name="t"]',
-                                       data).val();
+            $.ajax({
+                'url': 'gout.php?url=' +
+                       encodeURIComponent('http://www.kraland.org/main.php?p=4_4') +
+                       '&id=' + id,
+                'beforeSend': function(xhr) {
+                    xhr.overrideMimeType('text/html; charset=ISO-8859-1');
+                },
+                'success': function(data) {
+                    kraland.apps[id].t = $('#report-col3 input[name="t"]',
+                                           data).val();
 
-                if (null === kraland.last) {
-                    // Mettre a jour toutes les cinq minutes (5 * 60 * 1000).
-                    kraland.last = Date.now();
-                    setInterval(kraland.update, 300000);
-                    document.addEventListener('visibilitychange',
-                                              kraland.update);
+                    if (null === kraland.last) {
+                        // Mettre a jour toutes les cinq minutes (5 * 60 * 1000).
+                        kraland.last = Date.now();
+                        setInterval(kraland.update, 300000);
+                        document.addEventListener('visibilitychange',
+                                                  kraland.update);
+                    }
+                    kraland.load(id, kraland.apps[id]);
                 }
-                kraland.load(id, kraland.apps[id]);
-            }
+            });
         });
     }, // create()
 
@@ -109,7 +111,7 @@ var kraland = {
         })
                                          .html(event.title))
                          .append($('<span>').html(event.text))).fadeIn('slow');
-    }, // add()
+    } // add()
 }; // kraland
 
 core.mod.kraland = kraland;

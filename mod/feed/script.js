@@ -2,21 +2,25 @@ var feed = {
     'apps': { },
     'last': null,
 
-    'create': function(id, args) {
+    'create': function(id, url) {
         "use strict";
-        $('#' + id).css({ 'background-color': args.color,
-                          'background-image': 'url("' + args.icon + '")' });
-        feed.apps[id] = { 'urls': (Array.isArray(args.url) ? args.url
-                                                           : [ args.url ]),
-                          'size': args.size };
-
-        if (null === feed.last) {
-            // Mettre a jour toutes les cinq minutes (5 * 60 * 1000).
-            feed.last = Date.now();
-            setInterval(feed.update, 300000);
-            document.addEventListener('visibilitychange', feed.update);
-        }
-        feed.load(id, feed.apps[id]);
+        $.getJSON(url + '/config.json', function(args) {
+            $('#' + id).css({
+                'background-color': args.color,
+                'background-image': 'url("' + url + '/icon.svg")'
+            });
+            feed.apps[id] = {
+                'urls': (Array.isArray(args.url) ? args.url : [ args.url ]),
+                'size': args.size
+            };
+            if (null === feed.last) {
+                // Mettre a jour toutes les cinq minutes (5 * 60 * 1000).
+                feed.last = Date.now();
+                setInterval(feed.update, 300000);
+                document.addEventListener('visibilitychange', feed.update);
+            }
+            feed.load(id, feed.apps[id]);
+        });
     }, // create()
 
     'update': function() {
@@ -37,7 +41,7 @@ var feed = {
     'load': function(id, args) {
         "use strict";
         // Recuperer les actualites de chaque flux.
-        for (var i in args.urls) { // FIXME Remplacer par un for...of.
+        for (var i in args.urls) { // FIXME[NFF] Remplacer par un for...of.
             var url = args.urls[i];
             $.get('gout.php?url=' + encodeURIComponent(url), function(data) {
                 feed.add(id, args, data);
@@ -70,7 +74,7 @@ var feed = {
                 });
             });
 
-        for (var i in items) { // FIXME Remplacer par un for...of.
+        for (var i in items) { // FIXME[NFF] Remplacer par un for...of.
             var item = items[i];
             if ('' === item.guid)
                 item.guid = item.link;

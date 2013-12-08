@@ -1,7 +1,7 @@
 var urtikan = {
     'last': null,
 
-    'create': function(id, args) {
+    'create': function(id, url) {
         "use strict";
 
         if (null === urtikan.last) {
@@ -39,7 +39,7 @@ var urtikan = {
                                      .removeAttr('title')
                                      .attr('target', '_blank'));
         }, 'html');
-    }, // load()
+    } // load()
 }; // urtikan
 
 core.mod.urtikan = urtikan;

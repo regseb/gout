@@ -1,0 +1,18 @@
+{
+    "engines": [
+        {
+            "title": "DuckDuckGo",
+            "url": "https://duckduckgo.com/",
+            "terms": "q",
+            "color": "#e51400",
+            "icon": "duckduckgo.svg"
+        },
+        {
+            "title": "Google",
+            "url": "https://www.google.fr/search",
+            "terms": "q",
+            "color": "#1ba1e2",
+            "icon": "google.svg"
+        }
+    ]
+}

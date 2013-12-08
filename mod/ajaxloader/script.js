@@ -1,16 +1,18 @@
 var ajaxloader = {
-    'create': function(id, args) {
+    'create': function(id, url) {
         "use strict";
-        $('#' + id).css('background-color', args.color);
+        $.getJSON(url + '/config.json', function(args) {
+            $('#' + id).css('background-color', args.color);
+        });
 
         $(document).ajaxStart(function() {
             $('.ajaxloader').css('background-image',
-                                 'url("mod/ajaxloader/loader.svg")');
+                                 'url("mod/ajaxloader/img/loader.svg")');
         });
         $(document).ajaxStop(function() {
             $('.ajaxloader').css('background-image', 'none');
         });
-    }, // create()
+    } // create()
 }; // ajaxloader
 
 core.mod.ajaxloader = ajaxloader;

@@ -11,50 +11,52 @@ var tv = {
                   'L\'Equipe 21', '6ter', 'Num\u00E9ro 23',
                   'RMC D\u00E9couverte', 'Ch\u00E9rie 25' ],
 
-    'create': function(id, args) {
+    'create': function(id, url) {
         "use strict";
-        $('#' + id).css('background-color', args.color);
+        $.getJSON(url + '/config.json', function(args) {
+            $('#' + id).css('background-color', args.color);
 
-        $.get('gout.php?url=' +
-              encodeURIComponent('http://www.programme-television.org/'),
-              function(data) {
-            $.each(tv.convert(data), function(i, channel) {
-                if (undefined !== args.channels) {
-                    var include = args.channels.include;
-                    var exclude = args.channels.exclude;
-                    if (undefined !== include &&
-                            -1 === include.indexOf(Number(i)) ||
-                            undefined !== exclude &&
-                            -1 !== exclude.indexOf(Number(i)))
-                        return true;
-                }
+            $.get('gout.php?url=' +
+                  encodeURIComponent('http://www.programme-television.org/'),
+                  function(data) {
+                $.each(tv.extract(data), function(i, channel) {
+                    if (undefined !== args.channels) {
+                        var include = args.channels.include;
+                        var exclude = args.channels.exclude;
+                        if (undefined !== include &&
+                                -1 === include.indexOf(Number(i)) ||
+                                undefined !== exclude &&
+                                -1 !== exclude.indexOf(Number(i)))
+                            return true;
+                    }
 
-                var mark = $('<span>');
-                for (var j = 0; j < channel.mark; ++j)
-                    $(mark).append($('<img>').attr({
-                                        'src': tv.IMG_DIR + 'star.svg',
-                                        'alt': '*' }));
+                    var mark = $('<span>');
+                    for (var j = 0; j < channel.mark; ++j)
+                        $(mark).append($('<img>').attr({
+                                'src': tv.IMG_DIR + 'star.svg',
+                                'alt': '*'
+                            }));
 
-                $('#' + id + ' ul').append(
-                    $('<li>').append($('<img>').attr({
-                                        'src': tv.IMG_DIR + i + '.svg',
-                                        'alt': tv.CHANNELS[i],
-                                        'title': tv.CHANNELS[i] }))
-                             .append($('<img>').attr({
-                                       'src': tv.IMG_DIR + channel.type + '.svg',
-                                       'alt': channel.type,
-                                       'title': channel.category })
-                           //  .append($('<span>').text(channel.category)
-                                                .addClass(channel.type))
-                             .append(mark)
-                             .append($('<a>').text(channel.title)
-                                             .attr({ 'href': channel.link,
-                                                     'target': '_blank' })));
+                    $('#' + id + ' ul').append(
+                            $('<li>').append($('<img>').attr({
+                                            'src': tv.IMG_DIR + i + '.svg',
+                                            'alt': tv.CHANNELS[i],
+                                            'title': tv.CHANNELS[i] }))
+                                     .append($('<img>').attr({
+                                            'src': tv.IMG_DIR + channel.type + '.svg',
+                                            'alt': channel.type,
+                                            'title': channel.category })
+                                     .addClass(channel.type))
+                                 .append(mark)
+                                 .append($('<a>').text(channel.title)
+                                                 .attr({ 'href': channel.link,
+                                                         'target': '_blank' })));
+                });
             });
         });
     }, // create()
 
-    'convert': function(data) {
+    'extract': function(data) {
         "use strict";
         var progs = { };
         $('#prime-broadcasts li', data).each(function() {
@@ -122,7 +124,7 @@ var tv = {
                              'mark': mark };
         });
         return progs;
-    }, // convert()
+    } // extract()
 }; // tv
 
 core.mod.tv = tv;

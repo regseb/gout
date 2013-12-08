@@ -1,17 +1,19 @@
 var cdanslair = {
     'last': null,
 
-    'create': function(id, args) {
+    'create': function(id, url) {
         "use strict";
-        $('#' + id).css('background-color', args.color);
+        $.getJSON(url + '/config.json', function(args) {
+            $('#' + id).css('background-color', args.color);
 
-        if (null === cdanslair.last) {
-            // Mettre a jour toutes les trois heures (3 * 60 * 60 * 1000).
-            cdanslair.last = Date.now();
-            setInterval(cdanslair.update, 10800000);
-            document.addEventListener('visibilitychange', cdanslair.update);
-        }
-        cdanslair.load();
+            if (null === cdanslair.last) {
+                // Mettre a jour toutes les trois heures (3 * 60 * 60 * 1000).
+                cdanslair.last = Date.now();
+                setInterval(cdanslair.update, 10800000);
+                document.addEventListener('visibilitychange', cdanslair.update);
+            }
+            cdanslair.load();
+        });
     }, // create()
 
     'update': function() {
@@ -43,25 +45,33 @@ var cdanslair = {
         $.get('gout.php?url=' +
               encodeURIComponent('http://www.france5.fr/c-dans-l-air/'),
               function(data) {
-            data = $('#fragment-0', data);
+            data = cdanslair.extract(data);
 
             // Si le sujet du jour n'est pas encore indique.
-            if (-1 === $('.date-front', data).text().indexOf(
-                                                         now.format('EEEEE'))) {
+            if (-1 === data.date.indexOf(now.format('EEEEE'))) {
                 $('.cdanslair a').text('(Sujet de l\'\u00E9mission' +
                                        ' non-d\u00E9fini)');
                 $('.cdanslair span').text(
                         'Le sujet de l\'\u00E9mission est' +
                         ' g\u00E9n\u00E9ralement d\u00E9fini en d\u00E9but' +
                         ' d\'apr\u00E8s-midi.');
-                return;
+            } else {
+                $('.cdanslair a').text(data.title);
+                $('.cdanslair span').html(data.description);
             }
-
-            $('.cdanslair a').text($('h4.title', data).text());
-            $('.cdanslair span').html(
-                    $('.field-field-resume-emission > div > div', data).html());
         }, 'html');
     }, // load()
+
+    'extract': function(data) {
+        "use strict";
+        data = $('#fragment-0', data);
+
+        // Si le sujet du jour n'est pas encore indique.
+        return { 'date': $('.date-front', data).text(),
+                 'title': $('h4.title', data).text(),
+                 'description': $('.field-field-resume-emission > div > div',
+                                  data).html() };
+    } // extract()
 }; // cdanslair
 
 core.mod.cdanslair = cdanslair;
