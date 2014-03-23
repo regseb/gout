@@ -1,0 +1,32 @@
+.fr-regseb-tv {
+    color: white;
+}
+.fr-regseb-tv ul {
+    list-style-type: none;
+    margin: 10px;
+    padding-left: 0;
+}
+.fr-regseb-tv li {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.fr-regseb-tv li > img {
+    margin-right: 2px;
+}
+.fr-regseb-tv span {
+    border-radius: 2px;
+    margin-right: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+.fr-regseb-tv .films          { background-color: #e51400; }
+.fr-regseb-tv .telefilms      { background-color: #a20025; }
+.fr-regseb-tv .series-tv      { background-color: #1ba1e2; }
+.fr-regseb-tv .divertissement { background-color: #aa00ff; }
+.fr-regseb-tv .documentaires  { background-color: #fa6800; }
+.fr-regseb-tv .magazine       { background-color: #0050ef; }
+.fr-regseb-tv .sport          { background-color: #008a00; }
+.fr-regseb-tv .unknown        { background-color: #647687; }

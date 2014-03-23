@@ -1,0 +1,38 @@
+.fr-regseb-cdanslair {
+    background-image: url("mod/fr/regseb/cdanslair/img/icon.svg");
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
+.fr-regseb-cdanslair > p {
+    margin: 10px;
+    padding-left: 60px;
+}
+.fr-regseb-cdanslair > p > a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.fr-regseb-cdanslair > p > a:visited {
+    color: white;
+}
+.fr-regseb-cdanslair > p > span {
+    background-color: black;
+    color: white;
+    margin-right: 10px;
+    margin-top: 5px;
+    opacity: 0;
+    overflow: hidden;
+    padding: 10px;
+    position: absolute;
+    text-align: justify;
+    transition: opacity 0s linear 0s;
+    visibility: hidden;
+    z-index: 1;
+}
+.fr-regseb-cdanslair > p:hover > span {
+    opacity: 1;
+    transition: opacity 0.5s linear 1s;
+    visibility: visible;
+}

@@ -1,0 +1,38 @@
+.std-search p {
+    border-style: solid;
+    border-width: 1px;
+    height: 100%;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.std-search img,
+.std-search input {
+    vertical-align: middle;
+}
+.std-search p img {
+    margin-left: 1px;
+}
+.std-search input {
+    border: 0px solid;
+}
+.std-search ul {
+    background-color: black;
+    color: white;
+    list-style-type: none;
+    margin-top: 5px;
+    padding-left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+.std-search li {
+    cursor: pointer;
+    margin-bottom: 3px;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+.std-search ul img {
+    margin-right: 5px;
+    height: 24px;
+    width: 24px;
+}

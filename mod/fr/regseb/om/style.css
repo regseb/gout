@@ -1,0 +1,28 @@
+.fr-regseb-om {
+    background-image: url("mod/fr/regseb/om/img/logo.svg");
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    color: white;
+}
+.fr-regseb-om p:first-child {
+    margin-top: 10px;
+}
+.fr-regseb-om p:last-child {
+    margin-bottom: 10px;
+}
+.fr-regseb-om p {
+    display: block;
+    margin-bottom: 0;
+    margin-left: 40px;
+    margin-top: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.fr-regseb-om a:visited {
+    color: white;
+}
+.fr-regseb-om img {
+    vertical-align: middle;
+}

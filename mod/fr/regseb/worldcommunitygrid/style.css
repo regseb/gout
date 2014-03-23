@@ -1,0 +1,19 @@
+.fr-regseb-worldcommunitygrid {
+    background-image: url("mod/fr/regseb/cdanslair/img/icon.svg");
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
+.fr-regseb-worldcommunitygrid p {
+    margin: 10px;
+    padding-left: 60px;
+}
+.fr-regseb-worldcommunitygrid p a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.fr-regseb-worldcommunitygrid p a:visited {
+    color: white;
+}
