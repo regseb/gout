@@ -39,10 +39,7 @@
             return;
         }
 
-        $.get("gout.php?url=" +
-              encodeURIComponent("http://www.france5.fr/emissions" +
-                                 "/c-dans-l-air"),
-              function(data) {
+        $.get("http://www.france5.fr/emissions/c-dans-l-air", function(data) {
             data = extract(data);
 
             // Si le sujet du jour n'est pas encore indique.

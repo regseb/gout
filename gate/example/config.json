@@ -1,0 +1,11 @@
+{
+    "std/ajaxloader/ajaxloader": {
+        "module": "std/ajaxloader",
+        "active": true,
+        "coord": { "x": 110, "y": 6, "w": 3, "h": 3 } },
+
+    "example/hello/world": {
+        "module": "example/hello",
+        "active": true,
+        "coord": { "x": 83, "y": 6, "w": 26, "h": 3 } }
+}

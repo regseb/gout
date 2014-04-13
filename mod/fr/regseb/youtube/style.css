@@ -1,7 +1,7 @@
 .fr-regseb-youtube {
-    background-repeat: no-repeat;
-    background-size: "contain";
     background-position: center right;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
 }
 .fr-regseb-youtube > ul {
     list-style-type: none;

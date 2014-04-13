@@ -67,9 +67,7 @@
         updated = false;
 
         var views = $(".fr-regseb-om");
-        $.get("gout.php?url=" +
-              encodeURIComponent("http://www.om.net/fr/Saison/102001/" +
-                                 "Calendrier_Resultats"),
+        $.get("http://www.om.net/fr/Saison/102001/Calendrier_Resultats",
               function(data) {
             data = extract(data);
 

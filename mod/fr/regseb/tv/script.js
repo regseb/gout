@@ -2,7 +2,6 @@
     "use strict";
 
     // TODO Dessiner les symboles des categories :
-    //        - unknown : rien,
     //        - magazine : livre,
     //        - jeunesse : .
 
@@ -51,9 +50,7 @@
         }
         args.updated = false;
 
-        $.get("gout.php?url=" +
-              encodeURIComponent("http://www.programme-television.org/"),
-              function(data) {
+        $.get("http://www.programme-television.org/", function(data) {
             data = extract(data);
 
             $("#" + id + " ul").empty();
@@ -67,10 +64,8 @@
                 ("include" in args.channels &&
                         -1 === args.channels.include.indexOf(i) ||
                         "exclude" in args.channels &&
-                        -1 !== args.channels.exclude.indexOf(i))) {
-            console.log(i);
+                        -1 !== args.channels.exclude.indexOf(i)))
             return;
-        }
 
         var mark = $("<span>");
         for (var j = 0; j < data.mark; ++j)

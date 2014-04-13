@@ -12,7 +12,6 @@
 
             $.get(url + "/extract.js", function(data) {
                 gates[id] = {
-                    "url":     args.url,
                     "updated": true
                 };
                 eval("gates[id].extract = " + data + ";");
@@ -43,9 +42,7 @@
         }
         args.updated = false;
 
-        $.get("gout.php?url=" + encodeURIComponent(args.url), function(data) {
-            data = args.extract(data);
-
+        args.extract().then(function(data) {
             var img = new Image();
             img.onload = function() {
                 var canvas = $("#" + id + " canvas");

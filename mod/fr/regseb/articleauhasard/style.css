@@ -1,0 +1,20 @@
+.fr-regseb-articleauhasard {
+    background-image: url("mod/fr/regseb/articleauhasard/img/icon.svg");
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: 10px center;
+}
+.fr-regseb-articleauhasard p {
+    margin: 10px;
+    padding-left: 40px;
+}
+.fr-regseb-articleauhasard p a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.fr-regseb-articleauahasard p a:visited {
+    color: white;
+}

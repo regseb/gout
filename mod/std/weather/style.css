@@ -73,13 +73,13 @@
     display: block;
 }
 .std-weather .temp {
-    background-image: url("mod/std/weather/icons/temp.svg");
+    background-image: url("mod/std/weather/img/temp.svg");
     background-position: 0 center;
     background-repeat: no-repeat;
     padding-left: 10px;
 }
 .std-weather .wind:before {
-    background-image: url("mod/std/weather/icons/wind.svg");
+    background-image: url("mod/std/weather/img/wind.svg");
     background-position: 0 center;
     background-repeat: no-repeat;
     content: "";

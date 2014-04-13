@@ -40,7 +40,7 @@
         }
         args.updated = false;
 
-        // Recuperer les actualites de chaque flux.
+        // Recuperer les evenements de chaque flux.
         for (var i in args.urls) {
             var url = args.urls[i];
             extract(url, args.size).then(function(data) {
@@ -51,60 +51,82 @@
     }; // update()
 
     var add = function(id, args, i, data) {
-        var a = $("#" + id + " a[href=\"" + data.link + "\"]");
+        var $li = $("#" + id + " li[data-guid=\"" + data.guid + "\"]");
 
-        if (!$(a).length) { // Si l'actualite n'est pas affichee.
-            // Trouver la future position chronologique de l'actualite.
+        if (!$li.length) { // Si l'evenement n'est pas affiche.
+            // Trouver la future position chronologique de l'evenement.
             var pos = -1;
             $("#" + id + " > ul > li").each(function(i) {
-                if (data.date < $(this).data("date"))
+                if (data.date <= $(this).data("date"))
                     pos = i;
-                else
-                    return false;
             });
-            if (pos !== args.size) {
-                // Supprimer la plus ancienne actualite.
-                $("#" + id + " > ul > li:gt(" + (args.size - 2) + ")").remove();
+            if (pos !== args.size - 1) {
+                // Supprimer le plus ancien evenement (si la liste est pleine).
+                $("#" + id + " > ul > li:eq(" + (args.size - 1) + ")").remove();
 
-                // Creer la ligne de la nouvelle actualite.
-                var li = $("<li>");
-                $(li).data("date", data.date);
-                $(li).append($("<a>").attr({ "href":   data.link,
-                                             "target": "_blank" })
-                                     .text(data.title));
+                // Creer la ligne du nouvel evenement.
+                $li = $("<li>").attr("data-guid", data.guid)
+                               .data("date", data.date)
+                               .append($("<a>").attr({ "href":   data.link,
+                                                       "target": "_blank" })
+                                               .text(data.title));
                 if ("" !== data.desc)
-                    $(li).append($("<span>").html(data.desc));
+                    $li.append($("<span>").html(data.desc));
 
                 if (-1 === pos)
-                    $("#" + id + " > ul").prepend(li).fadeIn("slow");
+                    $("#" + id + " > ul").prepend($li).fadeIn("slow");
                 else
-                    $("#" + id + " > ul > li:eq(" + pos + ")").after(li)
+                    $("#" + id + " > ul > li:eq(" + pos + ")").after($li)
                                                                 .fadeIn("slow");
             }
-        } else { // Si l'actualite est deja affichee.
-            // Si des elements de l'actualite ont change, les mettre a jour.
-            if ($(a).text() !== data.title)
-                $(a).text(data.title);
-            if ($(a).next().html() !== data.desc)
-                $(a).next().html(data.desc);
+        } else { // Si l'evenement est deja affiche.
+            // Si des elements de l'evenement ont change, les mettre a jour.
+            var $a = $("> a", $li);
+            if ($a.attr("href") !== data.link)
+                $a.attr("href", data.link);
+            if ($a.text() !== data.title)
+                $a.text(data.title);
+            if ($a.next().html() !== data.desc)
+                $a.next().html(data.desc);
         }
     }; // add()
 
     var extract = function(url, size) {
-        url = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0" +
-              "&num=" + size + "&q=" + encodeURIComponent(url) + "&callback=?";
-        return $.getJSON(url).then(function(data) {
-            var items = [];
-            for (var i in data.responseData.feed.entries) {
-                var entry = data.responseData.feed.entries[i];
-                items.push({
-                    "title": entry.title,
-                    "desc":  entry.content,
-                    "link":  entry.link,
-                    "date":  new Date(entry.publishedDate).getTime()
+        return $.get(url).then(function(data) {
+            // Si le serveur n'indique pas que les donnees sont au format XML :
+            // il faut les convertir.
+            if ("string" === typeof data)
+                data = $.parseXML(data);
+
+            var events = [];
+            if ($("rss", data).length) // RSS 2.0.
+                $("item:lt(" + size + ")", data).each(function(i, item) {
+                    events.push({
+                        "title": $("title", item).text(),
+                        "desc":  $("description", item).text(),
+                        "link":  $("link", item).text(),
+                        "guid":  $("guid", item).text(),
+                        "date":  new Date($("pubDate", item).text()).getTime()
+                    });
                 });
+            else if ($("feed", data).length) // Atom 1.0.
+                $("entry:lt(" + size + ")", data).each(function(i, entry) {
+                    events.push({
+                        "title": $("title", entry).text(),
+                        "desc":  $("summary", entry).text(),
+                        "link":  $("link", entry).attr("href"),
+                        "guid":  $("id", entry).text(),
+                        "date":  new Date($("updated", entry).text()).getTime()
+                    });
+                });
+
+            for (var i in events) {
+                var event = events[i];
+                if ("" === event.guid)
+                    event.guid = event.link;
             }
-            return items;
+
+            return events;
         });
     }; // extract()
 

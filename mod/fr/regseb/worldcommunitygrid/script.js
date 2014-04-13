@@ -51,10 +51,8 @@
     }; // update()
 
     var extract = function(user) {
-        var url = "gout.php?url=" +
-                  encodeURIComponent("http://www.worldcommunitygrid.org/" +
-                                     "getDynamicImage.do?memberName=" + user +
-                                     "&stat=1&rankOn=true&language=fr_FR");
+        var url = "http://www.worldcommunitygrid.org/getDynamicImage.do" +
+                  "?memberName=" + user + "&stat=1&rankOn=true&language=fr_FR";
         return $.get(url).then(function(data) {
             return { "points": /\t([^\t&]+)&#160;Points/.exec(data)[1],
                      "rank": /\(Rang :&#160;&#35;([^(]+)\)/.exec(data)[1] };

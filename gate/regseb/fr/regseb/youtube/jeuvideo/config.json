@@ -1,0 +1,7 @@
+{
+    "color": "#1ba1e2",
+    "user": [ "cndetmanu", "joueurdugrenier", "RealMyop" ],
+    "key": "GOOGLE_API_KEY",
+    "size": 5,
+    "cron": "0 0 * * *"
+}

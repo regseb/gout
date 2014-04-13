@@ -2,16 +2,32 @@
 Portail personnalisable.
 
 ## Installation
+Exécuter les commandes suivantes dans la console pour installer *Apache*
+avec les modules *proxy* et *proxy_http* :
+    sudo apt-get install apache2
+    sudo a2enmod proxy
+    sudo a2enmod proxy_http
+Ajouter les lignes suivantes dans le fichier */etc/apache2/apache2.conf* :
+    # Proxy Gout
+    <Location /gout/proxy/https/>
+      ProxyPass https://
+      ProxyPassReverse https://
+    </Location>
+    <Location /gout/proxy/http/>
+      ProxyPass http://
+      ProxyPassReverse http://
+    </Location>
+Redémarrer *Apache* :
+    sudo service apache2 restart
+Déployer *gout* sur le serveur :
     cd /tmp/
     wget https://github.com/regseb/gout/archive/master.zip
     unzip gout-master.zip
     mv gout-master gout
-    sudo apt-get install apache2 php5 libapache2-mod-php5 php5-curl
     sudo cp -r gout /var/www/
-    sudo chmod 777 /var/www/gout/tmp/
 
 ## Utilisation
-    http://localhost/gout/?config=config.json
+    http://localhost/gout/?user=example
 
 ## Compatibilité
  Chrome | Firefox | Internet Explorer | Opera | Safari

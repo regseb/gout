@@ -1,5 +1,5 @@
 .std-ajaxloader {
-    background-repeat: no-repeat;
     background-position: center center;
-    background-size: "contain";
+    background-repeat: no-repeat;
+    background-size: auto 100%;
 }

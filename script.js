@@ -3,13 +3,27 @@ var app = {
 
     "init": function() {
         "use strict";
-        if (!("config" in window.location.query)) {
-            $("body").html("Parametre config manquant !");
+        var query = window.location.query;
+        if (!("user" in query)) {
+            $("body").html("Parametre user manquant !");
             return;
         }
+        if (!("config" in query))
+            query.config = "config";
+
+        $.ajaxSetup({
+            "beforeSend": function(jqXHR, settings) {
+                if (!settings.crossDomain || "json" === settings.dataType)
+                    return true;
+                settings.url = settings.url
+                                        .replace(/^https:\/\//, "proxy/https/")
+                                        .replace(/^http:\/\//,  "proxy/http/")
+            }
+        });
 
         // Ouvrir les portes vers l'exterieur.
-        $.getJSON(window.location.query.config, function(gates) {
+        $.getJSON("gate/" + query.user + "/" + query.config + ".json",
+                  function(gates) {
             $.each(gates, function(url, args) {
                 if (false === args.active) return true;
 
@@ -39,7 +53,7 @@ var app = {
                                   .width(args.coord.w * 10)
                                   .height(args.coord.h * 10)
                                   .html($("body > div." + clazz).html()));
-                app.mod[args.module](id, "gate/" + url);
+                app.mod[args.module](id, "gate/" + query.user + "/" + url);
             });
         });
     } // init()

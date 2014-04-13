@@ -15,7 +15,6 @@
             gates[id] = {
                 "appid": args.appid,
                 "city": args.city,
-                "departement": args.departement,
                 "updated": true
             };
 
@@ -42,31 +41,6 @@
             return;
         }
         args.updated = false;
-
-        // Afficher l'enventuelle alerte vigilance.
-        if ("departement" in args) {
-            var url = "http://france.meteofrance.com/vigilance/Bulletin?" +
-                      "ZONE=DEPT" + args.departement;
-            $.get("gout.php?url=" + encodeURIComponent(url), function(data) {
-                var vigi = $("span:contains(\"D\u00E9partement en vigilance\")",
-                             data);
-                if (-1 !== $(vigi).text().indexOf("orange") ||
-                        -1 !== $(vigi).text().indexOf("rouge")) {
-                    $("#" + id + " > p a")
-                            .addClass($(vigi).text().substr(25)
-                                                   .replace("orange.", "orange")
-                                                   .replace("rouge.",  "red"))
-                            .attr("href", url);
-                    $("#" + id + " > p span").html(
-                                              $(vigi).parent().parent().html());
-                } else {
-                    $("#" + id + " > p a").removeClass("orange")
-                                          .removeClass("red")
-                                          .attr("href", "#");
-                    $("#" + id + " > p span").empty();
-                }
-            }, "html");
-        }
 
         $("#" + id + " ul").empty();
         // Recuperer la meteo du jour.
@@ -116,7 +90,7 @@
         date.setDate(date.getDate() +  $("#" + id + " li").length);
         $(p).append($("<strong>").text(date.format("EEEEE")));
 
-        $(p).append($("<img>").attr({ "src": "mod/std/weather/icons/" +
+        $(p).append($("<img>").attr({ "src": "mod/std/weather/img/" +
                                              data.icon + ".svg",
                                       "alt": data.desc,
                                       "title": data.help,
