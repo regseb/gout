@@ -1,8 +1,6 @@
 (function() {
     "use strict";
 
-    // TODO Faire une logo de WCG.
-
     var gates = { };
 
     var create = function(id, url) {

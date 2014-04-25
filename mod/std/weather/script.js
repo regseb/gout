@@ -2,8 +2,6 @@
     "use strict";
 
     // TODO Afficher une fleche pour indiquer l'orientation du vent.
-    // TODO Dessiner un symbol pour les alertes : vent, froid, orages, canicule,
-    //      pluie, avalanche, inondation, neige-verglas, vagues-submersion.
     // TODO Afficher le meteo du jour sur la meme ligne que le nom de la ville.
 
     var gates = { };
