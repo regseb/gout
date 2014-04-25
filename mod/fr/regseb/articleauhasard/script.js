@@ -8,10 +8,10 @@
             $("#" + id).css("background-color", args.color);
 
             gates[id] = {
+                "lang":    args.lang,
                 "updated": true
             };
 
-            // Mettre a jour les informations une fois par jour (a 1h du matin).
             setCron(update, args.cron, id);
 
             if (1 === Object.keys(gates).length)
@@ -37,18 +37,21 @@
         }
         args.updated = false;
 
-        extract(args.user).then(function(data) {
+        extract(args.lang).then(function(data) {
             $("#" + id + " a").attr("href", data.link)
                               .text(data.title);
         });
     }; // update()
 
-    var extract = function(user) {
-        var url = "http://fr.wikipedia.org/wiki/Sp%C3%A9cial:Page_au_hasard";
-        return $.get(url).then(function(data) {
-            return { "link": "http://fr.wikipedia.org" +
-                             $("#ca-view a", data).attr("href"),
-                     "title": $("#firstHeading", data).text() };
+    var extract = function(lang) {
+        var url = "http://" + lang + ".wikipedia.org/w/api.php?action=query" +
+                  "&list=random&rnnamespace=0&format=json&callback=?";
+        return $.getJSON(url).then(function(data) {
+            return {
+                "link": "http://" + lang + ".wikipedia.org/wiki/" +
+                        data.query.random[0].title,
+                "title": data.query.random[0].title
+            };
         });
     }; // extract()
 
