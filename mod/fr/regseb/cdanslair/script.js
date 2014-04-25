@@ -31,17 +31,18 @@
 
         var views = $(".fr-regseb-cdanslair");
         var now = new Date();
+        // Si c'est le week-end (dimanche ou samedi) .
         if (0 === now.getDay() || 6 === now.getDay()) {
-            $("a", views).text("(Pas d'\u00E9mission le week-end)");
+            $("a", views).attr("href", "http://www.france5.fr/emissions" +
+                                       "/c-dans-l-air")
+                         .text("(Pas d'\u00E9mission le week-end)");
             $("span", views).text(
                     "<em>C dans l'air</em> est diffus\u00E9e du lundi au" +
                     " vendredi.");
             return;
         }
 
-        $.get("http://www.france5.fr/emissions/c-dans-l-air", function(data) {
-            data = extract(data);
-
+        extract().then(function(data) {
             // Si le sujet du jour n'est pas encore indique.
             if (-1 === data.date.indexOf(now.format("dd/MM/yyyy"))) {
                 $("a", views).attr("href", "http://www.france5.fr/emissions" +
@@ -61,12 +62,17 @@
     }; // update()
 
     var extract = function(data) {
-        data = $(".cartouche", data);
+        return $.get("http://www.france5.fr/emissions/c-dans-l-air")
+                                                         .then(function(data) {
+            data = $(".cartouche", data);
 
-        return { "date": $(".sous_titre", data).text(),
-                 "title": $("a:first", data).text(),
-                 "link": "http://www.france5.fr" + $("a", data).attr("href"),
-                 "description": $(".accroche p", data).html() };
+            return {
+                "date": $(".sous_titre", data).text(),
+                "title": $("a:first", data).text(),
+                "link": "http://www.france5.fr" + $("a", data).attr("href"),
+                "description": $(".accroche p", data).html()
+            };
+        });
     }; // extract()
 
     app.mod["fr/regseb/cdanslair"] = create;
