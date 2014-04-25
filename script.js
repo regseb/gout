@@ -3,28 +3,24 @@ var app = {
 
     "init": function() {
         "use strict";
-        var query = window.location.query;
-        if (!("user" in query)) {
-            $("body").html("Parametre user manquant !");
-            return;
-        }
-        if (!("config" in query))
-            query.config = "config";
-
+        // Utiliser le proxy pour les requetes externes.
         $.ajaxSetup({
             "beforeSend": function(jqXHR, settings) {
                 if (!settings.crossDomain || "json" === settings.dataType)
                     return true;
                 settings.url = settings.url
                                         .replace(/^https:\/\//, "proxy/https/")
-                                        .replace(/^http:\/\//,  "proxy/http/")
+                                        .replace(/^http:\/\//,  "proxy/http/");
             }
         });
 
         // Ouvrir les portes vers l'exterieur.
-        $.getJSON("gate/" + query.user + "/" + query.config + ".json",
-                  function(gates) {
+        var user   = window.location.query.user   || "default";
+        var config = window.location.query.config || "config";
+        $.getJSON("gate/" + user + "/" + config + ".json", function(gates) {
             $.each(gates, function(url, args) {
+                // Si la propriete 'active' n'est pas definie : considerer que
+                // la passerelle est active.
                 if (false === args.active) return true;
 
                 var id = "gate" + $("article").length;
@@ -53,7 +49,7 @@ var app = {
                                   .width(args.coord.w * 10)
                                   .height(args.coord.h * 10)
                                   .html($("body > div." + clazz).html()));
-                app.mod[args.module](id, "gate/" + query.user + "/" + url);
+                app.mod[args.module](id, "gate/" + user + "/" + url);
             });
         });
     } // init()
