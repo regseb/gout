@@ -41,7 +41,7 @@ Déployer *gout* sur le serveur :
 ## Compatibilité
  Chrome | Firefox | Internet Explorer | Opera | Safari
 :------:|:-------:|:-----------------:|:-----:|:------:
-   5    |    5    |         9         |  12   |   5
+   32   |   29    |         -         |  19   |   -
 
 ## Licence
 La bibliothèque est publiée sous *GNU GENERAL PUBLIC LICENSE*.
