@@ -18,7 +18,8 @@ var app = {
         var user   = window.location.query.user   || "default";
         var config = window.location.query.config || "config";
         $.getJSON("gate/" + user + "/" + config + ".json", function(gates) {
-            $.each(gates, function(url, args) {
+            for (var url in gates) {
+                var args = gates[url];
                 // Si la propriete 'active' n'est pas definie : considerer que
                 // la passerelle est active.
                 if (false === args.active) return true;
