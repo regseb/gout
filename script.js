@@ -51,7 +51,7 @@ var app = {
                                   .height(args.coord.h * 10)
                                   .html($("body > div." + clazz).html()));
                 app.mod[args.module](id, "gate/" + user + "/" + url);
-            });
+            }
         });
     } // init()
 }; // app
