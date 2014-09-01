@@ -1,60 +1,51 @@
 {
+    "regseb/googlefeed/allocine": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 1, "w": 28, "h": 6 } },
+    "regseb/googlefeed/laprovence": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 8, "w": 28, "h": 6 } },
+    "regseb/googlefeed/clubic": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 15, "w": 28, "h": 6 } },
+    "regseb/googlefeed/lemonde": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 22, "w": 28, "h": 6 } },
+    "regseb/googlefeed/linuxfr": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 29, "w": 28, "h": 6 } },
+    "regseb/googlefeed/arretsurimages": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 1, "w": 28, "h": 6 } },
+    "regseb/googlefeed/lequipe": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 8, "w": 28, "h": 6 } },
+    "regseb/googlefeed/developpez": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 15, "w": 28, "h": 6 } },
+    "regseb/googlefeed/velaux": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 22, "w": 28, "h": 3 } },
+    "regseb/googlefeed/legorafi": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 26, "w": 28, "h": 3 } },
+    "regseb/googlefeed/slate": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 30, "w": 28, "h": 5 } },
+
+    "std/search/firefox": {
+        "module": "std/search",
+        "coord": { "x": 59, "y": 1, "w": 17, "h": 2 } },
+
     "std/ajaxloader/ajaxloader": {
         "module": "std/ajaxloader",
-        "coord": { "x": 110, "y": 6, "w": 3, "h": 3 } },
+        "coord": { "x": 77, "y": 1, "w": 2, "h": 2 } },
 
-    "std/search/duckduckgo": {
-        "module": "std/search",
-        "coord": { "x": 83, "y": 6, "w": 26, "h": 3 } },
+    "regseb/articleauhasard/articleauhasard": {
+        "module": "regseb/articleauhasard",
+        "coord": { "x": 59, "y": 4, "w": 20, "h": 2 } },
 
-    "std/feed/allocine": {
-        "module": "fr/regseb/googlefeed",
-        "coord": { "x": 1, "y": 1, "w": 40, "h": 8 } },
-    "std/feed/laprovence": {
-        "module": "fr/regseb/googlefeed",
-        "coord": { "x": 1, "y": 10, "w": 40, "h": 8 } },
-    "std/feed/arretsurimages": {
-        "module": "fr/regseb/googlefeed",
-        "coord": { "x": 42, "y": 1, "w": 40, "h": 8 } },
-    "std/feed/lequipe": {
-        "module": "fr/regseb/googlefeed",
-        "coord": { "x": 42, "y": 10, "w": 40, "h": 8 } },
-    "std/feed/clubic": {
-        "module": "fr/regseb/googlefeed",
-        "coord": { "x": 1, "y": 19, "w": 40, "h": 8 } },
-    "std/feed/developpez": {
-        "module": "fr/regseb/googlefeed",
-        "active": true,
-        "coord": { "x": 42, "y": 19, "w": 40, "h": 8 } },
-    "std/feed/lemonde": {
-        "module": "fr/regseb/googlefeed",
-        "coord": { "x": 1, "y": 28, "w": 40, "h": 8 } },
-    "std/feed/velaux": {
-        "module": "fr/regseb/googlefeed",
-        "coord": { "x": 42, "y": 28, "w": 40, "h": 5 } },
-    "std/feed/legorafi": {
-        "module": "fr/regseb/googlefeed",
-        "coord": { "x": 42, "y": 34, "w": 40, "h": 5 } },
-    "std/feed/linuxfr": {
-        "module": "fr/regseb/googlefeed",
-        "coord": { "x": 1, "y": 37, "w": 40, "h": 8 } },
-    "std/feed/slate": {
-        "module": "fr/regseb/googlefeed",
-        "coord": { "x": 42, "y": 40, "w": 40, "h": 7 } },
-
-    "fr/regseb/youtube/jeuvideo": {
-        "module": "fr/regseb/youtube",
-        "coord": { "x": 42, "y": 48, "w": 40, "h": 8 } },
-    "fr/regseb/youtube/humour": {
-        "module": "fr/regseb/youtube",
-        "coord": { "x": 1, "y": 46, "w": 40, "h": 8 } },
-
-    "std/weather/velaux": {
-        "module": "std/weather",
-        "coord": { "x": 114, "y": 20, "w": 19, "h": 16 } },
-
-    "fr/regseb/articleauhasard/articleauhasard": {
-        "module": "fr/regseb/articleauhasard",
-        "coord": { "x": 83, "y": 48, "w": 26, "h": 3 } }
-
+    "std/bookmark/social": {
+        "module": "std/bookmark",
+        "coord": { "x": 59, "y": 7, "w": 14, "h": 4 } }
 }

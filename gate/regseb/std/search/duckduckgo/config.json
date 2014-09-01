@@ -3,25 +3,25 @@
         {
             "title": "DuckDuckGo",
             "url": "https://duckduckgo.com/?q={searchTerms}",
-            "color": "#e51400",
+            "color": "#e51c23",
             "icon": "duckduckgo.svg"
         },
         {
             "title": "Google",
             "url": "https://www.google.fr/search?q={searchTerms}",
-            "color": "#1ba1e2",
+            "color": "#5677fc",
             "icon": "google.svg"
         },
         {
             "title": "Wikipedia",
             "url": "http://fr.wikipedia.org/w/index.php?search={searchTerms}",
-            "color": "#000",
+            "color": "#607d8b",
             "icon": "wikipedia.svg"
         },
         {
             "title": "CNRTL",
             "url": "http://www.cnrtl.fr/lexicographie/{searchTerms}",
-            "color": "#6a00ff",
+            "color": "#3f51b5",
             "icon": "cnrtl.svg"
         }
     ]

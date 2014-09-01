@@ -1,0 +1,5 @@
+{
+    "color": "black",
+    "url": "http://lesjoiesducode.fr/rss",
+    "cron": "* */2 * * *"
+}

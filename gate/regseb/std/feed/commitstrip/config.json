@@ -1,0 +1,5 @@
+{
+    "color": "#795548",
+    "url": "http://www.commitstrip.com/fr/feed/",
+    "cron": "0 20 * * *"
+}

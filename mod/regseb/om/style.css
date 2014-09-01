@@ -1,0 +1,28 @@
+.regseb-om {
+    background-image: url("img/icon.svg");
+    background-repeat: no-repeat;
+    background-position: 0.7em center;
+    color: white;
+}
+.regseb-om p:first-child {
+    margin-top: 0.7em;
+}
+.regseb-om p:last-child {
+    margin-bottom: 0.7em;
+}
+.regseb-om p {
+    display: block;
+    margin-bottom: 0;
+    margin-left: 4.2em;
+    margin-top: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.regseb-om a:visited {
+    color: white;
+}
+.regseb-om img {
+    vertical-align: middle;
+}

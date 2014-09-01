@@ -1,63 +1,74 @@
+/* global app, window, $ */
+
 (function() {
     "use strict";
 
     var gates = { };
 
-    var create = function(id, url) {
-        $.getJSON(url + "/config.json", function(args) {
-            var height = $("#" + id).height();
-            var width = $("#" + id).width();
-            $("#" + id + " form").submit(search);
-            $("#" + id + " img").width(height - 4)
-                                .height(height - 4)
-                                .click(propose);
-            $("#" + id + " input").width(width - height - 8)
-                                  .height(height - 4);
-            gates[id] = args.engines;
-
-            for (var i in gates[id]) {
-                var engine = gates[id][i];
-                engine.icon = url + "/" + engine.icon;
-                $("#" + id + " ul").append(
-                    $("<li>").data("index", i)
-                             .append($("<img>").attr("src", engine.icon))
-                             .append(engine.title)
-                             .click(change));
-            }
-            $("#" + id + " li:first").click();
-        });
-    }; // create()
-
     var search = function() {
-        var id = $(this).closest("article").attr("id");
+        var $root = $(this).closest("article");
+
         // Ouvrir le résultat de la recherche dans un nouvel onglet.
-        window.open(
-                $("#" + id + " form").attr("action")
-                                     .replace("{searchTerms}",
-                                              $("#" + id + " input").val()));
+        window.open($("form", $root).attr("action")
+                                    .replace("{searchTerms}",
+                                             $("input", $root).val()));
         return false;
     }; // search()
 
     var propose = function() {
-        var id = $(this).closest("article").attr("id");
+        var $root = $(this).closest("article");
+
         // Afficher la liste des moteurs de recherche.
-        $("#" + id + " ul").show();
+        $("ul", $root).show();
     }; // propose()
 
     var change = function() {
-        var id = $(this).closest("article").attr("id");
-        // Cacher la liste des moteurs de recherche.
-        $("#" + id + " ul").hide();
+        var $root = $(this).closest("article");
 
-        // Mettre a jour le formulaire.
-        var engine = gates[id][$(this).data("index")];
-        $("#" + id + " form").attr("action", engine.url);
-        $("#" + id + " p").css("border-color", engine.color);
-        $("#" + id + " p img").attr("src", engine.icon);
-        $("#" + id + " input").attr("name", engine.terms)
-                              .attr("placeholder", engine.title)
-                              .css("color", engine.color);
+        // Cacher la liste des moteurs de recherche.
+        $("ul", $root).hide();
+
+        // Mettre à jour le formulaire.
+        var engine = gates[$root.attr("id")][$(this).data("index")];
+        $("form",  $root).attr("action", engine.url);
+        $("p",     $root).css("border-color", engine.color);
+        $("p img", $root).attr("src", engine.icon);
+        $("input", $root).attr({ "name": engine.terms,
+                                 "placeholder": engine.title })
+                         .css("color", engine.color);
     }; // change()
+
+    var create = function(id, url) {
+        $.getJSON(url + "/config.json").then(function(args) {
+            var $root = $("#" + id);
+            var height = $root.height();
+            var width = $root.width();
+            $("form", $root).submit(search);
+            $("img", $root).width(height - 4)
+                           .height(height - 4)
+                           .click(propose);
+            $("input", $root).width(width - height - 8)
+                             .height(height - 4);
+
+            for (var i in args.engines)
+                display($root, args.engines[i], i, url);
+
+            gates[id] = args.engines;
+
+            // Sélectionner le premier élément.
+            $("li:first", $root).click();
+        });
+    }; // create()
+
+    var display = function($root, data, i, url) {
+        data.icon = url + "/" + data.icon;
+        $("ul", $root).append(
+            $("<li>").data("index", i)
+                     .append($("<img>").attr("src", data.icon))
+                     .append(data.title)
+                     .click(change));
+
+    }; // display()
 
     app.mod["std/search"] = create;
 

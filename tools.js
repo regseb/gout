@@ -1,8 +1,8 @@
 Date.prototype.format = function(pattern) {
     "use strict";
-    var MONTHS = [ "janvier", "f\u00E9vrier", "mars", "avril", "mai", "juin",
+    var MONTHS = [ "janvier", "février", "mars", "avril", "mai", "juin",
                    "juillet", "aout", "septembre", "octobre", "novembre",
-                   "d\u00E9cembre" ];
+                   "décembre" ];
     var DAYS = [ "dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi",
                  "samedi" ];
 

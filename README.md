@@ -3,9 +3,9 @@ Portail personnalisable.
 
 ## Installation
 Exécuter les commandes suivantes dans la console pour installer
-*[Apache](http://httpd.apache.org/ "Apache HTTP Server Project")* avec les
-modules *[proxy](http://httpd.apache.org/docs/current/mod/mod_proxy.html)* et
-*[proxy_http](http://httpd.apache.org/docs/current/mod/mod_proxy_http.html)* :
+[Apache](http://httpd.apache.org/ "Apache HTTP Server Project") avec les
+modules [proxy](http://httpd.apache.org/docs/current/mod/mod_proxy.html) et
+[proxy_http](http://httpd.apache.org/docs/current/mod/mod_proxy_http.html) :
 
     sudo apt-get install apache2
     sudo a2enmod proxy
@@ -23,11 +23,11 @@ Ajouter les lignes suivantes dans le fichier */etc/apache2/apache2.conf* :
       ProxyPassReverse http://
     </Location>
 
-Redémarrer *Apache* :
+Redémarrer Apache :
 
     sudo service apache2 restart
 
-Déployer *gout* sur le serveur :
+Déployer Gout sur le serveur :
 
     cd /tmp/
     wget https://github.com/regseb/gout/archive/master.zip

@@ -1,20 +1,16 @@
 # /std/ajaxloader
-Ce module vous indique si une requête *AJAX* est en cours.
+Ce module indique si une requête AJAX est en cours, grâce à une image animée.
 
 ## Configuration
-Les dimensions conseillées sont **3x3**.
+Les dimensions conseillées sont **2x2**.
 
-Le répertoire de la passerelle doit avoir un fichier ***config.json***
-contenant un objet *[JSON](http://www.json.org "JavaScript Object Notation")*
+Le répertoire de la passerelle peut avoir un fichier ***config.json***
+contenant un objet [JSON](http://www.json.org "JavaScript Object Notation")
 avec la propriété suivante :
-- `"color"` : la couleur de fond du cadre au format hexadécimal (par exemple
-  `"#000000"`pour du noir).
+- `"color"` (optionnel - valeur par défaut : `"black"`) : la couleur de fond du
+  cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
+  prédéfinis) ;
 
 ## Exemple
 ### /config.json
-Cet configuration affiche un cadre noir.
-```JSON
-{
-    "color": "#000000"
-}
-```
+Par défaut (sans fichier *config.json*), le module affiche un cadre noir.

@@ -1,0 +1,36 @@
+.regseb-twitter {
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+}
+.regseb-twitter > ul {
+    list-style-type: none;
+    margin: 0.7em;
+    padding-left: 0;
+}
+.regseb-twitter > ul > li > a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.regseb-twitter > ul > li > span {
+    background-color: black;
+    color: white;
+    margin-right: 0.7em;
+    margin-top: 0.7em;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0.7em;
+    position: absolute;
+    text-align: justify;
+    transition: opacity 0s linear 0s;
+    visibility: hidden;
+    z-index: 1;
+}
+.regseb-twitter > ul > li:hover > span {
+    opacity: 1;
+    transition: opacity 0.5s linear 1s;
+    visibility: visible;
+}

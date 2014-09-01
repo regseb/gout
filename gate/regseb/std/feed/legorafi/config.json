@@ -1,6 +1,5 @@
 {
-    "color": "#6a00ff",
+    "color": "#673ab7",
     "url": "http://www.legorafi.fr/feed/",
-    "size": 2,
     "cron": "0 * * * *"
 }

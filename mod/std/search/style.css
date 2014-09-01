@@ -10,6 +10,7 @@
     vertical-align: middle;
 }
 .std-search p img {
+    cursor: pointer;
     margin-left: 1px;
 }
 .std-search input {

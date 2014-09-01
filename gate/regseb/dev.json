@@ -1,0 +1,13 @@
+{
+    "regseb/horoscope/lion": {
+        "active": false,
+        "module": "regseb/horoscope",
+        "coord": { "x": 80, "y": 15, "w": 28, "h": 3 } },
+
+    "regseb/om": {
+        "module": "regseb/om",
+        "coord": { "x": 80, "y": 15, "w": 28, "h": 3 } },
+    "std/ajaxloader/ajaxloader": {
+        "module": "std/ajaxloader",
+        "coord": { "x": 110, "y": 6, "w": 3, "h": 3 } }
+}

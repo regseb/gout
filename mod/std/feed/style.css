@@ -5,7 +5,7 @@
 }
 .std-feed > ul {
     list-style-type: none;
-    margin: 10px;
+    margin: 0.7em;
     padding-left: 0;
 }
 .std-feed > ul > li > a {
@@ -18,11 +18,11 @@
 .std-feed > ul > li > span {
     background-color: black;
     color: white;
-    margin-right: 10px;
-    margin-top: 5px;
+    margin-right: 0.7em;
+    margin-top: 0.7em;
     opacity: 0;
     overflow: hidden;
-    padding: 10px;
+    padding: 0.7em;
     position: absolute;
     text-align: justify;
     transition: opacity 0s linear 0s;

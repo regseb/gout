@@ -1,11 +1,18 @@
-function() {
+function(size) {
     "use strict";
-    return $.get("http://www.urtikan.net/dessin-du-jour/").then(function(data) {
-        var img = $("#posts-dessin img:first", data);
-        return {
-            "img":   $(img).attr("src"),
-            "link":  $(img).parent().attr("href"),
-            "title": $(img).attr("title")
-        };
+    var url = "http://www.urtikan.net/dessin-du-jour/";
+    return $.get(url).then(function(data) {
+        var events = [];
+        $("#posts-dessin li:lt(" + size + ")", data).each(function(i, item) {
+            var $img = $("img", item);
+            events.push({
+                "img":   $img.attr("src"),
+                "title": $img.attr("title"),
+                "link":  $img.parent().attr("href"),
+                "guid":  $img.attr("src"),
+                "date":  0
+            });
+        });
+        return events;
     });
 }

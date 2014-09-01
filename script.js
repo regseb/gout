@@ -1,9 +1,18 @@
+/* global window, setTimeout, $ */
+
+/**
+ * @file Portail Web personnalisable.
+ * @author Sébastien Règne
+ * @version 0.1
+ * @license GNU General Public License
+ */
+
 var app = {
     "mod": { },
 
     "init": function() {
         "use strict";
-        // Utiliser le proxy pour les requetes externes.
+        // Utiliser le proxy pour les requêtes externes.
         $.ajaxSetup({
             "beforeSend": function(jqXHR, settings) {
                 if (!settings.crossDomain || "json" === settings.dataType)
@@ -14,43 +23,51 @@ var app = {
             }
         });
 
-        // Ouvrir les portes vers l'exterieur.
+        // Récupérer les paramètres transmits dans l'URL.
         var user   = window.location.query.user   || "default";
         var config = window.location.query.config || "config";
-        $.getJSON("gate/" + user + "/" + config + ".json", function(gates) {
+
+        // Ouvrir les portes vers l'extérieur.
+        var url = "gate/" + user + "/" + config + ".json";
+        $.getJSON(url).then(function(gates) {
             for (var url in gates) {
                 var args = gates[url];
-                // Si la propriete 'active' n'est pas definie : considerer que
+                // Si la propriété 'active' n'est pas définie : considérer que
                 // la passerelle est active.
-                if (false === args.active) return true;
+                if (false === args.active) continue;
 
                 var id = "gate" + $("article").length;
                 var clazz = args.module.replace(/\//g, "-");
 
-                // Si le module est utilise pour la premiere fois.
+                // Si le module est utilisé pour la première fois.
                 if (!(args.module in app.mod)) {
                     // Charger la feuille de style.
-                    $.get("mod/" + args.module + "/style.css", function(data) {
-                        $("style").append(data);
-                    });
-                    // Charger le JavaScript et le HTML.
+                    $("head").append($("<link />", {
+                        "rel":  "stylesheet",
+                        "href": "mod/" + args.module + "/style.css"
+                    }));
+                    // Passer un synchrone pour attendre que le HTML et le
+                    // JavaScript soient chargés avant les utiliser.
                     $.ajaxSetup({ "async": false });
+                    // Charger le JavaScript et le HTML.
                     $.getScript("mod/" + args.module + "/script.js");
                     $("body").append(
-                        $("<div>").load("mod/" + args.module + "/index.html")
-                                  .addClass(clazz));
+                        $("<template>").load("mod/" + args.module +
+                                             "/index.html")
+                                       .addClass(clazz));
                     $.ajaxSetup({ "async": true });
                 }
 
                 $("body").append(
                     $("<article>").attr("id", id)
                                   .addClass(clazz)
-                                  .css({ "left": args.coord.x * 10,
-                                         "top":  args.coord.y * 10 })
-                                  .width(args.coord.w * 10)
-                                  .height(args.coord.h * 10)
-                                  .html($("body > div." + clazz).html()));
-                app.mod[args.module](id, "gate/" + user + "/" + url);
+                                  .css({ "left": args.coord.x * 1.4 + "em",
+                                         "top":  args.coord.y * 1.4 + "em" })
+                                  .width(args.coord.w * 1.4 + "em")
+                                  .height(args.coord.h * 1.4 + "em")
+                                  .html($("body > template." + clazz).html()));
+                setTimeout(app.mod[args.module], 0,
+                           id, "gate/" + user + "/" + url);
             }
         });
     } // init()

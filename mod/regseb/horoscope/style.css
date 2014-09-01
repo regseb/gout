@@ -1,0 +1,13 @@
+.regseb-horoscope {
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: 0.7em center;
+}
+.regseb-horoscope p {
+    margin: 0.7em;
+    padding-left: 3.5em;
+    text-align: justify;
+}
+.regseb-horoscope a:visited {
+    color: white;
+}

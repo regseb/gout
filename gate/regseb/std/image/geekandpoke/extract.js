@@ -1,12 +1,19 @@
-function() {
+function(size) {
     "use strict";
-    return $.get("http://geek-and-poke.com").then(function(data) {
-        var article = $("article:first", data);
-        return {
-            "img":   $("img", article).attr("data-src") + "?format=300w",
-            "link":  "http://geek-and-poke.com/" +
-                     $("h1 a", article).attr("href"),
-            "title": $("h1 a", article).text()
-        };
+    var url = "http://feeds.feedburner.com/GeekAndPoke";
+    return $.get(url).then(function(data) {
+        var events = [];
+        $("item:lt(" + size + ")", data).each(function() {
+            events.push({
+                "img":   $($("description",
+                             this).text())[0].getAttribute("data-image") +
+                         "?format=300w",
+                "title": $("title", this).text(),
+                "link":  $("link", this).text(),
+                "guid":  $("guid", this).text(),
+                "date":  new Date($("pubDate", this).text()).getTime()
+            });
+        });
+        return events;
     });
 }

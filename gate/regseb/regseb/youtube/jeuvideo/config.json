@@ -1,0 +1,7 @@
+{
+    "color": "#e51c23",
+    "user": [ "CndetMANU", "joueurdugrenier", "RealMyop",
+              "SparklesProduction" ],
+    "key": "GOOGLE_API_KEY",
+    "cron": "0 0 * * *"
+}

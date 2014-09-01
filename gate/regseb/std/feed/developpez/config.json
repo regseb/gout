@@ -1,6 +1,5 @@
 {
-    "color": "#0050ef",
+    "color": "#607d8b",
     "url": "http://www.developpez.com/index/rss",
-    "size": 5,
     "cron": "*/3 * * * *"
 }

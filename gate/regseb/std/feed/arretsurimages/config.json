@@ -1,6 +1,5 @@
 {
-    "color": "#647687",
+    "color": "#9e9e9e",
     "url": "http://www.arretsurimages.net/rss/vite-dit.rss",
-    "size": 5,
     "cron": "*/3 * * * *"
 }

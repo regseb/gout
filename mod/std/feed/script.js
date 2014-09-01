@@ -1,18 +1,21 @@
+/* global app, document, $, setCron */
+
 (function() {
     "use strict";
 
     var gates = { };
 
     var create = function(id, url) {
-        $.getJSON(url + "/config.json", function(args) {
-            $("#" + id).css({
+        $.getJSON(url + "/config.json").then(function(args) {
+            var $root = $("#" + id);
+            $root.css({
                 "background-color": args.color,
                 "background-image": "url(\"" + url + "/icon.svg\")"
             });
 
             gates[id] = {
-                "urls": (Array.isArray(args.url) ? args.url : [ args.url ]),
-                "size": args.size,
+                "urls":    Array.isArray(args.url) ? args.url : [ args.url ],
+                "size":    $root.height() / 14 - 1,
                 "updated": true
             };
 
@@ -32,39 +35,76 @@
     var update = function(id) {
         var args = gates[id];
 
-        // Si la page est cachee : ne pas actualiser les flux et indiquer qu'il
-        // faudrait actualiser les flux quand l'utilisateur affichera la page.
+        // Si la page est cachée : ne pas actualiser les données et indiquer
+        // qu'il faudra mettre à jour les données quand l'utilisateur reviendra
+        // sur la page.
         if (document.hidden) {
             args.updated = true;
             return;
         }
         args.updated = false;
 
-        // Recuperer les evenements de chaque flux.
-        for (var i in args.urls) {
-            var url = args.urls[i];
-            extract(url, args.size).then(function(data) {
+        var $root = $("#" + id);
+        for (var i in args.urls)
+            extract(args.urls[i], args.size).then(function(data) {
                 for (var i in data)
-                    add(id, args, i, data[i]);
+                    display($root, data[i], args.size);
             });
-        }
     }; // update()
 
-    var add = function(id, args, i, data) {
-        var $li = $("#" + id + " li[data-guid=\"" + data.guid + "\"]");
+    var extract = function(url, size) {
+        return $.get(url).then(function(data) {
+            // Si le serveur n'indique pas que les données sont au format XML :
+            // il faut les convertir.
+            if ("string" === typeof data)
+                data = $.parseXML(data);
 
-        if (!$li.length) { // Si l'evenement n'est pas affiche.
-            // Trouver la future position chronologique de l'evenement.
+            var items = [];
+            if ($("rss", data).length) // RSS 2.0.
+                $("item:lt(" + size + ")", data).each(function() {
+                    items.push({
+                        "title": $("title", this).text(),
+                        "desc":  $("description", this).text().trim(),
+                        "link":  $("link", this).text(),
+                        "guid":  $("guid", this).text(),
+                        "date":  new Date($("pubDate", this).text()).getTime()
+                    });
+                });
+            else if ($("feed", data).length) // Atom 1.0.
+                $("entry:lt(" + size + ")", data).each(function() {
+                    items.push({
+                        "title": $("title", this).text(),
+                        "desc":  $("summary", this).text().trim(),
+                        "link":  $("link", this).attr("href"),
+                        "guid":  $("id", this).text(),
+                        "date":  new Date($("updated", this).text()).getTime()
+                    });
+                });
+
+            for (var i in items) {
+                var item = items[i];
+                if ("" === item.guid)
+                    item.guid = item.link;
+            }
+            return items;
+        });
+    }; // extract()
+
+    var display = function($root, data, size) {
+        var $li = $("li[data-guid=\"" + data.guid + "\"]", $root);
+
+        if (!$li.length) { // Si l'évènement n'est pas affiché.
+            // Trouver la future position chronologique de l'évènement.
             var pos = -1;
-            $("#" + id + " > ul > li").each(function(i) {
+            $("> ul > li", $root).each(function(i) {
                 if (data.date <= $(this).data("date"))
                     pos = i;
             });
-            if (pos !== args.size - 1) {
-                // Supprimer le plus ancien evenement (si la liste est pleine).
-                $("#" + id + " > ul > li:eq(" + (args.size - 1) + ")").remove();
+            if (pos !== size - 1) {
+                // Supprimer le plus ancien évènement (si la liste est pleine).
+                $("> ul > li:eq(" + (size - 1) + ")", $root).remove();
 
-                // Creer la ligne du nouvel evenement.
+                // Créer la ligne du nouvel évènement.
                 $li = $("<li>").attr("data-guid", data.guid)
                                .data("date", data.date)
                                .append($("<a>").attr({ "href":   data.link,
@@ -72,15 +112,14 @@
                                                .text(data.title));
                 if ("" !== data.desc)
                     $li.append($("<span>").html(data.desc));
-
                 if (-1 === pos)
-                    $("#" + id + " > ul").prepend($li).fadeIn("slow");
+                    $("> ul", $root).prepend($li).fadeIn("slow");
                 else
-                    $("#" + id + " > ul > li:eq(" + pos + ")").after($li)
-                                                                .fadeIn("slow");
+                    $("> ul > li:eq(" + pos + ")", $root).after($li)
+                                                         .fadeIn("slow");
             }
-        } else { // Si l'evenement est deja affiche.
-            // Si des elements de l'evenement ont change, les mettre a jour.
+        } else { // Si l'évènement est déjà affiché.
+            // Si des éléments de l'évènement ont changé, les mettre à jour.
             var $a = $("> a", $li);
             if ($a.attr("href") !== data.link)
                 $a.attr("href", data.link);
@@ -89,46 +128,7 @@
             if ($a.next().html() !== data.desc)
                 $a.next().html(data.desc);
         }
-    }; // add()
-
-    var extract = function(url, size) {
-        return $.get(url).then(function(data) {
-            // Si le serveur n'indique pas que les donnees sont au format XML :
-            // il faut les convertir.
-            if ("string" === typeof data)
-                data = $.parseXML(data);
-
-            var events = [];
-            if ($("rss", data).length) // RSS 2.0.
-                $("item:lt(" + size + ")", data).each(function(i, item) {
-                    events.push({
-                        "title": $("title", item).text(),
-                        "desc":  $("description", item).text(),
-                        "link":  $("link", item).text(),
-                        "guid":  $("guid", item).text(),
-                        "date":  new Date($("pubDate", item).text()).getTime()
-                    });
-                });
-            else if ($("feed", data).length) // Atom 1.0.
-                $("entry:lt(" + size + ")", data).each(function(i, entry) {
-                    events.push({
-                        "title": $("title", entry).text(),
-                        "desc":  $("summary", entry).text(),
-                        "link":  $("link", entry).attr("href"),
-                        "guid":  $("id", entry).text(),
-                        "date":  new Date($("updated", entry).text()).getTime()
-                    });
-                });
-
-            for (var i in events) {
-                var event = events[i];
-                if ("" === event.guid)
-                    event.guid = event.link;
-            }
-
-            return events;
-        });
-    }; // extract()
+    }; // display()
 
     app.mod["std/feed"] = create;
 

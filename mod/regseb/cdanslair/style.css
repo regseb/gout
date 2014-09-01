@@ -1,0 +1,38 @@
+.regseb-cdanslair {
+    background-image: url("img/icon.png");
+    background-repeat: no-repeat;
+    background-position: 0.7em center;
+}
+.regseb-cdanslair > p {
+    margin: 0.7em;
+    padding-left: 6.3em;
+}
+.regseb-cdanslair > p > a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.regseb-cdanslair > p > a:visited {
+    color: white;
+}
+.regseb-cdanslair > p > span {
+    background-color: black;
+    color: white;
+    margin-right: 0.7em;
+    margin-top: 0.7em;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0.7em;
+    position: absolute;
+    text-align: justify;
+    transition: opacity 0s linear 0s;
+    visibility: hidden;
+    z-index: 1;
+}
+.regseb-cdanslair > p:hover > span {
+    opacity: 1;
+    transition: opacity 0.5s linear 1s;
+    visibility: visible;
+}

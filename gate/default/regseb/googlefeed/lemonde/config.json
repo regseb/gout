@@ -1,0 +1,5 @@
+{
+    "color": "#647687",
+    "url": "http://www.lemonde.fr/rss/une.xml",
+    "cron": "*/3 * * * *"
+}

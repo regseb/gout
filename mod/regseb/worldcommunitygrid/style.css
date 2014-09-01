@@ -1,0 +1,20 @@
+.regseb-worldcommunitygrid {
+    background-image: url("img/icon.svg");
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: 0.7em center;
+}
+.regseb-worldcommunitygrid p {
+    margin: 0.7em;
+    padding-left: 3.5em;
+}
+.regseb-worldcommunitygrid a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.regseb-worldcommunitygrid a:visited {
+    color: white;
+}

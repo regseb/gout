@@ -1,6 +1,5 @@
 {
-    "color": "#f0a30a",
+    "color": "#ff9800",
     "url": "http://linuxfr.org/news.atom",
-    "size": 5,
     "cron": "*/3 * * * *"
 }

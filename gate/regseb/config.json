@@ -1,85 +1,93 @@
 {
-    "std/ajaxloader/ajaxloader": {
-        "module": "std/ajaxloader",
-        "coord": { "x": 110, "y": 6, "w": 3, "h": 3 } },
+    "std/feed/allocine": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 1, "w": 28, "h": 6 } },
+    "std/feed/laprovence": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 8, "w": 28, "h": 6 } },
+    "std/feed/clubic": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 15, "w": 28, "h": 6 } },
+    "std/feed/lemonde": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 22, "w": 28, "h": 6 } },
+    "std/feed/linuxfr": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 29, "w": 28, "h": 6 } },
+    "std/feed/arretsurimages": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 1, "w": 28, "h": 6 } },
+    "std/feed/lequipe": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 8, "w": 28, "h": 6 } },
+    "std/feed/developpez": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 15, "w": 28, "h": 6 } },
+    "std/feed/velaux": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 22, "w": 28, "h": 3 } },
+    "std/feed/legorafi": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 26, "w": 28, "h": 3 } },
+    "std/feed/slate": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 30, "w": 28, "h": 5 } },
+
+    "regseb/youtube/humour": {
+        "module": "regseb/youtube",
+        "coord": { "x": 1, "y": 36, "w": 28, "h": 6 } },
+    "regseb/youtube/jeuvideo": {
+        "module": "regseb/youtube",
+        "coord": { "x": 30, "y": 36, "w": 28, "h": 6 } },
+
+    "std/feed/commitstrip": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 43, "w": 28, "h": 3 } },
+    "std/feed/lesjoiesducode": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 43, "w": 28, "h": 3 } },
+
+    "regseb/cdanslair": {
+        "module": "regseb/cdanslair",
+        "coord": { "x": 59, "y": 1, "w": 20, "h": 2 } },
 
     "std/search/duckduckgo": {
         "module": "std/search",
-        "coord": { "x": 83, "y": 6, "w": 26, "h": 3 } },
+        "coord": { "x": 59, "y": 4, "w": 17, "h": 2 } },
 
-    "std/feed/allocine": {
-        "module": "std/feed",
-        "coord": { "x": 1, "y": 1, "w": 40, "h": 8 } },
-    "std/feed/laprovence": {
-        "module": "std/feed",
-        "coord": { "x": 1, "y": 10, "w": 40, "h": 8 } },
-    "std/feed/arretsurimages": {
-        "module": "std/feed",
-        "coord": { "x": 42, "y": 1, "w": 40, "h": 8 } },
-    "std/feed/lequipe": {
-        "module": "std/feed",
-        "coord": { "x": 42, "y": 10, "w": 40, "h": 8 } },
-    "std/feed/clubic": {
-        "module": "std/feed",
-        "coord": { "x": 1, "y": 19, "w": 40, "h": 8 } },
-    "std/feed/developpez": {
-        "module": "std/feed",
-        "active": true,
-        "coord": { "x": 42, "y": 19, "w": 40, "h": 8 } },
-    "std/feed/lemonde": {
-        "module": "std/feed",
-        "coord": { "x": 1, "y": 28, "w": 40, "h": 8 } },
-    "std/feed/velaux": {
-        "module": "std/feed",
-        "coord": { "x": 42, "y": 28, "w": 40, "h": 5 } },
-    "std/feed/legorafi": {
-        "module": "std/feed",
-        "coord": { "x": 42, "y": 34, "w": 40, "h": 5 } },
-    "std/feed/linuxfr": {
-        "module": "std/feed",
-        "coord": { "x": 1, "y": 37, "w": 40, "h": 8 } },
-    "std/feed/slate": {
-        "module": "std/feed",
-        "coord": { "x": 42, "y": 40, "w": 40, "h": 7 } },
+    "std/ajaxloader": {
+        "module": "std/ajaxloader",
+        "coord": { "x": 77, "y": 4, "w": 2, "h": 2 } },
 
-    "fr/regseb/youtube/jeuvideo": {
-        "module": "fr/regseb/youtube",
-        "coord": { "x": 42, "y": 48, "w": 40, "h": 8 } },
-    "fr/regseb/youtube/humour": {
-        "module": "fr/regseb/youtube",
-        "coord": { "x": 1, "y": 46, "w": 40, "h": 8 } },
+    "regseb/tv/tnt": {
+        "module": "regseb/tv",
+        "coord": { "x": 59, "y": 7, "w": 20, "h": 23 } },
+
+    "regseb/om": {
+        "module": "regseb/om",
+        "coord": { "x": 59, "y": 31, "w": 20, "h": 3 } },
+
+    "regseb/articleauhasard": {
+        "module": "regseb/articleauhasard",
+        "coord": { "x": 59, "y": 35, "w": 20, "h": 2 } },
+
+    "regseb/worldcommunitygrid/regseb": {
+        "module": "regseb/worldcommunitygrid",
+        "coord": { "x": 59, "y": 38, "w": 20, "h": 2 } },
 
     "std/image/urtikan": {
         "module": "std/image",
-        "coord": { "x": 114, "y": 1, "w": 19, "h": 18 } },
-    "std/image/geekandpoke": {
-        "module": "std/image",
-        "coord": { "x": 134, "y": 1, "w": 20, "h": 29 } },
-    "std/image/ufunk": {
-        "module": "std/image",
-        "coord": { "x": 114, "y": 39, "w": 14, "h": 16 } },
-
-    "fr/regseb/tv/tnt": {
-        "module": "fr/regseb/tv",
-        "coord": { "x": 83, "y": 10, "w": 30, "h": 31 } },
+        "coord": { "x": 80, "y": 1, "w": 14, "h": 13 } },
 
     "std/weather/velaux": {
         "module": "std/weather",
-        "coord": { "x": 114, "y": 20, "w": 19, "h": 16 } },
+        "coord": { "x": 80, "y": 15, "w": 14, "h": 13 } },
 
-    "fr/regseb/cdanslair/cdanslair": {
-        "module": "fr/regseb/cdanslair",
-        "coord": { "x": 83, "y": 1, "w": 30, "h": 4 } },
+    "std/image/ufunk": {
+        "module": "std/image",
+        "coord": { "x": 80, "y": 29, "w": 14, "h": 16 } },
 
-    "fr/regseb/om/om": {
-        "module": "fr/regseb/om",
-        "coord": { "x": 83, "y": 42, "w": 30, "h": 5 } },
-
-    "fr/regseb/articleauhasard/articleauhasard": {
-        "module": "fr/regseb/articleauhasard",
-        "coord": { "x": 83, "y": 48, "w": 26, "h": 3 } },
-
-    "fr/regseb/worldcommunitygrid/regseb": {
-        "module": "fr/regseb/worldcommunitygrid",
-        "coord": { "x": 83, "y": 52, "w": 26, "h": 3 } }
+    "std/image/geekandpoke": {
+        "module": "std/image",
+        "coord": { "x": 95, "y": 1, "w": 7, "h": 9 } }
 }

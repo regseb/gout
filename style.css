@@ -1,6 +1,7 @@
 body {
     font-family: Verdana, sans-serif;
     font-size: 10px;
+    line-height: 1.4em;
 }
 
 a:link {
@@ -8,15 +9,12 @@ a:link {
     text-decoration: none;
 }
 a:visited {
-    font-style: italic;
+    color: black;
 }
 a:hover {
     text-decoration: underline;
 }
 
-body > div {
-    display: none;
-}
 article {
     position: absolute;
 }
