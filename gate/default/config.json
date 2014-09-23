@@ -33,6 +33,13 @@
         "module": "std/feed",
         "coord": { "x": 30, "y": 30, "w": 28, "h": 5 } },
 
+    "regseb/youtube/humour": {
+        "module": "regseb/youtube",
+        "coord": { "x": 1, "y": 36, "w": 28, "h": 6 } },
+    "regseb/youtube/jeuvideo": {
+        "module": "regseb/youtube",
+        "coord": { "x": 30, "y": 36, "w": 28, "h": 6 } },
+
     "std/search/firefox": {
         "module": "std/search",
         "coord": { "x": 59, "y": 1, "w": 17, "h": 2 } },
