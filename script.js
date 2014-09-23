@@ -3,7 +3,7 @@
 /**
  * @file Portail Web personnalisable.
  * @author Sébastien Règne
- * @version 0.1
+ * @version 0.1.1
  * @license GNU General Public License
  */
 
@@ -15,9 +15,11 @@ var app = {
         // Utiliser le proxy pour les requêtes externes.
         $.ajaxSetup({
             "beforeSend": function(jqXHR, settings) {
-                if (!settings.crossDomain || "json" === settings.dataType)
-                    return true;
-                settings.url = settings.url
+                // Si c'est une requete vers un serveur externe et que le
+                // résultat attendu n'est pas au format JSON : passer par le
+                // proxy pour contourner la restriction XSS du navigateur.
+                if (settings.crossDomain && "json" !== settings.dataType)
+                    settings.url = settings.url
                                         .replace(/^https:\/\//, "proxy/https/")
                                         .replace(/^http:\/\//,  "proxy/http/");
             }
@@ -46,7 +48,7 @@ var app = {
                         "rel":  "stylesheet",
                         "href": "mod/" + args.module + "/style.css"
                     }));
-                    // Passer un synchrone pour attendre que le HTML et le
+                    // Passer en synchrone pour attendre que le HTML et le
                     // JavaScript soient chargés avant les utiliser.
                     $.ajaxSetup({ "async": false });
                     // Charger le JavaScript et le HTML.
