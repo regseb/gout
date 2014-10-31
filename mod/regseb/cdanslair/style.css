@@ -12,7 +12,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 100%;
 }
 .regseb-cdanslair > p > a:visited {
     color: white;

@@ -13,7 +13,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 100%;
 }
 .std-feed > ul > li > span {
     background-color: black;

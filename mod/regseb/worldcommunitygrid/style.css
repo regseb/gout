@@ -13,7 +13,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 100%;
 }
 .regseb-worldcommunitygrid a:visited {
     color: white;
