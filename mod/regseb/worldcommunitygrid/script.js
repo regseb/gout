@@ -3,7 +3,7 @@
 (function() {
     "use strict";
 
-    var gates = { };
+    var gates = {};
 
     var create = function(id, url) {
         $.getJSON(url + "/config.json").then(function(args) {

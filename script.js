@@ -8,7 +8,7 @@
  */
 
 var app = {
-    "mod": { },
+    "mod": {},
 
     "init": function() {
         "use strict";

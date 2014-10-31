@@ -3,7 +3,7 @@
 (function() {
     "use strict";
 
-    var gates = { };
+    var gates = {};
 
     var search = function() {
         var $root = $(this).closest("article");

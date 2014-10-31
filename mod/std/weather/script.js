@@ -7,7 +7,7 @@
 
     var IMG_DIR = "mod/std/weather/img/";
 
-    var gates = { };
+    var gates = {};
 
     var create = function(id, url) {
         $.getJSON(url + "/config.json").then(function(args) {

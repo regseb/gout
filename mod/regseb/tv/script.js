@@ -14,7 +14,7 @@
         "L'Equipe 21", "6ter", "Numéro 23", "RMC Découverte", "Chérie 25"
     ];
 
-    var gates = { };
+    var gates = {};
 
     var create = function(id, url) {
         $.getJSON(url + "/config.json").then(function(args) {
@@ -22,7 +22,7 @@
             $root.css("background-color", args.color || "#9e9e9e");
 
             gates[id] = {
-                "channels": args.channels || { },
+                "channels": args.channels || {},
                 "updated":  true
             };
 
@@ -64,7 +64,7 @@
     var extract = function() {
         var url = "http://www.programme-television.org/";
         return $.get(url).then(function(data) {
-            var progs = { };
+            var progs = {};
             $("#prime-broadcasts li", data).each(function() {
                 var channel = $(".logo a", this).attr("href").substr(12);
                 var index;
