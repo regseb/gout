@@ -42,7 +42,7 @@
         "24": { "img": "bein1_plussport", "name": "Bein Sport 1 / + Sport" }
     };
 
-    var gates = { };
+    var gates = {};
 
     var create = function(id, url) {
         $.getJSON(url + "/config.json").then(function(args) {
@@ -92,7 +92,8 @@
             var last = {
                 "link": "http://www.om.net" + $("a:first", $last).attr("href"),
                 "tournament": extractId($(".competition img:first", $last)),
-                "score": $(".competition span", $last).text()
+                "score": $(".competition span", $last).text(),
+                "desc": $(".container p", $last).html()
             };
 
             var $next = $("#calendar-next-match", data);
@@ -127,7 +128,8 @@
                                "alt": tournament.name,
                                "title": tournament.name });
         $("a", $last).text(data.last.score)
-                     .attr("href", data.last.link);
+                     .attr({ "href": data.last.link,
+                             "title": data.last.desc });
 
         // Afficher l'éventuel prochain match.
         var $next = $("p:last", $root);
