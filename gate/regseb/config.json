@@ -89,5 +89,9 @@
 
     "std/image/geekandpoke": {
         "module": "std/image",
-        "coord": { "x": 95, "y": 1, "w": 7, "h": 9 } }
+        "coord": { "x": 95, "y": 1, "w": 7, "h": 9 } },
+
+    "std/image/xkcd": {
+        "module": "std/image",
+        "coord": { "x": 95, "y": 11, "w": 7, "h": 9 } }
 }
