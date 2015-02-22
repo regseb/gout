@@ -1,0 +1,49 @@
+.regseb-tele2semaines {
+    color: white;
+}
+.regseb-tele2semaines > ul {
+    list-style-type: none;
+    margin: 0.7em;
+    padding-left: 0;
+}
+.regseb-tele2semaines > ul > li {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.regseb-tele2semaines > ul > li > img {
+    margin-right: 0.3em;
+}
+.regseb-tele2semaines > ul > li > span {
+    margin-right: 0.3em;
+}
+.regseb-tele2semaines .film           { background-color: #e51400; }
+.regseb-tele2semaines .telefilm       { background-color: #a20025; }
+.regseb-tele2semaines .serie          { background-color: #1ba1e2; }
+.regseb-tele2semaines .divertissement { background-color: #aa00ff; }
+.regseb-tele2semaines .documentaire   { background-color: #fa6800; }
+.regseb-tele2semaines .information    { background-color: #0050ef; }
+.regseb-tele2semaines .sport          { background-color: #008a00; }
+.regseb-tele2semaines .musique        { background-color: #008a00; }
+.regseb-tele2semaines .unknown        { background-color: #647687; }
+
+.regseb-tele2semaines > ul > li > div {
+    background-color: black;
+    color: white;
+    margin-right: 0.7em;
+    margin-top: 0.7em;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0.7em;
+    position: absolute;
+    text-align: justify;
+    transition: opacity 0s linear 0s;
+    visibility: hidden;
+    z-index: 1;
+}
+.regseb-tele2semaines > ul > li:hover > div {
+    opacity: 1;
+    transition: opacity 0.5s linear 1s;
+    visibility: visible;
+}

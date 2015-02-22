@@ -1,0 +1,58 @@
+{
+    "regseb/googlefeed/allocine": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 1, "w": 28, "h": 6 } },
+    "regseb/googlefeed/laprovence": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 8, "w": 28, "h": 6 } },
+    "regseb/googlefeed/clubic": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 15, "w": 28, "h": 6 } },
+    "regseb/googlefeed/lemonde": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 22, "w": 28, "h": 6 } },
+    "regseb/googlefeed/linuxfr": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 29, "w": 28, "h": 6 } },
+    "regseb/googlefeed/arretsurimages": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 1, "w": 28, "h": 6 } },
+    "regseb/googlefeed/lequipe": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 8, "w": 28, "h": 6 } },
+    "regseb/googlefeed/developpez": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 15, "w": 28, "h": 6 } },
+    "regseb/googlefeed/velaux": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 22, "w": 28, "h": 3 } },
+    "regseb/googlefeed/legorafi": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 26, "w": 28, "h": 3 } },
+    "regseb/googlefeed/slate": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 30, "w": 28, "h": 5 } },
+
+    "regseb/youtube/humour": {
+        "module": "regseb/youtube",
+        "coord": { "x": 1, "y": 36, "w": 28, "h": 6 } },
+    "regseb/youtube/jeuvideo": {
+        "module": "regseb/youtube",
+        "coord": { "x": 30, "y": 36, "w": 28, "h": 6 } },
+
+    "std/search/firefox": {
+        "module": "std/search",
+        "coord": { "x": 59, "y": 1, "w": 17, "h": 2 } },
+
+    "std/ajaxloader": {
+        "module": "std/ajaxloader",
+        "coord": { "x": 77, "y": 1, "w": 2, "h": 2 } },
+
+    "regseb/articleauhasard": {
+        "module": "regseb/articleauhasard",
+        "coord": { "x": 59, "y": 4, "w": 20, "h": 2 } },
+
+    "std/bookmark/social": {
+        "module": "std/bookmark",
+        "coord": { "x": 59, "y": 7, "w": 14, "h": 4 } }
+}

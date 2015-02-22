@@ -1,0 +1,8 @@
+/* La classe CSS "example-hello" est affectée à chaque cadre de toutes les
+ * passerelles du module. Toutes les règles CSS doivent commmencer par cette
+ * classe pour éviter de modifier la mise à page d'un autre module. */
+
+.example-hello p {
+    color: white;
+    margin: 0.7em;
+}
