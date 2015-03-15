@@ -13,7 +13,7 @@ JSON doit aussi avoir la propriété `"sites"` qui ressence les marques-pages. U
 marque-page est composé des trois propriétés suivantes :
 - `"link"` : l'adresse du site ;
 - `"title"` (recommandé) : le texte affiché (si cette propriété n'est pas
-  renseignée, le `link` est utilisée) ;
+  renseignée, le `link` est utilisé) ;
 - `"help"` (optionnel) : l'info-bulle affichée.
 Une image ayant pour nom ***icon.svg*** doit aussi est présent dans le
 répertoire.
