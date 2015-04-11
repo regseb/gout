@@ -6,9 +6,9 @@ est diffusé sur *France 5* du lundi au vendredi à 17h45.
 ## Configuration
 Les dimensions conseillées sont **20x2**.
 
-Le répertoire de la passerelle peut avoir un fichier ***config.json***
+Le répertoire de la passerelle doit avoir un fichier ***config.json***
 contenant un objet [JSON](http://www.json.org "JavaScript Object Notation")
-avec la propriété suivante :
+avec les propriétés suivantes :
 - `"color"` (optionnel - valeur par défaut : `"#9e9e9e"`) : la couleur de fond
   du cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
   prédéfinis) ;

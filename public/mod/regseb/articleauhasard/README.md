@@ -5,7 +5,7 @@ Ce module donne un lien vers un article au hasard de
 ## Configuration
 Les dimensions conseillées sont **20x2**.
 
-Le répertoire de la passerelle peut avoir un fichier ***config.json***
+Le répertoire de la passerelle doit avoir un fichier ***config.json***
 contenant un objet [JSON](http://www.json.org "JavaScript Object Notation")
 avec les propriétés suivantes :
 - `"color"` (optionnel - valeur par défaut : `"#607d8b"`) : la couleur de fond
@@ -18,5 +18,8 @@ avec les propriétés suivantes :
   indiquant la fréquence de changement des pages.
 
 ## Exemple
-Par défaut (sans fichier *config.json*), le module affiche un lien vers un
-article en français et change de lien toutes les heures.
+Cet exemple affiche un lien vers un article en français et change de lien
+toutes les heures.
+```json
+{}
+```

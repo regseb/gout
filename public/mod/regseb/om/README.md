@@ -6,9 +6,9 @@ prochain match.
 ## Configuration
 Les dimensions conseillées sont **20x3**.
 
-Le répertoire de la passerelle peut avoir un fichier ***config.json***
+Le répertoire de la passerelle doit avoir un fichier ***config.json***
 contenant un objet [JSON](http://www.json.org "JavaScript Object Notation")
-avec la propriété suivante :
+avec les propriétés suivantes :
 - `"color"` (optionnel - valeur par défaut : `"#03a9f4"`) : la couleur de fond
   du cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
   prédéfinis) ;
@@ -17,5 +17,8 @@ avec la propriété suivante :
 
 ## Exemple
 ### /config.json
-Par défaut (sans fichier *config.json*), le module actualise les informations
-(affichées sur fond bleu) sur les matchs de l'OM tous les jours à sept heures.
+Cet exemple actualise les informations (affichées sur fond bleu) sur les matchs
+de l'OM tous les jours à sept heures.
+```json
+{}
+```
