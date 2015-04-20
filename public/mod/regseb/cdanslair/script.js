@@ -72,7 +72,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
             $("a", $root).attr("href", "http://www.france5.fr/emissions" +
                                        "/c-dans-l-air")
                          .text("(Pas d'émission le week-end)");
-            $("span", $root).text(
+            $("span", $root).html(
                 "<em>C dans l'air</em> est diffusée du lundi au vendredi.");
         // Si le sujet du jour n'est pas encore indiqué.
         } else if (-1 === data.date.indexOf(new Date().format("dd/MM/yyyy"))) {
