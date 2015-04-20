@@ -1,0 +1,38 @@
+.regseb-meltdown {
+    background-image: url("img/icon.svg");
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: 0.7em center;
+}
+.regseb-meltdown > p {
+    margin: 0.7em;
+    padding-left: 3.5em;
+}
+.regseb-meltdown > p > a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.regseb-meltdown > p > a:visited {
+    color: white;
+}
+.regseb-meltdown > p > span {
+    background-color: black;
+    color: white;
+    margin-right: 0.7em;
+    margin-top: 0.7em;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0.7em;
+    position: absolute;
+    text-align: justify;
+    transition: opacity 0s linear 0s;
+    visibility: hidden;
+    z-index: 1;
+}
+.regseb-meltdown > p:hover > span {
+    opacity: 1;
+    transition: opacity 0.5s linear 1s;
+    visibility: visible;
+}
