@@ -1,8 +1,6 @@
 /* @flow */
 /* global document, define */
 
-// TODO Colorer en blanc les symboles des signes et adapter les tailles.
-
 define(["jquery", "scronpt"], function ($, Cron) {
     "use strict";
 

@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<!-- Created with Sodipodi ("http://www.sodipodi.com/") -->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:odm="http://product.corel.com/CGS/11/cddns/" xml:space="preserve" width="155pt" height="188pt" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd" viewBox="0 0 8268 11692" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg638" sodipodi:version="0.34" sodipodi:docname="D:\Dokumenty\Wikipedie\images\svg\Astro\virgo.svg"><sodipodi:namedview id="base"/><defs id="defs639"><style type="text/css" id="style640"><![CDATA[
-    .fil0 {fill:#000000}
-   ]]></style></defs><g id="Layer 1" transform="matrix(4.538455,0,0,4.531784,-13030.44,-20143.78)"><path class="fil0" d="M3086 5231l0 1258 -201 0 0 -1457c0,-202 -55,-386 -165,-550l212 0c75,103 126,236 154,397 68,-167 147,-299 236,-397l197 -37c90,116 147,270 171,462 46,-145 128,-287 245,-425l194 -37c109,151 163,318 163,501l0 382c54,-153 112,-274 172,-360l166 -61c143,221 214,454 214,698 0,194 -43,375 -128,545 -85,170 -214,328 -384,475 16,118 85,251 207,400l-236 0c-57,-72 -108,-168 -152,-287 -125,71 -279,121 -461,150l0 -172c172,-35 312,-86 422,-151 -14,-87 -21,-174 -21,-262l0 -1220c0,-199 -28,-349 -86,-451 -142,153 -247,369 -315,646l0 1211 -202 0 0 -1338c0,-249 -30,-422 -88,-519 -139,162 -243,361 -314,599zm1206 1206c118,-120 205,-248 264,-385 58,-137 87,-283 87,-436 0,-161 -35,-317 -105,-468 -100,123 -181,287 -246,492l0 797z" id="path642"/></g></svg>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="100"
+   height="100"
+   viewBox="0 0 4267.3548 4975.3191"
+   id="svg638"
+   xml:space="preserve"
+   style="fill-rule:evenodd"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs639"><style
+       type="text/css"
+       id="style640" /></defs><g
+     transform="matrix(1.5460031,0,0,1.5427346,-3713.3063,-6359.9234)"
+     id="Layer 1"
+     style="fill:#ffffff"><path
+       d="m 3086,5231 0,1258 -201,0 0,-1457 c 0,-202 -55,-386 -165,-550 l 212,0 c 75,103 126,236 154,397 68,-167 147,-299 236,-397 l 197,-37 c 90,116 147,270 171,462 46,-145 128,-287 245,-425 l 194,-37 c 109,151 163,318 163,501 l 0,382 c 54,-153 112,-274 172,-360 l 166,-61 c 143,221 214,454 214,698 0,194 -43,375 -128,545 -85,170 -214,328 -384,475 16,118 85,251 207,400 l -236,0 c -57,-72 -108,-168 -152,-287 -125,71 -279,121 -461,150 l 0,-172 c 172,-35 312,-86 422,-151 -14,-87 -21,-174 -21,-262 l 0,-1220 c 0,-199 -28,-349 -86,-451 -142,153 -247,369 -315,646 l 0,1211 -202,0 0,-1338 c 0,-249 -30,-422 -88,-519 -139,162 -243,361 -314,599 z m 1206,1206 c 118,-120 205,-248 264,-385 58,-137 87,-283 87,-436 0,-161 -35,-317 -105,-468 -100,123 -181,287 -246,492 l 0,797 z"
+       id="path642"
+       style="fill:#ffffff" /></g></svg>
