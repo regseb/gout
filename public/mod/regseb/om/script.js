@@ -42,6 +42,9 @@ define(["jquery", "scronpt"], function ($, Cron) {
         "23":        "Bein Sport 1 / Max", // 404.
         "24":        "Bein Sport 1 / + Sport"
     };
+    var MONTHS = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+                  "Juillet", "Août", "Septembre", "OCtobre", "Novembre",
+                  "Décembre"];
 
     var gates = {};
 
@@ -92,20 +95,30 @@ define(["jquery", "scronpt"], function ($, Cron) {
                 "link": "http://www.om.net" + $("a:first", $last).attr("href"),
                 "tournament": extractId($(".competition-picto img", $last)),
                 "score": $(".score", $last).text(),
-                "desc": $(".title", $last).html()
+                "desc": $("h3", $last).html()
             };
 
             var $next = $(".om-match-next", data);
             var next = null;
-            if ($("a", $next).length)
+            if ($("a", $next).length) {
+                // Parser la date.
+                var parts = $(".date", $next).text().split(/[ :]/);
+                var day = parseInt(parts[1], 10);
+                var month = MONTHS.indexOf(parts[2]);
+                var hour = parseInt(parts[3], 10);
+                var minute = parseInt(parts[4], 10);
+                var year = new Date().getFullYear() +
+                           (month >= new Date().getMonth() ? 0 : 1);
+
                 next = {
                     "link": "http://www.om.net" +
                             $("a:last", $next).attr("href"),
                     "tournament": extractId($(".competition-picto img", $next)),
-                    "teams": $(".title", $next).text(),
-                    "date": new Date($(".date", $next).attr("datetime")),
+                    "teams": $("h3", $next).text(),
+                    "date": new Date(year, month, day, hour, minute),
                     "channel": extractId($(".tv img", $next))
                 };
+            }
 
             return {
                 "last": last,
@@ -115,8 +128,8 @@ define(["jquery", "scronpt"], function ($, Cron) {
     }; // extract()
 
     var extractId = function ($img) {
-        return 0 !== $img.length ? /\/(.+)\.png$/.exec($img.attr("src"))[1]
-                                 : "?";
+        return 0 !== $img.length ? /\/([^\/]+)\.png$/.exec($img.attr("src"))[1]
+                                 : "unknown";
     }; // extractId()
 
     var display = function ($root, data) {
@@ -134,6 +147,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
         var $next = $("p:last", $root);
         if (null !== data.next) {
             var channel = data.next.channel;
+            tournament = data.next.tournament;
             $("img:first", $next).attr({ "src": IMG_DIR + tournament + ".svg",
                                          "alt": TOURNAMENTS[tournament],
                                          "title": TOURNAMENTS[tournament] });
