@@ -1,47 +1,46 @@
 # Gout
-Portail personnalisable.
+**Agrégateur d'Internet (flux RSS et tout le reste).**
+
+[Site Internet](https://regseb.github.io/gout/)
+
+## Description
+Gout est une **application Web** utilisant [io.js](https://iojs.org/fr/) (ou
+[Node.js](http://nodejs.org)). Elle récupère des informations sur Internet
+(flux RSS, résultats d'API, parsing de page Web) pour les afficher sur une
+seule page. Le paramètrage des données récupérées se fait avec des fichiers
+[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation"). Il est
+aussi possible de développer des modules pour agréger de nouveaux sites
+Internet.
 
 ## Installation
-Exécuter les commandes suivantes dans la console pour installer
-[Apache](http://httpd.apache.org/ "Apache HTTP Server Project") avec les
-modules [proxy](http://httpd.apache.org/docs/current/mod/mod_proxy.html) et
-[proxy_http](http://httpd.apache.org/docs/current/mod/mod_proxy_http.html) :
+Commencer par installer **io.js** (ou Node.js). Puis déployer Gout dans le
+répertoire de votre choix en exécutant les commandes suivantes dans la console :
 
-    sudo apt-get install apache2
-    sudo a2enmod proxy
-    sudo a2enmod proxy_http
+    wget https://regseb.github.io/gout/gout.tar.gz
+    tar zvf gout.tar.gz
+    cd gout
+    npm install
 
-Ajouter les lignes suivantes dans le fichier */etc/apache2/apache2.conf* :
-
-    # Proxy Gout
-    <Location /gout/proxy/https/>
-      ProxyPass https://
-      ProxyPassReverse https://
-    </Location>
-    <Location /gout/proxy/http/>
-      ProxyPass http://
-      ProxyPassReverse http://
-    </Location>
-
-Redémarrer Apache :
-
-    sudo service apache2 restart
-
-Déployer Gout sur le serveur :
-
-    cd /tmp/
-    wget https://github.com/regseb/gout/archive/master.zip
-    unzip gout-master.zip
-    mv gout-master gout
-    sudo cp -r gout /var/www/
+Ligne par ligne, les instructions précédentes :
+1. télécharge le fichier dans le répertoire courant ;
+2. décompresse l'archive ;
+3. rentre dans le répertoire ;
+4. installe les dépendances ([Express](http://expressjs.com/),
+   [Require.js](http://requirejs.org/), [jQuery](http://jquery.com/),
+   [Wiloquery](http://regseb.github.io/wiloquery/) et
+   [Scronpt](http://regseb.github.io/scronpt/)).
 
 ## Utilisation
-    http://localhost/gout/?user=example
+Il faut lancer l'application en exécutant la commande :
 
-## Compatibilité
- Chrome | Firefox | Internet Explorer | Opera | Safari
-:------:|:-------:|:-----------------:|:-----:|:------:
-   32   |   29    |         -         |  19   |   -
+    npm start
+
+Rendez-vous ensuite à l'adresse suivante avec votre navigateur :
+
+    http://localhost:3000/
+
+## Contributeur
+- [Sébastien Règne](https://github.com/regseb)
 
 ## Licence
 La bibliothèque est publiée sous *GNU GENERAL PUBLIC LICENSE*.
