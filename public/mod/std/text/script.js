@@ -8,7 +8,9 @@ define(["jquery"], function ($) {
         $.getJSON(url + "/config.json").then(function (args) {
             var $root = $("#" + id);
             $root.css("background-color", args.color || "black");
-            $("p", $root).text(args.text || "");
+            $("p", $root).css("text-align", args.align || "left")
+                         .html(Array.isArray(args.text) ? args.text.join("")
+                                                        : args.text || "");
         });
     }; // create()
 

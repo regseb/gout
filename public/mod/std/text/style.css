@@ -2,3 +2,8 @@
     color: white;
     margin: 0.7em;
 }
+.std-text a {
+    color: white;
+    text-decoration: underline;
+ }
+
