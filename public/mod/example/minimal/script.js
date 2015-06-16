@@ -6,5 +6,6 @@
 // fournit, dans cette exemple, ne fait rien ; car ce module ne fait rien.
 define(function () {
     "use strict";
+
     return function () {};
 });
