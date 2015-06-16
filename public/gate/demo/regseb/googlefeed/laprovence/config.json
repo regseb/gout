@@ -1,0 +1,5 @@
+{
+    "color": "#3f51b5",
+    "url": "http://www.laprovence.com/rss/region.xml",
+    "cron": "*/3 * * * *"
+}

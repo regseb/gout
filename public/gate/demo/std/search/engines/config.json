@@ -1,0 +1,28 @@
+{
+    "engines": [
+        {
+            "title": "Google",
+            "url": "https://www.google.fr/search?q={searchTerms}",
+            "color": "#2196f3",
+            "icon": "google.svg"
+        },
+        {
+            "title": "Yahoo",
+            "url": "https://fr.search.yahoo.com/search?p={searchTerms}",
+            "color": "#673ab7",
+            "icon": "yahoo.svg"
+        },
+        {
+            "title": "Bing",
+            "url": "https://www.bing.com/search?q={searchTerms}",
+            "color": "#ffc107",
+            "icon": "bing.svg"
+        },
+        {
+            "title": "DuckDuckGo",
+            "url": "https://duckduckgo.com/?q={searchTerms}",
+            "color": "#f44336",
+            "icon": "duckduckgo.svg"
+        }
+    ]
+}

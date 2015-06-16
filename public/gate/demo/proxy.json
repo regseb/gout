@@ -1,0 +1,89 @@
+{
+    "std/feed/lemonde": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 1, "w": 28, "h": 6 }
+    },
+    "std/feed/lequipe": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 1, "w": 28, "h": 6 }
+    },
+    "std/feed/lefigaro": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 8, "w": 28, "h": 5 }
+    },
+    "std/feed/liberation": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 8, "w": 28, "h": 5 }
+    },
+    "std/feed/lesechos": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 14, "w": 28, "h": 6 }
+    },
+    "std/feed/lacroix": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 14, "w": 28, "h": 4 }
+    },
+    "std/feed/rue89": {
+        "module": "std/feed",
+        "coord": { "x": 1, "y": 21, "w": 28, "h": 4 }
+    },
+    "std/feed/lehuffingtonpost": {
+        "module": "std/feed",
+        "coord": { "x": 30, "y": 19, "w": 28, "h": 6 }
+    },
+
+    "std/search/engines": {
+        "module": "std/search",
+        "coord": { "x": 59, "y": 1, "w": 17, "h": 2 }
+    },
+
+    "std/ajaxloader": {
+        "module": "std/ajaxloader",
+        "coord": { "x": 77, "y": 1, "w": 2, "h": 2 }
+    },
+
+    "regseb/tele2semaines/tnt": {
+        "module": "regseb/tele2semaines",
+        "coord": { "x": 59, "y": 4, "w": 20, "h": 23 }
+    },
+
+    "regseb/cdanslair": {
+        "module": "regseb/cdanslair",
+        "coord": { "x": 59, "y": 28, "w": 20, "h": 2 }
+    },
+
+    "regseb/meltdown/aix": {
+        "module": "regseb/meltdown",
+        "coord": { "x": 59, "y": 31, "w": 20, "h": 2 }
+    },
+
+    "regseb/om": {
+        "module": "regseb/om",
+        "coord": { "x": 59, "y": 34, "w": 20, "h": 3 }
+    },
+
+    "regseb/worldcommunitygrid/regseb": {
+        "module": "regseb/worldcommunitygrid",
+        "coord": { "x": 59, "y": 38, "w": 20, "h": 2 }
+    },
+
+    "std/bookmark/social": {
+        "module": "std/bookmark",
+        "coord": { "x": 80, "y": 1, "w": 14, "h": 4 }
+    },
+
+    "std/image/urtikan": {
+        "module": "std/image",
+        "coord": { "x": 80, "y": 6, "w": 14, "h": 13 }
+    },
+
+    "std/image/geekandpoke": {
+        "module": "std/image",
+        "coord": { "x": 80, "y": 20, "w": 7, "h": 9 }
+    },
+
+    "regseb/horoscope/lion": {
+        "module": "regseb/horoscope",
+        "coord": { "x": 80, "y": 30, "w": 28, "h": 3 }
+    }
+}

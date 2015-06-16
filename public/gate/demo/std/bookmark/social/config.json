@@ -1,0 +1,17 @@
+{
+    "color": "#ff9800",
+    "sites": [
+        {
+            "link": "https://www.facebook.com/",
+            "title": "Facebook"
+        },
+        {
+            "link": "https://www.twitter.com/",
+            "title": "Twitter"
+        },
+        {
+            "link": "https://plus.google.com/",
+            "title": "Google+"
+        }
+    ]
+}
