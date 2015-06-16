@@ -1,14 +1,11 @@
 /* @flow */
 /* global document, define */
 
-// TODO Dessiner le symbole de la categorie jeunesse.
-// TODO Récupérer aussi les chaines disponibles par ADSL ou satellite.
-
 define(["jquery", "scronpt"], function ($, Cron) {
     "use strict";
 
-    var IMG_DIR = "mod/regseb/tele2semaines/img/";
-    var CHANNELS = [
+    const IMG_DIR = "mod/regseb/tele2semaines/img/";
+    const CHANNELS = [
         "Mosaïque", "TF1", "France 2", "France 3", "Canal+", "France 5", "M6",
         "Arte", "D8", "W9", "TMC", "NT1", "NRJ 12", "LCP-AN / Public Sénat",
         "France 4", "BFM TV", "i>Télé", "D17", "Gulli", "France Ô", "HD1",
@@ -54,10 +51,8 @@ define(["jquery", "scronpt"], function ($, Cron) {
         var $root = $("#" + id);
         extract(args.channels).then(function (items) {
             $("ul", $root).empty();
-            for (var index in items) {
-                var item = items[index];
-                display($root, parseInt(index, 10), item);
-            }
+            for (var index in items)
+                display($root, parseInt(index, 10), items[index]);
         });
     }; // update()
 
@@ -105,6 +100,11 @@ define(["jquery", "scronpt"], function ($, Cron) {
                 var title = $("h2 a", this).text();
                 var link = "http://www.programme.tv" +
                            $("h2 a", this).attr("href");
+                // S'il n'y a pas de lien vers la fiche.
+                if ("" === title) {
+                    title = $.trim($("h2", this).text());
+                    link = "http://www.programme.tv";
+                }
                 var desc = $(".resume", this).text();
                 var type = $(".type", this).attr("class").substr(5);
 
@@ -141,10 +141,9 @@ define(["jquery", "scronpt"], function ($, Cron) {
             $("<li>").append($("<img>").attr({ "src":   IMG_DIR + i + ".svg",
                                                "alt":   CHANNELS[i],
                                                "title": CHANNELS[i] }))
-                     .append($("<img>").attr({ "src":   IMG_DIR + data.type +
-                                                        ".svg",
-                                               "alt":   data.type,
-                                               "title": data.category })
+                     .append($("<img>").attr({ "src": IMG_DIR + data.type +
+                                                      ".svg",
+                                               "alt": data.type })
                                        .addClass(data.type))
                      .append($mark)
                      .append($("<a>").text(data.title)

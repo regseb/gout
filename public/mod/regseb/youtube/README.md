@@ -1,10 +1,12 @@
 # /regseb/youtube
 Ce module affiche la liste des dernières vidéos postées sur
-**[Youtube](http://www.youtube.com/)** par un utilisateur (ou une liste
+**[Youtube](https://www.youtube.com)** par un utilisateur (ou une liste
 d'utilisateurs).
 
 ## Configuration
-Les dimensions conseillées sont **26x3**.
+**28** est une taille raisonnable pour la largeur du cadre. La hauteur dépend
+du nombre de vidéos qu'il faut afficher dans le cadre. Si vous souhaitez avoir
+les *N* dernières vidéos : il faut fixer la hauteur à *N + 1*.
 
 Le répertoire de la passerelle doit avoir un fichier ***config.json***
 contenant un objet [JSON](http://www.json.org "JavaScript Object Notation")
@@ -19,7 +21,7 @@ avec les propriétés suivantes :
 
 ## Exemple
 ### /config.json
-Cet exemple affiche les cinq dernières vidéos des utilisateurs *cndetmanu*,
+Cet exemple affiche les dernières vidéos des utilisateurs *cndetmanu*,
 *joueurdugrenier* et *RealMyop* (avec une mise à jour à minuit).
 ```JSON
 {
@@ -29,5 +31,3 @@ Cet exemple affiche les cinq dernières vidéos des utilisateurs *cndetmanu*,
     "cron": "0 0 * * *"
 }
 ```
-### /icon.svg
-TODO Insérer une image.

@@ -1,8 +1,7 @@
 .regseb-om {
     background-image: url("img/icon.svg");
-    background-repeat: no-repeat;
     background-position: 0.7em center;
-    color: white;
+    background-repeat: no-repeat;
 }
 .regseb-om p:first-child {
     margin-top: 0.7em;
@@ -11,6 +10,7 @@
     margin-bottom: 0.7em;
 }
 .regseb-om p {
+    color: white;
     display: block;
     margin-bottom: 0;
     margin-left: 4.2em;
@@ -20,7 +20,7 @@
     white-space: nowrap;
     width: 100%;
 }
-.regseb-om a:visited {
+.regseb-om p a {
     color: white;
 }
 .regseb-om img {

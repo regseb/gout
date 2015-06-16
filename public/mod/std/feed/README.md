@@ -23,10 +23,8 @@ Cet exemple affiche les dernières actualités du site LinuxFR.org (avec une mis
 à jour toutes les dix minutes).
 ```JSON
 {
-    "color": "#f0a30a",
+    "color": "#ff9800",
     "url":   "http://linuxfr.org/news.atom",
     "cron":  "*/10 * * * *"
 }
 ```
-### /icon.svg
-TODO Insérer une image.

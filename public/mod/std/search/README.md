@@ -24,7 +24,7 @@ Wikipedia.
         {
             "title": "DuckDuckGo",
             "url": "https://duckduckgo.com/?q={searchTerms}",
-            "color": "#e51c23",
+            "color": "#f44336",
             "icon": "duckduckgo.svg"
         },
         {
@@ -36,5 +36,3 @@ Wikipedia.
     ]
 }
 ```
-### /duckduckgo.svg
-### /wikipedia.svg

@@ -1,7 +1,5 @@
-.regseb-tele2semaines {
-    color: white;
-}
 .regseb-tele2semaines > ul {
+    color: white;
     list-style-type: none;
     margin: 0.7em;
     padding-left: 0;
@@ -12,21 +10,20 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.regseb-tele2semaines > ul > li > img {
-    margin-right: 0.3em;
-}
+.regseb-tele2semaines > ul > li > img,
 .regseb-tele2semaines > ul > li > span {
     margin-right: 0.3em;
 }
-.regseb-tele2semaines .film           { background-color: #e51400; }
-.regseb-tele2semaines .telefilm       { background-color: #a20025; }
-.regseb-tele2semaines .serie          { background-color: #1ba1e2; }
+.regseb-tele2semaines .culture        { background-color: #cddc39; }
+.regseb-tele2semaines .jeunesse       { background-color: #ff9800; }
+.regseb-tele2semaines .information    { background-color: #607d8b; }
+.regseb-tele2semaines .sport          { background-color: #4caf50; }
+.regseb-tele2semaines .film           { background-color: #f44336; }
+.regseb-tele2semaines .serie          { background-color: #00bcd4; }
 .regseb-tele2semaines .divertissement { background-color: #aa00ff; }
-.regseb-tele2semaines .documentaire   { background-color: #fa6800; }
-.regseb-tele2semaines .information    { background-color: #0050ef; }
-.regseb-tele2semaines .sport          { background-color: #008a00; }
-.regseb-tele2semaines .musique        { background-color: #008a00; }
-.regseb-tele2semaines .unknown        { background-color: #647687; }
+.regseb-tele2semaines .documentaire   { background-color: #9c27b0; }
+.regseb-tele2semaines .telefilm       { background-color: #f91f63; }
+.regseb-tele2semaines .divers         { background-color: #000000; }
 
 .regseb-tele2semaines > ul > li > div {
     background-color: black;
@@ -38,12 +35,12 @@
     padding: 0.7em;
     position: absolute;
     text-align: justify;
-    transition: opacity 0s linear 0s;
+    transition: z-index 0s linear 0s, opacity 0s linear 0s;
     visibility: hidden;
-    z-index: 1;
 }
 .regseb-tele2semaines > ul > li:hover > div {
     opacity: 1;
-    transition: opacity 0.5s linear 1s;
+    transition: z-index 1s linear, opacity 0.5s linear 1s;
     visibility: visible;
+    z-index: 1;
 }

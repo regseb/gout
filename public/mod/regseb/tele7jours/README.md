@@ -5,7 +5,7 @@ Ce module donne le
 ## Configuration
 **25** est une taille raisonnable pour la largeur du cadre. La hauteur dépend
 du nombre de chaines qu'il faut afficher dans le cadre. Si vous souhaitez avoir
-les *N* chaines de télévision : il faut fixer la hauteur à *N + 1*.
+*N* chaines de télévision : il faut fixer la hauteur à *N + 1*.
 
 Le répertoire de la passerelle doit avoir un fichier ***config.json***
 contenant un objet [JSON](http://www.json.org "JavaScript Object Notation")

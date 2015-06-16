@@ -17,8 +17,8 @@ avec les propriétés suivantes :
 
 ## Exemple
 ### /config.json
-Cet exemple actualise les informations (affichées sur fond bleu) sur les matchs
-de l'OM tous les jours à sept heures.
-```json
+Cet exemple affiche les informations sur les matchs de l'OM tous les jours à
+sept heures.
+```JSON
 {}
 ```

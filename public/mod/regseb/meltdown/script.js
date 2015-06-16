@@ -1,5 +1,5 @@
 /* @flow */
-/* global document, Promise, define */
+/* global document, define */
 
 define(["jquery", "scronpt"], function ($, Cron) {
     "use strict";
@@ -55,7 +55,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
 
             return {
                 "title": $("h3", $data).text(),
-                "desc":  $(".event-detail-text", $data).html(),
+                "desc":  $(".event-detail-text", $data).html()
             };
         });
     }; // extract()

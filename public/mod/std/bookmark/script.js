@@ -12,9 +12,8 @@ define(["jquery"], function ($) {
                 "background-image": "url(\"" + url + "/icon.svg\")"
             });
 
-            args.sites.forEach(function (site) {
+            for (var site of args.sites)
                 display($root, site);
-            });
         });
     }; // create()
 

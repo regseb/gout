@@ -1,8 +1,11 @@
 /* @flow */
-/* global document, Promise, define */
+/* global document, Promise, Intl, define */
 
 define(["jquery", "scronpt"], function ($, Cron) {
     "use strict";
+
+    var DTF = new Intl.DateTimeFormat("fr-FR", {
+        "day": "2-digit", "month": "2-digit", "year": "numeric" });
 
     var gates = {};
 
@@ -75,7 +78,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
             $("span", $root).html(
                 "<em>C dans l'air</em> est diffusée du lundi au vendredi.");
         // Si le sujet du jour n'est pas encore indiqué.
-        } else if (-1 === data.date.indexOf(new Date().format("dd/MM/yyyy"))) {
+        } else if (-1 === data.date.indexOf(DTF.format(new Date()))) {
             $("a", $root).attr("href", "http://www.france5.fr/emissions" +
                                        "/c-dans-l-air")
                          .text("(Sujet de l'émission non-défini)");

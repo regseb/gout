@@ -4,7 +4,7 @@
 define(["jquery"], function ($) {
     "use strict";
 
-    var IMG_DIR = "mod/std/ajaxloader/img/";
+    const IMG_DIR = "mod/std/ajaxloader/img/";
 
     var create = function (id, url) {
         $.getJSON(url + "/config.json").then(function (args) {

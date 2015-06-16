@@ -69,9 +69,8 @@ define(["require", "jquery", "scronpt"], function (require, $, Cron) {
 
         var $root = $("#" + id);
         args.extract(args.size).then(function (items) {
-            items.forEach(function (item) {
+            for (var item of items)
                 display($root, item, args.size);
-            });
             refresh($root);
         });
     }; // update()
@@ -91,15 +90,16 @@ define(["require", "jquery", "scronpt"], function (require, $, Cron) {
                 $("> ul > li:eq(" + (size - 1) + ")", $root).remove();
 
                 // Créer la ligne du nouvel évènement.
-                var $img = $("<img>").attr("src", data.img);
+                var $a = $("<a>").attr({ "href":   data.link,
+                                         "target": "_blank",
+                                         "title":  data.title })
+                                 .css("background-image",
+                                      "url(\"" + data.img + "\")");
                 $li = $("<li>").attr("data-guid", data.guid)
                                .data("date", data.date)
                                .height($root.height())
                                .width($root.width())
-                               .append($("<a>").attr({ "href":   data.link,
-                                                       "target": "_blank",
-                                                       "title":  data.title })
-                                               .append($img));
+                               .append($a);
 
                 if (-1 === pos)
                     $("> ul", $root).prepend($li);

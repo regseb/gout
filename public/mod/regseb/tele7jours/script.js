@@ -1,14 +1,11 @@
 /* @flow */
 /* global document, define */
 
-// TODO Dessiner le symbole de la categorie jeunesse.
-// TODO Récupérer aussi les chaines disponibles par ADSL ou satellite.
-
 define(["jquery", "scronpt"], function ($, Cron) {
     "use strict";
 
-    var IMG_DIR = "mod/regseb/tele7jours/img/";
-    var CHANNELS = [
+    const IMG_DIR = "mod/regseb/tele7jours/img/";
+    const CHANNELS = [
         "Mosaïque", "TF1", "France 2", "France 3", "Canal+", "France 5", "M6",
         "Arte", "D8", "W9", "TMC", "NT1", "NRJ 12", "LCP-AN / Public Sénat",
         "France 4", "BFM TV", "i>Télé", "D17", "Gulli", "France Ô", "HD1",
@@ -54,10 +51,8 @@ define(["jquery", "scronpt"], function ($, Cron) {
         var $root = $("#" + id);
         extract(args.channels).then(function (items) {
             $("ul", $root).empty();
-            for (var index in items) {
-                var item = items[index];
-                display($root, parseInt(index, 10), item);
-            }
+            for (var index in items)
+                display($root, parseInt(index, 10), items[index]);
         });
     }; // update()
 
@@ -102,8 +97,6 @@ define(["jquery", "scronpt"], function ($, Cron) {
                         -1 !== channels.exclude.indexOf(index))
                     return true;
 
-                var mark = $(".texte_infos:first .picto7", this).text().length;
-
                 var title = $.trim($(".texte_titre:first", this).text());
                 var link = "http://www.programme-television.org" +
                            $(".texte_titre:first a", this).attr("href");
@@ -117,18 +110,20 @@ define(["jquery", "scronpt"], function ($, Cron) {
                                      this).attr("href"))[1];
                 } else {
                     category = "Non-défini";
-                    type = "unknown";
+                    type = "divers";
                 }
                 if ("films-telefilms" === type)
                     type = -1 !== category.indexOf("Téléfilm") ? "telefilms"
                                                                : "films";
 
+                var mark = $(".texte_infos:first .picto7", this).text().length;
+
                 progs[index] = {
                     "title":    title,
+                    "link":     link,
                     "category": category,
                     "type":     type,
-                    "mark":     mark,
-                    "link":     link
+                    "mark":     mark
                 };
             });
             return progs;

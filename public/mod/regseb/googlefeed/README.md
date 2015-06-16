@@ -28,5 +28,3 @@ Cet exemple affiche les dernières actualités du site LinuxFR.org (avec une mis
     "cron":  "*/10 * * * *"
 }
 ```
-### /icon.svg
-TODO Insérer une image.

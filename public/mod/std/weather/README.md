@@ -21,7 +21,7 @@ avec les propriétés suivantes :
 
 ## Exemple
 ### /config.json
-Cet configuration affiche la météo d'Aix-en-Provence.
+Cet exemple affiche la météo d'Aix-en-Provence sur fond bleu.
 ```JSON
 {
     "appid": "1a23edc4f5b67... (une clé de ce style)",

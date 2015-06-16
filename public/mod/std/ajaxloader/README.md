@@ -14,6 +14,6 @@ avec la propriété suivante :
 ## Exemple
 ### /config.json
 Cet exemple affiche un cadre noir.
-```json
+```JSON
 {}
 ```

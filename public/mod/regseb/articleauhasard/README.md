@@ -20,6 +20,6 @@ avec les propriétés suivantes :
 ## Exemple
 Cet exemple affiche un lien vers un article en français et change de lien
 toutes les heures.
-```json
+```JSON
 {}
 ```

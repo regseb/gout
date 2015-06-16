@@ -13,10 +13,13 @@ avec les propriétés suivantes :
   du cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
   prédéfinis) ;
 - `"cron`" (optionnel - valeur par défaut : `"0 1,14-18 * * *"`) : la notation
-  cron indiquant la fréquence de rafraichissement du sujet de l'émission.
+  cron indiquant la fréquence de mise à jour du sujet de l'émission.
 
 ## Exemple
 ### /config.json
-Par défaut (sans fichier *config.json*), le sujet de l'émission est affiché sur
-fond gris. Le sujet est mis à jour toutes les heures durant l'après-midi (car
-c'est à ce moment de le thème de l'émission est signalé).
+Cet exemple affiche le sujet de l'émission sur fond gris. Le sujet est mis à
+jour toutes les heures durant l'après-midi (car c'est à ce moment de le thème
+de l'émission est signalé).
+```JSON
+{}
+```

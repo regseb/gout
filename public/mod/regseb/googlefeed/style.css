@@ -1,5 +1,5 @@
 .regseb-googlefeed {
-    background-position: center right;
+    background-position: right center;
     background-repeat: no-repeat;
     background-size: auto 100%;
 }
@@ -24,12 +24,12 @@
     padding: 0.7em;
     position: absolute;
     text-align: justify;
-    transition: opacity 0s linear 0s;
+    transition: z-index 0s linear 0s, opacity 0s linear 0s;
     visibility: hidden;
-    z-index: 1;
 }
 .regseb-googlefeed > ul > li:hover > span {
     opacity: 1;
-    transition: opacity 0.5s linear 1s;
+    transition: z-index 1s linear, opacity 0.5s linear 1s;
     visibility: visible;
+    z-index: 1;
 }

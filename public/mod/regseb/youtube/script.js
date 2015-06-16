@@ -16,7 +16,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
 
             var users = Array.isArray(args.user) ? args.user : [args.user];
             var promises = [];
-            users.forEach(function (user) {
+            for (var user of users)
                 promises.push(
                     $.getJSON("https://www.googleapis.com/youtube/v3/channels" +
                               "?part=id&key=" + args.key + "&forUsername=" +
@@ -24,7 +24,6 @@ define(["jquery", "scronpt"], function ($, Cron) {
                         return data.items[0].id;
                     })
                 );
-            });
 
             Promise.all(promises).then(function (users) {
                 gates[id] = {
@@ -61,9 +60,8 @@ define(["jquery", "scronpt"], function ($, Cron) {
         var $root = $("#" + id);
         args.users.forEach(function (user) {
             extract(user, args.size, args.key).then(function (items) {
-                items.forEach(function (item) {
+                for (var item of items)
                     display($root, item, args.size);
-                });
             });
         });
     }; // update()
@@ -76,9 +74,9 @@ define(["jquery", "scronpt"], function ($, Cron) {
                   "&maxResults=" + (5 * size);
         return $.getJSON(url).then(function (data) {
             var items = [];
-            data.items.forEach(function (item) {
+            for (var item of data.items) {
                 if (!item.contentDetails || !item.contentDetails.upload)
-                    return;
+                    continue;
                 items.push({
                     "title": item.snippet.title,
                     "desc":  item.snippet.description,
@@ -87,7 +85,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
                     "guid":  item.contentDetails.upload.videoId,
                     "date":  new Date(item.snippet.publishedAt).getTime()
                 });
-            });
+            }
             return items.splice(0, size);
         });
     }; // extract()

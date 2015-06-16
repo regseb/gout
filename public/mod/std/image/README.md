@@ -20,14 +20,14 @@ elle-même un tableau d'objets JSON ayant les propriétés :
 
 ## Exemple
 ### /config.json
-Cet exemple actualise l'image toutes les trois heures.
+Cet exemple actualise les images toutes les trois heures.
 ```JSON
 {
     "cron": "0 */3 * * *"
 }
 ```
 ### /extract.js
-Cette fonction récupère l'image la plus récente du site *Urtikan*.
+Cette fonction récupère les images les plus récentes du site *Urtikan*.
 ```JavaScript
 define(["jquery"], function ($) {
     "use strict";

@@ -46,9 +46,8 @@ define(["jquery", "scronpt"], function ($, Cron) {
         var $root = $("#" + id);
         args.urls.forEach(function (url) {
             extract(url, args.size).then(function (items) {
-                items.forEach(function (item) {
+                for (var item of items)
                     display($root, item, args.size);
-                });
             });
         });
     }; // update()
@@ -82,10 +81,9 @@ define(["jquery", "scronpt"], function ($, Cron) {
                     });
                 });
 
-            items.forEach(function (item) {
+            for (var item of items)
                 if ("" === item.guid)
                     item.guid = item.link;
-            });
             return items;
         });
     }; // extract()

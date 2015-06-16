@@ -1,7 +1,5 @@
-.regseb-tele7jours {
-    color: white;
-}
 .regseb-tele7jours ul {
+    color: white;
     list-style-type: none;
     margin: 0.7em;
     padding-left: 0;
@@ -12,18 +10,17 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.regseb-tele7jours li > img {
-    margin-right: 0.3em;
-}
+.regseb-tele7jours li > img,
 .regseb-tele7jours span {
     margin-right: 0.3em;
 }
-.regseb-tele7jours .films          { background-color: #e51400; }
-.regseb-tele7jours .telefilms      { background-color: #a20025; }
-.regseb-tele7jours .series-tv      { background-color: #1ba1e2; }
+.regseb-tele7jours .films          { background-color: #f44336; }
+.regseb-tele7jours .telefilms      { background-color: #f91f63; }
+.regseb-tele7jours .series-tv      { background-color: #00bcd4; }
+.regseb-tele7jours .documentaires  { background-color: #9c27b0; }
+.regseb-tele7jours .jeunesse       { background-color: #ff9800; }
 .regseb-tele7jours .divertissement { background-color: #aa00ff; }
-.regseb-tele7jours .documentaires  { background-color: #fa6800; }
-.regseb-tele7jours .magazine       { background-color: #0050ef; }
-.regseb-tele7jours .sport          { background-color: #008a00; }
-.regseb-tele7jours .musique        { background-color: #008a00; }
-.regseb-tele7jours .unknown        { background-color: #647687; }
+.regseb-tele7jours .magazine       { background-color: #607d8b; }
+.regseb-tele7jours .sport          { background-color: #4caf50; }
+.regseb-tele7jours .musique        { background-color: #cddc39; }
+.regseb-tele7jours .divers         { background-color: #000000; }

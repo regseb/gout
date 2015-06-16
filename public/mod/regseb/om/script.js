@@ -1,11 +1,11 @@
 /* @flow */
-/* global document, define */
+/* global document, Intl, define */
 
 define(["jquery", "scronpt"], function ($, Cron) {
     "use strict";
 
-    var IMG_DIR = "mod/regseb/om/img/";
-    var TOURNAMENTS = {
+    const IMG_DIR = "mod/regseb/om/img/";
+    const TOURNAMENTS = {
         "unknown": "Inconnue",
         "amical":  "Amical",
         "cdf":     "Coupe de France",
@@ -15,9 +15,9 @@ define(["jquery", "scronpt"], function ($, Cron) {
         "ucl":     "Ligue des Champions",
         "uel":     "Ligue Europa"
     };
-    var CHANNELS = {
+    const CHANNELS = {
         "unknown":   "Inconnue",
-        "canalplus": "Canal+",
+        "canal_plus_84_20": "Canal+",
         "2":         "+Sport", // 404.
         "3":         "Foot+", // 404.
         "tf1":       "TF1",
@@ -35,16 +35,24 @@ define(["jquery", "scronpt"], function ($, Cron) {
         "nt1":       "NT1",
         "w9":        "W9",
         "18":        "Bein Sport 1", // 404.
-        "19":        "Bein Sport 1 / Canal+",
+        "bein_sport_1_canal_plus_84_55": "Bein Sport 1 / Canal+",
         "20":        "Bein Sport 2", // 404.
         "21":        "Bein Sport Max",
         "22":        "Bein Sport 2 / Max", // 404.
         "23":        "Bein Sport 1 / Max", // 404.
         "24":        "Bein Sport 1 / + Sport"
     };
-    var MONTHS = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+    const MONTHS = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
                   "Juillet", "Août", "Septembre", "OCtobre", "Novembre",
                   "Décembre"];
+    // dd/MM HH:mm.
+    const DTF_SHORT = new Intl.DateTimeFormat("fr-FR", {
+        "day": "2-digit", "month": "2-digit", "hour": "2-digit",
+        "minute": "2-digit" });
+    // EEEEE dd MMMMM yyyy HH:mm.
+    const DTF_LONG = new Intl.DateTimeFormat("fr-FR", {
+        "weekday": "long", "day": "2-digit", "month": "long", "year": "numeric",
+        "hour": "2-digit", "minute": "2-digit" });
 
     var gates = {};
 
@@ -153,10 +161,8 @@ define(["jquery", "scronpt"], function ($, Cron) {
                                          "title": TOURNAMENTS[tournament] });
             $("a", $next).text(data.next.teams)
                          .attr("href", data.next.link);
-            $("time", $next).text(data.next.date.format("dd/MM HH:mm"))
-                            .attr("title",
-                                  data.next.date.format("EEEEE dd MMMMM yyyy" +
-                                                        " HH:mm"));
+            $("time", $next).text(DTF_SHORT.format(data.next.date))
+                            .attr("title", DTF_LONG.format(data.next.date));
             $("img:last", $next).attr({ "src": IMG_DIR + channel + ".svg",
                                         "alt": CHANNELS[channel],
                                         "title": CHANNELS[channel] });

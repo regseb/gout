@@ -46,9 +46,8 @@ define(["jquery", "scronpt"], function ($, Cron) {
         var $root = $("#" + id);
         args.users.forEach(function (user) {
             extract(user, args.size).then(function (items) {
-                items.forEach(function (item) {
+                for (var item of items)
                     display($root, item, args.size);
-                });
             });
         });
     }; // update()

@@ -28,5 +28,3 @@ jour toutes les heures).
     "cron":  "0 * * * *"
 }
 ```
-### /icon.svg
-TODO Insérer une image.

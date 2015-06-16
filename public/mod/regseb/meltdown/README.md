@@ -13,7 +13,7 @@ avec les propriétés suivantes :
   du cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
   prédéfinis) ;
 - `"cron`" (optionnel - valeur par défaut : `"0 6 * * *"`) : la notation cron
-  indiquant la fréquence de rafraichissement de l'évènement.
+  indiquant la fréquence de mise à jour de l'évènement.
 
 ## Exemple
 ### /config.json

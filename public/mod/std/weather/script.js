@@ -4,9 +4,7 @@
 define(["jquery", "scronpt"], function ($, Cron) {
     "use strict";
 
-    // TODO Afficher le météo du jour sur la même ligne que le nom de la ville.
-
-    var IMG_DIR = "mod/std/weather/img/";
+    const IMG_DIR = "mod/std/weather/img/";
 
     var gates = {};
 
@@ -36,8 +34,9 @@ define(["jquery", "scronpt"], function ($, Cron) {
     var update = function (id) {
         var args = gates[id];
 
-        // Si la page est cachée : ne pas actualiser la météo et indiquer qu'il
-        // faudrait actualiser la météo quand l'utilisateur affichera la page.
+        // Si la page est cachée : ne pas actualiser les données et indiquer
+        // qu'il faudra mettre à jour les données quand l'utilisateur reviendra
+        // sur la page.
         if (document.hidden) {
             args.cron.stop();
             return;
@@ -54,9 +53,8 @@ define(["jquery", "scronpt"], function ($, Cron) {
 
         // Récupérer les prévisions.
         extract(args.city, args.appid, "forecast").then(function (items) {
-            items.forEach(function (item) {
+            for (var item of items)
                 display($root, item);
-            });
         });
     }; // update()
 
@@ -71,10 +69,14 @@ define(["jquery", "scronpt"], function ($, Cron) {
                     "icon": data.weather[0].icon,
                     "desc": data.weather[0].description,
                     "help": data.weather[0].main,
-                    "temp": { "min": Math.round(data.main.temp_min - 273.15),
-                              "max": Math.round(data.main.temp_max - 273.15) },
-                    "wind": { "speed": Math.round(data.wind.speed * 3.6),
-                              "deg":   data.wind.deg + 360 % 360 }
+                    "temp": {
+                        "min": Math.round(data.main["temp_min"] - 273.15),
+                        "max": Math.round(data.main["temp_max"] - 273.15)
+                    },
+                    "wind": {
+                        "speed": Math.round(data.wind.speed * 3.6),
+                        "deg":   data.wind.deg + 360 % 360
+                    }
                 };
             });
         }
@@ -83,7 +85,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
                "&APPID=" + appid + "&callback=?";
         return $.getJSON(url).then(function (data) {
             var items = [];
-            data.list.forEach(function (item) {
+            for (var item of data.list)
                 items.push({
                     "icon": item.weather[0].icon,
                     "desc": item.weather[0].description,
@@ -93,7 +95,6 @@ define(["jquery", "scronpt"], function ($, Cron) {
                     "wind": { "speed": Math.round(item.speed * 3.6),
                               "deg":   item.deg + 360 % 360 }
                 });
-            });
             return items;
         });
     }; // extract()
@@ -104,7 +105,8 @@ define(["jquery", "scronpt"], function ($, Cron) {
 
         var date = new Date();
         date.setDate(date.getDate() +  $("li", $root).length);
-        $p.append($("<strong>").text(date.format("EEEEE")));
+        $p.append($("<strong>").text(
+            date.toLocaleString("fr-FR", { "weekday": "long" })));
 
         $p.append($("<img>", { "src": IMG_DIR + data.icon + ".svg",
                                "alt": data.desc,
@@ -121,15 +123,15 @@ define(["jquery", "scronpt"], function ($, Cron) {
                                    data.temp.max + " °C"));
 
         var dir = "";
-        if      (data.wind.deg <  22.5) dir = "nord";
-        else if (data.wind.deg <  67.5) dir = "nord-est";
-        else if (data.wind.deg < 112.5) dir = "est";
-        else if (data.wind.deg < 157.5) dir = "sud-est";
-        else if (data.wind.deg < 202.5) dir = "sud";
-        else if (data.wind.deg < 247.5) dir = "sud-ouest";
-        else if (data.wind.deg < 292.5) dir = "ouest";
-        else if (data.wind.deg < 337.5) dir = "nord-ouest";
-        else                            dir = "nord";
+        if (22.5 > data.wind.deg) dir = "nord";
+        else if (67.5  > data.wind.deg) dir = "nord-est";
+        else if (112.5 > data.wind.deg) dir = "est";
+        else if (157.5 > data.wind.deg) dir = "sud-est";
+        else if (202.5 > data.wind.deg) dir = "sud";
+        else if (247.5 > data.wind.deg) dir = "sud-ouest";
+        else if (292.5 > data.wind.deg) dir = "ouest";
+        else if (337.5 > data.wind.deg) dir = "nord-ouest";
+        else dir = "nord";
         var $dir = $("<img>").attr({ "src": IMG_DIR + "wind.svg",
                                      "alt": "^",
                                      "title": dir })

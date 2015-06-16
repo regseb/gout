@@ -1,5 +1,5 @@
 /* @flow */
-/* global define, window */
+/* global window, define */
 
 define(["jquery"], function ($) {
     "use strict";

@@ -47,9 +47,8 @@ define(["jquery", "scronpt"], function ($, Cron) {
         var $root = $("#" + id);
         args.users.forEach(function (user) {
             extract(user, args.size, args.key).then(function (items) {
-                items.forEach(function (item) {
+                for (var item of items)
                     display($root, item, args.size);
-                });
             });
         });
     }; // update()
@@ -59,7 +58,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
                   "/activities/public?key=" + key + "&maxResults=" + size;
         return $.getJSON(url).then(function (data) {
             var items = [];
-            data.items.forEach(function (item) {
+            for (var item of data.items)
                 items.push({
                     "title": item.title,
                     "desc":  "",
@@ -67,7 +66,6 @@ define(["jquery", "scronpt"], function ($, Cron) {
                     "guid":  item.id,
                     "date":  new Date(item.updated).getTime()
                 });
-            });
             return items;
         });
     }; // extract()

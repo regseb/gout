@@ -46,9 +46,8 @@ define(["jquery", "scronpt"], function ($, Cron) {
         var $root = $("#" + id);
         args.urls.forEach(function (url) {
             extract(url, args.size).then(function (items) {
-                items.forEach(function (item) {
+                for (var item of items)
                     display($root, item, args.size);
-                });
             });
         });
     }; // update()
@@ -58,7 +57,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
               encodeURIComponent(url) + "&num=" + size + "&callback=?";
         return $.getJSON(url).then(function (data) {
             var items = [];
-            data.responseData.feed.entries.forEach(function (entry) {
+            for (var entry of data.responseData.feed.entries)
                 items.push({
                     "title": entry.title,
                     "desc":  entry.content,
@@ -66,7 +65,6 @@ define(["jquery", "scronpt"], function ($, Cron) {
                     "guid":  entry.link,
                     "date":  new Date(entry.publishedDate).getTime()
                 });
-            });
             return items;
         });
     }; // extract()

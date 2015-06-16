@@ -41,5 +41,3 @@ Twitter et Google+.
     ]
 }
 ```
-### /icon.svg
-TODO Insérer une image.

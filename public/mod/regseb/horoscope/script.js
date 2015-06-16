@@ -4,7 +4,7 @@
 define(["jquery", "scronpt"], function ($, Cron) {
     "use strict";
 
-    var IMG_DIR = "mod/regseb/horoscope/img/";
+    const IMG_DIR = "mod/regseb/horoscope/img/";
 
     var gates = {};
 
