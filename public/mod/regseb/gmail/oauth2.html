@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Gout - /regseb/gmail</title>
+    <script>
+        var REGEX = /([^&=]+)=([^&]*)/g;
+        // Ne pas utiliser window.location.hash car cette variable contient le
+        // texte décodé (https://bugzilla.mozilla.org/show_bug.cgi?id=483304).
+        var hash = window.location.href.split("#")[1];
+        var params = {};
+        var result;
+        while (result = REGEX.exec(hash)) {
+            params[result[1]] = decodeURIComponent(result[2]);
+        }
+
+        var root = window.opener.document.getElementById(params.state);
+        root.dispatchEvent(new CustomEvent(
+                "access",
+                { "detail": params.access_token }));
+
+        window.close();
+    </script>
+  </head>
+  <body></body>
+</html>
