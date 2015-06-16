@@ -1,5 +1,0 @@
-{
-    "color": "#f0a30a",
-    "url": "http://rss.allocine.fr/ac/actualites/cine?format=xml",
-    "cron": "*/3 * * * *"
-}
