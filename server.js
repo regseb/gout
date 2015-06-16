@@ -1,19 +1,21 @@
 /* global require, __dirname, console */
 
 var CONFIG = {
-    "port": 3000,
+    "port": 3000
 };
 
-var http    = require("http"),
-    https   = require("https"),
-    express = require("express");
+var fs      = require("fs");
+var http    = require("http");
+var https   = require("https");
+var express = require("express");
 var app = express();
 
 // Créer le proxy.
 app.use("/proxy", function (req, res) {
     "use strict";
 
-    var client, presize;
+    var client;
+    var presize;
     if (/^\/https/.test(req.url)) {
         client = https;
         presize = 7;
@@ -35,7 +37,7 @@ app.use("/proxy", function (req, res) {
 
     client.request(options, function (proxy) {
         // Faire du reverse proxy dans le cas d'une redirection.
-        if (300 < proxy.statusCode && proxy.statusCode < 400 &&
+        if (300 < proxy.statusCode && 400 >proxy.statusCode &&
                 proxy.headers.location) {
             proxy.headers.location =
                 "http://" + host + "/proxy/http" +
@@ -51,6 +53,18 @@ app.use("/proxy", function (req, res) {
     }).end();
 });
 
+// Retourner les bibliothèque JavaScript.
+app.use("/lib", function (req, res) {
+    var module = "node_modules/" + req.path.substr(1, req.path.length - 4);
+    fs.readFile(module + "/package.json", function (err, data) {
+        if (err) throw err;
+        var json = JSON.parse(data);
+        fs.readFile(module + "/" + json.main, function (err, data) {
+            if (err) throw err;
+            res.send(data.toString().replace("#!/usr/bin/env node", ""));
+        });
+    });
+});
 
 // Créer le serveur web.
 app.use(express.static(__dirname + "/public"));
