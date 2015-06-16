@@ -1,0 +1,26 @@
+{
+    "name": "gout",
+    "version": "0.2.0",
+    "description": "Agrégateur d'Internet (flux RSS et tout le reste).",
+    "keyword": ["gout", "javascript", "js", "rss", "scraper"],
+    "homepage": "https://regseb.github.io/gout/",
+    "bugs": {
+        "url": "http://github.com/regseb/gout/issues"
+    },
+    "license": "GPL v3",
+    "author": "Sébastien Règne <regseb@gmail.com> (https://github.com/regseb)",
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/regseb/gout.git"
+    },
+    "scripts": {
+        "test": "jshint public; jscs public"
+    },
+    "dependencies": {
+        "express":   "4.x",
+        "requirejs": "2.x",
+        "jquery":    "2.x",
+        "wiloquery": "0.x",
+        "scronpt":   "0.x"
+    }
+}
