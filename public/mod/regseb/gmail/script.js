@@ -1,4 +1,3 @@
-/* @flow */
 /* global window, document, Promise, sessionStorage, define */
 
 define(["jquery", "scronpt"], function ($, Cron) {
@@ -24,7 +23,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
                     "&scope=https://mail.google.com/,gmail.modify," +
                             "gmail.readonly" +
                     "&state=" + id, id, "width=800, height=600");
-				return false;
+                return false;
             });
 
             gates[id] = {
@@ -33,12 +32,15 @@ define(["jquery", "scronpt"], function ($, Cron) {
                 "cron": new Cron(args.cron, update, id)
             };
 
-            if (1 === Object.keys(gates).length)
+            if (1 === Object.keys(gates).length) {
                 document.addEventListener("visibilitychange", function () {
-                    for (var id in gates)
-                        if (!gates[id].cron.status())
+                    for (var id in gates) {
+                        if (!gates[id].cron.status()) {
                             update(id);
+                        }
+                    }
                 });
+            }
 
             update(id);
         });
@@ -69,13 +71,15 @@ define(["jquery", "scronpt"], function ($, Cron) {
                 $("> p", $root).hide();
                 $("> ul", $root).show()
                                 .empty();
-                if (0 === items.length)
+                if (0 === items.length) {
                     $("> ul", $root).append(
                         "<li><a href=\"https://mail.google.com/\">" +
                         "(Aucun nouveau message)</a></li>");
-                else
-                    for (var item of items)
+                } else {
+                    for (var item of items) {
                         display($root, item);
+                    }
+                }
             });
         }, function () {
             $("> ul", $root).hide();
@@ -87,16 +91,18 @@ define(["jquery", "scronpt"], function ($, Cron) {
         var url = "https://www.googleapis.com/gmail/v1/users/me/messages" +
                   "?maxResults=" + size + "&q=is:unread&access_token=" + token;
         return $.getJSON(url).then(function (data) {
-            if (0 === data.resultSizeEstimate)
+            if (0 === data.resultSizeEstimate) {
                 return Promise.resolve([]);
+            }
 
             var promises = data.messages.map(function (item) {
                 var url = "https://www.googleapis.com/gmail/v1/users/me/" +
                           "messages/" + item.id + "?access_token=" + token;
                 return $.getJSON(url).then(function (item) {
                     var headers = {};
-                    for (var header of item.payload.headers)
+                    for (var header of item.payload.headers) {
                         headers[header.name] = header.value;
+                    }
                     return {
                         "title": headers.Subject,
                         "desc":  item.snippet,
@@ -117,8 +123,9 @@ define(["jquery", "scronpt"], function ($, Cron) {
                            .append($("<a>").attr({ "href":   data.link,
                                                    "target": "_blank" })
                                            .text(data.title));
-        if ("" !== data.desc)
+        if ("" !== data.desc) {
             $li.append($("<span>").html(data.desc));
+        }
 
         $("> ul", $root).append($li).fadeIn("slow");
     }; // display()

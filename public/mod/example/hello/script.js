@@ -1,4 +1,3 @@
-/* @flow */
 /* global define */
 
 // Encapsuler le code dans une module AMD pour éviter les collisions des noms

@@ -1,4 +1,3 @@
-/* @flow */
 /* global document, define */
 
 define(["jquery", "scronpt"], function ($, Cron) {
@@ -25,12 +24,15 @@ define(["jquery", "scronpt"], function ($, Cron) {
                 "cron": new Cron("0 1 * * *", update, id)
             };
 
-            if (1 === Object.keys(gates).length)
+            if (1 === Object.keys(gates).length) {
                 document.addEventListener("visibilitychange", function () {
-                    for (var id in gates)
-                        if (!gates[id].cron.status())
+                    for (var id in gates) {
+                        if (!gates[id].cron.status()) {
                             update(id);
+                        }
+                    }
                 });
+            }
 
             update(id);
         });
@@ -51,8 +53,9 @@ define(["jquery", "scronpt"], function ($, Cron) {
         var $root = $("#" + id);
         extract(args.channels).then(function (items) {
             $("ul", $root).empty();
-            for (var index in items)
+            for (var index in items) {
                 display($root, parseInt(index, 10), items[index]);
+            }
         });
     }; // update()
 
@@ -94,8 +97,9 @@ define(["jquery", "scronpt"], function ($, Cron) {
                 if (channels.include &&
                         -1 === channels.include.indexOf(index) ||
                         channels.exclude &&
-                        -1 !== channels.exclude.indexOf(index))
+                        -1 !== channels.exclude.indexOf(index)) {
                     return true;
+                }
 
                 var title = $.trim($(".texte_titre:first", this).text());
                 var link = "http://www.programme-television.org" +
@@ -112,9 +116,10 @@ define(["jquery", "scronpt"], function ($, Cron) {
                     category = "Non-défini";
                     type = "divers";
                 }
-                if ("films-telefilms" === type)
+                if ("films-telefilms" === type) {
                     type = -1 !== category.indexOf("Téléfilm") ? "telefilms"
                                                                : "films";
+                }
 
                 var mark = $(".texte_infos:first .picto7", this).text().length;
 
@@ -132,11 +137,12 @@ define(["jquery", "scronpt"], function ($, Cron) {
 
     var display = function ($root, i, data) {
         var $mark = $("<span>");
-        for (var j = 0; j < data.mark; ++j)
+        for (var j = 0; j < data.mark; ++j) {
             $mark.append($("<img>").attr({
                 "src": IMG_DIR + "star.svg",
                 "alt": "*"
             }));
+        }
 
         $("ul", $root).append(
             $("<li>").append($("<img>").attr({ "src":   IMG_DIR + i + ".svg",

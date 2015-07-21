@@ -22,7 +22,9 @@ define(["require", "jquery", "wiloquery"], function (require, $, wiloquery) {
     var load = function (gate, user, url) {
         // Si la propriété 'active' n'est pas définie : considérer que la
         // passerelle est active.
-        if (false === gate.active) return;
+        if (false === gate.active) {
+            return;
+        }
 
         var id = "gate" + $("article").length;
         var clazz = gate.module.replace(/\//g, "-");
@@ -68,9 +70,10 @@ define(["require", "jquery", "wiloquery"], function (require, $, wiloquery) {
             // Si c'est une requete vers un serveur externe et que le résultat
             // attendu n'est pas au format JSON : passer par le proxy pour
             // contourner la restriction XSS du navigateur.
-            if (settings.crossDomain && "json" !== settings.dataType)
+            if (settings.crossDomain && "json" !== settings.dataType) {
                 settings.url = settings.url.replace("https:/", "proxy/https")
                                            .replace("http:/",  "proxy/http");
+            }
         }
     });
 
@@ -81,7 +84,8 @@ define(["require", "jquery", "wiloquery"], function (require, $, wiloquery) {
     // Ouvrir les portes vers l'extérieur.
     var url = "gate/" + user + "/" + config + ".json";
     $.getJSON(url).then(function (gates) {
-        for (var url in gates)
+        for (var url in gates) {
             load(gates[url], user, url);
+        }
     });
 });

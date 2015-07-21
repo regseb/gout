@@ -1,4 +1,3 @@
-/* @flow */
 /* global define */
 
 // L'application a seulement besoin d'un module AMD qui retourne une fonction.

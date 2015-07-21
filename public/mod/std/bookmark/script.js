@@ -1,4 +1,3 @@
-/* @flow */
 /* global define */
 
 define(["jquery"], function ($) {
@@ -12,8 +11,9 @@ define(["jquery"], function ($) {
                 "background-image": "url(\"" + url + "/icon.svg\")"
             });
 
-            for (var site of args.sites)
+            for (var site of args.sites) {
                 display($root, site);
+            }
         });
     }; // create()
 
@@ -21,8 +21,9 @@ define(["jquery"], function ($) {
         var $li = $("<li>").append($("<a>").attr({ "href":   data.link,
                                                    "target": "_blank" })
                                            .text(data.title || data.link));
-        if (data.desc)
+        if (data.desc) {
             $li.append($("<span>").html(data.desc));
+        }
         $("> ul", $root).append($li);
     }; // display()
 

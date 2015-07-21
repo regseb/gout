@@ -1,4 +1,3 @@
-/* @flow */
 /* global document, Promise, Intl, define */
 
 define(["jquery", "scronpt"], function ($, Cron) {
@@ -21,12 +20,15 @@ define(["jquery", "scronpt"], function ($, Cron) {
                 "cron": new Cron(args.cron || "0 1,14-18 * * *", update, id)
             };
 
-            if (1 === Object.keys(gates).length)
+            if (1 === Object.keys(gates).length) {
                 document.addEventListener("visibilitychange", function () {
-                    for (var id in gates)
-                        if (!gates[id].cron.status())
+                    for (var id in gates) {
+                        if (!gates[id].cron.status()) {
                             update(id);
+                        }
+                    }
                 });
+            }
 
             update(id);
         });
@@ -54,8 +56,9 @@ define(["jquery", "scronpt"], function ($, Cron) {
         // Si c'est le week-end (dimanche ou samedi) : ne pas récupérer le sujet
         // de l'émission car il n'y a pas d'émission le week-end.
         var now = new Date();
-        if (0 === now.getDay() || 6 === now.getDay())
+        if (0 === now.getDay() || 6 === now.getDay()) {
             return Promise.resolve(null);
+        }
 
         var url = "http://www.france5.fr/emissions/c-dans-l-air";
         return $.get(url).then(function (data) {

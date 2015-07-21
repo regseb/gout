@@ -1,4 +1,3 @@
-/* @flow */
 /* global document, define */
 
 define(["require", "jquery", "scronpt"], function (require, $, Cron) {
@@ -43,12 +42,15 @@ define(["require", "jquery", "scronpt"], function (require, $, Cron) {
                     "cron":    new Cron(args.cron, update, id)
                 };
 
-                if (1 === Object.keys(gates).length)
+                if (1 === Object.keys(gates).length) {
                     document.addEventListener("visibilitychange", function () {
-                        for (var id in gates)
-                            if (!gates[id].cron.status())
+                        for (var id in gates) {
+                            if (!gates[id].cron.status()) {
                                 update(id);
+                            }
+                        }
                     });
+                }
 
                 update(id);
             });
@@ -69,66 +71,75 @@ define(["require", "jquery", "scronpt"], function (require, $, Cron) {
 
         var $root = $("#" + id);
         args.extract(args.size).then(function (items) {
-            for (var item of items)
+            for (var item of items) {
                 display($root, item, args.size);
+            }
             refresh($root);
         });
     }; // update()
 
     var display = function ($root, data, size) {
         var $li = $("li[data-guid=\"" + data.guid + "\"]", $root);
+        var $a;
 
         if (!$li.length) { // Si l'évènement n'est pas affiché.
             // Trouver la future position chronologique de l'évènement.
             var pos = -1;
             $("> ul > li", $root).each(function (i) {
-                if (data.date <= $(this).data("date"))
+                if (data.date <= $(this).data("date")) {
                     pos = i;
+                }
             });
             if (pos !== size - 1) {
                 // Supprimer le plus ancien évènement (si la liste est pleine).
                 $("> ul > li:eq(" + (size - 1) + ")", $root).remove();
 
                 // Créer la ligne du nouvel évènement.
-                var $a = $("<a>").attr({ "href":   data.link,
-                                         "target": "_blank",
-                                         "title":  data.title })
-                                 .css("background-image",
-                                      "url(\"" + data.img + "\")");
+                $a = $("<a>").attr({ "href":   data.link,
+                                     "target": "_blank",
+                                     "title":  data.title })
+                             .css("background-image",
+                                  "url(\"" + data.img + "\")");
                 $li = $("<li>").attr("data-guid", data.guid)
                                .data("date", data.date)
                                .height($root.height())
                                .width($root.width())
                                .append($a);
 
-                if (-1 === pos)
+                if (-1 === pos) {
                     $("> ul", $root).prepend($li);
-                else
+                } else {
                     $("> ul > li:eq(" + pos + ")", $root).after($li);
+                }
             }
         } else { // Si l'évènement est déjà affiché.
             // Si des éléments de l'évènement ont changé, les mettre à jour.
-            var $a = $("> a", $li);
-            if ($a.attr("href") !== data.link)
+            $a = $("> a", $li);
+            if ($a.attr("href") !== data.link) {
                 $a.attr("href", data.link);
-            if ($a.attr("title") !== data.title)
+            }
+            if ($a.attr("title") !== data.title) {
                 $a.attr("title", data.title);
-            if ($("img", $a).attr("src") !== data.img)
+            }
+            if ($("img", $a).attr("src") !== data.img) {
                 $("img", $a).attr("src", data.img);
+            }
         }
     }; // display()
 
     var refresh = function ($root) {
-        if ("0px" === $("ul", $root).css("left"))
+        if ("0px" === $("ul", $root).css("left")) {
             $("span:first", $root).css("cursor", "not-allowed");
-        else
+        } else {
             $("span:first", $root).css("cursor", "pointer");
+        }
 
         if (-1 * $root.width() * ($("li", $root).length - 1) + "px" ===
-                $("ul", $root).css("left"))
+                $("ul", $root).css("left")) {
             $("span:last", $root).css("cursor", "not-allowed");
-        else
+        } else {
             $("span:last", $root).css("cursor", "pointer");
+        }
     }; // refresh()
 
     return create;

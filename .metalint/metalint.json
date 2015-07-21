@@ -1,5 +1,5 @@
 {
-    "patterns": ["**", "!.git/**", "!*_modules/**"],
+    "patterns": ["**", "!.git/**", "!node_modules/**"],
     "hidden": true,
     "checkers": [
         {

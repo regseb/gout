@@ -1,4 +1,3 @@
-/* @flow */
 /* global document, define */
 
 define(["jquery", "scronpt"], function ($, Cron) {
@@ -20,12 +19,15 @@ define(["jquery", "scronpt"], function ($, Cron) {
                 "cron": new Cron(args.cron, update, id)
             };
 
-            if (1 === Object.keys(gates).length)
+            if (1 === Object.keys(gates).length) {
                 document.addEventListener("visibilitychange", function () {
-                    for (var id in gates)
-                        if (!gates[id].cron.status())
+                    for (var id in gates) {
+                        if (!gates[id].cron.status()) {
                             update(id);
+                        }
+                    }
                 });
+            }
 
             update(id);
         });
@@ -56,11 +58,12 @@ define(["jquery", "scronpt"], function ($, Cron) {
         return $.get(url).then(function (data) {
             // Si le serveur n'indique pas que les données sont au format XML :
             // il faut les convertir.
-            if ("string" === typeof data)
+            if ("string" === typeof data) {
                 data = $.parseXML(data);
+            }
 
             var items = [];
-            if ($("rss", data).length) // RSS 2.0.
+            if ($("rss", data).length) { // RSS 2.0.
                 $("item:lt(" + size + ")", data).each(function () {
                     items.push({
                         "title": $("title", this).text(),
@@ -70,7 +73,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
                         "date":  new Date($("pubDate", this).text()).getTime()
                     });
                 });
-            else if ($("feed", data).length) // Atom 1.0.
+            } else if ($("feed", data).length) { // Atom 1.0.
                 $("entry:lt(" + size + ")", data).each(function () {
                     items.push({
                         "title": $("title", this).text(),
@@ -80,10 +83,13 @@ define(["jquery", "scronpt"], function ($, Cron) {
                         "date":  new Date($("updated", this).text()).getTime()
                     });
                 });
+            }
 
-            for (var item of items)
-                if ("" === item.guid)
+            for (var item of items) {
+                if ("" === item.guid) {
                     item.guid = item.link;
+                }
+            }
             return items;
         });
     }; // extract()
@@ -95,8 +101,9 @@ define(["jquery", "scronpt"], function ($, Cron) {
             // Trouver la future position chronologique de l'évènement.
             var pos = -1;
             $("> ul > li", $root).each(function (i) {
-                if (data.date <= $(this).data("date"))
+                if (data.date <= $(this).data("date")) {
                     pos = i;
+                }
             });
             if (pos !== size - 1) {
                 // Supprimer le plus ancien évènement (si la liste est pleine).
@@ -108,24 +115,29 @@ define(["jquery", "scronpt"], function ($, Cron) {
                                .append($("<a>").attr({ "href":   data.link,
                                                        "target": "_blank" })
                                                .text(data.title));
-                if ("" !== data.desc)
+                if ("" !== data.desc) {
                     $li.append($("<span>").html(data.desc));
+                }
 
-                if (-1 === pos)
+                if (-1 === pos) {
                     $("> ul", $root).prepend($li).fadeIn("slow");
-                else
+                } else {
                     $("> ul > li:eq(" + pos + ")", $root).after($li)
                                                          .fadeIn("slow");
+                }
             }
         } else { // Si l'évènement est déjà affiché.
             // Si des éléments de l'évènement ont changé, les mettre à jour.
             var $a = $("> a", $li);
-            if ($a.attr("href") !== data.link)
+            if ($a.attr("href") !== data.link) {
                 $a.attr("href", data.link);
-            if ($a.text() !== data.title)
+            }
+            if ($a.text() !== data.title) {
                 $a.text(data.title);
-            if ($a.next().html() !== data.desc)
+            }
+            if ($a.next().html() !== data.desc) {
                 $a.next().html(data.desc);
+            }
         }
     }; // display()
 

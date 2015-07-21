@@ -57,10 +57,14 @@ app.use("/proxy", function (req, res) {
 app.use("/lib", function (req, res) {
     var module = "node_modules/" + req.path.substr(1, req.path.length - 4);
     fs.readFile(module + "/package.json", function (err, data) {
-        if (err) throw err;
+        if (err) {
+            throw err;
+        }
         var json = JSON.parse(data);
         fs.readFile(module + "/" + json.main, function (err, data) {
-            if (err) throw err;
+            if (err) {
+                throw err;
+            }
             res.send(data.toString().replace("#!/usr/bin/env node", ""));
         });
     });

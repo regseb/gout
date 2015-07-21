@@ -1,4 +1,3 @@
-/* @flow */
 /* global document, define */
 
 define(["jquery", "scronpt"], function ($, Cron) {
@@ -21,12 +20,15 @@ define(["jquery", "scronpt"], function ($, Cron) {
                 "cron":  new Cron(args.cron, update, id)
             };
 
-            if (1 === Object.keys(gates).length)
+            if (1 === Object.keys(gates).length) {
                 document.addEventListener("visibilitychange", function () {
-                    for (var id in gates)
-                        if (!gates[id].cron.status())
+                    for (var id in gates) {
+                        if (!gates[id].cron.status()) {
                             update(id);
+                        }
+                    }
                 });
+            }
 
             update(id);
         });
@@ -47,8 +49,9 @@ define(["jquery", "scronpt"], function ($, Cron) {
         var $root = $("#" + id);
         args.users.forEach(function (user) {
             extract(user, args.size, args.key).then(function (items) {
-                for (var item of items)
+                for (var item of items) {
                     display($root, item, args.size);
+                }
             });
         });
     }; // update()
@@ -58,7 +61,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
                   "/activities/public?key=" + key + "&maxResults=" + size;
         return $.getJSON(url).then(function (data) {
             var items = [];
-            for (var item of data.items)
+            for (var item of data.items) {
                 items.push({
                     "title": item.title,
                     "desc":  "",
@@ -66,6 +69,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
                     "guid":  item.id,
                     "date":  new Date(item.updated).getTime()
                 });
+            }
             return items;
         });
     }; // extract()
@@ -77,8 +81,9 @@ define(["jquery", "scronpt"], function ($, Cron) {
             // Trouver la future position chronologique de l'évènement.
             var pos = -1;
             $("> ul > li", $root).each(function (i) {
-                if (data.date <= $(this).data("date"))
+                if (data.date <= $(this).data("date")) {
                     pos = i;
+                }
             });
             if (pos !== size - 1) {
                 // Supprimer le plus ancien évènement (si la liste est pleine).
@@ -90,24 +95,29 @@ define(["jquery", "scronpt"], function ($, Cron) {
                                .append($("<a>").attr({ "href":   data.link,
                                                        "target": "_blank" })
                                                .text(data.title));
-                if ("" !== data.desc)
+                if ("" !== data.desc) {
                     $li.append($("<span>").html(data.desc));
+                }
 
-                if (-1 === pos)
+                if (-1 === pos) {
                     $("> ul", $root).prepend($li).fadeIn("slow");
-                else
+                } else {
                     $("> ul > li:eq(" + pos + ")", $root).after($li)
                                                          .fadeIn("slow");
+                }
             }
         } else { // Si l'évènement est déjà affiché.
             // Si des éléments de l'évènement ont changé, les mettre à jour.
             var $a = $("> a", $li);
-            if ($a.attr("href") !== data.link)
+            if ($a.attr("href") !== data.link) {
                 $a.attr("href", data.link);
-            if ($a.text() !== data.title)
+            }
+            if ($a.text() !== data.title) {
                 $a.text(data.title);
-            if ($a.next().html() !== data.desc)
+            }
+            if ($a.next().html() !== data.desc) {
                 $a.next().html(data.desc);
+            }
         }
     }; // display()
 

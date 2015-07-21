@@ -1,4 +1,3 @@
-/* @flow */
 /* global document, define */
 
 define(["jquery", "scronpt"], function ($, Cron) {
@@ -20,12 +19,15 @@ define(["jquery", "scronpt"], function ($, Cron) {
                 "cron":  new Cron(args.cron || "0 * * * *", update, id)
             };
 
-            if (1 === Object.keys(gates).length)
+            if (1 === Object.keys(gates).length) {
                 document.addEventListener("visibilitychange", function () {
-                    for (var id in gates)
-                        if (!gates[id].cron.status())
+                    for (var id in gates) {
+                        if (!gates[id].cron.status()) {
                             update(id);
+                        }
+                    }
                 });
+            }
 
             update(id);
         });
@@ -53,8 +55,9 @@ define(["jquery", "scronpt"], function ($, Cron) {
 
         // Récupérer les prévisions.
         extract(args.city, args.appid, "forecast").then(function (items) {
-            for (var item of items)
+            for (var item of items) {
                 display($root, item);
+            }
         });
     }; // update()
 
@@ -85,7 +88,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
                "&APPID=" + appid + "&callback=?";
         return $.getJSON(url).then(function (data) {
             var items = [];
-            for (var item of data.list)
+            for (var item of data.list) {
                 items.push({
                     "icon": item.weather[0].icon,
                     "desc": item.weather[0].description,
@@ -95,6 +98,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
                     "wind": { "speed": Math.round(item.speed * 3.6),
                               "deg":   item.deg + 360 % 360 }
                 });
+            }
             return items;
         });
     }; // extract()
@@ -123,15 +127,25 @@ define(["jquery", "scronpt"], function ($, Cron) {
                                    data.temp.max + " °C"));
 
         var dir = "";
-        if (22.5 > data.wind.deg) dir = "nord";
-        else if (67.5  > data.wind.deg) dir = "nord-est";
-        else if (112.5 > data.wind.deg) dir = "est";
-        else if (157.5 > data.wind.deg) dir = "sud-est";
-        else if (202.5 > data.wind.deg) dir = "sud";
-        else if (247.5 > data.wind.deg) dir = "sud-ouest";
-        else if (292.5 > data.wind.deg) dir = "ouest";
-        else if (337.5 > data.wind.deg) dir = "nord-ouest";
-        else dir = "nord";
+        if (22.5 > data.wind.deg) {
+            dir = "nord";
+        } else if (67.5  > data.wind.deg) {
+            dir = "nord-est";
+        } else if (112.5 > data.wind.deg) {
+            dir = "est";
+        } else if (157.5 > data.wind.deg) {
+            dir = "sud-est";
+        } else if (202.5 > data.wind.deg) {
+            dir = "sud";
+        } else if (247.5 > data.wind.deg) {
+            dir = "sud-ouest";
+        } else if (292.5 > data.wind.deg) {
+            dir = "ouest";
+        } else if (337.5 > data.wind.deg) {
+            dir = "nord-ouest";
+        } else {
+            dir = "nord";
+        }
         var $dir = $("<img>").attr({ "src": IMG_DIR + "wind.svg",
                                      "alt": "^",
                                      "title": dir })

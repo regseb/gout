@@ -1,4 +1,3 @@
-/* @flow */
 /* global document, define */
 
 define(["jquery", "scronpt"], function ($, Cron) {
@@ -25,12 +24,15 @@ define(["jquery", "scronpt"], function ($, Cron) {
                 "cron": new Cron("0 6 * * *", update, id)
             };
 
-            if (1 === Object.keys(gates).length)
+            if (1 === Object.keys(gates).length) {
                 document.addEventListener("visibilitychange", function () {
-                    for (var id in gates)
-                        if (!gates[id].cron.status())
+                    for (var id in gates) {
+                        if (!gates[id].cron.status()) {
                             update(id);
+                        }
+                    }
                 });
+            }
 
             update(id);
         });

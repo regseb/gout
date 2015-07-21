@@ -1,4 +1,3 @@
-/* @flow */
 /* global define */
 
 define(["jquery"], function ($) {
