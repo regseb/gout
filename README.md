@@ -50,4 +50,5 @@ Rendez-vous ensuite à l'adresse suivante avec votre navigateur :
 
 ## Licence
 
-La bibliothèque est publiée sous *GNU GENERAL PUBLIC LICENSE*.
+La bibliothèque est publiée sous la [Licence Publique de l’Union européenne -
+EUPL v.1.1](//joinup.ec.europa.eu/software/page/eupl/licence-eupl).
