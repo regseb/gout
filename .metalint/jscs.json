@@ -1,6 +1,5 @@
 {
     "esnext": true,
-    "excludeFiles": ["node_modules/**"],
 
     "disallowDanglingUnderscores": true,
     "disallowEmptyBlocks": true,
@@ -38,6 +37,9 @@
     "requireCamelCaseOrUpperCaseIdentifiers": true,
     "requireCapitalizedConstructors": true,
     "requireCommaBeforeLineBreak": true,
+    "requireCurlyBraces": [
+        "if", "else", "for", "while", "do", "try", "catch"
+    ],
     "requireDollarBeforejQueryAssignment": true,
     "requireDotNotation": "except_snake_case",
     "requireLineBreakAfterVariableAssignment": true,

@@ -1,0 +1,6 @@
+{
+    "MD003": { "style": "atx" },
+    "MD004": { "style": "dash" },
+    "MD029": { "style": "ordered" },
+    "MD035": { "style": "---" }
+}
