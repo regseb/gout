@@ -18,7 +18,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
     const CHANNELS = {
         "unknown":   "Inconnue",
         "canal_plus_84_20": "Canal+",
-        "2":         "+Sport", // 404.
+        "150708_csport_2":  "Canal+ Sport",
         "3":         "Foot+", // 404.
         "tf1":       "TF1",
         "france2":   "France 2",
