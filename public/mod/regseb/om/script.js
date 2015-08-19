@@ -33,7 +33,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
         "15":        "TMC", // 404.
         "nt1":       "NT1",
         "w9":        "W9",
-        "18":        "Bein Sport 1", // 404.
+        "beinsport-1":        "Bein Sport 1",
         "bein_sport_1_canal_plus_84_55": "Bein Sport 1 / Canal+",
         "20":        "Bein Sport 2", // 404.
         "21":        "Bein Sport Max",
