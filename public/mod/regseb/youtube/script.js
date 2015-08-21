@@ -15,7 +15,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
 
             var users = Array.isArray(args.user) ? args.user : [args.user];
             var promises = [];
-            for (var user of users)
+            for (var user of users) {
                 promises.push(
                     $.getJSON("https://www.googleapis.com/youtube/v3/channels" +
                               "?part=id&key=" + args.key + "&forUsername=" +
@@ -23,6 +23,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
                         return data.items[0].id;
                     })
                 );
+            }
 
             Promise.all(promises).then(function (users) {
                 gates[id] = {
@@ -62,8 +63,9 @@ define(["jquery", "scronpt"], function ($, Cron) {
         var $root = $("#" + id);
         args.users.forEach(function (user) {
             extract(user, args.size, args.key).then(function (items) {
-                for (var item of items)
+                for (var item of items) {
                     display($root, item, args.size);
+                }
             });
         });
     }; // update()
