@@ -17,7 +17,7 @@ avec les propriétés suivantes :
   prédéfinis) ;
 - `"cron"` : la notation cron indiquant la fréquence de mise à jour des
   nouveaux courriels ;
-- `"client_id"` : votre
+- `"id"` : votre
   [identifiant client](https://developers.google.com/console/help/new/#generatingoauth2)
   pour demander un connexion OAuth.
 
@@ -30,6 +30,6 @@ Cet exemple actualise la liste des courriels reçus toutes les heures.
 ```JSON
 {
     "cron": "0 * * * *"
-    "key": "123456789-a1z2e3r4... (une clé de ce style)",
+    "id": "123456789-a1z2e3r4... (une clé de ce style)",
 }
 ```
