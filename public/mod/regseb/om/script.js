@@ -5,36 +5,38 @@ define(["jquery", "scronpt"], function ($, Cron) {
 
     const IMG_DIR = "mod/regseb/om/img/";
     const TOURNAMENTS = {
-        "unknown": "Inconnue",
-        "amical":  "Amical",
-        "cdf":     "Coupe de France",
-        "cdl":     "Coupe de la Ligue",
-        "ligue_1": "Ligue 1",
-        "tdc":     "Trophée des Champions",
-        "ucl":     "Ligue des Champions",
-        "uel":     "Ligue Europa"
+        "unknown":           "Inconnue",
+        "amical":            "Amical",
+        "cdf":               "Coupe de France",
+        "cdl":               "Coupe de la Ligue",
+        "ligue_1":           "Ligue 1",
+        "tdc":               "Trophée des Champions",
+        "ucl":               "Ligue des Champions",
+        "uel":               "Ligue Europa",
+        "150623_rld_picto2": "Trophée Robert Louis-Dreyfus"
     };
     const CHANNELS = {
         "unknown":   "Inconnue",
         "canal_plus_84_20": "Canal+",
         "150708_csport_2":  "Canal+ Sport",
-        "3":         "Foot+", // 404.
         "tf1":       "TF1",
         "france2":   "France 2",
         "france3":   "France 3",
         "france4":   "France 4",
         "france5":   "France 5",
+        "nt1":       "NT1",
+        "w9":        "W9",
+        "eurosport": "Eurosport",
+        "beinsport1-transparent":        "Bein Sport 1",
+        "bein_sport_1_canal_plus_84_55": "Bein Sport 1 / Canal+",
+        "logo-omnet-omtv-min_1": "OMtv",
+        "3":         "Foot+", // 404.
         "9":         "M6", // 404.
         "10":        "D8", // 404.
-        "eurosport": "Eurosport",
         "12":        "Orange sport", // 404.
         "13":        "CFOOT", // 404.
         "14":        "Sport +", // 404.
         "15":        "TMC", // 404.
-        "nt1":       "NT1",
-        "w9":        "W9",
-        "beinsport-1":        "Bein Sport 1",
-        "bein_sport_1_canal_plus_84_55": "Bein Sport 1 / Canal+",
         "20":        "Bein Sport 2", // 404.
         "21":        "Bein Sport Max",
         "22":        "Bein Sport 2 / Max", // 404.
