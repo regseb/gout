@@ -1,0 +1,35 @@
+.regseb-dailymotion {
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+}
+.regseb-dailymotion > ul {
+    list-style-type: none;
+    margin: 0.7em;
+    padding-left: 0;
+}
+.regseb-dailymotion > ul > li > a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.regseb-dailymotion > ul > li > span {
+    background-color: black;
+    color: white;
+    margin-right: 0.7em;
+    margin-top: 0.7em;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0.7em;
+    position: absolute;
+    text-align: justify;
+    transition: z-index 0s linear 0s, opacity 0s linear 0s;
+    visibility: hidden;
+}
+.regseb-dailymotion > ul > li:hover > span {
+    opacity: 1;
+    transition: z-index 1s linear, opacity 0.5s linear 1s;
+    visibility: visible;
+    z-index: 1;
+}
