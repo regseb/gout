@@ -28,6 +28,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
         "w9":        "W9",
         "eurosport": "Eurosport",
         "beinsport1-transparent":        "Bein Sport 1",
+        "150916_bein2_ok_0":             "Bein Sport 2",
         "bein_sport_1_canal_plus_84_55": "Bein Sport 1 / Canal+",
         "logo-omnet-omtv-min_1": "OMtv",
         "3":         "Foot+", // 404.
