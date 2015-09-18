@@ -84,6 +84,6 @@
 
     "regseb/horoscope/lion": {
         "module": "regseb/horoscope",
-        "coord": { "x": 80, "y": 30, "w": 28, "h": 3 }
+        "coord": { "x": 80, "y": 30, "w": 28, "h": 4 }
     }
 }

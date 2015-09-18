@@ -4,7 +4,7 @@ Ce module donne l'horoscope du jour pour un signe du zodiaque.
 
 ## Configuration
 
-Les dimensions conseillées sont **28x3**.
+Les dimensions conseillées sont **28x4**.
 
 Le répertoire de la passerelle doit avoir un fichier ***config.json***
 contenant un objet [JSON](http://www.json.org "JavaScript Object Notation")

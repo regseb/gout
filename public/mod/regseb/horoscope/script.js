@@ -60,8 +60,9 @@ define(["jquery", "scronpt"], function ($, Cron) {
         var url = "http://www.elle.fr/Astro/Horoscope/Quotidien";
         return $.get(url).then(function (data) {
             var text = "(Signe non-trouvé)";
-            $(".horoscope-hub .text", data).each(function () {
-                if (-1 !== $("a.title", this).attr("href").indexOf(sign)) {
+            $(".signes .right", data).each(function () {
+                console.log(this);
+                if (-1 !== $("a", this).attr("href").indexOf(sign)) {
                     text = $("p", this).text();
                     return false;
                 }
