@@ -1,0 +1,11 @@
+{
+    "rules": {
+        "valid-jsdoc": [2, {
+            "prefer": {
+                "returns": "return",
+                "class":   "constructor"
+            },
+            "requireReturn": false
+        }]
+    }
+}

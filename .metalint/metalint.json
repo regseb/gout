@@ -4,10 +4,10 @@
     "checkers": [
         {
             "patterns": ["**/*.js", "!**/*.min.js"],
-            "linters": ["jscs", "jshint"]
+            "linters": ["jscs", "jshint", "eslint"]
         }, {
             "patterns": "**/*.css",
-            "linters": { "csslint": null }
+            "linters": "csslint"
         }, {
             "patterns": "**/*.md",
             "linters": "markdownlint"
