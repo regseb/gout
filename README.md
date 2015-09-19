@@ -6,18 +6,18 @@
 
 ## Description
 
-Gout est une **application Web** utilisant [io.js](https://iojs.org/fr/) (ou
-[Node.js](http://nodejs.org)). Elle récupère des informations sur Internet
-(flux RSS, résultats d'API, parsing de page Web) pour les afficher sur une
-seule page. Le paramètrage des données récupérées se fait avec des fichiers
+Gout est une **application Web** utilisant [Node.js](http://nodejs.org)). Elle
+récupère des informations sur Internet (flux RSS, résultats d'API, parsing de
+page Web) pour les afficher sur une seule page. Le paramètrage des données
+récupérées se fait avec des fichiers
 [JSON](http://www.json.org/json-fr.html "JavaScript Object Notation"). Il est
 aussi possible de développer des modules pour agréger de nouveaux sites
 Internet.
 
 ## Installation
 
-Commencer par installer **io.js** (ou Node.js). Puis déployer Gout dans le
-répertoire de votre choix en exécutant les commandes suivantes dans la console :
+Commencer par installer **Node.js**. Puis déployer Gout dans le répertoire de
+votre choix en exécutant les commandes suivantes dans la console :
 
     wget https://regseb.github.io/gout/gout.tar.gz
     tar zvf gout.tar.gz
