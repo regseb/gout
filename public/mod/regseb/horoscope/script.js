@@ -61,7 +61,6 @@ define(["jquery", "scronpt"], function ($, Cron) {
         return $.get(url).then(function (data) {
             var text = "(Signe non-trouvé)";
             $(".signes .right", data).each(function () {
-                console.log(this);
                 if (-1 !== $("a", this).attr("href").indexOf(sign)) {
                     text = $("p", this).text();
                     return false;
