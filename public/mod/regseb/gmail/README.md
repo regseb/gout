@@ -29,7 +29,7 @@ Cet exemple actualise la liste des courriels reçus toutes les heures.
 
 ```JSON
 {
-    "cron": "0 * * * *"
+    "cron": "0 * * * *",
     "id": "123456789-a1z2e3r4... (une clé de ce style)",
 }
 ```
