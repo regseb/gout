@@ -1,4 +1,4 @@
-/* global document, Promise, define */
+/* global document, define */
 
 define(["jquery", "scronpt"], function ($, Cron) {
     "use strict";
@@ -55,12 +55,11 @@ define(["jquery", "scronpt"], function ($, Cron) {
         });
     }; // update()
 
-    var extract = function (user, size, key) {
-        var url = "https://api.dailymotion.com/user/" + user + "/videos"
-                + "?fields=title,description,url,id,created_time"
+    var extract = function (user, size) {
+        var url = "https://api.dailymotion.com/user/" + user + "/videos" +
+                  "?fields=title,description,url,id,created_time" +
                   "&limit=" + size;
         return $.getJSON(url).then(function (data) {
-            console.log(data);
             var items = [];
             for (var item of data.list) {
                 items.push({
@@ -68,7 +67,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
                     "desc":  item.description,
                     "link":  item.url,
                     "guid":  item.id,
-                    "date":  item.created_time
+                    "date":  item["created_time"]
                 });
             }
             return items;
@@ -86,7 +85,6 @@ define(["jquery", "scronpt"], function ($, Cron) {
                     pos = i;
                 }
             });
-            console.log(pos);
             if (pos !== size - 1) {
                 // Supprimer le plus ancien évènement (si la liste est pleine).
                 $("> ul > li:eq(" + (size - 1) + ")", $root).remove();

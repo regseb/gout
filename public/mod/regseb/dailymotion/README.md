@@ -24,8 +24,8 @@ avec les propriétés suivantes :
 
 ### /config.json
 
-Cet exemple affiche les dernières vidéos des utilisateurs *Bloqués*,
-*Les Guignols de l'Info* (avec une mise à jour à 21h).
+Cet exemple affiche les dernières vidéos des utilisateurs *Bloqués* et *Les
+Guignols de l'Info* (avec une mise à jour à 21h).
 
 ```JSON
 {
