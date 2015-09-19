@@ -1,0 +1,16 @@
+.regseb-jenkins {
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+}
+.regseb-jenkins ul {
+    list-style-type: none;
+    margin: 0.7em;
+    padding-left: 0;
+}
+.regseb-jenkins a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
