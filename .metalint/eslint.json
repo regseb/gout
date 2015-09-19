@@ -1,4 +1,8 @@
 {
+    "ecmaFeatures": {
+        "blockBindings": true,
+        "forOf": true
+    },
     "rules": {
         "valid-jsdoc": [2, {
             "prefer": {
