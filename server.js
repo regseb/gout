@@ -1,4 +1,4 @@
-/* global require, __dirname, console */
+/* global require, __dirname, process */
 
 var CONFIG = {
     "port": 3000
@@ -14,18 +14,18 @@ var app = express();
 app.use("/proxy", function (req, res) {
     "use strict";
 
-    var client;
+    var protocol;
     var presize;
     if (/^\/https/.test(req.url)) {
-        client = https;
+        protocol = https;
         presize = 7;
     } else {
-        client = http;
+        protocol = http;
         presize = 6;
     }
 
     // Garder l'adresse du serveur pour du reverse proxy. Puis supprimer
-    // l'adresse pour pouvoir tranmettre les entêtes.
+    // l'adresse pour pouvoir transmettre les entêtes.
     var host = req.headers.host;
     delete req.headers.host;
     var options = {
@@ -35,7 +35,7 @@ app.use("/proxy", function (req, res) {
         "headers": req.headers
     };
 
-    client.request(options, function (proxy) {
+    var client = protocol.request(options, function (proxy) {
         // Faire du reverse proxy dans le cas d'une redirection.
         if (300 < proxy.statusCode && 400 >proxy.statusCode &&
                 proxy.headers.location) {
@@ -47,10 +47,13 @@ app.use("/proxy", function (req, res) {
         res.writeHead(proxy.statusCode, proxy.headers);
         proxy.pipe(res);
     }).on("error", function (error) {
-        console.log(error);
+        process.stdout.write(error);
         res.writeHead(500, error.message);
         res.end();
-    }).end();
+    });
+
+    // Rediriger le flux de la requête reçue vers la requête créée.
+    req.pipe(client);
 });
 
 // Retourner les bibliothèque JavaScript.
@@ -74,4 +77,4 @@ app.use("/lib", function (req, res) {
 app.use(express.static(__dirname + "/public"));
 
 app.listen(CONFIG.port);
-console.log("Listening on port " + CONFIG.port + "...");
+process.stdout.write("Listening on port " + CONFIG.port + "...");
