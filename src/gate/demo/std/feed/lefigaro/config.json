@@ -1,0 +1,5 @@
+{
+    "urls":  ["http://feeds.lefigaro.fr/c/32266/f/438191/index.rss"],
+    "color": "#2196f3",
+    "cron":  "*/3 * * * *"
+}

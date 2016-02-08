@@ -1,0 +1,46 @@
+.regseb-googlecalendar {
+    background-image: url("img/icon.svg");
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+}
+.regseb-googlecalendar p {
+    margin: 0.7em;
+}
+.regseb-googlecalendar button {
+    background-color: black;
+    border: medium none;
+    border-radius: 0.25em;
+    box-sizing: content-box;
+    color: white;
+    cursor: pointer;
+    padding: 0.7em;
+    font-size: 10px;
+}
+.regseb-googlecalendar p a {
+    display: none;
+}
+.regseb-googlecalendar p a:visited {
+    color: white;
+}
+.regseb-googlecalendar ul {
+    color: white;
+    list-style-type: none;
+    margin: 0.7em;
+    padding-left: 0;
+}
+.regseb-googlecalendar li {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.regseb-googlecalendar time {
+    display: inline-block;
+    width: 5.6em;
+}
+.regseb-googlecalendar span {
+    display: inline-block;
+    text-align: center;
+    width: 4.9em;
+}

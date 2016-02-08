@@ -1,0 +1,5 @@
+{
+    "urls":  ["http://www.velaux.fr/rss20.xml"],
+    "color": "#ff5722",
+    "cron":  "0 */6 * * *"
+}

@@ -1,0 +1,6 @@
+{
+    "users": ["NormanFaitDesVideos", "MonsieurDream", "GoldenMoustacheVideo"],
+    "color": "#f44336",
+    "key":   "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg",
+    "cron":  "0 0 * * *"
+}

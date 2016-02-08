@@ -1,0 +1,5 @@
+{
+    "urls":  ["http://www.developpez.com/index/rss"],
+    "color": "#607d8b",
+    "cron":  "*/3 * * * *"
+}

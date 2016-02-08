@@ -1,0 +1,39 @@
+.regseb-betaseries {
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+}
+.regseb-betaseries p {
+    margin: 0.7em;
+}
+.regseb-betaseries button {
+    background-color: black;
+    border: medium none;
+    border-radius: 0.25em;
+    box-sizing: content-box;
+    color: white;
+    cursor: pointer;
+    padding: 0.7em;
+    font-size: 10px;
+}
+.regseb-betaseries p a {
+    display: none;
+}
+.regseb-betaseries p a:visited {
+    color: white;
+}
+.regseb-betaseries ul {
+    display: none;
+    list-style-type: none;
+    margin: 0.7em;
+    padding-left: 0;
+}
+.regseb-betaseries img {
+    cursor: pointer;
+    margin-right: 0.3em;
+}
+.regseb-betaseries ul a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

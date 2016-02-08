@@ -12,5 +12,15 @@
 
     "esnext": true,
 
+    "camelcase": false,
+    "immed": false,
+    "indent": false,
+    "maxlen": false,
+    "newcap": false,
+    "noempty": false,
+    "quotmark": false,
+    "laxbreak": true,
+    "laxcomma": true,
+    "multistr": true,
     "sub": true
 }

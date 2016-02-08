@@ -1,6 +1,6 @@
 {
     "name": "gout",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "description": "Agrégateur d'Internet (flux RSS et tout le reste).",
     "keyword": ["gout", "javascript", "js", "rss", "scraper"],
     "homepage": "https://regseb.github.io/gout/",
@@ -14,13 +14,17 @@
         "url":  "http://github.com/regseb/gout.git"
     },
     "scripts": {
+        "start": "node nodejs/server.js",
         "lint": "metalint"
     },
     "dependencies": {
-        "express":   "^4.13.3",
-        "requirejs": "^2.1.20",
-        "jquery":    "^2.1.4",
+        "express":   "^4.13.4",
+        "requirejs": "^2.1.22",
+        "jquery":    "^2.2.0",
         "wiloquery": "^0.4.2",
         "scronpt":   "^0.3.0"
+    },
+    "devDependencies": {
+        "metalint": "^0.3.0"
     }
 }

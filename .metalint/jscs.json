@@ -9,7 +9,7 @@
     ],
     "disallowKeywordsInComments": true,
     "disallowKeywordsOnNewLine": ["else", "catch"],
-    "disallowKeywords": ["with"],
+    "disallowKeywords": ["var", "with"],
     "disallowMixedSpacesAndTabs": true,
     "disallowMultipleLineStrings": true,
     "disallowMultipleVarDecl": true,
@@ -45,14 +45,15 @@
     "requireLineBreakAfterVariableAssignment": true,
     "requireLineFeedAtFileEnd": true,
     "requireOperatorBeforeLineBreak": [
-        "?", "=", "+", "-", "/", "*", "==", "===", "!=", "!==", ">", ">=",
-        "<", "<="
+        "?", "=", "+", "-", "/", "*", "==", "===", "!=", "!==", ">", ">=", "<",
+        "<="
     ],
     "requirePaddingNewLinesAfterUseStrict": true,
     "requireQuotedKeysInObjects": true,
     "requireSemicolons": true,
     "requireSpaceAfterBinaryOperators": [
-        "=", ",", "+", "-", "/", "*", "==", "===", "!=", "!=="
+        "=", ",", "+", "-", "/", "*", "==", "===", "!=", "!==", ">", ">=", "<",
+        "<="
     ],
     "requireSpaceAfterKeywords": [
         "do", "for", "if", "else", "switch", "case", "try", "catch", "void",
@@ -60,7 +61,7 @@
     ],
     "requireSpaceAfterLineComment": true,
     "requireSpaceBeforeBinaryOperators": [
-        "=", "+", "-", "/", "*", "==", "===", "!=", "!=="
+        "=", "+", "-", "/", "*", "==", "===", "!=", "!==", ">", ">=", "<", "<="
     ],
     "requireSpaceBeforeBlockStatements": 1,
     "requireSpaceBeforeKeywords": ["else", "while", "catch"],

@@ -1,0 +1,5 @@
+{
+    "urls":  ["http://com.clubic.feedsportal.com/c/33464/f/581979/index.rss"],
+    "color": "#f44336",
+    "cron":  "*/3 * * * *"
+}

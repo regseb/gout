@@ -1,0 +1,5 @@
+{
+    "urls":  ["http://www.lequipe.fr/rss/actu_rss.xml"],
+    "color": "#f44336",
+    "cron":  "*/3 * * * *"
+}

@@ -1,0 +1,46 @@
+.std-weather {
+    color: white;
+}
+.std-weather h1 {
+    margin: 0.7em;
+}
+
+.std-weather ul {
+    margin: 0.7em;
+    padding-left: 0;
+}
+.std-weather li {
+    overflow: auto;
+}
+.std-weather li p {
+    float: left;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.std-weather li strong {
+    display: block;
+    text-transform: capitalize;
+    width: 60px;
+}
+.std-weather li span {
+    display: block;
+}
+.std-weather .temp {
+    background-image: url("img/temp.svg");
+    background-position: 0 center;
+    background-repeat: no-repeat;
+    padding-left: 10px;
+}
+.std-weather .wind:before {
+    background-image: url("img/wind.svg");
+    background-position: 0 center;
+    background-repeat: no-repeat;
+    content: "";
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    z-index: -1;
+    transform: rotate(-30deg);
+    position: absolute;
+}

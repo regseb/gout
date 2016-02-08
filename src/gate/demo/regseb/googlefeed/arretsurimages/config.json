@@ -1,0 +1,5 @@
+{
+    "urls":  ["http://www.arretsurimages.net/rss/vite-dit.rss"],
+    "color": "#9e9e9e",
+    "cron":  "*/3 * * * *"
+}

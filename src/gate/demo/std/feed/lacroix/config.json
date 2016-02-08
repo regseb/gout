@@ -1,0 +1,5 @@
+{
+    "urls":  ["http://www.la-croix.com/layout/set/rss/content/view/rss/8598"],
+    "color": "#2196f3",
+    "cron":  "*/3 * * * *"
+}

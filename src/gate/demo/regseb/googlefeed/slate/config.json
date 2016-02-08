@@ -1,0 +1,5 @@
+{
+    "urls":  ["http://www.slate.fr/rss.xml"],
+    "color": "#673ab7",
+    "cron":  "*/3 * * * *"
+}

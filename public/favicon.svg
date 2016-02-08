@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
-  <rect width="100%" height="100%" />
-  <path d="m 8,30 0,-12 16,0 0,12" fill="none"  stroke-width="4" stroke="white" stroke-linejoin="round" />
-  <path d="m 7,11 9,-8 9,8 z"      fill="white" stroke-width="2" stroke="white" stroke-linejoin="round" />
-  <rect x="14" y="12" width="4" height="14" fill="white" />
-</svg>
