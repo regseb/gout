@@ -47,7 +47,7 @@ app.use("/proxy", function (req, res) {
         res.writeHead(proxy.statusCode, proxy.headers);
         proxy.pipe(res);
     }).on("error", function (error) {
-        process.stdout.write(error);
+        process.stdout.write(error.message);
         res.writeHead(500, error.message);
         res.end();
     });
