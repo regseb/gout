@@ -80,7 +80,8 @@ define(["jquery", "scronpt"], function ($, Cron) {
                     "score": parseInt($(".guest span", $last).text(), 10)
                 }
             };
-            const $next = $last.next(":not(.om-row-month-title)", data);
+            const $next = $last.nextAll(":not(.om-row-month-title):first",
+                                        data);
             let next = null;
             if (0 !== $next.length) {
                 // Récupérer les informations de la date.
