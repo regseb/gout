@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2985"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   width="22"
+   height="10"
+   sodipodi:docname="eurosport_2.svg">
+  <metadata
+     id="metadata2991">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs2989" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="704"
+     id="namedview2987"
+     showgrid="false"
+     inkscape:zoom="7.3697197"
+     inkscape:cx="30.018575"
+     inkscape:cy="-4.2282274"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2985"
+     units="px"
+     showborder="true" />
+  <path
+     style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+     d="m 13.5,1 0,8 8,0 0,-8 -8,0 z m 3.960497,1.2539062 c 0.628719,0 1.126128,0.1503943 1.49101,0.4492188 0.370495,0.2988245 0.555077,0.7005055 0.555077,1.2050781 0,0.289027 -0.07284,0.5500157 -0.218789,0.7851563 C 19.147455,4.9285 18.967853,5.1274033 18.748924,5.2890625 18.529995,5.4458229 18.304479,5.5933034 18.074323,5.7304688 17.844167,5.8627354 17.623166,6.0102158 17.409851,6.171875 17.196536,6.3286354 17.043856,6.4896921 16.95404,6.65625 l 2.526208,0 0,0.9179688 -4.057736,0 C 15.45058,7.09414 15.559836,6.7147764 15.750696,6.4355469 15.947172,6.1514186 16.298907,5.8554971 16.804128,5.546875 17.460915,5.1451764 17.878482,4.8492549 18.058117,4.6582031 18.23775,4.4622526 18.327551,4.2187145 18.327551,3.9296875 c 0,-0.2596344 -0.07533,-0.4624121 -0.226893,-0.609375 -0.145952,-0.1518617 -0.352014,-0.2285156 -0.615852,-0.2285156 -0.26945,0 -0.478466,0.080528 -0.630033,0.2421875 -0.145952,0.1616592 -0.218789,0.3887073 -0.218789,0.6777344 l 0,0.1679687 -1.128387,0 c -0.0056,-0.053886 -0.01013,-0.1150111 -0.01013,-0.1835937 0,-0.5486615 0.172133,-0.9755736 0.51456,-1.2792969 0.348041,-0.3086221 0.830977,-0.4628907 1.448469,-0.4628907 z"
+     id="path3000"
+     inkscape:connector-curvature="0" />
+  <path
+     id="XMLID_193_-2"
+     d="M 7.3947563,8.78186 4.7804946,7.10525 0.7585534,8.78186 3.1429899,6.07134 0.5,4.39473 l 4.1081256,0 2.7866307,-3.18557 0,3.18557 3.9644847,0 -3.9644847,1.64866 z"
+     style="fill:#ffffff;fill-opacity:1"
+     inkscape:connector-curvature="0" />
+  <path
+     id="XMLID_192_-4"
+     d="m 12.335998,2.774 c 0.143641,0 0.258554,-0.11177 0.258554,-0.25149 l 0,-1.06185 c 0,-0.13972 -0.114913,-0.2515 -0.258554,-0.2515 l -4.2804942,0 0,1.56484 4.2804942,0 z"
+     style="fill:#ffffff;fill-opacity:1"
+     inkscape:connector-curvature="0" />
+  <path
+     id="XMLID_191_-6"
+     d="m 12.335998,8.78186 c 0.143641,0 0.258554,-0.11178 0.258554,-0.25149 l 0,-1.06186 c 0,-0.13971 -0.114913,-0.25149 -0.258554,-0.25149 l -4.2804942,0 0,1.56484 4.2804942,0 z"
+     style="fill:#ffffff;fill-opacity:1"
+     inkscape:connector-curvature="0" />
+</svg>

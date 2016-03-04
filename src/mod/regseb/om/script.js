@@ -58,7 +58,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
             case "eurosport_2":                 return "eurosport_2";
             case "logo-w9-min":                 return "w9";
             case "canal-plus-sport-beinsport1": return "canalplus-sport-bein1";
-            case "beinsport1-transparent.png":  return "bein1";
+            case "beinsport1-transparent":      return "bein1";
             default:                            return "unknown";
         }
     }; // reckonChannel()
