@@ -8,7 +8,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
     const extract = function (city) {
         const url = "http://www.meltdown.bar/" + city + "/planning";
         return $.get(url).then(function (data) {
-            const day = new Date().getDay() + 6 % 7;
+            const day = (new Date().getDay() + 6) % 7;
             const $data = $("#event-detail_0" + day, data);
             return $(".event-detail", $data).map(function () {
                 return {
