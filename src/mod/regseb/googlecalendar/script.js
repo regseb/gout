@@ -7,8 +7,13 @@ define(["jquery", "scronpt"], function ($, Cron) {
     const CALENDAR_API_URL = "https://www.googleapis.com/calendar/v3/";
     const REDIRECT_URI = window.location.origin +
                          "/mod/regseb/googlecalendar/oauth2.html";
-    const DF = new Intl.DateTimeFormat("fr-FR", {
+    // dd/MM/yyyy.
+    const DF_SHORT = new Intl.DateTimeFormat("fr-FR", {
         "day": "2-digit", "month": "2-digit", "year": "numeric" });
+    // EEEEE dd MMMMM yyyy.
+    const DF_LONG = new Intl.DateTimeFormat("fr-FR", {
+        "weekday": "long", "day": "2-digit", "month": "long",
+        "year": "numeric" });
     const TF = new Intl.DateTimeFormat("fr-FR", {
         "hour": "2-digit", "minute": "2-digit" });
 
@@ -68,20 +73,21 @@ define(["jquery", "scronpt"], function ($, Cron) {
         const tomorrow = new Date(today);
         tomorrow.setDate(tomorrow.getDate() + 1);
 
-        let date;
+        const date = {};
         if (null === data.date) {
-            date = "";
+            date.short = "";
         } else if (today.getDate() === data.date.getDate() &&
                 today.getMonth() === data.date.getMonth() &&
                 today.getFullYear() === data.date.getFullYear()) {
-            date = "Aujourd'hui";
+            date.short = "Aujourd'hui";
         } else if (tomorrow.getDate() === data.date.getDate() &&
                 tomorrow.getMonth() === data.date.getMonth() &&
                 tomorrow.getFullYear() === data.date.getFullYear()) {
-            date = "Demain";
+            date.short = "Demain";
         } else {
-            date = DF.format(data.date);
+            date.short = DF_SHORT.format(data.date);
         }
+        date.long = DF_LONG.format(data.date);
 
         let time;
         if (null === data.time) {
@@ -91,7 +97,8 @@ define(["jquery", "scronpt"], function ($, Cron) {
         }
 
         $("ul", $root).append(
-            $("<li>").append($("<time>").text(date))
+            $("<li>").append($("<time>").text(date.short)
+                                        .attr("title", date.long))
                      .append($("<span>").text(time))
                      .append($("<a>").attr({ "href":   data.link,
                                              "target": "_blank",
