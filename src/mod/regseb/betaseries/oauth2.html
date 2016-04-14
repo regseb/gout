@@ -14,8 +14,8 @@
         // Envoyer les paramètres au module.
         var roots = window.opener.document.getElementsByClassName(
                                                            "regseb-betaseries");
-        for (var root of roots) {
-            root.dispatchEvent(new CustomEvent("access", { "detail": query }));
+        for (var i = 0; i < roots.length; i++) {
+            roots[i].dispatchEvent(new CustomEvent("access", { "detail": query }));
         }
 
         window.close();
