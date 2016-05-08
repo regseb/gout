@@ -1,10 +1,11 @@
 {
     "patterns": ["**", "!.git/**", "!node_modules/**", "!**/lib/**"],
     "hidden": true,
+    "verbose": 2,
     "checkers": [
         {
             "patterns": ["**/*.js", "!**/*.min.js"],
-            "linters": ["jscs", "jshint"]
+            "linters": ["jscs", "eslint"]
         }, {
             "patterns": "**/*.html",
             "linters": "htmlhint"

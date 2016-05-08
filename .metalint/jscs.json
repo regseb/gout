@@ -1,13 +1,11 @@
 {
-    "esnext": true,
-
     "disallowDanglingUnderscores": true,
     "disallowEmptyBlocks": true,
     "disallowFunctionDeclarations": true,
     "disallowImplicitTypeConversion": [
         "numeric", "boolean", "binary", "string"
     ],
-    "disallowKeywordsInComments": true,
+    "disallowKeywordsInComments": false,
     "disallowKeywordsOnNewLine": ["else", "catch"],
     "disallowKeywords": ["var", "with"],
     "disallowMixedSpacesAndTabs": true,
@@ -41,19 +39,18 @@
         "if", "else", "for", "while", "do", "try", "catch"
     ],
     "requireDollarBeforejQueryAssignment": true,
-    "requireDotNotation": "except_snake_case",
+    "requireDotNotation": { "allExcept": ["snake_case"] },
     "requireLineBreakAfterVariableAssignment": true,
     "requireLineFeedAtFileEnd": true,
     "requireOperatorBeforeLineBreak": [
-        "?", "=", "+", "-", "/", "*", "==", "===", "!=", "!==", ">", ">=", "<",
-        "<="
+        "?", "=", "+", "-", "/", "*", "==", "===", "!=", "!==", ">", ">=",
+        "<", "<="
     ],
     "requirePaddingNewLinesAfterUseStrict": true,
     "requireQuotedKeysInObjects": true,
-    "requireSemicolons": true,
     "requireSpaceAfterBinaryOperators": [
-        "=", ",", "+", "-", "/", "*", "==", "===", "!=", "!==", ">", ">=", "<",
-        "<="
+        "=", ",", "+", "-", "/", "*", "==", "===", "!=", "!==", ">", ">=",
+        "<", "<="
     ],
     "requireSpaceAfterKeywords": [
         "do", "for", "if", "else", "switch", "case", "try", "catch", "void",
@@ -61,7 +58,8 @@
     ],
     "requireSpaceAfterLineComment": true,
     "requireSpaceBeforeBinaryOperators": [
-        "=", "+", "-", "/", "*", "==", "===", "!=", "!==", ">", ">=", "<", "<="
+        "=", "+", "-", "/", "*", "==", "===", "!=", "!==", ">", ">=", "<",
+        "<="
     ],
     "requireSpaceBeforeBlockStatements": 1,
     "requireSpaceBeforeKeywords": ["else", "while", "catch"],
@@ -81,7 +79,7 @@
     },
     "requireSpacesInsideObjectBrackets": "all",
     "requireYodaConditions": true,
-    "validateIndentation": 4,
+    "requireUseStrict": false,
     "validateLineBreaks": "LF",
     "validateParameterSeparator": ", ",
     "validateQuoteMarks": "\""
