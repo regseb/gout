@@ -26,9 +26,13 @@ define(["jquery", "scronpt"], function ($, Cron) {
                 });
             } else if ($("feed", data).length) { // Atom 1.0.
                 $("entry:lt(" + size + ")", data).each(function () {
+                    let desc = $("summary", this).text().trim();
+                    if (0 === desc.length) {
+                        desc = $("content", this).text().trim();
+                    }
                     items.push({
                         "title": $("title", this).text(),
-                        "desc":  $("summary", this).text().trim(),
+                        "desc":  desc,
                         "link":  $("link", this).attr("href"),
                         "guid":  $("id", this).text(),
                         "date":  new Date($("updated", this).text()).getTime()
