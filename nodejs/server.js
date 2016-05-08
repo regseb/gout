@@ -47,7 +47,7 @@ app.use("/proxy", function (req, res) {
         res.writeHead(proxy.statusCode, proxy.headers);
         proxy.pipe(res);
     }).on("error", function (error) {
-        process.stdout.write(error.message);
+        process.stdout.write(error);
         res.writeHead(500, error.message);
         res.end();
     });
@@ -62,15 +62,18 @@ app.use("/lib", function (req, res) {
                    req.path.substr(1, req.path.length - 4);
     fs.readFile(module + "/package.json", function (err, data) {
         if (err) {
-            throw err;
+            res.sendStatus(500);
+        } else {
+            const json = JSON.parse(data);
+            fs.readFile(module + "/" + json.main, function (err, data) {
+                if (err) {
+                    res.sendStatus(500);
+                } else {
+                    res.send(data.toString().replace("#!/usr/bin/env node",
+                                                     ""));
+                }
+            });
         }
-        const json = JSON.parse(data);
-        fs.readFile(module + "/" + json.main, function (err, data) {
-            if (err) {
-                throw err;
-            }
-            res.send(data.toString().replace("#!/usr/bin/env node", ""));
-        });
     });
 });
 
