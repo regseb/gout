@@ -108,7 +108,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
 
             if (1 === Object.keys(gates).length) {
                 document.addEventListener("visibilitychange", function () {
-                    for (const id in gates) {
+                    for (let id in gates) {
                         if (!gates[id].cron.status()) {
                             update(id);
                         }
