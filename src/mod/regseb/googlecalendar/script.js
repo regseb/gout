@@ -52,7 +52,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
         });
         return Promise.all(promises).then(function (items) {
             let prev = null;
-            return [].concat.apply([], items).sort(function (a, b) {
+            return [].concat(...items).sort(function (a, b) {
                 return a.date.getTime() - b.date.getTime();
             }).slice(0, size).map(function (item) {
                 if (null !== prev &&

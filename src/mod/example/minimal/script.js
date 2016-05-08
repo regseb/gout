@@ -6,5 +6,7 @@
 define(function () {
     "use strict";
 
-    return function () {};
+    return function () {
+        // Ne rien faire.
+    };
 });

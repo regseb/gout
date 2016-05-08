@@ -12,14 +12,14 @@ define(["jquery", "scronpt"], function ($, Cron) {
             const items = [];
             for (let job of data.jobs) {
                 if (null === job.lastBuild ||
-                        ("FAILURE" !== job.lastBuild.result
-                         && "ABORTED" !== job.lastBuild.result)) {
+                        "FAILURE" !== job.lastBuild.result
+                        && "ABORTED" !== job.lastBuild.result) {
                     continue;
                 }
 
                 // S'il n'y a aucun patron ou si le nom du job respecte un
                 // patron : ajouter le job à la liste.
-                let match = (0 === patterns.length);
+                let match = 0 === patterns.length;
                 for (let pattern of patterns) {
                     if (pattern.test(job.name)) {
                         match = true;

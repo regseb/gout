@@ -16,6 +16,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
                     text = $("p", this).text();
                     return false;
                 }
+                return true;
             });
             return text;
         });

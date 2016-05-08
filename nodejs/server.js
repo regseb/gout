@@ -7,6 +7,7 @@ const CONFIG = {
 const fs      = require("fs");
 const http    = require("http");
 const https   = require("https");
+const path    = require("path");
 const express = require("express");
 const app = express();
 
@@ -58,8 +59,10 @@ app.use("/proxy", function (req, res) {
 
 // Retourner les bibliothèque JavaScript.
 app.use("/lib", function (req, res) {
-    const module = __dirname + "/lib/" +
-                   req.path.substr(1, req.path.length - 4);
+    "use strict";
+
+    const module = path.join(__dirname, "lib",
+                             req.path.substr(1, req.path.length - 4));
     fs.readFile(module + "/package.json", function (err, data) {
         if (err) {
             res.sendStatus(500);
@@ -78,7 +81,7 @@ app.use("/lib", function (req, res) {
 });
 
 // Créer le serveur web.
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.listen(CONFIG.port);
 process.stdout.write("Listening on port " + CONFIG.port + "...");

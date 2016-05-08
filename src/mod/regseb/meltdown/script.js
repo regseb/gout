@@ -21,7 +21,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
     }; // extract()
 
     const display = function ($root, data) {
-        $("a", $root).text(data.map(event => event.title).join(" / "));
+        $("a", $root).text(data.map((event) => event.title).join(" / "));
         $("span", $root).html(data.map(function (event) {
             return "<strong>" + event.title + "</strong> (" + event.hour +
                    ") : " + event.desc;

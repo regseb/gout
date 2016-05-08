@@ -15,8 +15,8 @@ define(["jquery"], function ($) {
         const seconds = now.getSeconds();
         for (let child of svg.getElementById("second").children) {
             child.setAttribute("transform",
-                               "rotate(" + (seconds * 6) + ", " + cx + ", " +
-                                       cy + ")");
+                               "rotate(" + seconds * 6 + ", " + cx + ", " + cy +
+                               ")");
         }
         const aniSeconds = svg.createElementNS("http://www.w3.org/2000/svg",
                                                "animateTransform");
@@ -31,8 +31,8 @@ define(["jquery"], function ($) {
         const minutes = now.getMinutes() + seconds / 60;
         for (let child of svg.getElementById("minute").children) {
             child.setAttribute("transform",
-                               "rotate(" + (minutes * 6) + ", " + cx + ", " +
-                                       cy + ")");
+                               "rotate(" + minutes * 6 + ", " + cx + ", " + cy +
+                               ")");
         }
         const aniMinutes = svg.createElementNS("http://www.w3.org/2000/svg",
                                                "animateTransform");
@@ -46,8 +46,8 @@ define(["jquery"], function ($) {
         const hours = now.getHours() + minutes / 60;
         for (let child of svg.getElementById("hour").children) {
             child.setAttribute("transform",
-                               "rotate(" + (hours * 30) + ", " + cx + ", " +
-                                       cy + ")");
+                               "rotate(" + hours * 30 + ", " + cx + ", " + cy +
+                               ")");
         }
         const aniHours = svg.createElementNS("http://www.w3.org/2000/svg",
                                              "animateTransform");
