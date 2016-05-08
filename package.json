@@ -19,12 +19,12 @@
     },
     "dependencies": {
         "express":   "^4.13.4",
-        "requirejs": "^2.1.22",
-        "jquery":    "^2.2.1",
+        "requirejs": "^2.2.0",
+        "jquery":    "^2.2.3",
         "wiloquery": "^0.4.2",
         "scronpt":   "^0.3.0"
     },
     "devDependencies": {
-        "metalint": "^0.3.0"
+        "metalint": "^0.5.1"
     }
 }
