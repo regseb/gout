@@ -4,8 +4,17 @@
     "verbose": 2,
     "checkers": [
         {
-            "patterns": ["**/*.js", "!**/*.min.js"],
-            "linters": ["jscs", "eslint"]
+            "patterns": ["src/**/*.js", "nodejs/public/**/*.js"],
+            "linters": {
+                "jscs": "jscs.json",
+                "eslint": ["eslint.json", "eslint_browser.json"]
+            }
+        }, {
+            "patterns": ["nodejs/**/*.js", "!nodejs/public/**"],
+            "linters": {
+                "jscs": "jscs.json",
+                "eslint": ["eslint.json", "eslint_node.json"]
+            }
         }, {
             "patterns": "**/*.html",
             "linters": "htmlhint"

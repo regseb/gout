@@ -1,0 +1,6 @@
+{
+    "rules": {
+        "strict": [2, "function"],
+        "prefer-const": 0
+    }
+}

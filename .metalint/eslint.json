@@ -109,7 +109,7 @@
         "wrap-iife": 0,
         "yoda": [2, "always"],
 
-        "strict": 2,
+        "strict": 0,
 
         "init-declarations": 0,
         "no-catch-shadow": 2,
@@ -152,7 +152,7 @@
         "no-var": 2,
         "object-shorthand": 0,
         "prefer-arrow-callback": 0,
-        "prefer-const": 0,
+        "prefer-const": 2,
         "prefer-reflect": 0,
         "prefer-rest-params": 2,
         "prefer-spread": 2,
