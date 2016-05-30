@@ -31,16 +31,16 @@
     background-repeat: no-repeat;
     padding-left: 10px;
 }
-.std-weather .wind:before {
+.std-weather .wind::before {
     background-image: url("img/wind.svg");
     background-position: 0 center;
     background-repeat: no-repeat;
     content: "";
-    width: 200%;
     height: 200%;
-    top: -50%;
     left: -50%;
-    z-index: -1;
-    transform: rotate(-30deg);
     position: absolute;
+    top: -50%;
+    transform: rotate(-30deg);
+    width: 200%;
+    z-index: -1;
 }

@@ -14,8 +14,8 @@
     box-sizing: content-box;
     color: white;
     cursor: pointer;
-    padding: 0.7em;
     font-size: 10px;
+    padding: 0.7em;
 }
 .regseb-gmail p a {
     display: none;

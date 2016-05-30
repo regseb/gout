@@ -20,7 +20,7 @@
             "linters": "htmlhint"
         }, {
             "patterns": "**/*.css",
-            "linters": "csslint"
+            "linters": "stylelint"
         }, {
             "patterns": "**/*.md",
             "linters": "markdownlint"

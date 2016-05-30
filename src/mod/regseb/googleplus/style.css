@@ -24,7 +24,6 @@
     padding: 0.7em;
     position: absolute;
     text-align: justify;
-    transition: z-index 0s linear 0s, opacity 0s linear 0s;
     visibility: hidden;
 }
 .regseb-googleplus > ul > li:hover > span {

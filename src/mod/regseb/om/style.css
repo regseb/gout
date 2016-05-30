@@ -3,12 +3,6 @@
     background-position: 0.7em center;
     background-repeat: no-repeat;
 }
-.regseb-om p:first-child {
-    margin-top: 0.7em;
-}
-.regseb-om p:last-child {
-    margin-bottom: 0.7em;
-}
 .regseb-om p {
     color: white;
     display: block;
@@ -19,6 +13,12 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 100%;
+}
+.regseb-om p:first-child {
+    margin-top: 0.7em;
+}
+.regseb-om p:last-child {
+    margin-bottom: 0.7em;
 }
 .regseb-om p a {
     color: white;
