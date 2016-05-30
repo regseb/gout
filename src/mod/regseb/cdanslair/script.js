@@ -1,5 +1,3 @@
-/* global document, Promise, Intl, define */
-
 define(["jquery", "scronpt"], function ($, Cron) {
     "use strict";
 

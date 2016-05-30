@@ -1,5 +1,3 @@
-/* global define */
-
 // Encapsuler le code dans une module AMD pour éviter les collisions des noms
 // des variables et pour ne pas créer d'effets de bord.
 define(["jquery"], function ($) {

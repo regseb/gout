@@ -1,5 +1,3 @@
-/* global document, define */
-
 define(["require", "jquery", "scronpt"], function (require, $, Cron) {
     "use strict";
 

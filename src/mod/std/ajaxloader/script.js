@@ -1,5 +1,3 @@
-/* global document, define */
-
 define(["jquery"], function ($) {
     "use strict";
 

@@ -1,5 +1,3 @@
-/* global require, define */
-
 require.config({
     "baseUrl": "lib",
     "paths": {

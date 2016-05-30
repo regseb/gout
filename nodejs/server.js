@@ -1,4 +1,4 @@
-/* global require, __dirname, process */
+"use strict";
 
 const CONFIG = {
     "port": 3000
@@ -13,8 +13,6 @@ const app = express();
 
 // Créer le proxy.
 app.use("/proxy", function (req, res) {
-    "use strict";
-
     let protocol;
     let presize;
     if (/^\/https/.test(req.url)) {
@@ -59,8 +57,6 @@ app.use("/proxy", function (req, res) {
 
 // Retourner les bibliothèque JavaScript.
 app.use("/lib", function (req, res) {
-    "use strict";
-
     const module = path.join(__dirname, "lib",
                              req.path.substr(1, req.path.length - 4));
     fs.readFile(module + "/package.json", function (err, data) {

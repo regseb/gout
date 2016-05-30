@@ -1,5 +1,3 @@
-/* global define */
-
 define(["require", "jquery"], function (require, $) {
     "use strict";
 

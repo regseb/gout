@@ -1,5 +1,3 @@
-/* global window, document, setTimeout, Promise, define */
-
 define(["jquery", "scronpt"], function ($, Cron) {
     "use strict";
 
