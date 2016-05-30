@@ -5,38 +5,59 @@ define(["jquery", "scronpt"], function ($, Cron) {
 
     const gates = {};
 
-    const extract = function (host, patterns, size) {
+    const extract = function (host, filters, size) {
         const url = host + "/api/json?tree=jobs[name,url,displayName," +
-                                               "lastBuild[number,result]]";
+                                               "lastBuild[number,result]," +
+                                               "modules[name,url,displayName," +
+                                                       "lastBuild[number," +
+                                                                 "result]]]";
         return $.get(url).then(function (data) {
             const items = [];
             for (let job of data.jobs) {
-                if (null === job.lastBuild ||
-                        "FAILURE" !== job.lastBuild.result
-                        && "ABORTED" !== job.lastBuild.result) {
+                // S'il y a des filtres et que le nom du job ne correspond à
+                // aucune filtre : ignorer ce job.
+                if (0 !== Object.keys(filters).length &&
+                        !(job.name in filters)) {
                     continue;
                 }
 
-                // S'il n'y a aucun patron ou si le nom du job respecte un
-                // patron : ajouter le job à la liste.
-                let match = 0 === patterns.length;
-                for (let pattern of patterns) {
-                    if (pattern.test(job.name)) {
-                        match = true;
+                if (null === filters[job.name]) {
+                    if (null === job.lastBuild ||
+                            "FAILURE" !== job.lastBuild.result &&
+                            "ABORTED" !== job.lastBuild.result) {
+                        continue;
+                    }
+                    items.push({
+                        "title": job.displayName,
+                        "desc":  job.lastBuild.result,
+                        "link":  job.url,
+                        "guid":  job.lastBuild.number
+                    });
+                    if (size === items.length) {
                         break;
                     }
-                }
-                if (!match) {
-                    continue;
-                }
-                items.push({
-                    "title": job.displayName,
-                    "desc":  job.description,
-                    "link":  job.url,
-                    "guid":  job.lastBuild.number
-                });
-                if (size === items.length) {
-                    break;
+                } else {
+                    for (let module of job.modules) {
+                        if (0 !== filters[job.name].length &&
+                                -1 === filters[job.name].indexOf(module.name)) {
+                            continue;
+                        }
+                        if (null === module.lastBuild ||
+                                "FAILURE" !== module.lastBuild.result &&
+                                "ABORTED" !== module.lastBuild.result) {
+                            continue;
+                        }
+                        items.push({
+                            "title": module.displayName + " (" +
+                                     job.displayName + ")",
+                            "desc":  module.lastBuild.result,
+                            "link":  module.url,
+                            "guid":  module.lastBuild.number
+                        });
+                        if (size === items.length) {
+                            break;
+                        }
+                    }
                 }
             }
             return items;
@@ -65,7 +86,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
         args.cron.start();
 
         const $root = $("#" + id);
-        extract(args.host, args.patterns, args.size).then(function (items) {
+        extract(args.host, args.filters, args.size).then(function (items) {
             if (0 === items.length) {
                 $("ul", $root).hide();
                 $("p", $root).show();
@@ -80,16 +101,6 @@ define(["jquery", "scronpt"], function ($, Cron) {
         });
     }; // update()
 
-    const compile = function (pattern) {
-        // Protéger tous les caractères spéciaux sauf l'astérisque et le point
-        // d'interrogation. Puis remplacer l'astérisque (zéro ou plusieurs
-        // caractères) et le point d'interrogation (un seul caractère) par leur
-        // équivalent d'expression rationnelle.
-        return new RegExp("^" + pattern.replace(/[.+^${}()|[\]\\]/g, "\\$&")
-                                       .replace(/\*/g, ".*")
-                                       .replace(/\?/g, ".") + "$");
-    }; // compile()
-
     const create = function (id, url) {
         $.getJSON(url + "/config.json").then(function (args) {
             const $root = $("#" + id);
@@ -100,10 +111,10 @@ define(["jquery", "scronpt"], function ($, Cron) {
             $("p a", $root).attr("href", args.url);
 
             gates[id] = {
-                "host":     args.url,
-                "patterns": (args.jobs || []).map(compile),
-                "size":     $root.height() / 14 - 1,
-                "cron":     new Cron(args.cron || "0 */4 * * *", update, id)
+                "host":    args.url,
+                "filters": args.jobs,
+                "size":    $root.height() / 14 - 1,
+                "cron":    new Cron(args.cron || "0 */4 * * *", update, id)
             };
 
             if (1 === Object.keys(gates).length) {
