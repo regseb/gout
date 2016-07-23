@@ -38,10 +38,10 @@ define(["require", "jquery"], function (require, $) {
                           .html($("body > template." + clazz).html()));
 
         const promises = (gate.scrapers || []).map(function (scraper) {
-            return new Promise(function (resolve, reject) {
+            return new Promise(function (resolve) {
                 require(["scraper/" + scraper.scraper + "/script"],
-                        function (construct) {
-                    resolve(new construct(scraper.config));
+                        function (Construct) {
+                    resolve(new Construct(scraper.config));
                 });
             });
         });
@@ -59,7 +59,7 @@ define(["require", "jquery"], function (require, $) {
             for (let url in gates) {
                 load(gates[url], "gate/" + user + "/" + url);
             }
-        }, function (err) { console.log(err) });
+        }, (err) => console.log(err));
     }; // init()
 
     return init;

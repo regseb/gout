@@ -2,8 +2,6 @@ define(["jquery"], function ($) {
     "use strict";
 
     return class {
-        constructor() { }
-
         list(size) {
             const url = "http://feeds.feedburner.com/GeekAndPoke";
             return $.get(url).then(function (data) {

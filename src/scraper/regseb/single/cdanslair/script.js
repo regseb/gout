@@ -5,10 +5,7 @@ define(["jquery"], function ($) {
         "day": "2-digit", "month": "2-digit", "year": "numeric" });
 
     return class {
-        constructor() { }
-
         get() {
-            const self = this;
             // Si c'est le week-end (dimanche ou samedi) : ne pas récupérer le
             // sujet de l'émission car il n'y a pas d'émission le week-end.
             const now = new Date();

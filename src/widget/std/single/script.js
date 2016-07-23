@@ -33,7 +33,6 @@ define(["jquery", "scronpt"], function ($, Cron) {
     }; // update()
 
     const create = function (id, url, config, scrapers) {
-        console.log(config);
         const $root = $("#" + id);
         $root.css({
             "background-color": config.color,

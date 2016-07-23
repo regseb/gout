@@ -114,7 +114,7 @@ define(["require", "jquery", "scronpt"], function (require, $, Cron) {
 
     const create = function (id, url, config, scrapers) {
         const $root = $("#" + id);
-        $("ul", $root).width($root.width() * args.size);
+        $("ul", $root).width($root.width() * config.size);
         $("span:first", $root).click(prev);
         $("span:last",  $root).click(next);
 

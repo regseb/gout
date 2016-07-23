@@ -10,4 +10,3 @@ La configuration contient un identifiant de compte.
 ## Exemple
 
 TODO
-

@@ -28,4 +28,3 @@ Cet exemple affiche les derniers tweets du compte de
     }
 }
 ```
-

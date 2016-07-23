@@ -2,8 +2,6 @@ define(["jquery"], function ($) {
     "use strict";
 
     return class {
-        constructor() { }
-
         list(size) {
             const url = "http://xkcd.com/rss.xml";
             return $.get(url).then(function (data) {

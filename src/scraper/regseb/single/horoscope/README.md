@@ -9,7 +9,6 @@ La configuration contient le signe du zodiaque. Les valeurs posibles sont
 `"balance"`, `"scorpion"`, `"sagittaire"`,`"capricorne"`, `"verseau"` et
 `"poissons"`.
 
-
 ## Exemple
 
 Cet exemple affiche l'horoscope du jour des *Lion*s.

@@ -43,8 +43,7 @@
     "requireLineBreakAfterVariableAssignment": true,
     "requireLineFeedAtFileEnd": true,
     "requireOperatorBeforeLineBreak": [
-        "?", "=", "+", "-", "/", "*", "==", "===", "!=", "!==", ">", ">=",
-        "<", "<="
+        "=", "+", "-", "/", "*", "==", "===", "!=", "!==", ">", ">=", "<", "<="
     ],
     "requirePaddingNewLinesAfterUseStrict": true,
     "requireQuotedKeysInObjects": true,

@@ -10,4 +10,3 @@ Il n'y a pas de configuration.
 ## Exemple
 
 TODO
-

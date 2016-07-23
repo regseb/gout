@@ -2,8 +2,6 @@ define(["jquery"], function ($) {
     "use strict";
 
     return class {
-        constructor() { }
-
         list(size) {
             const url = "http://www.ufunk.net/";
             return $.get(url).then(function (data) {

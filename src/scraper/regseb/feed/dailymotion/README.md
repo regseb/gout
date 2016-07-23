@@ -28,4 +28,3 @@ Cet exemple affiche les dernières vidéos des
     }
 }
 ```
-

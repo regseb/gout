@@ -18,7 +18,6 @@ define(["jquery"], function ($) {
                 };
 
                 $(".signes .right", data).each(function () {
-                    console.log(self.sign);
                     if (-1 !== $("a", this).attr("href").indexOf(self.sign)) {
                         result.title = $("p", this).text();
                         return false;

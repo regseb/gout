@@ -11,10 +11,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
     const extract = function (size, token, query, index) {
         const url = GMAIL_API_URL + "users/me/messages?access_token=" + token +
                     "&q=" + query + "&maxResults=" + size;
-        // FIXME jQuery n'implémente pas la règle 2.3.2 des Promises/A+
-        //       (https://promisesaplus.com/#point-49) : cas où l'objet retourné
-        //       par la fonction de rappel est une promesse.
-        return Promise.resolve($.get(url)).then(function (data) {
+        return $.get(url).then(function (data) {
             if (0 === data.resultSizeEstimate) {
                 return [];
             }

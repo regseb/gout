@@ -14,10 +14,8 @@ define(["jquery"], function ($) {
      * @param {!string} url      - l'adresse du répertoire où est stocké l'image
      *                             de fond.
      * @param {!Object} config   - la configuration du widget.
-     * @param {!Array}  scrapers - la liste des scrapers (ce widget n'utilise
-     *                             pas de scraper).
      */
-    const create = function (id, url, config, scrapers) {
+    const create = function (id, url, config) {
         // Le paramètre config doit contenir un objet JSON avec la propriété
         // "who" : une chaine de caractères contenant le nom de la personne à
         // saluer. Et éventuellement la propriété "color" : une chaine de
