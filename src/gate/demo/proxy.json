@@ -72,9 +72,17 @@
         "coord": { "x": 80, "y": 1, "w": 14, "h": 4 }
     },
 
-    "regseb/financeyahoo/pernodricard": {
-        "module": "regseb/financeyahoo",
-        "coord": { "x": 80, "y": 6, "w": 14, "h": 2 }
+    "std/single/financeyahoo/pernodricard": {
+        "module": "std/single",
+        "coord": { "x": 80, "y": 6, "w": 14, "h": 2 },
+        "config": {
+            "color": "#3f51b5",
+            "cron": "*/5 9-18 * * 1-5"
+        },
+        "scrapers": [
+            { "scraper": "regseb/single/financeyahoo",
+              "config": { "share": "ri.pa", "lang": "fr" } }
+        ]
     },
 
     "std/image/urtikan": {

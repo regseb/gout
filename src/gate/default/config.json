@@ -1,6 +1,21 @@
 {
     "std/text/welcome": {
-        "module": "std/text",
-        "coord": { "x": 1, "y": 1, "w": 28, "h": 7 }
+        "widget": "std/text",
+        "coord": { "x": 1, "y": 1, "w": 28, "h": 7 },
+        "config": {
+            "text": [
+                "Pour ajouter des passerelles sur cette page, modifier le",
+                " répertoire <code>src/gate/default/</code>. Vous avez des",
+                " pages de démontration en suivant les liens ",
+                " <a href=\"?user=demo\">?user=demo</a> pour une version",
+                " n'ayant pas besoin du proxy. Et",
+                " <a href=\"?user=demo&amp;config=proxy\">",
+                "?user=demo&amp;config=proxy</a> pour la version utilisant des",
+                " widgets nécessitant le proxy. La configuration de ces deux",
+                " pages est disponible dans le dossier",
+                " <code>src/gate/demo/<code>."
+            ],
+            "align": "justify"
+        }
     }
 }

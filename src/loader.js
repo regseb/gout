@@ -9,22 +9,21 @@ define(["require", "jquery"], function (require, $) {
         }
 
         const id = "gate" + $("article").length;
-        const clazz = gate.module.replace(/\//g, "-");
+        const clazz = gate.widget.replace(/\//g, "-");
 
-        // Si le module est utilisé pour la première fois.
+        // Si le widget est utilisé pour la première fois.
         if (!$("body > template." + clazz).length) {
             // Charger la feuille de style.
             $("head").append($("<link />", {
                 "rel":  "stylesheet",
-                "href": "mod/" + gate.module + "/style.css"
+                "href": "widget/" + gate.widget + "/style.css"
             }));
             // Passer en synchrone pour attendre que le HTML soit chargé avant
             // de l'utiliser.
             $.ajaxSetup({ "async": false });
             // Charger le HTML.
             $("body").append(
-                $("<template>").load("mod/" + gate.module +
-                                     "/index.html")
+                $("<template>").load("widget/" + gate.widget + "/index.html")
                                .addClass(clazz));
             $.ajaxSetup({ "async": true });
         }
@@ -38,8 +37,18 @@ define(["require", "jquery"], function (require, $) {
                           .height(gate.coord.h * 1.4 + "em")
                           .html($("body > template." + clazz).html()));
 
-        require(["mod/" + gate.module + "/script"], function (factory) {
-            factory(id, url);
+        const promises = (gate.scrapers || []).map(function (scraper) {
+            return new Promise(function (resolve, reject) {
+                require(["scraper/" + scraper.scraper + "/script"],
+                        function (construct) {
+                    resolve(new construct(scraper.config));
+                });
+            });
+        });
+        Promise.all(promises).then(function (scrapers) {
+            require(["widget/" + gate.widget + "/script"], function (factory) {
+                factory(id, url, gate.config, scrapers);
+            });
         });
     }; // load()
 
@@ -50,7 +59,7 @@ define(["require", "jquery"], function (require, $) {
             for (let url in gates) {
                 load(gates[url], "gate/" + user + "/" + url);
             }
-        });
+        }, function (err) { console.log(err) });
     }; // init()
 
     return init;
