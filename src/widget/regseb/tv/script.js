@@ -13,8 +13,9 @@ define(["jquery", "scronpt"], function ($, Cron) {
                 "alt": "*"
             }));
         }
-        const text = data.title + ("" !== data.subtitle ? " - " + data.subtitle
-                                                        : "");
+        const text = data.title +
+                     ("" === data.subtitle ? ""
+                                           : " - " + data.subtitle);
 
         $("ul", $root).append(
             $("<li>").append($("<img>").attr({ "src":   IMG_DIR + data.channel +
@@ -61,7 +62,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
         gates[id] = {
             "scraper": scrapers[0],
             // Mettre à jour les données tous les jours à 1h.
-            "cron": new Cron("0 1 * * *", update, id)
+            "cron":    new Cron("0 1 * * *", update, id)
         };
 
         if (1 === Object.keys(gates).length) {

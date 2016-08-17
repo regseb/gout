@@ -1,6 +1,6 @@
 # /regseb/feed/googlefeed
 
-Ce *scraper* récupère la liste des dernières actualités d'un flux **RSS** ou
+Ce scraper récupère la liste des dernières actualités d'un flux **RSS** ou
 **Atom** (en utilisant l'[API Google Feed](//developers.google.com/feed/)).
 
 ## Configuration

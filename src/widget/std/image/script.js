@@ -44,7 +44,7 @@ define(["require", "jquery", "scronpt"], function (require, $, Cron) {
     const display = function ($root, data, size) {
         let $li = $("li[data-guid=\"" + data.guid + "\"]", $root);
 
-        if (!$li.length) { // Si l'évènement n'est pas affiché.
+        if (0 === $li.length) { // Si l'évènement n'est pas affiché.
             // Trouver la future position chronologique de l'évènement.
             let pos = -1;
             $("> ul > li", $root).each(function (i) {

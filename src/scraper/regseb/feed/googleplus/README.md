@@ -1,6 +1,6 @@
 # /regseb/feed/googleplus
 
-Ce *scraper* récupère la liste des dernières actualités d'un compte
+Ce scraper récupère la liste des dernières actualités d'un compte
 **[Google+](//plus.google.com/)**.
 
 ## Configuration

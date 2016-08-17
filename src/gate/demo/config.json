@@ -1,75 +1,238 @@
 {
-    "regseb/googlefeed/allocine": {
-        "module": "regseb/googlefeed",
-        "coord": { "x": 1, "y": 1, "w": 28, "h": 6 }
+    "std/feed/allocine": {
+        "widget": "std/feed",
+        "coord": { "x": 1, "y": 1, "w": 28, "h": 6 },
+        "config": {
+            "color": "#ffc107",
+            "cron":  "*/3 * * * *"
+        },
+        "scrapers": [
+            { "scraper": "regseb/feed/googlefeed",
+              "config": "http://rss.allocine.fr/ac/actualites/cine?format=xml" }
+        ]
     },
-    "regseb/googlefeed/laprovence": {
-        "module": "regseb/googlefeed",
-        "coord": { "x": 1, "y": 8, "w": 28, "h": 6 }
+    "std/feed/laprovence": {
+        "widget": "std/feed",
+        "coord": { "x": 1, "y": 8, "w": 28, "h": 6 },
+        "config": {
+            "color": "#3f51b5",
+            "cron":  "*/3 * * * *"
+        },
+        "scrapers": [
+            { "scraper": "regseb/feed/googlefeed",
+              "config": "http://www.laprovence.com/rss/region.xml" }
+        ]
     },
-    "regseb/googlefeed/clubic": {
-        "module": "regseb/googlefeed",
-        "coord": { "x": 1, "y": 15, "w": 28, "h": 6 }
+    "std/feed/clubic": {
+        "widget": "std/feed",
+        "coord": { "x": 1, "y": 15, "w": 28, "h": 6 },
+        "config": {
+            "color": "#f44336",
+            "cron":  "*/3 * * * *"
+        },
+        "scrapers": [
+            { "scraper": "regseb/feed/googlefeed",
+              "config": "http://com.clubic.feedsportal.com/c/33464/f/581979/index.rss" }
+        ]
     },
-    "regseb/googlefeed/lemonde": {
-        "module": "regseb/googlefeed",
-        "coord": { "x": 1, "y": 22, "w": 28, "h": 6 }
+    "std/feed/lemonde": {
+        "widget": "std/feed",
+        "coord": { "x": 1, "y": 22, "w": 28, "h": 6 },
+        "config": {
+            "color": "#9e9e9e",
+            "cron":  "*/3 * * * *"
+        },
+        "scrapers": [
+            { "scraper": "regseb/feed/googlefeed",
+              "config": "http://www.lemonde.fr/rss/une.xml" }
+        ]
     },
-    "regseb/googlefeed/linuxfr": {
-        "module": "regseb/googlefeed",
-        "coord": { "x": 1, "y": 29, "w": 28, "h": 6 }
+    "std/feed/linuxfr": {
+        "widget": "std/feed",
+        "coord": { "x": 1, "y": 29, "w": 28, "h": 6 },
+        "config": {
+            "color": "#ffc107",
+            "cron":  "*/3 * * * *"
+        },
+        "scrapers": [
+            { "scraper": "regseb/feed/googlefeed",
+              "config": "http://linuxfr.org/news.atom" }
+        ]
     },
-    "regseb/googlefeed/arretsurimages": {
-        "module": "regseb/googlefeed",
-        "coord": { "x": 30, "y": 1, "w": 28, "h": 6 }
+    "std/feed/arretsurimages": {
+        "widget": "std/feed",
+        "coord": { "x": 30, "y": 1, "w": 28, "h": 6 },
+        "config": {
+            "color": "#9e9e9e",
+            "cron":  "*/3 * * * *"
+        },
+        "scrapers": [
+            { "scraper": "regseb/feed/googlefeed",
+              "config": "http://www.arretsurimages.net/rss/vite-dit.rss" }
+        ]
     },
-    "regseb/googlefeed/lequipe": {
-        "module": "regseb/googlefeed",
-        "coord": { "x": 30, "y": 8, "w": 28, "h": 6 }
+    "std/feed/lequipe": {
+        "widget": "std/feed",
+        "coord": { "x": 30, "y": 8, "w": 28, "h": 6 },
+        "config": {
+            "color": "#f44336",
+            "cron":  "*/3 * * * *"
+        },
+        "scrapers": [
+            { "scraper": "regseb/feed/googlefeed",
+              "config": "http://www.lequipe.fr/rss/actu_rss.xml" }
+        ]
     },
-    "regseb/googlefeed/developpez": {
-        "module": "regseb/googlefeed",
-        "coord": { "x": 30, "y": 15, "w": 28, "h": 6 }
+    "std/feed/developpez": {
+        "widget": "std/feed",
+        "coord": { "x": 30, "y": 15, "w": 28, "h": 6 },
+        "config": {
+            "color": "#607d8b",
+            "cron":  "*/3 * * * *"
+        },
+        "scrapers": [
+            { "scraper": "regseb/feed/googlefeed",
+              "config": "http://www.developpez.com/index/rss" }
+        ]
     },
-    "regseb/googlefeed/velaux": {
-        "module": "regseb/googlefeed",
-        "coord": { "x": 30, "y": 22, "w": 28, "h": 3 }
+    "std/feed/velaux": {
+        "widget": "std/feed",
+        "coord": { "x": 30, "y": 22, "w": 28, "h": 3 },
+        "config": {
+            "color": "#ff5722",
+            "cron":  "0 */6 * * *"
+        },
+        "scrapers": [
+            { "scraper": "regseb/feed/googlefeed",
+              "config": "http://www.velaux.fr/rss20.xml" }
+        ]
     },
-    "regseb/googlefeed/legorafi": {
-        "module": "regseb/googlefeed",
-        "coord": { "x": 30, "y": 26, "w": 28, "h": 3 }
+    "std/feed/legorafi": {
+        "widget": "std/feed",
+        "coord": { "x": 30, "y": 26, "w": 28, "h": 3 },
+        "config": {
+            "color": "#f44336",
+            "cron":  "*/3 * * * *"
+        },
+        "scrapers": [
+            { "scraper": "regseb/feed/googlefeed",
+              "config": "http://com.clubic.feedsportal.com/c/33464/f/581979/index.rss" }
+        ]
     },
-    "regseb/googlefeed/slate": {
-        "module": "regseb/googlefeed",
-        "coord": { "x": 30, "y": 30, "w": 28, "h": 5 }
+    "std/feed/slate": {
+        "widget": "std/feed",
+        "coord": { "x": 30, "y": 30, "w": 28, "h": 5 },
+        "config": {
+            "color": "#673ab7",
+            "cron":  "*/3 * * * *"
+        },
+        "scrapers": [
+            { "scraper": "regseb/feed/googlefeed",
+              "config": "http://www.slate.fr/rss.xml" }
+        ]
     },
 
-    "regseb/youtube/humour": {
-        "module": "regseb/youtube",
-        "coord": { "x": 1, "y": 36, "w": 28, "h": 6 }
+    "std/feed/humour": {
+        "widget": "std/feed",
+        "coord": { "x": 1, "y": 36, "w": 28, "h": 6 },
+        "config": {
+            "color": "#f44336",
+            "cron":  "0 0 * * *"
+        },
+        "scrapers": [
+            { "scraper": "regseb/feed/youtube",
+              "config": { "user": "NormanFaitDesVideos",
+                          "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg" } },
+            { "scraper": "regseb/feed/youtube",
+              "config": { "user": "MonsieurDream",
+                          "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg" } },
+            { "scraper": "regseb/feed/youtube",
+              "config": { "user": "GoldenMoustacheVideo",
+                          "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg" } }
+        ]
     },
-    "regseb/youtube/jeuvideo": {
-        "module": "regseb/youtube",
-        "coord": { "x": 30, "y": 36, "w": 28, "h": 6 }
+    "std/feed/jeuvideo": {
+        "widget": "std/feed",
+        "coord": { "x": 30, "y": 36, "w": 28, "h": 6 },
+        "config": {
+            "color": "#f44336",
+            "cron":  "0 0 * * *"
+        },
+        "scrapers": [
+            { "scraper": "regseb/feed/youtube",
+              "config": { "user": "cndetmanu",
+                          "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg" } },
+            { "scraper": "regseb/feed/youtube",
+              "config": { "user": "joueurdugrenier",
+                          "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg" } },
+            { "scraper": "regseb/feed/youtube",
+              "config": { "user": "RealMyop",
+                          "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg" } }
+        ]
     },
 
     "std/search/engines": {
-        "module": "std/search",
-        "coord": { "x": 59, "y": 1, "w": 17, "h": 2 }
+        "widget": "std/search",
+        "coord": { "x": 59, "y": 1, "w": 17, "h": 2 },
+        "config": [
+            {
+                "title": "Google",
+                "url": "https://www.google.fr/search?q={searchTerms}",
+                "color": "#2196f3",
+                "icon": "google.svg"
+            }, {
+                "title": "Yahoo",
+                "url": "https://fr.search.yahoo.com/search?p={searchTerms}",
+                "color": "#673ab7",
+                "icon": "yahoo.svg"
+            }, {
+                "title": "Bing",
+                "url": "https://www.bing.com/search?q={searchTerms}",
+                "color": "#ffc107",
+                "icon": "bing.svg"
+            }, {
+                "title": "DuckDuckGo",
+                "url": "https://duckduckgo.com/?q={searchTerms}",
+                "color": "#f44336",
+                "icon": "duckduckgo.svg"
+            }
+        ]
     },
 
     "std/ajaxloader": {
-        "module": "std/ajaxloader",
+        "widget": "std/ajaxloader",
         "coord": { "x": 77, "y": 1, "w": 2, "h": 2 }
     },
 
-    "regseb/articleauhasard": {
-        "module": "regseb/articleauhasard",
-        "coord": { "x": 59, "y": 4, "w": 20, "h": 2 }
+    "std/single/articleauhasard": {
+        "widget": "std/single",
+        "coord": { "x": 59, "y": 4, "w": 20, "h": 2 },
+        "config": {
+            "color": "#607d8b",
+            "cron": "*/5 * * * *"
+        },
+        "scrapers": [
+            { "scraper": "regseb/single/articleauhasard" }
+        ]
     },
 
     "std/bookmark/social": {
-        "module": "std/bookmark",
-        "coord": { "x": 59, "y": 7, "w": 14, "h": 4 }
+        "widget": "std/bookmark",
+        "coord": { "x": 59, "y": 7, "w": 14, "h": 4 },
+        "config": {
+            "sites": [
+                {
+                    "link": "https://www.facebook.com/",
+                    "title": "Facebook"
+                }, {
+                    "link": "https://www.twitter.com/",
+                    "title": "Twitter"
+                }, {
+                    "link": "https://plus.google.com/",
+                    "title": "Google+"
+                }
+            ],
+            "color": "#ff9800"
+        }
     }
 }

@@ -31,7 +31,7 @@ define(["jquery"], function ($) {
         $("form",  $root).attr("action", engine.url);
         $("p",     $root).css("border-color", engine.color);
         $("p img", $root).attr("src", engine.icon);
-        $("input", $root).attr({ "name": engine.terms,
+        $("input", $root).attr({ "name":        engine.terms,
                                  "placeholder": engine.title })
                          .css("color", engine.color);
     }; // change()
@@ -43,7 +43,6 @@ define(["jquery"], function ($) {
                      .append($("<img>").attr("src", data.icon))
                      .append(data.title)
                      .click(change));
-
     }; // display()
 
     const create = function (id, url, config) {
@@ -57,11 +56,11 @@ define(["jquery"], function ($) {
         $("input", $root).width(width - height - 8)
                          .height(height - 4);
 
-        config.engines.forEach(function (engine, i) {
+        config.forEach(function (engine, i) {
             display($root, engine, i, url);
         });
 
-        gates[id] = config.engines;
+        gates[id] = config;
 
         // Sélectionner le premier élément.
         $("li:first", $root).click();

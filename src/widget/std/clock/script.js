@@ -1,6 +1,17 @@
 define(["jquery"], function ($) {
     "use strict";
 
+    const transform = function (svg, time, center) {
+        const element = svg.createElementNS("http://www.w3.org/2000/svg",
+                                            "animateTransform");
+        element.setAttribute("attributeName", "transform");
+        element.setAttribute("type",          "rotate");
+        element.setAttribute("dur",           time + "s");
+        element.setAttribute("values",        center);
+        element.setAttribute("repeatCount",   "indefinite");
+        return element;
+    }; // transform()
+
     const animate = function () {
         const svg = $(this)[0].contentDocument;
         const now = new Date();
@@ -16,14 +27,7 @@ define(["jquery"], function ($) {
                                "rotate(" + seconds * 6 + ", " + cx + ", " + cy +
                                ")");
         }
-        const aniSeconds = svg.createElementNS("http://www.w3.org/2000/svg",
-                                               "animateTransform");
-        aniSeconds.setAttribute("attributeName", "transform");
-        aniSeconds.setAttribute("type",          "rotate");
-        aniSeconds.setAttribute("dur",           "60s");
-        aniSeconds.setAttribute("values",        center);
-        aniSeconds.setAttribute("repeatCount",   "indefinite");
-        svg.getElementById("second").appendChild(aniSeconds);
+        svg.getElementById("second").appendChild(transform(svg, 60, center));
 
 
         const minutes = now.getMinutes() + seconds / 60;
@@ -32,14 +36,7 @@ define(["jquery"], function ($) {
                                "rotate(" + minutes * 6 + ", " + cx + ", " + cy +
                                ")");
         }
-        const aniMinutes = svg.createElementNS("http://www.w3.org/2000/svg",
-                                               "animateTransform");
-        aniMinutes.setAttribute("attributeName", "transform");
-        aniMinutes.setAttribute("type",          "rotate");
-        aniMinutes.setAttribute("dur",           "3600s");
-        aniMinutes.setAttribute("values",        center);
-        aniMinutes.setAttribute("repeatCount",   "indefinite");
-        svg.getElementById("minute").appendChild(aniMinutes);
+        svg.getElementById("minute").appendChild(transform(svg, 3600, center));
 
         const hours = now.getHours() + minutes / 60;
         for (let child of svg.getElementById("hour").children) {
@@ -47,21 +44,15 @@ define(["jquery"], function ($) {
                                "rotate(" + hours * 30 + ", " + cx + ", " + cy +
                                ")");
         }
-        const aniHours = svg.createElementNS("http://www.w3.org/2000/svg",
-                                             "animateTransform");
-        aniHours.setAttribute("attributeName", "transform");
-        aniHours.setAttribute("type",          "rotate");
-        aniHours.setAttribute("dur",           "43200s");
-        aniHours.setAttribute("values",        center);
-        aniHours.setAttribute("repeatCount",   "indefinite");
-        svg.getElementById("hour").appendChild(aniHours);
+        svg.getElementById("hour").appendChild(transform(svg, 43200, center));
     }; // animate()
 
-    const create = function (id, url) {
+    const create = function (id, url, config) {
         // FIXME Rendre paramétrable le fuseau horaire.
         const $root = $("#" + id);
+        $root.css("background-color", config.color);
 
-        $("object", $root).load(animate)
+        $("object", $root).on("load", animate)
                           .attr("data", url + "/clock.svg");
     }; // create()
 

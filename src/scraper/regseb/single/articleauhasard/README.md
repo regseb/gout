@@ -1,6 +1,6 @@
 # /regseb/single/articleauhasard
 
-Ce *scraper* donne un lien vers un article au hasard de
+Ce scraper donne un lien vers un article au hasard de
 **[Wikipédia](//fr.wikipedia.org/)**.
 
 ## Configuration

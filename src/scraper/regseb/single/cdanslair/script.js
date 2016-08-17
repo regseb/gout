@@ -2,7 +2,10 @@ define(["jquery"], function ($) {
     "use strict";
 
     const DTF = new Intl.DateTimeFormat("fr-FR", {
-        "day": "2-digit", "month": "2-digit", "year": "numeric" });
+        "day":   "2-digit",
+        "month": "2-digit",
+        "year":  "numeric"
+    });
 
     return class {
         get() {
@@ -12,9 +15,9 @@ define(["jquery"], function ($) {
             if (0 === now.getDay() || 6 === now.getDay()) {
                 return Promise.resolve({
                     "title": "(Pas d'émission le week-end)",
-                    "desc": "<em>C dans l'air</em> est diffusée du lundi au" +
-                            " vendredi.",
-                    "link": "http://www.france5.fr/emissions/c-dans-l-air"
+                    "desc":  "<em>C dans l'air</em> est diffusée du lundi au" +
+                             " vendredi.",
+                    "link":  "http://www.france5.fr/emissions/c-dans-l-air"
                 });
             }
 
@@ -27,15 +30,16 @@ define(["jquery"], function ($) {
                 if (-1 === date.indexOf(DTF.format(now))) {
                     return {
                         "title": "(Sujet de l'émission non-défini)",
-                        "desc": "Le sujet de l'émission est généralement" +
-                                " défini en début d'après-midi.",
-                        "link": "http://www.france5.fr/emissions/c-dans-l-air"
+                        "desc":  "Le sujet de l'émission est généralement" +
+                                 " défini en début d'après-midi.",
+                        "link":  "http://www.france5.fr/emissions/c-dans-l-air"
                     };
                 }
                 return {
                     "title": $("a:first", $data).text(),
-                    "desc": $(".accroche p", $data).html(),
-                    "link": "http://www.france5.fr" + $("a", $data).attr("href")
+                    "desc":  $(".accroche p", $data).html(),
+                    "link":  "http://www.france5.fr" +
+                             $("a", $data).attr("href")
                 };
             });
         } // get()

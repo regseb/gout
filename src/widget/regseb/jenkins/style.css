@@ -6,8 +6,8 @@
 .regseb-jenkins p {
     margin: 0.7em;
 }
-.regseb-jenkins p a:visited {
-    color: white;
+.regseb-jenkins p a {
+    color: black;
 }
 .regseb-jenkins ul {
     display: none;

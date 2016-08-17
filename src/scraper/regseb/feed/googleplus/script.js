@@ -25,5 +25,5 @@ define(["jquery"], function ($) {
                 return items;
             });
         } // list()
-    }
+    };
 });

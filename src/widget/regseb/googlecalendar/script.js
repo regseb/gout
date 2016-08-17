@@ -7,13 +7,21 @@ define(["jquery", "scronpt"], function ($, Cron) {
                          "/widget/regseb/googlecalendar/oauth2.html";
     // dd/MM/yyyy.
     const DF_SHORT = new Intl.DateTimeFormat("fr-FR", {
-        "day": "2-digit", "month": "2-digit", "year": "numeric" });
+        "day":   "2-digit",
+        "month": "2-digit",
+        "year":  "numeric"
+    });
     // EEEEE dd MMMMM yyyy.
     const DF_LONG = new Intl.DateTimeFormat("fr-FR", {
-        "weekday": "long", "day": "2-digit", "month": "long",
-        "year": "numeric" });
+        "weekday": "long",
+        "day":     "2-digit",
+        "month":   "long",
+        "year":    "numeric"
+    });
     const TF = new Intl.DateTimeFormat("fr-FR", {
-        "hour": "2-digit", "minute": "2-digit" });
+        "hour":   "2-digit",
+        "minute": "2-digit"
+    });
 
     const gates = {};
 
@@ -204,11 +212,11 @@ define(["jquery", "scronpt"], function ($, Cron) {
 
             gates[id] = {
                 "calendars": args.calendars || ["primary"],
-                "index":  args.index || 0,
-                "key":    args.key,
-                "secret": args.secret,
-                "size":   $root.height() / 14 - 1,
-                "cron":   new Cron(args.cron || "0 */4 * * *" , update, id)
+                "index":     args.index || 0,
+                "key":       args.key,
+                "secret":    args.secret,
+                "size":      $root.height() / 14 - 1,
+                "cron":      new Cron(args.cron || "0 */4 * * *", update, id)
             };
 
             if (1 === Object.keys(gates).length) {

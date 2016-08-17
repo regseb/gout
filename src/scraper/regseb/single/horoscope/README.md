@@ -1,6 +1,6 @@
 # /regseb/single/horoscope
 
-Ce *scraper* récupère l'horoscope du jour pour un signe du zodiaque.
+Ce scraper récupère l'horoscope du jour pour un signe du zodiaque.
 
 ## Configuration
 

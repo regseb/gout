@@ -7,8 +7,8 @@ define(["jquery"], function ($) {
         } // constructor()
 
         list(size) {
-            const self = this;
-            const url = "https://www.instagram.com/" + self.user + "/media/";
+            const that = this;
+            const url = "https://www.instagram.com/" + that.user + "/media/";
             return $.get(url).then(function (data) {
                 return data.items.slice(0, size).map(function (item) {
                     return {

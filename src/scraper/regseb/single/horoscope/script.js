@@ -7,18 +7,18 @@ define(["jquery"], function ($) {
         } // constructor()
 
         get() {
-            const self = this;
+            const that = this;
             const url = "http://www.elle.fr/Astro/Horoscope/Quotidien";
             return $.get(url).then(function (data) {
                 const result = {
                     "title": "(Signe non-trouvé)",
-                    "desc": null,
-                    "link": "http://www.elle.fr/Astro/Horoscope/Quotidien/" +
-                            self.sign
+                    "desc":  null,
+                    "link":  "http://www.elle.fr/Astro/Horoscope/Quotidien/" +
+                             that.sign
                 };
 
                 $(".signes .right", data).each(function () {
-                    if (-1 !== $("a", this).attr("href").indexOf(self.sign)) {
+                    if (-1 !== $("a", this).attr("href").indexOf(that.sign)) {
                         result.title = $("p", this).text();
                         return false;
                     }

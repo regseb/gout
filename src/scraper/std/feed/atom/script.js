@@ -10,24 +10,22 @@ define(["jquery"], function ($) {
             return $.get(this.url).then(function (data) {
                 // Si le serveur n'indique pas que les données sont au format
                 // XML : il faut les convertir.
-                if ("string" === typeof data) {
-                    data = $.parseXML(data);
-                }
+                const xml = "string" === typeof data ? $.parseXML(data)
+                                                     : data;
 
-                const items = [];
-                $("entry:lt(" + size + ")", data).each(function () {
+                const items = $("entry:lt(" + size + ")", xml).map(function () {
                     let desc = $("summary", this).text().trim();
                     if (0 === desc.length) {
                         desc = $("content", this).text().trim();
                     }
-                    items.push({
+                    return {
                         "title": $("title", this).text(),
                         "desc":  desc,
                         "link":  $("link", this).attr("href"),
                         "guid":  $("id", this).text(),
                         "date":  new Date($("updated", this).text()).getTime()
-                    });
-                });
+                    };
+                }).get();
 
                 for (let item of items) {
                     if ("" === item.guid) {

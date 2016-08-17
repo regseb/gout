@@ -41,7 +41,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
 
         gates[id] = {
             "scraper": scrapers[0],
-            "cron": new Cron(config.cron, update, id)
+            "cron":    new Cron(config.cron, update, id)
         };
 
         if (1 === Object.keys(gates).length) {

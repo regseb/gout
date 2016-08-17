@@ -1,6 +1,6 @@
 # /example/hello
 
-Ce *widget* d'exemple affiche le texte « Hello *someone*! », où *someone* est
+Ce widget d'exemple affiche le texte « Hello *someone*! », où *someone* est
 configurable.
 
 ## Configuration
@@ -14,8 +14,14 @@ suivantes :
   prédéfinis) ;
 - `"who"` : le texte qui remplacera *someone*.
 
-Les dimensions conseillées sont **20x2**. Ce *widget* n'utilise pas de
-*scraper*.
+Les dimensions conseillées sont **20x2**.
+
+Une image ayant pour nom ***icon.svg*** doit aussi est présent dans le
+répertoire de la passerelle.
+
+## Scraper
+
+Ce widget n'utilise pas de scraper.
 
 ## Exemple
 

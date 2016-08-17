@@ -2,35 +2,35 @@ define(["jquery"], function ($) {
     "use strict";
 
     const CHANNELS = {
-        "6ter": "6ter",
-        "arte": "arte",
-        "bein-sports-1": "bein-sports-1",
-        "bein-sports-2": "bein-sports-2",
-        "bfm-tv": "bfm-tv",
-        "canalplus": "canalplus",
-        "canalplus-sport": "canalplus-sport",
-        "cherie-25": "cherie-25",
-        "d17": "d17",
-        "d8": "d8",
-        "france-2": "france-2",
-        "france-3": "france-3",
-        "france-4": "france-4",
-        "france-5": "france-5",
-        "france-o": "france-o",
-        "gulli": "gulli",
-        "hd1": "hd1",
-        "i-tele": "itele",
+        "6ter":                                 "6ter",
+        "arte":                                 "arte",
+        "bein-sports-1":                        "bein-sports-1",
+        "bein-sports-2":                        "bein-sports-2",
+        "bfm-tv":                               "bfm-tv",
+        "canalplus":                            "canalplus",
+        "canalplus-sport":                      "canalplus-sport",
+        "cherie-25":                            "cherie-25",
+        "d17":                                  "d17",
+        "d8":                                   "d8",
+        "france-2":                             "france-2",
+        "france-3":                             "france-3",
+        "france-4":                             "france-4",
+        "france-5":                             "france-5",
+        "france-o":                             "france-o",
+        "gulli":                                "gulli",
+        "hd1":                                  "hd1",
+        "i-tele":                               "itele",
         "la-chaine-parlementaire-public-senat": "lcp-public-senat",
-        "l-equipe-21": "l-equipe-21",
-        "m6": "m6",
-        "nrj-12": "nrj-12",
-        "nt1": "nt1",
-        "numero-23": "numero-23",
-        "om-tv": "om-tv",
-        "rmc-decouverte": "rmc-decouverte",
-        "tf1": "tf1",
-        "tmc": "tmc",
-        "w9": "w9"
+        "l-equipe-21":                          "l-equipe-21",
+        "m6":                                   "m6",
+        "nrj-12":                               "nrj-12",
+        "nt1":                                  "nt1",
+        "numero-23":                            "numero-23",
+        "om-tv":                                "om-tv",
+        "rmc-decouverte":                       "rmc-decouverte",
+        "tf1":                                  "tf1",
+        "tmc":                                  "tmc",
+        "w9":                                   "w9"
     };
 
     const deobfuscate = function (clazz) {
@@ -52,9 +52,9 @@ define(["jquery"], function ($) {
         } // constuctor()
 
         list() {
-            const self = this;
+            const that = this;
             const promises = [];
-            $.each(self.broadcasts, function (broadcast, channels) {
+            $.each(that.broadcasts, function (broadcast, channels) {
                 const url = "http://www.programme.tv/" + broadcast + "/";
                 const promise = $.get(url).then(function (data) {
                     return channels.map(function (channel) {
@@ -98,7 +98,7 @@ define(["jquery"], function ($) {
                 });
                 promises.push(promise);
             });
-            return Promise.all(promises).then (function (broadcasts) {
+            return Promise.all(promises).then(function (broadcasts) {
                 return broadcasts.reduce(function (previous, current) {
                     return previous.concat(current);
                 });

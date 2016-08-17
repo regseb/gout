@@ -1,6 +1,6 @@
 # /regseb/single/financeyahoo
 
-Ce *scraper* récupère le cours d'une action cotée en bourse (grâce à l'API de
+Ce scraper récupère le cours d'une action cotée en bourse (grâce à l'API de
 **Yahoo Finance**).
 
 ## Configuration

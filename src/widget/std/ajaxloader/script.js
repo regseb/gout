@@ -5,7 +5,7 @@ define(["jquery"], function ($) {
 
     const create = function (id, url, config) {
         const $root = $("#" + id);
-        $root.css("background-color", config.color || "black");
+        $root.css("background-color", config || "black");
 
         $(document).ajaxStart(function () {
             $(".std-ajaxloader").css("background-image",

@@ -1,7 +1,6 @@
 // Encapsuler le code dans une module AMD pour éviter les collisions des noms
 // des variables et pour ne pas créer d'effets de bord.
 define(["jquery"], function ($) {
-
     // Activer le mode strict de JavaScript pour que le navigateur puisse
     // optimiser l'éxécution ; et qu'il remonte plus d'erreurs.
     "use strict";

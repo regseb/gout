@@ -10,6 +10,10 @@ peuvent être fourni : cela ne change rien.
 
 Il n'est pas nécessaire de créer un répertoire pour la passerelle.
 
+## Scraper
+
+Ce widget n'utilise pas de scraper.
+
 ## Exemple
 
 Cet exemple ne fait rien.

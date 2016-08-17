@@ -1,10 +1,10 @@
 # /std/feed/atom
 
-Ce *scraper* récupère la liste des dernières actualités d'un flux **Atom**.
+Ce scraper récupère la liste des dernières actualités d'un flux **Atom**.
 
 ## Configuration
 
-La configuration de ce *scraper* contient une seule URL vers un flux **Atom**.
+La configuration contient une seule URL vers un flux **Atom**.
 
 ## Exemple
 

@@ -1,6 +1,6 @@
 # /regseb/feed/twitter
 
-Ce *scraper* récupère la liste des derniers tweets d'un compte
+Ce scraper récupère la liste des derniers tweets d'un compte
 **[Twitter](//twitter.com/)**.
 
 ## Configuration

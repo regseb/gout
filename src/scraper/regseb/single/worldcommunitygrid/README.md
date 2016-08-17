@@ -1,6 +1,6 @@
 # /regseb/single/worldcommunitygrid
 
-Ce *scraper* récupère des données statistiques d'un utilisateur de
+Ce scraper récupère des données statistiques d'un utilisateur de
 **[World Community Grid](//www.worldcommunitygrid.org/)**.
 
 ## Configuration

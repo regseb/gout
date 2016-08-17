@@ -1,6 +1,6 @@
 # /regseb/feed/youtube
 
-Ce *scraper* récupère la liste des dernières vidéos postées sur
+Ce scraper récupère la liste des dernières vidéos postées sur
 **[Youtube](//www.youtube.com)** par un utilisateur.
 
 ## Configuration

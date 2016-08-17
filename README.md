@@ -6,13 +6,13 @@
 
 ## Description
 
-Gout est une **application Web** utilisant [Node.js](http://nodejs.org). Elle
+Gout est une **application Web** utilisant [Node.js](//nodejs.org/). Elle
 récupère des informations sur Internet (flux RSS, résultats d'API, parsing de
 page Web) pour les afficher sur une seule page. Le paramètrage des données
 récupérées se fait avec des fichiers
 [JSON](http://www.json.org/json-fr.html "JavaScript Object Notation"). Il est
-aussi possible de développer des modules pour agréger de nouveaux sites
-Internet.
+aussi possible de développer des widgets et des scrapers pour agréger de
+nouveaux sites Internet.
 
 ## Installation
 
@@ -20,18 +20,16 @@ Commencer par installer **Node.js**. Puis déployer Gout dans le répertoire de
 votre choix en exécutant les commandes suivantes dans la console :
 
 ```shell
-wget https://regseb.github.io/gout/gout.tar.gz
-tar zvf gout.tar.gz
+git clone https://github.com/regseb/gout.git
 cd gout
 npm install
 ```
 
 Ligne par ligne, les instructions précédentes :
 
-1. télécharge le fichier dans le répertoire courant ;
-2. décompresse l'archive ;
-3. rentre dans le répertoire ;
-4. installe les dépendances ([Express](http://expressjs.com),
+1. clone le projet hébergé dans GitHub ;
+2. rentre dans le répertoire ;
+3. installe les dépendances ([Express](http://expressjs.com),
    [RequireJS](http://requirejs.org), [jQuery](//jquery.com),
    [Wiloquery](//regseb.github.io/wiloquery/) et
    [Scronpt](//regseb.github.io/scronpt/)).

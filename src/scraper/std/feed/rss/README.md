@@ -1,10 +1,10 @@
 # /std/feed/rss
 
-Ce *scraper* récupère la liste des dernières actualités d'un flux **RSS**.
+Ce scraper récupère la liste des dernières actualités d'un flux **RSS**.
 
 ## Configuration
 
-La configuration de ce *scraper* contient une seule URL vers un flux **RSS**.
+La configuration contient une seule URL vers un flux **RSS**.
 
 ## Exemple
 

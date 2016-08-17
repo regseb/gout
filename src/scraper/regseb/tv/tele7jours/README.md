@@ -1,6 +1,6 @@
-# /regseb/tele7jours
+# /regseb/tv/tele7jours
 
-Ce *scraper* donne le
+Ce scraper donne le
 **[programme télévisé](http://www.programme-television.org/)** du soir.
 
 ## Configuration

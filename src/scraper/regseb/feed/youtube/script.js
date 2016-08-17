@@ -11,7 +11,7 @@ define(["jquery"], function ($) {
         } // constuctor()
 
         init() {
-            const self = this;
+            const that = this;
             if (null !== this.playlist) {
                 return Promise.resolve(this.playlist);
             }
@@ -19,16 +19,16 @@ define(["jquery"], function ($) {
             return $.getJSON(URL_API + "channels?part=contentDetails" +
                              "&forUsername=" + this.user + "&key=" + this.key)
                                                          .then(function (data) {
-                self.playlist = data.items[0].contentDetails.relatedPlaylists
+                that.playlist = data.items[0].contentDetails.relatedPlaylists
                                                                        .uploads;
-                return self.playlist;
+                return that.playlist;
             });
         } // init()
 
         list(size) {
-            const self = this;
-            return this.init().then(function (playlist) {
-                const url = URL_API + "playlistItems?key=" + self.key +
+            const that = this;
+            return that.init().then(function (playlist) {
+                const url = URL_API + "playlistItems?key=" + that.key +
                             "&part=snippet&playlistId=" + playlist +
                             "&maxResults=" + size;
                 return $.getJSON(url).then(function (data) {

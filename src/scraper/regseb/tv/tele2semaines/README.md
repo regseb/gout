@@ -1,6 +1,6 @@
 # /regseb/tv/tele2semaines
 
-Ce *scraper* donne le **[programme télévisé](http://www.programme.tv/)** du
+Ce scraper donne le **[programme télévisé](http://www.programme.tv/)** du
 soir.
 
 ## Configuration

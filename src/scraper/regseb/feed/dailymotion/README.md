@@ -1,7 +1,7 @@
 # /regseb/feed/dailymotion
 
-Ce *scraper* recupère la liste des dernières vidéos postées sur
-**[dailymotion](http://www.dailymotion.com/fr)** par un utilisateur.
+Ce scraper recupère la liste des dernières vidéos postées sur
+**[Dailymotion](http://www.dailymotion.com/fr)** par un utilisateur.
 
 ## Configuration
 

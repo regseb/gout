@@ -24,12 +24,20 @@ define(["jquery", "scronpt"], function ($, Cron) {
     };
     // dd/MM HH:mm.
     const DTF_SHORT = new Intl.DateTimeFormat("fr-FR", {
-        "day": "2-digit", "month": "2-digit", "hour": "2-digit",
-        "minute": "2-digit" });
+        "day":    "2-digit",
+        "month":  "2-digit",
+        "hour":   "2-digit",
+        "minute": "2-digit"
+    });
     // EEEEE dd MMMMM yyyy HH:mm.
     const DTF_LONG = new Intl.DateTimeFormat("fr-FR", {
-        "weekday": "long", "day": "2-digit", "month": "long", "year": "numeric",
-        "hour": "2-digit", "minute": "2-digit" });
+        "weekday": "long",
+        "day":     "2-digit",
+        "month":   "long",
+        "year":    "numeric",
+        "hour":    "2-digit",
+        "minute":  "2-digit"
+    });
 
     const gates = {};
 
@@ -66,15 +74,15 @@ define(["jquery", "scronpt"], function ($, Cron) {
         return $.get(url).then(function (data) {
             const $last = $(".current-match", data);
             const last = {
-                "link": "https://www.om.net" +
-                        $(".about-match", $last).attr("href"),
+                "link":       "https://www.om.net" +
+                              $(".about-match", $last).attr("href"),
                 "tournament": reckonTournament($last.attr("data-competition")),
-                "host": {
-                    "name": $(".field-visuel span:first", $last).text(),
+                "host":       {
+                    "name":  $(".field-visuel span:first", $last).text(),
                     "score": parseInt($(".host span", $last).text(), 10)
                 },
-                "guest": {
-                    "name": $(".field-visuel span:last", $last).text(),
+                "guest":      {
+                    "name":  $(".field-visuel span:last", $last).text(),
                     "score": parseInt($(".guest span", $last).text(), 10)
                 }
             };
@@ -91,14 +99,14 @@ define(["jquery", "scronpt"], function ($, Cron) {
                 const minute = parseInt(parts[1], 10);
 
                 next = {
-                    "link": "https://www.om.net" +
-                            $(".presentation-match", $next).attr("href"),
+                    "link":       "https://www.om.net" +
+                                  $(".presentation-match", $next).attr("href"),
                     "tournament": reckonTournament(
                                                 $next.attr("data-competition")),
-                    "host": $(".field-visuel span:first", $next).text(),
-                    "guest": $(".field-visuel span:last", $next).text(),
-                    "date": new Date(year, month, day, hour, minute),
-                    "channel": reckonChannel($(".live-img", $next))
+                    "host":       $(".field-visuel span:first", $next).text(),
+                    "guest":      $(".field-visuel span:last", $next).text(),
+                    "date":       new Date(year, month, day, hour, minute),
+                    "channel":    reckonChannel($(".live-img", $next))
                 };
             }
 
@@ -123,7 +131,10 @@ define(["jquery", "scronpt"], function ($, Cron) {
 
         // Afficher l'éventuel prochain match.
         const $next = $("p:last", $root);
-        if (null !== data.next) {
+        if (null === data.next) {
+            $("a", $next).attr("href", "https://www.om.net/")
+                         .text("(Aucun match programmé)");
+        } else {
             const next = data.next;
             const channel = next.channel;
             tournament = next.tournament;
@@ -137,9 +148,6 @@ define(["jquery", "scronpt"], function ($, Cron) {
             $("img:last", $next).attr({ "src":   IMG_DIR + channel + ".svg",
                                         "alt":   CHANNELS[channel],
                                         "title": CHANNELS[channel] });
-        } else {
-            $("a", $next).attr("href", "https://www.om.net/")
-                         .text("(Aucun match programmé)");
         }
     }; // display()
 
@@ -161,28 +169,26 @@ define(["jquery", "scronpt"], function ($, Cron) {
         });
     }; // update()
 
-    const create = function (id, url) {
-        $.getJSON(url + "/config.json").then(function (args) {
-            const $root = $("#" + id);
-            $root.css("background-color", args.color || "#03a9f4");
+    const create = function (id, url, config) {
+        const $root = $("#" + id);
+        $root.css("background-color", config.color || "#03a9f4");
 
-            gates[id] = {
-                // Par défaut, mettre à jour tous les matins à 7h.
-                "cron": new Cron(args.cron || "0 7 * * *", update, id)
-            };
+        gates[id] = {
+            // Par défaut, mettre à jour tous les matins à 7h.
+            "cron": new Cron(config.cron || "0 7 * * *", update, id)
+        };
 
-            if (1 === Object.keys(gates).length) {
-                document.addEventListener("visibilitychange", function () {
-                    for (let id in gates) {
-                        if (!gates[id].cron.status()) {
-                            update(id);
-                        }
+        if (1 === Object.keys(gates).length) {
+            document.addEventListener("visibilitychange", function () {
+                for (let id in gates) {
+                    if (!gates[id].cron.status()) {
+                        update(id);
                     }
-                });
-            }
+                }
+            });
+        }
 
-            update(id);
-        });
+        update(id);
     }; // create()
 
     return create;

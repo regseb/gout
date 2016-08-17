@@ -2,35 +2,35 @@ define(["jquery"], function ($) {
     "use strict";
 
     const CHANNELS = {
-        "6ter": "6ter",
-        "arte": "arte",
-        "bein-sports-1": "bein-sports-1",
-        "bein-sports-2": "bein-sports-2",
-        "bfm-tv": "bfm-tv",
-        "canal": "canalplus",
-        "canal-sport": "canalplus-sport",
-        "cherie-25": "cherie-25",
-        "d17": "d17",
-        "d8": "d8",
-        "france-2": "france-2",
-        "france-3": "france-3",
-        "france-4": "france-4",
-        "france-5": "france-5",
-        "france-o": "france-o",
-        "gulli": "gulli",
-        "hd1": "hd1",
-        "i-tele": "itele",
+        "6ter":             "6ter",
+        "arte":             "arte",
+        "bein-sports-1":    "bein-sports-1",
+        "bein-sports-2":    "bein-sports-2",
+        "bfm-tv":           "bfm-tv",
+        "canal":            "canalplus",
+        "canal-sport":      "canalplus-sport",
+        "cherie-25":        "cherie-25",
+        "d17":              "d17",
+        "d8":               "d8",
+        "france-2":         "france-2",
+        "france-3":         "france-3",
+        "france-4":         "france-4",
+        "france-5":         "france-5",
+        "france-o":         "france-o",
+        "gulli":            "gulli",
+        "hd1":              "hd1",
+        "i-tele":           "itele",
         "lcp-public-senat": "lcp-public-senat",
-        "l-equipe-21": "l-equipe-21",
-        "m6": "m6",
-        "nrj12": "nrj-12",
-        "nt1": "nt1",
-        "numero-23": "numero-23",
-        "omtv": "om-tv",
-        "rmc-decouverte": "rmc-decouverte",
-        "tf1": "tf1",
-        "tmc": "tmc",
-        "w9": "w9"
+        "l-equipe-21":      "l-equipe-21",
+        "m6":               "m6",
+        "nrj12":            "nrj-12",
+        "nt1":              "nt1",
+        "numero-23":        "numero-23",
+        "omtv":             "om-tv",
+        "rmc-decouverte":   "rmc-decouverte",
+        "tf1":              "tf1",
+        "tmc":              "tmc",
+        "w9":               "w9"
     };
 
     return class {
@@ -40,11 +40,11 @@ define(["jquery"], function ($) {
         } // constuctor()
 
         list() {
-            const self = this;
+            const that = this;
             const url = "http://www.programme-television.org/?bouquet=" +
-                        self.broadcast;
+                        that.broadcast;
             return $.get(url).then(function (data) {
-                return self.channels.map(function (channel) {
+                return that.channels.map(function (channel) {
                     const $channel = $("#prime-broadcasts" +
                                        " a[href=\"/chaines-tv/" + channel +
                                        "\"]", data);
@@ -62,9 +62,9 @@ define(["jquery"], function ($) {
                                          $show).attr("href"))[1];
                     switch (type) {
                         case "films-telefilms":
-                            type = -1 !== category.indexOf("Téléfilm")
-                                                                    ? "telefilm"
-                                                                    : "film";
+                            type = -1 === category.indexOf("Téléfilm")
+                                                                   ? "film"
+                                                                   : "telefilm";
                             break;
                         case "series-tv": type = "serie"; break;
                         case "documentaires": type = "documentaire"; break;

@@ -1,6 +1,6 @@
 # /regseb/single/meltdown
 
-Ce *scraper* récupère les évènements du jour dans un bar
+Ce scraper récupère les évènements du jour dans un bar
 **[Meltdown](http://www.meltdown.bar/)**.
 
 ## Configuration

@@ -22,9 +22,11 @@ marque-page est composé des trois propriétés suivantes :
 Une image ayant pour nom ***icon.svg*** doit aussi est présent dans le
 répertoire.
 
-## Exemple
+## Scraper
 
-### /config.json
+Ce widget n'utilise pas de scraper.
+
+## Exemple
 
 Cet configuration affiche un cadre jaune avec trois liens allant vers
 *[Facebook](//www.facebook.com/)*, *[Twitter](https://www.twitter.com/)* et
@@ -32,20 +34,24 @@ Cet configuration affiche un cadre jaune avec trois liens allant vers
 
 ```JSON
 {
-    "color": "#f0a30a",
-    "sites": [
-        {
-            "link": "https://www.facebook.com/",
-            "title": "Facebook"
-        },
-        {
-            "link": "https://www.twitter.com/",
-            "title": "Twitter"
-        },
-        {
-            "link": "https://plus.google.com/",
-            "title": "Google+"
+    "std/bookmark/social": {
+        "widget": "std/feed",
+        "coord": { "x": 1, "y": 1, "w": 28, "h": 6 },
+        "config": {
+            "sites": [
+                {
+                    "link": "https://www.facebook.com/",
+                    "title": "Facebook"
+                }, {
+                    "link": "https://www.twitter.com/",
+                    "title": "Twitter"
+                }, {
+                    "link": "https://plus.google.com/",
+                    "title": "Google+"
+                }
+            ],
+            "color": "#f0a30a"
         }
-    ]
+    }
 }
 ```
