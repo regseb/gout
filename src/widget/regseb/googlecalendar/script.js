@@ -199,36 +199,34 @@ define(["jquery", "scronpt"], function ($, Cron) {
         });
     }; // access()
 
-    const create = function (id, url) {
-        $.getJSON(url + "/config.json").then(function (args) {
-            const $root = $("#" + id);
-            $root.css("background-color", args.color || "#3f51b5");
-            $("p a", $root).attr("href", "https://www.google.com/calendar/b/" +
-                                         (args.index || 0) + "/render");
+    const create = function (id, url, config) {
+        const $root = $("#" + id);
+        $root.css("background-color", config.color || "#3f51b5");
+        $("p a", $root).attr("href", "https://www.google.com/calendar/b/" +
+                                     (config.index || 0) + "/render");
 
-            // Ajouter des écouteurs.
-            $root[0].addEventListener("access", access);
-            $("button", $root).click(open);
+        // Ajouter des écouteurs.
+        $root[0].addEventListener("access", access);
+        $("button", $root).click(open);
 
-            gates[id] = {
-                "calendars": args.calendars || ["primary"],
-                "index":     args.index || 0,
-                "key":       args.key,
-                "secret":    args.secret,
-                "size":      $root.height() / 14 - 1,
-                "cron":      new Cron(args.cron || "0 */4 * * *", update, id)
-            };
+        gates[id] = {
+            "calendars": config.calendars || ["primary"],
+            "index":     config.index || 0,
+            "key":       config.key,
+            "secret":    config.secret,
+            "size":      $root.height() / 14 - 1,
+            "cron":      new Cron(config.cron || "0 */4 * * *", update, id)
+        };
 
-            if (1 === Object.keys(gates).length) {
-                document.addEventListener("visibilitychange", function () {
-                    for (let id in gates) {
-                        if (!gates[id].cron.status()) {
-                            update(id);
-                        }
+        if (1 === Object.keys(gates).length) {
+            document.addEventListener("visibilitychange", function () {
+                for (let id in gates) {
+                    if (!gates[id].cron.status()) {
+                        update(id);
                     }
-                });
-            }
-        });
+                }
+            });
+        }
     }; // create()
 
     return create;

@@ -1,23 +1,23 @@
-.std-bookmark {
+.std-list {
     background-position: right center;
     background-repeat: no-repeat;
     background-size: auto 100%;
 }
-.std-bookmark > ul {
+.std-list > ul {
     list-style-type: none;
     margin: 0.7em;
     padding-left: 0;
 }
-.std-bookmark > ul > li > a {
+.std-list > ul > li > a {
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.std-bookmark > ul > li > a:visited {
-    color: white;
+.std-list > ul > li.empty > a {
+    color: black;
 }
-.std-bookmark > ul > li > span {
+.std-list > ul > li > span {
     background-color: black;
     color: white;
     margin-right: 0.7em;
@@ -29,7 +29,7 @@
     text-align: justify;
     visibility: hidden;
 }
-.std-bookmark > ul > li:hover > span {
+.std-list > ul > li:hover > span {
     opacity: 1;
     transition: z-index 1s linear, opacity 0.5s linear 1s;
     visibility: visible;

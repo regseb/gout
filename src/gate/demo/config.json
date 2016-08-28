@@ -116,7 +116,7 @@
         },
         "scrapers": [
             { "scraper": "regseb/feed/googlefeed",
-              "config": "http://com.clubic.feedsportal.com/c/33464/f/581979/index.rss" }
+              "config": "http://www.legorafi.fr/feed/" }
         ]
     },
     "std/feed/slate": {
@@ -171,7 +171,7 @@
         ]
     },
 
-    "std/search/engines": {
+    "std/search": {
         "widget": "std/search",
         "coord": { "x": 59, "y": 1, "w": 17, "h": 2 },
         "config": [
@@ -216,23 +216,21 @@
         ]
     },
 
-    "std/bookmark/social": {
-        "widget": "std/bookmark",
-        "coord": { "x": 59, "y": 7, "w": 14, "h": 4 },
+    "std/list/social": {
+        "widget": "std/list",
+        "coord": { "x": 59, "y": 7, "w": 20, "h": 4 },
         "config": {
-            "sites": [
-                {
-                    "link": "https://www.facebook.com/",
-                    "title": "Facebook"
-                }, {
-                    "link": "https://www.twitter.com/",
-                    "title": "Twitter"
-                }, {
-                    "link": "https://plus.google.com/",
-                    "title": "Google+"
-                }
-            ],
-            "color": "#ff9800"
-        }
+            "color": "#f0a30a",
+            "cron": "0 0 1 1 0"
+        },
+        "scrapers": [
+            { "scraper": "std/list/bookmark",
+              "config": [{ "link": "https://www.facebook.com/",
+                           "title": "Facebook" },
+                         { "link": "https://www.twitter.com/",
+                           "title": "Twitter" },
+                         { "link": "https://plus.google.com/",
+                           "title": "Google+" }] }
+        ]
     }
 }

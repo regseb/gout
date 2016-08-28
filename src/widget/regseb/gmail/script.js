@@ -130,36 +130,34 @@ define(["jquery", "scronpt"], function ($, Cron) {
         });
     }; // access()
 
-    const create = function (id, url) {
-        $.getJSON(url + "/config.json").then(function (args) {
-            const $root = $("#" + id);
-            $root.css("background-color", args.color || "#f44336");
-            $("p a", $root).attr("href", "https://mail.google.com/mail/u/" +
-                                         (args.index || 0));
+    const create = function (id, url, config) {
+        const $root = $("#" + id);
+        $root.css("background-color", config.color || "#f44336");
+        $("p a", $root).attr("href", "https://mail.google.com/mail/u/" +
+                                     (config.index || 0));
 
-            // Ajouter des écouteurs.
-            $root[0].addEventListener("access", access);
-            $("button", $root).click(open);
+        // Ajouter des écouteurs.
+        $root[0].addEventListener("access", access);
+        $("button", $root).click(open);
 
-            gates[id] = {
-                "index":  args.index || 0,
-                "query":  encodeURIComponent(args.query || "is:unread"),
-                "key":    args.key,
-                "secret": args.secret,
-                "size":   $root.height() / 14 - 1,
-                "cron":   new Cron(args.cron, update, id)
-            };
+        gates[id] = {
+            "index":  config.index || 0,
+            "query":  encodeURIComponent(config.query || "is:unread"),
+            "key":    config.key,
+            "secret": config.secret,
+            "size":   $root.height() / 14 - 1,
+            "cron":   new Cron(config.cron, update, id)
+        };
 
-            if (1 === Object.keys(gates).length) {
-                document.addEventListener("visibilitychange", function () {
-                    for (let id in gates) {
-                        if (!gates[id].cron.status()) {
-                            update(id);
-                        }
+        if (1 === Object.keys(gates).length) {
+            document.addEventListener("visibilitychange", function () {
+                for (let id in gates) {
+                    if (!gates[id].cron.status()) {
+                        update(id);
                     }
-                });
-            }
-        });
+                }
+            });
+        }
     }; // create()
 
     return create;

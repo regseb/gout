@@ -96,7 +96,7 @@
         ]
     },
 
-    "std/search/engines": {
+    "std/search": {
         "widget": "std/search",
         "coord": { "x": 59, "y": 1, "w": 17, "h": 2 },
         "config": [

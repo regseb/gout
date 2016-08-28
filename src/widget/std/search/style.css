@@ -1,20 +1,16 @@
-.std-search p {
-    border-style: solid;
-    border-width: 1px;
-    height: 100%;
-    margin-bottom: 0;
-    margin-top: 0;
-}
 .std-search img,
 .std-search input {
     vertical-align: middle;
 }
-.std-search p img {
+.std-search form img {
     cursor: pointer;
-    margin-left: 1px;
 }
 .std-search input {
-    border: 0 solid;
+    background-color: inherit;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    padding: 0;
 }
 .std-search ul {
     background-color: black;

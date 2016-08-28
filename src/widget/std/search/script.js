@@ -29,11 +29,10 @@ define(["jquery"], function ($) {
         // Mettre à jour le formulaire.
         const engine = gates[$root.attr("id")][$(this).data("index")];
         $("form",  $root).attr("action", engine.url);
-        $("p",     $root).css("border-color", engine.color);
-        $("p img", $root).attr("src", engine.icon);
+        $root.css("background-color", engine.color);
+        $("form img", $root).attr("src", engine.icon);
         $("input", $root).attr({ "name":        engine.terms,
-                                 "placeholder": engine.title })
-                         .css("color", engine.color);
+                                 "placeholder": engine.title });
     }; // change()
 
     const display = function ($root, data, i, url) {
@@ -50,11 +49,11 @@ define(["jquery"], function ($) {
         const height = $root.height();
         const width = $root.width();
         $("form", $root).submit(search);
-        $("img", $root).width(height - 4)
-                       .height(height - 4)
+        $("img", $root).width(height)
+                       .height(height)
                        .click(propose);
-        $("input", $root).width(width - height - 8)
-                         .height(height - 4);
+        $("input", $root).width(width - height - 17)
+                         .height(height - 5);
 
         config.forEach(function (engine, i) {
             display($root, engine, i, url);
