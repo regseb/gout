@@ -2,8 +2,6 @@
 
 > Agrégateur d'Internet (flux RSS et tout le reste).
 
-[Site Internet](https://regseb.github.io/gout/)
-
 ## Description
 
 Gout est une **application Web** utilisant [Node.js](//nodejs.org/). Elle
