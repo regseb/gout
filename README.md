@@ -40,7 +40,8 @@ Il faut lancer l'application en exécutant la commande :
 npm start
 ```
 
-Rendez-vous ensuite à l'adresse suivante avec votre navigateur :
+Rendez-vous ensuite à l'adresse suivante avec **Firefox 48+** ou
+**Chrome 52+** :
 
     http://localhost:3000/
 
