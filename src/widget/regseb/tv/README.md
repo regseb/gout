@@ -44,7 +44,7 @@ Voici la liste des codes des chaines (regroupés par bouquet) :
   - *Gulli* : `"gulli"` ;
   - *France Ô* : `"france-o"` ;
   - *HD1* : `"hd1"` ;
-  - *L'Equipe 21* : `"l-equipe-21"` ;
+  - *L'Equipe* : `"l-equipe"` ;
   - *6ter* : `"6ter"` ;
   - *Numéro 23* : `"numero-23"` ;
   - *RMC Découverte* : `"rmc-decouverte"` ;

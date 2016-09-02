@@ -21,7 +21,7 @@ define(["jquery"], function ($) {
         "hd1":                                  "hd1",
         "i-tele":                               "itele",
         "la-chaine-parlementaire-public-senat": "lcp-public-senat",
-        "l-equipe-21":                          "l-equipe-21",
+        "l-equipe":                             "l-equipe",
         "m6":                                   "m6",
         "nrj-12":                               "nrj-12",
         "nt1":                                  "nt1",
