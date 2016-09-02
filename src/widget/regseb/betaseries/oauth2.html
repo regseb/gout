@@ -5,17 +5,16 @@
     <title>Gout - /regseb/betaseries</title>
   </head>
   <body>
-    <script src="/lib/wiloquery.js"></script>
     <script>
-    "use strict";
         // Récupérer les paramètres passés dans l'URL.
-        var query = window.location.query;
+        const params = new URLSearchParams(window.location.search.slice(1));
 
         // Envoyer les paramètres aux widgets.
-        var roots = window.opener.document.getElementsByClassName(
+        const roots = window.opener.document.getElementsByClassName(
                                                            "regseb-betaseries");
-        for (var root of roots) {
-            root.dispatchEvent(new CustomEvent("access", { "detail": query }));
+        for (let root of roots) {
+            root.dispatchEvent(new CustomEvent(
+                                   "access", { "detail": params.get("code") }));
         }
 
         window.close();

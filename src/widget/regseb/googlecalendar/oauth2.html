@@ -5,14 +5,14 @@
     <title>Gout - /regseb/googlecalendar</title>
   </head>
   <body>
-    <script src="/lib/wiloquery.js"></script>
     <script>
         // Récupérer les paramètres passés dans l'URL.
-        var query = window.location.query;
+        const params = new URLSearchParams(window.location.search.slice(1));
 
         // Envoyer les paramètres au widget.
-        var root = window.opener.document.getElementById(query.state);
-        root.dispatchEvent(new CustomEvent("access", { "detail": query }));
+        const root = window.opener.document.getElementById(params.get("state"));
+        root.dispatchEvent(new CustomEvent("access",
+                                           { "detail": params.get("code") }));
 
         window.close();
     </script>

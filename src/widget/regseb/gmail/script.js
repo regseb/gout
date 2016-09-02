@@ -109,7 +109,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
 
         const url = OAUTH2_API_URL + "token";
         const params = {
-            "code":          event.detail.code,
+            "code":          event.detail,
             "client_id":     args.key,
             "client_secret": args.secret,
             "redirect_uri":  REDIRECT_URI,

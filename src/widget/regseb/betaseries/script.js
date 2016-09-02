@@ -154,7 +154,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
             "client_id":     args.key,
             "client_secret": args.secret,
             "redirect_uri":  REDIRECT_URI,
-            "code":          event.detail.code
+            "code":          event.detail
         };
         // Récupérer le jeton grâce au code.
         $.post(url, params).then(function (data) {
