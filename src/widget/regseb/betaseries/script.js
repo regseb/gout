@@ -41,12 +41,14 @@ define(["jquery", "scronpt"], function ($, Cron) {
     }; // extract()
 
     const display = function ($root, data, format) {
-        const $img = $("<img>").attr("src", IMG_DIR + data.status + ".svg")
-                               .click(post);
+        const $img = $("<button>").click(post);
         if ("download" === data.status) {
-            $img.attr("title", "Marquer comme récupéré");
+            $img.attr("title", "Marquer comme récupéré")
+                .text("●")
         } else {
-            $img.attr("title", "Marquer comme vu");
+            $img.attr("title", "Marquer comme vu")
+                .text("▶")
+
         }
 
         const text = format.replace("{show}",    data.show)
