@@ -9,7 +9,7 @@ La configuration contient un objet
 suivantes :
 
 - `"link"`: le lien vers une page Internet ;
-- `"title"` (optionnel - valeur par défaut `""`) : l'info-bulle affichée au
+- `"desc"` (optionnel - valeur par défaut `""`) : l'info-bulle affichée au
   survol du bouton ;
 - `"color"` (optionnel - valeur par défaut : `"black"`) : la couleur de fond du
   bouton (au format hexadécimale, régulier RGB ou avec des mots-clefs
@@ -19,6 +19,10 @@ Le widget doit être carré.
 
 Le répertoire de la passerelle doit avoir un fichier ***icon.svg*** qui sera
 l'image affichée dans le button.
+
+## Scraper
+
+Ce widget n'utilise pas de scraper.
 
 ## Exemple
 
@@ -31,7 +35,7 @@ Cet exemple affiche un bouton qui redirige vers *Facebook*.
         "coord": { "x": 1, "y": 1, "w": 3, "h": 3 },
         "config": {
             "link": "https://www.facebook.com/",
-            "title": "Facebook",
+            "desc": "Facebook",
             "color": "#2196f3"
         }
     }

@@ -9,7 +9,7 @@ define(["jquery"], function ($) {
         });
         $("a", $root).attr("href", config.link);
         if ("title" in config) {
-            $("a", $root).attr("title", config.title);
+            $("a", $root).attr("title", config.desc);
         }
     }; // create()
 
