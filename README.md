@@ -14,8 +14,8 @@ nouveaux sites Internet.
 
 ## Installation
 
-Commencer par installer **Node.js**. Puis déployer Gout dans le répertoire de
-votre choix en exécutant les commandes suivantes dans la console :
+Commencez par installer **Node.js v6+**. Puis déployez Gout dans le répertoire
+de votre choix en exécutant les commandes suivantes dans la console :
 
 ```shell
 git clone https://github.com/regseb/gout.git
@@ -28,8 +28,7 @@ Ligne par ligne, les instructions précédentes :
 1. clone le projet hébergé dans GitHub ;
 2. rentre dans le répertoire ;
 3. installe les dépendances ([Express](http://expressjs.com),
-   [RequireJS](http://requirejs.org), [jQuery](//jquery.com),
-   [Wiloquery](//regseb.github.io/wiloquery/) et
+   [RequireJS](http://requirejs.org), [jQuery](//jquery.com) et
    [Scronpt](//regseb.github.io/scronpt/)).
 
 ## Utilisation
@@ -41,9 +40,7 @@ npm start
 ```
 
 Rendez-vous ensuite à l'adresse suivante avec **Firefox 48+** ou
-**Chrome 52+** :
-
-    http://localhost:3000/
+**Chrome 52+** : <http://localhost:3000/>
 
 ## Licence
 
