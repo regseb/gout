@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 100 100" preserveAspectRatio="xMinYMin meet">
+  <defs>
+    <rect id="mark" x="49" y="10" width="2" height="6" fill="white" />
+  </defs>
+
+  <g opacity="0.5">
+    <circle cx="50" cy="50" r="39" stroke-width="2" stroke="white"
+            fill="none" />
+    <use xlink:href="#mark" transform="rotate(0,   50, 50)" />
+    <use xlink:href="#mark" transform="rotate(30,  50, 50)" />
+    <use xlink:href="#mark" transform="rotate(60,  50, 50)" />
+    <use xlink:href="#mark" transform="rotate(90,  50, 50)" />
+    <use xlink:href="#mark" transform="rotate(120, 50, 50)" />
+    <use xlink:href="#mark" transform="rotate(150, 50, 50)" />
+    <use xlink:href="#mark" transform="rotate(180, 50, 50)" />
+    <use xlink:href="#mark" transform="rotate(210, 50, 50)" />
+    <use xlink:href="#mark" transform="rotate(240, 50, 50)" />
+    <use xlink:href="#mark" transform="rotate(270, 50, 50)" />
+    <use xlink:href="#mark" transform="rotate(300, 50, 50)" />
+    <use xlink:href="#mark" transform="rotate(330, 50, 50)" />
+  </g>
+
+  <g id="hour">
+    <line x1="50" y1="50" x2="50" y2="30" stroke-width="3" stroke="white"
+          stroke-linecap="round" />
+  </g>
+  <g id="minute">
+    <line x1="50" y1="50" x2="50" y2="20" stroke-width="2" stroke="white"
+          stroke-linecap="round" />
+  </g>
+  <g id="second">
+    <line x1="50" y1="50" x2="50" y2="15" stroke-width="1" stroke="white"
+          stroke-linecap="round" opacity="0.8" />
+  </g>
+
+  <circle cx="50" cy="50" r="2" fill="white" />
+</svg>

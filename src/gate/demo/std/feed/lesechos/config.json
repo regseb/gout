@@ -1,8 +1,0 @@
-{
-    "urls": [
-        "http://syndication.lesechos.fr/rss/rss_politique_societe.xml",
-        "http://rss.feedsportal.com/c/499/f/413824/index.rss"
-    ],
-    "color": "#9e9e9e",
-    "cron": "*/3 * * * *"
-}

@@ -1,5 +1,0 @@
-{
-    "urls":  ["http://www.huffingtonpost.fr/feeds/index.xml"],
-    "color": "#009688",
-    "cron":  "*/3 * * * *"
-}

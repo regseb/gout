@@ -1,5 +1,0 @@
-{
-    "urls":  ["http://linuxfr.org/news.atom"],
-    "color": "#ffc107",
-    "cron":  "*/3 * * * *"
-}

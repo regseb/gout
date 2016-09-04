@@ -1,5 +1,0 @@
-{
-    "urls":  ["http://www.legorafi.fr/feed/"],
-    "color": "#673ab7",
-    "cron":  "0 * * * *"
-}

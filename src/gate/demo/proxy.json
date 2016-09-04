@@ -32,7 +32,7 @@
         },
         "scrapers": [
             { "scraper": "std/feed/rss",
-              "config": "http://rss.lefigaro.fr/lefigaro/laune" }
+              "config": "http://www.lefigaro.fr/rss/figaro_actualites-a-la-une.xml" }
         ]
     },
     "std/feed/liberation": {
@@ -140,7 +140,7 @@
                                   "nrj-12",
                                   "la-chaine-parlementaire-public-senat",
                                   "france-4", "d17", "gulli", "france-o", "hd1",
-                                  "l-equipe-21", "6ter", "numero-23",
+                                  "l-equipe", "6ter", "numero-23",
                                   "rmc-decouverte", "cherie-25"] } }
         ]
     },
@@ -189,24 +189,22 @@
         ]
     },
 
-    "std/bookmark/social": {
-        "widget": "std/bookmark",
+    "std/list/social": {
+        "widget": "std/list",
         "coord": { "x": 80, "y": 1, "w": 14, "h": 4 },
         "config": {
-            "sites": [
-                {
-                    "link": "https://www.facebook.com/",
-                    "title": "Facebook"
-                }, {
-                    "link": "https://www.twitter.com/",
-                    "title": "Twitter"
-                }, {
-                    "link": "https://plus.google.com/",
-                    "title": "Google+"
-                }
-            ],
-            "color": "#ff9800"
-        }
+            "color": "#ff9800",
+            "cron": "0 0 1 1 0"
+        },
+        "scrapers": [
+            { "scraper": "std/list/bookmark",
+              "config": [{ "link": "https://www.facebook.com/",
+                           "title": "Facebook" },
+                         { "link": "https://www.twitter.com/",
+                           "title": "Twitter" },
+                         { "link": "https://plus.google.com/",
+                           "title": "Google+" }] }
+        ]
     },
 
     "std/single/financeyahoo/pernodricard": {
@@ -249,7 +247,7 @@
 
     "std/single/horoscope/lion": {
         "widget": "std/single",
-        "coord": { "x": 80, "y": 33, "w": 28, "h": 2 },
+        "coord": { "x": 80, "y": 33, "w": 14, "h": 2 },
         "config": {
             "color": "black",
             "cron": "0 6 * * *"

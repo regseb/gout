@@ -1,5 +1,0 @@
-{
-    "urls":  ["http://rue89.feedsportal.com/c/33822/f/608948/index.rss"],
-    "color": "#f44336",
-    "cron":  "*/3 * * * *"
-}
