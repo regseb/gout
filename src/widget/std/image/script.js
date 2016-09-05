@@ -4,14 +4,14 @@ define(["require", "jquery", "scronpt"], function (require, $, Cron) {
     const gates = {};
 
     const refresh = function ($root) {
-        if ("0px" === $("ul", $root).css("left")) {
+        const left = $("ul", $root).position().left;
+        if (0 === left) {
             $("span:first", $root).css("cursor", "not-allowed");
         } else {
             $("span:first", $root).css("cursor", "pointer");
         }
 
-        if (-1 * $root.width() * ($("li", $root).length - 1) + "px" ===
-                $("ul", $root).css("left")) {
+        if (-1 * $root.width() * ($("li", $root).length - 1) === left) {
             $("span:last", $root).css("cursor", "not-allowed");
         } else {
             $("span:last", $root).css("cursor", "pointer");
@@ -21,10 +21,9 @@ define(["require", "jquery", "scronpt"], function (require, $, Cron) {
     const prev = function () {
         const $root = $(this).closest("article");
 
-        if ("0px" !== $("ul", $root).css("left")) {
-            $("ul", $root).css("left",
-                               parseInt($("ul", $root).css("left"), 10) +
-                               parseInt($root.css("width"), 10));
+        const left = $("ul", $root).position().left;
+        if (0 !== left) {
+            $("ul", $root).css("left", left + $root.width());
             refresh($root);
         }
     }; // prev()
@@ -32,11 +31,9 @@ define(["require", "jquery", "scronpt"], function (require, $, Cron) {
     const next = function () {
         const $root = $(this).closest("article");
 
-        if (-1 * $root.width() * ($("li", $root).length - 1) + "px" !==
-                $("ul", $root).css("left")) {
-            $("ul", $root).css("left",
-                               parseInt($("ul", $root).css("left"), 10) -
-                               parseInt($root.css("width"), 10));
+        const left = $("ul", $root).position().left;
+        if (-1 * $root.width() * ($("li", $root).length - 1) !== left) {
+            $("ul", $root).css("left", left - $root.width());
             refresh($root);
         }
     }; // next()
