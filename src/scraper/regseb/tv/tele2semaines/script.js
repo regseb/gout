@@ -2,35 +2,9 @@ define(["jquery"], function ($) {
     "use strict";
 
     const CHANNELS = {
-        "6ter":                                 "6ter",
-        "arte":                                 "arte",
-        "bein-sports-1":                        "bein-sports-1",
-        "bein-sports-2":                        "bein-sports-2",
-        "bfm-tv":                               "bfm-tv",
-        "canalplus":                            "canalplus",
-        "canalplus-sport":                      "canalplus-sport",
-        "cherie-25":                            "cherie-25",
-        "d17":                                  "d17",
-        "d8":                                   "d8",
-        "france-2":                             "france-2",
-        "france-3":                             "france-3",
-        "france-4":                             "france-4",
-        "france-5":                             "france-5",
-        "france-o":                             "france-o",
-        "gulli":                                "gulli",
-        "hd1":                                  "hd1",
-        "i-tele":                               "itele",
-        "la-chaine-parlementaire-public-senat": "lcp-public-senat",
-        "l-equipe":                             "l-equipe",
-        "m6":                                   "m6",
-        "nrj-12":                               "nrj-12",
-        "nt1":                                  "nt1",
-        "numero-23":                            "numero-23",
-        "om-tv":                                "om-tv",
-        "rmc-decouverte":                       "rmc-decouverte",
-        "tf1":                                  "tf1",
-        "tmc":                                  "tmc",
-        "w9":                                   "w9"
+        "lci-la-chaine-info":                   "lci",
+        "i-tele":                               "canal-news",
+        "la-chaine-parlementaire-public-senat": "lcp-public-senat"
     };
 
     const deobfuscate = function (clazz) {
@@ -84,7 +58,8 @@ define(["jquery"], function ($) {
                         }
 
                         return {
-                            "channel":  CHANNELS[channel],
+                            "channel":  channel in CHANNELS ? CHANNELS[channel]
+                                                            : channel,
                             "name":     name,
                             "title":    title,
                             "subtitle": subtitle,
