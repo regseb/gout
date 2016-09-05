@@ -8,7 +8,7 @@ define(["jquery"], function ($) {
             "background-image": "url(\"" + url + "/icon.svg\")"
         });
         $("a", $root).attr("href", config.link);
-        if ("title" in config) {
+        if ("desc" in config) {
             $("a", $root).attr("title", config.desc);
         }
     }; // create()
