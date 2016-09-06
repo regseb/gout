@@ -18,7 +18,7 @@ define(["jquery"], function ($) {
                 };
 
                 $(".signes .right", data).each(function () {
-                    if (-1 !== $("a", this).attr("href").indexOf(that.sign)) {
+                    if ($("a", this).attr("href").includes(that.sign)) {
                         result.title = $("p", this).text();
                         return false;
                     }

@@ -43,7 +43,7 @@ define(["jquery"], function ($) {
                     } else {
                         for (let module of job.modules) {
                             if (0 !== that.filters[job.name].length &&
-                                    -1 === that.filters[job.name].indexOf(
+                                    !that.filters[job.name].includes(
                                                                  module.name)) {
                                 continue;
                             }

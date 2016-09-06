@@ -27,7 +27,7 @@ define(["jquery"], function ($) {
 
                 // Si le sujet du jour n'est pas encore indiqué.
                 const date = $(".sous_titre", $data).text();
-                if (-1 === date.indexOf(DTF.format(now))) {
+                if (!date.includes(DTF.format(now))) {
                     return {
                         "title": "(Sujet de l'émission non-défini)",
                         "desc":  "Le sujet de l'émission est généralement" +

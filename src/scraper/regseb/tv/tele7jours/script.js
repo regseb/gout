@@ -40,9 +40,8 @@ define(["jquery"], function ($) {
                                          $show).attr("href"))[1];
                     switch (type) {
                         case "films-telefilms":
-                            type = -1 === category.indexOf("Téléfilm")
-                                                                   ? "film"
-                                                                   : "telefilm";
+                            type = category.includes("Téléfilm") ? "telefilm"
+                                                                 : "film";
                             break;
                         case "series-tv": type = "serie"; break;
                         case "documentaires": type = "documentaire"; break;

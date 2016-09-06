@@ -16,7 +16,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
         return $.getJSON(url).then(function (data) {
             const items = [];
             for (let show of data.shows) {
-                if (null !== shows && -1 === shows.indexOf(show.title)) {
+                if (null !== shows && !shows.includes(show.title)) {
                     continue;
                 }
                 for (let item of show.unseen) {
@@ -129,7 +129,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
             // Filtrer les séries non-affichées dans cette passerelle.
             const promises = data.shows.filter(function (show) {
                 return !(show.id in resources) &&
-                       (null === shows || -1 !== shows.indexOf(show.title));
+                       (null === shows || shows.includes(show.title));
             }).map(function (show) {
                 // Récupérer l'URL vers les pages Internet des épisodes.
                 const url = API_URL + "shows/display?key=" + key + "&id=" +
