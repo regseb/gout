@@ -220,7 +220,7 @@
         "widget": "std/list",
         "coord": { "x": 59, "y": 7, "w": 20, "h": 4 },
         "config": {
-            "color": "#f0a30a",
+            "color": "#4caf50",
             "cron": "0 0 1 1 0"
         },
         "scrapers": [

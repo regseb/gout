@@ -1,7 +1,6 @@
 {
     "example/hello/world": {
         "widget": "example/hello",
-        "active": true,
         "coord": { "x": 1, "y": 1, "w": 10, "h": 2 },
         "config": {
             "color": "#f44336",
