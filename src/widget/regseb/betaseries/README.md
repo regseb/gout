@@ -31,16 +31,22 @@ répertoire.
 
 ## Exemple
 
-### /config.json
-
 Cet exemple affiche la liste des épisodes à récupérer et/ou voir pour la série
 [The IT Crowd](//www.betaseries.com/serie/itcrowd) (avec une mise à jour à
 minuit).
 
 ```JSON
 {
-    "shows":  ["The IT Crowd"],
-    "key":    "d527c40702a3 (une clé de ce style)",
-    "secret": "6d587671253e40475442502c66593526 (une clé de ce style)"
+    "regseb/betaseries/itcrowd": {
+        "widget": "regseb/betaseries",
+        "coord": { "x": 1, "y": 1, "w": 20, "h": 5 },
+        "config": {
+            "shows": ["The IT Crowd"],
+            "format": "s{season}e{episode} : {title}",
+            "key": "d527c40702a3 (une clé de ce style)",
+            "secret": "6d587671253e40475442502c66593526 (une clé de ce style)",
+            "cron": "0 0 * * *"
+        }
+    }
 }
 ```

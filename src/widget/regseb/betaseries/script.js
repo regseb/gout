@@ -4,8 +4,6 @@ define(["jquery", "scronpt"], function ($, Cron) {
     const API_URL = "https://api.betaseries.com/";
     const REDIRECT_URI = window.location.origin +
                          "/widget/regseb/betaseries/oauth2.html";
-    const IMG_DIR = "/widget/regseb/betaseries/img/";
-
     const gates = {};
 
     const resources = {};
@@ -44,11 +42,10 @@ define(["jquery", "scronpt"], function ($, Cron) {
         const $img = $("<button>").click(post);
         if ("download" === data.status) {
             $img.attr("title", "Marquer comme récupéré")
-                .text("●")
+                .text("●");
         } else {
             $img.attr("title", "Marquer comme vu")
-                .text("▶")
-
+                .text("▶");
         }
 
         const text = format.replace("{show}",    data.show)
