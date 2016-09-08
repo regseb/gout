@@ -1,16 +1,13 @@
 # /std/ajaxloader
 
-Ce widget indique si une requête AJAX est en cours, grâce à une image animée.
+Ce widget indique si une requête
+[AJAX](//developer.mozilla.org/fr/docs/AJAX "Asynchronous JAvascript and Xml")
+est en cours, grâce à une image animée.
 
 ## Configuration
 
-La configuration contient un objet
-[JSON](http://www.json.org "JavaScript Object Notation") avec la propriété
-suivante :
-
-- `"color"` (optionnel - valeur par défaut : `"black"`) : la couleur de fond du
-  cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
-  prédéfinis) ;
+La configuration contient la couleur de fond du cadre (au format hexadécimale,
+régulier RGB ou avec des mots-clefs prédéfinis). Par défaut, le cadre est noir.
 
 Les dimensions conseillées sont **2x2**.
 
@@ -20,14 +17,13 @@ Ce widget n'utilise pas de scraper.
 
 ## Exemple
 
-Cet exemple affiche un cadre noir.
+Cet exemple affiche l'image animée dans un cadre noir.
 
 ```JSON
 {
     "std/ajaxloader": {
         "widget": "std/ajaxloader",
         "coord": { "x": 1, "y": 1, "w": 2, "h": 2 },
-        "config": {}
     }
 }
 ```

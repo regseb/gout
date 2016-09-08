@@ -1,17 +1,13 @@
 # /std/weather
 
 Ce widget affiche la météo d'une ville. Les prévisions sont récupérées du
-service [OpenWeatherMap](http://openweathermap.org/). Pour se connecter à
-l'API, il vous faut une clé qui s'obtient en s'inscrivant sur le site
-Internet du service : <http://openweathermap.org/register>
+service [OpenWeatherMap](http://openweathermap.org/).
 
 ## Configuration
 
-Les dimensions conseillées sont **14x13**.
-
-Le répertoire de la passerelle doit avoir un fichier ***config.json***
-contenant un objet [JSON](http://www.json.org "JavaScript Object Notation")
-avec les propriétés suivantes :
+La configuration contient un objet
+[JSON](http://www.json.org "JavaScript Object Notation") avec les propriétés
+suivantes :
 
 - `"city"` : le nom de ville, suivit éventuellement du code du pays (séparé par
   une virgule) ;
@@ -22,9 +18,18 @@ avec les propriétés suivantes :
   indiquant la fréquence de mise à jour ;
 - `"appid"` : le clé de l'API pour le service d'OpenWeatherMap.
 
-## Exemple
+Les dimensions conseillées sont **14x13**.
 
-### /config.json
+## `"appid"`
+
+Pour se connecter à l'API, il vous faut une clé qui s'obtient en s'inscrivant
+sur le site Internet du service : <http://openweathermap.org/register>
+
+## Scraper
+
+Ce widget n'utilise pas de scraper.
+
+## Exemple
 
 Cet exemple affiche la météo d'*Aix-en-Provence* sur fond bleu.
 

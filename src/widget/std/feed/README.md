@@ -23,7 +23,7 @@ répertoire passerelle.
 
 Les scrapers associés à ce widget doivent définir une méthode `list()` qui prend
 en paramètre un nombre indiquant le nombre de résultats à retourner. Chaque
-résultat est un objet JSON ayant les propiétés :
+résultat est un objet JSON ayant les propriétés :
 
 - `"title"` : le titre de l'élément ;
 - `"desc"` : la description de l'élément ;

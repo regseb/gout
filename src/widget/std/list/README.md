@@ -25,7 +25,7 @@ répertoire passerelle.
 
 Les scrapers associés à ce widget doivent définir une méthode `list()` qui prend
 en paramètre un nombre indiquant le nombre de résultats à retourner. Chaque
-résultat est un objet JSON ayant les propiétés :
+résultat est un objet JSON ayant les propriétés :
 
 - `"title"` : le titre de l'élément ;
 - `"desc"` : la description de l'élément ;
@@ -52,7 +52,7 @@ Cet configuration affiche un cadre jaune avec trois liens allant vers
         "scrapers": [
             { "scraper": "std/list/bookmark",
               "config": [{ "link": "https://www.facebook.com/",
-                            "title": "Facebook" },
+                           "title": "Facebook" },
                          { "link": "https://www.twitter.com/",
                            "title": "Twitter" },
                          { "link": "https://plus.google.com/",

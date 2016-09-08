@@ -14,11 +14,12 @@ contenant un objet [JSON](http://www.json.org "JavaScript Object Notation")
 avec les propriétés suivantes :
 
 - `"calendar"` (optionnel - valeur par défaut : `["primary"]`) : la liste des
-  identifiants des calendriers qui seront affichés ;
+  identifiants des agendas qui seront affichés ;
 - `"color"` (optionnel - valeur par défaut : `"#3f51b5"`) : la couleur de fond
   du cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
   prédéfinis) ;
-- `"index`" (optionnel - valeur par défaut : `"0"`) : TODO ;
+- `"index`" (optionnel - valeur par défaut : `0`) : l'index du compte Google
+  Agenda ;
 - `"cron"` (optionnel - valeur par défaut : `"0 */4 * * *"`) : la notation cron
   indiquant la fréquence de mise à jour des évènements ;
 - `"key"` : un identifiant client pour les API Google ;
@@ -46,7 +47,14 @@ heures).
 
 ```JSON
 {
-    "key": "8819981768.apps.googleusercontent.com (une clé de ce style)",
-    "secret": "sdlkfjaskd (un code de ce style)"
+    "regseb/googlecalendar": {
+        "widget": "regseb/googlecalendar",
+        "coord": { "x": 1, "y": 1, "w": 28, "h": 5 },
+        "config": {
+            "key": "881981768.apps.googleusercontent.com (une clé de ce style)",
+            "secret": "sdlkfjaskd (un code de ce style)",
+            "cron": "0 */4 * * *"
+        }
+    }
 }
 ```

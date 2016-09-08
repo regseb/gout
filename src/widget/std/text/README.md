@@ -5,11 +5,9 @@ personnalisable.
 
 ## Configuration
 
-Aucune dimension particulière est conseillée.
-
-Le répertoire de la passerelle doit avoir un fichier ***config.json***
-contenant un objet [JSON](http://www.json.org "JavaScript Object Notation")
-avec les propriétés suivantes :
+La configuration contient un objet
+[JSON](http://www.json.org "JavaScript Object Notation") avec les propriétés
+suivantes :
 
 - `"text"` (optionnel - valeur par défaut : `""`) : le texte affiché dans le
   cadre ;
@@ -19,14 +17,24 @@ avec les propriétés suivantes :
   cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
   prédéfinis) ;
 
-## Exemple
+Aucune dimension particulière est conseillée.
 
-### /config.json
+## Scraper
+
+Ce widget n'utilise pas de scraper.
+
+## Exemple
 
 Cet exemple affiche un cadre noir avec le texte *Carpe diem*.
 
 ```JSON
 {
-    "text": "Carpe diem"
+    "std/text/carpe": {
+        "widget": "std/text",
+        "coord": { "x": 1, "y": 1, "w": 10, "h": 2 },
+        "config": {
+            "text": "Carpe diem"
+        }
+    }
 }
 ```
