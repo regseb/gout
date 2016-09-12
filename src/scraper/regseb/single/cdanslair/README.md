@@ -2,7 +2,7 @@
 
 Ce scraper récupère le sujet de l'émission
 **[C dans l'air](http://www.france5.fr/emissions/c-dans-l-air)**. Ce programme
-est diffusé sur *France 5* du lundi au vendredi à 17h45.
+est diffusé sur *France 5* du lundi au samedi à 17h45.
 
 ## Configuration
 

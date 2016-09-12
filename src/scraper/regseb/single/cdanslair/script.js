@@ -9,14 +9,14 @@ define(["jquery"], function ($) {
 
     return class {
         get() {
-            // Si c'est le week-end (dimanche ou samedi) : ne pas récupérer le
-            // sujet de l'émission car il n'y a pas d'émission le week-end.
+            // Si c'est un dimanche : ne pas récupérer le sujet de l'émission
+            // car il n'y a pas de diffusion.
             const now = new Date();
-            if (0 === now.getDay() || 6 === now.getDay()) {
+            if (0 === now.getDay()) {
                 return Promise.resolve({
-                    "title": "(Pas d'émission le week-end)",
+                    "title": "(Pas d'émission le dimanche)",
                     "desc":  "<em>C dans l'air</em> est diffusée du lundi au" +
-                             " vendredi.",
+                             " samedi.",
                     "link":  "http://www.france5.fr/emissions/c-dans-l-air"
                 });
             }
@@ -26,8 +26,8 @@ define(["jquery"], function ($) {
                 const $data = $(".cartouche", data);
 
                 // Si le sujet du jour n'est pas encore indiqué.
-                const date = $(".sous_titre", $data).text();
-                if (!date.includes(DTF.format(now))) {
+                const date = $(".sous_titre", $data).text().trim();
+                if (date !== DTF.format(now)) {
                     return {
                         "title": "(Sujet de l'émission non-défini)",
                         "desc":  "Le sujet de l'émission est généralement" +
@@ -38,8 +38,7 @@ define(["jquery"], function ($) {
                 return {
                     "title": $("a:first", $data).text(),
                     "desc":  $(".accroche p", $data).html(),
-                    "link":  "http://www.france5.fr" +
-                             $("a", $data).attr("href")
+                    "link":  $("a:first", $data).attr("href")
                 };
             });
         } // get()
