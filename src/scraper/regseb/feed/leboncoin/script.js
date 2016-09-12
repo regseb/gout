@@ -24,7 +24,7 @@ define(["jquery"], function ($) {
                         date.setDate(date.getDate() - 1);
                     } else {
                         const subparts = parts[0].split(" ");
-                        date.setMonth(MONTHS[subparts[1]]);
+                        date.setMonth(MONTHS.indexOf(subparts[1]));
                         date.setDate(parseInt(subparts[0], 10));
                     }
                     date.setHours(parseInt(parts[1], 10));
