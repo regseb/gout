@@ -96,7 +96,7 @@
         "block-opening-brace-newline-after": "always-multi-line",
         "block-opening-brace-newline-before": null,
         "block-opening-brace-space-after": "always-single-line",
-        "block-opening-brace-space-before": null,
+        "block-opening-brace-space-before": "always-multi-line",
 
         "selector-attribute-brackets-space-inside": "never",
         "selector-attribute-operator-blacklist": null,
