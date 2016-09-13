@@ -32,9 +32,9 @@ Pour obtenir un identifiant, allez dans la
 projet, puis *Ajoutez des identifiants* pour obtenir un *identifiant client
 OAuth 2.0* de type *Application Web*. Dans le champs pour définir l'origine des
 requêtes : renseignez l'adresse où est accessible Gout. Par exemple :
-`http://localhost:3000/`. Pour les *URI* de redirection : indiquez l'adresse de
+`http://localhost:6047/`. Pour les *URI* de redirection : indiquez l'adresse de
 Gout suffixée avec `/widget/regseb/googlecalendar/oauth2.html`. Par exemple :
-`http://localhost:3000/widget/regseb/googlecalendar/oauth2.html`.
+`http://localhost:6047/widget/regseb/googlecalendar/oauth2.html`.
 
 Ensuite, activez la *Calendar API*.
 

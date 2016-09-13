@@ -1,7 +1,7 @@
 "use strict";
 
 const CONFIG = {
-    "port": 3000
+    "port": 6047
 };
 
 const fs      = require("fs");

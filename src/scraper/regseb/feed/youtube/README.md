@@ -16,7 +16,7 @@ Pour obtenir une clé, allez dans la
 ***[Google Developers Console](//console.developers.google.com/)***. Créez un
 projet, puis *Ajoutez des identifiants* pour obtenir une *Clé de l'API* de type
 *Navigateur*. Dans le champs pour filtrer les requêtes : renseignez l'adresse où
-est accessible Gout. Par exemple : `http://localhost:3000/*`.
+est accessible Gout. Par exemple : `http://localhost:6047/*`.
 
 Ensuite, activez la *YouTube Data API v3*.
 
