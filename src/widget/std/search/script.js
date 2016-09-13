@@ -10,6 +10,7 @@ define(["jquery"], function ($) {
         window.open($("form", $root).attr("action")
                                     .replace("{searchTerms}",
                                              $("input", $root).val()));
+        $("input", $root).val("").blur();
         return false;
     }; // search()
 
