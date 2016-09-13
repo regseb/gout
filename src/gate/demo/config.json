@@ -32,7 +32,7 @@
         },
         "scrapers": [
             { "scraper": "regseb/feed/googlefeed",
-              "config": "http://com.clubic.feedsportal.com/c/33464/f/581979/index.rss" }
+              "config": "http://www.clubic.com/articles.rss" }
         ]
     },
     "std/feed/lemonde": {
@@ -232,5 +232,13 @@
                          { "link": "https://plus.google.com/",
                            "title": "Google+" }] }
         ]
+    },
+
+    "std/clock": {
+        "widget": "std/clock",
+        "coord": { "x": 59, "y": 12, "w": 10, "h": 10 },
+        "config": {
+            "color": "#795548"
+        }
     }
 }

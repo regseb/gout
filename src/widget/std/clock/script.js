@@ -50,10 +50,10 @@ define(["jquery"], function ($) {
     const create = function (id, url, config) {
         // FIXME Rendre paramétrable le fuseau horaire.
         const $root = $("#" + id);
-        $root.css("background-color", config.color);
+        $root.css("background-color", config.color || "black");
 
         $("object", $root).on("load", animate)
-                          .attr("data", url + "/clock.svg");
+                          .attr("data", url + "/icon.svg");
     }; // create()
 
     return create;

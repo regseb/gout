@@ -15,9 +15,9 @@ suivante :
 Le widget doit être carré.
 
 Le répertoire de la passerelle doit avoir un fichier ***icon.svg*** qui contient
-l'image de l'horloge. Le document SVG doit avoir trois éléments avec les
-identifiants `hour`, `minute` et `second`. Tous les sous-éléments tourneront
-avec comme axe le centre de l'image.
+l'image de l'horloge. Le document [SVG](//www.w3.org/Graphics/SVG/) doit avoir
+trois éléments avec les identifiants `hour`, `minute` et `second`. Tous les
+sous-éléments tourneront avec comme axe le centre de l'image.
 
 ## Scraper
 
@@ -29,13 +29,11 @@ Cet exemple affiche l'horloge dans un cadre marron.
 
 ```JSON
 {
-    "std/button/facebook": {
-        "widget": "std/button",
-        "coord": { "x": 1, "y": 1, "w": 3, "h": 3 },
+    "std/clock": {
+        "widget": "std/clock",
+        "coord": { "x": 1, "y": 1, "w": 5, "h": 5 },
         "config": {
-            "link": "https://www.facebook.com/",
-            "title": "Facebook",
-            "color": "#2196f3"
+            "color": "#795548"
         }
     }
 }
