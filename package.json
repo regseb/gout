@@ -1,6 +1,6 @@
 {
     "name": "gout",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "description": "Agrégateur d'Internet (flux RSS et tout le reste).",
     "keyword": [
         "gout", "aggregator", "feed", "news", "reader", "rss", "atom", "scraper"
@@ -21,13 +21,13 @@
     },
     "dependencies": {
         "express": "^4.14.0",
-        "requirejs": "^2.2.0",
+        "requirejs": "^2.3.1",
         "jquery": "^3.1.0",
         "scronpt": "^0.3.0"
     },
     "devDependencies": {
         "metalint": "^0.6.0",
-        "eslint": "^3.4.0",
+        "eslint": "^3.5.0",
         "htmlhint": "^0.9.13",
         "jsonlint": "^1.6.2",
         "markdownlint": "^0.2.0",
