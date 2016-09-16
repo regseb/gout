@@ -1,14 +1,14 @@
 define(["require", "jquery"], function (require, $) {
     "use strict";
 
-    const load = function (gate, url) {
+    const load = function (key, gate, url) {
         // Si la propriété 'active' n'est pas définie : considérer que la
         // passerelle est active.
         if (false === gate.active) {
             return;
         }
 
-        const id = "gate" + $("article").length;
+        const id = key.replace(/\//g, "-");
         const clazz = gate.widget.replace(/\//g, "-");
 
         // Si le widget est utilisé pour la première fois.
@@ -56,8 +56,8 @@ define(["require", "jquery"], function (require, $) {
         // Charger les passerelles contenues dans le fichier de configuration.
         $.getJSON("gate/" + user + "/" + config + ".json").then(
                                                               function (gates) {
-            for (let url in gates) {
-                load(gates[url], "gate/" + user + "/" + url);
+            for (let key in gates) {
+                load(key, gates[key], "gate/" + user + "/" + key);
             }
         }, (err) => console.log(err));
     }; // init()
