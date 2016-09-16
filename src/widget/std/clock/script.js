@@ -48,7 +48,6 @@ define(["jquery"], function ($) {
     }; // animate()
 
     const create = function (id, url, config) {
-        // FIXME Rendre paramétrable le fuseau horaire.
         const $root = $("#" + id);
         $root.css("background-color", config.color || "black");
 

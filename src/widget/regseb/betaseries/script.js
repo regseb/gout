@@ -120,8 +120,8 @@ define(["jquery", "scronpt"], function ($, Cron) {
 
     const init = function (id, key, token, shows) {
         // Récupérer les identifiants des séries regardées par l'utilisateur.
-        const url = API_URL + "episodes/list?key=" + key + "&token=" + token +
-                    "&limit=1";
+        let url = API_URL + "episodes/list?key=" + key + "&token=" + token +
+                  "&limit=1";
         $.getJSON(url).then(function (data) {
             // Filtrer les séries non-affichées dans cette passerelle.
             const promises = data.shows.filter(function (show) {
@@ -129,8 +129,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
                        (null === shows || shows.includes(show.title));
             }).map(function (show) {
                 // Récupérer l'URL vers les pages Internet des épisodes.
-                const url = API_URL + "shows/display?key=" + key + "&id=" +
-                            show.id;
+                url = API_URL + "shows/display?key=" + key + "&id=" + show.id;
                 return $.getJSON(url).then(function (infos) {
                     resources[show.id] =
                             infos.show["resource_url"]
@@ -166,6 +165,14 @@ define(["jquery", "scronpt"], function ($, Cron) {
         });
     }; // access()
 
+    const wake = function () {
+        for (let id in gates) {
+            if (!gates[id].cron.status()) {
+                update(id);
+            }
+        }
+    }; // wake()
+
     const create = function (id, url, config) {
         const $root = $("#" + id);
         $root.css({
@@ -187,13 +194,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
         };
 
         if (1 === Object.keys(gates).length) {
-            document.addEventListener("visibilitychange", function () {
-                for (let id in gates) {
-                    if (!gates[id].cron.status()) {
-                        update(id);
-                    }
-                }
-            });
+            document.addEventListener("visibilitychange", wake);
         }
     }; // create()
 

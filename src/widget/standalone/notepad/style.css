@@ -18,7 +18,14 @@
     transition: 0.2s ease-out;
     width: 100%;
 }
+.standalone-notepad textarea::placeholder {
+    opacity: 0.8;
+    transition: 0.2s ease-out;
+}
 .standalone-notepad textarea:focus {
     background-color: white;
     color: black;
+}
+.standalone-notepad textarea:focus::placeholder {
+    opacity: 0.2;
 }

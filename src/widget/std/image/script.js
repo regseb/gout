@@ -109,6 +109,14 @@ define(["require", "jquery", "scronpt"], function (require, $, Cron) {
         });
     }; // update()
 
+    const wake = function () {
+        for (let id in gates) {
+            if (!gates[id].cron.status()) {
+                update(id);
+            }
+        }
+    }; // wake()
+
     const create = function (id, url, config, scrapers) {
         const $root = $("#" + id);
         $("ul", $root).width($root.width() * config.size);
@@ -122,13 +130,7 @@ define(["require", "jquery", "scronpt"], function (require, $, Cron) {
         };
 
         if (1 === Object.keys(gates).length) {
-            document.addEventListener("visibilitychange", function () {
-                for (let id in gates) {
-                    if (!gates[id].cron.status()) {
-                        update(id);
-                    }
-                }
-            });
+            document.addEventListener("visibilitychange", wake);
         }
 
         update(id);

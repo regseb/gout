@@ -41,6 +41,14 @@ define(["jquery", "scronpt"], function ($, Cron) {
         });
     }; // update()
 
+    const wake = function () {
+        for (let id in gates) {
+            if (!gates[id].cron.status()) {
+                update(id);
+            }
+        }
+    }; // wake()
+
     const create = function (id, url, config, scrapers) {
         const $root = $("#" + id);
         $root.css({
@@ -56,13 +64,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
         };
 
         if (1 === Object.keys(gates).length) {
-            document.addEventListener("visibilitychange", function () {
-                for (let id in gates) {
-                    if (!gates[id].cron.status()) {
-                        update(id);
-                    }
-                }
-            });
+            document.addEventListener("visibilitychange", wake);
         }
 
         update(id);

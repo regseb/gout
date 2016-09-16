@@ -8,7 +8,8 @@ define(["jquery"], function ($) {
         if ("desc" in config) {
             $("a", $root).attr("title", config.desc);
         }
-        $("img", $root).attr("src", url + "/icon.svg");
+        $("img", $root).attr({ "src": url + "/icon.svg",
+                               "alt": config.desc });
     }; // create()
 
     return create;

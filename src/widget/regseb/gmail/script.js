@@ -9,16 +9,16 @@ define(["jquery", "scronpt"], function ($, Cron) {
     const gates = {};
 
     const extract = function (size, token, query, index) {
-        const url = GMAIL_API_URL + "users/me/messages?access_token=" + token +
-                    "&q=" + query + "&maxResults=" + size;
+        let url = GMAIL_API_URL + "users/me/messages?access_token=" + token +
+                  "&q=" + query + "&maxResults=" + size;
         return $.get(url).then(function (data) {
             if (0 === data.resultSizeEstimate) {
                 return [];
             }
 
-            const promises = data.messages.map(function (item) {
-                const url = GMAIL_API_URL + "users/me/messages/" + item.id +
-                            "?access_token=" + token + "&format=metadata";
+            return Promise.all(data.messages.map(function (message) {
+                url = GMAIL_API_URL + "users/me/messages/" + message.id +
+                      "?access_token=" + token + "&format=metadata";
                 return $.getJSON(url).then(function (item) {
                     const headers = {};
                     for (let header of item.payload.headers) {
@@ -31,8 +31,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
                                  "/#inbox/" + item.id
                     };
                 });
-            });
-            return Promise.all(promises);
+            }));
         });
     }; // extract()
 
@@ -130,6 +129,14 @@ define(["jquery", "scronpt"], function ($, Cron) {
         });
     }; // access()
 
+    const wake = function () {
+        for (let id in gates) {
+            if (!gates[id].cron.status()) {
+                update(id);
+            }
+        }
+    }; // wake()
+
     const create = function (id, url, config) {
         const $root = $("#" + id);
         $root.css("background-color", config.color || "#f44336");
@@ -150,13 +157,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
         };
 
         if (1 === Object.keys(gates).length) {
-            document.addEventListener("visibilitychange", function () {
-                for (let id in gates) {
-                    if (!gates[id].cron.status()) {
-                        update(id);
-                    }
-                }
-            });
+            document.addEventListener("visibilitychange", wake);
         }
     }; // create()
 
