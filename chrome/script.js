@@ -1,8 +1,9 @@
 require.config({
     "baseUrl": "lib",
     "paths": {
-        "mod": "../mod",
-        "gate": "../gate"
+        "widget":  "../widget",
+        "scraper": "../scraper",
+        "gate":    "../gate"
     }
 });
 

@@ -4,7 +4,6 @@ const CONFIG = {
     "port": 6047
 };
 
-const fs      = require("fs");
 const http    = require("http");
 const https   = require("https");
 const path    = require("path");
@@ -46,7 +45,7 @@ app.use("/proxy", function (req, res) {
         res.writeHead(proxy.statusCode, proxy.headers);
         proxy.pipe(res);
     }).on("error", function (error) {
-        process.stdout.write(error);
+        process.stdout.write(error.toString());
         res.writeHead(500, error.message);
         res.end();
     });
@@ -55,29 +54,8 @@ app.use("/proxy", function (req, res) {
     req.pipe(client);
 });
 
-// Retourner les bibliothèque JavaScript.
-app.use("/lib", function (req, res) {
-    const module = path.join(__dirname, "lib",
-                             req.path.substr(1, req.path.length - 4));
-    fs.readFile(module + "/package.json", function (err, data) {
-        if (err) {
-            res.sendStatus(500);
-        } else {
-            const json = JSON.parse(data);
-            fs.readFile(module + "/" + json.main, function (err, data) {
-                if (err) {
-                    res.sendStatus(500);
-                } else {
-                    res.send(data.toString().replace("#!/usr/bin/env node",
-                                                     ""));
-                }
-            });
-        }
-    });
-});
-
-// Créer le serveur web.
+// Créer le serveur web pour les fichiers statiques.
 app.use(express.static(path.join(__dirname, "public")));
 
 app.listen(CONFIG.port);
-process.stdout.write("Listening on port " + CONFIG.port + "...");
+process.stdout.write("Go http://localhost:" + CONFIG.port);
