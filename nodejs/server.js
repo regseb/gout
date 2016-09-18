@@ -25,7 +25,7 @@ app.use("/proxy", function (req, res) {
     // Garder l'adresse du serveur pour du reverse proxy. Puis supprimer
     // l'adresse pour pouvoir transmettre les entêtes.
     const host = req.headers.host;
-    delete req.headers.host;
+    Reflect.deleteProperty(req.headers, "host");
     const options = {
         "host":    req.url.substring(presize, req.url.indexOf("/", presize)),
         "method":  req.method,

@@ -21,16 +21,16 @@
     },
     "dependencies": {
         "express": "^4.14.0",
-        "requirejs": "^2.3.1",
+        "requirejs": "^2.3.2",
         "jquery": "^3.1.0",
-        "scronpt": "^0.3.0"
+        "scronpt": "^0.3.1"
     },
     "devDependencies": {
-        "metalint": "^0.6.0",
         "eslint": "^3.5.0",
         "htmlhint": "^0.9.13",
         "jsonlint": "^1.6.2",
         "markdownlint": "^0.2.0",
+        "metalint": "^0.7.0",
         "stylelint": "^7.2.0"
     }
 }
