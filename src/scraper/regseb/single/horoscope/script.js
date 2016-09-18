@@ -10,6 +10,8 @@ define(["jquery"], function ($) {
             const that = this;
             const url = "http://www.elle.fr/Astro/Horoscope/Quotidien";
             return $.get(url).then(function (data) {
+                return $.parseHTML(data);
+            }).then(function (data) {
                 const result = {
                     "title": "(Signe non-trouvé)",
                     "desc":  null,

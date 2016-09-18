@@ -72,6 +72,8 @@ define(["jquery", "scronpt"], function ($, Cron) {
     const extract = function () {
         const url = "https://www.om.net/calendrier-resultats";
         return $.get(url).then(function (data) {
+            return $.parseHTML(data);
+        }).then(function (data) {
             const $last = $(".current-match", data);
             const last = {
                 "link":       "https://www.om.net" +

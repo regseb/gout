@@ -10,6 +10,8 @@ define(["jquery"], function ($) {
             const that = this;
             const url = "http://www.meltdown.bar/" + that.city + "/planning";
             return $.get(url).then(function (data) {
+                return $.parseHTML(data);
+            }).then(function (data) {
                 const day = (new Date().getDay() + 6) % 7;
                 const $data = $("#event-detail_0" + day, data);
                 const titles = [];

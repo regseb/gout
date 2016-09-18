@@ -5,6 +5,8 @@ define(["jquery"], function ($) {
         list(size) {
             const url = "http://www.urtikan.net/dessin-du-jour/";
             return $.get(url).then(function (data) {
+                return $.parseHTML(data);
+            }).then(function (data) {
                 const events = [];
                 $("#posts-dessin li:lt(" + size + ")", data).each(
                                                             function (i, item) {

@@ -23,6 +23,8 @@ define(["jquery"], function ($) {
 
             const url = "http://www.france5.fr/emissions/c-dans-l-air";
             return $.get(url).then(function (data) {
+                return $.parseHTML(data);
+            }).then(function (data) {
                 const $data = $(".cartouche", data);
 
                 // Si le sujet du jour n'est pas encore indiqué.

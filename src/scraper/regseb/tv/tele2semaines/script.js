@@ -31,6 +31,8 @@ define(["jquery"], function ($) {
             $.each(that.broadcasts, function (broadcast, channels) {
                 const url = "http://www.programme.tv/" + broadcast + "/";
                 const promise = $.get(url).then(function (data) {
+                    return $.parseHTML(data);
+                }).then(function (data) {
                     return channels.map(function (channel) {
                         const $channel = $("#programs a[href$=\"-" + channel +
                                            "/\"]", data);

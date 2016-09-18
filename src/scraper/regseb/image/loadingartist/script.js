@@ -5,6 +5,8 @@ define(["jquery"], function ($) {
         list(size) {
             const url = "http://www.loadingartist.com/archives";
             return $.get(url).then(function (data) {
+                return $.parseHTML(data);
+            }).then(function (data) {
                 const items = [];
                 $(".archive-thumbs a", data).slice(-1 * size).each(function () {
                     items.push({

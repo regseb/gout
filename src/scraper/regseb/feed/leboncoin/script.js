@@ -11,6 +11,8 @@ define(["jquery"], function ($) {
 
         list(size) {
             return $.get(this.url).then(function (data) {
+                return $.parseHTML(data);
+            }).then(function (data) {
                 const items = [];
                 $(".tabsContent a:lt(" + size + ")", data).each(function () {
                     const parts = $(".item_absolute", this).text()

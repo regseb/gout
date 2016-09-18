@@ -5,6 +5,8 @@ define(["jquery"], function ($) {
         list(size) {
             const url = "https://www.commitstrip.com/fr/";
             return $.get(url).then(function (data) {
+                return $.parseHTML(data);
+            }).then(function (data) {
                 const events = [];
                 $(".excerpts a:lt(" + size + ")", data).each(function () {
                     const link = $(this).attr("href");

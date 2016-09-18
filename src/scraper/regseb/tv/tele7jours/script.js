@@ -22,6 +22,8 @@ define(["jquery"], function ($) {
             const url = "http://www.programme-television.org/?bouquet=" +
                         that.broadcast;
             return $.get(url).then(function (data) {
+                return $.parseHTML(data);
+            }).then(function (data) {
                 return that.channels.map(function (channel) {
                     const $channel = $("#prime-broadcasts" +
                                        " a[href=\"/chaines-tv/" + channel +

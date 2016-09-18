@@ -9,6 +9,8 @@ define(["jquery"], function ($) {
         list(size) {
             const url = "https://twitter.com/" + this.user;
             return $.get(url).then(function (data) {
+                return $.parseHTML(data);
+            }).then(function (data) {
                 const items = [];
                 $(".ProfileTweet:lt(" + size + ")", data).each(function () {
                     const link = $(".ProfileTweet-timestamp",
