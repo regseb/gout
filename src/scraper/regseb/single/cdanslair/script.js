@@ -1,12 +1,6 @@
 define(["jquery"], function ($) {
     "use strict";
 
-    const DTF = new Intl.DateTimeFormat("fr-FR", {
-        "day":   "2-digit",
-        "month": "2-digit",
-        "year":  "numeric"
-    });
-
     return class {
         get() {
             // Si c'est un dimanche : ne pas récupérer le sujet de l'émission
@@ -28,19 +22,19 @@ define(["jquery"], function ($) {
                 const $data = $(".cartouche", data);
 
                 // Si le sujet du jour n'est pas encore indiqué.
-                const date = $(".sous_titre", $data).text().trim();
-                if (date !== DTF.format(now)) {
+                const date = $(".sous_titre", $data).text();
+                if (date.includes(" " + now.getDate() + " ")) {
                     return {
-                        "title": "(Sujet de l'émission non-défini)",
-                        "desc":  "Le sujet de l'émission est généralement" +
-                                 " défini en début d'après-midi.",
-                        "link":  "http://www.france5.fr/emissions/c-dans-l-air"
+                        "title": $("a:first", $data).text(),
+                        "desc":  $(".accroche p", $data).html(),
+                        "link":  $("a:first", $data).attr("href")
                     };
                 }
                 return {
-                    "title": $("a:first", $data).text(),
-                    "desc":  $(".accroche p", $data).html(),
-                    "link":  $("a:first", $data).attr("href")
+                    "title": "(Sujet de l'émission non-défini)",
+                    "desc":  "Le sujet de l'émission est généralement défini" +
+                             " en début d'après-midi.",
+                    "link":  "http://www.france5.fr/emissions/c-dans-l-air"
                 };
             });
         } // get()
