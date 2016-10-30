@@ -59,7 +59,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
         if (0 === $img.length) {
             return "undisclosed";
         }
-        switch (/\/([^\/]+)\.png$/.exec($img.attr("data-src"))[1]) {
+        switch (/\/([^/]+)\.png$/.exec($img.attr("data-src"))[1]) {
             case "canalplus-logo-ok-min":       return "canalplus";
             case "eurosport_2":                 return "eurosport_2";
             case "logo-w9-min":                 return "w9";

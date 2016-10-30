@@ -37,9 +37,8 @@ define(["jquery"], function ($) {
                                  $("a:first", $show).attr("href");
 
                     const category = $(".texte_cat a", $show).text();
-                    const RE = /([^\/]+)/;
-                    let type = RE.exec($(".texte_cat a",
-                                         $show).attr("href"))[1];
+                    let type = /[^/]+/.exec($(".texte_cat a",
+                                              $show).attr("href"))[0];
                     switch (type) {
                         case "films-telefilms":
                             type = category.includes("Téléfilm") ? "telefilm"
