@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Gout</title>
+    <link rel="stylesheet"    href="lib/dialog-polyfill.css" />
+    <link rel="stylesheet"    href="style.css" />
+    <link rel="shortcut icon" href="../favicon.svg" />
+  </head>
+  <body>
+    <nav>
+      <button class="add">
+        <img src="img/add.svg" alt="Ajouter" title="Ajouter" />
+      </button>
+      <button class="code">
+        <img src="img/code.svg" alt="Voir le code" title="Voir le code" />
+      </button>
+    </nav>
+
+    <template>
+      <span class="key"></span>
+      <span class="resize">⋱</span>
+    </template>
+
+    <dialog id="edit-dialog">
+      <form method="dialog">
+        <h3>
+          <input type="text" name="key" placeholder="exemple/hello/world"
+                 pattern="\w+(/\w+)*" />
+        </h3>
+        <p>
+          <label>
+            Widget
+            <input type="text" name="widget" placeholder="example/hello"
+                   pattern="\w+(/\w+)*" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Configuration<br />
+            <textarea name="config" cols="80" rows="6"></textarea>
+          </label>
+        </p>
+        <p>
+          <label>
+            Scrapers<br />
+            <textarea name="scrapers" cols="80" rows="8"></textarea>
+          </label>
+        </p>
+        <menu>
+          <input type="submit" value="Annuler" />
+          <input type="submit" value="Ajouter" />
+          <input type="submit" value="Supprimer" />
+          <input type="submit" value="Enregistrer" />
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="code-dialog">
+      <form method="dialog">
+        <p>
+          <textarea cols="80" rows="20"></textarea>
+        </p>
+        <menu>
+          <input type="submit" value="Fermer" />
+        </menu>
+      </form>
+    </dialog>
+    <script data-main="script" src="lib/requirejs.js"></script>
+  </body>
+</html>
