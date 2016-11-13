@@ -4,11 +4,13 @@
         "coord": { "x": 1, "y": 1, "w": 28, "h": 6 },
         "config": {
             "color": "#ffc107",
-            "cron":  "*/3 * * * *"
+            "cron": "*/3 * * * *"
         },
         "scrapers": [
-            { "scraper": "regseb/feed/googlefeed",
-              "config": "http://rss.allocine.fr/ac/actualites/cine?format=xml" }
+            {
+                "scraper": "regseb/feed/googlefeed",
+                "config": "http://rss.allocine.fr/ac/actualites/cine?format=xml"
+            }
         ]
     },
     "std/feed/laprovence": {
@@ -16,11 +18,13 @@
         "coord": { "x": 1, "y": 8, "w": 28, "h": 6 },
         "config": {
             "color": "#3f51b5",
-            "cron":  "*/3 * * * *"
+            "cron": "*/3 * * * *"
         },
         "scrapers": [
-            { "scraper": "regseb/feed/googlefeed",
-              "config": "http://www.laprovence.com/rss/region.xml" }
+            {
+                "scraper": "regseb/feed/googlefeed",
+                "config": "http://www.laprovence.com/rss/region.xml"
+            }
         ]
     },
     "std/feed/clubic": {
@@ -28,11 +32,13 @@
         "coord": { "x": 1, "y": 15, "w": 28, "h": 6 },
         "config": {
             "color": "#f44336",
-            "cron":  "*/3 * * * *"
+            "cron": "*/3 * * * *"
         },
         "scrapers": [
-            { "scraper": "regseb/feed/googlefeed",
-              "config": "http://www.clubic.com/articles.rss" }
+            {
+                "scraper": "regseb/feed/googlefeed",
+                "config": "http://www.clubic.com/articles.rss"
+            }
         ]
     },
     "std/feed/lemonde": {
@@ -40,11 +46,13 @@
         "coord": { "x": 1, "y": 22, "w": 28, "h": 6 },
         "config": {
             "color": "#9e9e9e",
-            "cron":  "*/3 * * * *"
+            "cron": "*/3 * * * *"
         },
         "scrapers": [
-            { "scraper": "regseb/feed/googlefeed",
-              "config": "http://www.lemonde.fr/rss/une.xml" }
+            {
+                "scraper": "regseb/feed/googlefeed",
+                "config": "http://www.lemonde.fr/rss/une.xml"
+            }
         ]
     },
     "std/feed/linuxfr": {
@@ -52,11 +60,13 @@
         "coord": { "x": 1, "y": 29, "w": 28, "h": 6 },
         "config": {
             "color": "#ffc107",
-            "cron":  "*/3 * * * *"
+            "cron": "*/3 * * * *"
         },
         "scrapers": [
-            { "scraper": "regseb/feed/googlefeed",
-              "config": "http://linuxfr.org/news.atom" }
+            {
+                "scraper": "regseb/feed/googlefeed",
+                "config": "http://linuxfr.org/news.atom"
+            }
         ]
     },
     "std/feed/arretsurimages": {
@@ -64,11 +74,13 @@
         "coord": { "x": 30, "y": 1, "w": 28, "h": 6 },
         "config": {
             "color": "#9e9e9e",
-            "cron":  "*/3 * * * *"
+            "cron": "*/3 * * * *"
         },
         "scrapers": [
-            { "scraper": "regseb/feed/googlefeed",
-              "config": "http://www.arretsurimages.net/rss/vite-dit.rss" }
+            {
+                "scraper": "regseb/feed/googlefeed",
+                "config": "http://www.arretsurimages.net/rss/vite-dit.rss"
+            }
         ]
     },
     "std/feed/lequipe": {
@@ -76,11 +88,13 @@
         "coord": { "x": 30, "y": 8, "w": 28, "h": 6 },
         "config": {
             "color": "#f44336",
-            "cron":  "*/3 * * * *"
+            "cron": "*/3 * * * *"
         },
         "scrapers": [
-            { "scraper": "regseb/feed/googlefeed",
-              "config": "http://www.lequipe.fr/rss/actu_rss.xml" }
+            {
+                "scraper": "regseb/feed/googlefeed",
+                "config": "http://www.lequipe.fr/rss/actu_rss.xml"
+            }
         ]
     },
     "std/feed/developpez": {
@@ -88,11 +102,13 @@
         "coord": { "x": 30, "y": 15, "w": 28, "h": 6 },
         "config": {
             "color": "#607d8b",
-            "cron":  "*/3 * * * *"
+            "cron": "*/3 * * * *"
         },
         "scrapers": [
-            { "scraper": "regseb/feed/googlefeed",
-              "config": "http://www.developpez.com/index/rss" }
+            {
+                "scraper": "regseb/feed/googlefeed",
+                "config": "http://www.developpez.com/index/rss"
+            }
         ]
     },
     "std/feed/velaux": {
@@ -100,11 +116,13 @@
         "coord": { "x": 30, "y": 22, "w": 28, "h": 3 },
         "config": {
             "color": "#ff5722",
-            "cron":  "0 */6 * * *"
+            "cron": "0 */6 * * *"
         },
         "scrapers": [
-            { "scraper": "regseb/feed/googlefeed",
-              "config": "http://www.velaux.fr/rss20.xml" }
+            {
+                "scraper": "regseb/feed/googlefeed",
+                "config": "http://www.velaux.fr/rss20.xml"
+            }
         ]
     },
     "std/feed/legorafi": {
@@ -112,11 +130,13 @@
         "coord": { "x": 30, "y": 26, "w": 28, "h": 3 },
         "config": {
             "color": "#f44336",
-            "cron":  "*/3 * * * *"
+            "cron": "*/3 * * * *"
         },
         "scrapers": [
-            { "scraper": "regseb/feed/googlefeed",
-              "config": "http://www.legorafi.fr/feed/" }
+            {
+                "scraper": "regseb/feed/googlefeed",
+                "config": "http://www.legorafi.fr/feed/"
+            }
         ]
     },
     "std/feed/slate": {
@@ -124,11 +144,13 @@
         "coord": { "x": 30, "y": 30, "w": 28, "h": 5 },
         "config": {
             "color": "#673ab7",
-            "cron":  "*/3 * * * *"
+            "cron": "*/3 * * * *"
         },
         "scrapers": [
-            { "scraper": "regseb/feed/googlefeed",
-              "config": "http://www.slate.fr/rss.xml" }
+            {
+                "scraper": "regseb/feed/googlefeed",
+                "config": "http://www.slate.fr/rss.xml"
+            }
         ]
     },
 
@@ -137,18 +159,28 @@
         "coord": { "x": 1, "y": 36, "w": 28, "h": 6 },
         "config": {
             "color": "#f44336",
-            "cron":  "0 0 * * *"
+            "cron": "0 0 * * *"
         },
         "scrapers": [
-            { "scraper": "regseb/feed/youtube",
-              "config": { "user": "NormanFaitDesVideos",
-                          "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg" } },
-            { "scraper": "regseb/feed/youtube",
-              "config": { "user": "MonsieurDream",
-                          "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg" } },
-            { "scraper": "regseb/feed/youtube",
-              "config": { "user": "GoldenMoustacheVideo",
-                          "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg" } }
+            {
+                "scraper": "regseb/feed/youtube",
+                "config": {
+                    "user": "NormanFaitDesVideos",
+                    "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg"
+                 }
+            }, {
+                "scraper": "regseb/feed/youtube",
+                "config": {
+                    "user": "MonsieurDream",
+                    "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg"
+                }
+            }, {
+                "scraper": "regseb/feed/youtube",
+                "config": {
+                    "user": "GoldenMoustacheVideo",
+                    "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg"
+                }
+            }
         ]
     },
     "std/feed/jeuvideo": {
@@ -156,24 +188,34 @@
         "coord": { "x": 30, "y": 36, "w": 28, "h": 6 },
         "config": {
             "color": "#f44336",
-            "cron":  "0 0 * * *"
+            "cron": "0 0 * * *"
         },
         "scrapers": [
-            { "scraper": "regseb/feed/youtube",
-              "config": { "user": "cndetmanu",
-                          "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg" } },
-            { "scraper": "regseb/feed/youtube",
-              "config": { "user": "joueurdugrenier",
-                          "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg" } },
-            { "scraper": "regseb/feed/youtube",
-              "config": { "user": "RealMyop",
-                          "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg" } }
+            {
+                "scraper": "regseb/feed/youtube",
+                "config": {
+                    "user": "cndetmanu",
+                    "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg"
+                }
+            }, {
+                "scraper": "regseb/feed/youtube",
+                "config": {
+                    "user": "joueurdugrenier",
+                    "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg"
+                }
+            }, {
+                "scraper": "regseb/feed/youtube",
+                "config": {
+                    "user": "RealMyop",
+                    "key": "AIzaSyCzZufC61Ehz5cCm2kTZlMGEoXTihNHXBg"
+                }
+            }
         ]
     },
 
     "std/search": {
         "widget": "std/search",
-        "coord": { "x": 59, "y": 1, "w": 17, "h": 2 },
+        "coord": { "x": 59, "y": 1, "w": 20, "h": 2 },
         "config": [
             {
                 "title": "Google",
@@ -196,12 +238,8 @@
                 "color": "#f44336",
                 "icon": "duckduckgo.svg"
             }
-        ]
-    },
-
-    "std/ajaxloader": {
-        "widget": "std/ajaxloader",
-        "coord": { "x": 77, "y": 1, "w": 2, "h": 2 }
+        ],
+        "scrapers": []
     },
 
     "std/single/articleauhasard": {
@@ -224,13 +262,21 @@
             "cron": "0 0 1 1 0"
         },
         "scrapers": [
-            { "scraper": "std/list/bookmark",
-              "config": [{ "link": "https://www.facebook.com/",
-                           "title": "Facebook" },
-                         { "link": "https://www.twitter.com/",
-                           "title": "Twitter" },
-                         { "link": "https://plus.google.com/",
-                           "title": "Google+" }] }
+            {
+                "scraper": "std/list/bookmark",
+                "config": [
+                    {
+                        "link": "https://www.facebook.com/",
+                        "title": "Facebook"
+                    }, {
+                        "link": "https://www.twitter.com/",
+                        "title": "Twitter"
+                    }, {
+                        "link": "https://plus.google.com/",
+                        "title": "Google+"
+                    }
+                ]
+            }
         ]
     },
 
@@ -239,6 +285,7 @@
         "coord": { "x": 59, "y": 12, "w": 10, "h": 10 },
         "config": {
             "color": "#795548"
-        }
+        },
+        "scrapers": []
     }
 }

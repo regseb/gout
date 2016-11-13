@@ -16,6 +16,7 @@
                 " <code>src/gate/demo/<code>."
             ],
             "align": "justify"
-        }
+        },
+        "scrapers": []
     }
 }
