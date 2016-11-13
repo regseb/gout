@@ -1,7 +1,7 @@
 # /std/weather
 
 Ce widget affiche la météo d'une ville. Les prévisions sont récupérées du
-service [OpenWeatherMap](http://openweathermap.org/).
+service [OpenWeatherMap](//openweathermap.org/).
 
 ## Configuration
 
@@ -20,10 +20,10 @@ suivantes :
 
 Les dimensions conseillées sont **14x13**.
 
-## `"appid"`
+### `"appid"`
 
 Pour se connecter à l'API, il vous faut une clé qui s'obtient en s'inscrivant
-sur le site Internet du service : <http://openweathermap.org/register>
+sur le site Internet du service : <//home.openweathermap.org/users/sign_up>
 
 ## Scraper
 
@@ -35,7 +35,14 @@ Cet exemple affiche la météo d'*Aix-en-Provence* sur fond bleu.
 
 ```JSON
 {
-    "appid": "1a23edc4f5b67... (une clé de ce style)",
-    "city": "Aix-en-Provence,fr"
+    "std/weather/aix": {
+        "widget": "std/weather",
+        "coord": { "x": 1, "y": 1, "w": 14, "h": 13 },
+        "config": {
+            "appid": "1a23edc4f5b67... (une clé de ce style)",
+            "city": "Aix-en-Provence,fr"
+        },
+        "scrapers": []
+    }
 }
 ```

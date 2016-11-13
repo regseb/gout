@@ -4,11 +4,6 @@ Ce widget affiche les prochains évènements d'un **Google Agenda**.
 
 ## Configuration
 
-**28** est une taille raisonnable pour la largeur du cadre. La hauteur dépend
-du nombre d'évènements qui peuvent être affichés dans le cadre. Si vous
-souhaitez avoir les *N* prochains évènements : il faut fixer la hauteur à
-*N + 1*.
-
 Le répertoire de la passerelle doit avoir un fichier ***config.json***
 contenant un objet [JSON](http://www.json.org "JavaScript Object Notation")
 avec les propriétés suivantes :
@@ -25,7 +20,12 @@ avec les propriétés suivantes :
 - `"key"` : un identifiant client pour les API Google ;
 - `"secret"` : le code secret associé à l'identifiant.
 
-## `"key"` et `"secret"`
+**28** est une taille raisonnable pour la largeur du cadre. La hauteur dépend
+du nombre d'évènements qui peuvent être affichés dans le cadre. Si vous
+souhaitez avoir les *N* prochains évènements : il faut fixer la hauteur à
+*N + 1*.
+
+### `"key"` et `"secret"`
 
 Pour obtenir un identifiant, allez dans la
 ***[Google Developers Console](//console.developers.google.com/)***. Créez un
@@ -38,9 +38,11 @@ Gout suffixée avec `/widget/regseb/googlecalendar/oauth2.html`. Par exemple :
 
 Ensuite, activez la *Calendar API*.
 
-## Exemple
+## Scraper
 
-### /config.json
+Ce widget n'utilise pas de scraper.
+
+## Exemple
 
 Cet exemple affiche les évènements (en les mettant à jour toutes les quatre
 heures).
@@ -54,7 +56,8 @@ heures).
             "key": "881981768.apps.googleusercontent.com (une clé de ce style)",
             "secret": "sdlkfjaskd (un code de ce style)",
             "cron": "0 */4 * * *"
-        }
+        },
+        "scrapers": []
     }
 }
 ```

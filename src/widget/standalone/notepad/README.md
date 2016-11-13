@@ -32,7 +32,8 @@ Cet exemple affiche un bloc-notes pour une liste de courses.
             "title": "...",
             "desc": "Liste de courses",
             "color": "#607d8b"
-        }
+        },
+        "scraper": []
     }
 }
 ```

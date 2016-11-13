@@ -22,8 +22,10 @@ Cet exemple affiche les dernières vidéos des
             "cron": "0 21 * * *"
         },
         "scrapers": [
-            { "scraper": "regseb/feed/dailymotion",
-              "config": "lesguignols" }
+            {
+                "scraper": "regseb/feed/dailymotion",
+                "config": "lesguignols"
+            }
         ]
     }
 }

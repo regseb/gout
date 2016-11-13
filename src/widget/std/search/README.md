@@ -48,7 +48,8 @@ Cet exemple fourni trois moteurs : *Google*, *Yahoo* et *Bing*.
                 "color": "#ffc107",
                 "icon": "bing.svg"
             }
-        ]
+        ],
+        "scrapers": []
     }
 }
 ```

@@ -35,7 +35,8 @@ Cet exemple affiche le texte « Hello world! » sur fond rouge.
         "config": {
             "color": "#f44336",
             "who": "world"
-        }
+        },
+        "scrapers": []
     }
 }
 ```

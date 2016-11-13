@@ -19,7 +19,7 @@ Ce widget n'utilise pas de scraper.
 
 ## Exemple
 
-Cet exemple affiche un cadre noir.
+Cet exemple affiche un cadre rouge.
 
 ```JSON
 {
@@ -28,7 +28,8 @@ Cet exemple affiche un cadre noir.
         "coord": { "x": 1, "y": 1, "w": 10, "h": 10 },
         "config": {
             "color": "#f44336"
-        }
+        },
+        "scrapers": []
     }
 }
 ```

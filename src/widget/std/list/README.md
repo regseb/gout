@@ -29,7 +29,7 @@ résultat est un objet JSON ayant les propriétés :
 
 - `"title"` : le titre de l'élément ;
 - `"desc"` : la description de l'élément ;
-- `"link"` : le lien de l'élément ;
+- `"link"` : le lien de l'élément.
 
 Les scrapers du widget *std/feed* peuvent aussi être utilisés (mais les éléments
 ne seront pas triés par date).
@@ -37,8 +37,8 @@ ne seront pas triés par date).
 ## Exemple
 
 Cet configuration affiche un cadre jaune avec trois liens allant vers
-*[Facebook](//www.facebook.com/)*, *[Twitter](https://www.twitter.com/)* et
-*[Google+](https://plus.google.com/)*.
+*[Facebook](//www.facebook.com/)*, *[Twitter](//www.twitter.com/)* et
+*[Google+](//plus.google.com/)*.
 
 ```JSON
 {
@@ -50,13 +50,21 @@ Cet configuration affiche un cadre jaune avec trois liens allant vers
             "cron": "0 0 1 1 0"
         },
         "scrapers": [
-            { "scraper": "std/list/bookmark",
-              "config": [{ "link": "https://www.facebook.com/",
-                           "title": "Facebook" },
-                         { "link": "https://www.twitter.com/",
-                           "title": "Twitter" },
-                         { "link": "https://plus.google.com/",
-                           "title": "Google+" }] }
+            {
+                "scraper": "std/list/bookmark",
+                "config": [
+                    {
+                        "link": "https://www.facebook.com/",
+                        "title": "Facebook"
+                    }, {
+                        "link": "https://www.twitter.com/",
+                        "title": "Twitter"
+                    }, {
+                        "link": "https://plus.google.com/",
+                        "title": "Google+"
+                    }
+                ]
+            }
         ]
     }
 }

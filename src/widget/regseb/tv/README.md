@@ -183,13 +183,23 @@ Canal+, BFM TV et itele.
 
 ```JSON
 {
-    "channels": {
-        "tnt": [
-            "tf1", "france-2", "france-3", "france-5", "m6", "arte", "d8",
-            "w9", "tmc", "nt1", "nrj-12",
-            "la-chaine-parlementaire-public-senat", "france-4", "d17",
-            "gulli", "france-o", "hd1", "l-equipe-21", "6ter", "numero-23",
-            "rmc-decouverte", "cherie-25"
+    "regseb/tv": {
+        "widget": "regseb/tv",
+        "coord": { "x": 59, "y": 1, "w": 20, "h": 23 },
+        "config": {},
+        "scrapers": [
+            {
+                "scraper": "regseb/tv/tele2semaines",
+                "config": {
+                    "tnt": [
+                        "tf1", "france-2", "france-3", "france-5", "m6", "arte",
+                        "c8", "w9", "tmc", "nt1", "nrj-12",
+                        "la-chaine-parlementaire-public-senat", "france-4",
+                        "cstar", "gulli", "france-o", "hd1", "l-equipe", "6ter",
+                        "numero-23", "rmc-decouverte", "cherie-25"
+                    ]
+                }
+            }
         ]
     }
 }

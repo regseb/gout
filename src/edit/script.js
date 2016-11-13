@@ -59,6 +59,7 @@ define(["jquery", "dialog-polyfill"], function ($, dialogPolyfill) {
     const set = function (key, gate) {
         const $dialog = $("#edit-dialog");
         if (undefined === key) {
+            $("[name=\"origin\"]", $dialog).val("");
             $("[name=\"key\"]", $dialog).val("");
             $("[name=\"widget\"]", $dialog).val("");
             $("[name=\"config\"]", $dialog).val("null");
@@ -67,6 +68,7 @@ define(["jquery", "dialog-polyfill"], function ($, dialogPolyfill) {
             $("[value=\"Supprimer\"]", $dialog).hide();
             $("[value=\"Enregistrer\"]", $dialog).hide();
         } else {
+            $("[name=\"origin\"]", $dialog).val(key);
             $("[name=\"key\"]", $dialog).val(key);
             $("[name=\"widget\"]", $dialog).val(gate.widget);
             $("[name=\"config\"]", $dialog).val(
@@ -82,8 +84,9 @@ define(["jquery", "dialog-polyfill"], function ($, dialogPolyfill) {
     const get = function () {
        const $dialog = $("#edit-dialog");
        return {
-           "key":  $("[name=\"key\"]", $dialog).val(),
-           "gate": {
+           "origin": $("[name=\"origin\"]", $dialog).val(),
+           "key":    $("[name=\"key\"]", $dialog).val(),
+           "gate":   {
                "widget":   $("[name=\"widget\"]", $dialog).val(),
                "config":   JSON.parse($("[name=\"config\"]", $dialog).val()),
                "scrapers": JSON.parse($("[name=\"scrapers\"]", $dialog).val())
@@ -96,14 +99,6 @@ define(["jquery", "dialog-polyfill"], function ($, dialogPolyfill) {
         const dialog = document.getElementById("edit-dialog");
         dialogPolyfill.registerDialog(dialog);
         dialog.showModal();
-        dialog.addEventListener("close", function () {
-            if ("Supprimer" === this.returnValue) {
-                $(event.target).remove();
-            } else if ("Enregistrer" === this.returnValue) {
-                const { gate } = get();
-                $(event.target).data("gate", gate);
-            }
-        });
     }; // dblclick()
 
     const insert = function (key, gate) {
@@ -127,13 +122,6 @@ define(["jquery", "dialog-polyfill"], function ($, dialogPolyfill) {
         const dialog = document.getElementById("edit-dialog");
         dialogPolyfill.registerDialog(dialog);
         dialog.showModal();
-        dialog.addEventListener("close", function () {
-            if ("Ajouter" === this.returnValue) {
-                const { key, gate } = get();
-                insert(key, Object.assign({}, gate, { "coord": {
-                                           "x": 1, "y": 1, "w": 5, "h": 5 } }));
-            }
-        });
     }; // add()
 
     const code = function () {
@@ -165,6 +153,23 @@ define(["jquery", "dialog-polyfill"], function ($, dialogPolyfill) {
 
     $(document).on("mousemove", mousemove)
                .on("mouseup",   mouseup);
+
+    document.getElementById("edit-dialog").addEventListener("close",
+                                                            function () {
+        if ("Ajouter" === this.returnValue) {
+            const { key, gate } = get();
+            insert(key, Object.assign({}, gate, { "coord": {
+                                      "x": 1, "y": 1, "w": 5, "h": 5 } }));
+        } else if ("Supprimer" === this.returnValue) {
+            const { origin } = get();
+            $(".key:contains(\"" + origin + "\")").parent().remove();
+        } else if ("Enregistrer" === this.returnValue) {
+            const { origin, key, gate } = get();
+            $(".key:contains(\"" + origin + "\")").text(key)
+                                                  .parent()
+                                                  .data("gate", gate);
+        }
+    });
 
     // Récupérer les paramètres transmits dans l'URL.
     const params = new URLSearchParams(window.location.search.slice(1));

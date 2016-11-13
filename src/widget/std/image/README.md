@@ -8,6 +8,7 @@ La configuration contient un objet
 [JSON](http://www.json.org "JavaScript Object Notation") avec la propriété
 suivante :
 
+- `"size"` : le nombre d'images qui seront affichées ;
 - `"cron"` : la notation cron indiquant la fréquence de mise à jour.
 
 Les dimensions dépendent de la taille de l'image qui sera affichée.

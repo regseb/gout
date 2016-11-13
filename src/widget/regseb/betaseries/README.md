@@ -6,13 +6,9 @@ liste est récupérée de votre compte du site
 
 ## Configuration
 
-**20** est une taille raisonnable pour la largeur du cadre. La hauteur dépend
-du nombre d'épisodes qu'il faut afficher dans le cadre. Si vous souhaitez avoir
-les *N* derniers épisodes : il faut fixer la hauteur à *N + 1*.
-
-Le répertoire de la passerelle doit avoir un fichier ***config.json***
-contenant un objet [JSON](http://www.json.org "JavaScript Object Notation")
-avec les propriétés suivantes :
+La configuration contient un objet
+[JSON](http://www.json.org "JavaScript Object Notation") avec les propriétés
+suivantes :
 
 - `"shows"` (optionnel - valeur par défaut : toutes vos séries) : la liste des
   noms de série ;
@@ -26,8 +22,16 @@ avec les propriétés suivantes :
 - `"cron"` (optionnel - valeur par défaut : `"0 0 * * *"`) : la notation cron
   indiquant la fréquence de mise à jour.
 
+**20** est une taille raisonnable pour la largeur du cadre. La hauteur dépend
+du nombre d'épisodes qu'il faut afficher dans le cadre. Si vous souhaitez avoir
+les *N* prochains épisodes : il faut fixer la hauteur à *N + 1*.
+
 Une image ayant pour nom ***icon.svg*** doit aussi est présent dans le
-répertoire.
+répertoire passerelle.
+
+## Scraper
+
+Ce widget n'utilise pas de scraper.
 
 ## Exemple
 
@@ -46,7 +50,8 @@ minuit).
             "key": "d527c40702a3 (une clé de ce style)",
             "secret": "6d587671253e40475442502c66593526 (une clé de ce style)",
             "cron": "0 0 * * *"
-        }
+        },
+        "scrapers": []
     }
 }
 ```

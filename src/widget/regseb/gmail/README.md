@@ -24,7 +24,7 @@ suivantes :
 du nombre de courriel qui peuvent être affichés dans le cadre. Si vous souhaitez
 avoir les *N* derniers courriel : il faut fixer la hauteur à *N + 1*.
 
-## `"key"` et `"secret"`
+### `"key"` et `"secret"`
 
 Pour obtenir un identifiant, allez dans la
 ***[Google Developers Console](//console.developers.google.com/)***. Créez un
@@ -56,7 +56,8 @@ sont dans la boîte de réception.
             "key": "881981768.apps.googleusercontent.com (une clé de ce style)",
             "secret": "sdlkfjaskd (un code de ce style)"
             "cron": "* * * * *"
-        }
+        },
+        "scrapers": []
     }
 }
 ```

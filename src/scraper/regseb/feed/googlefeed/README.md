@@ -22,8 +22,10 @@ Cet exemple affiche les dernières actualités du site
             "cron": "*/10 * * * *"
         },
         "scrapers": [
-            { "scraper": "regseb/feed/googlefeed",
-              "config": "http://www.developpez.com/index/rss" }
+            {
+                "scraper": "regseb/feed/googlefeed",
+                "config": "http://www.developpez.com/index/rss"
+            }
         ]
     }
 }

@@ -34,7 +34,8 @@ Cet exemple affiche l'horloge dans un cadre marron.
         "coord": { "x": 1, "y": 1, "w": 5, "h": 5 },
         "config": {
             "color": "#795548"
-        }
+        },
+        "scraper": []
     }
 }
 ```

@@ -15,7 +15,7 @@ suivantes :
   les possibles sont `"left"`, `"center"`, `"right"` et `"justify"` ;
 - `"color"` (optionnel - valeur par défaut : `"black"`) : la couleur de fond du
   cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
-  prédéfinis) ;
+  prédéfinis).
 
 Aucune dimension particulière est conseillée.
 
@@ -34,7 +34,8 @@ Cet exemple affiche un cadre noir avec le texte *Carpe diem*.
         "coord": { "x": 1, "y": 1, "w": 10, "h": 2 },
         "config": {
             "text": "Carpe diem"
-        }
+        },
+        "scrapers": []
     }
 }
 ```

@@ -37,7 +37,7 @@ define(["require", "jquery"], function (require, $) {
                           .height(gate.coord.h * 1.4 + "em")
                           .html($("body > template." + clazz).html()));
 
-        const promises = (gate.scrapers || []).map(function (scraper) {
+        const promises = gate.scrapers.map(function (scraper) {
             return new Promise(function (resolve) {
                 require(["scraper/" + scraper.scraper + "/script"],
                         function (Construct) {

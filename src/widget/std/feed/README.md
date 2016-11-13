@@ -35,7 +35,7 @@ résultat est un objet JSON ayant les propriétés :
 ## Exemple
 
 Cet exemple affiche les cinq dernières actualités du site
-[LinuxFr.org](http://linuxfr.org/) (avec une mise jour toutes les dix minutes).
+[LinuxFr.org](//linuxfr.org/) (avec une mise jour toutes les dix minutes).
 
 ```JSON
 {
@@ -47,8 +47,10 @@ Cet exemple affiche les cinq dernières actualités du site
             "cron": "*/10 * * * *"
         },
         "scrapers": [
-            { "scraper": "std/feed/atom",
-              "config": "http://linuxfr.org/news.atom" }
+            {
+                "scraper": "std/feed/atom",
+                "config": "https://linuxfr.org/news.atom"
+            }
         ]
     }
 }

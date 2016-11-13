@@ -22,8 +22,10 @@ Cet exemple affiche les dernières annonces de vente de
             "cron": "0 * * * *"
         },
         "scrapers": [
-            { "scraper": "regseb/feed/leboncoin",
-              "config": "https://www.leboncoin.fr/voitures/offres/centre/?th=1&q=clio" }
+            {
+                "scraper": "regseb/feed/leboncoin",
+                "config": "https://www.leboncoin.fr/voitures/offres/centre/?th=1&q=clio"
+            }
         ]
     }
 }

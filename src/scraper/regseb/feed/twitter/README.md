@@ -22,8 +22,10 @@ Cet exemple affiche les derniers tweets du compte de
             "cron": "0 * * * *"
         },
         "scrapers": [
-            { "scraper": "regseb/feed/twitter",
-              "config": "jquery" }
+            {
+                "scraper": "regseb/feed/twitter",
+                "config": "jquery"
+            }
         ]
     }
 }

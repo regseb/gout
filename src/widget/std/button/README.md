@@ -37,7 +37,8 @@ Cet exemple affiche un bouton qui redirige vers *Facebook*.
             "link": "https://www.facebook.com/",
             "desc": "Facebook",
             "color": "#2196f3"
-        }
+        },
+        "scrapers": []
     }
 }
 ```
