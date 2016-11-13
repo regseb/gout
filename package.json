@@ -22,15 +22,15 @@
     "dependencies": {
         "dialog-polyfill": "^0.4.4",
         "express": "^4.14.0",
-        "requirejs": "^2.3.2",
         "jquery": "^3.1.1",
+        "requirejs": "^2.3.2",
         "scronpt": "^0.3.1"
     },
     "devDependencies": {
-        "eslint": "^3.9.0",
+        "eslint": "^3.10.0",
         "htmlhint": "^0.9.13",
         "jsonlint": "^1.6.2",
-        "markdownlint": "^0.2.0",
+        "markdownlint": "^0.3.1",
         "metalint": "^0.7.1",
         "stylelint": "^7.5.0"
     }
