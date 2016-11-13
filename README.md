@@ -40,7 +40,7 @@ npm start
 ```
 
 Rendez-vous ensuite à l'adresse suivante avec **Firefox 48+** ou
-**Chrome 52+** : <http://localhost:3000/>
+**Chrome 52+** : <http://localhost:6047/>
 
 ## Licence
 
