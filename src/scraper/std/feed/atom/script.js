@@ -7,12 +7,7 @@ define(["jquery"], function ($) {
         } // constuctor()
 
         list(size) {
-            return $.get(this.url).then(function (data) {
-                // Si le serveur n'indique pas que les données sont au format
-                // XML : il faut les convertir.
-                const xml = "string" === typeof data ? $.parseXML(data)
-                                                     : data;
-
+            return $.get(this.url).then(function (xml) {
                 const items = $("entry:lt(" + size + ")", xml).map(function () {
                     let desc = $("summary", this).text().trim();
                     if (0 === desc.length) {
