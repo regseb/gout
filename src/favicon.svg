@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
-  <rect width="32" height="32" rx="2" ry="2" />
-  <path d="m 8,30 0,-12 16,0 0,12" fill="none" stroke-width="4" stroke="white"
-        stroke-linejoin="round" />
-  <path d="m 7,11 9,-8 9,8 z" fill="white" stroke-width="2" stroke="white"
-        stroke-linejoin="round" />
-  <rect x="14" y="12" width="4" height="14" fill="white" />
+  <rect width="32" height="32" rx="2" />
+  <polygon points="9,11 23,11 16,2" fill="white" stroke="white"
+           stroke-width="4" />
+  <line x1="16" y1="25" x2="16" y2="11" stroke="white" stroke-width="4" />
+  <polyline points="8,32 8,19 24,19 24,32" fill="none" stroke="white"
+            stroke-width="4" stroke-linejoin="round" />
 </svg>
