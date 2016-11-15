@@ -27,9 +27,10 @@ Ligne par ligne, les instructions précédentes :
 
 1. clone le projet hébergé dans GitHub ;
 2. rentre dans le répertoire ;
-3. installe les dépendances ([Express](http://expressjs.com),
-   [RequireJS](http://requirejs.org), [jQuery](//jquery.com) et
-   [Scronpt](//regseb.github.io/scronpt/)).
+3. installe les dépendances
+   ([dialog-polyfill](//github.com/GoogleChrome/dialog-polyfill),
+   [Express](http://expressjs.com), [jQuery](//jquery.com),
+   [RequireJS](http://requirejs.org) et [Scronpt](//regseb.github.io/scronpt/)).
 
 ## Utilisation
 
