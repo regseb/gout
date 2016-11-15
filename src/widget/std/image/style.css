@@ -1,7 +1,7 @@
 .std-image {
     overflow: hidden;
 }
-.std-image span:first-of-type, .std-image span:last-of-type {
+.std-image span {
     background-color: black;
     background-position: center;
     background-repeat: no-repeat;
@@ -10,10 +10,10 @@
     opacity: 0;
     position: absolute;
     top: 0;
-    width: 10%;
+    width: 1.4em;
 }
-.std-image span:first-of-type:hover, .std-image span:last-of-type:hover {
-    opacity: 0.5;
+.std-image span:hover {
+    opacity: 0.8;
 }
 .std-image span:first-of-type {
     background-image: url("img/left.svg");

@@ -1,4 +1,4 @@
-define(["require", "jquery", "scronpt"], function (require, $, Cron) {
+define(["jquery", "scronpt"], function ($, Cron) {
     "use strict";
 
     const gates = {};
@@ -41,8 +41,8 @@ define(["require", "jquery", "scronpt"], function (require, $, Cron) {
     const display = function ($root, data, size) {
         let $li = $("li[data-guid=\"" + data.guid + "\"]", $root);
 
-        if (0 === $li.length) { // Si l'évènement n'est pas affiché.
-            // Trouver la future position chronologique de l'évènement.
+        if (0 === $li.length) { // Si l'image n'est pas affichée.
+            // Trouver la future position chronologique de l'image.
             let pos = -1;
             $("> ul > li", $root).each(function (i) {
                 if (data.date <= $(this).data("date")) {
@@ -50,10 +50,10 @@ define(["require", "jquery", "scronpt"], function (require, $, Cron) {
                 }
             });
             if (pos !== size - 1) {
-                // Supprimer le plus ancien évènement (si la liste est pleine).
+                // Supprimer la plus ancienne image (si la liste est pleine).
                 $("> ul > li:eq(" + (size - 1) + ")", $root).remove();
 
-                // Créer la ligne du nouvel évènement.
+                // Créer la case de la nouvelle image.
                 const $a = $("<a>").attr({ "href":   data.link,
                                            "target": "_blank",
                                            "title":  data.title })
@@ -71,8 +71,8 @@ define(["require", "jquery", "scronpt"], function (require, $, Cron) {
                     $("> ul > li:eq(" + pos + ")", $root).after($li);
                 }
             }
-        } else { // Si l'évènement est déjà affiché.
-            // Si des éléments de l'évènement ont changé, les mettre à jour.
+        } else { // Si l'image est déjà affichée.
+            // Si des éléments de l'image ont changé, les mettre à jour.
             const $a = $("> a", $li);
             if ($a.attr("href") !== data.link) {
                 $a.attr("href", data.link);

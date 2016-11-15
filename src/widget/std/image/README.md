@@ -5,13 +5,13 @@ Ce widget affiche des images extraites d'un site Internet.
 ## Configuration
 
 La configuration contient un objet
-[JSON](http://www.json.org "JavaScript Object Notation") avec la propriété
-suivante :
+[JSON](http://www.json.org "JavaScript Object Notation") avec les propriétés
+suivantes :
 
 - `"size"` : le nombre d'images qui seront affichées ;
 - `"cron"` : la notation cron indiquant la fréquence de mise à jour.
 
-Les dimensions dépendent de la taille de l'image qui sera affichée.
+Les dimensions dépendent de la taille des images qui seront affichées.
 
 ## Scraper
 
@@ -20,7 +20,7 @@ en paramètre un nombre indiquant le nombre de résultats à retourner. Chaque
 résultat est un objet JSON ayant les propiétés :
 
 - `"img"` : l'adresse de l'image ;
-- `"title"` : le titre de l'image ;
+- `"title"` : le titre de l'image (qui sera affiché dans une info-bulle) ;
 - `"link"` : l'adresse vers la page Internet affichant l'image ;
 - `"guid"` : un identifiant unique de l'image (son adresse par exemple) ;
 - `"date"` : le nombre de millièmes de secondes depuis le 1 janvier 1970 à

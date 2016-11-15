@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10">
-  <path d="M9 5 L1 9 L1 1 Z" fill="white" />
+  <polygon points="9,5 1,1 1,9" fill="white" />
 </svg>
