@@ -27,7 +27,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
         args.cron.start();
 
         const $root = $("#" + id);
-        args.scraper.get().then(function (data) {
+        args.scraper.extract().then(function (data) {
             display($root, data);
         });
     }; // update()
@@ -40,11 +40,13 @@ define(["jquery", "scronpt"], function ($, Cron) {
         }
     }; // wake()
 
-    const create = function (id, url, config, scrapers) {
+    const create = function (id, { "config.json": config, "icon.svg": icon },
+                             scrapers) {
         const $root = $("#" + id);
         $root.css({
             "background-color": config.color,
-            "background-image": "url(\"" + url + "/icon.svg\")"
+            "background-image": "url(\"data:image/svg+xml;base64," +
+                                btoa(icon) + "\")"
         });
 
         gates[id] = {

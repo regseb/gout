@@ -15,7 +15,7 @@ define(["jquery"], function ($) {
             this.webcams = webcams;
         } // constructor()
 
-        list() {
+        extract() {
             const that = this;
             const url = "http://www.valdallos.com/webcams.html";
             return $.get(url).then(function (data) {
@@ -34,6 +34,6 @@ define(["jquery"], function ($) {
                     };
                 });
             });
-        } // list()
+        } // extract()
     };
 });

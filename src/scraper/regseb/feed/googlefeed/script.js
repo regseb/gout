@@ -4,25 +4,23 @@ define(["jquery"], function ($) {
     return class {
         constructor(url) {
             this.url = url;
-        } // constuctor()
+        } // constructor()
 
-        list(size) {
+        extract(size) {
             const url = "https://ajax.googleapis.com/ajax/services/feed/load" +
                         "?v=1.0&q=" + encodeURIComponent(this.url) + "&num=" +
-                        size + "&callback=?";
+                        size;
             return $.getJSON(url).then(function (data) {
-                const items = [];
-                for (let entry of data.responseData.feed.entries) {
-                    items.push({
+                return data.responseData.feed.entries.map(function (entry) {
+                    return {
                         "title": entry.title,
                         "desc":  entry.content,
                         "link":  entry.link,
                         "guid":  entry.link,
                         "date":  new Date(entry.publishedDate).getTime()
-                    });
-                }
-                return items;
+                    };
+                });
             });
-        }
+        } // extract()
     };
 });

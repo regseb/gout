@@ -1,9 +1,0 @@
-{
-    "name": "Gout",
-    "description": "Agrégateur d'Internet.",
-    "permissions": ["*://*/"],
-    "version": "0.6.2",
-    "manifest_version": 2,
-    "options_page": "index.html",
-    "page_action": { }
-}

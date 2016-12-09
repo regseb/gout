@@ -2,7 +2,7 @@ define(["jquery"], function ($) {
     "use strict";
 
     return class {
-        get() {
+        extract() {
             // Si c'est un dimanche : ne pas récupérer le sujet de l'émission
             // car il n'y a pas de diffusion.
             const now = new Date();
@@ -37,6 +37,6 @@ define(["jquery"], function ($) {
                     "link":  "http://www.france5.fr/emissions/c-dans-l-air"
                 };
             });
-        } // get()
+        } // extract()
     };
 });

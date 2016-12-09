@@ -4,9 +4,9 @@ define(["jquery"], function ($) {
     return class {
         constructor(user) {
             this.user = user;
-        } // constuctor()
+        } // constructor()
 
-        list(size) {
+        extract(size) {
             const url = "https://twitter.com/" + this.user;
             return $.get(url).then(function (data) {
                 return $.parseHTML(data);
@@ -25,6 +25,6 @@ define(["jquery"], function ($) {
                 });
                 return items;
             });
-        } // list()
+        } // extract()
     };
 });

@@ -5,13 +5,9 @@ Ce scraper donne le
 
 ## Configuration
 
-**25** est une taille raisonnable pour la largeur du cadre. La hauteur dépend
-du nombre de chaines qu'il faut afficher dans le cadre. Si vous souhaitez avoir
-*N* chaines de télévision : il faut fixer la hauteur à *N + 1*.
-
-Le répertoire de la passerelle doit avoir un fichier ***config.json***
-contenant un objet [JSON](http://www.json.org "JavaScript Object Notation")
-avec les propriétés suivantes :
+La configuration contient un objet
+[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") avec les
+propriétés suivantes :
 
 - `"broadcast"` (optionnel - valeur par défaut : `"tnt"`) : la source de
   diffusion ([`"tnt"`](http://www.programme-television.org/?bouquet=tnt),
@@ -31,13 +27,17 @@ avec les propriétés suivantes :
   du cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
   prédéfinis).
 
+**25** est une taille raisonnable pour la largeur du cadre. La hauteur dépend
+du nombre de chaines qu'il faut afficher dans le cadre. Si vous souhaitez avoir
+*N* chaines de télévision : il faut fixer la hauteur à *N + 1*.
+
 Voici le tableau des codes des chaines de la TNT :
 
 ```JSON
-["tf1", "france-2", "france-3", "canal", "france-5", "m6", "arte", "d8", "w9",
+["tf1", "france-2", "france-3", "canal", "france-5", "m6", "arte", "c8", "w9",
  "tmc", "nt1", "nrj12", "lcp-public-senat", "france-4", "bfm-tv", "i-tele",
- "d17", "gulli", "france-o", "hd1", "l-equipe-21", "6ter", "numero-23",
- "rmc-decouverte", "cherie-25"]
+ "cstar", "gulli", "france-o", "hd1", "l-equipe", "6ter", "numero-23",
+ "rmc-decouverte", "cherie-25", "lci", "franceinfo"]
 ```
 
 Et la liste ci-dessous donne les codes pour toutes les chaines :
@@ -54,15 +54,16 @@ Et la liste ci-dessous donne les codes pour toutes les chaines :
 - *Animaux* : `"animaux"` ;
 - *Arte* : `"arte"` ;
 - *Azur TV* : `"azur-tv"` ;
-- *beIN SPORTS 1* : `"bein-sports-1"` ;
-- *beIN SPORTS 2* : `"bein-sports-2"` ;
-- *beIN SPORTS 3* : `"bein-sports-3"` ;
+- *BeIN Sports 1* : `"bein-sports-1"` ;
+- *BeIN Sports 2* : `"bein-sports-2"` ;
+- *BeIN Sports 3* : `"bein-sports-3"` ;
 - *BFM Business* : `"bfm-business"` ;
 - *BFM TV* : `"bfm-tv"` ;
 - *Boomerang* : `"boomerang"` ;
 - *Campagnes TV* : `"campagnes-tv"` ;
+- *C8* : `"c8"` ;
 - *Canal+* : `"canal"` ;
-- *Canal+ Cinéma* : `"canal-cinema"` ;
+- *Canal+ cinéma* : `"canal-cinema"` ;
 - *Canal+ Décalé* : `"canal-decale"` ;
 - *Canal+ Family* : `"canal-family"` ;
 - *Canal J* : `"canal-j"` ;
@@ -80,8 +81,7 @@ Et la liste ci-dessous donne les codes pour toutes les chaines :
 - *Ciné FX* : `"cine-fx"` ;
 - *Ciné+ Premier* : `"cine-premier"` ;
 - *Comédie+* : `"comedie"` ;
-- *D17* : `"d17"` ;
-- *D8* : `"d8"` ;
+- *CStar* : `"cstar"` ;
 - *Demain TV* : `"demain-tv"` ;
 - *Discovery Channel* : `"discovery-channel"` ;
 - *Discovery Science* : `"discovery-science"` ;
@@ -103,6 +103,7 @@ Et la liste ci-dessous donne les codes pour toutes les chaines :
 - *France 4* : `"france-4"` ;
 - *France 5* : `"france-5"` ;
 - *France Ô* : `"france-o"` ;
+- *Franceinfo* : `"franceinfo"` ;
 - *Game One* : `"game-one"` ;
 - *Golf Channel* : `"golf-channel"` ;
 - *Golf+* : `"golf"` ;
@@ -115,17 +116,17 @@ Et la liste ci-dessous donne les codes pour toutes les chaines :
 - *iC1* : `"ic1-clermont-premiere"` ;
 - *IDF1* : `"idf1"` ;
 - *Infosport+* : `"infosport"` ;
-- *iTélé* : `"i-tele"` ;
+- *i Télé* : `"i-tele"` ;
 - *J-One* : `"j-one"` ;
 - *June TV* : `"june-tv"` ;
 - *Kombat Sport* : `"kombat-sport"` ;
 - *KTO* : `"kto"` ;
 - *KZTV* : `"kztv"` ;
-- *La Chaîne parlementaire* : `"lcp-public-senat"` ;
-- *LCI - La Chaîne Info* : `"lci"` ;
+- *LCP / Public Sénat* : `"lcp-public-senat"` ;
+- *LCI* : `"lci"` ;
 - *LCM* : `"lcm"` ;
 - *LCP 24H/24* : `"lcp-24-24h"` ;
-- *L'Equipe 21* : `"l-equipe-21"` ;
+- *L'Equipe* : `"l-equipe"` ;
 - *M6* : `"m6"` ;
 - *M6 Music* : `"m6-music"` ;
 - *Ma Chaîne Sport* : `"ma-chaine-sport"` ;
@@ -153,9 +154,9 @@ Et la liste ci-dessous donne les codes pour toutes les chaines :
 - *Nickelodéon* : `"nickelodeon"` ;
 - *Nolife* : `"nolife"` ;
 - *Non Stop People HD* : `"non-stop-people"` ;
-- *NRJ 12* : `"nrj12"` ;
+- *NRJ12* : `"nrj12"` ;
 - *NRJ Hits* : `"nrj-hits"` ;
-- *NT 1* : `"nt1"` ;
+- *NT1* : `"nt1"` ;
 - *Numéro 23* : `"numero-23"` ;
 - *OCS Choc* : `"ocs-choc"` ;
 - *OCS City* : `"ocs-city"` ;
@@ -199,7 +200,7 @@ Et la liste ci-dessous donne les codes pour toutes les chaines :
 - *Trek* : `"trek"` ;
 - *TV5MONDE* : `"tv5-monde"` ;
 - *TV7 Bordeaux* : `"tv7-bordeaux"` ;
-- *TvBreizh* : `"tv-breizh"` ;
+- *TV Breizh* : `"tv-breizh"` ;
 - *TVR Rennes 35 Bretagne* : `"tvr"` ;
 - *TV Sud* : `"tv-sud"` ;
 - *TV Tours* : `"tv-tours"` ;
@@ -214,26 +215,28 @@ Et la liste ci-dessous donne les codes pour toutes les chaines :
 
 ## Exemple
 
-### /config.json
-
 Cet exemple donne le programme télévisé de toutes les chaines de la TNT sauf
-Canal+, BFM TV et iTélé.
+Canal+, BFM TV et I-Télé et Franceinfo.
 
 ```JSON
 {
     "regseb/tv": {
         "widget": "regseb/tv",
         "coord": { "x": 59, "y": 4, "w": 20, "h": 23 },
-        "config": {},
+        "files": { "config.json": {} },
         "scrapers": [
-            { "scraper": "regseb/tv/tele7jours",
-              "config": { "channels": ["tf1", "france-2", "france-3",
-                                       "france-5", "m6", "arte", "c8", "w9",
-                                       "tmc", "nt1", "nrj12",
-                                       "lcp-public-senat", "france-4", "cstar",
-                                       "gulli", "france-o", "hd1", "l-equipe",
-                                       "6ter", "numero-23", "rmc-decouverte",
-                                       "cherie-25"] } }
+            {
+                "scraper": "regseb/tv/tele7jours",
+                "config": {
+                    "channels": [
+                        "tf1", "france-2", "france-3", "france-5", "m6", "arte",
+                        "c8", "w9", "tmc", "nt1", "nrj12", "lcp-public-senat",
+                        "france-4", "cstar", "gulli", "france-o", "hd1",
+                        "l-equipe", "6ter", "numero-23", "rmc-decouverte",
+                        "cherie-25"
+                    ]
+                }
+            }
         ]
     }
 }

@@ -14,10 +14,10 @@ define(["jquery"], function ($) {
     return class {
         constructor({ broadcast = "tnt", channels }) {
             this.broadcast = broadcast;
-            this.channels = channels;
-        } // constuctor()
+            this.channels  = channels;
+        } // constructor()
 
-        list() {
+        extract() {
             const that = this;
             const url = "http://www.programme-television.org/?bouquet=" +
                         that.broadcast;
@@ -70,6 +70,6 @@ define(["jquery"], function ($) {
                     };
                 });
             });
-        } // list()
+        } // extract()
     };
 });

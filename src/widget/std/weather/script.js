@@ -1,16 +1,16 @@
 define(["jquery", "scronpt"], function ($, Cron) {
     "use strict";
 
+    const API_URL = "http://api.openweathermap.org/data/2.5/";
     const IMG_DIR = "widget/std/weather/img/";
 
     const gates = {};
 
     const extract = function (city, appid, kind) {
-        let url = "http://api.openweathermap.org/data/2.5/";
         // Si c'est la météo du jour qui est demandée.
         if ("weather" === kind) {
-            url += "weather?q=" + city + "&units=metrics&lang=fr&APPID=" +
-                   appid + "&callback=?";
+            const url = API_URL + "weather?q=" + city +
+                        "&units=metrics&lang=fr&APPID=" + appid;
             return $.getJSON(url).then(function (data) {
                 return {
                     "icon": data.weather[0].icon,
@@ -28,8 +28,8 @@ define(["jquery", "scronpt"], function ($, Cron) {
             });
         }
         // Sinon : c'est les prévisions.
-        url += "forecast/daily?q=" + city + "&units=metrics&lang=fr&cnt=2" +
-               "&APPID=" + appid + "&callback=?";
+        const url = API_URL + "forecast/daily?q=" + city +
+                    "&units=metrics&lang=fr&cnt=2&APPID=" + appid;
         return $.getJSON(url).then(function (data) {
             const items = [];
             for (let item of data.list) {
@@ -141,7 +141,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
         }
     }; // wake()
 
-    const create = function (id, url, config) {
+    const create = function (id, { "config.json": config }) {
         const $root = $("#" + id);
         $root.css("background-color", config.color || "#03a9f4");
         $("h1", $root).text(config.city.split(",")[0]);

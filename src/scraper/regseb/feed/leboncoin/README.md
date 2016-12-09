@@ -17,9 +17,11 @@ Cet exemple affiche les dernières annonces de vente de
     "std/feed/leboncoin": {
         "widget": "std/feed",
         "coord": { "x": 1, "y": 1, "w": 20, "h": 5 },
-        "config": {
-            "color": "#ff5722",
-            "cron": "0 * * * *"
+        "files": {
+            "config.json": {
+                "color": "#ff5722",
+                "cron": "0 * * * *"
+            }
         },
         "scrapers": [
             {

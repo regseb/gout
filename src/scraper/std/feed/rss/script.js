@@ -6,7 +6,7 @@ define(["jquery"], function ($) {
             this.url = url;
         } // constructor()
 
-        list(size) {
+        extract(size) {
             return $.get(this.url).then(function (xml) {
                 const items = $("item:lt(" + size + ")", xml).map(function () {
                     return {
@@ -25,6 +25,6 @@ define(["jquery"], function ($) {
                 }
                 return items;
             });
-        } // list()
+        } // extract()
     };
 });

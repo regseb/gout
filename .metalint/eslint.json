@@ -8,7 +8,10 @@
     },
 
     "env": {
-        "es6": true
+        "browser": true,
+        "es6": true,
+        "amd": true,
+        "webextensions": true
     },
 
     "rules": {
@@ -111,7 +114,7 @@
         "wrap-iife": 0,
         "yoda": [2, "always"],
 
-        "strict": 0,
+        "strict": [2, "function"],
 
         "init-declarations": 0,
         "no-catch-shadow": 2,
@@ -122,7 +125,10 @@
         "no-shadow": 2,
         "no-undef": 2,
         "no-undefined": 0,
-        "no-unused-vars": 2,
+        "no-unused-vars": [2, {
+            "args": "all", "argsIgnorePattern": "^_",
+            "caughtErrors": "all", "caughtErrorsIgnorePattern": "^_"
+        }],
         "no-use-before-define": 2,
 
         "callback-return": 0,
@@ -248,7 +254,7 @@
         "no-var": 2,
         "object-shorthand": 0,
         "prefer-arrow-callback": 0,
-        "prefer-const": 2,
+        "prefer-const": 0,
         "prefer-numeric-literals": 2,
         "prefer-rest-params": 2,
         "prefer-spread": 2,

@@ -9,14 +9,18 @@ Il n'y a pas de configuration.
 
 ## Exemple
 
+Cet exemple affiche les trois dernières caricatures.
+
 ```JSON
 {
     "std/image/urtikan": {
         "widget": "std/image",
         "coord": { "x": 1, "y": 1, "w": 14, "h": 13 },
-        "config": {
-            "size": 3,
-            "cron": "0 */3 * * *"
+        "files": {
+            "config.json": {
+                "size": 3,
+                "cron": "0 */4 * * *"
+            }
         },
         "scrapers": [
             { "scraper": "regseb/image/urtikan" }

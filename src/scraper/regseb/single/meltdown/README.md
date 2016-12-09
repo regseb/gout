@@ -1,7 +1,7 @@
 # /regseb/single/meltdown
 
 Ce scraper récupère les évènements du jour dans un bar
-**[Meltdown](http://www.meltdown.bar/)**.
+**[Meltdown](//www.meltdown.bar/)**.
 
 ## Configuration
 
@@ -16,13 +16,17 @@ Cet exemple affiche l'évènement du Meltdown d'*Aix-en-Provence*.
     "std/single/meltdown": {
         "widget": "std/single",
         "coord": { "x": 1, "y": 1, "w": 20, "h": 2 },
-        "config": {
-            "color": "TODO",
-            "cron": "0 0 * * *"
+        "files": {
+            "config.json": {
+                "color": "#4caf50",
+                "cron": "0 0 * * *"
+            }
         },
         "scrapers": [
-            { "scraper": "regseb/single/meltdown",
-              "config": "aix" }
+            {
+                "scraper": "regseb/single/meltdown",
+                "config": "aix"
+            }
         ]
     }
 }

@@ -23,12 +23,11 @@ define(["jquery"], function ($) {
     return class {
         constructor(broadcasts) {
             this.broadcasts = broadcasts;
-        } // constuctor()
+        } // constructor()
 
-        list() {
-            const that = this;
+        extract() {
             const promises = [];
-            $.each(that.broadcasts, function (broadcast, channels) {
+            $.each(this.broadcasts, function (broadcast, channels) {
                 const url = "http://www.programme.tv/" + broadcast + "/";
                 const promise = $.get(url).then(function (data) {
                     return $.parseHTML(data);
@@ -80,6 +79,6 @@ define(["jquery"], function ($) {
                     return previous.concat(current);
                 });
             });
-        } // list()
+        } // extract()
     };
 });

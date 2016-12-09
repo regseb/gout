@@ -6,8 +6,8 @@ soir.
 ## Configuration
 
 La configuration contient un objet
-[JSON](http://www.json.org "JavaScript Object Notation") dont les noms des
-propriétés sont les bouquets : `"tnt"`, `"tnt-local"`, `"generaliste"`,
+[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") dont les
+noms des propriétés sont les bouquets : `"tnt"`, `"tnt-local"`, `"generaliste"`,
 `"canal-tps"`, `"ciname"`, `"sport"`, `"information"`, `"belgique-suisse"`,
 `"jeunesse"`, `"musique"`, `"documentaire"` et `"serie"`. Les valeurs
 contiennent la liste des chaines :
@@ -20,7 +20,7 @@ contiennent la liste des chaines :
   - *France 5* : `"france-5"` ;
   - *M6* : `"m6"` ;
   - *Arte* : `"arte"` ;
-  - *D8* : `"d8"` ;
+  - *D8* : `"c8"` ;
   - *W9* : `"w9"` ;
   - *TMC* : `"tmc"` ;
   - *NT1* : `"nt1"` ;
@@ -29,11 +29,11 @@ contiennent la liste des chaines :
   - *France 4* : `"france-4"` ;
   - *BFM TV* : `"bfm-tv"` ;
   - *itele* : `"i-tele"` ;
-  - *D17* : `"d17"` ;
+  - *D17* : `"cstar"` ;
   - *Gulli* : `"gulli"` ;
   - *France Ô* : `"france-o"` ;
   - *HD1* : `"hd1"` ;
-  - *L'Equipe 21* : `"l-equipe-21"` ;
+  - *L'Equipe 21* : `"l-equipe"` ;
   - *6ter* : `"6ter"` ;
   - *Numéro 23* : `"numero-23"` ;
   - *RMC Découverte* : `"rmc-decouverte"` ;
@@ -42,7 +42,7 @@ contiennent la liste des chaines :
   - *Demain TV BDM TV Cinaps Tv Télé bocal* :
     `"bdm-television-tele-bocal-cinaps-demain-tv"` ;
   - *IDF1* : `"idf1"` ;
-- `"generaliste"` :
+- **`"generaliste"` :**
   - *13ème Rue* : `"13e-rue"` ;
   - *AB1* : `"ab-1"` ;
   - *AB3* : `"ab-3"` ;
@@ -166,23 +166,27 @@ contiennent la liste des chaines :
 ## Exemple
 
 Cet exemple donne le programme télévisé de toutes les chaines de la TNT sauf
-Canal+, BFM TV et itele.
+Canal+, BFM TV, I-Télé et Franceinfo.
 
 ```JSON
 {
     "regseb/tv": {
         "widget": "regseb/tv",
         "coord": { "x": 1, "y": 1, "w": 20, "h": 23 },
-        "config": {},
+        "files": { "config.json": {} },
         "scrapers": [
-            { "scraper": "regseb/tv/tele2semaines",
-              "config": { "tnt": ["tf1", "france-2", "france-3", "france-5",
-                                  "m6", "arte", "d8", "w9", "tmc", "nt1",
-                                  "nrj-12",
-                                  "la-chaine-parlementaire-public-senat",
-                                  "france-4", "d17", "gulli", "france-o", "hd1",
-                                  "l-equipe-21", "6ter", "numero-23",
-                                  "rmc-decouverte", "cherie-25"] } }
+            {
+                "scraper": "regseb/tv/tele2semaines",
+                "config": {
+                    "tnt": [
+                        "tf1", "france-2", "france-3", "france-5", "m6", "arte",
+                        "c8", "w9", "tmc", "nt1", "nrj-12",
+                        "la-chaine-parlementaire-public-senat", "france-4",
+                        "cstar", "gulli", "france-o", "hd1", "l-equipe", "6ter",
+                        "numero-23", "rmc-decouverte", "cherie-25"
+                     ]
+                 }
+             }
         ]
     }
 }

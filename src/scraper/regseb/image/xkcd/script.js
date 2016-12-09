@@ -2,8 +2,8 @@ define(["jquery"], function ($) {
     "use strict";
 
     return class {
-        list(size) {
-            const url = "http://xkcd.com/rss.xml";
+        extract(size) {
+            const url = "https://xkcd.com/rss.xml";
             return $.get(url).then(function (data) {
                 const events = [];
                 $("item:lt(" + size + ")", data).each(function () {
@@ -17,6 +17,6 @@ define(["jquery"], function ($) {
                 });
                 return events;
             });
-        } // list()
+        } // extract()
     };
 });

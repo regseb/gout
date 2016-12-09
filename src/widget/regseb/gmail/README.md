@@ -5,12 +5,13 @@ Ce widget affiche les derniers courriels reçus sur une boite
 
 ## Configuration
 
-La configuration contient un objet
-[JSON](http://www.json.org "JavaScript Object Notation") avec les propriétés
-suivantes :
+Le répertoire de la passerelle doit avoir un fichier ***config.json***
+contenant un objet
+[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") avec les
+propriétés suivantes :
 
 - `"query"` (optionnel - valeur par défaut : `"is:unread"`) : le
-  [filtre](https://support.google.com/mail/answer/7190) des courriels affichés ;
+  [filtre](//support.google.com/mail/answer/7190) des courriels affichés ;
 - `"color"` (optionnel - valeur par défaut : `"#f44336"`) : la couleur de fond
   du cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
   prédéfinis) ;
@@ -27,13 +28,14 @@ avoir les *N* derniers courriel : il faut fixer la hauteur à *N + 1*.
 ### `"key"` et `"secret"`
 
 Pour obtenir un identifiant, allez dans la
-***[Google Developers Console](//console.developers.google.com/)***. Créez un
-projet, puis *Ajoutez des identifiants* pour obtenir un *identifiant client
-OAuth 2.0* de type *Application Web*. Dans le champs pour définir l'origine des
-requêtes : renseignez l'adresse où est accessible Gout. Par exemple :
-`http://localhost:6047/`. Pour les *URI* de redirection : indiquez l'adresse de
-Gout suffixée avec `/widget/regseb/gmail/oauth2.html`. Par exemple :
-`http://localhost:6047/widget/regseb/gmail/oauth2.html`.
+***[Console des API Google](//console.developers.google.com/)***. Créez un
+projet, puis *Créez des identifiants* pour obtenir un *ID client OAuth* de type
+*Application Web*. Laissez vide les champs pour définir les *Origines JavaScript
+autorisées*. Pour les *URI de redirection autorisés*, ajoutez les deux adresse
+de Gout :
+
+- `https://e7ca15c1c9d74876c655f32cebd95dfd8c7afc15.extensions.allizom.org/`
+- `https://jgmpleepfnjaaihkcadaphgjecnglldo.chromiumapp.org/`
 
 Ensuite, activez la *Gmail API*.
 
@@ -44,20 +46,21 @@ Ce widget n'utilise pas de scraper.
 ## Exemple
 
 Cet exemple actualise, toutes les minutes, la liste des courriels non-lus et qui
-sont dans la boîte de réception.
+sont dans la boite de réception.
 
 ```JSON
 {
     "regseb/gmail": {
         "widget": "regseb/gmail",
         "coord": { "x": 1, "y": 1, "w": 28, "h": 5 },
-        "config": {
-            "query": "is:unread in:inbox",
-            "key": "881981768.apps.googleusercontent.com (une clé de ce style)",
-            "secret": "sdlkfjaskd (un code de ce style)"
-            "cron": "* * * * *"
-        },
-        "scrapers": []
+        "files": {
+            "config.json": {
+                "query": "is:unread in:inbox",
+                "key": "88198.apps.googleusercontent.com (une clé de ce style)",
+                "secret": "sdlkfjaskd (un code de ce style)"
+                "cron": "* * * * *"
+            }
+        }
     }
 }
 ```

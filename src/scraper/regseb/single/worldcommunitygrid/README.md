@@ -16,13 +16,17 @@ Cet exemple affiche les données de l'utilisateur *regseb*.
     "std/single/worldcommunitygrid": {
         "widget": "std/single",
         "coord": { "x": 1, "y": 1, "w": 20, "h": 2 },
-        "config": {
-            "color": "TODO",
-            "cron": "0 0 * * *"
+        "files": {
+            "config": {
+                "color": "#795548",
+                "cron": "0 0 * * *"
+            }
         },
         "scrapers": [
-            { "scraper": "regseb/single/worldcommunitygrid",
-              "config": "regseb" }
+            {
+                "scraper": "regseb/single/worldcommunitygrid",
+                "config": "regseb"
+            }
         ]
     }
 }

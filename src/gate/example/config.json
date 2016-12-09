@@ -2,9 +2,11 @@
     "example/hello/world": {
         "widget": "example/hello",
         "coord": { "x": 1, "y": 1, "w": 10, "h": 2 },
-        "config": {
-            "color": "#f44336",
-            "who": "world"
+        "files": {
+            "config.json": {
+                "color": "#f44336",
+                "who": "world"
+            }
         }
     },
 

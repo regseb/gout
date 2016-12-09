@@ -2,7 +2,7 @@ define(["jquery"], function ($) {
     "use strict";
 
     return class {
-        list(size) {
+        extract(size) {
             const url = "https://www.commitstrip.com/fr/";
             return $.get(url).then(function (data) {
                 return $.parseHTML(data);
@@ -21,6 +21,6 @@ define(["jquery"], function ($) {
                 });
                 return events;
             });
-        } // list()
+        } // extract()
     };
 });

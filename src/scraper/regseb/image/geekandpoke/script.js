@@ -2,8 +2,8 @@ define(["jquery"], function ($) {
     "use strict";
 
     return class {
-        list(size) {
-            const url = "http://feeds.feedburner.com/GeekAndPoke";
+        extract(size) {
+            const url = "https://feeds.feedburner.com/GeekAndPoke";
             return $.get(url).then(function (data) {
                 const events = [];
                 $("item:lt(" + size + ")", data).each(function () {
@@ -19,6 +19,6 @@ define(["jquery"], function ($) {
                 });
                 return events;
             });
-        } // list()
+        } // extract()
     };
 });

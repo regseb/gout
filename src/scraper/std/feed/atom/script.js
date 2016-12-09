@@ -4,9 +4,9 @@ define(["jquery"], function ($) {
     return class {
         constructor(url) {
             this.url = url;
-        } // constuctor()
+        } // constructor()
 
-        list(size) {
+        extract(size) {
             return $.get(this.url).then(function (xml) {
                 const items = $("entry:lt(" + size + ")", xml).map(function () {
                     let desc = $("summary", this).text().trim();
@@ -29,6 +29,6 @@ define(["jquery"], function ($) {
                 }
                 return items;
             });
-        } // list()
+        } // extract()
     };
 });

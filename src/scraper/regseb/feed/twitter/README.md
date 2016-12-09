@@ -17,9 +17,11 @@ Cet exemple affiche les derniers tweets du compte de
     "std/feed/jquery": {
         "widget": "std/feed",
         "coord": { "x": 1, "y": 1, "w": 28, "h": 6 },
-        "config": {
-            "color": "#3f51b5",
-            "cron": "0 * * * *"
+        "files": {
+            "config.json": {
+                "color": "#3f51b5",
+                "cron": "0 * * * *"
+            }
         },
         "scrapers": [
             {

@@ -6,9 +6,10 @@ prochain match.
 
 ## Configuration
 
-La configuration contient un objet
-[JSON](http://www.json.org "JavaScript Object Notation") avec les propriétés
-suivantes :
+Le répertoire de la passerelle doit avoir un fichier ***config.json***
+contenant un objet
+[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") avec les
+propriétés suivantes :
 
 - `"color"` (optionnel - valeur par défaut : `"#03a9f4"`) : la couleur de fond
   du cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
@@ -32,8 +33,7 @@ sept heures.
     "regseb/om": {
         "widget": "regseb/om",
         "coord": { "x": 1, "y": 1, "w": 20, "h": 3 },
-        "config": {},
-        "scrapers": []
+        "files": { "config.json": {} }
     }
 }
 ```

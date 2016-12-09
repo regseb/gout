@@ -1,6 +1,6 @@
 {
     "name": "gout",
-    "version": "0.6.2",
+    "version": "0.7.1",
     "description": "Agrégateur d'Internet (flux RSS et tout le reste).",
     "keyword": [
         "gout", "aggregator", "feed", "news", "reader", "rss", "atom", "scraper"
@@ -16,22 +16,24 @@
         "url": "https://github.com/regseb/gout.git"
     },
     "scripts": {
-        "start": "node nodejs/server.js",
+        "postinstall": "bin/postinstall.js",
+        "firefox": "bin/firefox.js",
+        "chrome": "bin/chrome.js",
         "lint": "metalint"
     },
     "dependencies": {
         "dialog-polyfill": "^0.4.5",
-        "express": "^4.14.0",
         "jquery": "^3.1.1",
         "requirejs": "^2.3.2",
         "scronpt": "^0.3.1"
     },
     "devDependencies": {
-        "eslint": "^3.10.1",
+        "addons-linter": "^0.15.6",
+        "eslint": "^3.11.1",
         "htmlhint": "^0.9.13",
         "jsonlint": "^1.6.2",
         "markdownlint": "^0.3.1",
         "metalint": "^0.7.1",
-        "stylelint": "^7.5.0"
+        "stylelint": "^7.6.0"
     }
 }

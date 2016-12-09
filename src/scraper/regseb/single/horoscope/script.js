@@ -6,7 +6,7 @@ define(["jquery"], function ($) {
             this.sign = sign[0].toUpperCase() + sign.substr(1).toLowerCase();
         } // constructor()
 
-        get() {
+        extract() {
             const that = this;
             const url = "http://www.elle.fr/Astro/Horoscope/Quotidien";
             return $.get(url).then(function (data) {
@@ -15,8 +15,7 @@ define(["jquery"], function ($) {
                 const result = {
                     "title": "(Signe non-trouvé)",
                     "desc":  null,
-                    "link":  "http://www.elle.fr/Astro/Horoscope/Quotidien/" +
-                             that.sign
+                    "link":  "http://www.elle.fr/Astro/Horoscope/Quotidien"
                 };
 
                 $(".signes .right", data).each(function () {
@@ -28,6 +27,6 @@ define(["jquery"], function ($) {
                 });
                 return result;
             });
-        } // get()
+        } // extract()
     };
 });

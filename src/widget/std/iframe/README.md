@@ -4,7 +4,12 @@ Ce widget affiche un `iframe`.
 
 ## Configuration
 
-La configuration contient un lien qui sera affiché dans l'`iframe`.
+Le répertoire de la passerelle doit avoir un fichier ***config.json***
+contenant un objet
+[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") avec la
+propriété suivante :
+
+- `"link"` : le lien qui sera affiché dans l'`iframe`.
 
 Aucune dimension particulière est conseillée.
 
@@ -15,7 +20,7 @@ Ce widget n'utilise pas de scraper.
 ## Exemple
 
 Cet exemple affiche
-[Wikipedia](//fr.wikipedia.org/wiki/Wikipédia:Accueil_principal) dans un
+[Wikipédia](//fr.wikipedia.org/wiki/Wikipédia:Accueil_principal) dans un
 `iframe`.
 
 ```JSON
@@ -23,8 +28,11 @@ Cet exemple affiche
     "std/iframe/wikipedia": {
         "widget": "std/iframe",
         "coord": { "x": 1, "y": 1, "w": 40, "h": 50 },
-        "config": "https://fr.wikipedia.org/wiki/Wikipédia:Accueil_principal",
-        "scrapers": []
+        "files": {
+            "config.json": {
+                "https://fr.wikipedia.org/wiki/Wikipédia:Accueil_principal"
+            }
+        }
     }
 }
 ```

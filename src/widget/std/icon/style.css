@@ -1,0 +1,33 @@
+.std-icon > p {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.std-icon > p > a {
+    display: block;
+    opacity: 0.8;
+    transition: 0.2s ease-out;
+}
+.std-icon > p > a:hover {
+    opacity: 1;
+}
+.std-icon > p > a > img {
+    width: 100%;
+}
+.std-icon > p > span {
+    background-color: black;
+    color: white;
+    margin-right: 0.7em;
+    margin-top: 0.7em;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0.7em;
+    position: absolute;
+    text-align: justify;
+    visibility: hidden;
+}
+.std-icon > p:hover > span {
+    opacity: 1;
+    transition: z-index 1s linear, opacity 0.5s linear 1s;
+    visibility: visible;
+    z-index: 1;
+}

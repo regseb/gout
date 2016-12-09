@@ -22,9 +22,7 @@ Cet exemple ne fait rien.
 {
     "example/minimal": {
         "widget": "example/minimal",
-        "coord": { "x": 0, "y": 0, "w": 0, "h": 0 },
-        "config": null,
-        "scrapers": []
+        "coord": { "x": 0, "y": 0, "w": 0, "h": 0 }
     }
 }
 ```

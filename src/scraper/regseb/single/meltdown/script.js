@@ -4,11 +4,11 @@ define(["jquery"], function ($) {
     return class {
         constructor(city) {
             this.city = city;
-        }
+        } // constructor()
 
-        get() {
+        extract() {
             const that = this;
-            const url = "http://www.meltdown.bar/" + that.city + "/planning";
+            const url = "https://www.meltdown.bar/" + that.city + "/planning";
             return $.get(url).then(function (data) {
                 return $.parseHTML(data);
             }).then(function (data) {
@@ -27,10 +27,10 @@ define(["jquery"], function ($) {
                 return {
                     "title": titles.join(" / "),
                     "desc":  descs.join("<br />"),
-                    "link":  "http://www.meltdown.bar/" + that.city +
+                    "link":  "https://www.meltdown.bar/" + that.city +
                              "/planning"
                 };
             });
-        } // get()
+        } // extract()
     };
 });

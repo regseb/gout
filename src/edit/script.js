@@ -1,5 +1,5 @@
 require.config({
-    "baseUrl": "lib"
+    "baseUrl": "../lib"
 });
 
 /**
@@ -11,7 +11,7 @@ const multiple14 = function (num) {
     return Math.round(num / 14) * 14;
 }; // multiple14()
 
-define(["jquery", "dialog-polyfill"], function ($, dialogPolyfill) {
+define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
     "use strict";
 
     // Supprimer les variables globales de jQuery.

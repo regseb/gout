@@ -25,14 +25,16 @@ les actualisant une fois par jour à midi.
     "std/image/valdallos": {
         "widget": "std/image",
         "coord": { "x": 1, "y": 1, "w": 20, "h": 4 },
-        "config": {
-            "size": 3,
-            "cron": "0 12 * * *"
+        "files": {
+            "config.json": {
+                "size": 3,
+                "cron": "0 12 * * *"
+            }
         },
         "scrapers": [
             {
                 "scraper": "regseb/image/valdallos",
-                "config": ["seignus-bas", "observatoire", "village"]
+                "config": ["seignus-haut", "seignus-bas", "village"]
             }
         ]
     }

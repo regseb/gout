@@ -2,8 +2,8 @@ define(["jquery"], function ($) {
     "use strict";
 
     return class {
-        list(size) {
-            const url = "http://www.loadingartist.com/archives";
+        extract(size) {
+            const url = "https://www.loadingartist.com/archives/";
             return $.get(url).then(function (data) {
                 return $.parseHTML(data);
             }).then(function (data) {
@@ -20,6 +20,6 @@ define(["jquery"], function ($) {
                 });
                 return items.reverse();
             });
-        } // list()
+        } // extract()
     };
 });

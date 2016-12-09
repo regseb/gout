@@ -17,9 +17,11 @@ Cet exemple affiche le sujet de l'émission.
     "std/single/cdanslair": {
         "widget": "std/single",
         "coord": { "x": 1, "y": 1, "w": 20, "h": 2 },
-        "config": {
-            "color": "#9e9e9e",
-            "cron": "0 1,14-18 * * *"
+        "files": {
+            "config.json": {
+                "color": "#9e9e9e",
+                "cron": "0 1,14-18 * * *"
+            }
         },
         "scrapers": [
             { "scraper": "regseb/single/cdanslair" }

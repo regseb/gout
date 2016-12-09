@@ -18,9 +18,11 @@ Cet exemple affiche un lien vers un article en français.
     "std/single/articleauhasard": {
         "widget": "std/single",
         "coord": { "x": 1, "y": 1, "w": 20, "h": 2 },
-        "config": {
-            "color": "#607d8b",
-            "cron": "*/5 * * * *"
+        "files": {
+            "config.json": {
+                "color": "#607d8b",
+                "cron": "*/5 * * * *"
+            }
         },
         "scrapers": [
             { "scraper": "regseb/single/articleauhasard" }

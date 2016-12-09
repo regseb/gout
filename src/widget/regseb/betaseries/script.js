@@ -2,8 +2,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
     "use strict";
 
     const API_URL = "https://api.betaseries.com/";
-    const REDIRECT_URI = window.location.origin +
-                         "/widget/regseb/betaseries/oauth2.html";
+
     const gates = {};
 
     const resources = {};
@@ -32,9 +31,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
                     });
                 }
             }
-            return items.sort(function (a, b) {
-                return a.date - b.date;
-            }).slice(0, size);
+            return items.sort((a, b) => a.date - b.date).slice(0, size);
         });
     }; // extract()
 
@@ -107,17 +104,6 @@ define(["jquery", "scronpt"], function ($, Cron) {
         });
     }; // post()
 
-    const open = function () {
-        const $root = $(this).closest("article");
-        const id = $root.attr("id");
-        const args = gates[id];
-
-        const url = "https://www.betaseries.com/authorize?client_id=" +
-                    args.key + "&redirect_uri=" +
-                    encodeURIComponent(REDIRECT_URI);
-        window.open(url, id, "width=500, height=400");
-    }; // open()
-
     const init = function (id, key, token, shows) {
         // Récupérer les identifiants des séries regardées par l'utilisateur.
         let url = API_URL + "episodes/list?key=" + key + "&token=" + token +
@@ -142,17 +128,18 @@ define(["jquery", "scronpt"], function ($, Cron) {
         });
     }; // init()
 
-    const access = function (event) {
-        const $root = $(this);
-        const id = $root.attr("id");
+    const access = function (responseUrl) {
+        const response = new URL(responseUrl);
+        const id = response.pathname.slice(1);
+        const $root = $("#" + id);
         const args = gates[id];
 
         const url = API_URL + "members/access_token?key=" + args.key;
         const params = {
             "client_id":     args.key,
             "client_secret": args.secret,
-            "redirect_uri":  REDIRECT_URI,
-            "code":          event.detail
+            "redirect_uri":  browser.identity.getRedirectURL(id),
+            "code":          response.searchParams.get("code")
         };
         // Récupérer le jeton grâce au code.
         $.post(url, params).then(function (data) {
@@ -165,6 +152,20 @@ define(["jquery", "scronpt"], function ($, Cron) {
         });
     }; // access()
 
+    const open = function () {
+        const $root = $(this).closest("article");
+        const id = $root.attr("id");
+        const args = gates[id];
+
+        const details = {
+            "url": "https://www.betaseries.com/authorize?client_id=" +
+                   args.key + "&redirect_uri=" +
+                   encodeURIComponent(browser.identity.getRedirectURL(id)),
+            "interactive": true
+        };
+        browser.identity.launchWebAuthFlow(details).then(access);
+    }; // open()
+
     const wake = function () {
         for (let id in gates) {
             if (!gates[id].cron.status()) {
@@ -173,15 +174,15 @@ define(["jquery", "scronpt"], function ($, Cron) {
         }
     }; // wake()
 
-    const create = function (id, url, config) {
+    const create = function (id, { "config.json": config, "icon.svg": icon }) {
         const $root = $("#" + id);
         $root.css({
             "background-color": config.color || "#2196f3",
-            "background-image": "url(\"" + url + "/icon.svg\")"
+            "background-image": "url(\"data:image/svg+xml;base64," +
+                                btoa(icon) + "\")"
         });
 
-        // Ajouter des écouteurs.
-        $root[0].addEventListener("access", access);
+        // Ajouter un écouteur sur le bouton de connexion.
         $("button", $root).click(open);
 
         gates[id] = {

@@ -1,10 +1,9 @@
 define(["jquery", "scronpt"], function ($, Cron) {
     "use strict";
 
-    const OAUTH2_API_URL = "https://accounts.google.com/o/oauth2/";
+    const OAUTH_API_URL = "https://accounts.google.com/o/oauth2/v2/";
+    const TOKEN_API_URL = "https://www.googleapis.com/oauth2/v4/";
     const CALENDAR_API_URL = "https://www.googleapis.com/calendar/v3/";
-    const REDIRECT_URI = window.location.origin +
-                         "/widget/regseb/googlecalendar/oauth2.html";
     // dd/MM/yyyy.
     const DF_SHORT = new Intl.DateTimeFormat("fr-FR", {
         "day":   "2-digit",
@@ -38,10 +37,10 @@ define(["jquery", "scronpt"], function ($, Cron) {
                     let time;
                     if ("date" in item.start) {
                         date = new Date(item.start.date);
+                        date.setHours(0, 0, 0, 0);
                         time = null;
                     } else {
                         date = new Date(item.start.dateTime);
-                        date.setHours(0, 0, 0, 0);
                         time = new Date(item.start.dateTime);
                     }
 
@@ -141,24 +140,10 @@ define(["jquery", "scronpt"], function ($, Cron) {
         });
     }; // update()
 
-    const open = function () {
-        const $root = $(this).closest("article");
-        const id = $root.attr("id");
-        const args = gates[id];
-
-        const url = OAUTH2_API_URL + "auth?response_type=code&client_id=" +
-                    args.key + "&redirect_uri=" +
-                    encodeURIComponent(REDIRECT_URI) + "&scope=" +
-                    "https://www.googleapis.com/auth/calendar.readonly" +
-                    "&state=" + id + "&access_type=offline" +
-                    "&approval_prompt=force";
-        window.open(url, id, "width=800, height=600");
-    }; // open()
-
     const refresh = function (id) {
         const args = gates[id];
 
-        const url = OAUTH2_API_URL + "token";
+        const url = TOKEN_API_URL + "token";
         const params = {
             "refresh_token": args.refresh,
             "client_id":     args.key,
@@ -171,17 +156,18 @@ define(["jquery", "scronpt"], function ($, Cron) {
         });
     }; // refresh()
 
-    const access = function (event) {
-        const $root = $(this);
-        const id = $root.attr("id");
+    const access = function (responseUrl) {
+        const response = new URL(responseUrl);
+        const id = response.searchParams.get("state");
+        const $root = $("#" + id);
         const args = gates[id];
 
-        const url = OAUTH2_API_URL + "token";
+        const url = TOKEN_API_URL + "token";
         const params = {
-            "code":          event.detail,
+            "code":          response.searchParams.get("code"),
             "client_id":     args.key,
             "client_secret": args.secret,
-            "redirect_uri":  REDIRECT_URI,
+            "redirect_uri":  browser.identity.getRedirectURL(),
             "grant_type":    "authorization_code"
         };
         // Récupérer le jeton grâce au code.
@@ -199,6 +185,23 @@ define(["jquery", "scronpt"], function ($, Cron) {
         });
     }; // access()
 
+    const open = function () {
+        const $root = $(this).closest("article");
+        const id = $root.attr("id");
+        const args = gates[id];
+
+        const details = {
+            "url": OAUTH_API_URL + "auth?response_type=code&client_id=" +
+                   args.key + "&redirect_uri=" +
+                   encodeURIComponent(browser.identity.getRedirectURL()) +
+                   "&scope=https://www.googleapis.com/auth/calendar.readonly" +
+                   "&state=" + id + "&access_type=offline" +
+                   "&prompt=select_account consent",
+            "interactive": true
+        };
+        browser.identity.launchWebAuthFlow(details).then(access);
+    }; // open()
+
     const wake = function () {
         for (let id in gates) {
             if (!gates[id].cron.status()) {
@@ -207,14 +210,13 @@ define(["jquery", "scronpt"], function ($, Cron) {
         }
     }; // wake()
 
-    const create = function (id, url, config) {
+    const create = function (id, { "config.json": config }) {
         const $root = $("#" + id);
         $root.css("background-color", config.color || "#3f51b5");
         $("p a", $root).attr("href", "https://www.google.com/calendar/b/" +
                                      (config.index || 0) + "/render");
 
-        // Ajouter des écouteurs.
-        $root[0].addEventListener("access", access);
+        // Ajouter un écouteur sur le bouton de connexion.
         $("button", $root).click(open);
 
         gates[id] = {

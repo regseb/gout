@@ -1,5 +1,7 @@
-define(["jquery"], function ($) {
+define(["jquery", "scronpt"], function ($, Cron) {
     "use strict";
+
+    const gates = {};
 
     const transform = function (svg, time, center) {
         const element = svg.createElementNS("http://www.w3.org/2000/svg",
@@ -12,14 +14,14 @@ define(["jquery"], function ($) {
         return element;
     }; // transform()
 
-    const animate = function () {
-        const svg = $(this)[0].contentDocument;
+    const update = function (id) {
+        const $root = $("#" + id);
+        const svg = $("object", $root)[0].contentDocument;
         const now = new Date();
 
         const view = svg.rootElement.getAttribute("viewBox").split(" ");
         const cx = parseInt(view[2], 10) / 2;
         const cy = parseInt(view[3], 10) / 2;
-        const center = "0, " + cx + ", " + cy + "; 360, " + cx + ", " + cy;
 
         const seconds = now.getSeconds();
         for (let child of svg.getElementById("second").children) {
@@ -27,8 +29,6 @@ define(["jquery"], function ($) {
                                "rotate(" + seconds * 6 + ", " + cx + ", " + cy +
                                ")");
         }
-        svg.getElementById("second").appendChild(transform(svg, 60, center));
-
 
         const minutes = now.getMinutes() + seconds / 60;
         for (let child of svg.getElementById("minute").children) {
@@ -36,7 +36,6 @@ define(["jquery"], function ($) {
                                "rotate(" + minutes * 6 + ", " + cx + ", " + cy +
                                ")");
         }
-        svg.getElementById("minute").appendChild(transform(svg, 3600, center));
 
         const hours = now.getHours() + minutes / 60;
         for (let child of svg.getElementById("hour").children) {
@@ -44,15 +43,40 @@ define(["jquery"], function ($) {
                                "rotate(" + hours * 30 + ", " + cx + ", " + cy +
                                ")");
         }
-        svg.getElementById("hour").appendChild(transform(svg, 43200, center));
-    }; // animate()
+    }; // update()
 
-    const create = function (id, url, config) {
+    const wake = function () {
+        for (let id in gates) {
+            if (!gates[id].cron.status()) {
+                update(id);
+            }
+        }
+    }; // wake()
+
+    const create = function (id, { "config.json": config }) {
         const $root = $("#" + id);
         $root.css("background-color", config.color || "black");
 
-        $("object", $root).on("load", animate)
-                          .attr("data", url + "/icon.svg");
+        gates[id] = {
+            "cron": new Cron(config.cron || "0 0 * * *", update, id)
+        };
+
+        const svg = $("object", $root)[0].contentDocument;
+
+        const view = svg.rootElement.getAttribute("viewBox").split(" ");
+        const cx = parseInt(view[2], 10) / 2;
+        const cy = parseInt(view[3], 10) / 2;
+        const center = "0, " + cx + ", " + cy + "; 360, " + cx + ", " + cy;
+
+        svg.getElementById("second").appendChild(transform(svg, 60, center));
+        svg.getElementById("minute").appendChild(transform(svg, 3600, center));
+        svg.getElementById("hour").appendChild(transform(svg, 43200, center));
+
+        if (1 === Object.keys(gates).length) {
+            document.addEventListener("visibilitychange", wake);
+        }
+
+        update(id);
     }; // create()
 
     return create;

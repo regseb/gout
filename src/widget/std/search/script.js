@@ -36,8 +36,8 @@ define(["jquery"], function ($) {
                                  "placeholder": engine.title });
     }; // change()
 
-    const display = function ($root, data, i, url) {
-        data.icon = url + "/" + data.icon;
+    const display = function ($root, data, i, files) {
+        data.icon = "data:image/svg+xml;base64," + btoa(files[data.icon]);
         $("ul", $root).append(
             $("<li>").data("index", i)
                      .append($("<img>").attr("src", data.icon))
@@ -45,7 +45,7 @@ define(["jquery"], function ($) {
                      .click(change));
     }; // display()
 
-    const create = function (id, url, config) {
+    const create = function (id, files) {
         const $root = $("#" + id);
         const height = $root.height();
         const width = $root.width();
@@ -56,11 +56,11 @@ define(["jquery"], function ($) {
         $("input", $root).width(width - height - 17)
                          .height(height - 5);
 
-        config.forEach(function (engine, i) {
-            display($root, engine, i, url);
+        files["config.json"].forEach(function (engine, i) {
+            display($root, engine, i, files);
         });
 
-        gates[id] = config;
+        gates[id] = files["config.json"];
 
         // Sélectionner le premier élément.
         $("li:first", $root).click();

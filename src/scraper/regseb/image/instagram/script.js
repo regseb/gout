@@ -6,9 +6,8 @@ define(["jquery"], function ($) {
             this.user = user;
         } // constructor()
 
-        list(size) {
-            const that = this;
-            const url = "https://www.instagram.com/" + that.user + "/media/";
+        extract(size) {
+            const url = "https://www.instagram.com/" + this.user + "/media/";
             return $.get(url).then(function (data) {
                 return data.items.slice(0, size).map(function (item) {
                     return {
@@ -20,6 +19,6 @@ define(["jquery"], function ($) {
                     };
                 });
             });
-        } // list()
+        } // extract()
     };
 });

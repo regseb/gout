@@ -18,13 +18,17 @@ Cet exemple affiche l'horoscope du jour des *Lion*s.
     "std/single/horoscope": {
         "widget": "std/single",
         "coord": { "x": 1, "y": 1, "w": 20, "h": 3 },
-        "config": {
-            "color": "black",
-            "cron": "0 0 * * *"
+        "files": {
+            "config.json": {
+                "color": "black",
+                "cron": "0 0 * * *"
+            }
         },
         "scrapers": [
-            { "scraper": "regseb/single/horoscope",
-              "config": "lion" }
+            {
+                "scraper": "regseb/single/horoscope",
+                "config": "lion"
+            }
         ]
     }
 }

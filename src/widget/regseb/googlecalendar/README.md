@@ -1,14 +1,16 @@
 # /regseb/googlecalendar
 
-Ce widget affiche les prochains évènements d'un **Google Agenda**.
+Ce widget affiche les prochains évènements d'un
+**[Google Agenda](//www.google.com/calendar)**.
 
 ## Configuration
 
 Le répertoire de la passerelle doit avoir un fichier ***config.json***
-contenant un objet [JSON](http://www.json.org "JavaScript Object Notation")
-avec les propriétés suivantes :
+contenant un objet
+[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") avec les
+propriétés suivantes :
 
-- `"calendar"` (optionnel - valeur par défaut : `["primary"]`) : la liste des
+- `"calendars"` (optionnel - valeur par défaut : `["primary"]`) : la liste des
   identifiants des agendas qui seront affichés ;
 - `"color"` (optionnel - valeur par défaut : `"#3f51b5"`) : la couleur de fond
   du cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
@@ -28,13 +30,14 @@ souhaitez avoir les *N* prochains évènements : il faut fixer la hauteur à
 ### `"key"` et `"secret"`
 
 Pour obtenir un identifiant, allez dans la
-***[Google Developers Console](//console.developers.google.com/)***. Créez un
-projet, puis *Ajoutez des identifiants* pour obtenir un *identifiant client
-OAuth 2.0* de type *Application Web*. Dans le champs pour définir l'origine des
-requêtes : renseignez l'adresse où est accessible Gout. Par exemple :
-`http://localhost:6047/`. Pour les *URI* de redirection : indiquez l'adresse de
-Gout suffixée avec `/widget/regseb/googlecalendar/oauth2.html`. Par exemple :
-`http://localhost:6047/widget/regseb/googlecalendar/oauth2.html`.
+***[Console des API Google](//console.developers.google.com/)***. Créez un
+projet, puis *Créez des identifiants* pour obtenir un *ID client OAuth* de type
+*Application Web*. Laissez vide les champs pour définir les *Origines JavaScript
+autorisées*. Pour les *URI de redirection autorisés*, ajoutez les deux adresse
+de Gout :
+
+- `https://e7ca15c1c9d74876c655f32cebd95dfd8c7afc15.extensions.allizom.org/`
+- `https://jgmpleepfnjaaihkcadaphgjecnglldo.chromiumapp.org/`
 
 Ensuite, activez la *Calendar API*.
 
@@ -44,20 +47,21 @@ Ce widget n'utilise pas de scraper.
 
 ## Exemple
 
-Cet exemple affiche les évènements (en les mettant à jour toutes les quatre
-heures).
+Cet exemple affiche les évènements de votre calendrier principale (en les
+mettant à jour une fois par jour).
 
 ```JSON
 {
     "regseb/googlecalendar": {
         "widget": "regseb/googlecalendar",
         "coord": { "x": 1, "y": 1, "w": 28, "h": 5 },
-        "config": {
-            "key": "881981768.apps.googleusercontent.com (une clé de ce style)",
-            "secret": "sdlkfjaskd (un code de ce style)",
-            "cron": "0 */4 * * *"
-        },
-        "scrapers": []
+        "files": {
+            "config.json": {
+                "key": "88198.apps.googleusercontent.com (une clé de ce style)",
+                "secret": "sdlkfjaskd (un code de ce style)",
+                "cron": "0 5 * * *"
+            }
+        }
     }
 }
 ```

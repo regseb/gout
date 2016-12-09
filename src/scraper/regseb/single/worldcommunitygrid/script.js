@@ -4,13 +4,13 @@ define(["jquery"], function ($) {
     return class {
         constructor(user) {
             this.user = user;
-        }
+        } // constructor()
 
-        get() {
+        extract() {
             const that = this;
-            const url = "http://www.worldcommunitygrid.org/getDynamicImage.do" +
-                        "?memberName=" + that.user + "&stat=1&rankOn=true" +
-                        "&language=fr_FR";
+            const url = "https://www.worldcommunitygrid.org/" +
+                        "getDynamicImage.do?memberName=" + that.user +
+                                          "&stat=1&rankOn=true&language=fr_FR";
             return $.get(url).then(function (data) {
                 return {
                     "title": "<strong>" +
@@ -23,6 +23,6 @@ define(["jquery"], function ($) {
                             "viewMemberInfo.do?userName=" + that.user
                 };
             });
-        } // get()
+        } // extract()
     };
 });

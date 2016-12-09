@@ -179,7 +179,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
         }
     }; // wake()
 
-    const create = function (id, url, config) {
+    const create = function (id, { "config.json": config }) {
         const $root = $("#" + id);
         $root.css("background-color", config.color || "#03a9f4");
 

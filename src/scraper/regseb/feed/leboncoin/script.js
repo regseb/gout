@@ -1,15 +1,17 @@
 define(["jquery"], function ($) {
     "use strict";
 
-    const MONTHS = ["janvier", "février", "mars", "avril", "mai", "juin",
-                    "juillet", "août", "sept", "octobre", "novembre",
-                    "décembre"];
+    const MONTHS = [
+        "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
+        "sept", "oct", "nov", "déc"
+    ];
+
     return class {
         constructor(url) {
             this.url = url;
-        } // constuctor()
+        } // constructor()
 
-        list(size) {
+        extract(size) {
             return $.get(this.url).then(function (data) {
                 return $.parseHTML(data);
             }).then(function (data) {
@@ -35,13 +37,13 @@ define(["jquery"], function ($) {
                     items.push({
                         "title": $(this).attr("title"),
                         "desc":  "",
-                        "link":  $(this).attr("href"),
+                        "link":  "https:" + $(this).attr("href"),
                         "guid":  $(this).attr("href"),
                         "date":  date.getTime()
                     });
                 });
                 return items;
             });
-        } // list()
+        } // extract()
     };
 });

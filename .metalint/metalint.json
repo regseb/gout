@@ -4,15 +4,8 @@
     "verbose": 2,
     "checkers": [
         {
-            "patterns": ["src/**/*.js", "nodejs/public/**/*.js"],
-            "linters": {
-                "eslint": ["eslint.json", "eslint_browser.json"]
-            }
-        }, {
-            "patterns": ["!nodejs/public/**", "nodejs/**/*.js"],
-            "linters": {
-                "eslint": ["eslint.json", "eslint_node.json"]
-            }
+            "patterns": "**/*.js",
+            "linters": "eslint"
         }, {
             "patterns": "**/*.html",
             "linters": "htmlhint"
@@ -25,6 +18,9 @@
         }, {
             "patterns": "**/*.json",
             "linters": { "jsonlint": { "comments": false } }
+        }, {
+            "patterns": "**/*.xpi",
+            "linters": { "addons-linter": null }
         }
     ]
 }

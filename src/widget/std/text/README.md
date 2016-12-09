@@ -5,9 +5,10 @@ personnalisable.
 
 ## Configuration
 
-La configuration contient un objet
-[JSON](http://www.json.org "JavaScript Object Notation") avec les propriétés
-suivantes :
+Le répertoire de la passerelle doit avoir un fichier ***config.json***
+contenant un objet
+[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") avec les
+propriétés suivantes :
 
 - `"text"` (optionnel - valeur par défaut : `""`) : le texte affiché dans le
   cadre ;
@@ -32,10 +33,11 @@ Cet exemple affiche un cadre noir avec le texte *Carpe diem*.
     "std/text/carpe": {
         "widget": "std/text",
         "coord": { "x": 1, "y": 1, "w": 10, "h": 2 },
-        "config": {
-            "text": "Carpe diem"
-        },
-        "scrapers": []
+        "files": {
+            "config.json": {
+                "text": "Carpe diem"
+            }
+        }
     }
 }
 ```

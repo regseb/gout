@@ -3,11 +3,11 @@ define(["jquery"], function ($) {
 
     return class {
         constructor({ url, jobs }) {
-            this.host = url;
+            this.host    = url;
             this.filters = jobs;
         } // constructor()
 
-        list(size) {
+        extract(size) {
             const that = this;
             const url = that.host +
                         "/api/json?tree=jobs[name,url,displayName," +
@@ -67,6 +67,6 @@ define(["jquery"], function ($) {
                 }
                 return items;
             });
-        } // list()
+        } // extract()
     };
 });

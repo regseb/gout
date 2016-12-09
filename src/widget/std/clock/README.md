@@ -4,20 +4,18 @@ Ce widget affiche une horloge qui donne l'heure.
 
 ## Configuration
 
-La configuration contient un objet
-[JSON](http://www.json.org "JavaScript Object Notation") avec la propriété
-suivante :
+Le répertoire de la passerelle doit avoir un fichier ***config.json***
+contenant un objet
+[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") avec les
+propriétés suivantes :
 
 - `"color"` (optionnel - valeur par défaut : `"black"`) : la couleur de fond du
   cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
-  prédéfinis).
+  prédéfinis) ;
+- `"cron"` (optionnel - valeur par défaut : `"0 0 * * *"`) : la notation cron
+  indiquant le recalcul de l'heure.
 
 Le widget doit être carré.
-
-Le répertoire de la passerelle doit avoir un fichier ***icon.svg*** qui contient
-l'image de l'horloge. Le document [SVG](//www.w3.org/Graphics/SVG/) doit avoir
-trois éléments avec les identifiants `hour`, `minute` et `second`. Tous les
-sous-éléments tourneront avec comme axe le centre de l'image.
 
 ## Scraper
 
@@ -32,10 +30,11 @@ Cet exemple affiche l'horloge dans un cadre marron.
     "std/clock": {
         "widget": "std/clock",
         "coord": { "x": 1, "y": 1, "w": 5, "h": 5 },
-        "config": {
-            "color": "#795548"
-        },
-        "scraper": []
+        "files": {
+            "config.json": {
+                "color": "#795548"
+            }
+        }
     }
 }
 ```

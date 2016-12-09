@@ -1,7 +1,7 @@
 define(["jquery"], function ($) {
     "use strict";
 
-    const create = function (id, url, config) {
+    const create = function (id, { "config.json": config }) {
         const $root = $("#" + id);
         $root.css("background-color", config.color || "black");
         $("p", $root).css("text-align", config.align || "left")

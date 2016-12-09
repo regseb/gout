@@ -1,25 +1,27 @@
-# /regseb/single
+# /std/single
 
 Ce widget affiche un lien.
 
 ## Configuration
 
-La configuration contient un objet
-[JSON](http://www.json.org "JavaScript Object Notation") avec la propriété
-suivante :
+Le répertoire de la passerelle doit avoir un fichier ***config.json***
+contenant un objet
+[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") avec les
+propriétés suivantes :
 
-- `"color"` (optionnel - valeur par défaut : `"#4caf50"`) : la couleur de fond
-  du cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
-  prédéfinis).
+- `"color"` : la couleur de fond du cadre (au format hexadécimale, régulier RGB
+  ou avec des mots-clefs prédéfinis) ;
+- `"cron"` : la notation cron indiquant la fréquence de mise à jour des
+  évènements.
+
+Une image ayant pour nom ***icon.svg*** doit aussi est présente dans le
+répertoire de la passerelle.
 
 Les dimensions conseillées sont **20x2**.
 
-Une image ayant pour nom ***icon.svg*** doit aussi est présent dans le
-répertoire passerelle.
-
 ## Scraper
 
-Les scrapers associés à ce widget doivent définir une méthode `get()` et qui
+Les scrapers associés à ce widget doivent définir une méthode `extract()` et qui
 retourne un objet JSON ayant les propriétés :
 
 - `"title"` : le titre ;
@@ -35,9 +37,11 @@ Cet exemple affiche un lien vers un article au hasard de *Wikipédia*.
     "std/single/articleauhasard": {
         "widget": "std/single",
         "coord": { "x": 1, "y": 1, "w": 20, "h": 2 },
-        "config": {
-            "color": "#607d8b",
-            "cron": "*/5 * * * *"
+        "files": {
+            "config.json": {
+                "color": "#607d8b",
+                "cron": "*/5 * * * *"
+            }
         },
         "scrapers": [
             { "scraper": "regseb/single/articleauhasard" }

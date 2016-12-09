@@ -17,9 +17,11 @@ Cet exemple affiche les dernières actualités du site
     "std/feed/developpez": {
         "widget": "std/feed",
         "coord": { "x": 1, "y": 1, "w": 28, "h": 6 },
-        "config": {
-            "color": "#607d8b",
-            "cron": "*/10 * * * *"
+        "files": {
+            "config.json": {
+                "color": "#607d8b",
+                "cron": "*/10 * * * *"
+            }
         },
         "scrapers": [
             {

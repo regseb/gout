@@ -6,11 +6,10 @@ define(["jquery"], function ($) {
             this.lang = lang;
         } // constructor()
 
-        get() {
+        extract() {
             const that = this;
-            const url = "http://" + that.lang + ".wikipedia.org/w/api.php" +
-                        "?action=query&list=random&rnnamespace=0&format=json" +
-                        "&callback=?";
+            const url = "https://" + that.lang + ".wikipedia.org/w/api.php" +
+                        "?action=query&list=random&rnnamespace=0&format=json";
             return $.getJSON(url).then(function (data) {
                 return {
                     "title": data.query.random[0].title,
@@ -19,6 +18,6 @@ define(["jquery"], function ($) {
                              data.query.random[0].title
                 };
             });
-        } // get()
+        } // extract()
     };
 });

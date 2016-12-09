@@ -100,7 +100,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
 
         const $root = $("#" + id);
         args.scrapers.forEach(function (scraper) {
-            scraper.list(args.size).then(function (items) {
+            scraper.extract(args.size).then(function (items) {
                 for (let item of items) {
                     display($root, item, args.size);
                 }
@@ -117,11 +117,15 @@ define(["jquery", "scronpt"], function ($, Cron) {
         }
     }; // wake()
 
-    const create = function (id, url, config, scrapers) {
+    const create = function (id, { "config.json": config }, scrapers) {
         const $root = $("#" + id);
         $("ul", $root).width($root.width() * config.size);
-        $("span:first", $root).click(prev);
-        $("span:last",  $root).click(next);
+        if (1 === config.size) {
+            $("span", $root).remove();
+        } else {
+            $("span:first", $root).click(prev);
+            $("span:last",  $root).click(next);
+        }
 
         gates[id] = {
             "scrapers": scrapers,

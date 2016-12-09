@@ -1,14 +1,14 @@
 define(["jquery"], function ($) {
     "use strict";
 
-    const URL_API = "https://www.googleapis.com/youtube/v3/";
+    const API_URL = "https://www.googleapis.com/youtube/v3/";
 
     return class {
         constructor({ user, key }) {
             this.user = user;
             this.key  = key;
             this.playlist = null;
-        } // constuctor()
+        } // constructor()
 
         init() {
             const that = this;
@@ -16,7 +16,7 @@ define(["jquery"], function ($) {
                 return Promise.resolve(this.playlist);
             }
 
-            return $.getJSON(URL_API + "channels?part=contentDetails" +
+            return $.getJSON(API_URL + "channels?part=contentDetails" +
                              "&forUsername=" + this.user + "&key=" + this.key)
                                                          .then(function (data) {
                 that.playlist = data.items[0].contentDetails.relatedPlaylists
@@ -25,10 +25,10 @@ define(["jquery"], function ($) {
             });
         } // init()
 
-        list(size) {
+        extract(size) {
             const that = this;
             return that.init().then(function (playlist) {
-                const url = URL_API + "playlistItems?key=" + that.key +
+                const url = API_URL + "playlistItems?key=" + that.key +
                             "&part=snippet&playlistId=" + playlist +
                             "&maxResults=" + size;
                 return $.getJSON(url).then(function (data) {
@@ -45,6 +45,6 @@ define(["jquery"], function ($) {
                     });
                 });
             });
-        } // list()
+        } // extract()
     };
 });

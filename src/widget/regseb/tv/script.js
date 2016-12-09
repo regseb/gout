@@ -47,7 +47,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
         args.cron.start();
 
         const $root = $("#" + id);
-        args.scraper.list().then(function (items) {
+        args.scraper.extract().then(function (items) {
             $("ul", $root).empty();
             for (let item of items) {
                 display($root, item);
@@ -63,7 +63,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
         }
     }; // wake()
 
-    const create = function (id, url, config, scrapers) {
+    const create = function (id, { "config.json": config }, scrapers) {
         const $root = $("#" + id);
         $root.css("background-color", config.color || "#9e9e9e");
 

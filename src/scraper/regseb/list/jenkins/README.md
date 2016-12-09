@@ -4,9 +4,9 @@ Ce scraper récupère les *jobs* et les *modules* **jenkins** en erreur.
 
 ## Configuration
 
-Le configuration contient un objet
-[JSON](http://www.json.org "JavaScript Object Notation") avec les propriétés
-suivantes :
+La configuration contient un objet
+[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") avec les
+propriétés suivantes :
 
 - `"url"`: l'URL du serveur Jenkins ;
 - `"jobs"`: les filtres des *jobs* à afficher.
@@ -22,14 +22,16 @@ Cet exemple affiche les *modules* *Maven Core* et *Maven Artifact* du *job*
     "std/list/jenkins": {
         "widget": "std/list",
         "coord": { "x": 1, "y": 1, "w": 18, "h": 5 },
-        "config": {
-            "empty": {
-                "link": "https://builds.apache.org",
-                "title": "(Aucun job en erreur)",
-                "desc": null
-            },
-            "color": "#9e9e9e",
-            "cron": "0 */4 * * *"
+        "files": {
+            "config.json": {
+                "empty": {
+                    "link": "https://builds.apache.org",
+                    "title": "(Aucun job en erreur)",
+                    "desc": null
+                },
+                "color": "#9e9e9e",
+                "cron": "0 */4 * * *"
+            }
         },
         "scrapers": [
             {
