@@ -5,14 +5,13 @@ define(["jquery", "scronpt"], function ($, Cron) {
 
     const display = function ($root, data) {
         $root.css("background-color", data.color);
-        $("a", $root).attr("href", data.link)
-                     .html(data.title);
-        $("img", $root).attr("src", data.icon);
-        if (null === data.desc) {
-            $("span", $root).hide();
+        $("> a", $root).attr("href", data.link);
+        $("> a img", $root).attr("src", data.icon);
+        if (!("desc" in data) || null === data.desc || "" === data.desc) {
+            $("> span", $root).hide();
         } else {
-            $("span", $root).html(data.desc)
-                            .show();
+            $("> span", $root).html(data.desc)
+                              .show();
         }
     }; // display()
 

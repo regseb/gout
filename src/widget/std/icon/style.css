@@ -1,19 +1,19 @@
-.std-icon > p {
+.std-icon {
     margin-bottom: 0;
     margin-top: 0;
 }
-.std-icon > p > a {
+.std-icon > a {
     display: block;
     opacity: 0.8;
     transition: 0.2s ease-out;
 }
-.std-icon > p > a:hover {
+.std-icon > a:hover {
     opacity: 1;
 }
-.std-icon > p > a > img {
+.std-icon > a img {
     width: 100%;
 }
-.std-icon > p > span {
+.std-icon > span {
     background-color: black;
     color: white;
     margin-right: 0.7em;
@@ -25,7 +25,7 @@
     text-align: justify;
     visibility: hidden;
 }
-.std-icon > p:hover > span {
+.std-icon:hover > span {
     opacity: 1;
     transition: z-index 1s linear, opacity 0.5s linear 1s;
     visibility: visible;

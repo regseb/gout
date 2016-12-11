@@ -6,21 +6,23 @@ Ce widget affiche une icône dans un lien.
 
 Le répertoire de la passerelle doit avoir un fichier ***config.json***
 contenant un objet
-[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") avec les
-propriétés suivantes :
+[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") avec la
+propriété suivante :
 
-- `"link"` (optionnel) : le lien vers une page Internet ;
-- `"desc"` (optionnel - valeur par défaut `""`) : l'info-bulle affichée au
-  survol du bouton ;
-- `"color"` (optionnel - valeur par défaut : `"black"`) : la couleur de fond du
-  bouton (au format hexadécimale, régulier RGB ou avec des mots-clefs
-  prédéfinis).
+- `"cron"` : la notation cron indiquant la fréquence de mise à jour.
 
 Le widget doit être carré.
 
 ## Scraper
 
-Ce widget n'utilise pas de scraper.
+Les scrapers associés à ce widget doivent définir une méthode `extract()` et qui
+retourne un objet JSON ayant les propriétés :
+
+- `"icon"` : l'URL de l'image ;
+- `"desc"` : la description de l'élément ;
+- `"link"` : le lien de l'élément ;
+- `"color"` : la couleur de fond du cadre (au format hexadécimale, régulier RGB
+  ou avec des mots-clefs prédéfinis).
 
 ## Exemple
 
