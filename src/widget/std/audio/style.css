@@ -1,0 +1,47 @@
+.std-audio {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.std-audio > a {
+    display: block;
+    opacity: 0.8;
+    transition: 0.2s ease-out;
+}
+.std-audio > a:hover {
+    opacity: 1;
+}
+.std-audio > a img {
+    width: 100%;
+}
+.std-audio > span {
+    background-color: black;
+    color: white;
+    margin-right: 0.7em;
+    margin-top: 0.7em;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0.7em;
+    position: absolute;
+    text-align: justify;
+    visibility: hidden;
+}
+.std-audio:hover > span {
+    opacity: 1;
+    transition: z-index 1s linear, opacity 0.5s linear 1s;
+    visibility: visible;
+    z-index: 1;
+}
+
+.std-audio input {
+    background-color: black;
+    height: 1.4em;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.std-audio:hover input {
+    opacity: 0.8;
+}
