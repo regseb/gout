@@ -7,8 +7,7 @@ define(["jquery"], function ($) {
         } // constructor()
 
         extract() {
-            const that = this;
-            const url = "https://www.meltdown.bar/" + that.city + "/planning";
+            const url = "https://www.meltdown.bar/" + this.city + "/planning";
             return $.get(url).then(function (data) {
                 return $.parseHTML(data);
             }).then(function (data) {
@@ -27,8 +26,7 @@ define(["jquery"], function ($) {
                 return {
                     "title": titles.join(" / "),
                     "desc":  descs.join("<br />"),
-                    "link":  "https://www.meltdown.bar/" + that.city +
-                             "/planning"
+                    "link":  url
                 };
             });
         } // extract()

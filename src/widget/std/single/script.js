@@ -6,7 +6,7 @@ define(["jquery", "scronpt"], function ($, Cron) {
     const display = function ($root, data) {
         $("a", $root).attr("href", data.link)
                      .html(data.title);
-        if (null === data.desc) {
+        if ("" === data.desc) {
             $("span", $root).hide();
         } else {
             $("span", $root).html(data.desc)

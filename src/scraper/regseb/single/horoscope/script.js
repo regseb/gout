@@ -14,13 +14,14 @@ define(["jquery"], function ($) {
             }).then(function (data) {
                 const result = {
                     "title": "(Signe non-trouvé)",
-                    "desc":  null,
+                    "desc":  "",
                     "link":  "http://www.elle.fr/Astro/Horoscope/Quotidien"
                 };
 
                 $(".signes .right", data).each(function () {
                     if ($("a", this).attr("href").includes(that.sign)) {
                         result.title = $("p", this).text();
+                        result.link  = $("a", this);
                         return false;
                     }
                     return true;

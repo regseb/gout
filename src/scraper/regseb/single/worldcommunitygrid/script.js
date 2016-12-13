@@ -18,7 +18,7 @@ define(["jquery"], function ($) {
                              "</strong> points (#<em>" +
                              (/\(Rang :&#160;&#35;([^(]+)\)/).exec(data)[1] +
                              "</em>)",
-                    "desc": null,
+                    "desc": "",
                     "link": "https://secure.worldcommunitygrid.org/stat/" +
                             "viewMemberInfo.do?userName=" + that.user
                 };
