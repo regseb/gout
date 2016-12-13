@@ -1,7 +1,3 @@
-.std-audio {
-    margin-bottom: 0;
-    margin-top: 0;
-}
 .std-audio > a {
     display: block;
     opacity: 0.8;
@@ -34,12 +30,12 @@
 
 .std-audio input {
     background-color: black;
+    bottom: 0;
     height: 1.4em;
     margin: 0;
     opacity: 0;
     padding: 0;
     position: absolute;
-    bottom: 0;
     width: 100%;
 }
 .std-audio:hover input {
