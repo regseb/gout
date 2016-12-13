@@ -1,4 +1,4 @@
-define(["jquery"], function ($) {
+define([], function () {
     "use strict";
 
     return class {
@@ -11,7 +11,9 @@ define(["jquery"], function ($) {
             const url = "https://www.googleapis.com/plus/v1/people/" +
                         this.user + "/activities/public?key=" + this.key +
                         "&maxResults=" + size;
-            return $.getJSON(url).then(function (data) {
+            return fetch(url).then(function (response) {
+                return response.json();
+            }).then(function (data) {
                 return data.items.map(function (item) {
                     return {
                         "title": item.title,

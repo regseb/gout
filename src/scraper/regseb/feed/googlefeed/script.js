@@ -1,4 +1,4 @@
-define(["jquery"], function ($) {
+define([], function () {
     "use strict";
 
     return class {
@@ -10,7 +10,9 @@ define(["jquery"], function ($) {
             const url = "https://ajax.googleapis.com/ajax/services/feed/load" +
                         "?v=1.0&q=" + encodeURIComponent(this.url) + "&num=" +
                         size;
-            return $.getJSON(url).then(function (data) {
+            return fetch(url).then(function (response) {
+                return response.json();
+            }).then(function (data) {
                 return data.responseData.feed.entries.map(function (entry) {
                     return {
                         "title": entry.title,

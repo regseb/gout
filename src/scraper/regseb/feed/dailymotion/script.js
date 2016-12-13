@@ -1,4 +1,4 @@
-define(["jquery"], function ($) {
+define([], function () {
     "use strict";
 
     return class {
@@ -10,7 +10,9 @@ define(["jquery"], function ($) {
             const url = "https://api.dailymotion.com/user/" + this.user +
                         "/videos?fields=title,description,url,id,created_time" +
                                "&limit=" + size;
-            return $.getJSON(url).then(function (data) {
+            return fetch(url).then(function (response) {
+                return response.json();
+            }).then(function (data) {
                 return data.list.map(function (item) {
                     return {
                         "title": item.title,
