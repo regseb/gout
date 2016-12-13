@@ -1,4 +1,4 @@
-# /standalone/notepad
+# /std/notepad
 
 Ce widget affiche un bloc-notes.
 
@@ -29,8 +29,8 @@ Cet exemple affiche un bloc-notes pour une liste de courses.
 
 ```JSON
 {
-    "standalone/notepad": {
-        "widget": "standalone/notepad",
+    "std/notepad": {
+        "widget": "std/notepad",
         "coord": { "x": 1, "y": 1, "w": 10, "h": 8 },
         "files": {
             "config.json": {

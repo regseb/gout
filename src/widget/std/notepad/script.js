@@ -2,11 +2,11 @@ define(["jquery"], function ($) {
     "use strict";
 
     const save = function (id, value) {
-        localStorage.setItem("widget/standalone/notepad/" + id, value);
+        localStorage.setItem("widget/std/notepad/" + id, value);
     }; // save()
 
     const load = function (id) {
-        return localStorage.getItem("widget/standalone/notepad/" + id);
+        return localStorage.getItem("widget/std/notepad/" + id);
     }; // load()
 
     const change = function () {
@@ -23,8 +23,8 @@ define(["jquery"], function ($) {
                                 btoa(icon) + "\")"
         });
         $("textarea", $root).val(load(id))
-                            .attr({ "title":       config.desc,
-                                    "placeholder": config.title })
+                            .attr({ "title":       config.desc  || "",
+                                    "placeholder": config.title || "" })
                             .css("border-color", config.color || "black")
                             .change(change);
     }; // create()
