@@ -2,26 +2,23 @@ require.config({
     "baseUrl": "../lib"
 });
 
-/**
- * Calcule le multiple de 14 le plus proche.
- */
-const multiple14 = function (num) {
-    "use strict";
-
-    return Math.round(num / 14) * 14;
-}; // multiple14()
-
 define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
     "use strict";
 
     // Supprimer les variables globales de jQuery.
     $.noConflict(true);
 
+    const multiple14 = function (num) {
+        return Math.round(num / 14) * 14;
+    }; // multiple14()
+
     let dataTransfer = null;
 
     const mousedown = function (event) {
-        const target = event.target;
-        if ("ARTICLE" === target.tagName) {
+        let target = event.target;
+        if ("ARTICLE" === target.tagName || "key" === target.className) {
+            target = "ARTICLE" === target.tagName ? target
+                                                  : target.parentNode;
             const rect = target.getBoundingClientRect();
             dataTransfer = {
                 "target": target,
@@ -62,7 +59,7 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
             $("[name=\"origin\"]", $dialog).val("");
             $("[name=\"key\"]", $dialog).val("");
             $("[name=\"widget\"]", $dialog).val("");
-            $("[name=\"config\"]", $dialog).val("null");
+            $("[name=\"files\"]", $dialog).val("{}");
             $("[name=\"scrapers\"]", $dialog).val("[]");
             $("[value=\"Ajouter\"]", $dialog).show();
             $("[value=\"Supprimer\"]", $dialog).hide();
@@ -71,8 +68,8 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
             $("[name=\"origin\"]", $dialog).val(key);
             $("[name=\"key\"]", $dialog).val(key);
             $("[name=\"widget\"]", $dialog).val(gate.widget);
-            $("[name=\"config\"]", $dialog).val(
-                                          JSON.stringify(gate.config, null, 4));
+            $("[name=\"files\"]", $dialog).val(
+                                           JSON.stringify(gate.files, null, 4));
             $("[name=\"scrapers\"]", $dialog).val(
                                         JSON.stringify(gate.scrapers, null, 4));
             $("[value=\"Ajouter\"]", $dialog).hide();
@@ -88,7 +85,7 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
            "key":    $("[name=\"key\"]", $dialog).val(),
            "gate":   {
                "widget":   $("[name=\"widget\"]", $dialog).val(),
-               "config":   JSON.parse($("[name=\"config\"]", $dialog).val()),
+               "files":    JSON.parse($("[name=\"files\"]", $dialog).val()),
                "scrapers": JSON.parse($("[name=\"scrapers\"]", $dialog).val())
            }
        };
@@ -124,6 +121,27 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
         dialog.showModal();
     }; // add()
 
+    const save = function () {
+        const gates = {};
+        $("article").each(function () {
+            const $article = $(this);
+            const gate = $article.data("gate");
+            gates[$(".key", $article).text()] = {
+                "widget": gate.widget,
+                "active": "active" in gate ? gate.active : true,
+                "coord":  {
+                    "x": Math.round($article.offset().left / 14),
+                    "y": Math.round($article.offset().top / 14),
+                    "w": Math.round($article.width() / 14),
+                    "h": Math.round($article.height() / 14)
+                },
+                "files":    gate.files,
+                "scrapers": gate.scrapers
+            };
+        });
+        localStorage.setItem("gate/" + config, JSON.stringify(gates));
+    }; // save()
+
     const code = function () {
         const config = {};
         $("article").each(function () {
@@ -138,7 +156,7 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
                     "w": Math.round($article.width() / 14),
                     "h": Math.round($article.height() / 14)
                 },
-                "config":   gate.config,
+                "files":    gate.files,
                 "scrapers": gate.scrapers
             };
         });
@@ -149,6 +167,7 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
     }; // code()
 
     $("button.add").click(add);
+    $("button.save").click(save);
     $("button.code").click(code);
 
     $(document).on("mousemove", mousemove)
@@ -171,15 +190,61 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
         }
     });
 
+    const load = function (key, gate) {
+        // Définir des valeurs par défaut.
+        gate.files    = gate.files   || {};
+        gate.scrapers = gate.scrapers|| [];
+
+        const $article =
+            $("<article>").attr("draggable", true)
+                          .data("gate", gate)
+                          .css({ "left": gate.coord.x * 1.4 + "em",
+                                 "top":  gate.coord.y * 1.4 + "em" })
+                          .width(gate.coord.w * 1.4 + "em")
+                          .height(gate.coord.h * 1.4 + "em")
+                          .html($("template").html())
+                          .on("mousedown", mousedown)
+                          .on("dblclick", dblclick);
+        $(".key", $article).text(key);
+
+        $("body").append($article);
+    }; // load()
+
     // Récupérer les paramètres transmits dans l'URL.
     const params = new URLSearchParams(window.location.search.slice(1));
     const user   = params.get("user")   || "default";
     const config = params.get("config") || "config";
 
-    $.getJSON("../gate/" + user + "/" + config + ".json").then(
-                                                              function (gates) {
-        for (let key in gates) {
-            insert(key, gates[key]);
+    if ("default" === user) {
+        if ("config" !== config) {
+            $("a").attr("href", $("a").attr("href") + "?config=" + config);
         }
-    }, (err) => console.log(err));
+        const gates = JSON.parse(localStorage.getItem("gate/" + config));
+        if (null === gates) {
+            // Charger la configuration par défaut.
+            const url = "../gate/default/config.json";
+            $.getJSON(url).then(function (gates) {
+                for (let key in gates) {
+                    load(key, gates[key]);
+                }
+            }).catch((err) => console.log(err));
+        } else {
+            for (let key in gates) {
+                load(key, gates[key]);
+            }
+        }
+    } else {
+        $("button.save").remove();
+        $("a").attr("href", $("a").attr("href") + "?user=" + user);
+        if ("config" !== config) {
+            $("a").attr("href", $("a").attr("href") + "&config=" + config);
+        }
+        // Charger les passerelles contenues dans le fichier de configuration.
+        const url = "../gate/" + user + "/" + config + ".json";
+        $.getJSON(url).then(function (gates) {
+            for (let key in gates) {
+                load(key, gates[key]);
+            }
+        }).catch((err) => console.log(err));
+    }
 });

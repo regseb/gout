@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Gout</title>
-    <link rel="stylesheet"    href="lib/dialog-polyfill.css" />
+    <title>Gout - Édition</title>
+    <link rel="stylesheet"    href="../lib/dialog-polyfill.css" />
     <link rel="stylesheet"    href="style.css" />
     <link rel="shortcut icon" href="../img/icon.svg" />
   </head>
@@ -12,9 +12,15 @@
       <button class="add">
         <img src="img/add.svg" alt="Ajouter" title="Ajouter" />
       </button>
+      <button class="save">
+        <img src="img/save.svg" alt="Enregistrer" title="Enregistrer" />
+      </button>
       <button class="code">
         <img src="img/code.svg" alt="Voir le code" title="Voir le code" />
       </button>
+      <a href="/index.html">
+        <img src="img/exit.svg" alt="Quitter" title="Quitter" />
+      </a>
     </nav>
 
     <template>
@@ -38,14 +44,16 @@
         </p>
         <p>
           <label>
-            Configuration<br />
-            <textarea name="config" cols="80" rows="6"></textarea>
+            Fichiers<br />
+            <textarea name="files" cols="80" rows="6"
+                      placeholder="{}"></textarea>
           </label>
         </p>
         <p>
           <label>
             Scrapers<br />
-            <textarea name="scrapers" cols="80" rows="8"></textarea>
+            <textarea name="scrapers" cols="80" rows="8"
+                      placeholder="[]"></textarea>
           </label>
         </p>
         <menu>
@@ -67,6 +75,6 @@
         </menu>
       </form>
     </dialog>
-    <script data-main="script" src="lib/requirejs.js"></script>
+    <script data-main="script" src="../lib/requirejs.js"></script>
   </body>
 </html>

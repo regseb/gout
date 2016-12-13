@@ -26,7 +26,7 @@ nav {
     z-index: 1;
 }
 
-button {
+button, a {
     background-color: black;
     border: none;
     border-radius: 50%;
@@ -35,10 +35,24 @@ button {
         0 0.3em 0.1em -0.2em rgba(0, 0, 0, 0.2),
         0 0.1em 0.5em 0      rgba(0, 0, 0, 0.12);
     cursor: pointer;
-    height: 40px;
+    opacity: 0.2;
     padding: 8px;
+    transition: 0.2s ease-out;
+}
+button {
+    height: 40px;
     width: 40px;
 }
+a {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+}
+
+button:hover, a:hover {
+    opacity: 1;
+}
+
 .resize {
     bottom: 0;
     cursor: nwse-resize;
