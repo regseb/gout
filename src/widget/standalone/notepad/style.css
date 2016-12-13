@@ -5,6 +5,7 @@
 }
 .standalone-notepad textarea {
     background-color: transparent;
+    border-radius: 0.2em;
     border-style: solid;
     border-width: 1px;
     box-sizing: border-box;
