@@ -20,7 +20,8 @@ propriétés suivantes :
   [`"bouygues"`](http://www.programme-television.org/?bouquet=bouygues),
   [`"alice"`](http://www.programme-television.org/?bouquet=alice),
   [`"darty"`](http://www.programme-television.org/?bouquet=darty) ou
-  [`"bis-televisions"`](http://www.programme-television.org/?bouquet=bis-televisions)) ;
+  [`"bis-televisions"`](
+                http://www.programme-television.org/?bouquet=bis-televisions)) ;
 - `"channels"` : la liste des chaines affichées (voir en-dessous pour connaitre
   les codes) ;
 - `"color"` (optionnel - valeur par défaut : `"#9e9e9e"`) : la couleur de fond
