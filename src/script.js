@@ -56,6 +56,9 @@ define(["require", "jquery"], function (require, $) {
     }; // read()
 
     const getFiles = function (obj, url) {
+        if (null === url) {
+            return Promise.resolve(obj);
+        }
         return readdir(url).then(function (urls) {
             return Promise.all(urls.map(read)).then(function (results) {
                 const files = {};
@@ -124,7 +127,33 @@ define(["require", "jquery"], function (require, $) {
         });
     }; // load()
 
-    const init = function (user, config) {
+    // Récupérer les paramètres transmits dans l'URL.
+    const params = new URLSearchParams(window.location.search.slice(1));
+    const user   = params.get("user")   || "default";
+    const config = params.get("config") || "config";
+
+    if ("default" === user) {
+        if ("config" !== config) {
+            $("a").attr("href", $("a").attr("href") + "?config=" + config);
+        }
+        const gates = JSON.parse(localStorage.getItem("gate/" + config));
+        if (null === gates) {
+            // Charger la configuration par défaut.
+            const url = "gate/default/config.json";
+            $.getJSON(url).then(function (gates) {
+                for (let key in gates) {
+                    load(key, gates[key], "gate/" + user + "/" + key);
+                }
+                $("template").remove();
+            }).catch((err) => console.log(err));
+        } else {
+            for (let key in gates) {
+                load(key, gates[key], null);
+            }
+            $("template").remove();
+        }
+    } else {
+        $("a").remove();
         // Charger les passerelles contenues dans le fichier de configuration.
         const url = "gate/" + user + "/" + config + ".json";
         $.getJSON(url).then(function (gates) {
@@ -132,13 +161,6 @@ define(["require", "jquery"], function (require, $) {
                 load(key, gates[key], "gate/" + user + "/" + key);
             }
             $("template").remove();
-        }, (err) => console.log(err));
-    }; // init()
-
-    // Récupérer les paramètres transmits dans l'URL.
-    const params = new URLSearchParams(window.location.search.slice(1));
-    const user   = params.get("user")   || "default";
-    const config = params.get("config") || "config";
-
-    init(user, config);
+        }).catch((err) => console.log(err));
+    }
 });
