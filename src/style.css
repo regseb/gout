@@ -15,7 +15,7 @@ a:hover {
     text-decoration: underline;
 }
 
-article {
+body > article {
     border-radius: 0.2em;
     box-shadow:
         0 0.2em 0.2em 0      rgba(0, 0, 0, 0.14),
@@ -24,22 +24,20 @@ article {
     position: absolute;
 }
 
-nav {
+body > nav {
     bottom: 20px;
     position: fixed;
     right: 20px;
     z-index: 1;
 }
 
-nav a {
+body > nav a {
     background-color: black;
-    border: none;
     border-radius: 50%;
     box-shadow:
         0 0.2em 0.2em 0      rgba(0, 0, 0, 0.14),
         0 0.3em 0.1em -0.2em rgba(0, 0, 0, 0.2),
         0 0.1em 0.5em 0      rgba(0, 0, 0, 0.12);
-    cursor: pointer;
     display: inline-block;
     height: 24px;
     opacity: 0.2;
@@ -47,7 +45,6 @@ nav a {
     transition: 0.2s ease-out;
     width: 24px;
 }
-nav a:hover {
+body > nav a:hover {
     opacity: 1;
 }
-

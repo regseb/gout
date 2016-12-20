@@ -139,28 +139,28 @@ define(["require", "jquery"], function (require, $) {
         const gates = JSON.parse(localStorage.getItem("gate/" + config));
         if (null === gates) {
             // Charger la configuration par défaut.
-            const url = "gate/default/config.json";
+            const url = "gate/default/" + config + ".json";
             $.getJSON(url).then(function (gates) {
                 for (let key in gates) {
-                    load(key, gates[key], "gate/" + user + "/" + key);
+                    load(key, gates[key], null);
                 }
-                $("template").remove();
+                $("body > template").remove();
             }).catch((err) => console.log(err));
         } else {
             for (let key in gates) {
                 load(key, gates[key], null);
             }
-            $("template").remove();
+            $("body > template").remove();
         }
     } else {
         $("a").remove();
         // Charger les passerelles contenues dans le fichier de configuration.
-        const url = "gate/" + user + "/" + config + ".json";
+        const url = "gate/community/" + user + "/" + config + ".json";
         $.getJSON(url).then(function (gates) {
             for (let key in gates) {
-                load(key, gates[key], "gate/" + user + "/" + key);
+                load(key, gates[key], "gate/community/" + user + "/" + key);
             }
-            $("template").remove();
+            $("body > template").remove();
         }).catch((err) => console.log(err));
     }
 });

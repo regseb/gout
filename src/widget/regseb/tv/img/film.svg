@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10">
-  <path d="M 1,1 1,9 2,9 2,8 3,8 3,9 7,9 7,8 8,8 8,9 9,9 9,1 z M 2,2 3,2 3,3 2,3
-           z M 7,2 8,2 8,3 7,3 z M 2,4 3,4 3,5 2,5 z M 7,4 8,4 8,5 7,5 z M 2,6
-           3,6 3,7 2,7 z M 7,6 8,6 8,7 7,7 z"
-        fill="white" />
-</svg>

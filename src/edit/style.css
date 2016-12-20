@@ -28,18 +28,18 @@ nav {
 
 button, a {
     background-color: black;
-    border: none;
     border-radius: 50%;
     box-shadow:
         0 0.2em 0.2em 0      rgba(0, 0, 0, 0.14),
         0 0.3em 0.1em -0.2em rgba(0, 0, 0, 0.2),
         0 0.1em 0.5em 0      rgba(0, 0, 0, 0.12);
-    cursor: pointer;
     opacity: 0.2;
     padding: 8px;
     transition: 0.2s ease-out;
 }
 button {
+    border: none;
+    cursor: pointer;
     height: 40px;
     width: 40px;
 }

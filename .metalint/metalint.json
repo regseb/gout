@@ -1,5 +1,7 @@
 {
-    "patterns": ["!.git/**", "!node_modules/**", "!**/lib/**", "**"],
+    "patterns": [
+        "!.git/**", "!node_modules/**", "!**/lib/**", "!**/community/**", "**"
+    ],
     "hidden": true,
     "verbose": 2,
     "checkers": [

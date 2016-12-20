@@ -1,0 +1,5 @@
+.core-clock object {
+    height: calc(100% - 1.4em);
+    padding: 0.7em;
+    width: calc(100% - 1.4em);
+}

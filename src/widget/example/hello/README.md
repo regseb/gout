@@ -1,4 +1,4 @@
-# /example/hello
+# example/hello
 
 Ce widget d'exemple affiche le texte « Hello *someone*! », où *someone* est
 configurable.

@@ -1,0 +1,13 @@
+.core-text {
+    background-position: right 0.7em center;
+    background-repeat: no-repeat;
+    background-size: auto calc(100% - 1.4em);
+}
+.core-text p {
+    color: white;
+    margin: 0.7em;
+}
+.core-text a {
+    color: white;
+    text-decoration: underline;
+}

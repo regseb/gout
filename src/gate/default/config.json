@@ -1,10 +1,17 @@
 {
-    "std/text/welcome": {
-        "widget": "std/text",
+    "text/welcome": {
+        "widget": "core/text",
         "coord": { "x": 1, "y": 1, "w": 28, "h": 7 },
         "files": {
             "config.json": {
-                "text": [
+                "align": "justify",
+                "cron": "0 0 1 1 0"
+            }
+        },
+        "scrapers": [
+            {
+                "scraper": "core/repeater",
+                "config": [
                     "Pour ajouter des passerelles sur cette page, modifier le",
                     " répertoire <code>src/gate/default/</code>. Vous avez des",
                     " pages de démontration en suivant les liens",
@@ -15,9 +22,204 @@
                     " des widgets nécessitant le proxy. La configuration de",
                     " ces deux pages est disponible dans le dossier",
                     " <code>src/gate/demo/<code>."
-                ],
-                "align": "justify"
+                ]
             }
+        ]
+    },
+
+    "feed/lemonde": {
+        "widget": "core/feed",
+        "coord": { "x": 1, "y": 1, "w": 28, "h": 6 },
+        "files": {
+            "config.json": {
+                "color": "#9e9e9e",
+                "cron": "*/3 * * * *"
+            }
+        },
+        "scrapers": [
+            {
+                "scraper": "core/feed/rss",
+                "config": "https://www.lemonde.fr/rss/une.xml"
+            }
+        ]
+    },
+    "feed/lequipe": {
+        "widget": "core/feed",
+        "coord": { "x": 30, "y": 1, "w": 28, "h": 6 },
+        "files": {
+            "config.json": {
+                "color": "#f44336",
+                "cron": "*/3 * * * *"
+            }
+        },
+        "scrapers": [
+            {
+                "scraper": "core/feed/rss",
+                "config": "http://www.lequipe.fr/rss/actu_rss.xml"
+            }
+        ]
+    },
+    "feed/lefigaro": {
+        "widget": "core/feed",
+        "coord": { "x": 1, "y": 8, "w": 28, "h": 5 },
+        "files": {
+            "config.json": {
+                "color": "#2196f3",
+                "cron": "*/3 * * * *"
+            }
+        },
+        "scrapers": [
+            {
+                "scraper": "core/feed/rss",
+                "config": "http://www.lefigaro.fr/rss/figaro_actualites-a-la-une.xml"
+            }
+        ]
+    },
+    "feed/liberation": {
+        "widget": "core/feed",
+        "coord": { "x": 30, "y": 8, "w": 28, "h": 5 },
+        "files": {
+            "config.json": {
+                "color": "#f44336",
+                "cron": "*/3 * * * *"
+            }
+        },
+        "scrapers": [
+            {
+                "scraper": "core/feed/atom",
+                "config": "http://rss.liberation.fr/rss/latest/"
+            }
+        ]
+    },
+    "feed/lesechos": {
+        "widget": "core/feed",
+        "coord": { "x": 1, "y": 14, "w": 28, "h": 6 },
+        "files": {
+            "config.json": {
+                "color": "#9e9e9e",
+                "cron": "*/3 * * * *"
+            }
+        },
+        "scrapers": [
+            {
+                "scraper": "core/feed/rss",
+                "config": "http://syndication.lesechos.fr/rss/rss_une.xml"
+            }
+        ]
+    },
+    "feed/lacroix": {
+        "widget": "core/feed",
+        "coord": { "x": 30, "y": 14, "w": 28, "h": 4 },
+        "files": {
+            "config.json": {
+                "color": "#2196f3",
+                "cron": "*/3 * * * *"
+            }
+        },
+        "scrapers": [
+            {
+                "scraper": "core/feed/rss",
+                "config": "http://www.la-croix.com/RSS/UNIVERS"
+            }
+        ]
+    },
+    "feed/rue89": {
+        "widget": "core/feed",
+        "coord": { "x": 1, "y": 21, "w": 28, "h": 4 },
+        "files": {
+            "config.json": {
+                "color": "#f44336",
+                "cron": "*/3 * * * *"
+            }
+        },
+        "scrapers": [
+            {
+                "scraper": "core/feed/rss",
+                "config": "http://api.rue89.nouvelobs.com/feed"
+            }
+        ]
+    },
+    "feed/lehuffingtonpost": {
+        "widget": "core/feed",
+        "coord": { "x": 30, "y": 19, "w": 28, "h": 6 },
+        "files": {
+            "config.json": {
+                "color": "#009688",
+                "cron": "*/3 * * * *"
+            }
+        },
+        "scrapers": [
+            {
+                "scraper": "core/feed/rss",
+                "config": "http://www.huffingtonpost.fr/feeds/index.xml"
+            }
+        ]
+    },
+
+    "search": {
+        "widget": "core/search",
+        "coord": { "x": 59, "y": 1, "w": 20, "h": 2 },
+        "files": {
+            "config.json": [
+                {
+                    "title": "Google",
+                    "url": "https://www.google.fr/search?q={searchTerms}",
+                    "color": "#2196f3",
+                    "icon": "google.svg"
+                }, {
+                    "title": "Yahoo",
+                    "url": "https://fr.search.yahoo.com/search?p={searchTerms}",
+                    "color": "#673ab7",
+                    "icon": "yahoo.svg"
+                }, {
+                    "title": "Bing",
+                    "url": "https://www.bing.com/search?q={searchTerms}",
+                    "color": "#ffc107",
+                    "icon": "bing.svg"
+                }, {
+                    "title": "DuckDuckGo",
+                    "url": "https://duckduckgo.com/?q={searchTerms}",
+                    "color": "#f44336",
+                    "icon": "duckduckgo.svg"
+                }
+            ]
         }
+    },
+
+    "clock": {
+        "widget": "core/clock",
+        "coord": { "x": 115, "y": 5, "w": 9, "h": 9 },
+        "files": {
+            "config.json": { "color": "#9e9e9e" }
+        },
+        "scrapers": []
+    },
+
+    "list/social": {
+        "widget": "core/list",
+        "coord": { "x": 80, "y": 1, "w": 14, "h": 4 },
+        "files": {
+            "config.json": {
+                "color": "#ff9800",
+                "cron": "0 0 1 1 0"
+            }
+        },
+        "scrapers": [
+            {
+                "scraper": "core/repeater",
+                "config": [
+                    {
+                        "link": "https://www.facebook.com/",
+                        "title": "Facebook"
+                    }, {
+                        "link": "https://www.twitter.com/",
+                        "title": "Twitter"
+                    }, {
+                        "link": "https://plus.google.com/",
+                        "title": "Google+"
+                    }
+                ]
+            }
+        ]
     }
 }

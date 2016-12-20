@@ -1,0 +1,41 @@
+.core-image {
+    overflow: hidden;
+}
+.core-image span {
+    background-color: black;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 1.4em;
+}
+.core-image span:hover {
+    opacity: 0.8;
+}
+.core-image span:first-of-type {
+    background-image: url("img/left.svg");
+    left: 0;
+}
+.core-image span:last-of-type {
+    background-image: url("img/right.svg");
+    right: 0;
+}
+
+.core-image ul {
+    margin-top: 0;
+    padding-left: 0;
+    position: absolute;
+}
+.core-image li {
+    display: inline-block;
+}
+.core-image a {
+    background-position: center center;
+    background-size: cover;
+    display: block;
+    height: 100%;
+    width: 100%;
+}

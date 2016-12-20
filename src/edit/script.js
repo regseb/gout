@@ -192,8 +192,8 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
 
     const load = function (key, gate) {
         // Définir des valeurs par défaut.
-        gate.files    = gate.files   || {};
-        gate.scrapers = gate.scrapers|| [];
+        gate.files    = gate.files    || {};
+        gate.scrapers = gate.scrapers || [];
 
         const $article =
             $("<article>").attr("draggable", true)
@@ -222,7 +222,7 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
         const gates = JSON.parse(localStorage.getItem("gate/" + config));
         if (null === gates) {
             // Charger la configuration par défaut.
-            const url = "../gate/default/config.json";
+            const url = "../gate/default/" + config + ".json";
             $.getJSON(url).then(function (gates) {
                 for (let key in gates) {
                     load(key, gates[key]);
@@ -240,7 +240,7 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
             $("a").attr("href", $("a").attr("href") + "&config=" + config);
         }
         // Charger les passerelles contenues dans le fichier de configuration.
-        const url = "../gate/" + user + "/" + config + ".json";
+        const url = "../gate/community/" + user + "/" + config + ".json";
         $.getJSON(url).then(function (gates) {
             for (let key in gates) {
                 load(key, gates[key]);

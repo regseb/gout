@@ -1,4 +1,4 @@
-# /example/minimal
+# example/minimal
 
 Ce widget d'exemple ne fait rien. Il sert seulement à montrer le code minimal
 nécessaire pour créer un widget.
