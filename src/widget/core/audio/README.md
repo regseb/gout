@@ -39,6 +39,7 @@ Cet exemple affiche cadre pour écouter la radio [Fip](http://www.fipradio.fr/).
             "config.json": {
                 "url": "http://direct.fipradio.fr/live/fip-midfi.mp3",
                 "link": "http://www.fipradio.fr/",
+                "desc": "Fip",
                 "color": "#e91e63"
             }
         }

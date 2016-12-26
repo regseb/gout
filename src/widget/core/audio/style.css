@@ -1,5 +1,6 @@
 .core-audio > a {
     display: block;
+    margin: 0.7em;
     opacity: 0.8;
     transition: 0.2s ease-out;
 }
