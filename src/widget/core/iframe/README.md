@@ -6,10 +6,11 @@ Ce widget affiche un `iframe`.
 
 Le répertoire de la passerelle doit avoir un fichier ***config.json***
 contenant un objet
-[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") avec la
-propriété suivante :
+[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") avec les
+propriétés suivantes :
 
-- `"url"` : le lien qui sera affiché dans l'`iframe`.
+- `"url"` : le lien qui sera affiché dans l'`iframe` ;
+- `"cron"` : la notation cron indiquant la fréquence de mise à jour.
 
 Aucune dimension particulière est conseillée.
 
