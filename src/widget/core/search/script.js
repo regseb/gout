@@ -56,11 +56,13 @@ define(["jquery"], function ($) {
         $("input", $root).width(width - height - 17)
                          .height(height - 5);
 
-        files["config.json"].forEach(function (engine, i) {
+        const engines = files["config.json"].engines;
+
+        engines.forEach(function (engine, i) {
             display($root, engine, i, files);
         });
 
-        gates[id] = files["config.json"];
+        gates[id] = engines;
 
         // Sélectionner le premier élément.
         $("li:first", $root).click();
