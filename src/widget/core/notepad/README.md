@@ -10,12 +10,18 @@ contenant un objet
 propriétés suivantes :
 
 - `"title"` (optionnel) : le texte affiché quand le bloc-notes est vide ;
-- `"desc"` (optionnel) : l'info-bulle du cadre ;
-- `"color"` : la couleur de fond du cadre (au format hexadécimale, régulier RGB
-  ou avec des mots-clefs prédéfinis) ;
+- `"desc"` (optionnel) : la description qui bloc-notes qui sera affichée dans
+  l'info-bulle ;
+- `"color"` (optionnel - valeur par défaut : `"black"`) : la couleur de fond du
+  cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
+  prédéfinis).
 
-Une image ayant pour nom ***icon.svg*** doit aussi est présente dans le
-répertoire de la passerelle.
+Une image ayant pour nom ***icon.svg*** peut aussi est présente dans le
+répertoire de la passerelle. Par défaut, le symbole d'un bloc-notes sera
+utilisé. L'image doit être carrée et le dessin doit occupé toute la zone de
+l'image. Si le dessin n'est pas carré, il faut le centrer verticalement et
+l'aligner à droite. Seule la couleur noire doit être utilisée et elle doit avoir
+une opacité de `0.2`.
 
 Aucune dimension particulière est conseillée.
 

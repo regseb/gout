@@ -9,8 +9,9 @@ contenant un objet
 [JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") avec les
 propriétés suivantes :
 
-- `"url"` : le lien qui sera affiché dans l'`iframe` ;
-- `"cron"` : la notation cron indiquant la fréquence de mise à jour.
+- `"url"` : le lien de la page Internet qui sera affiché dans l'`iframe` ;
+- `"cron"` (optionnel - valeur par défaut : `"0 0 1 1 0"`) : la notation cron
+  indiquant la fréquence de mise à jour.
 
 Aucune dimension particulière est conseillée.
 

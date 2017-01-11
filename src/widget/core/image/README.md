@@ -1,6 +1,6 @@
 # core/image
 
-Ce widget affiche des images extraites d'un site Internet.
+Ce widget affiche des images extraites de sites Internet.
 
 ## Configuration
 

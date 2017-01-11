@@ -26,11 +26,13 @@ prend en paramètre un nombre indiquant le nombre de résultats à retourner.
 Chaque résultat est un objet JSON ayant les propriétés :
 
 - `"title"` : le titre de l'élément ;
-- `"desc"` : la description de l'élément ;
+- `"desc"` : la description de l'élément qui sera affichée dans l'info-bulle ;
 - `"link"` : le lien de l'élément ;
 - `"guid"` : un identifiant de l'élément ;
 - `"date"` : le nombre de millièmes de secondes depuis le 1 janvier 1970 à
   00:00:00 UTC.
+
+Les scrapers du widget *core/feed* peuvent aussi être utilisés.
 
 ## Exemple
 

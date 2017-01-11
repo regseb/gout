@@ -11,21 +11,21 @@ propriétés suivantes :
 
 - `"color"` : la couleur de fond du cadre (au format hexadécimale, régulier RGB
   ou avec des mots-clefs prédéfinis) ;
-- `"cron"` : la notation cron indiquant la fréquence de mise à jour des
-  évènements.
+- `"cron"` : la notation cron indiquant la fréquence de mise à jour.
 
 Une image ayant pour nom ***icon.svg*** doit aussi est présente dans le
 répertoire de la passerelle.
 
-Les dimensions conseillées sont **20x2**.
+Une hauteur de *2* est conseillée. La largeur dépend des titres qui seront
+affichés.
 
 ## Scraper
 
-Les scrapers associés à ce widget doivent définir une méthode `extract()` et qui
-retourne un objet JSON ayant les propriétés :
+Un seul scraper peut-être associé à ce widget. Il doit définir une méthode
+`extract()` qui retourne un objet JSON ayant les propriétés :
 
 - `"title"` : le titre ;
-- `"desc"` : la description ;
+- `"desc"` : la description qui sera affichée dans l'info-bulle ;
 - `"link"` : le lien.
 
 ## Exemple

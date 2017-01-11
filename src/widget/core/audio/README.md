@@ -11,16 +11,20 @@ propriétés suivantes :
 
 - `"url"` : l'URL vers le flux audio ;
 - `"link"` : le lien vers une page Internet ;
-- `"desc"` (optionnel - valeur par défaut `""`) : l'info-bulle affichée au
-  survol ;
+- `"desc"` (optionnel) : la description du flux qui sera affichée dans
+  l'info-bulle ;
 - `"color"` (optionnel - valeur par défaut : `"black"`) : la couleur de fond du
-  bouton (au format hexadécimale, régulier RGB ou avec des mots-clefs
+  cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
   prédéfinis).
 
-Une image ayant pour nom ***icon.svg*** doit aussi est présente dans le
-répertoire de la passerelle.
+Une image ayant pour nom ***icon.svg*** peut aussi est présente dans le
+répertoire de la passerelle. Par défaut, une note de musique sera utilisée.
+L'image doit être carrée et le dessin doit occupé toute la zone de l'image. Si
+le dessin n'est pas carré, il faut le centrer verticalement et horizontalement.
+Seule la couleur blanche doit être utilisée et elle doit avoir une opacité de
+`0.8`.
 
-Aucune dimension particulière est conseillée.
+Le widget doit être carré.
 
 ## Scraper
 
