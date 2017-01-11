@@ -1,6 +1,6 @@
 # core/clock
 
-Ce widget affiche une horloge qui donne l'heure.
+Ce widget affiche une horloge.
 
 ## Configuration
 
@@ -15,15 +15,23 @@ propriétés suivantes :
 - `"cron"` (optionnel - valeur par défaut : `"0 0 * * *"`) : la notation cron
   indiquant le recalcul de l'heure.
 
+Une image ayant pour nom ***icon.svg*** peut aussi est présente dans le
+répertoire de la passerelle. Elle sera utilisé comme image de l'horloge. Le
+document [SVG](//www.w3.org/Graphics/SVG/) doit avoir trois éléments avec les
+identifiants `hour`, `minute` et `second`. Tous les sous-éléments tourneront
+avec comme axe le centre de l'image.
+
 Le widget doit être carré.
 
 ## Scraper
 
-Ce widget n'utilise pas de scraper.
+Un seul scraper peut-être associé à ce widget. Il doit définir une méthode
+`extract()` qui retourne le nombre de millièmes de secondes depuis le 1 janvier
+1970 à 00:00:00.
 
 ## Exemple
 
-Cet exemple affiche l'horloge dans un cadre marron.
+Cet exemple affiche l'horloge (sur un fond marron) avec l'heure courante.
 
 ```JSON
 {
@@ -34,7 +42,12 @@ Cet exemple affiche l'horloge dans un cadre marron.
             "config.json": {
                 "color": "#795548"
             }
-        }
+        },
+        "scrapers": [
+            {
+                "scraper": "core/clock/date"
+            }
+        ]
     }
 }
 ```
