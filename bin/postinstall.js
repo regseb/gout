@@ -23,6 +23,9 @@ const LIBS = [
     }, {
         "src":  "scronpt/scronpt.js",
         "dest": "scronpt.js"
+    }, {
+        "src":  "webcomponents.js/webcomponents-lite.js",
+        "dest": "webcomponents-lite.js"
     }
 ];
 

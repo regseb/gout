@@ -1,98 +1,105 @@
-define(["jquery", "scronpt"], function ($, Cron) {
+(function () {
     "use strict";
 
-    const gates = {};
+    const owner = (document["_currentScript"] || document.currentScript)
+                                                                 .ownerDocument;
 
-    const display = function ($root, data, size, empty = false) {
-        // Supprimer éventuellement la ligne indiquant que la liste est vide.
-        $("> ul > li.empty", $root).remove();
+    const $    = require("jquery");
+    const Cron = require("scronpt");
 
-        // Trouver la future position chronologique de l'évènement.
-        let pos = -1;
-        $("> ul > li", $root).each(function (i) {
-            if (data.date <= $(this).data("date")) {
-                pos = i;
+    document.registerElement("core-list", class extends HTMLElement {
+
+        setFiles({ "config.json": config, "icon.svg": icon }) {
+            this.cron = new Cron(config.cron, this.update.bind(this));
+            this.empty = config.empty || null;
+
+            this.style.backgroundColor = config.color;
+            if (undefined !== icon) {
+                this.style.backgroundImage = "url(\"data:image/svg+xml;" +
+                                             "base64," + btoa(icon) + "\")";
             }
-        });
-        if (pos !== size - 1) {
-            // Supprimer le plus ancien évènement (si la liste est pleine).
-            $("> ul > li:eq(" + (size - 1) + ")", $root).remove();
+        } // setFiles()
 
-            // Créer la ligne du nouvel évènement.
-            const $li = $("<li>").attr({ "data-guid": data.guid,
-                                         "class":     empty ? "empty" : "" })
-                                 .data("date", data.date)
-                                 .append($("<a>").attr({ "href":   data.link,
-                                                         "target": "_blank" })
-                                                 .text(data.title));
-            if ("" !== data.desc) {
-                $li.append($("<span>").html(data.desc));
-            }
+        setScrapers(scrapers) {
+            this.scrapers = scrapers;
+        } // setScrapers()
 
-            if (-1 === pos) {
-                $("> ul", $root).prepend($li).fadeIn("slow");
-            } else {
-                $("> ul > li:eq(" + pos + ")", $root).after($li).fadeIn("slow");
-            }
-        }
-    }; // display()
+        display(data, empty = false) {
+            // Supprimer éventuellement la ligne indiquant que la liste est
+            // vide.
+            $("> ul > li.empty", this).remove();
 
-    const update = function (id) {
-        const args = gates[id];
-
-        // Si la page est cachée : ne pas actualiser les données et indiquer
-        // qu'il faudra mettre à jour les données quand l'utilisateur reviendra
-        // sur la page.
-        if (document.hidden) {
-            args.cron.stop();
-            return;
-        }
-        args.cron.start();
-
-        const $root = $("#" + id);
-        $("ul", $root).empty();
-        if (null !== args.empty) {
-            display($root, args.empty, args.size, true);
-        }
-        args.scrapers.forEach(function (scraper) {
-            scraper.extract(args.size).then(function (items) {
-                for (let item of items) {
-                    display($root, item, args.size);
+            // Trouver la future position chronologique de l'évènement.
+            let pos = -1;
+            $("> ul > li", this).each(function (i) {
+                if (data.date <= $(this).data("date")) {
+                    pos = i;
                 }
             });
-        });
-    }; // update()
+            if (pos !== this.size - 1) {
+                // Supprimer le plus ancien évènement (si la liste est pleine).
+                $("> ul > li:eq(" + (this.size - 1) + ")", this).remove();
 
-    const wake = function () {
-        for (let id in gates) {
-            if (!gates[id].cron.status()) {
-                update(id);
+                // Créer la ligne du nouvel évènement.
+                const $li = $("<li>")
+                        .attr({ "data-guid": data.guid,
+                                "class":     empty ? "empty" : "" })
+                        .data("date", data.date)
+                        .append($("<a>").attr({ "href":   data.link,
+                                                "target": "_blank" })
+                                        .text(data.title));
+                if ("" !== data.desc) {
+                    $li.append($("<span>").html(data.desc));
+                }
+
+                if (-1 === pos) {
+                    $("> ul", this).prepend($li).fadeIn("slow");
+                } else {
+                    $("> ul > li:eq(" + pos + ")", this).after($li)
+                                                        .fadeIn("slow");
+                }
             }
-        }
-    }; // wake()
+        } // display()
 
-    const create = function (id, { "config.json": config, "icon.svg": icon },
-                             scrapers) {
-        const $root = $("#" + id);
-        $root.css("background-color", config.color);
-        if (undefined !== icon) {
-            $root.css("background-image", "url(\"data:image/svg+xml;base64," +
-                                          btoa(icon) + "\")");
-        }
+        update() {
+            // Si la page est cachée : ne pas actualiser les données et indiquer
+            // qu'il faudra mettre à jour les données quand l'utilisateur
+            // reviendra sur la page.
+            if (document.hidden) {
+                this.cron.stop();
+                return;
+            }
+            this.cron.start();
 
-        gates[id] = {
-            "scrapers": scrapers,
-            "empty":    config.empty || null,
-            "size":     $root.height() / 14 - 1,
-            "cron":     new Cron(config.cron, update, id)
-        };
+            $("ul", this).empty();
+            if (null !== this.empty) {
+                this.display(this.empty, true);
+            }
+            const that = this;
+            this.scrapers.forEach(function (scraper) {
+                scraper.extract(that.size).then(function (items) {
+                    items.forEach(that.display.bind(that));
+                });
+            });
+        } // update()
 
-        if (1 === Object.keys(gates).length) {
-            document.addEventListener("visibilitychange", wake);
-        }
+        wake() {
+            if (!this.cron.status()) {
+                this.update();
+            }
+        } // wake()
 
-        update(id);
-    }; // create()
+        createdCallback() {
+            const template = owner.querySelector("template").content;
+            const clone = owner.importNode(template, true);
+            this.appendChild(clone);
+        } // createdCallback()
 
-    return create;
-});
+        attachedCallback() {
+            this.size = this.clientHeight / 14 - 1;
+
+            document.addEventListener("visibilitychange", this.wake.bind(this));
+            this.update();
+        } // attachedCallback()
+    });
+})();

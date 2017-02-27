@@ -1,46 +1,57 @@
-define(["jquery", "scronpt"], function ($, Cron) {
+(function () {
     "use strict";
 
-    const gates = {};
+    const owner = (document["_currentScript"] || document.currentScript)
+                                                                 .ownerDocument;
 
-    const update = function (id) {
-        const args = gates[id];
+    const $    = require("jquery");
+    const Cron = require("scronpt");
 
-        // Si la page est cachée : ne pas actualiser les données et indiquer
-        // qu'il faudra mettre à jour les données quand l'utilisateur reviendra
-        // sur la page.
-        if (document.hidden) {
-            args.cron.stop();
-            return;
-        }
-        args.cron.start();
+    document.registerElement("core-iframe", class extends HTMLElement {
 
-        const $root = $("#" + id);
-        $("iframe", $root).attr("src", $("iframe", $root).attr("src"));
-    }; // update()
+        setFiles({ "config.json": config }) {
+            this.cron = new Cron(config.cron || "0 0 1 1 0",
+                                 this.update.bind(this));
 
-    const wake = function () {
-        for (let id in gates) {
-            if (!gates[id].cron.status()) {
-                update(id);
+            $("iframe", this).attr("src", config.url);
+        } // setFiles()
+
+        setScrapers() {
+            // Ne rien faire.
+        } // setScrapers()
+
+        update() {
+            // Si la page est cachée : ne pas actualiser les données et indiquer
+            // qu'il faudra mettre à jour les données quand l'utilisateur
+            // reviendra sur la page.
+            if (document.hidden) {
+                this.cron.stop();
+                return;
             }
-        }
-    }; // wake()
+            this.cron.start();
 
-    const create = function (id, { "config.json": config }) {
-        const $root = $("#" + id);
-        $("iframe", $root).attr({ "src":    config.url,
-                                  "width":  $root.width(),
-                                  "height": $root.height() });
+            $("iframe", this).attr("src", $("iframe", this).attr("src"));
+        } // update()
 
-        gates[id] = {
-            "cron": new Cron(config.cron || "0 0 1 1 0", update, id)
-        };
+        wake() {
+            if (!this.cron.status()) {
+                this.update();
+            }
+        } // wake()
 
-        if (1 === Object.keys(gates).length) {
-            document.addEventListener("visibilitychange", wake);
-        }
-    }; // create()
+        createdCallback() {
+            const template = owner.querySelector("template").content;
+            const clone = owner.importNode(template, true);
+            this.appendChild(clone);
+        } // createdCallback()
 
-    return create;
-});
+        attachedCallback() {
+            $("iframe", this).attr({
+                "width":  parseInt(this.style.width,  10),
+                "height": parseInt(this.style.height, 10)
+            });
+
+            document.addEventListener("visibilitychange", this.wake.bind(this));
+        } // attachedCallback()
+    });
+})();

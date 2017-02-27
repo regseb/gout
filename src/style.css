@@ -1,21 +1,4 @@
-body {
-    font-family: Verdana, sans-serif;
-    font-size: 10px;
-    line-height: 1.4em;
-}
-
-a {
-    color: white;
-    text-decoration: none;
-}
-a:visited {
-    color: black;
-}
-a:hover {
-    text-decoration: underline;
-}
-
-body > article {
+body > :not(nav) {
     border-radius: 0.2em;
     box-shadow:
         0 0.2em 0.2em 0      rgba(0, 0, 0, 0.14),

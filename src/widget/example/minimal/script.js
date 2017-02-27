@@ -1,10 +1,10 @@
-// L'application a seulement besoin d'un module AMD qui retourne une fonction.
-// Cette fonction sera appelée pour créer une nouvelle passerelle. La fonction
-// fournit, dans cette exemple, ne fait rien ; car ce widget ne fait rien.
-define(function () {
-    "use strict";
+document.registerElement("example-minimal", class extends HTMLElement {
 
-    return function () {
+    setFiles() {
         // Ne rien faire.
-    };
+    } // setFiles()
+
+    setScrapers() {
+        // Ne rien faire.
+    } // setScrapers()
 });

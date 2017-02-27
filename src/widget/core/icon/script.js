@@ -1,58 +1,63 @@
-define(["jquery", "scronpt"], function ($, Cron) {
+(function () {
     "use strict";
 
-    const gates = {};
+    const owner = (document["_currentScript"] || document.currentScript)
+                                                                 .ownerDocument;
 
-    const display = function ($root, data) {
-        $root.css("background-color", data.color);
-        $("> a", $root).attr("href", data.link);
-        $("> a img", $root).attr("src", data.icon);
-        if ("" === data.desc) {
-            $("> span", $root).hide();
-        } else {
-            $("> span", $root).html(data.desc)
-                              .show();
-        }
-    }; // display()
+    const $    = require("jquery");
+    const Cron = require("scronpt");
 
-    const update = function (id) {
-        const args = gates[id];
+    document.registerElement("core-icon", class extends HTMLElement {
 
-        // Si la page est cachée : ne pas actualiser les données et indiquer
-        // qu'il faudra mettre à jour les données quand l'utilisateur reviendra
-        // sur la page.
-        if (document.hidden) {
-            args.cron.stop();
-            return;
-        }
-        args.cron.start();
+        setFiles({ "config.json": config }) {
+            this.cron = new Cron(config.cron || "0 0 1 1 0",
+                                 this.update.bind(this));
+        } // setFiles()
 
-        const $root = $("#" + id);
-        args.scraper.extract().then(function (data) {
-            display($root, data);
-        });
-    }; // update()
+        setScrapers(scrapers) {
+            this.scraper = scrapers[0];
+        } // setScrapers()
 
-    const wake = function () {
-        for (let id in gates) {
-            if (!gates[id].cron.status()) {
-                update(id);
+        display(data) {
+            $(this).css("background-color", data.color);
+            $("> a", this).attr("href", data.link);
+            $("> a img", this).attr("src", data.icon);
+            if ("" === data.desc) {
+                $("> span", this).hide();
+            } else {
+                $("> span", this).html(data.desc)
+                                 .show();
             }
-        }
-    }; // wake()
+        } // display()
 
-    const create = function (id, { "config.json": config }, scrapers) {
-        gates[id] = {
-            "scraper": scrapers[0],
-            "cron":    new Cron(config.cron || "0 0 1 1 0", update, id)
-        };
+        update() {
+            // Si la page est cachée : ne pas actualiser les données et indiquer
+            // qu'il faudra mettre à jour les données quand l'utilisateur
+            // reviendra sur la page.
+            if (document.hidden) {
+                this.cron.stop();
+                return;
+            }
+            this.cron.start();
 
-        if (1 === Object.keys(gates).length) {
-            document.addEventListener("visibilitychange", wake);
-        }
+            this.scraper.extract().then(this.display.bind(this));
+        } // update()
 
-        update(id);
-    }; // create()
+        wake() {
+            if (!this.cron.status()) {
+                this.update();
+            }
+        } // wake()
 
-    return create;
-});
+        createdCallback() {
+            const template = owner.querySelector("template").content;
+            const clone = owner.importNode(template, true);
+            this.appendChild(clone);
+        } // createdCallback()
+
+        attachedCallback() {
+            document.addEventListener("visibilitychange", this.wake.bind(this));
+            this.update();
+        } // attachedCallback()
+    });
+})();

@@ -1,65 +1,64 @@
-define(["jquery", "scronpt"], function ($, Cron) {
+(function () {
     "use strict";
 
-    const gates = {};
+    const owner = (document["_currentScript"] || document.currentScript)
+                                                                 .ownerDocument;
 
-    const display = function ($root, data) {
-        $("a", $root).attr("href", data.link)
-                     .html(data.title);
-        if ("" === data.desc) {
-            $("span", $root).hide();
-        } else {
-            $("span", $root).html(data.desc)
-                            .show();
-        }
-    }; // display()
+    const $    = require("jquery");
+    const Cron = require("scronpt");
 
-    const update = function (id) {
-        const args = gates[id];
+    document.registerElement("core-single", class extends HTMLElement {
 
-        // Si la page est cachée : ne pas actualiser les données et indiquer
-        // qu'il faudra mettre à jour les données quand l'utilisateur reviendra
-        // sur la page.
-        if (document.hidden) {
-            args.cron.stop();
-            return;
-        }
-        args.cron.start();
+        setFiles({ "config.json": config, "icon.svg": icon }) {
+            this.cron = new Cron(config.cron, this.update.bind(this));
+            this.style.backgroundColor = config.color;
+            this.style.backgroundImage = "url(\"data:image/svg+xml;base64," +
+                                         btoa(icon) + "\")";
+        } // setFiles()
 
-        const $root = $("#" + id);
-        args.scraper.extract().then(function (data) {
-            display($root, data);
-        });
-    }; // update()
+        setScrapers(scrapers) {
+            this.scraper = scrapers[0];
+        } // setScrapers()
 
-    const wake = function () {
-        for (let id in gates) {
-            if (!gates[id].cron.status()) {
-                update(id);
+        display(data) {
+            $("a", this).attr("href", data.link)
+                        .html(data.title);
+            if ("" === data.desc) {
+                $("span", this).hide();
+            } else {
+                $("span", this).html(data.desc)
+                               .show();
             }
-        }
-    }; // wake()
+        } // display()
 
-    const create = function (id, { "config.json": config, "icon.svg": icon },
-                             scrapers) {
-        const $root = $("#" + id);
-        $root.css({
-            "background-color": config.color,
-            "background-image": "url(\"data:image/svg+xml;base64," +
-                                btoa(icon) + "\")"
-        });
+        update() {
+            // Si la page est cachée : ne pas actualiser les données et indiquer
+            // qu'il faudra mettre à jour les données quand l'utilisateur
+            // reviendra sur la page.
+            if (document.hidden) {
+                this.cron.stop();
+                return;
+            }
+            this.cron.start();
 
-        gates[id] = {
-            "scraper": scrapers[0],
-            "cron":    new Cron(config.cron, update, id)
-        };
+            this.scraper.extract().then(this.display.bind(this));
+        } // update()
 
-        if (1 === Object.keys(gates).length) {
-            document.addEventListener("visibilitychange", wake);
-        }
+        wake() {
+            if (!this.cron.status()) {
+                this.update();
+            }
+        } // wake()
 
-        update(id);
-    }; // create()
+        createdCallback() {
+            const template = owner.querySelector("template").content;
+            const clone = owner.importNode(template, true);
+            this.appendChild(clone);
+        } // createdCallback()
 
-    return create;
-});
+        attachedCallback() {
+            document.addEventListener("visibilitychange", this.wake.bind(this));
+            this.update();
+        } // attachedCallback()
+    });
+})();

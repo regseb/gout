@@ -1,24 +1,37 @@
-.core-list {
+core-list {
     background-image: url("img/icon.svg");
     background-position: right 0.7em center;
     background-repeat: no-repeat;
     background-size: auto calc(100% - 1.4em);
+    font-family: Verdana, sans-serif;
+    font-size: 10px;
+    line-height: 1.4em;
 }
-.core-list > ul {
+core-list a {
+    color: white;
+    text-decoration: none;
+}
+core-list a:visited {
+    color: black;
+}
+core-list a:hover {
+    text-decoration: underline;
+}
+core-list > ul {
     list-style-type: none;
     margin: 0.7em;
     padding-left: 0;
 }
-.core-list > ul > li > a {
+core-list > ul > li > a {
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.core-list > ul > li.empty > a {
+core-list > ul > li.empty > a {
     color: black;
 }
-.core-list > ul > li > span {
+core-list > ul > li > span {
     background-color: black;
     color: white;
     margin-right: 0.7em;
@@ -30,7 +43,7 @@
     text-align: justify;
     visibility: hidden;
 }
-.core-list > ul > li:hover > span {
+core-list > ul > li:hover > span {
     opacity: 1;
     transition: z-index 1s linear, opacity 0.5s linear 1s;
     visibility: visible;

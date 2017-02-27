@@ -160,29 +160,33 @@
         "widget": "core/search",
         "coord": { "x": 59, "y": 1, "w": 20, "h": 2 },
         "files": {
-            "config.json": [
-                {
-                    "title": "Google",
-                    "url": "https://www.google.fr/search?q={searchTerms}",
-                    "color": "#2196f3",
-                    "icon": "google.svg"
-                }, {
-                    "title": "Yahoo",
-                    "url": "https://fr.search.yahoo.com/search?p={searchTerms}",
-                    "color": "#673ab7",
-                    "icon": "yahoo.svg"
-                }, {
-                    "title": "Bing",
-                    "url": "https://www.bing.com/search?q={searchTerms}",
-                    "color": "#ffc107",
-                    "icon": "bing.svg"
-                }, {
-                    "title": "DuckDuckGo",
-                    "url": "https://duckduckgo.com/?q={searchTerms}",
-                    "color": "#f44336",
-                    "icon": "duckduckgo.svg"
-                }
-            ]
+            "config.json": {
+                "engines": [
+                    {
+                        "title": "Google",
+                        "url": "https://www.google.fr/search?q={searchTerms}",
+                        "color": "#2196f3",
+                        "icon": "google.svg"
+                    }, {
+                        "title": "Yahoo",
+                        "url": "https://fr.search.yahoo.com/search?p={searchTerms}",
+                        "color": "#673ab7",
+                        "icon": "yahoo.svg"
+                    }, {
+                        "title": "Bing",
+                        "url": "https://www.bing.com/search?q={searchTerms}",
+                        "color": "#ffc107",
+                        "icon": "bing.svg"
+                    }, {
+                        "title": "DuckDuckGo",
+                        "url": "https://duckduckgo.com/?q={searchTerms}",
+                        "color": "#f44336",
+                        "icon": "duckduckgo.svg"
+                    }
+                ]
+            },
+            "bing.svg": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\">\n  <path d=\"M 13,0 13,86 31,100 87,71 87,49 42,35 50,55 63,61 33,77 33,6 z\"\n        fill=\"white\" />\n</svg>\n",
+            "google.svg": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\">\n  <defs>\n    <mask id=\"polygon\">\n      <polygon points=\"50,50 100,50 100,100 0,100 0,0 100,0\" fill=\"white\" />\n    </mask>\n    <mask id=\"circle\">\n      <circle cx=\"50\" cy=\"50\" r=\"50\" fill=\"white\" />\n    </mask>\n  </defs>\n  <g mask=\"url(#polygon)\">\n    <circle cx=\"50\" cy=\"50\" r=\"40\" fill-opacity=\"0\" stroke-width=\"20\"\n            stroke=\"white\" />\n  </g>\n  <g mask=\"url(#circle)\">\n    <line x1=\"50\" y1=\"50\" x2=\"100\" y2=\"50\" stroke-width=\"20\" stroke=\"white\" />\n  </g>\n</svg>"
         }
     },
 
@@ -192,7 +196,11 @@
         "files": {
             "config.json": { "color": "#9e9e9e" }
         },
-        "scrapers": []
+        "scrapers": [
+            {
+                "scraper": "core/clock/date"
+            }
+        ]
     },
 
     "list/social": {

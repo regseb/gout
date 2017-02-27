@@ -1,10 +1,13 @@
-.core-notepad {
+core-notepad {
     background-image: url("img/icon.svg");
     background-position: right 0.7em center;
     background-repeat: no-repeat;
     background-size: auto calc(100% - 1.4em);
+    font-family: Verdana, sans-serif;
+    font-size: 10px;
+    line-height: 1.4em;
 }
-.core-notepad textarea {
+core-notepad textarea {
     background-color: transparent;
     border-radius: 0.2em;
     border-style: solid;
@@ -17,17 +20,18 @@
     line-height: 1.4em;
     margin: 0;
     padding: 0.5em;
+    resize: none;
     transition: 0.2s ease-out;
     width: 100%;
 }
-.core-notepad textarea::placeholder {
+core-notepad textarea::placeholder {
     opacity: 0.8;
     transition: 0.2s ease-out;
 }
-.core-notepad textarea:focus {
+core-notepad textarea:focus {
     background-color: white;
     color: black;
 }
-.core-notepad textarea:focus::placeholder {
+core-notepad textarea:focus::placeholder {
     opacity: 0.2;
 }

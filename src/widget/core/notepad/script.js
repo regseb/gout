@@ -1,34 +1,47 @@
-define(["jquery"], function ($) {
+(function () {
     "use strict";
 
-    const save = function (id, value) {
-        localStorage.setItem("widget/core/notepad/" + id, value);
-    }; // save()
+    const owner = (document["_currentScript"] || document.currentScript)
+                                                                 .ownerDocument;
 
-    const load = function (id) {
-        return localStorage.getItem("widget/core/notepad/" + id);
-    }; // load()
+    const $ = require("jquery");
 
-    const change = function () {
-        const $root = $(this).closest("article");
+    document.registerElement("core-notepad", class extends HTMLElement {
 
-        save($root.attr("id"), $(this).val());
-    }; // change()
+        setFiles({ "config.json": config, "icon.svg": icon }) {
+            this.style.backgroundColor = config.color || "black";
+            if (undefined !== icon) {
+                this.style.backgroundImage = "url(\"data:image/svg+xml;" +
+                                             "base64," + btoa(icon) + "\")";
+            }
 
-    const create = function (id, { "config.json": config, "icon.svg": icon }) {
-        const $root = $("#" + id);
-        $root.css("background-color", config.color || "black");
-        if (icon !== undefined) {
-            $root.css("background-image", "url(\"data:image/svg+xml;base64," +
-                                          btoa(icon) + "\")");
-        }
+            $("textarea", this).val(this.load())
+                               .attr({ "title":       config.desc  || "",
+                                       "placeholder": config.title || "" })
+                               .css("border-color", config.color || "black")
+                               .change(this.change.bind(this));
+        } // setFiles()
 
-        $("textarea", $root).val(load(id))
-                            .attr({ "title":       config.desc  || "",
-                                    "placeholder": config.title || "" })
-                            .css("border-color", config.color || "black")
-                            .change(change);
-    }; // create()
+        setScrapers() {
+            // Ne rien faire.
+        } // setScrapers()
 
-    return create;
-});
+        save(value) {
+            localStorage.setItem("widget/core/notepad/" + this.id, value);
+        } // save()
+
+        load() {
+            return localStorage.getItem("widget/core/notepad/" + this.id);
+        } // load()
+
+        change() {
+            this.save($("textarea", this).val());
+        } // change()
+
+        createdCallback() {
+            const template = owner.querySelector("template").content;
+            const clone = owner.importNode(template, true);
+            this.appendChild(clone);
+        } // createdCallback()
+    });
+})();

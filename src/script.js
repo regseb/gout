@@ -1,19 +1,17 @@
 require.config({
-    "baseUrl": "lib",
-    "paths":   {
-        "widget":  "../widget",
-        "scraper": "../scraper"
-    }
+    "baseUrl": "lib"
 });
 
-define(["require", "jquery"], function (require, $) {
+// Charger toutes les bibliothèques pour pouvoir les charger en synchrone dans
+// les widgets.
+define(["require", "jquery", "scronpt"], function (require, $) {
     "use strict";
 
     // Supprimer les variables globales de jQuery.
     $.noConflict(true);
 
     const readdir = function (url) {
-        if ("getPackageDirectoryEntry" in browser.runtime) {
+        if (undefined !== browser.runtime.getPackageDirectoryEntry) {
             return new Promise(function (resolve, reject) {
                 browser.runtime.getPackageDirectoryEntry(function (root) {
                     root.getDirectory(url, {}, function (dir) {
@@ -46,10 +44,8 @@ define(["require", "jquery"], function (require, $) {
 
     const read = function (file) {
         return fetch(file).then(function (response) {
-            if (file.endsWith(".json")) {
-                return response.json();
-            }
-            return response.text();
+            return file.endsWith(".json") ? response.json()
+                                          : response.text();
         }).then(function (response) {
             return [file, response];
         });
@@ -60,20 +56,20 @@ define(["require", "jquery"], function (require, $) {
             return Promise.resolve(obj);
         }
         return readdir(url).then(function (urls) {
-            return Promise.all(urls.map(read)).then(function (results) {
-                const files = {};
-                for (let result of results) {
-                    files[result[0].substr(url.length + 1)] = result[1];
-                }
-                return Object.assign(obj, files);
-            });
+            return Promise.all(urls.map(read));
+        }).then(function (results) {
+            const files = {};
+            for (let result of results) {
+                files[result[0].substr(url.length + 1)] = result[1];
+            }
+            return Object.assign(obj, files);
         });
     }; // getFiles()
 
     const getScrapers = function (scrapers) {
         return Promise.all(scrapers.map(function (scraper) {
             return new Promise(function (resolve) {
-                require(["scraper/" + scraper.scraper + "/script"],
+                require(["../scraper/" + scraper.scraper + "/script"],
                         function (Construct) {
                     resolve(new Construct(scraper.config));
                 });
@@ -81,47 +77,48 @@ define(["require", "jquery"], function (require, $) {
         }));
     }; // scrapers()
 
-    const load = function (key, gate, url) {
+    const getGate = function (widget) {
+        const tag = widget.replace(/\//g, "-");
+        // Si le widget a déjà été chargé.
+        if (HTMLElement !== document.createElement(tag).constructor) {
+            return Promise.resolve(tag);
+        }
+
+        const link = document.createElement("link");
+        link.rel = "import";
+        link.href = "widget/" + widget + "/index.html";
+
+        const promise = new Promise(function (resolve, reject) {
+            link.onload = function () {
+                resolve(tag);
+            };
+            link.onerror = reject;
+        });
+
+        document.head.appendChild(link);
+
+        return promise;
+    }; // getGate()
+
+    const load = function (key, gate, url = null) {
         // Si la propriété 'active' n'est pas définie : considérer que la
         // passerelle est active.
         if (false === gate.active) {
             return;
         }
 
-        const id = key.replace(/\//g, "-");
-        const clazz = gate.widget.replace(/\//g, "-");
-
-        // Si le widget est utilisé pour la première fois.
-        if (!$("body > template." + clazz).length) {
-            // Charger la feuille de style.
-            $("head").append($("<link />", {
-                "rel":  "stylesheet",
-                "href": "widget/" + gate.widget + "/style.css"
-            }));
-            // Passer en synchrone pour attendre que le HTML soit chargé avant
-            // de l'utiliser.
-            $.ajaxSetup({ "async": false });
-            // Charger le HTML.
-            $("body").append(
-                $("<template>").load("widget/" + gate.widget + "/index.html")
-                               .addClass(clazz));
-            $.ajaxSetup({ "async": true });
-        }
-
-        $("body").append(
-            $("<article>").attr("id", id)
-                          .addClass(clazz)
-                          .css({ "left": gate.coord.x * 1.4 + "em",
-                                 "top":  gate.coord.y * 1.4 + "em" })
-                          .width(gate.coord.w * 1.4 + "em")
-                          .height(gate.coord.h * 1.4 + "em")
-                          .html($("body > template." + clazz).html()));
-
-        getFiles(gate.files || {}, url).then(function (files) {
-            getScrapers(gate.scrapers || []).then(function (scrapers) {
-                require(["widget/" + gate.widget + "/script"],
-                                                            function (factory) {
-                    factory(id, files, scrapers);
+        getGate(gate.widget).then(function (tag) {
+            getFiles(gate.files || {}, url).then(function (files) {
+                getScrapers(gate.scrapers || []).then(function (scrapers) {
+                    const elem = document.createElement(tag);
+                    elem.id           = key.replace(/\//g, "-");
+                    elem.style.left   = gate.coord.x * 14 + "px";
+                    elem.style.top    = gate.coord.y * 14 + "px";
+                    elem.style.width  = gate.coord.w * 14 + "px";
+                    elem.style.height = gate.coord.h * 14 + "px";
+                    elem.setFiles(files);
+                    elem.setScrapers(scrapers);
+                    document.body.appendChild(elem);
                 });
             });
         });
@@ -134,33 +131,36 @@ define(["require", "jquery"], function (require, $) {
 
     if ("default" === user) {
         if ("config" !== config) {
-            $("a").attr("href", $("a").attr("href") + "?config=" + config);
+            document.getElementsByTagName("a")[0].href += "?config=" + config;
         }
         const gates = JSON.parse(localStorage.getItem("gate/" + config));
+        // Si la configuration n'existe pas.
         if (null === gates) {
-            // Charger la configuration par défaut.
+            // Pré-remplir la page avec la configuration par défaut.
             const url = "gate/default/" + config + ".json";
-            $.getJSON(url).then(function (gates) {
-                for (let key in gates) {
-                    load(key, gates[key], null);
+            fetch(url).then(function (response) {
+                return response.json();
+            }).then(function (defaultGates) {
+                for (let key in defaultGates) {
+                    load(key, gates[key]);
                 }
-                $("body > template").remove();
             }).catch((err) => console.log(err));
         } else {
             for (let key in gates) {
-                load(key, gates[key], null);
+                load(key, gates[key]);
             }
-            $("body > template").remove();
         }
     } else {
-        $("a").remove();
+        const link = document.getElementsByTagName("a")[0];
+        link.parentElement.removeChild(link);
         // Charger les passerelles contenues dans le fichier de configuration.
         const url = "gate/community/" + user + "/" + config + ".json";
-        $.getJSON(url).then(function (gates) {
+        fetch(url).then(function (response) {
+            return response.json();
+        }).then(function (gates) {
             for (let key in gates) {
                 load(key, gates[key], "gate/community/" + user + "/" + key);
             }
-            $("body > template").remove();
         }).catch((err) => console.log(err));
     }
 });

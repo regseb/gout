@@ -1,72 +1,80 @@
-define(["jquery"], function ($) {
+(function () {
     "use strict";
 
-    const gates = {};
+    const owner = (document["_currentScript"] || document.currentScript)
+                                                                 .ownerDocument;
 
-    const search = function () {
-        const $root = $(this).closest("article");
+    const $ = require("jquery");
 
-        // Ouvrir le résultat de la recherche dans un nouvel onglet.
-        window.open($("form", $root).attr("action")
-                                    .replace("{searchTerms}",
-                                             $("input", $root).val()));
-        $("input", $root).val("").blur();
-        return false;
-    }; // search()
+    document.registerElement("core-search", class extends HTMLElement {
 
-    const propose = function () {
-        const $root = $(this).closest("article");
+        setFiles(files) {
+            this.engines = files["config.json"].engines;
+            this.files  = files;
+        } // setFiles()
 
-        // Afficher la liste des moteurs de recherche.
-        $("ul", $root).show();
-    }; // propose()
+        setScrapers() {
+            // Ne rien faire.
+        } // setScrapers()
 
-    const change = function () {
-        const $root = $(this).closest("article");
+        search() {
+            // Ouvrir le résultat de la recherche dans un nouvel onglet.
+            window.open($("form", this).attr("action")
+                                       .replace("{searchTerms}",
+                                                $("input", this).val()));
+            $("input", this).val("").blur();
+            return false;
+        } // search()
 
-        // Cacher la liste des moteurs de recherche.
-        $("ul", $root).hide();
+        propose() {
+            // Afficher la liste des moteurs de recherche.
+            $("ul", this).show();
+        } // propose()
 
-        // Mettre à jour le formulaire.
-        const engine = gates[$root.attr("id")][$(this).data("index")];
-        $("form",  $root).attr("action", engine.url);
-        $root.css("background-color", engine.color);
-        $("form img", $root).attr("src", engine.icon);
-        $("input", $root).attr({ "name":        engine.terms,
-                                 "placeholder": engine.title });
-    }; // change()
+        change(event) {
+            // Cacher la liste des moteurs de recherche.
+            $("ul", this).hide();
 
-    const display = function ($root, data, i, files) {
-        data.icon = "data:image/svg+xml;base64," + btoa(files[data.icon]);
-        $("ul", $root).append(
-            $("<li>").data("index", i)
-                     .append($("<img>").attr("src", data.icon))
-                     .append(data.title)
-                     .click(change));
-    }; // display()
+            // Mettre à jour le formulaire.
+            const engine = this.engines[$(event.target).closest("li")
+                                                       .data("index")];
+            $("form",  this).attr("action", engine.url);
+            $(this).css("background-color", engine.color);
+            $("form img", this).attr("src", engine.icon);
+            $("input", this).attr({ "name":        engine.terms,
+                                    "placeholder": engine.title });
+        } // change()
 
-    const create = function (id, files) {
-        const $root = $("#" + id);
-        const height = $root.height();
-        const width = $root.width();
-        $("form", $root).submit(search);
-        $("img", $root).width(height)
-                       .height(height)
-                       .click(propose);
-        $("input", $root).width(width - height - 17)
-                         .height(height - 5);
+        display(data, i) {
+            data.icon = "data:image/svg+xml;base64," +
+                                                    btoa(this.files[data.icon]);
+            $("ul", this).append(
+                $("<li>").data("index", i)
+                         .append($("<img>").attr("src", data.icon))
+                         .append(data.title)
+                         .click(this.change.bind(this)));
+        } // display()
 
-        const engines = files["config.json"].engines;
+        createdCallback() {
+            const template = owner.querySelector("template").content;
+            const clone = owner.importNode(template, true);
+            this.appendChild(clone);
+        } // createdCallback()
 
-        engines.forEach(function (engine, i) {
-            display($root, engine, i, files);
-        });
+        attachedCallback() {
+            const height = parseInt(this.style.height, 10);
+            const width  = parseInt(this.style.width,  10);
+            $("form", this).submit(this.search.bind(this));
+            $("img", this).width(height - 14)
+                          .height(height - 14)
+                          .click(this.propose.bind(this));
+            $("input", this).width(width - height - 7)
+                            .height(height - 15);
 
-        gates[id] = engines;
+            this.engines.forEach(this.display.bind(this));
 
-        // Sélectionner le premier élément.
-        $("li:first", $root).click();
-    }; // create()
-
-    return create;
-});
+            // Sélectionner le premier élément.
+            $("li:first", this).click();
+        } // attachedCallback()
+    });
+})();

@@ -1,55 +1,58 @@
-define(["jquery", "scronpt"], function ($, Cron) {
+(function () {
     "use strict";
 
-    const gates = {};
+    const owner = (document["_currentScript"] || document.currentScript)
+                                                                 .ownerDocument;
 
-    const update = function (id) {
-        const args = gates[id];
+    const $    = require("jquery");
+    const Cron = require("scronpt");
 
-        // Si la page est cachée : ne pas actualiser les données et indiquer
-        // qu'il faudra mettre à jour les données quand l'utilisateur reviendra
-        // sur la page.
-        if (document.hidden) {
-            args.cron.stop();
-            return;
-        }
-        args.cron.start();
+    document.registerElement("core-text", class extends HTMLElement {
 
-        const $root = $("#" + id);
-        args.scraper.extract().then(function (data) {
-            $("p", $root).html(Array.isArray(data) ? data.join("") : data);
-        });
-    }; // update()
+        setFiles({ "config.json": config, "icon.svg": icon }) {
+            this.cron = new Cron(config.cron, this.update.bind(this));
 
-    const wake = function () {
-        for (let id in gates) {
-            if (!gates[id].cron.status()) {
-                update(id);
+            this.style.backgroundColor = config.color || "black";
+            this.style.backgroundImage = "url(\"data:image/svg+xml;base64," +
+                                         btoa(icon) + "\")";
+            $("p", this).css("text-align", config.align || "left");
+        } // setFiles()
+
+        setScrapers(scrapers) {
+            this.scraper = scrapers[0];
+        } // setScrapers()
+
+        update() {
+            // Si la page est cachée : ne pas actualiser les données et indiquer
+            // qu'il faudra mettre à jour les données quand l'utilisateur
+            // reviendra sur la page.
+            if (document.hidden) {
+                this.cron.stop();
+                return;
             }
-        }
-    }; // wake()
+            this.cron.start();
 
-    const create = function (id, { "config.json": config, "icon.svg": icon },
-                             scrapers) {
-        const $root = $("#" + id);
-        $root.css({
-            "background-color": config.color || "black",
-            "background-image": "url(\"data:image/svg+xml;base64," +
-                                btoa(icon) + "\")"
-        });
-        $("p", $root).css("text-align", config.align || "left");
+            const that = this;
+            this.scraper.extract().then(function (data) {
+                $("p", that).html(Array.isArray(data) ? data.join("") : data);
+            });
+        } // update()
 
-        gates[id] = {
-            "scraper": scrapers[0],
-            "cron":    new Cron(config.cron, update, id)
-        };
+        wake() {
+            if (!this.cron.status()) {
+                this.update();
+            }
+        } // wake()
 
-        if (1 === Object.keys(gates).length) {
-            document.addEventListener("visibilitychange", wake);
-        }
+        createdCallback() {
+            const template = owner.querySelector("template").content;
+            const clone = owner.importNode(template, true);
+            this.appendChild(clone);
+        } // createdCallback()
 
-        update(id);
-    }; // create()
-
-    return create;
-});
+        attachedCallback() {
+            document.addEventListener("visibilitychange", this.wake.bind(this));
+            this.update();
+        } // attachedCallback()
+    });
+})();

@@ -1,13 +1,12 @@
-/* La classe CSS "example-hello" est affectée à chaque cadre de toutes les
- * passerelles du widget. Toutes les règles CSS doivent commmencer par cette
- * classe pour éviter de modifier la mise à page d'un autre widget. */
-
-.example-hello {
+example-hello {
     background-position: 0.7em center;
     background-repeat: no-repeat;
     background-size: auto 100%;
+    font-family: Verdana, sans-serif;
+    font-size: 10px;
+    line-height: 1.4em;
 }
-.example-hello p {
+example-hello p {
     color: white;
     margin: 0.7em;
     padding-left: 3.5em;

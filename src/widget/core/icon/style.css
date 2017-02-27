@@ -1,16 +1,21 @@
-.core-icon > a {
+core-icon {
+    font-family: Verdana, sans-serif;
+    font-size: 10px;
+    line-height: 1.4em;
+}
+core-icon > a {
     display: block;
     margin: 0.7em;
     opacity: 0.8;
     transition: 0.2s ease-out;
 }
-.core-icon > a:hover {
+core-icon > a:hover {
     opacity: 1;
 }
-.core-icon > a img {
+core-icon > a img {
     width: 100%;
 }
-.core-icon > span {
+core-icon > span {
     background-color: black;
     color: white;
     margin-right: 0.7em;
@@ -22,7 +27,7 @@
     text-align: justify;
     visibility: hidden;
 }
-.core-icon:hover > span {
+core-icon:hover > span {
     opacity: 1;
     transition: z-index 1s linear, opacity 0.5s linear 1s;
     visibility: visible;
