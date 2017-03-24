@@ -16,6 +16,7 @@
 
     "rules": {
         "no-await-in-loop": 2,
+        "no-compare-neg-zero": 2,
         "no-cond-assign": 2,
         "no-console": 2,
         "no-constant-condition": 2,
@@ -200,12 +201,11 @@
         "no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
         "no-restricted-syntax": [2, [
             "EmptyStatement", "FunctionDeclaration", "LabeledStatement",
-            "MetaProperty", "Program", "TemplateElement",
-            "TemplateLiteral", "UpdateExpression", "WithStatement",
-            "JSXIdentifier", "JSXNamespacedName", "JSXMemberExpression",
-            "JSXEmptyExpression", "JSXExpressionContainer", "JSXElement",
-            "JSXClosingElement", "JSXOpeningElement", "JSXAttribute",
-            "JSXSpreadAttribute", "JSXText"
+            "MetaProperty", "TemplateElement", "TemplateLiteral",
+            "WithStatement", "JSXIdentifier", "JSXNamespacedName",
+            "JSXMemberExpression", "JSXEmptyExpression",
+            "JSXExpressionContainer", "JSXElement", "JSXClosingElement",
+            "JSXOpeningElement", "JSXAttribute", "JSXSpreadAttribute", "JSXText"
         ]],
         "no-tabs": 2,
         "no-ternary": 0,
@@ -213,6 +213,7 @@
         "no-underscore-dangle": 2,
         "no-unneeded-ternary": 2,
         "no-whitespace-before-property": 2,
+        "nonblock-statement-body-position": 2,
         "object-curly-newline": 0,
         "object-curly-spacing": [2, "always"],
         "object-property-newline": [2, {
