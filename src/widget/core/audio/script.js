@@ -23,14 +23,14 @@
 
             $("audio", this).attr("src", config.url);
 
-            $("input", this).change(this.change.bind(this));
+            $("input", this).change(this.turn.bind(this));
         } // setFiles()
 
         setScrapers() {
             // Ne rien faire.
         } // setScrapers()
 
-        change() {
+        turn() {
             const audio = $("audio", this)[0];
 
             const volume = $("input", this).val();
@@ -40,7 +40,7 @@
             } else {
                 audio.play();
             }
-        } // change()
+        } // turn()
 
         createdCallback() {
             const template = owner.querySelector("template").content;
