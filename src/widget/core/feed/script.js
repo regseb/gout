@@ -41,10 +41,16 @@
 
                     // Créer la ligne du nouvel évènement.
                     $li = $("<li>").attr("data-guid", data.guid)
-                                   .data("date", data.date)
-                                   .append($("<a>").attr({ "href":   data.link,
-                                                           "target": "_blank" })
-                                                   .text(data.title));
+                                   .data("date", data.date);
+
+                    if ("" !== data.icon) {
+                        $li.append($("<img>").attr("src", data.icon));
+                    }
+
+                    $li.append($("<a>").attr({ "href":   data.link,
+                                               "target": "_blank" })
+                                       .text(data.title));
+
                     if ("" !== data.desc) {
                         $li.append($("<span>").html(data.desc));
                     }
@@ -58,6 +64,10 @@
                 }
             } else { // Si l'évènement est déjà affiché.
                 // Si des éléments de l'évènement ont changé, les mettre à jour.
+                const $img = $("> img", $li);
+                if ($img.attr("src") !== data.icon) {
+                    $img.attr("src", data.icon);
+                }
                 const $a = $("> a", $li);
                 if ($a.attr("href") !== data.link) {
                     $a.attr("href", data.link);

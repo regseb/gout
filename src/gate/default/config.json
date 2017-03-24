@@ -39,7 +39,9 @@
         "scrapers": [
             {
                 "scraper": "core/feed/rss",
-                "config": "https://www.lemonde.fr/rss/une.xml"
+                "config": {
+                    "url": "https://www.lemonde.fr/rss/une.xml"
+                }
             }
         ]
     },
@@ -55,7 +57,9 @@
         "scrapers": [
             {
                 "scraper": "core/feed/rss",
-                "config": "http://www.lequipe.fr/rss/actu_rss.xml"
+                "config": {
+                    "url": "http://www.lequipe.fr/rss/actu_rss.xml"
+                }
             }
         ]
     },
@@ -71,7 +75,9 @@
         "scrapers": [
             {
                 "scraper": "core/feed/rss",
-                "config": "http://www.lefigaro.fr/rss/figaro_actualites-a-la-une.xml"
+                "config": {
+                    "url": "http://www.lefigaro.fr/rss/figaro_actualites-a-la-une.xml"
+                }
             }
         ]
     },
@@ -87,7 +93,9 @@
         "scrapers": [
             {
                 "scraper": "core/feed/atom",
-                "config": "http://rss.liberation.fr/rss/latest/"
+                "config": {
+                    "url": "http://rss.liberation.fr/rss/latest/"
+                }
             }
         ]
     },
@@ -103,7 +111,9 @@
         "scrapers": [
             {
                 "scraper": "core/feed/rss",
-                "config": "http://syndication.lesechos.fr/rss/rss_une.xml"
+                "config": {
+                    "url": "http://syndication.lesechos.fr/rss/rss_une.xml"
+                }
             }
         ]
     },
@@ -119,7 +129,9 @@
         "scrapers": [
             {
                 "scraper": "core/feed/rss",
-                "config": "http://www.la-croix.com/RSS/UNIVERS"
+                "config": {
+                    "url": "http://www.la-croix.com/RSS/UNIVERS"
+                }
             }
         ]
     },
@@ -135,7 +147,9 @@
         "scrapers": [
             {
                 "scraper": "core/feed/rss",
-                "config": "http://api.rue89.nouvelobs.com/feed"
+                "config": {
+                    "url": "http://api.rue89.nouvelobs.com/feed"
+                }
             }
         ]
     },
@@ -151,7 +165,9 @@
         "scrapers": [
             {
                 "scraper": "core/feed/rss",
-                "config": "http://www.huffingtonpost.fr/feeds/index.xml"
+                "config": {
+                    "url": "http://www.huffingtonpost.fr/feeds/index.xml"
+                }
             }
         ]
     },
@@ -218,13 +234,16 @@
                 "config": [
                     {
                         "link": "https://www.facebook.com/",
-                        "title": "Facebook"
+                        "title": "Facebook",
+                        "icon": ""
                     }, {
                         "link": "https://www.twitter.com/",
-                        "title": "Twitter"
+                        "title": "Twitter",
+                        "icon": ""
                     }, {
                         "link": "https://plus.google.com/",
-                        "title": "Google+"
+                        "title": "Google+",
+                        "icon": ""
                     }
                 ]
             }

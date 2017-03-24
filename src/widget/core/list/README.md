@@ -35,6 +35,7 @@ Chaque résultat est un objet JSON ayant les propriétés :
 - `"title"` : le titre de l'élément ;
 - `"desc"` : la description de l'élément qui sera affichée dans l'info-bulle ;
 - `"link"` : le lien de l'élément ;
+- `"icon"` : l'URL de l'icône qui préfixera le titre ;
 - `"date"` : le nombre de millièmes de secondes depuis le 1 janvier 1970 à
   00:00:00 UTC.
 

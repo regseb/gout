@@ -22,6 +22,13 @@ core-feed > ul {
     margin: 0.7em;
     padding-left: 0;
 }
+core-feed > ul > li > img {
+    float: left;
+    height: 10px;
+    margin-right: 0.3em;
+    margin-top: 2px;
+    width: 10px;
+}
 core-feed > ul > li > a {
     display: block;
     overflow: hidden;

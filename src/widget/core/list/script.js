@@ -44,10 +44,16 @@
                 const $li = $("<li>")
                         .attr({ "data-guid": data.guid,
                                 "class":     empty ? "empty" : "" })
-                        .data("date", data.date)
-                        .append($("<a>").attr({ "href":   data.link,
-                                                "target": "_blank" })
-                                        .text(data.title));
+                        .data("date", data.date);
+
+                if ("" !== data.icon) {
+                    $li.append($("<img>").attr("src", data.icon));
+                }
+
+                $li.append($("<a>").attr({ "href":   data.link,
+                                           "target": "_blank" })
+                                   .text(data.title));
+
                 if ("" !== data.desc) {
                     $li.append($("<span>").html(data.desc));
                 }

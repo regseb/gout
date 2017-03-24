@@ -6,7 +6,13 @@ Il peut être utilisé avec le widget `core/feed`.
 
 ## Configuration
 
-La configuration contient une seule URL vers un flux **Atom**.
+La configuration contient un objet
+[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") avec les
+propriétés suivantes :
+
+- `"url"` : l'URL d'un flux **Atom** ;
+- `"icon"` (optionnel - par défaut aucune icône est affichée) : l'URL d'une
+  icône qui préfixera le titre.
 
 ## Exemple
 
@@ -27,7 +33,9 @@ Cet exemple affiche les dernières actualités du site
         "scrapers": [
             {
                 "scraper": "core/feed/atom",
-                "config": "http://linuxfr.org/news.atom"
+                "config": {
+                    "url": "http://linuxfr.org/news.atom"
+                }
             }
         ]
     }
