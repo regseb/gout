@@ -142,7 +142,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
                 return response.json();
             }).then(function (defaultGates) {
                 for (let key in defaultGates) {
-                    load(key, gates[key]);
+                    load(key, defaultGates[key]);
                 }
             }).catch((err) => console.log(err));
         } else {
