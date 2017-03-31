@@ -84,7 +84,9 @@
             const that = this;
             this.scrapers.forEach(function (scraper) {
                 scraper.extract(that.size).then(function (items) {
-                    items.forEach(that.display.bind(that));
+                    for (let item of items) {
+                        that.display(item);
+                    }
                 });
             });
         } // update()
