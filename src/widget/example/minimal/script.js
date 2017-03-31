@@ -1,10 +1,3 @@
-document.registerElement("example-minimal", class extends HTMLElement {
-
-    setFiles() {
-        // Ne rien faire.
-    } // setFiles()
-
-    setScrapers() {
-        // Ne rien faire.
-    } // setScrapers()
-});
+// Enregistrer un nouvel élément personnalisé qui aura le même comportement
+// qu'un élément HTML basique.
+document.registerElement("example-minimal", HTMLElement);
