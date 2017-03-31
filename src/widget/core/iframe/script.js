@@ -16,10 +16,6 @@
             $("iframe", this).attr("src", config.url);
         } // setFiles()
 
-        setScrapers() {
-            // Ne rien faire.
-        } // setScrapers()
-
         update() {
             // Si la page est cachée : ne pas actualiser les données et indiquer
             // qu'il faudra mettre à jour les données quand l'utilisateur

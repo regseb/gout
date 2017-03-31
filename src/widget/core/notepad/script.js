@@ -22,10 +22,6 @@
                                .change(this.change.bind(this));
         } // setFiles()
 
-        setScrapers() {
-            // Ne rien faire.
-        } // setScrapers()
-
         save(value) {
             localStorage.setItem("widget/core/notepad/" + this.id, value);
         } // save()

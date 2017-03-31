@@ -13,10 +13,6 @@
             this.files  = files;
         } // setFiles()
 
-        setScrapers() {
-            // Ne rien faire.
-        } // setScrapers()
-
         search() {
             // Ouvrir le résultat de la recherche dans un nouvel onglet.
             window.open($("form", this).attr("action")

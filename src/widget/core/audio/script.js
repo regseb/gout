@@ -26,10 +26,6 @@
             $("input", this).change(this.turn.bind(this));
         } // setFiles()
 
-        setScrapers() {
-            // Ne rien faire.
-        } // setScrapers()
-
         turn() {
             const audio = $("audio", this)[0];
 

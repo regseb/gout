@@ -116,8 +116,12 @@ define(["require", "jquery", "scronpt"], function (require, $) {
                     elem.style.top    = gate.coord.y * 14 + "px";
                     elem.style.width  = gate.coord.w * 14 + "px";
                     elem.style.height = gate.coord.h * 14 + "px";
-                    elem.setFiles(files);
-                    elem.setScrapers(scrapers);
+                    if ("setFiles" in elem) {
+                        elem.setFiles(files);
+                    }
+                    if ("setScrapers" in elem) {
+                        elem.setScrapers(scrapers);
+                    }
                     document.body.appendChild(elem);
                 });
             });
