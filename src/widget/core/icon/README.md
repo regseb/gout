@@ -38,7 +38,7 @@ Cet exemple affiche un bouton qui redirige vers *Facebook*.
     "icon/facebook": {
         "widget": "core/icon",
         "coord": { "x": 1, "y": 1, "w": 3, "h": 3 },
-        "files": { "config": {} },
+        "files": { "config.json": {} },
         "scrapers": [
             {
                 "scraper": "core/repeater",
