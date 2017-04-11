@@ -27,6 +27,7 @@ core-stack > ul > li > img {
     height: 10px;
     margin-right: 0.3em;
     margin-top: 2px;
+    opacity: 0.8;
     width: 10px;
 }
 core-stack > ul > li > a {
