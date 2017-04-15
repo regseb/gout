@@ -5,7 +5,7 @@
     // optimiser l'exécution ; et qu'il remonte plus d'erreurs.
     "use strict";
 
-    // Récupérer le document qui contient le template de ce widget. 
+    // Récupérer le document qui contient le template de ce widget.
     const owner = (document["_currentScript"] || document.currentScript)
                                                                  .ownerDocument;
 
