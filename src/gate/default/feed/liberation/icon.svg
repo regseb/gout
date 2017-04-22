@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
-  <path d="m 10,10 0,40 40,-15 40,15 0,-40 -80,0 z M 90,50 50,65 10,50 10,90
-           90,90 90,50 Z"
-        fill-opacity="0.2" />
-</svg>

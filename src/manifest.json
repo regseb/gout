@@ -2,7 +2,7 @@
     "applications": {
         "gecko": {
             "id": "gout@regseb.github.io",
-            "strict_min_version": "50.0"
+            "strict_min_version": "53"
         }
     },
     "manifest_version": 2,
@@ -22,16 +22,14 @@
             "19": "img/icon-19.png",
             "38": "img/icon-38.png"
         },
-        "default_title": "Gout"
+        "default_title": "Gout",
+        "default_popup": "popup/index.html"
     },
 
     "author": "Sébastien Règne <regseb@gmail.com>",
-    "background": {
-        "scripts": ["lib/browser-polyfill.js", "background.js"]
-    },
 
     "homepage_url": "https://github.com/regseb/gout/",
     "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApjbFh65iQqPHs5VnaRkkHtVfuO5X48pALh/Kqtog1JHU+IwwOUMT1JHArhxgF/9UJvjITsDuTejGRYdpQHHTOYTXpeKzkV/aOw3j+6WiXv1pmeKlix7FOUurMoAMuowD2uNRCIkn+cqxg/Qe3RK5nRaPXv2co694xd6G1/+ALHArGVOu2WvAejkeeo4tEfDdFtA4PTNfTuTy7RuvqOXheW4dT2VTm/qxBOKpAGkyv/TRteQuKD73570FesgEtrppWe3Hd7w5NW4vRUh7NUgvoN63bmrXKP/XuHM/jhuUnVXE1RYtLKjHD2zmpFIqpHh5/DGd23nkZ74+UXWNhVMpJwIDAQAB",
-    "minimum_chrome_version": "53",
+    "minimum_chrome_version": "58",
     "permissions": ["<all_urls>", "history", "identity"]
 }

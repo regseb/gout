@@ -1,0 +1,10 @@
+body {
+    min-width: 200px;
+}
+
+.primary {
+    font-weight: bolder;
+}
+.alternative {
+    padding-left: 24px;
+}

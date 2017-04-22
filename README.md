@@ -5,24 +5,25 @@
 ## Description
 
 Gout est une **extension** Firefox / Chrome pour récupérer des informations sur
-Internet (flux RSS, résultats d'API, parsing de page Web) et les afficher sur
-une seule page. Le paramètrage des données récupérées se fait avec des objets
+Internet (flux RSS / Atom, résultats d'API, parsing de page Web) et les
+afficher sur une seule page. Le paramètrage des données récupérées se fait avec
+des objets
 [JSON](http://www.json.org/json-fr.html "JavaScript Object Notation"). Il est
 aussi possible de développer des widgets et des scrapers pour agréger de
 nouveaux sites Internet.
 
-Deux versions de Gout sont disponibles :
+## Démonstration
 
-- la *simpliste* qui s'installe avec le
-  [site des modules Mozilla](//addons.mozilla.org/) ou le
-  [Chrome Web Store](//chrome.google.com/webstore/category/extensions) ;
-- la *personnalisable* à télécharger depuis [GitHub](//github.com/regseb/gout)
-  et qui peut-être enrichie avec des widgets / scrapers de la communauté.
+Une version de démonstration non-configurable est disponible sur :
+
+- **[AMO](//addons.mozilla.org/fr/firefox/)** (addons.mozilla.org) ;
+- **[Chrome Web Store](//chrome.google.com/webstore/category/extensions)**.
 
 ## Installation
 
-Cette procédure décrit l'installation de la version *personnalisable*. Commencez
-par cloner le projet, puis installez les dépendances :
+Cette procédure décrit l'installation. Vous aurez besoin de
+[`git`](//git-scm.com/) et `npm` ([Node.js](//nodejs.org/en/)). Commencez par
+cloner le projet, puis installez les dépendances :
 
 ```shell
 git clone https://github.com/regseb/gout.git
@@ -30,15 +31,21 @@ cd gout
 npm install
 ```
 
-Vous pouvez ensuite ajouter des widgets et des scrapers externes.
+Vous pouvez ensuite ajouter des
+**[widgets](//github.com/search?q=topic%3Agout+widget)** et des
+**[scrapers](//github.com/search?q=topic%3Agout+scraper)** externes.
 
 ### Firefox
 
-TODO
+Lancez Firefox et rendez vous dans le *gestionnaire de modules complémentaires*.
+Ouvrez l'outil pour *déboguer des modules*. *Chargez un module temporaire* en
+ouvrant le fichier `src/manifest.json`.
 
 ### Chrome
 
-TODO
+Ouvrez Chrome et allez dans la page paramètrage des *extensions*. Activez le
+*Mode développeur*, puis *chargez l'extension non empaquetée* en ouvrant le
+répertoire `src`.
 
 ## Licence
 

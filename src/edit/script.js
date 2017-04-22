@@ -121,27 +121,6 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
         dialog.showModal();
     }; // add()
 
-    const save = function () {
-        const gates = {};
-        $("article").each(function () {
-            const $article = $(this);
-            const gate = $article.data("gate");
-            gates[$(".key", $article).text()] = {
-                "widget": gate.widget,
-                "active": "active" in gate ? gate.active : true,
-                "coord":  {
-                    "x": Math.round($article.offset().left / 14),
-                    "y": Math.round($article.offset().top / 14),
-                    "w": Math.round($article.width() / 14),
-                    "h": Math.round($article.height() / 14)
-                },
-                "files":    gate.files,
-                "scrapers": gate.scrapers
-            };
-        });
-        localStorage.setItem("gate/" + config, JSON.stringify(gates));
-    }; // save()
-
     const code = function () {
         const config = {};
         $("article").each(function () {
@@ -167,7 +146,6 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
     }; // code()
 
     $("button.add").click(add);
-    $("button.save").click(save);
     $("button.code").click(code);
 
     $(document).on("mousemove", mousemove)
@@ -198,10 +176,10 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
         const $article =
             $("<article>").attr("draggable", true)
                           .data("gate", gate)
-                          .css({ "left": gate.coord.x * 1.4 + "em",
-                                 "top":  gate.coord.y * 1.4 + "em" })
-                          .width(gate.coord.w * 1.4 + "em")
-                          .height(gate.coord.h * 1.4 + "em")
+                          .css({ "left": gate.coord.x * 1.4 + "px",
+                                 "top":  gate.coord.y * 1.4 + "px" })
+                          .width(gate.coord.w * 1.4 + "px")
+                          .height(gate.coord.h * 1.4 + "px")
                           .html($("template").html())
                           .on("mousedown", mousedown)
                           .on("dblclick", dblclick);
@@ -212,39 +190,19 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
 
     // Récupérer les paramètres transmits dans l'URL.
     const params = new URLSearchParams(window.location.search.slice(1));
-    const user   = params.get("user")   || "default";
-    const config = params.get("config") || "config";
+    const user   = params.get("user");
+    const config = params.has("config") ? params.get("config")
+                                        : "config";
 
-    if ("default" === user) {
-        if ("config" !== config) {
-            $("a").attr("href", $("a").attr("href") + "?config=" + config);
-        }
-        const gates = JSON.parse(localStorage.getItem("gate/" + config));
-        if (null === gates) {
-            // Charger la configuration par défaut.
-            const url = "../gate/default/" + config + ".json";
-            $.getJSON(url).then(function (gates) {
-                for (let key in gates) {
-                    load(key, gates[key]);
-                }
-            }).catch((err) => console.log(err));
-        } else {
-            for (let key in gates) {
-                load(key, gates[key]);
-            }
-        }
-    } else {
-        $("button.save").remove();
-        $("a").attr("href", $("a").attr("href") + "?user=" + user);
-        if ("config" !== config) {
-            $("a").attr("href", $("a").attr("href") + "&config=" + config);
-        }
-        // Charger les passerelles contenues dans le fichier de configuration.
-        const url = "../gate/community/" + user + "/" + config + ".json";
-        $.getJSON(url).then(function (gates) {
-            for (let key in gates) {
-                load(key, gates[key]);
-            }
-        }).catch((err) => console.log(err));
+    $("a").attr("href", $("a").attr("href") + "?user=" + user);
+    if ("config" !== config) {
+        $("a").attr("href", $("a").attr("href") + "&config=" + config);
     }
+    // Charger les passerelles contenues dans le fichier de configuration.
+    const url = "../gate/" + user + "/" + config + ".json";
+    $.getJSON(url).then(function (gates) {
+        for (let key in gates) {
+            load(key, gates[key]);
+        }
+    }).catch((err) => console.log(err));
 });

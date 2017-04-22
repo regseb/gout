@@ -52,9 +52,6 @@ define(["require", "jquery", "scronpt"], function (require, $) {
     }; // read()
 
     const getFiles = function (obj, url) {
-        if (null === url) {
-            return Promise.resolve(obj);
-        }
         return readdir(url).then(function (urls) {
             return Promise.all(urls.map(read));
         }).then(function (results) {
@@ -100,7 +97,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
         return promise;
     }; // getGate()
 
-    const load = function (key, gate, url = null) {
+    const load = function (key, gate, url) {
         // Si la propriété 'active' n'est pas définie : considérer que la
         // passerelle est active.
         if (false === gate.active) {
@@ -130,41 +127,17 @@ define(["require", "jquery", "scronpt"], function (require, $) {
 
     // Récupérer les paramètres transmits dans l'URL.
     const params = new URLSearchParams(window.location.search.slice(1));
-    const user   = params.get("user")   || "default";
-    const config = params.get("config") || "config";
+    const user   = params.get("user");
+    const config = params.has("config") ? params.get("config")
+                                        : "config";
 
-    if ("default" === user) {
-        if ("config" !== config) {
-            document.getElementsByTagName("a")[0].href += "?config=" + config;
+    // Charger les passerelles contenues dans le fichier de configuration.
+    const url = "gate/" + user + "/" + config + ".json";
+    fetch(url).then(function (response) {
+        return response.json();
+    }).then(function (gates) {
+        for (let key in gates) {
+            load(key, gates[key], "gate/" + user + "/" + key);
         }
-        const gates = JSON.parse(localStorage.getItem("gate/" + config));
-        // Si la configuration n'existe pas.
-        if (null === gates) {
-            // Pré-remplir la page avec la configuration par défaut.
-            const url = "gate/default/" + config + ".json";
-            fetch(url).then(function (response) {
-                return response.json();
-            }).then(function (defaultGates) {
-                for (let key in defaultGates) {
-                    load(key, defaultGates[key]);
-                }
-            }).catch((err) => console.log(err));
-        } else {
-            for (let key in gates) {
-                load(key, gates[key]);
-            }
-        }
-    } else {
-        const link = document.getElementsByTagName("a")[0];
-        link.parentElement.removeChild(link);
-        // Charger les passerelles contenues dans le fichier de configuration.
-        const url = "gate/community/" + user + "/" + config + ".json";
-        fetch(url).then(function (response) {
-            return response.json();
-        }).then(function (gates) {
-            for (let key in gates) {
-                load(key, gates[key], "gate/community/" + user + "/" + key);
-            }
-        }).catch((err) => console.log(err));
-    }
+    }).catch((err) => console.log(err));
 });
