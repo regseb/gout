@@ -111,5 +111,5 @@
                 list.appendChild(add(user, config));
             }
         }
-    }).catch((err) => console.log(err));
+    });
 })();

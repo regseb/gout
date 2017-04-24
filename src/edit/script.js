@@ -176,10 +176,10 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
         const $article =
             $("<article>").attr("draggable", true)
                           .data("gate", gate)
-                          .css({ "left": gate.coord.x * 1.4 + "px",
-                                 "top":  gate.coord.y * 1.4 + "px" })
-                          .width(gate.coord.w * 1.4 + "px")
-                          .height(gate.coord.h * 1.4 + "px")
+                          .css({ "left": gate.coord.x * 14 + "px",
+                                 "top":  gate.coord.y * 14 + "px" })
+                          .width(gate.coord.w * 14 + "px")
+                          .height(gate.coord.h * 14 + "px")
                           .html($("template").html())
                           .on("mousedown", mousedown)
                           .on("dblclick", dblclick);
@@ -200,9 +200,11 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
     }
     // Charger les passerelles contenues dans le fichier de configuration.
     const url = "../gate/" + user + "/" + config + ".json";
-    $.getJSON(url).then(function (gates) {
+    fetch(url).then(function (response) {
+        return response.json();
+    }).then(function (gates) {
         for (let key in gates) {
             load(key, gates[key]);
         }
-    }).catch((err) => console.log(err));
+    });
 });

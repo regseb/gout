@@ -139,5 +139,5 @@ define(["require", "jquery", "scronpt"], function (require, $) {
         for (let key in gates) {
             load(key, gates[key], "gate/" + user + "/" + key);
         }
-    }).catch((err) => console.log(err));
+    });
 });
