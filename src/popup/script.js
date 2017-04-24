@@ -15,7 +15,7 @@
                 });
             });
         }
-        return fetch(url + "/").then(function (response) {
+        return fetch("/" + url + "/").then(function (response) {
             return response.text();
         }).then(function (response) {
             return response.split("\n").filter(function (line) {
@@ -27,10 +27,10 @@
     }; // readdir()
 
     const walk = function () {
-        return readdir("../gate").then(function (users) {
+        return readdir("gate").then(function (users) {
             return Promise.all(users.filter((u) => !u.startsWith("."))
                                     .map(function (user) {
-                return readdir("../gate/" + user).then(function (configs) {
+                return readdir("gate/" + user).then(function (configs) {
                     return [user, configs];
                 });
             }));
@@ -111,5 +111,5 @@
                 list.appendChild(add(user, config));
             }
         }
-    });
+    }).catch((err) => console.log(err));
 })();

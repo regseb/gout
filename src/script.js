@@ -29,7 +29,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
                 });
             });
         }
-        return fetch(url + "/").then(function (response) {
+        return fetch("/" + url + "/").then(function (response) {
             return response.text();
         }).then(function (response) {
             return response.split("\n").filter(function (line) {
