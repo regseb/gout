@@ -127,9 +127,17 @@ define(["require", "jquery", "scronpt"], function (require, $) {
 
     // Récupérer les paramètres transmits dans l'URL.
     const params = new URLSearchParams(window.location.search.slice(1));
-    const user   = params.get("user");
-    const config = params.has("config") ? params.get("config")
-                                        : "config";
+
+    const user = params.get("user");
+    document.title = user + " - " + document.title;
+
+    let config;
+    if (params.has("config")) {
+        config = params.get("config");
+        document.title = config + " - " + document.title;
+    } else {
+        config = "config";
+    }
 
     // Charger les passerelles contenues dans le fichier de configuration.
     const url = "gate/" + user + "/" + config + ".json";
