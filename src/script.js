@@ -11,34 +11,21 @@ define(["require", "jquery", "scronpt"], function (require, $) {
     $.noConflict(true);
 
     const readdir = function (url) {
-        if (undefined !== browser.runtime.getPackageDirectoryEntry) {
-            return new Promise(function (resolve, reject) {
-                browser.runtime.getPackageDirectoryEntry(function (root) {
-                    root.getDirectory(url, {}, function (dir) {
-                        dir.createReader().readEntries(function (entries) {
-                            resolve(entries.map((entry) => url + "/" +
-                                                           entry.name));
-                        });
-                    }, function (err) {
-                        if ("NotFoundError" === err.name) {
-                            resolve([]);
-                        } else {
-                            reject(err);
-                        }
+        return new Promise(function (resolve, reject) {
+            browser.runtime.getPackageDirectoryEntry(function (root) {
+                root.getDirectory(url, {}, function (dir) {
+                    dir.createReader().readEntries(function (entries) {
+                        resolve(entries.map((entry) => url + "/" +
+                                                       entry.name));
                     });
+                }, function (err) {
+                    if ("NotFoundError" === err.name) {
+                        resolve([]);
+                    } else {
+                        reject(err);
+                    }
                 });
             });
-        }
-        return fetch("/" + url + "/").then(function (response) {
-            return response.text();
-        }).then(function (response) {
-            return response.split("\n").filter(function (line) {
-                return line.startsWith("201: ");
-            }).map(function (line) {
-                return url + "/" + line.substring(5, line.indexOf(" ", 5));
-            });
-        }).catch(function (_err) {
-            return [];
         });
     }; // readdir()
 

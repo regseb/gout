@@ -26,6 +26,9 @@ const LIBS = [
     }, {
         "src":  "webcomponents.js/webcomponents-lite.js",
         "dest": "webcomponents-lite.js"
+    }, {
+        "src":  "webextension-polyfill/dist/browser-polyfill.js",
+        "dest": "browser-polyfill.js"
     }
 ];
 

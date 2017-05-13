@@ -26,15 +26,16 @@
         "jquery": "^3.2.1",
         "requirejs": "^2.3.3",
         "scronpt": "^0.3.1",
-        "webcomponents.js": "^0.7.24"
+        "webcomponents.js": "^0.7.24",
+        "webextension-polyfill": "^0.1.1"
     },
     "devDependencies": {
-        "addons-linter": "^0.17.0",
-        "eslint": "^3.18.0",
+        "addons-linter": "^0.19.2",
+        "eslint": "^3.19.0",
         "htmlhint": "^0.9.13",
         "jsonlint": "^1.6.2",
         "markdownlint": "^0.4.1",
         "metalint": "^0.7.1",
-        "stylelint": "^7.9.0"
+        "stylelint": "^7.10.1"
     }
 }
