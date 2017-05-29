@@ -12,7 +12,7 @@ propriétés suivantes :
 
 - `"url"` : l'URL du serveur qui sera testé ;
 - `"icon"` : TODO ;
-- `"desc"` : TODO ;
+- `"title"` : TODO ;
 - `"link"` : TODO ;
 - `"colors"` : TODO.
 

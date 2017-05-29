@@ -46,7 +46,7 @@
                                 "class":     empty ? "empty" : "" })
                         .data("date", data.date);
 
-                if ("" !== data.icon) {
+                if ("icon" in data) {
                     $li.append($("<img>").attr("src", data.icon));
                 }
 
@@ -54,7 +54,7 @@
                                            "target": "_blank" })
                                    .text(data.title));
 
-                if ("" !== data.desc) {
+                if ("desc" in data) {
                     $li.append($("<span>").html(data.desc));
                 }
 

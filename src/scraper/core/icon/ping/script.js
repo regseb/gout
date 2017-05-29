@@ -11,11 +11,11 @@ define([], function () {
     };
 
     return class {
-        constructor({ url, icon, desc = url, link = url,
+        constructor({ url, icon, title = url, link = url,
                       colors = DEFAULT_COLORS }) {
             this.url    = url;
             this.icon   = icon;
-            this.desc   = desc;
+            this.title  = title;
             this.link   = link;
             this.colors = colors;
         } // constructor()
@@ -31,19 +31,21 @@ define([], function () {
                         break;
                     }
                 }
-                return {
+                return [{
+                    "color": color,
+                    "date":  Date.now(),
                     "icon":  that.icon,
-                    "desc":  that.desc,
                     "link":  that.link,
-                    "color": color
-                };
+                    "title": that.title
+                }];
             }).catch(function () {
-                return {
+                return [{
+                    "color": that.colors["0"],
+                    "date":  Date.now(),
                     "icon":  that.icon,
-                    "desc":  that.desc,
                     "link":  that.link,
-                    "color": that.colors["0"]
-                };
+                    "title": that.title
+                }];
             });
         } // extract()
     };

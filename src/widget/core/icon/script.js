@@ -15,18 +15,17 @@
         } // setFiles()
 
         setScrapers(scrapers) {
-            this.scraper = scrapers[0];
+            this.scrapers = scrapers;
         } // setScrapers()
 
         display(data) {
-            $(this).css("background-color", data.color);
+            this.style.backgroundColor = data.color;
             $("> a", this).attr("href", data.link);
             $("> a img", this).attr("src", data.icon);
-            if ("" === data.desc) {
-                $("> span", this).hide();
+            if ("desc" in data) {
+                $("> span", this).html(data.desc).show();
             } else {
-                $("> span", this).html(data.desc)
-                                 .show();
+                $("> span", this).hide();
             }
         } // display()
 
@@ -40,7 +39,12 @@
             }
             this.cron.start();
 
-            this.scraper.extract().then(this.display.bind(this));
+            const that = this;
+            this.scrapers.forEach(function (scraper) {
+                scraper.extract(1).then(function (items) {
+                    items.forEach(that.display.bind(that));
+                });
+            });
         } // update()
 
         wake() {

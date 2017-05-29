@@ -2,7 +2,7 @@ define(["jquery"], function ($) {
     "use strict";
 
     return class {
-        constructor({ url, icon = "" }) {
+        constructor({ url, icon = null }) {
             this.url  = url;
             this.icon = icon;
         } // constructor()
@@ -10,27 +10,32 @@ define(["jquery"], function ($) {
         extract(size) {
             const that = this;
             return $.get(this.url).then(function (xml) {
-                const items = $("entry:lt(" + size + ")", xml).map(function () {
+                return $("entry:lt(" + size + ")", xml).map(function () {
                     let desc = $("summary", this).text().trim();
                     if (0 === desc.length) {
                         desc = $("content", this).text().trim();
                     }
                     return {
-                        "title": $("title", this).text(),
+                        "date":  new Date($("updated", this).text()).getTime(),
                         "desc":  desc,
-                        "link":  $("link", this).attr("href"),
-                        "icon":  that.icon,
                         "guid":  $("id", this).text(),
-                        "date":  new Date($("updated", this).text()).getTime()
+                        "icon":  that.icon,
+                        "link":  $("link", this).attr("href"),
+                        "title": $("title", this).text()
                     };
-                }).get();
-
-                for (let item of items) {
-                    if ("" === item.guid) {
+                }).get().map(function (item) {
+                    // Enlever les propriétés surperflues des éléments.
+                    if (0 === item.desc.length) {
+                        delete item.desc;
+                    }
+                    if (0 === item.guid.length) {
                         item.guid = item.link;
                     }
-                }
-                return items;
+                    if (null === item.icon) {
+                        delete item.icon;
+                    }
+                    return item;
+                });
             });
         } // extract()
     };

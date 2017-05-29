@@ -1,4 +1,5 @@
 core-single {
+    background-color: black;
     background-position: 0.7em center;
     background-repeat: no-repeat;
     background-size: auto calc(100% - 1.4em);

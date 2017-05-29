@@ -24,8 +24,8 @@ Chaque résultat est un objet JSON ayant les propiétés :
 - `"title"` : le titre de l'image (qui sera affiché dans une info-bulle) ;
 - `"link"` : l'adresse vers la page Internet affichant l'image ;
 - `"guid"` : un identifiant unique de l'image (son adresse par exemple) ;
-- `"date"` : le nombre de millièmes de secondes depuis le 1 janvier 1970 à
-  00:00:00 UTC.
+- `"date"` : le nombre de millisecondes depuis le 1er janvier 1970 à 00:00:00
+  UTC.
 
 ## Exemple
 

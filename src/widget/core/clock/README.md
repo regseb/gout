@@ -26,8 +26,8 @@ Le widget doit être carré.
 ## Scraper
 
 Un seul scraper peut-être associé à ce widget. Il doit définir une méthode
-`extract()` qui retourne le nombre de millièmes de secondes depuis le 1 janvier
-1970 à 00:00:00.
+`extract()` qui retourne le nombre de millisecondes depuis le 1er janvier 1970
+à 00:00:00.
 
 ## Exemple
 

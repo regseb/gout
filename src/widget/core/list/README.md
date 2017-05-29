@@ -36,8 +36,8 @@ Chaque résultat est un objet JSON ayant les propriétés :
 - `"desc"` : la description de l'élément qui sera affichée dans l'info-bulle ;
 - `"link"` : le lien de l'élément ;
 - `"icon"` : l'URL de l'icône qui préfixera le titre ;
-- `"date"` : le nombre de millièmes de secondes depuis le 1 janvier 1970 à
-  00:00:00 UTC.
+- `"date"` : le nombre de millisecondes depuis le 1er janvier 1970 à 00:00:00
+  UTC.
 
 Les scrapers des widgets *core/feed* et *core/stack* peuvent aussi être
 utilisés.

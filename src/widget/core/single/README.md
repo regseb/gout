@@ -16,16 +16,17 @@ propriétés suivantes :
 Une image ayant pour nom ***icon.svg*** doit aussi est présente dans le
 répertoire de la passerelle.
 
-Une hauteur de *2* est conseillée. La largeur dépend des titres qui seront
-affichés.
+Une hauteur de *2* est conseillée. La largeur dépend de la taille des titres qui
+seront affichés.
 
 ## Scraper
 
 Un seul scraper peut-être associé à ce widget. Il doit définir une méthode
-`extract()` qui retourne un objet JSON ayant les propriétés :
+`extract()` qui retourne un tableau avec un objet JSON ayant les propriétés :
 
 - `"title"` : le titre ;
 - `"desc"` : la description qui sera affichée dans l'info-bulle ;
+- `"icon"` : l'URL de l'icône qui préfixera le titre ;
 - `"link"` : le lien.
 
 ## Exemple

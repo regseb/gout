@@ -17,11 +17,11 @@ Le widget doit être carré.
 ## Scraper
 
 Un seul scraper peut-être associé à ce widget. Il doit définir une méthode
-`extract()` qui retourne un objet JSON ayant les propriétés :
+`extract()` qui retourne un tableau avec un objet JSON ayant les propriétés :
 
 - `"icon"` : l'URL de l'image ;
 - `"link"` : le lien vers une page Internet ;
-- `"desc"` : l'info-bulle affichée au survol ;
+- `"title"` : l'info-bulle affichée au survol ;
 - `"color"` : la couleur de fond du cadre (au format hexadécimale, régulier RGB
   ou avec des mots-clefs prédéfinis).
 
@@ -42,12 +42,12 @@ Cet exemple affiche un bouton qui redirige vers *Facebook*.
         "scrapers": [
             {
                 "scraper": "core/repeater",
-                "config": {
+                "config": [{
                     "icon": "gate/community/me/icon/facebook/icon.svg",
                     "link": "https://www.facebook.com/",
-                    "desc": "Facebook",
+                    "title": "Facebook",
                     "color": "#2196f3"
-                }
+                }]
             }
         ]
     }

@@ -9,25 +9,34 @@
 
     document.registerElement("core-single", class extends HTMLElement {
 
-        setFiles({ "config.json": config, "icon.svg": icon }) {
+        setFiles({ "config.json": config, "icon.svg": icon = null }) {
             this.cron = new Cron(config.cron, this.update.bind(this));
-            this.style.backgroundColor = config.color;
-            this.style.backgroundImage = "url(\"data:image/svg+xml;base64," +
-                                         btoa(icon) + "\")";
+            if ("color" in config) {
+                this.style.backgroundColor = config.color;
+            }
+            if (null !== icon) {
+                this.style.backgroundImage = "url(\"data:image/svg+xml;" +
+                                             "base64," + btoa(icon) + "\")";
+            }
         } // setFiles()
 
         setScrapers(scrapers) {
-            this.scraper = scrapers[0];
+            this.scrapers = scrapers;
         } // setScrapers()
 
         display(data) {
             $("a", this).attr("href", data.link)
                         .html(data.title);
-            if ("" === data.desc) {
-                $("span", this).hide();
+            if ("desc" in data) {
+                $("span", this).html(data.desc).show();
             } else {
-                $("span", this).html(data.desc)
-                               .show();
+                $("span", this).hide();
+            }
+            if ("color" in data) {
+                this.style.backgroundColor = data.color;
+            }
+            if ("icon" in data) {
+                this.style.backgroundImage = "url(\"" + data.icon + "\")";
             }
         } // display()
 
@@ -41,7 +50,12 @@
             }
             this.cron.start();
 
-            this.scraper.extract().then(this.display.bind(this));
+            const that = this;
+            this.scrapers.forEach(function (scraper) {
+                scraper.extract(that.size).then(function (items) {
+                    items.forEach(that.display.bind(that));
+                });
+            });
         } // update()
 
         wake() {

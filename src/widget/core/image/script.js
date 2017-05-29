@@ -74,10 +74,13 @@
 
                     // Créer la case de la nouvelle image.
                     const $a = $("<a>").attr({ "href":   data.link,
-                                               "target": "_blank",
-                                               "title":  data.title })
+                                               "target": "_blank" })
                                        .css("background-image",
                                             "url(\"" + data.img + "\")");
+                    if ("title" in data) {
+                        $a.attr("title", data.title);
+                    }
+
                     $li = $("<li>").attr("data-guid", data.guid)
                                    .data("date", data.date)
                                    .height($(this).height())

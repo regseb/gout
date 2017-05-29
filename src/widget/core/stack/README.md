@@ -30,8 +30,8 @@ Chaque résultat est un objet JSON ayant les propriétés :
 - `"link"` : le lien de l'élément ;
 - `"icon"` : l'URL de l'icône qui préfixera le titre ;
 - `"guid"` : un identifiant de l'élément ;
-- `"date"` : le nombre de millièmes de secondes depuis le 1 janvier 1970 à
-  00:00:00 UTC.
+- `"date"` : le nombre de millisecondes depuis le 1er janvier 1970 à 00:00:00
+  UTC.
 
 Les scrapers du widget *core/feed* peuvent aussi être utilisés.
 
