@@ -115,8 +115,8 @@ define(["require", "jquery", "scronpt"], function (require, $) {
     // Récupérer les paramètres transmits dans l'URL.
     const params = new URLSearchParams(window.location.search.slice(1));
 
-    const user = params.get("user");
-    document.title = user + " - " + document.title;
+    const dashboard = params.get("dashboard");
+    document.title = dashboard + " - " + document.title;
 
     let config;
     if (params.has("config")) {
@@ -126,13 +126,14 @@ define(["require", "jquery", "scronpt"], function (require, $) {
         config = "config";
     }
 
-    // Charger les passerelles contenues dans le fichier de configuration.
-    const url = "gate/" + user + "/" + config + ".json";
+    // Charger les passerelles contenues dans la configuration du tableau de
+    // bord.
+    const url = "gate/" + dashboard + "/" + config + ".json";
     fetch(url).then(function (response) {
         return response.json();
     }).then(function (gates) {
         for (let key in gates) {
-            load(key, gates[key], "gate/" + user + "/" + key);
+            load(key, gates[key], "gate/" + dashboard + "/" + key);
         }
     });
 });

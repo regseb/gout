@@ -190,16 +190,17 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
 
     // Récupérer les paramètres transmits dans l'URL.
     const params = new URLSearchParams(window.location.search.slice(1));
-    const user   = params.get("user");
-    const config = params.has("config") ? params.get("config")
-                                        : "config";
+    const dashboard = params.get("dashboard");
+    const config    = params.has("config") ? params.get("config")
+                                           : "config";
 
-    $("a").attr("href", $("a").attr("href") + "?user=" + user);
+    $("a").attr("href", $("a").attr("href") + "?dashboard=" + dashboard);
     if ("config" !== config) {
         $("a").attr("href", $("a").attr("href") + "&config=" + config);
     }
-    // Charger les passerelles contenues dans le fichier de configuration.
-    const url = "../gate/" + user + "/" + config + ".json";
+    // Charger les passerelles contenues dans la configuration du tableau de
+    // bord.
+    const url = "../gate/" + dashboard + "/" + config + ".json";
     fetch(url).then(function (response) {
         return response.json();
     }).then(function (gates) {
