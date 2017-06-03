@@ -40,21 +40,21 @@
             const cy = parseInt(view[3], 10) / 2;
 
             const seconds = date.getUTCSeconds();
-            for (let child of svg.getElementById("second").children) {
+            for (const child of svg.getElementById("second").children) {
                 child.setAttribute("transform",
                                "rotate(" + seconds * 6 + ", " + cx + ", " + cy +
                                ")");
             }
 
             const minutes = date.getUTCMinutes() + seconds / 60;
-            for (let child of svg.getElementById("minute").children) {
+            for (const child of svg.getElementById("minute").children) {
                 child.setAttribute("transform",
                                "rotate(" + minutes * 6 + ", " + cx + ", " + cy +
                                ")");
             }
 
             const hours = date.getUTCHours() + minutes / 60;
-            for (let child of svg.getElementById("hour").children) {
+            for (const child of svg.getElementById("hour").children) {
                 child.setAttribute("transform",
                                 "rotate(" + hours * 30 + ", " + cx + ", " + cy +
                                 ")");

@@ -204,7 +204,7 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
     fetch(url).then(function (response) {
         return response.json();
     }).then(function (gates) {
-        for (let key in gates) {
+        for (const key in gates) {
             load(key, gates[key]);
         }
     });

@@ -43,7 +43,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
             return Promise.all(urls.map(read));
         }).then(function (results) {
             const files = {};
-            for (let result of results) {
+            for (const result of results) {
                 files[result[0].substr(url.length + 1)] = result[1];
             }
             return Object.assign(obj, files);
@@ -132,7 +132,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
     fetch(url).then(function (response) {
         return response.json();
     }).then(function (gates) {
-        for (let key in gates) {
+        for (const key in gates) {
             load(key, gates[key], "gate/" + dashboard + "/" + key);
         }
     });

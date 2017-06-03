@@ -116,7 +116,7 @@
             const that = this;
             this.scrapers.forEach(function (scraper) {
                 scraper.extract(that.size).then(function (items) {
-                    for (let item of items) {
+                    for (const item of items) {
                         const query = {
                             "text":       item.link,
                             "startTime":  0,

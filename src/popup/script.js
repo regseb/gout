@@ -25,12 +25,12 @@
             }));
         }).then(function (results) {
             const configs = {};
-            for (let result of results) {
+            for (const result of results) {
                 configs[result[0]] = result[1];
             }
             return configs;
         }).then(function (configs) {
-            for (let dashboard in configs) {
+            for (const dashboard in configs) {
                 configs[dashboard] = configs[dashboard].filter(
                                                              function (config) {
                     return !config.startsWith(".") && config.endsWith(".json");
@@ -98,7 +98,7 @@
 
         const list = document.getElementsByClassName("panel-section-list")[0];
         let first = true;
-        for (let dashboard of dashboards) {
+        for (const dashboard of dashboards) {
             if (first) {
                 first = false;
             } else {
@@ -112,7 +112,7 @@
             } else {
                 list.appendChild(add(dashboard, null));
             }
-            for (let config of configs[dashboard]) {
+            for (const config of configs[dashboard]) {
                 list.appendChild(add(dashboard, config));
             }
         }
