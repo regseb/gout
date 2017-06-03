@@ -4,57 +4,48 @@ Ce widget affiche une zone de saisie pour faire une recherche.
 
 ## Configuration
 
-Le répertoire de la passerelle doit avoir un fichier ***config.json***
-contenant un objet
-[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") avec la
-propriété `"engines"`qui contient d'une liste d'objet ayant les propriétés
-suivantes :
+Aucun fichier est nécessaire. La configuration se fait avec les scrapers.
 
-- `"title"` : le nom du moteur de recherche ;
-- `"url"` : l'adresse du moteur de recherche ;
-- `"color"` : la couleur du cadre ;
-- `"icon"` : le nom du fichier de l'image.
-
-Les images de chaque moteur de recherche doivent être dans le répertoire de la
-passerelle.
-
-Aucune dimension particulière est conseillée.
+La hauteur conseillé est **2**.
 
 ## Scraper
 
-Ce widget n'utilise pas de scraper.
+Les scrapers associés à ce widget doivent définir trois méthodes :
+
+- `info()` qui retourne les informations du moteur de recherche dans un objet
+  JSON grâce aux propriétés :
+  - `"title"` : le nom du moteur de recherche ;
+  - `"color"` : la couleur du cadre ;
+  - `"icon"` : l'URL de l'icône du moteur de recherche ;
+  - `"desc"` (optionnel) : la description du moteur de recherche.
+- `suggest()` qui prend en paramètre les mots cherchés et qui retourne une liste
+  de propositions.
+- `result()` qui prend en paramètre les mots cherchés et qui renvoi l'URL de la
+  page des résultats.
 
 ## Exemple
 
-Cet exemple fourni trois moteurs de recherche : *Google*, *Yahoo* et *Bing*.
+Cet exemple fourni le moteur de recherche : *DuckDuckGo*.
 
 ```JSON
 {
     "search": {
         "widget": "core/search",
         "coord": { "x": 1, "y": 1, "w": 17, "h": 2 },
-        "files": {
-            "config.json": {
-                "engines": [
-                    {
-                        "title": "Google",
-                        "url": "https://www.google.fr/search?q={searchTerms}",
-                        "color": "#2196f3",
-                        "icon": "google.svg"
-                    }, {
-                        "title": "Yahoo",
-                        "url": "https://fr.search.yahoo.com/search?p={searchTerms}",
-                        "color": "#673ab7",
-                        "icon": "yahoo.svg"
-                    }, {
-                        "title": "Bing",
-                        "url": "https://www.bing.com/search?q={searchTerms}",
-                        "color": "#ffc107",
-                        "icon": "bing.svg"
-                    }
-                ]
+        "scrapers": [
+            {
+                "scraper": "core/search/opensearch",
+                "config": {
+                    "title": "DuckDuckGo",
+                    "urls": {
+                        "results": "https://duckduckgo.com/?q={searchTerms}",
+                        "suggestions": "https://ac.duckduckgo.com/ac/?q={searchTerms}&type=list"
+                    },
+                    "color": "#f44336",
+                    "icon": "gate/me/search/duckduckgo.svg"
+                }
             }
-        }
+        ]
     }
 }
 ```
