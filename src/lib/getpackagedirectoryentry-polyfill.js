@@ -25,7 +25,8 @@ if (undefined === browser.runtime.getPackageDirectoryEntry) {
                 return response.split("\n").filter(function (line) {
                     return line.startsWith("201: ");
                 }).map(function (line) {
-                    const name = line.substring(5, line.indexOf(" ", 5));
+                    const name = decodeURIComponent(
+                                       line.substring(5, line.indexOf(" ", 5)));
                     return { "name": name.endsWith("/") ? name.slice(0, -1)
                                                         : name };
                 });

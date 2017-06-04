@@ -6,7 +6,7 @@
             browser.runtime.getPackageDirectoryEntry(function (root) {
                 root.getDirectory(url, {}, function (dir) {
                     dir.createReader().readEntries(function (entries) {
-                        resolve(entries.map((e) => e.name));
+                        resolve(entries.map((e) => e.name).sort());
                     });
                 }, function (err) {
                     reject(err);
