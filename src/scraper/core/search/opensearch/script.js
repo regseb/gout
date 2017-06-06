@@ -20,7 +20,7 @@ define([], function () {
                 "color": this.color,
                 "icon":  this.icon,
                 "desc":  this.desc
-            }
+            };
             if (null === data.desc) {
                 delete data.desc;
             }

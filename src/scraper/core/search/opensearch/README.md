@@ -1,6 +1,7 @@
 # core/search/opensearch
 
-Ce scraper extrait les données au fomat **[OpenSearch](http://www.opensearch.org/Home)** d'un moteur de recherche.
+Ce scraper extrait les données au fomat
+**[OpenSearch](http://www.opensearch.org/Home)** d'un moteur de recherche.
 
 ## Configuration
 
@@ -16,6 +17,9 @@ propriétés suivantes :
 - `"color"` : la couleur du cadre ;
 - `"icon"` : l'URL de l'icône du moteur de recherche ;
 - `"desc"` (optionnel) : la description du moteur de recherche.
+
+Les deux URLs doivent avoir la balise `{searchTerms}` qui sera remplacée par les
+termes recherchés.
 
 ## Exemple
 
