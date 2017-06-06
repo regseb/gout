@@ -10,8 +10,10 @@ define(["jquery"], function ($) {
         extract(size) {
             const that = this;
             return $.get(this.url).then(function (xml) {
-                return $("item:lt(" + size + ")", xml).map(function () {
+                return $("item", xml).map(function () {
                     return {
+                        "audio": $("enclosure[type^=\"audio/\"]", this)
+                                                                   .attr("url"),
                         "date":  new Date($("pubDate", this).text()).getTime(),
                         "desc":  $("description", this).text().trim(),
                         "guid":  $("guid", this).text(),
@@ -21,8 +23,13 @@ define(["jquery"], function ($) {
                         "link":  $("link", this).text(),
                         "title": $("title", this).text()
                     };
-                }).get().map(function (item) {
+                }).get().sort(function (item1, item2) {
+                    return item2.date - item1.date;
+                }).slice(0, size).map(function (item) {
                     // Enlever les propriétés surperflues des éléments.
+                    if (undefined === item.audio) {
+                        delete item.audio;
+                    }
                     if (0 === item.desc.length) {
                         delete item.desc;
                     }
