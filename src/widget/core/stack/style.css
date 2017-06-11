@@ -48,7 +48,7 @@ core-stack > ul > li > span {
     text-align: justify;
     visibility: hidden;
 }
-core-stack > ul > li:hover > span {
+core-stack > ul > li > a:hover + span {
     opacity: 1;
     transition: z-index 1s linear, opacity 0.5s linear 1s;
     visibility: visible;
