@@ -155,8 +155,8 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
                                                             function () {
         if ("Ajouter" === this.returnValue) {
             const { key, gate } = get();
-            insert(key, Object.assign({}, gate, { "coord": {
-                                      "x": 1, "y": 1, "w": 5, "h": 5 } }));
+            insert(key, Object.assign(
+                {}, gate, { "coord": { "x": 1, "y": 1, "w": 5, "h": 5 } }));
         } else if ("Supprimer" === this.returnValue) {
             const { origin } = get();
             $(".key:contains(\"" + origin + "\")").parent().remove();

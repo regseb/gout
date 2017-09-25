@@ -114,9 +114,8 @@
                     const icon = "icon" in data ? data.icon
                                                 : IMG_DIR + "play.svg";
                     $li.append($("<img>").attr("src", icon)
-                                         .click(this.start.bind(this)));
-
-                    $li.append($("<a>").attr({ "href":   data.link,
+                                         .click(this.start.bind(this)))
+                       .append($("<a>").attr({ "href":   data.link,
                                                "target": "_blank" })
                                        .text(data.title));
 
@@ -125,17 +124,17 @@
                     }
                     $li.append($("<input>").attr({ "type": "range",
                                                    "min":  "0" })
-                                           .on("input", this.move.bind(this)));
-                    $li.append($("<audio>").attr("src", data.audio)
+                                           .on("input", this.move.bind(this)))
+                       .append($("<audio>").attr("src", data.audio)
                                            .on("timeupdate",
                                                this.elapse.bind(this)));
 
                     const $div = $("<div>");
-                    $div.append($("<img>").attr("src", IMG_DIR + "volume.svg"));
-                    $div.append($("<input>").attr("type", "range")
-                                            .on("input", this.turn.bind(this)));
-                    $div.append($("<img>").attr("src", IMG_DIR + "speed.svg"));
-                    $div.append($("<input>").attr("type", "text")
+                    $div.append($("<img>").attr("src", IMG_DIR + "volume.svg"))
+                        .append($("<input>").attr("type", "range")
+                                            .on("input", this.turn.bind(this)))
+                        .append($("<img>").attr("src", IMG_DIR + "speed.svg"))
+                        .append($("<input>").attr("type", "text")
                                             .val("1")
                                             .on("input",
                                                 this.speed.bind(this)));
