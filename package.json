@@ -3,13 +3,20 @@
     "version": "0.7.1",
     "description": "Agrégateur d'Internet (flux RSS et tout le reste).",
     "keyword": [
-        "gout", "aggregator", "feed", "news", "reader", "rss", "atom", "scraper"
+        "gout",
+        "aggregator",
+        "feed",
+        "news",
+        "reader",
+        "rss",
+        "atom",
+        "scraper"
     ],
     "homepage": "https://github.com/regseb/gout",
     "bugs": {
         "url": "https://github.com/regseb/gout/issues"
     },
-    "license": "EUPL-1.1",
+    "license": "EUPL-1.2",
     "author": "Sébastien Règne <regseb@gmail.com> (https://github.com/regseb)",
     "repository": {
         "type": "git",
@@ -22,20 +29,22 @@
         "lint": "metalint"
     },
     "dependencies": {
-        "dialog-polyfill": "^0.4.7",
+        "dialog-polyfill": "^0.4.9",
         "jquery": "^3.2.1",
-        "requirejs": "^2.3.3",
+        "requirejs": "^2.3.5",
         "scronpt": "^0.3.1",
         "webcomponents.js": "^0.7.24",
         "webextension-polyfill": "^0.1.1"
     },
     "devDependencies": {
-        "addons-linter": "^0.19.2",
-        "eslint": "^3.19.0",
+        "addons-linter": "^0.26.1",
+        "eslint": "^4.7.2",
         "htmlhint": "^0.9.13",
         "jsonlint": "^1.6.2",
-        "markdownlint": "^0.4.1",
+        "markdownlint": "^0.6.1",
         "metalint": "^0.7.1",
-        "stylelint": "^7.10.1"
+        "stylelint": "^8.1.1",
+        "sign-addon": "^0.2.1",
+        "archiver": "^1.3.0"
     }
 }

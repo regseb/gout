@@ -37,5 +37,6 @@
     "fenced-code-language": true,
     "first-line-h1": true,
     "no-empty-links": true,
-    "required-headers": true
+    "required-headers": true,
+    "proper-names": false
 }
