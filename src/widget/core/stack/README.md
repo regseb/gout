@@ -38,7 +38,7 @@ Les scrapers du widget *core/feed* peuvent aussi être utilisés.
 ## Exemple
 
 Cette configuration affiche les actualités du site [LinuxFr.org](//linuxfr.org/)
-(avec une mise jour toutes les dix minutes).
+(avec une mise à jour toutes les dix minutes).
 
 ```JSON
 {
@@ -55,7 +55,9 @@ Cette configuration affiche les actualités du site [LinuxFr.org](//linuxfr.org/
         "scrapers": [
             {
                 "scraper": "core/feed/atom",
-                "config": "https://linuxfr.org/news.atom"
+                "config": {
+                    "url": "https://linuxfr.org/news.atom"
+                }
             }
         ]
     }
