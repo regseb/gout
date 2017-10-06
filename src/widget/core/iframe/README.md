@@ -22,7 +22,7 @@ Ce widget n'utilise pas de scraper.
 ## Exemple
 
 Cet exemple affiche
-[Wikipédia](//fr.wikipedia.org/wiki/Wikipédia:Accueil_principal) dans un
+[Wikipédia](https://fr.wikipedia.org/wiki/Wikipédia:Accueil_principal) dans un
 `iframe`.
 
 ```JSON

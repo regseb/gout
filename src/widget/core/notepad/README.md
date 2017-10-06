@@ -10,8 +10,7 @@ contenant un objet
 propriétés suivantes :
 
 - `"title"` (optionnel) : le texte affiché quand le bloc-notes est vide ;
-- `"desc"` (optionnel) : la description qui bloc-notes qui sera affichée dans
-  l'info-bulle ;
+- `"desc"` (optionnel) : la description affichée dans l'info-bulle ;
 - `"color"` (optionnel - valeur par défaut : `"black"`) : la couleur de fond du
   cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
   prédéfinis).

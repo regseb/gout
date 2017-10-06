@@ -17,7 +17,7 @@ propriétés suivantes :
 ## Exemple
 
 Cet exemple affiche les dernières actualités du site
-[LinuxFr.org](//linuxfr.org/).
+[LinuxFr.org](https://linuxfr.org/).
 
 ```JSON
 {

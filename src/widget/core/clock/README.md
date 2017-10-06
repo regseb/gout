@@ -17,8 +17,8 @@ propriétés suivantes :
 
 Une image ayant pour nom ***icon.svg*** peut aussi est présente dans le
 répertoire de la passerelle. Elle sera utilisé comme image de l'horloge. Le
-document [SVG](//www.w3.org/Graphics/SVG/) doit avoir trois éléments avec les
-identifiants `hour`, `minute` et `second`. Tous les sous-éléments tourneront
+document [SVG](https://www.w3.org/Graphics/SVG/) doit avoir trois éléments avec
+les identifiants `hour`, `minute` et `second`. Tous les sous-éléments tourneront
 avec comme axe le centre de l'image.
 
 Le widget doit être carré.

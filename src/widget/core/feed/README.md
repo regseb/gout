@@ -42,7 +42,8 @@ Les scrapers du widget *core/stack* peuvent aussi être utilisés.
 ## Exemple
 
 Cette configuration affiche les cinq dernières actualités du site
-[LinuxFr.org](//linuxfr.org/) (avec une mise à jour toutes les dix minutes).
+[LinuxFr.org](https://linuxfr.org/) (avec une mise à jour toutes les dix
+minutes).
 
 ```JSON
 {

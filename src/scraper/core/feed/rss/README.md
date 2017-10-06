@@ -17,7 +17,7 @@ propriétés suivantes :
 ## Exemple
 
 Cet exemple affiche les dernières actualités du site
-[Le Monde.fr](//www.lemonde.fr/).
+[Le Monde.fr](https://www.lemonde.fr/).
 
 ```JSON
 {

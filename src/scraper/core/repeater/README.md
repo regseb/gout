@@ -13,8 +13,8 @@ méthode `extract()`.
 ## Exemple
 
 Cet configuration affiche des marques-pages avec trois liens allant vers
-*[Facebook](//www.facebook.com/)*, *[Twitter](//www.twitter.com/)* et
-*[Google+](//plus.google.com/)*.
+*[Facebook](https://www.facebook.com/)*, *[Twitter](https://www.twitter.com/)*
+et *[Google+](https://plus.google.com/)*.
 
 ```JSON
 {
