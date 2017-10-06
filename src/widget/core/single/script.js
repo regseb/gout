@@ -25,8 +25,12 @@
         } // setScrapers()
 
         display(data) {
-            $("a", this).attr("href", data.link)
-                        .html(data.title);
+            $("a", this).html(data.title);
+            if ("link" in data) {
+                $("a", this).attr("href", data.link);
+            } else {
+                $("a", this).removeAttr("href");
+            }
             if ("desc" in data) {
                 $("span", this).html(data.desc).show();
             } else {

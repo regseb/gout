@@ -22,7 +22,7 @@ core-single > p > a {
 core-single > p > a:visited {
     color: black;
 }
-core-single > p > a:hover {
+core-single > p > a[href]:hover {
     text-decoration: underline;
 }
 core-single > p > span {

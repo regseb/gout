@@ -14,7 +14,7 @@ core-stack a {
 core-stack a:visited {
     color: black;
 }
-core-stack a:hover {
+core-stack a[href]:hover {
     text-decoration: underline;
 }
 core-stack > ul {

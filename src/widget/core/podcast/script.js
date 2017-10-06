@@ -114,10 +114,14 @@
                     const icon = "icon" in data ? data.icon
                                                 : IMG_DIR + "play.svg";
                     $li.append($("<img>").attr("src", icon)
-                                         .click(this.start.bind(this)))
-                       .append($("<a>").attr({ "href":   data.link,
-                                               "target": "_blank" })
-                                       .text(data.title));
+                                         .click(this.start.bind(this)));
+
+                    const $a = $("<a>").text(data.title)
+                                       .attr("target", "_blank");
+                    if ("link" in data) {
+                        $a.attr("href", data.link);
+                    }
+                    $li.append($a);
 
                     if ("desc" in data) {
                         $li.append($("<span>").html(data.desc));

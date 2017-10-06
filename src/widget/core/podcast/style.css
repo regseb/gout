@@ -15,7 +15,7 @@ core-podcast a {
 core-podcast a:visited {
     color: black;
 }
-core-podcast a:hover {
+core-podcast a[href]:hover {
     text-decoration: underline;
 }
 

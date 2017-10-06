@@ -10,7 +10,9 @@
 
         setFiles({ "config.json": config, "icon.svg": icon }) {
             this.style.backgroundColor = config.color;
-            $("a", this).attr("href", config.link);
+            if ("link" in config) {
+                $("a", this).attr("href", config.link);
+            }
             if (undefined !== icon) {
                 $("img", this).attr("src", "data:image/svg+xml;base64," +
                                             btoa(icon));

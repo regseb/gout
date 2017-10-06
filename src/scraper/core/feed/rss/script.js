@@ -34,13 +34,20 @@ define(["jquery"], function ($) {
                         delete item.desc;
                     }
                     if (0 === item.guid.length) {
-                        item.guid = item.link;
+                        if (0 === item.link.length) {
+                            item.guid = that.url + Math.random().toString();
+                        } else {
+                            item.guid = item.link;
+                        }
                     }
                     if (null === item.icon) {
                         delete item.icon;
                     }
                     if (undefined === item.img) {
                         delete item.img;
+                    }
+                    if (0 === item.link.length) {
+                        delete item.link;
                     }
                     return item;
                 });

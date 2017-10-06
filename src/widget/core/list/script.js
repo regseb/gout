@@ -50,9 +50,12 @@
                     $li.append($("<img>").attr("src", data.icon));
                 }
 
-                $li.append($("<a>").attr({ "href":   data.link,
-                                           "target": "_blank" })
-                                   .text(data.title));
+                const $a = $("<a>").text(data.title)
+                                   .attr("target", "_blank");
+                if ("link" in data) {
+                    $a.attr("href", data.link);
+                }
+                $li.append($a);
 
                 if ("desc" in data) {
                     $li.append($("<span>").html(data.desc));
