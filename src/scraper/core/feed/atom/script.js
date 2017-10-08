@@ -28,9 +28,6 @@ define(["jquery"], function ($) {
                     if (0 === item.desc.length) {
                         delete item.desc;
                     }
-                    if (0 === item.guid.length) {
-                        item.guid = item.link;
-                    }
                     if (null === item.icon) {
                         delete item.icon;
                     }
