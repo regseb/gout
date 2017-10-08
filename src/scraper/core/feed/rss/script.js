@@ -1,6 +1,12 @@
 define(["jquery"], function ($) {
     "use strict";
 
+    const hash = function (str) {
+        return Array.from(str).reduce(function (acc, curr) {
+            return (acc << 5) - acc + curr.charCodeAt();
+        }, 0);
+    }; // hash()
+
     return class {
         constructor({ url, icon = null }) {
             this.url  = url;
@@ -26,19 +32,16 @@ define(["jquery"], function ($) {
                 }).get().sort(function (item1, item2) {
                     return item2.date - item1.date;
                 }).slice(0, size).map(function (item) {
+                    if (0 === item.guid.length) {
+                        item.guid = hash(that.url + item.title + item.desc);
+                    }
+
                     // Enlever les propriétés surperflues des éléments.
                     if (undefined === item.audio) {
                         delete item.audio;
                     }
                     if (0 === item.desc.length) {
                         delete item.desc;
-                    }
-                    if (0 === item.guid.length) {
-                        if (0 === item.link.length) {
-                            item.guid = that.url + Math.random().toString();
-                        } else {
-                            item.guid = item.link;
-                        }
                     }
                     if (null === item.icon) {
                         delete item.icon;
