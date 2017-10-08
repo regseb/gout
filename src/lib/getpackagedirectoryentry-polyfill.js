@@ -1,3 +1,10 @@
+"use strict";
+
+// Ajouter une prothèse pour la fonction
+// browser.runtime.getPackageDirectoryEntry() et ses sous-ensembles
+// (DirectoryEntry, DirectoryReader) tant que ces API n'ont pas été intégrées
+// dans Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1246236).
+
 if (undefined === browser.runtime.getPackageDirectoryEntry) {
     const DirectoryReader = class {
         constructor(entries) {
