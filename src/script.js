@@ -59,7 +59,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
                 });
             });
         }));
-    }; // scrapers()
+    }; // getScrapers()
 
     const getGate = function (widget) {
         const tag = widget.replace(/\//g, "-");
@@ -68,20 +68,18 @@ define(["require", "jquery", "scronpt"], function (require, $) {
             return Promise.resolve(tag);
         }
 
-        const link = document.createElement("link");
-        link.rel = "import";
-        link.href = "widget/" + widget + "/index.html";
+        return new Promise(function (resolve, reject) {
+            const link = document.createElement("link");
+            link.rel = "import";
+            link.href = "widget/" + widget + "/index.html";
 
-        const promise = new Promise(function (resolve, reject) {
             link.onload = function () {
                 resolve(tag);
             };
             link.onerror = reject;
+
+            document.head.appendChild(link);
         });
-
-        document.head.appendChild(link);
-
-        return promise;
     }; // getGate()
 
     const load = function (key, gate, url) {
