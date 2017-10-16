@@ -17,11 +17,11 @@
                 this.style.backgroundImage = "url(\"data:image/svg+xml;" +
                                              "base64," + btoa(icon) + "\")";
             }
-        } // setFiles()
+        }
 
         setScrapers(scrapers) {
             this.scrapers = scrapers;
-        } // setScrapers()
+        }
 
         display(data) {
             let $li = $("li[data-guid=\"" + data.guid + "\"]", this);
@@ -82,7 +82,7 @@
                     $a.next().html(data.desc);
                 }
             }
-        } // display()
+        }
 
         update() {
             // Si la page est cachée : ne pas actualiser les données et indiquer
@@ -100,25 +100,25 @@
                     items.forEach(that.display.bind(that));
                 });
             });
-        } // update()
+        }
 
         wake() {
             if (!this.cron.status()) {
                 this.update();
             }
-        } // wake()
+        }
 
         createdCallback() {
             const template = owner.querySelector("template").content;
             const clone = owner.importNode(template, true);
             this.appendChild(clone);
-        } // createdCallback()
+        }
 
         attachedCallback() {
             this.size = parseInt(this.style.height, 10) / 14 - 1;
 
             document.addEventListener("visibilitychange", this.wake.bind(this));
             this.update();
-        } // attachedCallback()
+        }
     });
 })();

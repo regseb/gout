@@ -19,11 +19,11 @@
                 $("span:first", this).click(this.prev.bind(this));
                 $("span:last",  this).click(this.next.bind(this));
             }
-        } // setFiles()
+        }
 
         setScrapers(scrapers) {
             this.scrapers = scrapers;
-        } // setScrapers()
+        }
 
         refresh() {
             const left = $("ul", this).position().left;
@@ -38,7 +38,7 @@
             } else {
                 $("span:last", this).css("cursor", "pointer");
             }
-        } // refresh()
+        }
 
         prev() {
             const left = $("ul", this).position().left;
@@ -46,7 +46,7 @@
                 $("ul", this).css("left", left + $(this).width());
                 this.refresh();
             }
-        } // prev()
+        }
 
         next() {
             const left = $("ul", this).position().left;
@@ -54,7 +54,7 @@
                 $("ul", this).css("left", left - $(this).width());
                 this.refresh();
             }
-        } // next()
+        }
 
         display(data) {
             let $li = $("li[data-guid=\"" + data.guid + "\"]", this);
@@ -106,7 +106,7 @@
                     $("img", $a).attr("src", data.img);
                 }
             }
-        } // display()
+        }
 
         update() {
             // Si la page est cachée : ne pas actualiser les données et indiquer
@@ -125,25 +125,25 @@
                     that.refresh();
                 });
             });
-        } // update()
+        }
 
         wake() {
             if (!this.cron.status()) {
                 this.update();
             }
-        } // wake()
+        }
 
         createdCallback() {
             const template = owner.querySelector("template").content;
             const clone = owner.importNode(template, true);
             this.appendChild(clone);
-        } // createdCallback()
+        }
 
         attachedCallback() {
             $("ul", this).width($(this).width() * this.size);
 
             document.addEventListener("visibilitychange", this.wake.bind(this));
             this.update();
-        } // attachedCallback()
+        }
     });
 })();

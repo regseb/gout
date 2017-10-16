@@ -5,13 +5,13 @@ define(["jquery"], function ($) {
         return Array.from(str).reduce(function (acc, curr) {
             return (acc << 5) - acc + curr.charCodeAt();
         }, 0);
-    }; // hash()
+    };
 
     return class {
         constructor({ url, icon = null }) {
             this.url  = url;
             this.icon = icon;
-        } // constructor()
+        }
 
         extract(size) {
             const that = this;
@@ -55,6 +55,6 @@ define(["jquery"], function ($) {
                     return item;
                 });
             });
-        } // extract()
+        }
     };
 });

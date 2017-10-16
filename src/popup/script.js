@@ -13,7 +13,7 @@
                 });
             });
         });
-    }; // readdir()
+    };
 
     const walk = function () {
         return readdir("gate").then(function (dashboards) {
@@ -44,7 +44,7 @@
             }
             return configs;
         });
-    }; // walk()
+    };
 
     const add = function (dashboard, config) {
         const item = document.createElement("div");
@@ -78,7 +78,7 @@
         }
         item.appendChild(text);
         return item;
-    }; // add()
+    };
 
     walk().then(function (configs) {
         const dashboards = Object.keys(configs);

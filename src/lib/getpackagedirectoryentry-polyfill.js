@@ -9,21 +9,21 @@ if (undefined === browser.runtime.getPackageDirectoryEntry) {
     const DirectoryReader = class {
         constructor(entries) {
             this.entries = entries;
-        } // constructor()
+        }
 
         readEntries(callback) {
             callback(this.entries);
-        } // readEntries()
-    }; // DirectoryReader()
+        }
+    };
 
     const DirectoryEntry = class {
         constructor(entries) {
             this.entries = entries;
-        } // constructor()
+        }
 
         createReader() {
             return new DirectoryReader(this.entries);
-        } // createReader()
+        }
 
         getDirectory(url, _, successCallback, errorCallback) {
             fetch("/" + url + "/").then(function (response) {
@@ -46,10 +46,10 @@ if (undefined === browser.runtime.getPackageDirectoryEntry) {
                 }
                 throw { "name": error.message };
             }).then(successCallback, errorCallback);
-        } // getDirectory()
-    }; // DirectoryEntry()
+        }
+    };
 
     browser.runtime.getPackageDirectoryEntry = function (callback) {
         callback(new DirectoryEntry(null));
-    }; // getPackageDirectoryEntry()
+    };
 }

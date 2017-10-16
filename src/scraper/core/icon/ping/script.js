@@ -18,7 +18,7 @@ define([], function () {
             this.title  = title;
             this.link   = link;
             this.colors = colors;
-        } // constructor()
+        }
 
         extract() {
             const that = this;
@@ -47,6 +47,6 @@ define([], function () {
                     "title": that.title
                 }];
             });
-        } // extract()
+        }
     };
 });

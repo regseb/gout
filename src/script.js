@@ -27,7 +27,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
                 });
             });
         });
-    }; // readdir()
+    };
 
     const read = function (file) {
         return fetch(file).then(function (response) {
@@ -36,7 +36,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
         }).then(function (response) {
             return [file, response];
         });
-    }; // read()
+    };
 
     const getFiles = function (obj, url) {
         return readdir(url).then(function (urls) {
@@ -48,7 +48,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
             }
             return Object.assign(obj, files);
         });
-    }; // getFiles()
+    };
 
     const getScrapers = function (scrapers) {
         return Promise.all(scrapers.map(function (scraper) {
@@ -59,7 +59,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
                 });
             });
         }));
-    }; // getScrapers()
+    };
 
     const getGate = function (widget) {
         const tag = widget.replace(/\//g, "-");
@@ -80,7 +80,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
 
             document.head.appendChild(link);
         });
-    }; // getGate()
+    };
 
     const load = function (key, gate, url) {
         // Si la propriété 'active' n'est pas définie : considérer que la
@@ -108,7 +108,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
                 });
             });
         });
-    }; // load()
+    };
 
     // Récupérer les paramètres transmits dans l'URL.
     const params = new URLSearchParams(window.location.search.slice(1));

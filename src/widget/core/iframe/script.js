@@ -14,7 +14,7 @@
                                  this.update.bind(this));
 
             $("iframe", this).attr("src", config.url);
-        } // setFiles()
+        }
 
         update() {
             // Si la page est cachée : ne pas actualiser les données et indiquer
@@ -27,19 +27,19 @@
             this.cron.start();
 
             $("iframe", this).attr("src", $("iframe", this).attr("src"));
-        } // update()
+        }
 
         wake() {
             if (!this.cron.status()) {
                 this.update();
             }
-        } // wake()
+        }
 
         createdCallback() {
             const template = owner.querySelector("template").content;
             const clone = owner.importNode(template, true);
             this.appendChild(clone);
-        } // createdCallback()
+        }
 
         attachedCallback() {
             $("iframe", this).attr({
@@ -48,6 +48,6 @@
             });
 
             document.addEventListener("visibilitychange", this.wake.bind(this));
-        } // attachedCallback()
+        }
     });
 })();

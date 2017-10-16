@@ -16,18 +16,18 @@
         element.setAttribute("values",        center);
         element.setAttribute("repeatCount",   "indefinite");
         return element;
-    }; // transform()
+    };
 
     document.registerElement("core-clock", class extends HTMLElement {
 
         setFiles({ "config.json": config, "icon.svg": icon }) {
             this.config = config;
             this.icon   = icon;
-        } // setFiles()
+        }
 
         setScrapers(scrapers) {
             this.scraper = scrapers[0];
-        } // setScrapers()
+        }
 
         display(time) {
             const date = new Date(time);
@@ -59,7 +59,7 @@
                                 "rotate(" + hours * 30 + ", " + cx + ", " + cy +
                                 ")");
             }
-        } // display()
+        }
 
         update() {
             // Si la page est cachée : ne pas actualiser les données et indiquer
@@ -72,19 +72,19 @@
             this.cron.start();
 
             this.scraper.extract().then(this.display.bind(this));
-        } // update()
+        }
 
         wake() {
             if (!this.cron.status()) {
                 this.update();
             }
-        } // wake()
+        }
 
         createdCallback() {
             const template = owner.querySelector("template").content;
             const clone = owner.importNode(template, true);
             this.appendChild(clone);
-        } // createdCallback()
+        }
 
         attachedCallback() {
             this.cron = new Cron(this.config.cron || "0 0 * * *",
@@ -111,6 +111,6 @@
             document.addEventListener("visibilitychange", this.wake.bind(this));
 
             this.update();
-        } // attachedCallback()
+        }
     });
 })();

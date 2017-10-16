@@ -16,11 +16,11 @@
             this.style.backgroundImage = "url(\"data:image/svg+xml;base64," +
                                          btoa(icon) + "\")";
             $("p", this).css("text-align", config.align || "left");
-        } // setFiles()
+        }
 
         setScrapers(scrapers) {
             this.scraper = scrapers[0];
-        } // setScrapers()
+        }
 
         update() {
             // Si la page est cachée : ne pas actualiser les données et indiquer
@@ -36,23 +36,23 @@
             this.scraper.extract().then(function (data) {
                 $("p", that).html(Array.isArray(data) ? data.join("") : data);
             });
-        } // update()
+        }
 
         wake() {
             if (!this.cron.status()) {
                 this.update();
             }
-        } // wake()
+        }
 
         createdCallback() {
             const template = owner.querySelector("template").content;
             const clone = owner.importNode(template, true);
             this.appendChild(clone);
-        } // createdCallback()
+        }
 
         attachedCallback() {
             document.addEventListener("visibilitychange", this.wake.bind(this));
             this.update();
-        } // attachedCallback()
+        }
     });
 })();

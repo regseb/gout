@@ -10,7 +10,7 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
 
     const multiple14 = function (num) {
         return Math.round(num / 14) * 14;
-    }; // multiple14()
+    };
 
     let dataTransfer = null;
 
@@ -32,7 +32,7 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
                 "height": target.parentNode.offsetHeight - event.clientY
             };
         }
-    }; // mousemove()
+    };
 
     const mousemove = function (event) {
         if (null === dataTransfer) {
@@ -47,11 +47,11 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
             target.width(multiple14(event.clientX + dataTransfer.width));
             target.height(multiple14(event.clientY + dataTransfer.height));
         }
-    }; // mousemove()
+    };
 
     const mouseup = function () {
         dataTransfer = null;
-    }; // mouseup()
+    };
 
     const set = function (key, gate) {
         const $dialog = $("#edit-dialog");
@@ -76,7 +76,7 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
             $("[value=\"Supprimer\"]", $dialog).show();
             $("[value=\"Enregistrer\"]", $dialog).show();
         }
-    }; // set()
+    };
 
     const get = function () {
        const $dialog = $("#edit-dialog");
@@ -89,14 +89,14 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
                "scrapers": JSON.parse($("[name=\"scrapers\"]", $dialog).val())
            }
        };
-    }; // get()
+    };
 
     const dblclick = function (event) {
         set($(".key", event.target).text(), $(event.target).data("gate"));
         const dialog = document.getElementById("edit-dialog");
         dialogPolyfill.registerDialog(dialog);
         dialog.showModal();
-    }; // dblclick()
+    };
 
     const insert = function (key, gate) {
         const $article =
@@ -112,14 +112,14 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
         $(".key", $article).text(key);
 
         $("body").append($article);
-    }; // insert()
+    };
 
     const add = function () {
         set();
         const dialog = document.getElementById("edit-dialog");
         dialogPolyfill.registerDialog(dialog);
         dialog.showModal();
-    }; // add()
+    };
 
     const code = function () {
         const config = {};
@@ -186,7 +186,7 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
         $(".key", $article).text(key);
 
         $("body").append($article);
-    }; // load()
+    };
 
     // Récupérer les paramètres transmits dans l'URL.
     const params = new URLSearchParams(window.location.search.slice(1));

@@ -26,7 +26,7 @@
             $("audio", this).attr("src", config.url);
 
             $("input", this).change(this.turn.bind(this));
-        } // setFiles()
+        }
 
         turn() {
             const audio = $("audio", this)[0];
@@ -38,12 +38,12 @@
             } else {
                 audio.play();
             }
-        } // turn()
+        }
 
         createdCallback() {
             const template = owner.querySelector("template").content;
             const clone = owner.importNode(template, true);
             this.appendChild(clone);
-        } // createdCallback()
+        }
     });
 })();

@@ -10,7 +10,7 @@
 
         setScrapers(scrapers) {
             this.scrapers = scrapers;
-        } // setScrapers()
+        }
 
         search() {
             const that = this;
@@ -21,12 +21,12 @@
                 $("datalist", that).empty();
             });
             return false;
-        } // search()
+        }
 
         propose() {
             // Afficher la liste des moteurs de recherche.
             $("ul", this).show();
-        } // propose()
+        }
 
         change(event) {
             // Cacher la liste des moteurs de recherche.
@@ -40,7 +40,7 @@
             $("input", this).attr("placeholder", $li.text());
             $("input", this).attr("title", $li.attr("title"));
             $("datalist", this).empty();
-        } // change()
+        }
 
         suggest() {
             const that = this;
@@ -52,7 +52,7 @@
                     $datalist.append($("<option>").text(suggestion));
                 }
             });
-        } // suggest()
+        }
 
         display(i, data) {
             const $li = $("<li>");
@@ -67,13 +67,13 @@
             }
 
             $("ul", this).append($li);
-        } // display()
+        }
 
         createdCallback() {
             const template = owner.querySelector("template").content;
             const clone = owner.importNode(template, true);
             this.appendChild(clone);
-        } // createdCallback()
+        }
 
         attachedCallback() {
             const height = parseInt(this.style.height, 10);
@@ -96,6 +96,6 @@
                 // Sélectionner le premier élément.
                 $("li:first", that).click();
             });
-        } // attachedCallback()
+        }
     });
 })();

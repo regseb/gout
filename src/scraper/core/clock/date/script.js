@@ -6,6 +6,6 @@ define([], function () {
             const now = new Date();
             return Promise.resolve(now.getTime() -
                                    60000 * now.getTimezoneOffset());
-        } // extract()
+        }
     };
 });

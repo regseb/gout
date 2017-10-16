@@ -18,11 +18,11 @@
                 this.style.backgroundImage = "url(\"data:image/svg+xml;" +
                                              "base64," + btoa(icon) + "\")";
             }
-        } // setFiles()
+        }
 
         setScrapers(scrapers) {
             this.scrapers = scrapers;
-        } // setScrapers()
+        }
 
         clean() {
             $("> ul > li > a", this).each(function () {
@@ -38,7 +38,7 @@
                     }
                 });
             });
-        } // clean()
+        }
 
         mouseup(event) {
             switch (event.which) {
@@ -48,7 +48,7 @@
                         $(event.target).parent().remove();
                     }, 0);
             }
-        } // mousedown()
+        }
 
         display(data) {
             let $li = $("> ul > li[data-guid=\"" + data.guid + "\"]", this);
@@ -103,7 +103,7 @@
                     $a.next().html(data.desc);
                 }
             }
-        } // display()
+        }
 
         update() {
             // Si la page est cachée : ne pas actualiser les données et indiquer
@@ -134,19 +134,19 @@
                     }
                 });
             });
-        } // update()
+        }
 
         wake() {
             if (!this.cron.status()) {
                 this.update();
             }
-        } // wake()
+        }
 
         createdCallback() {
             const template = owner.querySelector("template").content;
             const clone = owner.importNode(template, true);
             this.appendChild(clone);
-        } // createdCallback()
+        }
 
         attachedCallback() {
             const size = parseInt(this.style.height, 10) / 14;
@@ -160,6 +160,6 @@
 
             document.addEventListener("visibilitychange", this.wake.bind(this));
             this.update();
-        } // attachedCallback()
+        }
     });
 })();

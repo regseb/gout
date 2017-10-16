@@ -19,11 +19,11 @@
                 this.style.backgroundImage = "url(\"data:image/svg+xml;" +
                                              "base64," + btoa(icon) + "\")";
             }
-        } // setFiles()
+        }
 
         setScrapers(scrapers) {
             this.scrapers = scrapers;
-        } // setScrapers()
+        }
 
         start(event) {
             const $li = $(event.target).closest("li");
@@ -36,7 +36,7 @@
                                  .on("click", this.pause.bind(this));
             $("> img:last", $li).show();
             audio.play();
-        } // start()
+        }
 
         play(event) {
             const $li = $(event.target).closest("li");
@@ -45,7 +45,7 @@
                                  .off("click")
                                  .on("click", this.pause.bind(this));
             audio.play();
-        } // play()
+        }
 
         pause(event) {
             const $li = $(event.target).closest("li");
@@ -54,19 +54,19 @@
                                  .off("click")
                                  .on("click", this.play.bind(this));
             audio.pause();
-        } // pause()
+        }
 
         elapse(event) {
             const $li = $(event.target).closest("li");
             const audio = $("> audio", $li)[0];
             $("> input", $li).val(audio.currentTime);
-        } // elapse()
+        }
 
         move(event) {
             const $li = $(event.target).closest("li");
             const audio = $("> audio", $li)[0];
             audio.currentTime = $("> input", $li).val();
-        } // move()
+        }
 
         menu(event) {
             const $li = $(event.target).closest("li");
@@ -77,19 +77,19 @@
                 $("> input", $li).css("display", "inline-block");
                 $("> div", $li).hide();
             }
-        } // menu()
+        }
 
         turn(event) {
             const $li = $(event.target).closest("li");
             const audio = $("audio", $li)[0];
             audio.volume = $("> div input[type=\"range\"]", $li).val() / 100.0;
-        } // turn()
+        }
 
         speed(event) {
             const $li = $(event.target).closest("li");
             const audio = $("audio", $li)[0];
             audio.playbackRate = $("> div input[type!=\"range\"]", $li).val();
-        } // speed()
+        }
 
         display(data) {
             let $li = $("li[data-guid=\"" + data.guid + "\"]", this);
@@ -171,7 +171,7 @@
                     $a.next().html(data.desc);
                 }
             }
-        } // display()
+        }
 
         update() {
             // Si la page est cachée : ne pas actualiser les données et indiquer
@@ -189,25 +189,25 @@
                     items.forEach(that.display.bind(that));
                 });
             });
-        } // update()
+        }
 
         wake() {
             if (!this.cron.status()) {
                 this.update();
             }
-        } // wake()
+        }
 
         createdCallback() {
             const template = owner.querySelector("template").content;
             const clone = owner.importNode(template, true);
             this.appendChild(clone);
-        } // createdCallback()
+        }
 
         attachedCallback() {
             this.size = parseInt(this.style.height, 10) / 14 - 1;
 
             document.addEventListener("visibilitychange", this.wake.bind(this));
             this.update();
-        } // attachedCallback()
+        }
     });
 })();

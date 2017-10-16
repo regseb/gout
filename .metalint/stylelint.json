@@ -51,7 +51,7 @@
         "function-url-scheme-whitelist": null,
         "function-whitelist": null,
 
-        "number-max-precision": null,
+        "number-max-precision": 2,
 
         "time-min-milliseconds": 100,
 

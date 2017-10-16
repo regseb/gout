@@ -32,12 +32,12 @@
 
             // Insérer le nom de la personne saluée.
             this.getElementsByTagName("span")[0].textContent = config.who;
-        } // setFiles()
+        }
 
         createdCallback() {
             const template = owner.querySelector("template").content;
             const clone = owner.importNode(template, true);
             this.appendChild(clone);
-        } // createdCallback()
+        }
     });
 })();

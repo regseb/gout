@@ -12,7 +12,7 @@ define([], function () {
             this.color = color;
             this.icon  = icon;
             this.desc  = desc;
-        } // constructor()
+        }
 
         info() {
             const data = {
@@ -25,7 +25,7 @@ define([], function () {
                 delete data.desc;
             }
             return Promise.resolve(data);
-        } // info()
+        }
 
         suggest(searchTerms) {
             if (0 !== searchTerms.length && "suggestions" in this.urls) {
@@ -38,11 +38,11 @@ define([], function () {
                 });
             }
             return Promise.resolve([]);
-        } // suggest()
+        }
 
         result(searchTerms) {
             return Promise.resolve(this.urls.results.replace("{searchTerms}",
                                                              searchTerms));
-        } // result()
+        }
     };
 });

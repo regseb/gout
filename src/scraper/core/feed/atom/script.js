@@ -5,7 +5,7 @@ define(["jquery"], function ($) {
         constructor({ url, icon = null }) {
             this.url  = url;
             this.icon = icon;
-        } // constructor()
+        }
 
         extract(size) {
             const that = this;
@@ -34,6 +34,6 @@ define(["jquery"], function ($) {
                     return item;
                 });
             });
-        } // extract()
+        }
     };
 });

@@ -12,11 +12,11 @@
         setFiles({ "config.json": config }) {
             this.cron = new Cron(config.cron || "0 0 1 1 0",
                                  this.update.bind(this));
-        } // setFiles()
+        }
 
         setScrapers(scrapers) {
             this.scrapers = scrapers;
-        } // setScrapers()
+        }
 
         display(data) {
             this.style.backgroundColor = data.color;
@@ -27,7 +27,7 @@
             } else {
                 $("> span", this).hide();
             }
-        } // display()
+        }
 
         update() {
             // Si la page est cachée : ne pas actualiser les données et indiquer
@@ -45,23 +45,23 @@
                     items.forEach(that.display.bind(that));
                 });
             });
-        } // update()
+        }
 
         wake() {
             if (!this.cron.status()) {
                 this.update();
             }
-        } // wake()
+        }
 
         createdCallback() {
             const template = owner.querySelector("template").content;
             const clone = owner.importNode(template, true);
             this.appendChild(clone);
-        } // createdCallback()
+        }
 
         attachedCallback() {
             document.addEventListener("visibilitychange", this.wake.bind(this));
             this.update();
-        } // attachedCallback()
+        }
     });
 })();
