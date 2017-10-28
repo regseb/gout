@@ -131,20 +131,19 @@
                                            .on("input", this.move.bind(this)))
                        .append($("<audio>").attr("src", data.audio)
                                            .on("timeupdate",
-                                               this.elapse.bind(this)));
+                                               this.elapse.bind(this)))
 
-                    const $div = $("<div>");
-                    $div.append($("<img>").attr("src", IMG_DIR + "volume.svg"))
+                       .append($("<div>")
+                        .append($("<img>").attr("src", IMG_DIR + "volume.svg"))
                         .append($("<input>").attr("type", "range")
                                             .on("input", this.turn.bind(this)))
                         .append($("<img>").attr("src", IMG_DIR + "speed.svg"))
                         .append($("<input>").attr("type", "text")
                                             .val("1")
                                             .on("input",
-                                                this.speed.bind(this)));
-                    $li.append($div);
+                                                this.speed.bind(this))))
 
-                    $li.append($("<img>").attr("src", IMG_DIR + "menu.svg")
+                       .append($("<img>").attr("src", IMG_DIR + "menu.svg")
                                          .click(this.menu.bind(this)));
 
                     if (-1 === pos) {
