@@ -42,7 +42,7 @@
         "no-unknown-animations": true,
 
 
-        "color-named": null,
+        "color-named": "always-where-possible",
         "color-no-hex": null,
 
         "function-blacklist": null,
@@ -109,7 +109,7 @@
 
 
         "color-hex-case": "lower",
-        "color-hex-length": null,
+        "color-hex-length": "long",
 
         "font-family-name-quotes": "always-where-recommended",
 

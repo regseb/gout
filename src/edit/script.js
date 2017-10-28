@@ -2,7 +2,7 @@ require.config({
     "baseUrl": "../lib"
 });
 
-define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
+define(["jquery"], function ($) {
     "use strict";
 
     // Supprimer les variables globales de jQuery.
@@ -143,7 +143,7 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
         dialogPolyfill.registerDialog(dialog);
         $("textarea", dialog).val(JSON.stringify(config, null, 4));
         dialog.showModal();
-    }; // code()
+    };
 
     $("button.add").click(add);
     $("button.code").click(code);
@@ -159,12 +159,14 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
                 {}, gate, { "coord": { "x": 1, "y": 1, "w": 5, "h": 5 } }));
         } else if ("Supprimer" === this.returnValue) {
             const { origin } = get();
-            $(".key:contains(\"" + origin + "\")").parent().remove();
+            $(".key").filter(function () {
+                return origin === $(this).text();
+            }).parent().remove();
         } else if ("Enregistrer" === this.returnValue) {
             const { origin, key, gate } = get();
-            $(".key:contains(\"" + origin + "\")").text(key)
-                                                  .parent()
-                                                  .data("gate", gate);
+            $(".key").filter(function () {
+                return origin === $(this).text();
+            }).text(key).parent().data("gate", gate);
         }
     });
 
@@ -189,7 +191,7 @@ define(["dialog-polyfill", "jquery"], function (dialogPolyfill, $) {
     };
 
     // Récupérer les paramètres transmits dans l'URL.
-    const params = new URLSearchParams(window.location.search.slice(1));
+    const params = new URL(window.location.href).searchParams;
     const dashboard = params.get("dashboard");
     const config    = params.has("config") ? params.get("config")
                                            : "config";

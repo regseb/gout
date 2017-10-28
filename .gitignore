@@ -1,2 +1,6 @@
 .gitmodules
-node_modules
+node_modules/
+build/
+dist/
+config.json
+src/manifest.json

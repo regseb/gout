@@ -2,37 +2,39 @@
 
 "use strict";
 
-const fs = require("fs");
+const fs   = require("fs");
+const path = require("path");
 
 /**
  * La liste des fichiers des bibliothèques à récupérer.
  */
 const LIBS = [
-    {
-        "src":  "dialog-polyfill/dialog-polyfill.css",
-        "dest": "dialog-polyfill.css"
-    }, {
-        "src":  "dialog-polyfill/dialog-polyfill.js",
-        "dest": "dialog-polyfill.js"
-    }, {
-        "src":  "jquery/dist/jquery.js",
-        "dest": "jquery.js"
-    }, {
-        "src":  "requirejs/require.js",
-        "dest": "requirejs.js"
-    }, {
-        "src":  "scronpt/scronpt.js",
-        "dest": "scronpt.js"
-    }, {
-        "src":  "webcomponents.js/webcomponents-lite.js",
-        "dest": "webcomponents-lite.js"
-    }, {
-        "src":  "webextension-polyfill/dist/browser-polyfill.js",
-        "dest": "browser-polyfill.js"
-    }
+    "dialog-polyfill/dialog-polyfill.css",
+    "dialog-polyfill/dialog-polyfill.js",
+    "jquery/dist/jquery.js",
+    "requirejs/require.js",
+    "scronpt/scronpt.js",
+    "webcomponents.js/webcomponents-lite.js",
+    "webextension-polyfill/dist/browser-polyfill.js"
 ];
 
+// Copier les biblithèques.
 for (const lib of LIBS) {
-    fs.createReadStream("node_modules/" + lib.src).pipe(
-                                   fs.createWriteStream("src/lib/" + lib.dest));
+    fs.createReadStream("node_modules/" + lib).pipe(
+                         fs.createWriteStream("src/lib/" + path.basename(lib)));
+}
+
+// Initialiser le fichier de configuration s'il n'existe pas.
+if (!fs.existsSync("config.json")) {
+    const config = {
+        "firefox": {
+            "id":     null,
+            "issuer": null,
+            "secret": null
+        },
+        "chrome": {
+            "key": null
+        }
+    };
+    fs.writeFileSync("config.json", JSON.stringify(config, null, 4) + "\n");
 }

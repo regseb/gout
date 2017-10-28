@@ -102,6 +102,10 @@ input[type="text"]:focus, textarea:focus {
 input[type="text"]:focus::placeholder, textarea:focus::placeholder {
     opacity: 0.06;
 }
+input[type="text"]:invalid, textarea:invalid {
+    border-bottom-color: #f44336;
+    box-shadow: none;
+}
 h3 input[type="text"] {
     font-size: 2em;
 }

@@ -53,6 +53,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
     const getScrapers = function (scrapers) {
         return Promise.all(scrapers.map(function (scraper) {
             return new Promise(function (resolve) {
+                // Remonter dans le répertoire parent pour sortir de lib/.
                 require(["../scraper/" + scraper.scraper + "/script"],
                         function (Construct) {
                     resolve(new Construct(scraper.config));
@@ -61,7 +62,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
         }));
     };
 
-    const getGate = function (widget) {
+    const getWidget = function (widget) {
         const tag = widget.replace(/\//g, "-");
         // Si le widget a déjà été chargé.
         if (HTMLElement !== document.createElement(tag).constructor) {
@@ -72,10 +73,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
             const link = document.createElement("link");
             link.rel = "import";
             link.href = "widget/" + widget + "/index.html";
-
-            link.onload = function () {
-                resolve(tag);
-            };
+            link.onload = resolve.bind(undefined, tag);
             link.onerror = reject;
 
             document.head.appendChild(link);
@@ -89,7 +87,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
             return;
         }
 
-        getGate(gate.widget).then(function (tag) {
+        getWidget(gate.widget).then(function (tag) {
             getFiles(gate.files || {}, url).then(function (files) {
                 getScrapers(gate.scrapers || []).then(function (scrapers) {
                     const elem = document.createElement(tag);
@@ -111,7 +109,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
     };
 
     // Récupérer les paramètres transmits dans l'URL.
-    const params = new URLSearchParams(window.location.search.slice(1));
+    const params = new URL(window.location.href).searchParams;
 
     const dashboard = params.get("dashboard");
     document.title = dashboard + " - " + document.title;

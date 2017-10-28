@@ -24,9 +24,9 @@
     },
     "scripts": {
         "postinstall": "bin/postinstall.js",
-        "firefox": "bin/firefox.js",
-        "chrome": "bin/chrome.js",
-        "lint": "metalint"
+        "lint": "metalint",
+        "gout:init": "bin/init.js",
+        "gout:sign": "bin/sign.js"
     },
     "dependencies": {
         "dialog-polyfill": "^0.4.9",
@@ -37,7 +37,6 @@
         "webextension-polyfill": "^0.2.1"
     },
     "devDependencies": {
-        "addons-linter": "^0.27.0",
         "eslint": "^4.9.0",
         "htmlhint": "^0.9.13",
         "jsonlint": "^1.6.2",

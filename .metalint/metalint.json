@@ -23,9 +23,6 @@
         }, {
             "patterns": "**/*.json",
             "linters": { "jsonlint": { "comments": false } }
-        }, {
-            "patterns": "**/*.xpi",
-            "linters": { "addons-linter": null }
         }
     ]
 }

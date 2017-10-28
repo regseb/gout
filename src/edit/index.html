@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <title>Gout - Édition</title>
-    <link rel="stylesheet"    href="../lib/dialog-polyfill.css" />
+    <link rel="stylesheet"    href="/lib/dialog-polyfill.css" />
     <link rel="stylesheet"    href="style.css" />
-    <link rel="shortcut icon" href="../img/icon.svg" />
+    <link rel="shortcut icon" href="/img/icon.svg" />
   </head>
   <body>
     <nav>
@@ -36,19 +36,19 @@
           <label>
             Widget
             <input type="text" name="widget" placeholder="example/hello"
-                   pattern="\w+(/\w+)*" />
+                   pattern="(community|core|example)(/\w+)+" />
           </label>
         </p>
         <p>
           <label>
-            Fichiers<br />
+            Fichiers
             <textarea name="files" cols="80" rows="6"
                       placeholder="{}"></textarea>
           </label>
         </p>
         <p>
           <label>
-            Scrapers<br />
+            Scrapers
             <textarea name="scrapers" cols="80" rows="8"
                       placeholder="[]"></textarea>
           </label>
@@ -72,6 +72,7 @@
         </menu>
       </form>
     </dialog>
-    <script data-main="script" src="../lib/requirejs.js"></script>
+    <script src="/lib/dialog-polyfill.js"></script>
+    <script data-main="script" src="/lib/require.js"></script>
   </body>
 </html>
