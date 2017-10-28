@@ -50,7 +50,11 @@ define(["jquery"], function ($) {
                         delete item.img;
                     }
                     if (0 === item.link.length) {
-                        delete item.link;
+                        if ("audio" in item) {
+                            item.link = item.audio;
+                        } else {
+                            delete item.link;
+                        }
                     }
                     return item;
                 });
