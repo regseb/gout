@@ -18,7 +18,7 @@
     "no-multiple-space-closed-atx": true,
     "blanks-around-headers": true,
     "header-start-left": true,
-    "no-duplicate-header": true,
+    "no-duplicate-header": false,
     "single-h1": true,
     "no-trailing-punctuation": true,
     "no-multiple-space-blockquote": true,

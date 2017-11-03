@@ -1,6 +1,6 @@
 {
     "name": "gout",
-    "version": "0.7.1",
+    "version": "0.8.0",
     "description": "Agrégateur d'Internet (flux RSS et tout le reste).",
     "keyword": [
         "gout",
@@ -33,17 +33,17 @@
         "jquery": "^3.2.1",
         "requirejs": "^2.3.5",
         "scronpt": "^0.3.1",
-        "webcomponents.js": "^0.7.24",
+        "@webcomponents/custom-elements": "^1.0.4",
         "webextension-polyfill": "^0.2.1"
     },
     "devDependencies": {
-        "eslint": "^4.9.0",
+        "eslint": "^4.11.0",
         "htmlhint": "^0.9.13",
         "jsonlint": "^1.6.2",
-        "markdownlint": "^0.6.1",
+        "markdownlint": "^0.6.4",
         "metalint": "^0.7.1",
-        "stylelint": "^8.2.0",
-        "sign-addon": "^0.2.1",
+        "stylelint": "^8.4.0",
+        "sign-addon": "^0.2.2",
         "archiver": "^2.1.0"
     }
 }
