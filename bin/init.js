@@ -9,7 +9,12 @@ const ROOT_DIR = path.join(__dirname, "..");
 const SRC_DIR  = path.join(ROOT_DIR, "src");
 
 const config = require(path.join(ROOT_DIR, "config"));
-const manifest = require(path.join(SRC_DIR, "manifest-base"));
+const manifest = require(path.join(SRC_DIR, "manifest-vanilla"));
+
+if (null !== config.name) {
+    manifest.name += " - " + config.name;
+    manifest["browser_action"]["default_title"] += " - " + config.name;
+}
 
 // Gérer les propriétés pour Firefox.
 if (null === config.firefox.id) {

@@ -27,6 +27,7 @@ for (const lib of LIBS) {
 // Initialiser le fichier de configuration s'il n'existe pas.
 if (!fs.existsSync("config.json")) {
     const config = {
+        "name": null,
         "firefox": {
             "id":     null,
             "issuer": null,
