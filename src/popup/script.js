@@ -16,10 +16,10 @@
     };
 
     const walk = function () {
-        return readdir("gate").then(function (dashboards) {
+        return readdir("widget").then(function (dashboards) {
             return Promise.all(dashboards.filter((d) => !d.startsWith("."))
                                          .map(function (dashboard) {
-                return readdir("gate/" + dashboard).then(function (configs) {
+                return readdir("widget/" + dashboard).then(function (configs) {
                     return [dashboard, configs];
                 });
             }));

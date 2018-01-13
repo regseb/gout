@@ -6,7 +6,7 @@ Ce scraper extrait les données au fomat
 ## Configuration
 
 La configuration contient un objet
-[JSON](http://www.json.org/json-fr.html "JavaScript Object Notation") avec les
+[JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
 propriétés suivantes :
 
 - `"title"` : le nom du moteur de recherche ;
@@ -28,7 +28,7 @@ Cet exemple fourni trois moteurs de recherche : *Google*, *Bing* et *Yahoo*.
 ```JSON
 {
     "search": {
-        "widget": "core/search",
+        "module": "core/search",
         "coord": { "x": 1, "y": 1, "w": 17, "h": 2 },
         "scrapers": [
             {
@@ -40,7 +40,7 @@ Cet exemple fourni trois moteurs de recherche : *Google*, *Bing* et *Yahoo*.
                         "suggestions": "https://www.google.com/complete/search?client=firefox&q={searchTerms}"
                     },
                     "color": "#2196f3",
-                    "icon": "gate/me/search/google.svg"
+                    "icon": "widget/me/search/google.svg"
                 }
             }, {
                 "scraper": "core/search/opensearch",
@@ -51,7 +51,7 @@ Cet exemple fourni trois moteurs de recherche : *Google*, *Bing* et *Yahoo*.
                         "suggestions": "https://www.bing.com/osjson.aspx?query={searchTerms}"
                     },
                     "color": "#ffc107",
-                    "icon": "gate/me/search/bing.svg"
+                    "icon": "widget/me/search/bing.svg"
                 }
             }, {
                 "scraper": "core/search/opensearch",
@@ -62,7 +62,7 @@ Cet exemple fourni trois moteurs de recherche : *Google*, *Bing* et *Yahoo*.
                         "suggestions": "https://fr.search.yahoo.com/sugg/os?command={searchTerms}&output=fxjson"
                     },
                     "color": "#673ab7",
-                    "icon": "gate/me/search/yahoo.svg"
+                    "icon": "widget/me/search/yahoo.svg"
                 }
             }
         ]

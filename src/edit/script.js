@@ -53,12 +53,12 @@ define(["jquery"], function ($) {
         dataTransfer = null;
     };
 
-    const set = function (key, gate) {
+    const set = function (key, widget) {
         const $dialog = $("#edit-dialog");
         if (undefined === key) {
             $("[name=\"origin\"]", $dialog).val("");
             $("[name=\"key\"]", $dialog).val("");
-            $("[name=\"widget\"]", $dialog).val("");
+            $("[name=\"module\"]", $dialog).val("");
             $("[name=\"files\"]", $dialog).val("{}");
             $("[name=\"scrapers\"]", $dialog).val("[]");
             $("[value=\"Ajouter\"]", $dialog).show();
@@ -67,11 +67,11 @@ define(["jquery"], function ($) {
         } else {
             $("[name=\"origin\"]", $dialog).val(key);
             $("[name=\"key\"]", $dialog).val(key);
-            $("[name=\"widget\"]", $dialog).val(gate.widget);
+            $("[name=\"module\"]", $dialog).val(widget.module);
             $("[name=\"files\"]", $dialog).val(
-                                           JSON.stringify(gate.files, null, 4));
+                                         JSON.stringify(widget.files, null, 4));
             $("[name=\"scrapers\"]", $dialog).val(
-                                        JSON.stringify(gate.scrapers, null, 4));
+                                      JSON.stringify(widget.scrapers, null, 4));
             $("[value=\"Ajouter\"]", $dialog).hide();
             $("[value=\"Supprimer\"]", $dialog).show();
             $("[value=\"Enregistrer\"]", $dialog).show();
@@ -83,8 +83,8 @@ define(["jquery"], function ($) {
        return {
            "origin": $("[name=\"origin\"]", $dialog).val(),
            "key":    $("[name=\"key\"]", $dialog).val(),
-           "gate":   {
-               "widget":   $("[name=\"widget\"]", $dialog).val(),
+           "widget": {
+               "module":   $("[name=\"module\"]", $dialog).val(),
                "files":    JSON.parse($("[name=\"files\"]", $dialog).val()),
                "scrapers": JSON.parse($("[name=\"scrapers\"]", $dialog).val())
            }
@@ -92,20 +92,20 @@ define(["jquery"], function ($) {
     };
 
     const dblclick = function (event) {
-        set($(".key", event.target).text(), $(event.target).data("gate"));
+        set($(".key", event.target).text(), $(event.target).data("widget"));
         const dialog = document.getElementById("edit-dialog");
         dialogPolyfill.registerDialog(dialog);
         dialog.showModal();
     };
 
-    const insert = function (key, gate) {
+    const insert = function (key, widget) {
         const $article =
             $("<article>").attr("draggable", true)
-                          .data("gate", gate)
-                          .css({ "left": gate.coord.x * 1.4 + "em",
-                                 "top":  gate.coord.y * 1.4 + "em" })
-                          .width(gate.coord.w * 1.4 + "em")
-                          .height(gate.coord.h * 1.4 + "em")
+                          .data("widget", widget)
+                          .css({ "left": widget.coord.x * 1.4 + "em",
+                                 "top":  widget.coord.y * 1.4 + "em" })
+                          .width(widget.coord.w * 1.4 + "em")
+                          .height(widget.coord.h * 1.4 + "em")
                           .html($("template").html())
                           .on("mousedown", mousedown)
                           .on("dblclick", dblclick);
@@ -125,18 +125,18 @@ define(["jquery"], function ($) {
         const config = {};
         $("article").each(function () {
             const $article = $(this);
-            const gate = $article.data("gate");
+            const widget = $article.data("widget");
             config[$(".key", $article).text()] = {
-                "widget": gate.widget,
-                "active": "active" in gate ? gate.active : true,
+                "module": widget.module,
+                "active": "active" in widget ? widget.active : true,
                 "coord":  {
                     "x": Math.round($article.offset().left / 14),
                     "y": Math.round($article.offset().top / 14),
                     "w": Math.round($article.width() / 14),
                     "h": Math.round($article.height() / 14)
                 },
-                "files":    gate.files,
-                "scrapers": gate.scrapers
+                "files":    widget.files,
+                "scrapers": widget.scrapers
             };
         });
         const dialog = document.getElementById("code-dialog");
@@ -154,34 +154,34 @@ define(["jquery"], function ($) {
     document.getElementById("edit-dialog").addEventListener("close",
                                                             function () {
         if ("Ajouter" === this.returnValue) {
-            const { key, gate } = get();
+            const { key, widget } = get();
             insert(key, Object.assign(
-                {}, gate, { "coord": { "x": 1, "y": 1, "w": 5, "h": 5 } }));
+                {}, widget, { "coord": { "x": 1, "y": 1, "w": 5, "h": 5 } }));
         } else if ("Supprimer" === this.returnValue) {
             const { origin } = get();
             $(".key").filter(function () {
                 return origin === $(this).text();
             }).parent().remove();
         } else if ("Enregistrer" === this.returnValue) {
-            const { origin, key, gate } = get();
+            const { origin, key, widget } = get();
             $(".key").filter(function () {
                 return origin === $(this).text();
-            }).text(key).parent().data("gate", gate);
+            }).text(key).parent().data("widget", widget);
         }
     });
 
-    const load = function (key, gate) {
+    const load = function (key, widget) {
         // Définir des valeurs par défaut.
-        gate.files    = gate.files    || {};
-        gate.scrapers = gate.scrapers || [];
+        widget.files    = widget.files    || {};
+        widget.scrapers = widget.scrapers || [];
 
         const $article =
             $("<article>").attr("draggable", true)
-                          .data("gate", gate)
-                          .css({ "left": gate.coord.x * 14 + "px",
-                                 "top":  gate.coord.y * 14 + "px" })
-                          .width(gate.coord.w * 14 + "px")
-                          .height(gate.coord.h * 14 + "px")
+                          .data("widget", widget)
+                          .css({ "left": widget.coord.x * 14 + "px",
+                                 "top":  widget.coord.y * 14 + "px" })
+                          .width(widget.coord.w * 14 + "px")
+                          .height(widget.coord.h * 14 + "px")
                           .html($("template").html())
                           .on("mousedown", mousedown)
                           .on("dblclick", dblclick);
@@ -200,14 +200,13 @@ define(["jquery"], function ($) {
     if ("config" !== config) {
         $("a").attr("href", $("a").attr("href") + "&config=" + config);
     }
-    // Charger les passerelles contenues dans la configuration du tableau de
-    // bord.
-    const url = "../gate/" + dashboard + "/" + config + ".json";
+    // Charger les widgets contenues dans la configuration du tableau debbord.
+    const url = "../widget/" + dashboard + "/" + config + ".json";
     fetch(url).then(function (response) {
         return response.json();
-    }).then(function (gates) {
-        for (const key in gates) {
-            load(key, gates[key]);
+    }).then(function (widgets) {
+        for (const key in widgets) {
+            load(key, widgets[key]);
         }
     });
 });

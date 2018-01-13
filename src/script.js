@@ -3,7 +3,7 @@ require.config({
 });
 
 // Charger toutes les bibliothèques pour pouvoir les charger en synchrone dans
-// les widgets.
+// les modules.
 define(["require", "jquery", "scronpt"], function (require, $) {
     "use strict";
 
@@ -62,46 +62,44 @@ define(["require", "jquery", "scronpt"], function (require, $) {
         }));
     };
 
-    const getWidget = function (widget) {
-        const tag = widget.replace(/\//g, "-");
-        // Si le widget a déjà été chargé.
-        if (HTMLElement !== document.createElement(tag).constructor) {
-            return Promise.resolve(tag);
-        }
-
+    const getModule = function (module) {
         return new Promise(function (resolve, reject) {
-            const link = document.createElement("link");
-            link.rel = "import";
-            link.href = "widget/" + widget + "/index.html";
-            link.onload = resolve.bind(undefined, tag);
-            link.onerror = reject;
-
-            document.head.appendChild(link);
+            const src = "module/" + module + "/script.js";
+            // Charger le module une seule fois.
+            if (null === document.querySelector("[src=\"" + src + "\"]")) {
+                const script = document.createElement("script");
+                script.src = src;
+                script.onload = resolve;
+                script.onerror = reject;
+                document.head.appendChild(script);
+            } else {
+                resolve();
+            }
+        }).then(function () {
+            const tag = module.replace(/\//g, "-");
+            return customElements.whenDefined(tag).then(() => tag);
         });
     };
 
-    const load = function (key, gate, url) {
-        // Si la propriété 'active' n'est pas définie : considérer que la
-        // passerelle est active.
-        if (false === gate.active) {
+    const load = function (key, widget, url) {
+        // Si la propriété 'active' n'est pas définie : considérer que le widget
+        // est active.
+        if (false === widget.active) {
             return;
         }
 
-        getWidget(gate.widget).then(function (tag) {
-            getFiles(gate.files || {}, url).then(function (files) {
-                getScrapers(gate.scrapers || []).then(function (scrapers) {
+        getModule(widget.module).then(function (tag) {
+            getFiles(widget.files || {}, url).then(function (files) {
+                getScrapers(widget.scrapers || []).then(function (scrapers) {
                     const elem = document.createElement(tag);
                     elem.id           = key.replace(/\//g, "-");
-                    elem.style.left   = gate.coord.x * 14 + "px";
-                    elem.style.top    = gate.coord.y * 14 + "px";
-                    elem.style.width  = gate.coord.w * 14 + "px";
-                    elem.style.height = gate.coord.h * 14 + "px";
-                    if ("setFiles" in elem) {
-                        elem.setFiles(files);
-                    }
-                    if ("setScrapers" in elem) {
-                        elem.setScrapers(scrapers);
-                    }
+                    elem.style.left   = widget.coord.x * 14 + "px";
+                    elem.style.top    = widget.coord.y * 14 + "px";
+                    elem.style.width  = widget.coord.w * 14 + "px";
+                    elem.style.height = widget.coord.h * 14 + "px";
+                    elem.files        = files;
+                    elem.scrapers     = scrapers;
+
                     document.body.appendChild(elem);
                 });
             });
@@ -122,14 +120,13 @@ define(["require", "jquery", "scronpt"], function (require, $) {
         config = "config";
     }
 
-    // Charger les passerelles contenues dans la configuration du tableau de
-    // bord.
-    const url = "gate/" + dashboard + "/" + config + ".json";
+    // Charger les widget contenus dans la configuration du tableau de bord.
+    const url = "widget/" + dashboard + "/" + config + ".json";
     fetch(url).then(function (response) {
         return response.json();
-    }).then(function (gates) {
-        for (const key in gates) {
-            load(key, gates[key], "gate/" + dashboard + "/" + key);
+    }).then(function (widgets) {
+        for (const key in widgets) {
+            load(key, widgets[key], "widget/" + dashboard + "/" + key);
         }
     });
 });

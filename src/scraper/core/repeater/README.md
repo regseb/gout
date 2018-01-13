@@ -2,7 +2,7 @@
 
 Ce scraper retourne les données de la configuration.
 
-Il peut être utilisé avec tous les widgets demandant une méthode `extract()`
+Il peut être utilisé avec tous les modules demandant une méthode `extract()`
 dans le scraper.
 
 ## Configuration
@@ -19,7 +19,7 @@ et *[Google+](https://plus.google.com/)*.
 ```JSON
 {
     "list/social": {
-        "widget": "core/list",
+        "module": "core/list",
         "coord": { "x": 1, "y": 1, "w": 20, "h": 4 },
         "files": {
             "config.json": {

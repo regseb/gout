@@ -2,7 +2,7 @@
 
 Ce scraper retourne l'heure actuelle.
 
-Il peut être utilisé avec le widget `core/clock`.
+Il peut être utilisé avec le module `core/clock`.
 
 ## Configuration
 
@@ -15,7 +15,7 @@ Cet configuration affiche l'heure courante.
 ```JSON
 {
     "clock": {
-        "widget": "core/clock",
+        "module": "core/clock",
         "coord": { "x": 1, "y": 1, "w": 5, "h": 5 },
         "files": {
             "config.json": {}
