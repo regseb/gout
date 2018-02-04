@@ -68,8 +68,8 @@ define(["require", "jquery", "scronpt"], function (require, $) {
             // Charger le module une seule fois.
             if (null === document.querySelector("[src=\"" + src + "\"]")) {
                 const script = document.createElement("script");
-                script.src = src;
-                script.onload = resolve;
+                script.src     = src;
+                script.onload  = resolve;
                 script.onerror = reject;
                 document.head.appendChild(script);
             } else {
@@ -83,8 +83,8 @@ define(["require", "jquery", "scronpt"], function (require, $) {
 
     const load = function (key, widget, url) {
         // Si la propriété 'active' n'est pas définie : considérer que le widget
-        // est active.
-        if (false === widget.active) {
+        // est actif.
+        if ("active" in widget && !widget.active) {
             return;
         }
 
@@ -106,7 +106,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
         });
     };
 
-    // Récupérer les paramètres transmits dans l'URL.
+    // Récupérer les paramètres transmis dans l'URL.
     const params = new URL(window.location.href).searchParams;
 
     const dashboard = params.get("dashboard");
@@ -120,13 +120,13 @@ define(["require", "jquery", "scronpt"], function (require, $) {
         config = "config";
     }
 
-    // Charger les widget contenus dans la configuration du tableau de bord.
+    // Charger les widgets contenus dans la configuration du tableau de bord.
     const url = "widget/" + dashboard + "/" + config + ".json";
     fetch(url).then(function (response) {
         return response.json();
     }).then(function (widgets) {
-        for (const key in widgets) {
-            load(key, widgets[key], "widget/" + dashboard + "/" + key);
+        for (const [key, widget] of Object.entries(widgets)) {
+            load(key, widget, "widget/" + dashboard + "/" + key);
         }
     });
 });

@@ -190,23 +190,27 @@ define(["jquery"], function ($) {
         $("body").append($article);
     };
 
-    // Récupérer les paramètres transmits dans l'URL.
+    // Récupérer les paramètres transmis dans l'URL.
     const params = new URL(window.location.href).searchParams;
-    const dashboard = params.get("dashboard");
-    const config    = params.has("config") ? params.get("config")
-                                           : "config";
 
+    const dashboard = params.get("dashboard");
     $("a").attr("href", $("a").attr("href") + "?dashboard=" + dashboard);
-    if ("config" !== config) {
+
+    let config;
+    if (params.has("config")) {
+        config = params.get("config");
         $("a").attr("href", $("a").attr("href") + "&config=" + config);
+    } else {
+        config = "config";
     }
-    // Charger les widgets contenues dans la configuration du tableau debbord.
+
+    // Charger les widgets contenus dans la configuration du tableau de bord.
     const url = "../widget/" + dashboard + "/" + config + ".json";
     fetch(url).then(function (response) {
         return response.json();
     }).then(function (widgets) {
-        for (const key in widgets) {
-            load(key, widgets[key]);
+        for (const [key, widget] of Object.entries(widgets)) {
+            load(key, widget);
         }
     });
 });

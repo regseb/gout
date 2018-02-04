@@ -25,7 +25,7 @@ define([], function () {
             return fetch(this.url).then(function (response) {
                 // Choisir la couleur en fonction du code HTTP.
                 let color = that.colors["0"];
-                for (const prefix in that.colors) {
+                for (const prefix of Object.keys(that.colors)) {
                     if (response.status.toString().startsWith(prefix)) {
                         color = that.colors[prefix];
                         break;

@@ -30,20 +30,20 @@
     },
     "dependencies": {
         "dialog-polyfill": "^0.4.9",
-        "jquery": "^3.2.1",
+        "jquery": "^3.3.1",
         "requirejs": "^2.3.5",
         "scronpt": "^0.3.1",
-        "@webcomponents/custom-elements": "^1.0.4",
+        "@webcomponents/custom-elements": "^1.0.8",
         "webextension-polyfill": "^0.2.1"
     },
     "devDependencies": {
-        "eslint": "^4.11.0",
+        "archiver": "^2.1.1",
+        "eslint": "^4.17.0",
         "htmlhint": "^0.9.13",
         "jsonlint": "^1.6.2",
-        "markdownlint": "^0.6.4",
+        "markdownlint": "^0.7.0",
         "metalint": "^0.7.1",
-        "stylelint": "^8.4.0",
         "sign-addon": "^0.2.2",
-        "archiver": "^2.1.0"
+        "stylelint": "^8.4.0"
     }
 }

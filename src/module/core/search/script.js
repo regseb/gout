@@ -85,8 +85,8 @@ fetch("module/core/search/index.html").then(function (response) {
             const that = this;
             Promise.all(this._scrapers.map((s) => s.info())).then(
                                                               function (infos) {
-                for (const i in infos) {
-                    that.display(i, infos[i]);
+                for (const [i, info] of infos.entries()) {
+                    that.display(i, info);
                 }
 
                 // Sélectionner le premier élément.

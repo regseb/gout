@@ -26,13 +26,7 @@
         }).then(function (results) {
             const configs = {};
             for (const result of results) {
-                configs[result[0]] = result[1];
-            }
-            return configs;
-        }).then(function (configs) {
-            for (const dashboard in configs) {
-                configs[dashboard] = configs[dashboard].filter(
-                                                             function (config) {
+                configs[result[0]] = result[1].filter(function (config) {
                     return !config.startsWith(".") && config.endsWith(".json");
                 }).map(function (config) {
                     return config.slice(0, -5);
