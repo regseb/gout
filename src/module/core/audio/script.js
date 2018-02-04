@@ -18,10 +18,12 @@ fetch("module/core/audio/index.html").then(function (response) {
 
             const volume = $("input", this).val();
             audio.volume = volume / 100.0;
-            if (0 === volume) {
+            if ("0" === volume) {
                 audio.pause();
+                $("> a", this).css("opacity", "");
             } else {
                 audio.play();
+                $("> a", this).css("opacity", "1");
             }
         }
 
