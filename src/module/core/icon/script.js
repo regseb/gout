@@ -21,8 +21,8 @@ fetch("module/core/icon/index.html").then(function (response) {
             this.style.backgroundColor = data.color;
             $("> a", this).attr("href", data.link);
             $("> a img", this).attr("src", data.icon);
-            if ("desc" in data) {
-                $("> span", this).html(data.desc).show();
+            if ("title" in data) {
+                $("> span", this).html(data.title).show();
             } else {
                 $("> span", this).hide();
             }
@@ -55,6 +55,8 @@ fetch("module/core/icon/index.html").then(function (response) {
         connectedCallback() {
             this.appendChild(template.content.cloneNode(true));
 
+            this.querySelector("a").setAttribute(
+                                     "target", this._config.target || "_blank");
             this.cron = new Cron(this._config.cron || "0 0 1 1 0",
                                  this.update.bind(this));
 

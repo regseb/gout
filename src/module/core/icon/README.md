@@ -6,9 +6,13 @@ Ce module affiche une icône dans un lien.
 
 Le répertoire du widget doit avoir un fichier ***config.json*** contenant un
 objet
-[JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec la
-propriété suivante :
+[JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
+propriétés suivantes :
 
+- `"target"` (optionnel - valeur par défaut : `"_blank"`) : le contexte où sera
+  ouvert le lien (cf. l'attribut
+  `[target](https://developer.mozilla.org/fr/docs/Web/HTML/Element/a#attr-target)`
+  de l'élément HTML `<a>`) ;
 - `"cron"` (optionnel - valeur par défaut : `"0 0 1 1 0"`) : la notation cron
   indiquant la fréquence de mise à jour.
 
