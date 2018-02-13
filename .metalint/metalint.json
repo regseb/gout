@@ -1,6 +1,6 @@
 {
     "patterns": [
-        "!.git/**", "!node_modules/**", "!**/lib/**", "**"
+        "!.git/**", "!node_modules/**", "!**/lib/**", "!**/community/**", "**"
     ],
     "hidden": true,
     "verbose": 2,
