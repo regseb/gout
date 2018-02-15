@@ -18,14 +18,13 @@ const LIBS = [
 
 // Copier les bibliothèques.
 for (const lib of LIBS) {
-    fs.createReadStream("node_modules/" + lib).pipe(
-                         fs.createWriteStream("src/lib/" + path.basename(lib)));
+    fs.createReadStream("node_modules/" + lib)
+      .pipe(fs.createWriteStream("src/lib/" + path.basename(lib)));
 }
 
 // Initialiser le fichier de configuration s'il n'existe pas.
 if (!fs.existsSync("config.json")) {
     const config = {
-        "name":    null,
         "firefox": {
             "id":     null,
             "issuer": null,
