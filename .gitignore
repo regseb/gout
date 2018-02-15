@@ -1,6 +1,4 @@
-.gitmodules
-node_modules/
 build/
-dist/
 config.json
-src/manifest.json
+dist/
+node_modules/
