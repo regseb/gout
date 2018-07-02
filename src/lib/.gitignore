@@ -1,5 +1,5 @@
+!/.gitignore
+!/getpackagedirectoryentry-polyfill.js
+!/launchwebauthflow-polyfill.js
+!/README.md
 *
-!.gitignore
-!README.md
-!launchwebauthflow-polyfill.js
-!getpackagedirectoryentry-polyfill.js
