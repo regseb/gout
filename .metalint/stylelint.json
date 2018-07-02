@@ -48,6 +48,7 @@
         "function-url-scheme-whitelist": null,
         "function-whitelist": null,
 
+        "keyframes-name-pattern": null,
         "number-max-precision": 2,
 
         "time-min-milliseconds": 100,
@@ -77,6 +78,8 @@
         "selector-attribute-operator-blacklist": null,
         "selector-attribute-operator-whitelist": null,
         "selector-class-pattern": null,
+        "selector-combinator-blacklist": null,
+        "selector-combinator-whitelist": null,
         "selector-id-pattern": null,
         "selector-max-attribute": null,
         "selector-max-class": null,
@@ -84,6 +87,7 @@
         "selector-max-compound-selectors": null,
         "selector-max-empty-lines": 0,
         "selector-max-id": 1,
+        "selector-max-pseudo-class": 2,
         "selector-max-specificity": null,
         "selector-max-type": null,
         "selector-max-universal": null,
@@ -92,9 +96,12 @@
         "selector-no-vendor-prefix": true,
         "selector-pseudo-class-blacklist": null,
         "selector-pseudo-class-whitelist": null,
+        "selector-pseudo-element-blacklist": null,
+        "selector-pseudo-element-whitelist": null,
 
         "media-feature-name-blacklist": null,
         "media-feature-name-no-vendor-prefix": true,
+        "media-feature-name-value-whitelist": null,
         "media-feature-name-whitelist": null,
 
         "custom-media-pattern": null,

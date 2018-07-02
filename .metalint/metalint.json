@@ -1,28 +1,29 @@
 {
     "patterns": [
-        "!.git/**", "!node_modules/**", "!**/lib/**", "!**/community/**", "**"
+        "!/.git/", "!/node_modules/", "!/src/lib/", "!**/community/", "**"
     ],
-    "hidden": true,
-    "verbose": 2,
     "checkers": [
         {
-            "patterns": "src/**/*.js",
+            "patterns": "/src/**/*.js",
             "linters": { "eslint": ["eslint.json", "eslint_webext.json"] }
         }, {
-            "patterns": "bin/**/*.js",
+            "patterns": "/bin/**/*.js",
             "linters": { "eslint": ["eslint.json", "eslint_nodejs.json"] }
         }, {
-            "patterns": "**/*.html",
+            "patterns": "*.html",
             "linters": "htmlhint"
         }, {
-            "patterns": "**/*.css",
+            "patterns": "*.css",
             "linters": "stylelint"
         }, {
-            "patterns": "**/*.md",
+            "patterns": "*.md",
             "linters": "markdownlint"
         }, {
-            "patterns": "**/*.json",
-            "linters": { "jsonlint": { "comments": false } }
+            "patterns": "*.json",
+            "linters": { "jsonlint": null }
+        }, {
+            "patterns": "/package.json",
+            "linters": "david"
         }
     ]
 }
