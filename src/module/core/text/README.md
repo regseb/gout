@@ -11,7 +11,7 @@ objet
 propriétés suivantes :
 
 - `"align"` (optionnel - valeur par défaut : `"left"`) : l'alignement du texte,
-  les possibles sont `"left"`, `"center"`, `"right"` et `"justify"` ;
+  les valeurs possibles sont `"left"`, `"center"`, `"right"` et `"justify"` ;
 - `"color"` (optionnel - valeur par défaut : `"black"`) : la couleur de fond du
   cadre (au format hexadécimale, régulier RGB ou avec des mots-clefs
   prédéfinis) ;
@@ -20,8 +20,6 @@ propriétés suivantes :
 
 Une image ayant pour nom ***icon.svg*** doit aussi est présente dans le
 répertoire du widget.
-
-Aucune dimension particulière est conseillée.
 
 ## Scraper
 
@@ -34,20 +32,17 @@ Cet exemple affiche un cadre noir avec le texte *Carpe diem*.
 
 ```JSON
 {
-    "text/carpe": {
-        "module": "core/text",
-        "coord": { "x": 1, "y": 1, "w": 10, "h": 2 },
-        "files": {
-            "config.json": {
-                "cron": "0 0 1 1 0"
-            }
-        },
-        "scrapers": [
-            {
-                "scraper": "core/repeater",
-                "config": "Carpe diem"
-            }
-        ]
-    }
+    "module": "core/text",
+    "files": {
+        "config.json": {
+            "cron": "@yearly"
+        }
+    },
+    "scrapers": [
+        {
+            "scraper": "core/repeater",
+            "config": "Carpe diem"
+        }
+    ]
 }
 ```

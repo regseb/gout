@@ -22,24 +22,21 @@ Cet configuration indique l'état du serveur `localhost`.
 
 ```JSON
 {
-    "ping/localhost": {
-        "module": "core/icon",
-        "coord": { "x": 1, "y": 1, "w": 4, "h": 4 },
-        "files": {
-            "config.json": {
-                "cron": "0 1 * * *"
+    "module": "core/icon",
+    "files": {
+        "config.json": {
+            "cron": "@hourly"
+        }
+    },
+    "scrapers": [
+        {
+            "scraper": "core/icon/ping",
+            "config": {
+                "url": "http://localhost",
+                "icon": "widget/me/ping/localhost/icon.svg",
+                "desc": "localhost"
             }
-        },
-        "scrapers": [
-            {
-                "scraper": "core/icon/ping",
-                "config": {
-                    "url": "http://localhost",
-                    "icon": "widget/me/ping/localhost/icon.svg",
-                    "desc": "localhost"
-                }
-            }
-        ]
-    }
+        }
+    ]
 }
 ```

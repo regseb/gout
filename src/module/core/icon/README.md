@@ -13,15 +13,14 @@ propriétés suivantes :
   ouvert le lien (cf. l'attribut
   `[target](https://developer.mozilla.org/fr/docs/Web/HTML/Element/a#attr-target)`
   de l'élément HTML `<a>`) ;
-- `"cron"` (optionnel - valeur par défaut : `"0 0 1 1 0"`) : la notation cron
+- `"cron"` (optionnel - valeur par défaut : `"@yearly"`) : la notation cron
   indiquant la fréquence de mise à jour.
-
-Le module doit être carré.
 
 ## Scraper
 
 Un seul scraper peut-être associé à ce module. Il doit définir une méthode
-`extract()` qui retourne un tableau avec un objet JSON ayant les propriétés :
+`extract()` qui retourne un tableau avec un seul objet JSON ayant les
+propriétés :
 
 - `"icon"` : l'URL de l'image ;
 - `"link"` : le lien vers une page Internet ;
@@ -39,21 +38,18 @@ Cet exemple affiche un bouton qui redirige vers *Facebook*.
 
 ```JSON
 {
-    "icon/facebook": {
-        "module": "core/icon",
-        "coord": { "x": 1, "y": 1, "w": 3, "h": 3 },
-        "files": { "config.json": {} },
-        "scrapers": [
-            {
-                "scraper": "core/repeater",
-                "config": [{
-                    "icon": "widget/community/me/icon/facebook/icon.svg",
-                    "link": "https://www.facebook.com/",
-                    "title": "Facebook",
-                    "color": "#2196f3"
-                }]
-            }
-        ]
-    }
+    "module": "core/icon",
+    "files": { "config.json": {} },
+    "scrapers": [
+        {
+            "scraper": "core/repeater",
+            "config": [{
+                "icon": "widget/community/me/icon/facebook/icon.svg",
+                "link": "https://www.facebook.com/",
+                "title": "Facebook",
+                "color": "#2196f3"
+            }]
+        }
+    ]
 }
 ```

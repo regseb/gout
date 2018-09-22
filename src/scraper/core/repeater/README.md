@@ -18,32 +18,29 @@ et *[Google+](https://plus.google.com/)*.
 
 ```JSON
 {
-    "list/social": {
-        "module": "core/list",
-        "coord": { "x": 1, "y": 1, "w": 20, "h": 4 },
-        "files": {
-            "config.json": {
-                "color": "#f0a30a",
-                "cron": "0 0 1 1 0"
-            }
-        },
-        "scrapers": [
-            {
-                "scraper": "core/repeater",
-                "config": [
-                    {
-                        "link": "https://www.facebook.com/",
-                        "title": "Facebook"
-                    }, {
-                        "link": "https://www.twitter.com/",
-                        "title": "Twitter"
-                    }, {
-                        "link": "https://plus.google.com/",
-                        "title": "Google+"
-                    }
-                ]
-            }
-        ]
-    }
+    "module": "core/list",
+    "files": {
+        "config.json": {
+            "color": "#f0a30a",
+            "cron": "@yearly"
+        }
+    },
+    "scrapers": [
+        {
+            "scraper": "core/repeater",
+            "config": [
+                {
+                    "link": "https://www.facebook.com/",
+                    "title": "Facebook"
+                }, {
+                    "link": "https://www.twitter.com/",
+                    "title": "Twitter"
+                }, {
+                    "link": "https://plus.google.com/",
+                    "title": "Google+"
+                }
+            ]
+        }
+    ]
 }
 ```

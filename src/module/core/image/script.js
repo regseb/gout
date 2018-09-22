@@ -18,14 +18,15 @@ fetch("module/core/image/index.html").then(function (response) {
         }
 
         refresh() {
-            const left = $("ul", this).position().left;
-            if (0 === left) {
+            $("li", this).hide();
+            $("li:eq(" + this.index + ")", this).show();
+            if (0 === this.index) {
                 $("span:first", this).css("cursor", "not-allowed");
             } else {
                 $("span:first", this).css("cursor", "pointer");
             }
 
-            if (-1 * $(this).width() * ($("li", this).length - 1) === left) {
+            if ($("li", this).length - 1 === this.index) {
                 $("span:last", this).css("cursor", "not-allowed");
             } else {
                 $("span:last", this).css("cursor", "pointer");
@@ -33,17 +34,15 @@ fetch("module/core/image/index.html").then(function (response) {
         }
 
         prev() {
-            const left = $("ul", this).position().left;
-            if (0 !== left) {
-                $("ul", this).css("left", left + $(this).width());
+            if (0 !== this.index) {
+                --this.index;
                 this.refresh();
             }
         }
 
         next() {
-            const left = $("ul", this).position().left;
-            if (-1 * $(this).width() * ($("li", this).length - 1) !== left) {
-                $("ul", this).css("left", left - $(this).width());
+            if ($("li", this).length - 1 !== this.index) {
+                ++this.index;
                 this.refresh();
             }
         }
@@ -59,10 +58,10 @@ fetch("module/core/image/index.html").then(function (response) {
                         pos = i;
                     }
                 });
-                if (pos !== this.size - 1) {
+                if (pos !== this.max - 1) {
                     // Supprimer la plus ancienne image (si la liste est
                     // pleine).
-                    $("> ul > li:eq(" + (this.size - 1) + ")", this).remove();
+                    $("> ul > li:eq(" + (this.max - 1) + ")", this).remove();
 
                     // Créer la case de la nouvelle image.
                     const $a = $("<a>").attr({ "href":   data.link,
@@ -75,8 +74,6 @@ fetch("module/core/image/index.html").then(function (response) {
 
                     $li = $("<li>").attr("data-guid", data.guid)
                                    .data("date", data.date)
-                                   .height($(this).height())
-                                   .width($(this).width())
                                    .append($a);
 
                     if (-1 === pos) {
@@ -112,8 +109,9 @@ fetch("module/core/image/index.html").then(function (response) {
 
             const that = this;
             this._scrapers.forEach(function (scraper) {
-                scraper.extract(that.size).then(function (items) {
+                scraper.extract(that.max).then(function (items) {
                     items.forEach(that.display.bind(that));
+                    that.index = 0;
                     that.refresh();
                 });
             });
@@ -127,12 +125,11 @@ fetch("module/core/image/index.html").then(function (response) {
 
         connectedCallback() {
             this.appendChild(template.content.cloneNode(true));
-            $("ul", this).width($(this).width() * this.size);
-
             this.cron = new Cron(this._config.cron, this.update.bind(this));
-            this.size = this._config.size;
+            this.max = this._config.max || 1;
+            this.index = 0;
 
-            if (1 === this.size) {
+            if (1 === this.max) {
                 $("span", this).remove();
             } else {
                 $("span:first", this).click(this.prev.bind(this));

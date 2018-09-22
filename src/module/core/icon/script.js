@@ -57,7 +57,7 @@ fetch("module/core/icon/index.html").then(function (response) {
 
             this.querySelector("a").setAttribute(
                                      "target", this._config.target || "_blank");
-            this.cron = new Cron(this._config.cron || "0 0 1 1 0",
+            this.cron = new Cron(this._config.cron || "@yearly",
                                  this.update.bind(this));
 
             document.addEventListener("visibilitychange", this.wake.bind(this));

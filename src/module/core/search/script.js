@@ -72,15 +72,9 @@ fetch("module/core/search/index.html").then(function (response) {
 
         connectedCallback() {
             this.appendChild(template.content.cloneNode(true));
-            const height = parseInt(this.style.height, 10);
-            const width  = parseInt(this.style.width,  10);
             $("form", this).submit(this.search.bind(this));
-            $("img", this).width(height - 14)
-                          .height(height - 14)
-                          .click(this.propose.bind(this));
-            $("input", this).width(width - height - 7)
-                            .height(height - 15)
-                            .on("input", this.suggest.bind(this));
+            $("img", this).click(this.propose.bind(this));
+            $("input", this).on("input", this.suggest.bind(this));
 
             const that = this;
             Promise.all(this._scrapers.map((s) => s.info())).then(

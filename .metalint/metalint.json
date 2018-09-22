@@ -10,7 +10,7 @@
             "patterns": "/bin/**/*.js",
             "linters": { "eslint": ["eslint.json", "eslint_nodejs.json"] }
         }, {
-            "patterns": "*.html",
+            "patterns": ["!/src/widget/", "*.html"],
             "linters": "htmlhint"
         }, {
             "patterns": "*.css",

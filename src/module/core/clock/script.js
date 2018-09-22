@@ -82,7 +82,7 @@ fetch("module/core/clock/index.html").then(function (response) {
 
         connectedCallback() {
             this.appendChild(template.content.cloneNode(true));
-            this.cron = new Cron(this._config.cron || "0 0 * * *",
+            this.cron = new Cron(this._config.cron || "@daily",
                                  this.update.bind(this));
 
             $(this).css("background-color", this._config.color || "black");

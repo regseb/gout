@@ -18,8 +18,6 @@ propriétés suivantes :
 Une image ayant pour nom ***icon.svg*** doit aussi est présente dans le
 répertoire du widget.
 
-Les dimensions conseillées sont **20x2**.
-
 ## Scraper
 
 Ce module n'utilise pas de scraper.
@@ -30,14 +28,11 @@ Cet exemple affiche le texte « Hello world! » sur fond rouge.
 
 ```JSON
 {
-    "example/hello/world": {
-        "module": "example/hello",
-        "coord": { "x": 1, "y": 1, "w": 20, "h": 2 },
-        "files": {
-            "config.json": {
-                "color": "#f44336",
-                "who": "world"
-            }
+    "module": "example/hello",
+    "files": {
+        "config.json": {
+            "color": "#f44336",
+            "who": "world"
         }
     }
 }

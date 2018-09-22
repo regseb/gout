@@ -18,6 +18,28 @@ fetch("module/core/list/index.html").then(function (response) {
             this._scrapers = scrapers;
         }
 
+        filter(items) {
+            // S'il faut afficher les éléments déjà visités : ne rien filtrer.
+            if (this.visited) {
+                return Promise.resolve(items);
+            }
+
+            // Sinon, chercher si les éléments sont déjà dans l'historique.
+            const researchs = items.map(function (item) {
+                const query = {
+                    "text":       item.link,
+                    "startTime":  0,
+                    "maxResults": 1
+                };
+                return browser.history.search(query).then(function (histories) {
+                    return 0 === histories.length ? item : null;
+                });
+            });
+            return Promise.all(researchs).then(function (research) {
+                return research.filter((i) => null !== i);
+            });
+        }
+
         display(data, empty = false) {
             // Supprimer éventuellement la ligne indiquant que la liste est
             // vide.
@@ -30,15 +52,13 @@ fetch("module/core/list/index.html").then(function (response) {
                     pos = i;
                 }
             });
-            if (pos !== this.size - 1) {
+            if (pos !== this.max - 1) {
                 // Supprimer le plus ancien évènement (si la liste est pleine).
-                $("> ul > li:eq(" + (this.size - 1) + ")", this).remove();
+                $("> ul > li:eq(" + (this.max - 1) + ")", this).remove();
 
                 // Créer la ligne du nouvel évènement.
-                const $li = $("<li>")
-                        .attr({ "data-guid": data.guid,
-                                "class":     empty ? "empty" : "" })
-                        .data("date", data.date);
+                const $li = $("<li>").addClass(empty ? "empty" : "")
+                                     .data("date", data.date);
 
                 if ("icon" in data) {
                     $li.append($("<img>").attr("src", data.icon));
@@ -80,10 +100,9 @@ fetch("module/core/list/index.html").then(function (response) {
             }
             const that = this;
             this._scrapers.forEach(function (scraper) {
-                scraper.extract(that.size).then(function (items) {
-                    for (const item of items) {
-                        that.display(item);
-                    }
+                scraper.extract(that.max).then(that.filter)
+                                         .then(function (items) {
+                    items.forEach(that.display.bind(that));
                 });
             });
         }
@@ -96,8 +115,9 @@ fetch("module/core/list/index.html").then(function (response) {
 
         connectedCallback() {
             this.appendChild(template.content.cloneNode(true));
-            this.size = this.clientHeight / 14 - 1;
             this.cron = new Cron(this._config.cron, this.update.bind(this));
+            this.max = this._config.max || Number.MAX_SAFE_INTEGER;
+            this.visited = this._config.visited || true;
             this.empty = this._config.empty || null;
 
             this.style.backgroundColor = this._config.color;

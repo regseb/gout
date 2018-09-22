@@ -29,10 +29,10 @@ fetch("module/core/feed/index.html").then(function (response) {
                         pos = i;
                     }
                 });
-                if (pos !== this.size - 1) {
+                if (pos !== this.max - 1) {
                     // Supprimer le plus ancien évènement (si la liste est
                     // pleine).
-                    $("> ul > li:eq(" + (this.size - 1) + ")", this).remove();
+                    $("> ul > li:eq(" + (this.max - 1) + ")", this).remove();
 
                     // Créer la ligne du nouvel évènement.
                     $li = $("<li>").attr("data-guid", data.guid)
@@ -91,7 +91,7 @@ fetch("module/core/feed/index.html").then(function (response) {
 
             const that = this;
             this._scrapers.forEach(function (scraper) {
-                scraper.extract(that.size).then(function (items) {
+                scraper.extract(that.max).then(function (items) {
                     items.forEach(that.display.bind(that));
                 });
             });
@@ -105,8 +105,8 @@ fetch("module/core/feed/index.html").then(function (response) {
 
         connectedCallback() {
             this.appendChild(template.content.cloneNode(true));
-            this.size = parseInt(this.style.height, 10) / 14 - 1;
             this.cron = new Cron(this._config.cron, this.update.bind(this));
+            this.max = this._config.max || Number.MAX_SAFE_INTEGER;
 
             this.style.backgroundColor = this._config.color;
             if (undefined !== this._icon) {

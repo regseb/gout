@@ -1,3 +1,6 @@
 core-iframe iframe {
     border: none;
+    height: 100%;
+    vertical-align: top;
+    width: 100%;
 }

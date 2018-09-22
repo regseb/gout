@@ -3,9 +3,11 @@ core-feed {
     background-position: right 0.7em center;
     background-repeat: no-repeat;
     background-size: auto calc(100% - 1.4em);
+    display: block;
     font-family: Verdana, sans-serif;
     font-size: 10px;
     line-height: 1.4em;
+    padding: 0.7em;
 }
 core-feed a {
     color: white;
@@ -19,7 +21,7 @@ core-feed a[href]:hover {
 }
 core-feed > ul {
     list-style-type: none;
-    margin: 0.7em;
+    margin: 0;
     padding-left: 0;
 }
 core-feed > ul > li > img {

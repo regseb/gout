@@ -17,7 +17,8 @@
 
     const walk = function () {
         return readdir("widget").then(function (dashboards) {
-            return Promise.all(dashboards.filter((d) => !d.startsWith("."))
+            return Promise.all(dashboards.filter((d) => !d.startsWith(".") &&
+                                                        "README.md" !== d)
                                          .map(function (dashboard) {
                 return readdir("widget/" + dashboard).then(function (configs) {
                     return [dashboard, configs];
@@ -27,7 +28,7 @@
             const configs = {};
             for (const result of results) {
                 configs[result[0]] = result[1].filter(function (config) {
-                    return !config.startsWith(".") && config.endsWith(".json");
+                    return !config.startsWith(".") && config.endsWith(".html");
                 }).map(function (config) {
                     return config.slice(0, -5);
                 }).sort(function (config1, config2) {

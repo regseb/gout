@@ -21,23 +21,20 @@ Cet exemple affiche les dernières actualités du site
 
 ```JSON
 {
-    "feed/linuxfr": {
-        "module": "core/feed",
-        "coord": { "x": 1, "y": 1, "w": 28, "h": 6 },
-        "files": {
-            "config.json": {
-                "color": "#ff9800",
-                "cron": "*/10 * * * *"
+    "module": "core/feed",
+    "files": {
+        "config.json": {
+            "color": "#ff9800",
+            "cron": "*/10 * * * *"
+        }
+    },
+    "scrapers": [
+        {
+            "scraper": "core/feed/atom",
+            "config": {
+                "url": "https://linuxfr.org/news.atom"
             }
-        },
-        "scrapers": [
-            {
-                "scraper": "core/feed/atom",
-                "config": {
-                    "url": "https://linuxfr.org/news.atom"
-                }
-            }
-        ]
-    }
+        }
+    ]
 }
 ```

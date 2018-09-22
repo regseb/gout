@@ -35,14 +35,10 @@ fetch("module/core/iframe/index.html").then(function (response) {
         connectedCallback() {
             this.appendChild(template.content.cloneNode(true));
 
-            this.cron = new Cron(this._config.cron || "0 0 1 1 0",
+            this.cron = new Cron(this._config.cron || "@yearly",
                                  this.update.bind(this));
 
             $("iframe", this).attr("src", this._config.url);
-            $("iframe", this).attr({
-                "width":  parseInt(this.style.width,  10),
-                "height": parseInt(this.style.height, 10)
-            });
 
             document.addEventListener("visibilitychange", this.wake.bind(this));
         }

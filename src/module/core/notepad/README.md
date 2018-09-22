@@ -22,8 +22,6 @@ le dessin n'est pas carré, il faut le centrer verticalement et l'aligner à
 droite. Seule la couleur noire doit être utilisée et elle doit avoir une opacité
 de `0.2`.
 
-Aucune dimension particulière est conseillée.
-
 ## Scraper
 
 Ce module n'utilise pas de scraper.
@@ -34,15 +32,12 @@ Cet exemple affiche un bloc-notes pour une liste de courses.
 
 ```JSON
 {
-    "notepad": {
-        "module": "core/notepad",
-        "coord": { "x": 1, "y": 1, "w": 10, "h": 8 },
-        "files": {
-            "config.json": {
-                "title": "...",
-                "desc": "Liste de courses",
-                "color": "#607d8b"
-            }
+    "module": "core/notepad",
+    "files": {
+        "config.json": {
+            "title": "...",
+            "desc": "Liste de courses",
+            "color": "#607d8b"
         }
     }
 }

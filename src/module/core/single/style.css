@@ -1,17 +1,19 @@
 core-single {
     background-color: black;
+    display: block;
     font-family: Verdana, sans-serif;
     font-size: 10px;
     line-height: 1.4em;
+    padding: 0.7em;
 }
 core-single > img {
     float: left;
-    height: calc(100% - 1.4em);
-    margin: 0.7em;
+    height: 1.4em;
+    margin-right: 0.7em;
     opacity: 0.8;
 }
 core-single > p {
-    margin: 0.7em;
+    margin: 0;
 }
 core-single > p > a {
     color: white;

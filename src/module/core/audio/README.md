@@ -23,28 +23,24 @@ doit être carrée et le dessin doit occupé toute la zone de l'image. Si le des
 n'est pas carré, il faut le centrer verticalement et horizontalement. Seule la
 couleur blanche doit être utilisée et elle doit avoir une opacité de `0.8`.
 
-Le module doit être carré.
-
 ## Scraper
 
 Ce module n'utilise pas de scraper.
 
 ## Exemple
 
-Cet exemple affiche cadre pour écouter la radio [Fip](http://www.fipradio.fr/).
+Cet exemple affiche un widget pour écouter la radio
+[Fip](http://www.fipradio.fr/).
 
 ```JSON
 {
-    "audio/fip": {
-        "module": "core/audio",
-        "coord": { "x": 1, "y": 1, "w": 5, "h": 5 },
-        "files": {
-            "config.json": {
-                "url": "https://direct.fipradio.fr/live/fip-midfi.mp3",
-                "link": "http://www.fipradio.fr/",
-                "desc": "Fip",
-                "color": "#e91e63"
-            }
+    "module": "core/audio",
+    "files": {
+        "config.json": {
+            "url": "https://direct.fipradio.fr/live/fip-midfi.mp3",
+            "link": "http://www.fipradio.fr/",
+            "desc": "Fip",
+            "color": "#e91e63"
         }
     }
 }

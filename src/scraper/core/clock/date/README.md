@@ -14,17 +14,12 @@ Cet configuration affiche l'heure courante.
 
 ```JSON
 {
-    "clock": {
-        "module": "core/clock",
-        "coord": { "x": 1, "y": 1, "w": 5, "h": 5 },
-        "files": {
-            "config.json": {}
-        },
-        "scrapers": [
-            {
-                "scraper": "core/clock/date"
-            }
-        ]
-    }
+    "module": "core/clock",
+    "files": { "config.json": {} },
+    "scrapers": [
+        {
+            "scraper": "core/clock/date"
+        }
+    ]
 }
 ```

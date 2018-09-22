@@ -1,8 +1,11 @@
 core-image {
+    display: block;
     font-family: Verdana, sans-serif;
     font-size: 10px;
+    height: 100%;
     line-height: 1.4em;
     overflow: hidden;
+    position: relative;
 }
 core-image span {
     background-color: black;
@@ -33,12 +36,13 @@ core-image span:last-of-type {
 }
 
 core-image ul {
+    height: 100%;
     margin-top: 0;
     padding-left: 0;
-    position: absolute;
 }
 core-image li {
-    display: inline-block;
+    display: none;
+    height: 100%;
 }
 core-image a {
     background-position: center center;

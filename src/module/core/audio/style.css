@@ -1,18 +1,21 @@
 core-audio {
     font-family: Verdana, sans-serif;
     font-size: 10px;
+    display: block;
     line-height: 1.4em;
+    position: relative;
 }
 core-audio > a {
     display: block;
-    margin: 0.7em;
     opacity: 0.8;
+    padding: 0.7em;
     transition: 0.2s ease-out;
 }
 core-audio > a:hover {
     opacity: 1;
 }
 core-audio > a img {
+    vertical-align: top;
     width: 100%;
 }
 core-audio > span {

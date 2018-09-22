@@ -6,8 +6,6 @@ Ce module affiche une zone de saisie pour faire une recherche.
 
 Aucun fichier est nécessaire. La configuration se fait avec les scrapers.
 
-La hauteur conseillé est **2**.
-
 ## Scraper
 
 Les scrapers associés à ce module doivent définir trois méthodes :
@@ -29,23 +27,20 @@ Cet exemple fourni le moteur de recherche : *DuckDuckGo*.
 
 ```JSON
 {
-    "search": {
-        "module": "core/search",
-        "coord": { "x": 1, "y": 1, "w": 17, "h": 2 },
-        "scrapers": [
-            {
-                "scraper": "core/search/opensearch",
-                "config": {
-                    "title": "DuckDuckGo",
-                    "urls": {
-                        "results": "https://duckduckgo.com/?q={searchTerms}",
-                        "suggestions": "https://ac.duckduckgo.com/ac/?q={searchTerms}&type=list"
-                    },
-                    "color": "#f44336",
-                    "icon": "widget/me/search/duckduckgo.svg"
-                }
+    "module": "core/search",
+    "scrapers": [
+        {
+            "scraper": "core/search/opensearch",
+            "config": {
+                "title": "DuckDuckGo",
+                "urls": {
+                    "results": "https://duckduckgo.com/?q={searchTerms}",
+                    "suggestions": "https://ac.duckduckgo.com/ac/?q={searchTerms}&type=list"
+                },
+                "color": "#f44336",
+                "icon": "widget/me/search/duckduckgo.svg"
             }
-        ]
-    }
+        }
+    ]
 }
 ```

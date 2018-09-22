@@ -12,6 +12,8 @@ propriétés suivantes :
 - `"color"` : la couleur de fond du cadre (au format hexadécimale, régulier RGB
   ou avec des mots-clefs prédéfinis) ;
 - `"cron"` : la notation cron indiquant la fréquence de mise à jour.
+- `"max"` (optionnel - aucune limite par défaut) : le nombre maximal d'éléments
+  affichés dans le widget.
 
 Une image ayant pour nom ***icon.svg*** peut aussi est présente dans le
 répertoire du widget. Par défaut, le symbole *Podcast* sera utilisé. L'image
@@ -19,15 +21,11 @@ doit être carrée et le dessin doit occupé toute la zone de l'image. Si le des
 n'est pas carré, il faut le centrer verticalement et l'aligner à droite. Seule
 la couleur noire doit être utilisée et elle doit avoir une opacité de `0.2`.
 
-**28** est une taille raisonnable pour la largeur du cadre. La hauteur dépend
-du nombre d'émissions qu'il faut afficher dans le cadre. Si vous souhaitez avoir
-les *N* dernières émissions : il faut fixer la hauteur à *N + 1*.
-
 ## Scraper
 
 Les scrapers associés à ce module doivent définir une méthode `extract()` qui
-prend en paramètre un nombre indiquant le nombre de résultats à retourner.
-Chaque résultat est un objet JSON ayant les propriétés :
+prend en paramètre un entier indiquant le nombre maximal de résultats à
+retourner. Chaque résultat est un objet JSON ayant les propriétés :
 
 - `"title"` : le titre de l'émission ;
 - `"audio"` : l'URL du fichier audio ;
@@ -45,23 +43,21 @@ Cette configuration affiche les deux dernières émissions du podcast *Studio
 
 ```JSON
 {
-    "podcast/studio404": {
-        "module": "core/podcast",
-        "coord": { "x": 1, "y": 1, "w": 28, "h": 3 },
-        "files": {
-            "config.json": {
-                "color": "black",
-                "cron": "0 0 * * * *"
+    "module": "core/podcast",
+    "files": {
+        "config.json": {
+            "color": "black",
+            "cron": "@daily",
+            "max": 2
+        }
+    },
+    "scrapers": [
+        {
+            "scraper": "core/feed/rss",
+            "config": {
+                "url": "https://feed.pippa.io/public/shows/studio-404"
             }
-        },
-        "scrapers": [
-            {
-                "scraper": "core/feed/rss",
-                "config": {
-                    "url": "https://feed.pippa.io/public/shows/studio-404"
-                }
-            }
-        ]
-    }
+        }
+    ]
 }
 ```

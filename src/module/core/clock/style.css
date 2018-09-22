@@ -1,6 +1,10 @@
+core-clock {
+    display: block;
+}
 core-clock object {
     display: block;
     height: calc(100% - 1.4em);
     padding: 0.7em;
+    vertical-align: top;
     width: calc(100% - 1.4em);
 }

@@ -27,45 +27,42 @@ Cet exemple fourni trois moteurs de recherche : *Google*, *Bing* et *Yahoo*.
 
 ```JSON
 {
-    "search": {
-        "module": "core/search",
-        "coord": { "x": 1, "y": 1, "w": 17, "h": 2 },
-        "scrapers": [
-            {
-                "scraper": "core/search/opensearch",
-                "config": {
-                    "title": "Google",
-                    "urls": {
-                        "results": "https://www.google.fr/search?q={searchTerms}",
-                        "suggestions": "https://www.google.com/complete/search?client=firefox&q={searchTerms}"
-                    },
-                    "color": "#2196f3",
-                    "icon": "widget/me/search/google.svg"
-                }
-            }, {
-                "scraper": "core/search/opensearch",
-                "config": {
-                    "title": "Bing",
-                    "urls": {
-                        "results": "https://www.bing.com/search?q={searchTerms}",
-                        "suggestions": "https://www.bing.com/osjson.aspx?query={searchTerms}"
-                    },
-                    "color": "#ffc107",
-                    "icon": "widget/me/search/bing.svg"
-                }
-            }, {
-                "scraper": "core/search/opensearch",
-                "config": {
-                    "title": "Yahoo",
-                    "urls": {
-                        "results": "https://fr.search.yahoo.com/search?p={searchTerms}",
-                        "suggestions": "https://fr.search.yahoo.com/sugg/os?command={searchTerms}&output=fxjson"
-                    },
-                    "color": "#673ab7",
-                    "icon": "widget/me/search/yahoo.svg"
-                }
+    "module": "core/search",
+    "scrapers": [
+        {
+            "scraper": "core/search/opensearch",
+            "config": {
+                "title": "Google",
+                "urls": {
+                    "results": "https://www.google.fr/search?q={searchTerms}",
+                    "suggestions": "https://www.google.com/complete/search?client=firefox&q={searchTerms}"
+                },
+                "color": "#2196f3",
+                "icon": "widget/me/search/google.svg"
             }
-        ]
-    }
+        }, {
+            "scraper": "core/search/opensearch",
+            "config": {
+                "title": "Bing",
+                "urls": {
+                    "results": "https://www.bing.com/search?q={searchTerms}",
+                    "suggestions": "https://www.bing.com/osjson.aspx?query={searchTerms}"
+                },
+                "color": "#ffc107",
+                "icon": "widget/me/search/bing.svg"
+            }
+        }, {
+            "scraper": "core/search/opensearch",
+            "config": {
+                "title": "Yahoo",
+                "urls": {
+                    "results": "https://fr.search.yahoo.com/search?p={searchTerms}",
+                    "suggestions": "https://fr.search.yahoo.com/sugg/os?command={searchTerms}&output=fxjson"
+                },
+                "color": "#673ab7",
+                "icon": "widget/me/search/yahoo.svg"
+            }
+        }
+    ]
 }
 ```

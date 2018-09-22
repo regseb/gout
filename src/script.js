@@ -46,7 +46,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
             for (const result of results) {
                 files[result[0].substr(url.length + 1)] = result[1];
             }
-            return Object.assign(obj, files);
+            return Object.assign(files, obj);
         });
     };
 
@@ -81,33 +81,26 @@ define(["require", "jquery", "scronpt"], function (require, $) {
         });
     };
 
-    const load = function (key, widget, url) {
-        // Si la propriété 'active' n'est pas définie : considérer que le widget
-        // est actif.
-        if ("active" in widget && !widget.active) {
-            return;
-        }
+    const load = function (article, url) {
+        const widget = JSON.parse(article.textContent);
+        article.innerHTML = "";
 
         getModule(widget.module).then(function (tag) {
             getFiles(widget.files || {}, url).then(function (files) {
                 getScrapers(widget.scrapers || []).then(function (scrapers) {
-                    const elem = document.createElement(tag);
-                    elem.id           = key.replace(/\//g, "-");
-                    elem.style.left   = widget.coord.x * 14 + "px";
-                    elem.style.top    = widget.coord.y * 14 + "px";
-                    elem.style.width  = widget.coord.w * 14 + "px";
-                    elem.style.height = widget.coord.h * 14 + "px";
-                    elem.files        = files;
-                    elem.scrapers     = scrapers;
+                    const element = document.createElement(tag);
+                    element.id       = article.id.replace(/\//g, "-");
+                    element.files    = files;
+                    element.scrapers = scrapers;
 
-                    document.body.appendChild(elem);
+                    article.append(element);
                 });
             });
         });
     };
 
     // Récupérer les paramètres transmis dans l'URL.
-    const params = new URL(window.location.href).searchParams;
+    const params = new URLSearchParams(location.search);
 
     const dashboard = params.get("dashboard");
     document.title = dashboard + " - " + document.title;
@@ -121,12 +114,18 @@ define(["require", "jquery", "scronpt"], function (require, $) {
     }
 
     // Charger les widgets contenus dans la configuration du tableau de bord.
-    const url = "widget/" + dashboard + "/" + config + ".json";
+    const url = "widget/" + dashboard + "/" + config + ".html";
     fetch(url).then(function (response) {
-        return response.json();
-    }).then(function (widgets) {
-        for (const [key, widget] of Object.entries(widgets)) {
-            load(key, widget, "widget/" + dashboard + "/" + key);
+        return response.text();
+    }).then(function (html) {
+        document.body.innerHTML = html;
+        for (const article of document.querySelectorAll("article")) {
+            // Charger seulement les widgets visibles.
+            if (window.getComputedStyle(article).display) {
+                load(article, "widget/" + dashboard + "/" + article.id);
+            }
         }
+    }).catch(function (err) {
+        console.error(err);
     });
 });
