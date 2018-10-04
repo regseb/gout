@@ -41,6 +41,14 @@ fetch("module/core/notepad/index.html").then(function (response) {
                             "placeholder": this._config.title || "" })
                     .css("border-color", this._config.color || "black")
                     .change(this.change.bind(this));
+
+            // Adapter la hauteur de zone de saisie en fonction du nombre de
+            // lignes.
+            const textarea = this.querySelector("textarea");
+            textarea.addEventListener("input", function () {
+                textarea.style.height = "auto";
+                textarea.style.height = (7 + textarea.scrollHeight) + "px";
+            });
         }
     });
 });
