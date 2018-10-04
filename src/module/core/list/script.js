@@ -100,7 +100,7 @@ fetch("module/core/list/index.html").then(function (response) {
             }
             const that = this;
             this._scrapers.forEach(function (scraper) {
-                scraper.extract(that.max).then(that.filter)
+                scraper.extract(that.max).then(that.filter.bind(that))
                                          .then(function (items) {
                     items.forEach(that.display.bind(that));
                 });
@@ -117,7 +117,8 @@ fetch("module/core/list/index.html").then(function (response) {
             this.appendChild(template.content.cloneNode(true));
             this.cron = new Cron(this._config.cron, this.update.bind(this));
             this.max = this._config.max || Number.MAX_SAFE_INTEGER;
-            this.visited = this._config.visited || true;
+            this.visited = "visited" in this._config ? this._config.visited
+                                                     : true;
             this.empty = this._config.empty || null;
 
             this.style.backgroundColor = this._config.color;
