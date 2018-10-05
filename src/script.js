@@ -121,7 +121,7 @@ define(["require", "jquery", "scronpt"], function (require, $) {
         document.body.innerHTML = html;
         for (const article of document.querySelectorAll("article")) {
             // Charger seulement les widgets visibles.
-            if (window.getComputedStyle(article).display) {
+            if ("none" !== window.getComputedStyle(article).display) {
                 load(article, "widget/" + dashboard + "/" + article.id);
             }
         }
