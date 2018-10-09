@@ -6,6 +6,8 @@ fetch("module/core/notepad/index.html").then(function (response) {
 }).then(function (template) {
     const $ = require("jquery");
 
+    const STORAGE_KEY = location.search + "module/code/notepad/";
+
     customElements.define("core-notepad", class extends HTMLElement {
 
         set files({ "config.json": config, "icon.svg": icon }) {
@@ -14,11 +16,11 @@ fetch("module/core/notepad/index.html").then(function (response) {
         }
 
         save(value) {
-            localStorage.setItem("module/core/notepad/" + this.id, value);
+            localStorage.setItem(STORAGE_KEY + this.id, value);
         }
 
         load() {
-            return localStorage.getItem("module/core/notepad/" + this.id);
+            return localStorage.getItem(STORAGE_KEY + this.id);
         }
 
         change() {
@@ -47,7 +49,7 @@ fetch("module/core/notepad/index.html").then(function (response) {
             const textarea = this.querySelector("textarea");
             textarea.addEventListener("input", function () {
                 textarea.style.height = "auto";
-                textarea.style.height = (7 + textarea.scrollHeight) + "px";
+                textarea.style.height = 7 + textarea.scrollHeight + "px";
             });
         }
     });
