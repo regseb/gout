@@ -40,7 +40,7 @@ fetch("module/core/list/index.html").then(function (response) {
             });
         }
 
-        display(data, empty = false) {
+        display(data, empty) {
             // Supprimer éventuellement la ligne indiquant que la liste est
             // vide.
             $("> ul > li.empty", this).remove();
@@ -102,7 +102,9 @@ fetch("module/core/list/index.html").then(function (response) {
             this._scrapers.forEach(function (scraper) {
                 scraper.extract(that.max).then(that.filter.bind(that))
                                          .then(function (items) {
-                    items.forEach(that.display.bind(that));
+                    for (const item of items) {
+                        that.display(item, false);
+                    }
                 });
             });
         }
