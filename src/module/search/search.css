@@ -1,0 +1,63 @@
+:host {
+    display: block;
+    font-family: Verdana, sans-serif;
+    font-size: 10px;
+    line-height: 1.4em;
+}
+
+:host form {
+    padding: 7px;
+}
+:host img,
+:host input {
+    vertical-align: middle;
+}
+:host form img {
+    cursor: pointer;
+    height: 1.4em;
+}
+:host input {
+    background-color: inherit;
+    border: none;
+    border-bottom: 1px solid rgba(255 255 255 / 80%);
+    color: white;
+    padding: 0;
+    transition: 0.2s ease-out;
+    width: calc(100% - 1.4em);
+}
+:host input::placeholder {
+    opacity: 80%;
+    transition: 0.2s ease-out;
+}
+:host input:focus {
+    border-bottom-color: white;
+    outline: none;
+}
+:host input:focus::placeholder {
+    opacity: 20%;
+}
+:host ul {
+    background-color: black;
+    color: white;
+    display: none;
+    list-style-type: none;
+    margin-top: 5px;
+    padding-left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+:host ul.active {
+    display: block;
+}
+:host li {
+    cursor: pointer;
+    margin-bottom: 3px;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+:host ul img {
+    height: 24px;
+    margin-right: 5px;
+    width: 24px;
+}

@@ -1,0 +1,13 @@
+div {
+    background-position: right 8px center;
+    background-repeat: no-repeat;
+    background-size: auto calc(100% - 16px);
+    color: white;
+    font-family: sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 8px;
+}
+div.empty {
+    font-style: italic;
+}

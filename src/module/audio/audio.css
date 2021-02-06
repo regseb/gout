@@ -1,0 +1,48 @@
+div {
+    position: relative;
+}
+
+input {
+    background-color: black;
+    bottom: 0;
+    cursor: pointer;
+    height: 16px;
+    margin: 0;
+    opacity: 0%;
+    padding: 0;
+    position: absolute;
+    transition: 0.2s ease-out;
+    width: 100%;
+    z-index: 1;
+}
+input::-moz-range-track {
+    background-color: white;
+    height: 2px;
+}
+input::-moz-range-thumb {
+    background-color: white;
+    border: 0;
+    filter: drop-shadow(0 0 2px rgba(0 0 0 / 65%));
+    height: 12px;
+    width: 12px;
+}
+div:hover input, input.active {
+    opacity: 80%;
+}
+div input:hover {
+    opacity: 100%;
+}
+
+a {
+    display: block;
+    opacity: 80%;
+    padding: 8px;
+    transition: 0.2s ease-out;
+}
+a:hover {
+    opacity: 100%;
+}
+
+img {
+    width: 100%;
+}

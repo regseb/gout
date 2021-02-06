@@ -1,0 +1,17 @@
+a {
+    display: block;
+    padding: 8px;
+}
+
+img {
+    opacity: 80%;
+    transition: 0.2s ease-out;
+    vertical-align: top;
+    width: 100%;
+}
+img[src=""] {
+    display: none;
+}
+img:hover {
+    opacity: 100%;
+}

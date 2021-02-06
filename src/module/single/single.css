@@ -1,0 +1,35 @@
+div {
+    align-items: center;
+    display: flex;
+    font-family: sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 8px;
+}
+div.empty {
+    font-style: italic;
+}
+
+img {
+    height: 16px;
+    margin-right: 8px;
+    opacity: 80%;
+}
+img[src=""] {
+    display: none;
+}
+
+a {
+    color: white;
+    flex-grow: 1;
+    overflow: hidden;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+a:visited {
+    color: black;
+}
+a[href]:hover {
+    text-decoration: underline;
+}

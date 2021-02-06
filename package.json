@@ -1,8 +1,8 @@
 {
     "name": "gout",
-    "version": "0.8.0",
+    "version": "0.9.0",
     "description": "Agrégateur d'Internet (flux RSS et tout le reste).",
-    "keyword": [
+    "keywords": [
         "gout",
         "aggregator",
         "feed",
@@ -12,40 +12,59 @@
         "atom",
         "scraper"
     ],
-    "homepage": "https://github.com/regseb/gout",
+    "homepage": "https://github.com/regseb/gout#readme",
     "bugs": {
         "url": "https://github.com/regseb/gout/issues"
     },
-    "license": "EUPL-1.2",
+    "license": "MIT",
     "author": "Sébastien Règne <regseb@gmail.com> (https://github.com/regseb)",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/regseb/gout.git"
-    },
+    "funding": "https://www.paypal.me/sebastienregne",
+    "repository": "regseb/gout",
+    "type": "module",
     "scripts": {
-        "postinstall": "bin/postinstall.js",
+        "postinstall": "node .script/sync.js",
         "lint": "metalint",
-        "gout:init": "bin/init.js",
-        "gout:sign": "bin/sign.js",
-        "clean": "rm -rf build/ node_modules/"
+        "jsdocs": "typedoc --tsconfig tsconfig_typedoc.json --out jsdocs/ src/",
+        "server": "http-server -c-1 src/",
+        "extension": "web-ext run -s src/extension/",
+        "build": "web-ext build -s src/extension/ -a build/ -o",
+        "release": "standard-version",
+        "clean": "node .script/clean.js"
     },
     "dependencies": {
-        "@webcomponents/custom-elements": "^1.2.0",
-        "dialog-polyfill": "^0.4.10",
-        "jquery": "^3.3.1",
-        "requirejs": "^2.3.6",
-        "scronpt": "^0.3.1",
-        "webextension-polyfill": "^0.3.1"
+        "webextension-polyfill": "0.8.0"
     },
     "devDependencies": {
-        "archiver": "^3.0.0",
-        "david": "^11.0.0",
-        "eslint": "^5.6.0",
-        "htmlhint": "^0.10.1",
-        "jsonlint": "^1.6.3",
-        "markdownlint": "^0.11.0",
-        "metalint": "^0.8.1",
-        "sign-addon": "^0.3.1",
-        "stylelint": "^9.5.0"
+        "@babel/core": "^7.14.2",
+        "@babel/eslint-parser": "^7.14.2",
+        "@babel/eslint-plugin": "^7.13.16",
+        "@babel/plugin-proposal-class-properties": "^7.13.0",
+        "@babel/plugin-syntax-top-level-await": "^7.12.13",
+        "addons-linter": "^3.5.0",
+        "david": "^12.0.0",
+        "eslint": "^7.26.0",
+        "eslint-plugin-filenames": "^1.3.2",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-jsdoc": "^34.2.1",
+        "eslint-plugin-mocha": "^8.1.0",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^5.1.0",
+        "eslint-plugin-unicorn": "^32.0.1",
+        "htmlhint": "^0.14.2",
+        "http-server": "^0.12.3",
+        "jsonlint-mod": "^1.7.6",
+        "markdownlint": "^0.23.1",
+        "metalint": "^0.9.0",
+        "purgecss": "^4.0.3",
+        "standard-version": "^9.3.0",
+        "stylelint": "^13.13.1",
+        "stylelint-order": "^4.1.0",
+        "typedoc": "^0.20.36",
+        "typescript": "^4.2.4",
+        "web-ext": "^6.1.0",
+        "yaml-lint": "^1.2.4"
+    },
+    "engines": {
+        "node": ">=16.0.0"
     }
 }

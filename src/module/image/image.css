@@ -1,0 +1,46 @@
+div {
+    position: relative;
+}
+span {
+    background-color: black;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50% 50%;
+    cursor: pointer;
+    height: 32px;
+    opacity: 0%;
+    position: absolute;
+    top: calc(50% - 16px);
+    width: 32px;
+}
+span.not-allowed {
+    cursor: not-allowed;
+}
+ul:hover ~ span {
+    opacity: 20%;
+}
+span:hover {
+    opacity: 100%;
+}
+span:first-of-type {
+    background-image: url("img/left.svg");
+    left: 0;
+}
+span:last-of-type {
+    background-image: url("img/right.svg");
+    right: 0;
+}
+
+ul {
+    margin: 0;
+    padding-left: 0;
+}
+li {
+    display: none;
+}
+li.active {
+    display: block;
+}
+img {
+    width: 100%;
+}
