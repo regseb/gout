@@ -2,28 +2,29 @@
  * @module
  */
 
-const BASE_URL = import.meta.url.slice(0, import.meta.url.lastIndexOf("/") + 1);
+const BASE_URI = import.meta.url.slice(0, import.meta.url.lastIndexOf("/"));
 
-const hash = function (text) {
-    return Math.abs(Array.from(text).reduce((code, character) => {
+const hash = function (item) {
+    return Math.abs(Array.from(BASE_URI + (item.guid ?? JSON.stringify(item)))
+                         .reduce((code, character) => {
         return (code << 5) - code + character.charCodeAt();
     }, 0)).toString(36);
 };
 
-export const Module = class extends HTMLElement {
+export default class extends HTMLElement {
 
     constructor(config) {
         super();
         this._config = config;
     }
 
-    save() {
+    _save() {
         const textarea = this.shadowRoot.querySelector("textarea");
         localStorage.setItem(this._guid, textarea.value);
-        this.resize();
+        this._resize();
     }
 
-    resize() {
+    _resize() {
         // Adapter la hauteur de zone de saisie en fonction du nombre de lignes.
         const textarea = this.shadowRoot.querySelector("textarea");
         textarea.style.height = "auto";
@@ -33,7 +34,7 @@ export const Module = class extends HTMLElement {
     async connectedCallback() {
         this.attachShadow({ mode: "open" });
 
-        const response = await fetch(BASE_URL + "notepad.tpl");
+        const response = await fetch(`${BASE_URI}/notepad.tpl`);
         const text = await response.text();
         const template = new DOMParser().parseFromString(text, "text/html")
                                         .querySelector("template");
@@ -41,24 +42,23 @@ export const Module = class extends HTMLElement {
 
         const link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = BASE_URL + "notepad.css";
+        link.href = `${BASE_URI}/notepad.css`;
         this.shadowRoot.append(link);
 
-        this._guid = hash(BASE_URL +
-                          (this._config.guid ?? JSON.stringify(this._config)));
+        this._guid = hash(this._config);
 
         const textarea = this.shadowRoot.querySelector("textarea");
-        textarea.style.backgroundColor = this._config.color ?? "grey";
+        textarea.style.backgroundColor = this._config.color ?? "#9e9e9e";
         if (undefined !== this._config.icon) {
             textarea.style.backgroundImage = `url("${this._config.icon}")`;
         }
         textarea.value = localStorage.getItem(this._guid);
         textarea.title = this._config.desc ?? "";
         textarea.placeholder = this._config.title ?? "";
-        textarea.style.borderColor = this._config.color ?? "grey";
-        textarea.addEventListener("input", this.save.bind(this));
-        this.resize();
+        textarea.style.borderColor = this._config.color ?? "#9e9e9e";
+        textarea.addEventListener("input", this._save.bind(this));
+        this._resize();
 
-        setTimeout(() => this.resize(), 100);
+        setTimeout(() => this._resize(), 100);
     }
-};
+}

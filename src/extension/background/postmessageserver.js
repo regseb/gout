@@ -2,14 +2,14 @@ export const PostMessageServer = class {
     constructor() {
         this.getters = {};
 
-        browser.runtime.onConnect.addListener(this.handleConnect.bind(this));
+        browser.runtime.onConnect.addListener(this._handleConnect.bind(this));
     }
 
     get(method, func) {
         this.getters[method] = func;
     }
 
-    handleConnect(port) {
+    _handleConnect(port) {
         port.onMessage.addListener(async (data) => {
             try {
                 port.postMessage({

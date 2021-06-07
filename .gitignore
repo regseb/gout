@@ -1,1 +1,4 @@
+/build/
+/jsdocs/
 /node_modules/
+/src/extension/polyfill/lib/

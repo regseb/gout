@@ -2,7 +2,7 @@
  * @module
  */
 
-export const Scraper = class {
+export default class {
 
     constructor(config) {
         // eslint-disable-next-line no-constructor-return
@@ -11,4 +11,4 @@ export const Scraper = class {
                                                    : target[prop]),
         });
     }
-};
+}

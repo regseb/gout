@@ -24,7 +24,7 @@ export const PostMessage = class {
          */
         this.promises = new Map();
 
-        window.addEventListener("message", this.handleMessage.bind(this));
+        window.addEventListener("message", this._handleMessage.bind(this));
     }
 
     /**
@@ -51,7 +51,7 @@ export const PostMessage = class {
      * @private
      * @param {MessageEvent} message Le message reçu du serveur.
      */
-    handleMessage({ source, data }) {
+    _handleMessage({ source, data }) {
         // Ignorer les messages venant d'une autre source.
         if (window !== source || "method" in data) {
             return;

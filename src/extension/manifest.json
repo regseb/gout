@@ -2,12 +2,12 @@
     "applications": {
         "gecko": {
             "id": "gout@regseb.github.io",
-            "strict_min_version": "88.0"
+            "strict_min_version": "89.0"
         }
     },
     "manifest_version": 2,
     "name": "Gout",
-    "version": "0.9.0",
+    "version": "0.9.1",
     "description": "Agrégateur d'Internet (flux RSS et tout le reste).",
     "icons": {
         "16": "img/icon-16.png",
@@ -26,7 +26,7 @@
     },
     "homepage_url": "https://github.com/regseb/gout",
     "web_accessible_resources": ["inject/*"],
-    "minimum_chrome_version": "90",
+    "minimum_chrome_version": "91",
     "permissions": [
         "<all_urls>",
         "activeTab",

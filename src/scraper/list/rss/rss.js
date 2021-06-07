@@ -2,7 +2,7 @@
  * @module
  */
 
-export const Scraper = class {
+export default class {
 
     constructor({ url, complements }) {
         this._url = url;
@@ -22,11 +22,11 @@ export const Scraper = class {
                    // S'il n'y a pas de date de publication, utiliser la
                    // "dc:date".
                    item.querySelector("date").textContent,
-            desc:  item.querySelector("description").textContent,
+            desc:  item.querySelector("description")?.textContent ?? "",
             guid:  item.querySelector("guid")?.textContent ?? "",
             img:   item.querySelector(`enclosure[type^="image/"]`)
                        ?.getAttribute("url"),
-            link:  item.querySelector("link").textContent,
+            link:  item.querySelector("link")?.textContent,
             title: item.querySelector("title").textContent,
         })).map((item) => ({
             audio: item.audio,
@@ -42,4 +42,4 @@ export const Scraper = class {
            .slice(0, max)
            .map((i) => ({ ...this._complements, ...i }));
     }
-};
+}

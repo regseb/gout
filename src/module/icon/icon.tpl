@@ -1,3 +1,3 @@
 <template>
-  <a><img /></a>
+  <a rel="noopener noreferrer"><img /></a>
 </template>

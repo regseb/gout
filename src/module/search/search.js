@@ -2,16 +2,16 @@
  * @module
  */
 
-const BASE_URL = import.meta.url.slice(0, import.meta.url.lastIndexOf("/") + 1);
+const BASE_URI = import.meta.url.slice(0, import.meta.url.lastIndexOf("/"));
 
-export const Module = class extends HTMLElement {
+export default class extends HTMLElement {
 
     constructor(_config, scrapers) {
         super();
         this._scrapers = scrapers;
     }
 
-    async search(event) {
+    async _search(event) {
         event.preventDefault();
 
         const input = this.shadowRoot.querySelector("input");
@@ -25,53 +25,47 @@ export const Module = class extends HTMLElement {
             input.value = "";
             input.blur();
 
-            const datalist = this.shadowRoot.querySelector("datalist");
-            while (null !== datalist.firstChild) {
-                datalist.firstChild.remove();
-            }
+            this.shadowRoot.querySelector("datalist").replaceChildren();
         } else {
             window.location.assign(url);
         }
     }
 
-    propose() {
+    _propose() {
         // Afficher la liste des moteurs de recherche.
         this.shadowRoot.querySelector("ul").classList.add("active");
     }
 
-    change(event) {
+    _change(event) {
         // Cacher la liste des moteurs de recherche.
         this.shadowRoot.querySelector("ul").classList.remove("active");
 
         // Mettre à jour le formulaire.
         const li = event.target.closest("li");
         this._scraper = this._scrapers[Number.parseInt(li.dataset.index, 10)];
-        this.style.backgroundColor = li.dataset.color;
+
+        const div = this.shadowRoot.querySelector("div");
+        div.style.backgroundColor = li.dataset.color;
         this.shadowRoot.querySelector("form img").src =
                                                     li.querySelector("img").src;
         this.shadowRoot.querySelector("input").placeholder =
                                            li.querySelector("span").textContent;
         this.shadowRoot.querySelector("input").title = li.title;
 
-        const datalist = this.shadowRoot.querySelector("datalist");
-        while (null !== datalist.firstChild) {
-            datalist.firstChild.remove();
-        }
+        this.shadowRoot.querySelector("datalist").replaceChildren();
     }
 
-    async suggest() {
+    async _suggest() {
         const terms = this.shadowRoot.querySelector("input").value;
         const suggestions = await this._scraper.suggest(terms);
         const datalist = this.shadowRoot.querySelector("datalist");
-        while (null !== datalist.firstChild) {
-            datalist.firstChild.remove();
-        }
+        datalist.replaceChildren();
         for (const suggestion of suggestions) {
             datalist.append(new Option("", suggestion));
         }
     }
 
-    display(i, data) {
+    _display(i, data) {
         const li = this.shadowRoot.querySelector("template")
                                   .content.querySelector("li")
                                   .cloneNode(true);
@@ -80,7 +74,7 @@ export const Module = class extends HTMLElement {
         li.dataset.color = data.color;
         li.querySelector("img").src = data.icon;
         li.querySelector("span").textContent = data.title;
-        li.addEventListener("click", this.change.bind(this));
+        li.addEventListener("click", this._change.bind(this));
 
         this.shadowRoot.querySelector("ul").append(li);
     }
@@ -88,7 +82,7 @@ export const Module = class extends HTMLElement {
     async connectedCallback() {
         this.attachShadow({ mode: "open" });
 
-        const response = await fetch(BASE_URL + "search.tpl");
+        const response = await fetch(`${BASE_URI}/search.tpl`);
         const text = await response.text();
         const template = new DOMParser().parseFromString(text, "text/html")
                                         .querySelector("template");
@@ -96,22 +90,22 @@ export const Module = class extends HTMLElement {
 
         const link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = BASE_URL + "search.css";
+        link.href = `${BASE_URI}/search.css`;
         this.shadowRoot.append(link);
 
         this.shadowRoot.querySelector("form")
-                       .addEventListener("submit", this.search.bind(this));
+                       .addEventListener("submit", this._search.bind(this));
         this.shadowRoot.querySelector("img")
-                       .addEventListener("click", this.propose.bind(this));
+                       .addEventListener("click", this._propose.bind(this));
         this.shadowRoot.querySelector("input")
-                       .addEventListener("input", this.suggest.bind(this));
+                       .addEventListener("input", this._suggest.bind(this));
 
         const infos = await Promise.all(this._scrapers.map((s) => s.info()));
         for (const [i, info] of infos.entries()) {
-            this.display(i, info);
+            this._display(i, info);
         }
 
         // Sélectionner le premier élément.
         this.shadowRoot.querySelector("li").click();
     }
-};
+}

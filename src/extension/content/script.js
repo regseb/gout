@@ -17,14 +17,8 @@
         port.postMessage(data);
     });
 
-    let script = document.createElement("script");
+    const script = document.createElement("script");
     script.type = "module";
     script.src = browser.runtime.getURL("inject/enrich.js");
-    document.head.append(script);
-
-    script = document.createElement("script");
-    script.type = "module";
-    script.src = "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/engine" +
-                                                                   "/script.js";
     document.head.append(script);
 })();

@@ -1,24 +1,27 @@
 export default {
     patterns: [
         "!/.git/",
-        "!/coverage/",
+        "!/build/",
         "!/jsdocs/",
         "!/node_modules/",
-        "!/src/**/lib/",
+        "!/src/extension/polyfill/lib/",
         "**",
     ],
     checkers: [
         {
             patterns: "/src/extension/",
             linters: { "addons-linter": null },
-            level: "warn",
         }, {
             patterns: "/src/extension/**/*.js",
             linters: {
                 eslint: ["eslint.config.js", "eslint_webext.config.js"],
             },
         }, {
-            patterns: ["!/src/extension/", "/src/**/*.js"],
+            patterns: [
+                "/src/engine/**/*.js",
+                "/src/module/**/*.js",
+                "/src/scraper/**/*.js",
+            ],
             linters: {
                 eslint: ["eslint.config.js", "eslint_browser.config.js"],
             },
@@ -33,7 +36,7 @@ export default {
                 eslint: ["eslint.config.js", "eslint_config.config.js"],
             },
         }, {
-            patterns: "/src/extension/**/*.html",
+            patterns: "*.html",
             linters: "htmlhint",
         }, {
             patterns: "*.tpl",

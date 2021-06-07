@@ -1,3 +1,7 @@
+/**
+ * @module
+ */
+
 const BASE_URL = import.meta.url.slice(0, import.meta.url.lastIndexOf("/") + 1);
 
 const hash = function (text) {
@@ -22,7 +26,7 @@ const liven = async function (script) {
         const scrapers = await Promise.all(widget.scrapers
                                                       ?.map(async (scraper) => {
             try {
-                const { Scraper } = await import(scraper.url);
+                const { default: Scraper } = await import(scraper.url);
                 return new Scraper(scraper.config ?? {});
             } catch (err) {
                 console.log(scraper.url, err);
@@ -31,7 +35,7 @@ const liven = async function (script) {
         }) ?? []);
 
         // Récupérer le module.
-        const { Module } = await import(widget.module.url);
+        const { default: Module } = await import(widget.module.url);
         const name = "gout-" + hash(widget.module.url);
         if (undefined === customElements.get(name)) {
             customElements.define(name, Module);
@@ -44,7 +48,7 @@ const liven = async function (script) {
     }
 };
 
-// Ajouter le feuille de style.
+// Ajouter la feuille de style.
 const link = document.createElement("link");
 link.rel = "stylesheet";
 link.href = BASE_URL + "style.css";

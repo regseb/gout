@@ -2,7 +2,7 @@
  * @module
  */
 
-export const Scraper = class {
+export default class {
 
     constructor({ url, suggestions, complements }) {
         this._url = url;
@@ -28,4 +28,4 @@ export const Scraper = class {
     result(searchTerms) {
         return Promise.resolve(this._url.replace("{searchTerms}", searchTerms));
     }
-};
+}

@@ -4,9 +4,9 @@
 
 import { Cron } from "https://cdn.jsdelivr.net/npm/cronnor@1";
 
-const BASE_URL = import.meta.url.slice(0, import.meta.url.lastIndexOf("/") + 1);
+const BASE_URI = import.meta.url.slice(0, import.meta.url.lastIndexOf("/"));
 
-export const Module = class extends HTMLElement {
+export default class extends HTMLElement {
 
     constructor(config, scrapers) {
         super();
@@ -14,9 +14,9 @@ export const Module = class extends HTMLElement {
         this._scrapers = scrapers;
     }
 
-    display(item, empty = false) {
+    _display(item, empty = false) {
         const div = this.shadowRoot.querySelector("div");
-        div.style.backgroundColor = item.color ?? "gray";
+        div.style.backgroundColor = item.color ?? "#9e9e9e";
         if (empty) {
             div.classList.add("empty");
         } else {
@@ -37,7 +37,7 @@ export const Module = class extends HTMLElement {
         a.title = item.desc ?? "";
     }
 
-    async update() {
+    async _update() {
         // Si la page est cachée : ne pas actualiser les données et indiquer
         // qu'il faudra mettre à jour les données quand l'utilisateur reviendra
         // sur la page.
@@ -54,23 +54,23 @@ export const Module = class extends HTMLElement {
                              .slice(0, 1);
 
         if (0 === items.length) {
-            this.display(this._config.empty, true);
+            this._display(this._config.empty, true);
         } else {
-            this.display(items[0]);
+            this._display(items[0]);
         }
     }
 
-    wake() {
+    _wake() {
         if (!this._cron.active) {
             this._cron.start();
-            this.update();
+            this._update();
         }
     }
 
     async connectedCallback() {
         this.attachShadow({ mode: "open" });
 
-        const response = await fetch(BASE_URL + "single.tpl");
+        const response = await fetch(`${BASE_URI}/single.tpl`);
         const text = await response.text();
         const template = new DOMParser().parseFromString(text, "text/html")
                                         .querySelector("template");
@@ -78,13 +78,13 @@ export const Module = class extends HTMLElement {
 
         const link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = BASE_URL + "single.css";
+        link.href = `${BASE_URI}/single.css`;
         this.shadowRoot.append(link);
 
-        this._cron = new Cron(this._config.cron ?? [], this.update.bind(this));
+        this._cron = new Cron(this._config.cron ?? [], this._update.bind(this));
         this._empty = this._config.empty ?? {};
 
-        document.addEventListener("visibilitychange", this.wake.bind(this));
-        this.update();
+        document.addEventListener("visibilitychange", this._wake.bind(this));
+        this._update();
     }
-};
+}

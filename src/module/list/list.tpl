@@ -1,7 +1,7 @@
 <template>
   <template>
     <li>
-      <img /> <a></a>
+      <img /> <a rel="noopener noreferrer"></a>
     </li>
   </template>
 

@@ -13,7 +13,8 @@ const DEFAULT_COLORS = {
     0: "#9e9e9e",
 };
 
-export const Scraper = class {
+export default class {
+
     constructor({ url, colors = DEFAULT_COLORS, complements }) {
         this._url = url;
         this._colors = colors;
@@ -44,4 +45,4 @@ export const Scraper = class {
             }];
         }
     }
-};
+}

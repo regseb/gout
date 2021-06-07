@@ -41,9 +41,7 @@ const show = async function () {
     const edit = document.querySelector("#edit");
 
     const ul = document.querySelector("ul");
-    while (null !== ul.firstChild) {
-        ul.firstChild.remove();
-    }
+    ul.replaceChildren();
 
     const dashboards = (await browser.storage.sync.get("dashboards"))
                                                   .dashboards;

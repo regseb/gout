@@ -13,6 +13,38 @@ const hash = function (item) {
     }, 0)).toString(36);
 };
 
+const playPause = function (event) {
+    const li = event.target.closest("li");
+    const img = li.querySelector("img");
+    const a = li.querySelector("a");
+    const input = li.querySelector("input");
+    const audio = li.querySelector("audio");
+    if (audio.paused) {
+        a.style.display = "none";
+        input.style.display = "block";
+        img.src = `${BASE_URI}/img/pause.svg`;
+        audio.play();
+    } else {
+        input.max = audio.duration;
+        input.style.display = "none";
+        a.style.display = "block";
+        img.src = `${BASE_URI}/img/play.svg`;
+        audio.pause();
+    }
+};
+
+const elapse = function (event) {
+    const li = event.target.closest("li");
+    const audio = li.querySelector("audio");
+    li.querySelector("input").valueAsNumber = audio.currentTime;
+};
+
+const move = function (event) {
+    const li = event.target.closest("li");
+    const audio = li.querySelector("audio");
+    audio.currentTime = li.querySelector("input").valueAsNumber;
+};
+
 export default class extends HTMLElement {
 
     constructor(config, scrapers) {
@@ -45,7 +77,8 @@ export default class extends HTMLElement {
         }
 
         const img = li.querySelector("img");
-        img.src = item.icon ?? "";
+        img.src = item.icon ?? `${BASE_URI}/img/play.svg`;
+        img.addEventListener("click", playPause);
 
         const a = li.querySelector("a");
         a.textContent = item.title ?? "";
@@ -56,6 +89,14 @@ export default class extends HTMLElement {
         }
         a.target = item.target ?? "_blank";
         a.title = item.desc ?? "";
+
+        const input = li.querySelector("input");
+        input.addEventListener("input", move);
+
+        const audio = li.querySelector("audio");
+        audio.src = item.audio;
+        audio.addEventListener("timeupdate", elapse);
+
 
         // Si l'élément n'est pas dans la liste.
         if (!li.isConnected) {
@@ -112,7 +153,7 @@ export default class extends HTMLElement {
     async connectedCallback() {
         this.attachShadow({ mode: "open" });
 
-        const response = await fetch(`${BASE_URI}/list.tpl`);
+        const response = await fetch(`${BASE_URI}/podcast.tpl`);
         const text = await response.text();
         const template = new DOMParser().parseFromString(text, "text/html")
                                         .querySelector("template");
@@ -120,7 +161,7 @@ export default class extends HTMLElement {
 
         const link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = `${BASE_URI}/list.css`;
+        link.href = `${BASE_URI}/podcast.css`;
         this.shadowRoot.append(link);
 
         this._cron = new Cron(this._config.cron ?? [], this._update.bind(this));
