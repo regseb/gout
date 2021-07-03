@@ -15,5 +15,5 @@ const copy = async function (src, dest) {
     }
 };
 
-copy("node_modules/webextension-polyfill/dist/browser-polyfill.js",
-     "src/extension/polyfill/lib/browser-polyfill.js");
+await copy("node_modules/webextension-polyfill/dist/browser-polyfill.js",
+           "src/extension/polyfill/lib/browser-polyfill.js");
