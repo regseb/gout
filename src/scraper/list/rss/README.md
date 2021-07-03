@@ -1,40 +1,77 @@
 # Scraper *list/rss*
 
-Ce scraper récupère la liste des dernières actualités d'un flux **RSS**.
+> Mots-clés : gout, gout-scraper, gout-scraper-list-rss, gout-module-list,
+> gout-module-single, gout-module-podcast, gout-module-image.
 
-Il peut être utilisé avec le module `feed`.
+Ce scraper récupère les derniers éléments d'un flux **RSS** / **Atom**.
+
+Il peut être utilisé avec les modules :
+
+- [*list*](https://github.com/regseb/gout/tree/master/src/module/list#readme) ;
+- [*single*](https://github.com/regseb/gout/tree/master/src/module/single#readme)
+  pour afficher seulement la dernier élément ;
+- [*podcast*](https://github.com/regseb/gout/tree/master/src/module/podcast#readme)
+  pour un flux avec des `enclosure` de type `audio` ;
+- [*image*](https://github.com/regseb/gout/tree/master/src/module/image#readme)
+  pour un flux avec des `enclosure` de type `image`.
+.
 
 ## Configuration
 
-La configuration contient un objet
-[JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
-propriétés suivantes :
+La configuration doit avoir les propriétés suivantes :
 
-- `"url"` : l'URL d'un flux **RSS** ;
-- `"icon"` (optionnel - par défaut aucune icône est affichée) : l'URL d'une
-  icône qui préfixera le titre.
+<table>
+  <tr>
+    <th>Nom</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>"url"</code></td>
+    <td><code>string</code></td>
+    <td>
+      <p>
+        L'URL vers un flux RSS.
+      </p>
+      <p>
+        Example : <code>"https://example.com/foo/bar.rss"</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><code>"complements"</code></td>
+    <td><code>object</code></td>
+    <td>
+      <p>
+        Des propriétés qui seront ajoutées dans les éléments retournés.
+      </p>
+      <p>
+        Example : <code>{ "icon": "https://example.com/foo/bar.svg" }</code>.
+      </p>
+    </td>
+  </tr>
+</table>
 
 ## Exemple
 
-Cet exemple affiche les dernières actualités du site
+Cet exemple affiche les cinq dernières actualités du site
 [Le Monde.fr](https://www.lemonde.fr/).
 
 ```JSON
 {
-    "module": "core/feed",
-    "files": {
-        "config.json": {
+    "module": {
+        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
+        "config": {
             "color": "#9e9e9e",
-            "cron": "*/10 * * * *"
+            "cron": "*/10 * * * *",
+            "max": 5
         }
     },
-    "scrapers": [
-        {
-            "scraper": "core/feed/rss",
-            "config": {
-                "url": "https://www.lemonde.fr/rss/une.xml"
-            }
+    "scrapers": [{
+        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
+        "config": {
+            "url": "https://www.lemonde.fr/rss/une.xml"
         }
-    ]
+    }]
 }
 ```

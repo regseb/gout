@@ -9,11 +9,7 @@ export default class {
         this._complements = complements;
     }
 
-    async extract(max) {
-        const response = await fetch(this._url);
-        const text = await response.text();
-        const xml = new DOMParser().parseFromString(text, "application/xml");
-
+    _extractRSS(xml, max) {
         return Array.from(xml.querySelectorAll("item"))
                     .map((item) => ({
             audio: item.querySelector(`enclosure[type^="audio/"]`)
@@ -41,5 +37,39 @@ export default class {
         })).sort((i1, i2) => i2.date - i1.date)
            .slice(0, max)
            .map((i) => ({ ...this._complements, ...i }));
+    }
+
+    _extractAtom(xml, max) {
+        return Array.from(xml.querySelectorAll(`entry:nth-of-type(-n+${max})`))
+                    .map((entry) => ({
+            content: entry.querySelector("content")?.textContent ?? "",
+            date:    entry.querySelector("updated").textContent,
+            guid:    entry.querySelector("id").textContent,
+            link:    entry.querySelector("link").getAttribute("href"),
+            summary: entry.querySelector("summary")?.textContent ?? "",
+            title:   entry.querySelector("title").textContent,
+        })).map((item) => ({
+            date:  new Date(item.date).getTime(),
+            desc:  new DOMParser().parseFromString(
+                         0 === item.summary.trim().length ? item.content.trim()
+                                                          : item.summary.trim(),
+                         "text/html",
+                   ).body.textContent.trim(),
+            guid:  this._url + item.guid,
+            link:  item.link,
+            title: item.title,
+        })).map((i) => ({ ...this._complements, ...i }));
+    }
+
+    async extract(max) {
+        const response = await fetch(this._url);
+        const text = await response.text();
+        const xml = new DOMParser().parseFromString(text, "application/xml");
+
+        switch (xml.documentElement.nodeName) {
+            case "rss":  return this._extractRSS(xml, max);
+            case "feed": return this._extractAtom(xml, max);
+            default: throw new Error("Unknown format");
+        }
     }
 }
