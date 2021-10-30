@@ -1,20 +1,21 @@
 export const PostMessageServer = class {
-    constructor() {
-        this.getters = {};
+    #getters = {};
 
-        browser.runtime.onConnect.addListener(this._handleConnect.bind(this));
+    constructor() {
+        browser.runtime.onConnect.addListener(this.#handleConnect.bind(this));
     }
 
     get(method, func) {
-        this.getters[method] = func;
+        this.#getters[method] = func;
     }
 
-    _handleConnect(port) {
+    #handleConnect(port) {
         port.onMessage.addListener(async (data) => {
             try {
                 port.postMessage({
                     id:     data.id,
-                    result: await this.getters[data.method](...data.params),
+                    result: await this.#getters[data.method].apply(null,
+                                                                   data.params),
                 });
             } catch (err) {
                 port.postMessage({

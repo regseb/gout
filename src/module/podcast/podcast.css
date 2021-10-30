@@ -38,7 +38,7 @@ a {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-a:visited {
+a:visited, li.empty a {
     color: black;
 }
 a[href]:hover {
@@ -46,8 +46,25 @@ a[href]:hover {
 }
 
 input {
+    background-color: transparent;
     cursor: pointer;
     display: none;
     height: 12px;
     width: 100%;
+}
+input::-moz-range-track {
+    background-color: black;
+    border-radius: 1px;
+    height: 2px;
+}
+input::-moz-range-progress {
+    background-color: white;
+    border-radius: 1px;
+    height: 2px;
+}
+input::-moz-range-thumb {
+    background-color: white;
+    border: 0;
+    height: 12px;
+    width: 12px;
 }

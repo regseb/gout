@@ -1,12 +1,9 @@
 export default {
     rules: {
+        // Layout & Formatting.
         "key-spacing": 0,
 
-        "filenames/match-regex": 0,
-
-        "import/no-default-export": 0,
-        "import/no-anonymous-default-export": 0,
-
+        // Plugin eslint-plugin-unicorn.
         "unicorn/filename-case": 0,
     },
 };

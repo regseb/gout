@@ -1,3 +1,5 @@
 <template>
-  <a rel="noopener noreferrer"><img /></a>
+  <div>
+    <a rel="noopener noreferrer"><img></a>
+  </div>
 </template>

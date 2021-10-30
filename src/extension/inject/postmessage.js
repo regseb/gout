@@ -1,30 +1,35 @@
 /**
+ * @module
+ */
+
+import { Typeson } from "./ponyfill.js";
+
+const typeson = new Typeson();
+
+/**
  * Le client pour se connecter à un serveur JSON-RPC.
  */
 export const PostMessage = class {
 
     /**
+     * L'identifiant de la précédente requête.
+     *
+     * @type {number}
+     */
+    #id = 0;
+
+    /**
+     * La liste des promesses en attente d'être réalisées.
+     *
+     * @type {Map<number, Object>}
+     */
+    #promises = new Map();
+
+    /**
      * Crée un client JSON-RPC.
      */
     constructor() {
-
-        /**
-         * L'identifiant de la précédente requête.
-         *
-         * @private
-         * @type {number}
-         */
-        this.id = 0;
-
-        /**
-         * La liste des promesses en attente d'être réalisées.
-         *
-         * @private
-         * @type {Map<number, Object>}
-         */
-        this.promises = new Map();
-
-        window.addEventListener("message", this._handleMessage.bind(this));
+        window.addEventListener("message", this.#handleMessage.bind(this));
     }
 
     /**
@@ -36,22 +41,25 @@ export const PostMessage = class {
      */
     send(method, ...params) {
         return new Promise((resolve, reject) => {
-            this.promises.set(++this.id, { resolve, reject });
+            this.#promises.set(++this.#id, { resolve, reject });
             window.postMessage({
-                id:     this.id,
+                id:     this.#id,
                 method,
-                params,
+                // Faire un clonage structuré car Chromium ne le fait pas
+                // nativement et l'envoi du message peut échouer si les
+                // paramètres contiennent un URLSearchParams.
+                // https://crbug.com/1233571
+                params: typeson.encapsulate(params),
             }, window);
         });
     }
 
     /**
-     * Répartit un message à une promesse ou une notification.
+     * Associe un message à une promesse.
      *
-     * @private
      * @param {MessageEvent} message Le message reçu du serveur.
      */
-    _handleMessage({ source, data }) {
+    #handleMessage({ source, data }) {
         // Ignorer les messages venant d'une autre source.
         if (window !== source || "method" in data) {
             return;
@@ -60,10 +68,10 @@ export const PostMessage = class {
         if ("error" in data) {
             const err = new Error(data.error.message);
             err.name = data.error.name;
-            this.promises.get(data.id).reject(err);
+            this.#promises.get(data.id).reject(err);
         } else {
-            this.promises.get(data.id).resolve(data.result);
+            this.#promises.get(data.id).resolve(data.result);
         }
-        this.promises.delete(data.id);
+        this.#promises.delete(data.id);
     }
 };

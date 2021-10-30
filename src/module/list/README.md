@@ -1,4 +1,4 @@
-# Module *list*
+# Module _list_
 
 > Mots-clés : gout, gout-module, gout-module-list.
 
@@ -7,8 +7,9 @@ une icône.
 
 ## Configuration
 
-La configuration peut contenir les propriétés suivantes dont aucune n'est
-obligatoire :
+La configuration contient un objet
+[JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
+propriétés suivantes :
 
 <table>
   <tr>
@@ -38,11 +39,26 @@ obligatoire :
       <p>
         La ou les
         <a href="https://www.npmjs.com/package/cronnor#expression-cron">expressions
-        cron</a> indiquant la fréquence de mise à jour. Sans cette propriété,
-        les données ne sont jamais mises à jour.
+        <em>cron</em></a> indiquant la fréquence de mise à jour. Sans cette
+        propriété, les données ne sont jamais mises à jour.
       </p>
       <p>
-        Example : <code>"*/5 * * * *"</code>.
+        Exemple : <code>"*/5 * * * *"</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><code>"empty"</code></td>
+    <td><code>object</code></td>
+    <td>
+      <p>
+        Les données affichées quand les scrapers n'ont retourné aucune donnée.
+        Ce doit être un objet avec les mêmes propriétés qu'un élément retourné
+        par les scrapers. Si cette propriété n'est pas renseignée, le module est
+        laissé vide.
+      </p>
+      <p>
+        Exemple : <code>{ "title": "(aucun élément)" }</code>.
       </p>
     </td>
   </tr>
@@ -58,22 +74,7 @@ obligatoire :
         opacité de <code>0.2</code>. Par défaut, aucune icône n'est affichée.
       </p>
       <p>
-        Example : <code>"https://example.com/foo/bar.svg"</code>.
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td><code>"empty"</code></td>
-    <td><code>object</code></td>
-    <td>
-      <p>
-        La ligne affichée quand les scrapers n'ont retourné aucune donnée. Ce
-        doit être un objet avec les même propriétés qu'un élément retourné par
-        les scrapers. Si cette propriété n'est pas renseignée, le module est
-        laissé vide.
-      </p>
-      <p>
-        Example : <code>{ "title": "(aucun élément)" }</code>.
+        Exemple : <code>"https://example.com/foo/bar.svg"</code>.
       </p>
     </td>
   </tr>
@@ -82,10 +83,11 @@ obligatoire :
     <td><code>number</code></td>
     <td>
       <p>
-        Le nombre maximum de lignes affichées dans le module.
+        Le nombre maximum d'éléments affichés dans le module. Sans maximum, tous
+        les éléments retournés par les scrapers sont affichés.
       </p>
       <p>
-        Example : <code>5</code>.
+        Exemple : <code>5</code>.
       </p>
     </td>
   </tr>
@@ -95,8 +97,9 @@ obligatoire :
 
 Les scrapers associés à ce module doivent définir une méthode `extract()` qui
 prend en paramètre un entier indiquant le nombre maximum d'éléments à retourner.
-La méthode retourne une promesse contenant un tableau dont chaque élément est un
-objet ayant les propriétés :
+La méthode doit retourner une
+[promesse](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+contenant un tableau dont chaque élément est un objet ayant les propriétés :
 
 <table>
   <tr>
@@ -105,14 +108,72 @@ objet ayant les propriétés :
     <th>Description</th>
   </tr>
   <tr>
-    <td><code>"title"</code></td>
+    <td><code>"date"</code></td>
+    <td><code>number</code></td>
+    <td>
+      <p>
+        Le nombre de millisecondes depuis le 1er janvier 1970 à 00:00:00 UTC
+        (cf.
+        <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime"><code>Date.prototype.getTime()</code></a>).
+        Cette valeur est utilisée pour trier les éléments du plus récent au plus
+        ancien. Par défaut, le nombre <code>0</code> est utilisé.
+      </p>
+      <p>
+        Exemple : <code>900277200000</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><code>"desc"</code></td>
     <td><code>string</code></td>
     <td>
       <p>
-        Le titre de l'élément.
+        La description de l'élément qui sera affichée dans l'info-bulle. Par
+        défaut, aucune info-bulle n'est affichée.
       </p>
       <p>
-        Exemple : <code>"La 7e va vous étonner"</code>.
+        Exemple : <code>"Ce top10 des choses incroyables est incroyable"</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><code>"guid"</code></td>
+    <td><code>string</code></td>
+    <td>
+      <p>
+        Un identifiant de l'élément (<em>globally unique identifier</em>) qui
+        sera utilisé pour savoir s'il faut mettre à jour un élément ou en
+        insérer un nouveau. Par défaut, il est calculé à partir des autres
+        propriétés.
+      </p>
+      <p>
+        Exemple : <code>"example.com:12345"</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><code>"icon"</code></td>
+    <td><code>string</code></td>
+    <td>
+      <p>
+        L'URL de l'icône qui préfixera le titre. Par défaut, aucune icône n'est
+        affichée.
+      </p>
+      <p>
+        Exemple : <code>"https://example.com/foo/bar.svg"</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><code>"link"</code></td>
+    <td><code>string</code></td>
+    <td>
+      <p>
+        Le lien de l'élément. Par défaut, il n'y a pas de lien (mais le titre de
+        l'élément est affiché).
+      </p>
+      <p>
+        Exemple : <code>"https://example.com/foo/bar.html"</code>.
       </p>
     </td>
   </tr>
@@ -131,69 +192,14 @@ objet ayant les propriétés :
     </td>
   </tr>
   <tr>
-    <td><code>"desc"</code></td>
+    <td><code>"title"</code></td>
     <td><code>string</code></td>
     <td>
       <p>
-        La description de l'élément qui sera affichée dans l'info-bulle. Par
-        défaut, aucune info-bulle n'est affichée.
+        Le texte affiché dans la ligne.
       </p>
       <p>
-        Exemple : <code>"Ce top10 des choses incroyables est incroyable"</code>.
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td><code>"link"</code></td>
-    <td><code>string</code></td>
-    <td>
-      <p>
-        Le lien de l'élément. Par defaut, il n'y a pas de lien (mais le titre de
-        l'élément est affiché).
-      </p>
-      <p>
-        Exemple : <code>"https://example.com/foo/bar.html"</code>.
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td><code>"icon"</code></td>
-    <td><code>string</code></td>
-    <td>
-      <p>
-        L'URL de l'icône qui préfixera le titre.  Par défaut, aucun icône est
-        affichée.
-      </p>
-      <p>
-        Exemple : <code>"https://example.com/foo/bar.svg"</code>.
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td><code>"guid"</code></td>
-    <td><code>string</code></td>
-    <td>
-      <p>
-        Un identifiant de l'élément (*globally unique identifier*) qui sera
-        utilisée pour savoir s'il faut mettre à jour un élément ou un inséré un
-        nouveau. Par défaut, il est calculé à partir des autres propriétés.
-      </p>
-      <p>
-        Exemple : <code>"example.com:12345"</code>.
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td><code>"date"</code></td>
-    <td><code>number</code></td>
-    <td>
-      <p>
-        Le nombre de millisecondes depuis le 1er janvier 1970 à 00:00:00 UTC.
-        Cette valeur est utilisée pour trier les lignes de la plus récente à la
-        plus ancienne. Par défaut, le nombre <code>0</code> est utilisé.
-      </p>
-      <p>
-        Exemple : <code>900277200000</code>.
+        Exemple : <code>"La 7e va vous étonner"</code>.
       </p>
     </td>
   </tr>
@@ -201,9 +207,8 @@ objet ayant les propriétés :
 
 ## Exemple
 
-Cette configuration affiche les cinq dernières actualités du site
-[LinuxFr.org](https://linuxfr.org/) (avec une mise à jour toutes les dix
-minutes).
+Ce widget affiche les cinq dernières actualités du site
+[LinuxFr.org](https://linuxfr.org/) avec une mise à jour toutes les dix minutes.
 
 ```JSON
 {

@@ -1,5 +1,5 @@
 <template>
   <div>
-    <img /> <a rel="noopener noreferrer"></a>
+    <img> <a rel="noopener noreferrer"></a>
   </div>
 </template>

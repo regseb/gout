@@ -1,9 +1,12 @@
+/**
+ * @module
+ */
+
 import { PostMessage } from "./postmessage.js";
 
 const postMessage = new PostMessage();
 
-// eslint-disable-next-line func-names
-globalThis.fetch = async function fetch(resource, init) {
+globalThis.fetch = async (resource, init) => {
     // Préfixer éventuellement le lien avec l'URL de la page courante et
     // convertir les URLs en chaine de caractères.
     const href = new URL(resource, location.href).href;
@@ -14,5 +17,9 @@ globalThis.fetch = async function fetch(resource, init) {
         headers:    result.headers,
     });
     Object.defineProperty(response, "url", { value: result.url });
+    if (!response.ok) {
+        // eslint-disable-next-line no-console
+        console.error(`${init?.method ?? "GET"} ${href} ${response.status}`);
+    }
     return response;
 };

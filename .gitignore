@@ -2,3 +2,4 @@
 /jsdocs/
 /node_modules/
 /src/extension/polyfill/lib/
+/src/extension/inject/lib/

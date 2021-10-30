@@ -2,29 +2,42 @@
  * @module
  */
 
-const BASE_URI = import.meta.url.slice(0, import.meta.url.lastIndexOf("/"));
+/**
+ * Résous un chemin relatif à partir du module.
+ *
+ * @param {string} specifier Le chemin relatif vers un fichier.
+ * @returns {string} L'URL absolue vers le fichier.
+ * @see https://github.com/whatwg/html/issues/3871
+ */
+const resolve = function (specifier) {
+    return new URL(specifier, import.meta.url).href;
+};
 
-const hash = function (item) {
-    return Math.abs(Array.from(BASE_URI + (item.guid ?? JSON.stringify(item)))
+const hashCode = function (item) {
+    return Math.abs(Array.from(item.guid ?? JSON.stringify(item))
                          .reduce((code, character) => {
-        return (code << 5) - code + character.charCodeAt();
+        return (code << 5) - code + character.codePointAt();
     }, 0)).toString(36);
 };
 
 export default class extends HTMLElement {
 
+    #config;
+
+    #guid;
+
     constructor(config) {
         super();
-        this._config = config;
+        this.#config = config;
     }
 
-    _save() {
+    #save() {
         const textarea = this.shadowRoot.querySelector("textarea");
-        localStorage.setItem(this._guid, textarea.value);
-        this._resize();
+        localStorage.setItem(import.meta.url + this.#guid, textarea.value);
+        this.#resize();
     }
 
-    _resize() {
+    #resize() {
         // Adapter la hauteur de zone de saisie en fonction du nombre de lignes.
         const textarea = this.shadowRoot.querySelector("textarea");
         textarea.style.height = "auto";
@@ -32,33 +45,33 @@ export default class extends HTMLElement {
     }
 
     async connectedCallback() {
-        this.attachShadow({ mode: "open" });
-
-        const response = await fetch(`${BASE_URI}/notepad.tpl`);
+        const response = await fetch(resolve("./notepad.tpl"));
         const text = await response.text();
         const template = new DOMParser().parseFromString(text, "text/html")
                                         .querySelector("template");
+
+        this.attachShadow({ mode: "open" });
         this.shadowRoot.append(template.content.cloneNode(true));
 
         const link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = `${BASE_URI}/notepad.css`;
+        link.href = resolve("./notepad.css");
         this.shadowRoot.append(link);
 
-        this._guid = hash(this._config);
+        this.#guid = hashCode(this.#config);
 
         const textarea = this.shadowRoot.querySelector("textarea");
-        textarea.style.backgroundColor = this._config.color ?? "#9e9e9e";
-        if (undefined !== this._config.icon) {
-            textarea.style.backgroundImage = `url("${this._config.icon}")`;
+        textarea.style.backgroundColor = this.#config.color ?? "#9e9e9e";
+        if (undefined !== this.#config.icon) {
+            textarea.style.backgroundImage = `url("${this.#config.icon}")`;
         }
-        textarea.value = localStorage.getItem(this._guid);
-        textarea.title = this._config.desc ?? "";
-        textarea.placeholder = this._config.title ?? "";
-        textarea.style.borderColor = this._config.color ?? "#9e9e9e";
-        textarea.addEventListener("input", this._save.bind(this));
-        this._resize();
+        textarea.value = localStorage.getItem(import.meta.url + this.#guid);
+        textarea.title = this.#config.desc ?? "";
+        textarea.placeholder = this.#config.title ?? "";
+        textarea.style.borderColor = this.#config.color ?? "#9e9e9e";
+        textarea.addEventListener("input", this.#save.bind(this));
+        this.#resize();
 
-        setTimeout(() => this._resize(), 100);
+        setTimeout(() => this.#resize(), 100);
     }
 }

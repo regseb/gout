@@ -2,9 +2,18 @@
  * @module
  */
 
-import { Cron } from "https://cdn.jsdelivr.net/npm/cronnor@1";
+import Cron from "https://cdn.jsdelivr.net/npm/cronnor@1";
 
-const BASE_URI = import.meta.url.slice(0, import.meta.url.lastIndexOf("/"));
+/**
+ * Résous un chemin relatif à partir du module.
+ *
+ * @param {string} specifier Le chemin relatif vers un fichier.
+ * @returns {string} L'URL absolue vers le fichier.
+ * @see https://github.com/whatwg/html/issues/3871
+ */
+const resolve = function (specifier) {
+    return new URL(specifier, import.meta.url).href;
+};
 
 const animate = function (time, center) {
     const element = document.createElementNS("http://www.w3.org/2000/svg",
@@ -19,13 +28,21 @@ const animate = function (time, center) {
 
 export default class extends HTMLElement {
 
+    #config;
+
+    #scrapers;
+
+    #cron;
+
+    #empty;
+
     constructor(config, scrapers) {
         super();
-        this._config = config;
-        this._scrapers = scrapers;
+        this.#config = config;
+        this.#scrapers = scrapers;
     }
 
-    async _display(item, empty = false) {
+    async #display(item, empty = false) {
         const object = this.shadowRoot.querySelector("object");
         object.style.backgroundColor = item.color ?? "#9e9e9e";
         if (empty) {
@@ -34,7 +51,7 @@ export default class extends HTMLElement {
             object.classList.remove("empty");
         }
 
-        const response = await fetch(item.icon ?? `${BASE_URI}/img/icon.svg`);
+        const response = await fetch(item.icon ?? resolve("./img/icon.svg"));
         const text = await response.text();
         const xml = new DOMParser().parseFromString(text, "image/svg+xml");
         object.replaceChildren(xml.documentElement);
@@ -68,38 +85,37 @@ export default class extends HTMLElement {
         }
     }
 
-    async _update() {
+    async #update() {
         // Si la page est cachée : ne pas actualiser les données et indiquer
         // qu'il faudra mettre à jour les données quand l'utilisateur reviendra
         // sur la page.
         if (document.hidden) {
-            this._cron.stop();
+            this.#cron.stop();
             return;
         }
 
         const results = await Promise.all(
-            this._scrapers.map((s) => s.extract(1)),
+            this.#scrapers.map((s) => s.extract(1)),
         );
         const items = results.flat()
-                             .sort((i1, i2) => (i2.date ?? 0) - (i1.date ?? 0))
                              .slice(0, 1);
 
         if (0 === items.length) {
-            this._display(this._config.empty, true);
+            this.#display(this.#empty, true);
         } else {
-            this._display(items[0]);
+            this.#display(items[0]);
         }
     }
 
-    _wake() {
-        if (!this._cron.active) {
-            this._cron.start();
-            this._update();
+    #wake() {
+        if (!this.#cron.active) {
+            this.#cron.start();
+            this.#update();
         }
     }
 
     async connectedCallback() {
-        const response = await fetch(`${BASE_URI}/clock.tpl`);
+        const response = await fetch(resolve("./clock.tpl"));
         const text = await response.text();
         const template = new DOMParser().parseFromString(text, "text/html")
                                         .querySelector("template");
@@ -109,13 +125,13 @@ export default class extends HTMLElement {
 
         const link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = `${BASE_URI}/clock.css`;
+        link.href = resolve("./clock.css");
         this.shadowRoot.append(link);
 
-        this._cron = new Cron(this._config.cron ?? [], this._update.bind(this));
-        this._empty = this._config.empty ?? {};
+        this.#cron = new Cron(this.#config.cron ?? [], this.#update.bind(this));
+        this.#empty = this.#config.empty ?? {};
 
-        document.addEventListener("visibilitychange", this._wake.bind(this));
-        this._update();
+        document.addEventListener("visibilitychange", this.#wake.bind(this));
+        this.#update();
     }
 }

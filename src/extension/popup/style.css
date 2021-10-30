@@ -1,12 +1,9 @@
 body {
+    font-family: system-ui;
     font-size: 14px;
-    font-weight: 500;
     min-width: 200px;
 }
 
-a {
-    color: rgb(63 81 181);
-}
 button.icon {
     background: transparent;
     border: none;
@@ -42,13 +39,29 @@ ul {
     padding-left: 0;
 }
 li {
+    align-items: center;
     display: flex;
     height: 34px;
 }
-li span {
+span {
     flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Ne pas sélectionner un mot durant un double-clic (pour copier l'URL dans
+       le presse-papier). */
+    user-select: none;
+    white-space: nowrap;
+}
+span.active {
+    font-weight: bold;
+}
+li button {
+    display: none;
+}
+li:hover button {
+    display: block;
 }
 
-#add {
+#set {
     width: 100%;
 }

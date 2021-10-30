@@ -2,87 +2,105 @@
  * @module
  */
 
-import { Cron } from "https://cdn.jsdelivr.net/npm/cronnor@1";
+import Cron from "https://cdn.jsdelivr.net/npm/cronnor@1";
 
-const BASE_URI = import.meta.url.slice(0, import.meta.url.lastIndexOf("/"));
+/**
+ * Résous un chemin relatif à partir du module.
+ *
+ * @param {string} specifier Le chemin relatif vers un fichier.
+ * @returns {string} L'URL absolue vers le fichier.
+ * @see https://github.com/whatwg/html/issues/3871
+ */
+const resolve = function (specifier) {
+    return new URL(specifier, import.meta.url).href;
+};
 
 export default class extends HTMLElement {
 
+    #config;
+
+    #scrapers;
+
+    #cron;
+
+    #empty;
+
     constructor(config, scrapers) {
         super();
-        this._config = config;
-        this._scrapers = scrapers;
+        this.#config = config;
+        this.#scrapers = scrapers;
     }
 
-    _display(item, empty = false) {
-        const a = this.shadowRoot.querySelector("a");
-        a.style.backgroundColor = item.color ?? "#9e9e9e";
+    #display(item, empty = false) {
+        const div = this.shadowRoot.querySelector("div");
+        div.style.backgroundColor = item.color ?? "#9e9e9e";
         if (empty) {
-            a.classList.add("empty");
+            div.classList.add("empty");
         } else {
-            a.classList.remove("empty");
+            div.classList.remove("empty");
         }
 
+        const a = this.shadowRoot.querySelector("a");
         if (undefined === item.link) {
             a.removeAttribute("href");
         } else {
             a.href = item.link;
         }
         a.target = item.target ?? "_blank";
-        a.title = item.desc ?? "";
+        a.title = item.title ?? "";
 
         const img = this.shadowRoot.querySelector("img");
         img.src = item.icon ?? "";
     }
 
-    async _update() {
+    async #update() {
         // Si la page est cachée : ne pas actualiser les données et indiquer
         // qu'il faudra mettre à jour les données quand l'utilisateur reviendra
         // sur la page.
         if (document.hidden) {
-            this._cron.stop();
+            this.#cron.stop();
             return;
         }
 
         const results = await Promise.all(
-            this._scrapers.map((s) => s.extract(1)),
+            this.#scrapers.map((s) => s.extract(1)),
         );
         const items = results.flat()
                              .sort((i1, i2) => (i2.date ?? 0) - (i1.date ?? 0))
                              .slice(0, 1);
 
         if (0 === items.length) {
-            this._display(this._config.empty, true);
+            this.#display(this.#empty, true);
         } else {
-            this._display(items[0]);
+            this.#display(items[0]);
         }
     }
 
-    _wake() {
-        if (!this._cron.active) {
-            this._cron.start();
-            this._update();
+    #wake() {
+        if (!this.#cron.active) {
+            this.#cron.start();
+            this.#update();
         }
     }
 
     async connectedCallback() {
-        this.attachShadow({ mode: "open" });
-
-        const response = await fetch(`${BASE_URI}/icon.tpl`);
+        const response = await fetch(resolve("./icon.tpl"));
         const text = await response.text();
         const template = new DOMParser().parseFromString(text, "text/html")
                                         .querySelector("template");
+
+        this.attachShadow({ mode: "open" });
         this.shadowRoot.append(template.content.cloneNode(true));
 
         const link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = `${BASE_URI}/icon.css`;
+        link.href = resolve("./icon.css");
         this.shadowRoot.append(link);
 
-        this._cron = new Cron(this._config.cron ?? [], this._update.bind(this));
-        this._empty = this._config.empty ?? {};
+        this.#cron = new Cron(this.#config.cron ?? [], this.#update.bind(this));
+        this.#empty = this.#config.empty ?? {};
 
-        document.addEventListener("visibilitychange", this._wake.bind(this));
-        this._update();
+        document.addEventListener("visibilitychange", this.#wake.bind(this));
+        this.#update();
     }
 }

@@ -2,11 +2,28 @@ div {
     position: relative;
 }
 
+a {
+    display: flex;
+    opacity: 80%;
+    padding: 8px;
+    transition: 0.2s ease-out;
+}
+a[href]:hover {
+    opacity: 100%;
+}
+
+img {
+    width: 100%;
+}
+img[src=""] {
+    display: none;
+}
+
 input {
-    background-color: black;
+    background-color: rgba(0 0 0 / 50%);
     bottom: 0;
     cursor: pointer;
-    height: 16px;
+    height: 24px;
     margin: 0;
     opacity: 0%;
     padding: 0;
@@ -16,13 +33,18 @@ input {
     z-index: 1;
 }
 input::-moz-range-track {
+    background-color: black;
+    border-radius: 1px;
+    height: 2px;
+}
+input::-moz-range-progress {
     background-color: white;
+    border-radius: 1px;
     height: 2px;
 }
 input::-moz-range-thumb {
     background-color: white;
     border: 0;
-    filter: drop-shadow(0 0 2px rgba(0 0 0 / 65%));
     height: 12px;
     width: 12px;
 }
@@ -31,18 +53,4 @@ div:hover input, input.active {
 }
 div input:hover {
     opacity: 100%;
-}
-
-a {
-    display: block;
-    opacity: 80%;
-    padding: 8px;
-    transition: 0.2s ease-out;
-}
-a:hover {
-    opacity: 100%;
-}
-
-img {
-    width: 100%;
 }

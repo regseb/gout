@@ -1,15 +1,15 @@
 <template>
   <template>
     <li>
-      <img />
+      <img>
       <span></span>
     </li>
   </template>
 
   <div>
     <form>
-      <img />
-      <input name="" list="suggestions" placeholder="" />
+      <img>
+      <input name="" list="suggestions" placeholder="">
       <datalist id="suggestions" />
     </form>
     <ul></ul>

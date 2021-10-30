@@ -27,7 +27,7 @@ a {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-a:visited {
+a:visited, div.empty a {
     color: black;
 }
 a[href]:hover {

@@ -2,42 +2,61 @@
  * @module
  */
 
-import { Cron } from "https://cdn.jsdelivr.net/npm/cronnor@1";
+import Cron from "https://cdn.jsdelivr.net/npm/cronnor@1";
 
-const BASE_URI = import.meta.url.slice(0, import.meta.url.lastIndexOf("/"));
+/**
+ * Résous un chemin relatif à partir du module.
+ *
+ * @param {string} specifier Le chemin relatif vers un fichier.
+ * @returns {string} L'URL absolue vers le fichier.
+ * @see https://github.com/whatwg/html/issues/3871
+ */
+const resolve = function (specifier) {
+    return new URL(specifier, import.meta.url).href;
+};
 
-const hash = function (item) {
+const hashCode = function (item) {
     return Math.abs(Array.from(item.guid ?? JSON.stringify(item))
                          .reduce((code, character) => {
-        return (code << 5) - code + character.charCodeAt();
+        return (code << 5) - code + character.codePointAt();
     }, 0)).toString(36);
 };
 
 export default class extends HTMLElement {
 
+    #config;
+
+    #scrapers;
+
+    #cron;
+
+    #max;
+
+    #empty;
+
     constructor(config, scrapers) {
         super();
-        this._config = config;
-        this._scrapers = scrapers;
+        this.#config = config;
+        this.#scrapers = scrapers;
     }
 
-    _clean(items) {
-        const guids = new Set(items.map(hash));
+    #clean(items) {
+        const guids = new Set(items.map(hashCode));
         Array.from(this.shadowRoot.querySelectorAll("li"))
              .filter((l) => !guids.has(l.dataset.guid))
              .forEach((l) => l.remove());
     }
 
-    _display(item, empty = false) {
+    #display(item, empty = false) {
         const ul = this.shadowRoot.querySelector("ul");
-        const guid = hash(item);
+        const guid = hashCode(item);
         const li = ul.querySelector(`li[data-guid="${guid}"]`) ??
                    this.shadowRoot.querySelector("template")
                                   .content.querySelector("li")
                                   .cloneNode(true);
 
         li.dataset.guid = guid;
-        li.dataset.date = item.date ?? 0;
+        li.dataset.date = item.date?.toString() ?? "0";
         if (empty) {
             li.classList.add("empty");
         } else {
@@ -62,7 +81,8 @@ export default class extends HTMLElement {
             let pos = 0;
             // Trouver la future position chronologique de l'élément.
             for (const other of ul.children) {
-                if (li.dataset.date <= other.dataset.date) {
+                if (Number.parseInt(li.dataset.date, 10) <=
+                                      Number.parseInt(other.dataset.date, 10)) {
                     ++pos;
                 }
             }
@@ -75,65 +95,65 @@ export default class extends HTMLElement {
         }
     }
 
-    async _update() {
+    async #update() {
         // Si la page est cachée : ne pas actualiser les données et indiquer
         // qu'il faudra mettre à jour les données quand l'utilisateur reviendra
         // sur la page.
         if (document.hidden) {
-            this._cron.stop();
+            this.#cron.stop();
             return;
         }
 
         const results = await Promise.all(
-            this._scrapers.map((s) => s.extract(this._max)),
+            this.#scrapers.map((s) => s.extract(this.#max)),
         );
         const items = results.flat()
                              .sort((i1, i2) => (i2.date ?? 0) - (i1.date ?? 0))
-                             .slice(0, this._max);
+                             .slice(0, this.#max);
 
         if (0 === items.length) {
-            this._clean([this._empty]);
-            this._display(this._empty, true);
+            this.#clean([this.#empty]);
+            this.#display(this.#empty, true);
         } else {
-            this._clean(items);
+            this.#clean(items);
             for (const item of items) {
-                this._display(item);
+                this.#display(item);
             }
         }
     }
 
-    _wake() {
-        if (!this._cron.active) {
-            this._cron.start();
-            this._update();
+    #wake() {
+        if (!this.#cron.active) {
+            this.#cron.start();
+            this.#update();
         }
     }
 
     async connectedCallback() {
-        this.attachShadow({ mode: "open" });
-
-        const response = await fetch(`${BASE_URI}/list.tpl`);
+        const response = await fetch(resolve("./list.tpl"));
         const text = await response.text();
         const template = new DOMParser().parseFromString(text, "text/html")
                                         .querySelector("template");
+
+        this.attachShadow({ mode: "open" });
         this.shadowRoot.append(template.content.cloneNode(true));
 
         const link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = `${BASE_URI}/list.css`;
+        link.href = resolve("./list.css");
         this.shadowRoot.append(link);
 
-        this._cron = new Cron(this._config.cron ?? [], this._update.bind(this));
-        this._max = this._config.max ?? Number.MAX_SAFE_INTEGER;
-        this._empty = this._config.empty ?? {};
+        this.#cron = new Cron(this.#config.cron ?? [], this.#update.bind(this));
+        this.#max = this.#config.max ?? Number.MAX_SAFE_INTEGER;
+        this.#empty = this.#config.empty ?? {};
 
         const ul = this.shadowRoot.querySelector("ul");
-        ul.style.backgroundColor = this._config.color ?? "#9e9e9e";
-        if (undefined !== this._config.icon) {
-            ul.style.backgroundImage = `url("${this._config.icon}")`;
+        ul.style.backgroundColor = this.#config.color ?? "#9e9e9e";
+        if (undefined !== this.#config.icon) {
+            ul.style.backgroundImage = `url("${this.#config.icon}")`;
         }
 
-        document.addEventListener("visibilitychange", this._wake.bind(this));
-        this._update();
+        document.addEventListener("visibilitychange", this.#wake.bind(this));
+        this.#update();
     }
 }

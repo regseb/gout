@@ -1,50 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gout</title>
-    <link href="style.css" rel="stylesheet" />
-    <link href="/img/icon.svg" rel="shortcut icon" />
+    <link href="style.css" rel="stylesheet">
+    <link href="/img/icon.svg" rel="shortcut icon">
   </head>
   <body>
     <template>
       <li>
-        <span><a></a></span>
-        <button class="icon"><img src="img/detail.svg" alt="detail" /></button>
+        <span></span>
+        <button class="icon" title="Enlever">
+          <img src="img/remove.svg" alt="remove">
+        </button>
       </li>
     </template>
 
-    <section id="list">
-      <ul></ul>
+    <div>
+      <button class="outlined" id="set" disabled="disabled">Ajouter</button>
+    </div>
 
-      <div>
-        <button class="outlined" id="add">Ajouter</button>
-      </div>
-    </section>
+    <ul></ul>
 
-    <section id="edit">
-      <form>
-        <input name="index" type="hidden" />
-        <div>
-          <label>
-            Titre :
-            <input name="title" type="text" />
-          </label>
-        </div>
-        <div>
-          <label>
-            Lien :
-            <input name="link" type="text" disabled />
-          </label>
-        </div>
-        <div>
-          <button id="remove">Retirer</button>
-          <button id="save">Enregistrer</button>
-        </div>
-      </form>
-    </section>
-
+    <script src="/polyfill/script.js" type="module"></script>
     <script src="script.js" type="module"></script>
   </body>
 </html>

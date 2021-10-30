@@ -15,32 +15,44 @@ const DEFAULT_COLORS = {
 
 export default class {
 
+    #url;
+
+    #colors;
+
+    #complements;
+
     constructor({ url, colors = DEFAULT_COLORS, complements }) {
-        this._url = url;
-        this._colors = colors;
-        this._complements = { desc: url, link: url, ...complements };
+        this.#url = url;
+        this.#colors = colors;
+        this.#complements = { desc: url, link: url, ...complements };
     }
 
-    async extract() {
+    async extract(max = Number.MAX_SAFE_INTEGER) {
+        if (0 === max) {
+            return [];
+        }
+
         try {
-            const response = await fetch(this._url);
+            const response = await fetch(this.#url);
             // Choisir la couleur en fonction du code HTTP.
-            let color = this._colors["0"];
-            for (const prefix of Object.keys(this._colors)) {
+            for (const [prefix, color] of Object.entries(this.#colors)) {
                 if (response.status.toString().startsWith(prefix)) {
-                    color = this._colors[prefix];
-                    break;
+                    return [{
+                        ...this.#complements,
+                        color,
+                        date:  Date.now(),
+                    }];
                 }
             }
             return [{
-                ...this._complements,
-                color,
-                date: Date.now(),
+                ...this.#complements,
+                color: this.#colors["0"],
+                date:  Date.now(),
             }];
         } catch {
             return [{
-                ...this._complements,
-                color: this._colors["0"],
+                ...this.#complements,
+                color: this.#colors["0"],
                 date:  Date.now(),
             }];
         }

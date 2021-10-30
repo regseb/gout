@@ -1,17 +1,20 @@
+div {
+    display: flex;
+}
+
 a {
-    display: block;
+    display: flex;
+    opacity: 80%;
     padding: 8px;
+    transition: 0.2s ease-out;
+}
+a[href]:hover {
+    opacity: 100%;
 }
 
 img {
-    opacity: 80%;
-    transition: 0.2s ease-out;
-    vertical-align: top;
     width: 100%;
 }
 img[src=""] {
     display: none;
-}
-img:hover {
-    opacity: 100%;
 }

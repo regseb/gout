@@ -1,20 +1,25 @@
 export default {
     patterns: [
         "!/.git/",
-        "!/build/",
         "!/jsdocs/",
         "!/node_modules/",
         "!/src/extension/polyfill/lib/",
+        "!/src/extension/inject/lib/",
+        "!*.swp",
         "**",
     ],
     checkers: [
         {
-            patterns: "/src/extension/",
+            patterns: ["/build/*.zip", "/src/extension/"],
             linters: { "addons-linter": null },
         }, {
             patterns: "/src/extension/**/*.js",
             linters: {
-                eslint: ["eslint.config.js", "eslint_webext.config.js"],
+                eslint: [
+                    "eslint.config.js",
+                    "eslint_browser.config.js",
+                    "eslint_webext.config.js",
+                ],
             },
         }, {
             patterns: [
@@ -50,6 +55,9 @@ export default {
             patterns: "*.css",
             linters: "stylelint",
         }, {
+            patterns: "/src/extension/popup/*.css",
+            linters: { purgecss: "purgecss_popup.config.js" },
+        }, {
             patterns: ["!/CHANGELOG.md", "*.md"],
             linters: "markdownlint",
         }, {
@@ -58,9 +66,6 @@ export default {
         }, {
             patterns: "*.yml",
             linters: { "yaml-lint": null },
-        }, {
-            patterns: "/package.json",
-            linters: "david",
         },
     ],
 };
