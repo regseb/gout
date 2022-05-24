@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "module": "ESNext",
+        "moduleResolution": "node",
+
+        "allowJs": true,
+
+        "esModuleInterop": true,
+
+        "target": "ESNext"
+    },
+    "include": [
+        "**/*"
+    ],
+    "exclude": [
+        "build/",
+        ".git/",
+        "jsdocs/",
+        "node_modules/",
+        "src/extension/inject/lib/",
+        "src/extension/polyfill/lib/",
+        "**/*.swp"
+    ]
+}

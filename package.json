@@ -25,8 +25,8 @@
     "scripts": {
         "postinstall": "node .script/sync.js",
         "lint": "metalint",
-        "lint:types": "tsc",
-        "jsdocs": "typedoc --tsconfig tsconfig_typedoc.json --out jsdocs/ src/",
+        "lint:types": "tsc --project .tsconfig_lint.json",
+        "jsdocs": "typedoc --tsconfig .tsconfig_jsdocs.json --out jsdocs/ src/",
         "server": "http-server -p6007 -c-1 --cors",
         "extension:chromium": "web-ext run -t chromium -s src/extension/",
         "extension:firefox": "web-ext run -t firefox-desktop -s src/extension/",
