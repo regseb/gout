@@ -1,0 +1,13 @@
+div {
+    align-items: center;
+    color: white;
+    display: flex;
+    font-family: sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 8px;
+}
+span {
+    font-family: monospace;
+    margin-left: 8px;
+}
