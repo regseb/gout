@@ -2,7 +2,7 @@
  * @module
  */
 
-import Cron from "https://cdn.jsdelivr.net/npm/cronnor@1";
+import Cron from "https://cdn.jsdelivr.net/npm/cronnor@2/+esm";
 
 if (undefined === import.meta.resolve) {
 
@@ -138,11 +138,11 @@ export default class extends HTMLElement {
         }
     }
 
-    async #update() {
+    async #update(force = false) {
         // Si la page est cachée : ne pas actualiser les données et indiquer
         // qu'il faudra mettre à jour les données quand l'utilisateur reviendra
         // sur la page.
-        if (document.hidden) {
+        if (document.hidden && !force) {
             this.#cron.stop();
             return;
         }
@@ -189,7 +189,6 @@ export default class extends HTMLElement {
         link.href = import.meta.resolve("./image.css");
         this.shadowRoot.append(link);
 
-        this.#cron = new Cron(this.#config.cron ?? [], this.#update.bind(this));
         this.#max = this.#config.max ?? Number.MAX_SAFE_INTEGER;
         this.#empty = this.#config.empty ?? {};
         this.#index = 0;
@@ -204,7 +203,11 @@ export default class extends HTMLElement {
                            .addEventListener("click", this.#next.bind(this));
         }
 
-        document.addEventListener("visibilitychange", this.#wake.bind(this));
-        this.#update();
+        if (undefined !== this.#config.cron) {
+            this.#cron = new Cron(this.#config.cron, this.#update.bind(this));
+            document.addEventListener("visibilitychange",
+                                      this.#wake.bind(this));
+        }
+        this.#update(true);
     }
 }
