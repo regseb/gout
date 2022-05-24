@@ -48,7 +48,7 @@ export const PostMessage = class {
                 // Faire un clonage structuré car Chromium ne le fait pas
                 // nativement et l'envoi du message peut échouer si les
                 // paramètres contiennent un URLSearchParams.
-                // https://crbug.com/1233571
+                // https://crbug.com/1314252
                 params: typeson.encapsulate(params),
             }, window);
         });

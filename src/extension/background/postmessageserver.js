@@ -14,8 +14,7 @@ export const PostMessageServer = class {
             try {
                 port.postMessage({
                     id:     data.id,
-                    result: await this.#getters[data.method].apply(null,
-                                                                   data.params),
+                    result: await this.#getters[data.method](...data.params),
                 });
             } catch (err) {
                 port.postMessage({

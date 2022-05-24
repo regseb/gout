@@ -16,6 +16,7 @@ export default {
         // Function.
         "function-calc-no-unspaced-operator": true,
         "function-linear-gradient-no-nonstandard-direction": true,
+        "function-no-unknown": true,
 
         // String.
         "string-no-newline": true,
@@ -31,6 +32,9 @@ export default {
 
         // Keyframe declaration.
         "keyframe-declaration-no-important": true,
+
+        // Keyframe block.
+        "keyframe-block-no-duplicate-selectors": true,
 
         // Declaration block.
         "declaration-block-no-duplicate-custom-properties": true,
@@ -121,14 +125,15 @@ export default {
         }],
 
         // Declaration.
-        "declaration-block-no-redundant-longhand-properties": true,
         "declaration-no-important": true,
+        "declaration-property-max-values": null,
         "declaration-property-unit-allowed-list": null,
         "declaration-property-unit-disallowed-list": null,
         "declaration-property-value-allowed-list": null,
         "declaration-property-value-disallowed-list": null,
 
         // Declaration block.
+        "declaration-block-no-redundant-longhand-properties": true,
         "declaration-block-single-line-max-declarations": 1,
 
         // Selector.
@@ -153,6 +158,7 @@ export default {
         "selector-nested-pattern": null,
         "selector-no-qualifying-type": null,
         "selector-no-vendor-prefix": true,
+        "selector-not-notation": "complex",
         "selector-pseudo-class-allowed-list": null,
         "selector-pseudo-class-disallowed-list": null,
         "selector-pseudo-element-allowed-list": null,

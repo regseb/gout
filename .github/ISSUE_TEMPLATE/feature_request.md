@@ -19,7 +19,7 @@ assignees: ''
 ### Environment
 
 - Gout extension version<!-- e.g. 0.9.1 -->:
-- Browser version<!-- e.g. Chrome 94.0.4606.81, Firefox 93.0 -->:
+- Browser version<!-- e.g. Chrome 101.0.4951.64, Firefox 100.0 -->:
 
 ### Additional context
 

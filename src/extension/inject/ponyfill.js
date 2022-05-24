@@ -2,4 +2,4 @@
  * @module
  */
 
-export { default as Typeson } from "./lib/typeson-esm.js";
+export { Typeson } from "./lib/typeson.esm.js";

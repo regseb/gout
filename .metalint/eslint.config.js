@@ -1,22 +1,23 @@
 export default {
     plugins: [
+        "eslint-comments",
         "import",
         "jsdoc",
         "mocha",
         "node",
         "no-unsanitized",
+        "promise",
         "regexp",
         "unicorn",
     ],
 
     parserOptions: {
-        ecmaVersion: "latest",
         sourceType: "module",
     },
 
     env: {
         "shared-node-browser": true,
-        es2021: true,
+        es2022: true,
     },
 
     rules: {
@@ -31,6 +32,7 @@ export default {
         "no-compare-neg-zero": 2,
         "no-cond-assign": 2,
         "no-const-assign": 2,
+        "no-constant-binary-expression": 2,
         "no-constant-condition": 2,
         "no-constructor-return": 2,
         "no-control-regex": 2,
@@ -159,9 +161,6 @@ export default {
         "no-implicit-globals": 2,
         "no-implied-eval": 2,
         "no-inline-comments": 2,
-        // Attention avec cette règle car il y a des faux-positifs avec
-        // l'utilisation de this dans les champs de classe.
-        // https://github.com/eslint/eslint/issues/15016
         "no-invalid-this": 2,
         "no-iterator": 2,
         "no-label-var": 2,
@@ -199,7 +198,6 @@ export default {
             "DebuggerStatement",
             "EmptyStatement",
             "ForInStatement",
-            "FunctionDeclaration",
             "LabeledStatement",
             "SequenceExpression",
             "TaggedTemplateExpression",
@@ -216,7 +214,6 @@ export default {
             "JSXAttribute",
             "JSXSpreadAttribute",
             "JSXText",
-            "ExportAllDeclaration",
         ],
         "no-return-assign": 2,
         "no-return-await": 2,
@@ -228,10 +225,7 @@ export default {
         "no-throw-literal": 2,
         "no-undef-init": 2,
         "no-undefined": 0,
-        // Autoriser les underscores pour pouvoir indiquer qu'une propriété est
-        // privée (en attendant l'implémentation des propriétés privées avec #).
-        // https://bugzilla.mozilla.org/show_bug.cgi?id=1562054
-        "no-underscore-dangle": 0,
+        "no-underscore-dangle": 2,
         "no-unneeded-ternary": 2,
         "no-unused-expressions": 2,
         "no-unused-labels": 2,
@@ -258,6 +252,7 @@ export default {
         // Désactiver cette règle et préférer regexp/prefer-named-capture-group.
         "prefer-named-capture-group": 0,
         "prefer-numeric-literals": 2,
+        "prefer-object-has-own": 2,
         "prefer-object-spread": 2,
         "prefer-promise-reject-errors": 2,
         "prefer-regex-literals": 2,
@@ -353,6 +348,26 @@ export default {
         "wrap-iife": 2,
         "wrap-regex": 2,
         "yield-star-spacing": 2,
+
+        // Plugin eslint-plugin-eslint-comments.
+        // Best Practices.
+        "eslint-comments/disable-enable-pair": [2, { allowWholeFile: true }],
+        "eslint-comments/no-aggregating-enable": 2,
+        "eslint-comments/no-duplicate-disable": 2,
+        "eslint-comments/no-unlimited-disable": 2,
+        "eslint-comments/no-unused-disable": 2,
+        "eslint-comments/no-unused-enable": 2,
+
+        // Stylistic Issues.
+        "eslint-comments/no-restricted-disable": 2,
+        "eslint-comments/no-use": [2, {
+            allow: [
+                "eslint-disable",
+                "eslint-disable-next-line",
+                "eslint-enable",
+            ],
+        }],
+        "eslint-comments/require-description": 0,
 
         // Plugin eslint-plugin-import.
         // Static analysis.
@@ -463,12 +478,29 @@ export default {
         "jsdoc/require-throws": 2,
         "jsdoc/require-yields": 2,
         "jsdoc/require-yields-check": 2,
+        "jsdoc/sort-tags": 2,
         "jsdoc/tag-lines": 2,
         "jsdoc/valid-types": 2,
 
         // Plugin eslint-plugin-no-unsanitized.
         "no-unsanitized/method": 2,
         "no-unsanitized/property": 2,
+
+        // Plugin eslint-plugin-promise.
+        "promise/catch-or-return": 0,
+        "promise/no-return-wrap": 2,
+        "promise/param-names": 2,
+        "promise/always-return": 0,
+        "promise/no-native": 0,
+        "promise/no-nesting": 2,
+        "promise/no-promise-in-callback": 2,
+        "promise/no-callback-in-promise": 2,
+        "promise/avoid-new": 0,
+        "promise/no-new-statics": 2,
+        "promise/no-return-in-finally": 2,
+        "promise/valid-params": 2,
+        "promise/prefer-await-to-then": 2,
+        "promise/prefer-await-to-callbacks": 0,
 
         // Plugin eslint-plugin-regexp.
         // Possible Errors.
@@ -585,12 +617,14 @@ export default {
         "unicorn/no-nested-ternary": 0,
         "unicorn/no-new-array": 2,
         "unicorn/no-new-buffer": 2,
-        "unicorn/no-null": 0,
+        "unicorn/no-null": 2,
         "unicorn/no-object-as-default-parameter": 2,
         "unicorn/no-process-exit": 2,
         "unicorn/no-static-only-class": 2,
+        "unicorn/no-thenable": 2,
         "unicorn/no-this-assignment": 2,
         "unicorn/no-unreadable-array-destructuring": 2,
+        "unicorn/no-unreadable-iife": 2,
         // Désactiver la règle car il y a des faux-positifs avec les petites
         // valeurs de quantification.
         // https://github.com/davisjam/safe-regex/issues/10
@@ -598,7 +632,9 @@ export default {
         "unicorn/no-unused-properties": 2,
         "unicorn/no-useless-fallback-in-spread": 2,
         "unicorn/no-useless-length-check": 2,
+        "unicorn/no-useless-promise-resolve-reject": 2,
         "unicorn/no-useless-spread": 2,
+        "unicorn/no-useless-switch-case": 2,
         "unicorn/no-useless-undefined": 0,
         "unicorn/no-zero-fractions": 2,
         "unicorn/number-literal-case": 2,
@@ -609,9 +645,7 @@ export default {
         "unicorn/prefer-array-flat-map": 2,
         "unicorn/prefer-array-index-of": 2,
         "unicorn/prefer-array-some": 2,
-        // Attendre que la méthode .at() soit implémentée pour activer cette
-        // règle. https://github.com/tc39/proposal-relative-indexing-method
-        "unicorn/prefer-at": 0,
+        "unicorn/prefer-at": 2,
         "unicorn/prefer-code-point": 2,
         "unicorn/prefer-date-now": 2,
         "unicorn/prefer-default-parameters": 2,
@@ -621,15 +655,17 @@ export default {
         "unicorn/prefer-dom-node-text-content": 2,
         "unicorn/prefer-export-from": [2, { ignoreUsedVariables: true }],
         "unicorn/prefer-includes": 2,
+        "unicorn/prefer-json-parse-buffer": 0,
         "unicorn/prefer-keyboard-event-key": 2,
         "unicorn/prefer-math-trunc": 2,
         "unicorn/prefer-modern-dom-apis": 2,
+        "unicorn/prefer-modern-math-apis": 2,
         "unicorn/prefer-module": 2,
+        "unicorn/prefer-native-coercion-functions": 2,
         "unicorn/prefer-negative-index": 2,
         "unicorn/prefer-node-protocol": 2,
         "unicorn/prefer-number-properties": 2,
         "unicorn/prefer-object-from-entries": 2,
-        "unicorn/prefer-object-has-own": 2,
         "unicorn/prefer-optional-catch-binding": 2,
         "unicorn/prefer-prototype-methods": 2,
         "unicorn/prefer-query-selector": 2,
@@ -646,14 +682,16 @@ export default {
         "unicorn/prefer-top-level-await": 2,
         "unicorn/prefer-type-error": 2,
         "unicorn/prevent-abbreviations": 0,
-        "unicron/require-array-join-separator": 0,
+        "unicorn/relative-url-style": 2,
+        "unicorn/require-array-join-separator": 0,
         "unicorn/require-number-to-fixed-digits-argument": 0,
         // Désactiver cette règles car il y a des faux-positifs avec la méthode
         // port.postMessage() des WebExtensions.
         // https://github.com/sindresorhus/eslint-plugin-unicorn/issues/1396
         "unicorn/require-post-message-target-origin": 0,
-        "unicorn/sring-content": 0,
+        "unicorn/string-content": 0,
         "unicorn/template-indent": 2,
+        "unicorn/text-encoding-identifier-case": 2,
         "unicorn/throw-new-error": 2,
     },
 

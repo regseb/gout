@@ -34,11 +34,13 @@ const download = async function (url, dest) {
 await copy("node_modules/webextension-polyfill/dist/browser-polyfill.js",
            "src/extension/polyfill/lib/browser-polyfill.js");
 
-await copy("node_modules/typeson/dist/typeson-esm.js",
-           "src/extension/inject/lib/typeson-esm.js");
+await copy("node_modules/typeson/dist/typeson.esm.js",
+           "src/extension/inject/lib/typeson.esm.js");
 
+// Télécharger la prothèse car le paquet npm ne contient pas de module autonome.
+// https://github.com/fregante/content-scripts-register-polyfill/issues/34
 await download(
     "https://bundle.fregante.com/api/bundle" +
                                        "?pkg=content-scripts-register-polyfill",
     "src/extension/polyfill/lib/content-scripts-register-polyfill.js",
- );
+);

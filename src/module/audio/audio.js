@@ -40,16 +40,16 @@ export default class extends HTMLElement {
         const input = this.shadowRoot.querySelector("input");
 
         const volume = input.valueAsNumber;
-        if (0 === volume && null !== this.#audio) {
+        if (0 === volume && undefined !== this.#audio) {
             this.#audio.pause();
-            this.#audio = null;
+            this.#audio = undefined;
             input.classList.remove("active");
-        } else if (0 !== volume && null === this.#audio) {
+        } else if (0 !== volume && undefined === this.#audio) {
             this.#audio = new Audio(input.dataset.audio);
             this.#audio.volume = volume / 100;
             await this.#audio.play();
             input.classList.add("active");
-        } else if (0 !== volume && null !== this.#audio) {
+        } else if (0 !== volume && undefined !== this.#audio) {
             this.#audio.volume = volume / 100;
         }
     }
@@ -124,7 +124,6 @@ export default class extends HTMLElement {
         this.shadowRoot.append(link);
 
         this.#empty = this.#config.empty ?? {};
-        this.#audio = null;
 
         const input = this.shadowRoot.querySelector("input");
         input.addEventListener("change", this.#turn.bind(this));
