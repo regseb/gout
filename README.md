@@ -8,22 +8,17 @@
 ## Description
 
 Gout est une **extension** Firefox pour récupérer des informations sur Internet
-(flux RSS, résultats d'API, parsing de pages Web...) et les afficher dans une
-page Web. Les [dashboards](#Dashboard) sont des pages Web avec du
+(flux RSS, résultats d'API, parsing de sites Internet...) et les afficher dans
+une page Web. Les [dashboards](#Dashboard) sont ces pages Web avec du
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") pour les
 [widgets](#Widget). Et il est aussi possible de développer des
 [modules](#Module) et des [scrapers](#Scraper) pour agréger de nouveaux sites
 Internet.
 
-## Installation
-
-L'extension est disponible sur
-[**Firefox Browser Add-ons**][link-firefox_add-on].
-
-## Dashboard
+### Dashboard
 
 Un dashboard est une page Web qui contient des widgets. Elle doit importer le
-moteur de rendu du Gout :
+moteur de rendu de Gout :
 `"https://cdn.jsdelivr.net/gh/regseb/gout@0/src/engine/script.js"`.
 
 Voici un exemple de dashboard ayant quatre colonnes de widgets :
@@ -63,7 +58,7 @@ Voici un exemple de dashboard ayant quatre colonnes de widgets :
 </html>
 ```
 
-## Widget
+### Widget
 
 Un widget est bloc du dashboard. C'est un élément `<script>` qui contient un
 objet JSON définissant son module et ses scrapers :
@@ -95,14 +90,14 @@ Cette exemple de widget affiche les actualités du site
 </script>
 ```
 
-## Module
+### Module
 
 Les modules sont les composants du widget définissant comment les données sont
 affichées (une liste de liens, une image...). Dans la configuration du widget,
 l'objet JSON du module est composé de trois propriétés :
 
 - `"extends"` : L'URL (avec le suffixe `#module`) vers la configuration d'un
-  widget pour hériter des réglages du module. Si cette propriété n'est pas
+  widget pour hériter des réglages de son module. Si cette propriété n'est pas
   renseignée, ce module n'a pas de préréglage.
 - `"url"` : L'URL du script JavaScript du module (par exemple pour le module
   [_list_](https://github.com/regseb/gout/tree/HEAD/src/module/list#readme) :
@@ -132,7 +127,7 @@ Dans cet exemple, le module est une liste de podcasts (avec un maximum cinq
 </script>
 ```
 
-## Scraper
+### Scraper
 
 Les scrapers permettent d'extraire des données (flux RSS, parsing de page...) et
 de les transmettre à un module dans un format spécifique. Plusieurs scrapers
@@ -141,8 +136,9 @@ scrapers sont définis dans un tableau d'objets JSON composés de trois
 propriétés :
 
 - `"extends"` : L'URL (avec le suffixe `#scrapers[N]`) vers la configuration
-  d'un widget pour hériter des réglages d'un scraper (où _N_ est son index). Si
-  cette propriété n'est pas renseignée, ce scraper n'a pas de préréglages.
+  d'un widget pour hériter des réglages d'un de ses scrapers (où _N_ est son
+  index). Si cette propriété n'est pas renseignée, ce scraper n'a pas de
+  préréglages.
 - `"url"` : L'URL du script JavaScript du scraper (par exemple pour le scraper
   [_list/rss_](https://github.com/regseb/gout/tree/HEAD/src/scraper/list/rss#readme)
   : `"https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"`).
