@@ -83,7 +83,7 @@ contenant un tableau dont chaque élément est un objet ayant les propriétés :
       <p>
         La
         <a href="https://developer.mozilla.org/fr/docs/Web/CSS/color_value">couleur</a>
-        de fond du cadre. Par défaut la couleur grise (<code>"#9e9e9e"</code>)
+        de fond du cadre. Par défaut la couleur grise (<code>"#757575"</code>)
         est utilisée.
       </p>
       <p>

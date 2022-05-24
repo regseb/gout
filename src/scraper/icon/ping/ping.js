@@ -1,16 +1,16 @@
 const DEFAULT_COLORS = {
     // Bleu.
-    1: "#2196f3",
+    1: "#4975b6",
     // Vert.
-    2: "#4caf50",
+    2: "#148a00",
     // Orange.
-    3: "#ff9800",
+    3: "#c75300",
     // Rouge.
-    4: "#f44336",
+    4: "#e12712",
     // Violet.
-    5: "#9c27b0",
+    5: "#8d6794",
     // Gris.
-    0: "#9e9e9e",
+    0: "#757575",
 };
 
 export default class {
@@ -21,9 +21,9 @@ export default class {
 
     #complements;
 
-    constructor({ url, colors = DEFAULT_COLORS, complements }) {
+    constructor({ url, colors, complements }) {
         this.#url = url;
-        this.#colors = colors;
+        this.#colors = Object.entries(colors ?? DEFAULT_COLORS);
         this.#complements = { desc: url, link: url, ...complements };
     }
 
@@ -35,26 +35,23 @@ export default class {
         try {
             const response = await fetch(this.#url);
             // Choisir la couleur en fonction du code HTTP.
-            for (const [prefix, color] of Object.entries(this.#colors)) {
+            for (const [prefix, color] of this.#colors) {
                 if (response.status.toString().startsWith(prefix)) {
                     return [{
                         ...this.#complements,
                         color,
-                        date:  Date.now(),
+                        date: Date.now(),
                     }];
                 }
             }
-            return [{
-                ...this.#complements,
-                color: this.#colors["0"],
-                date:  Date.now(),
-            }];
         } catch {
-            return [{
-                ...this.#complements,
-                color: this.#colors["0"],
-                date:  Date.now(),
-            }];
+            // Ne rien faire (pour retourner la couleur d'un code HTTP inconnu).
         }
+
+        return [{
+            ...this.#complements,
+            color: this.#colors["0"],
+            date:  Date.now(),
+        }];
     }
 }

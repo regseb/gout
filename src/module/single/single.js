@@ -36,7 +36,7 @@ export default class extends HTMLElement {
 
     #display(item, empty = false) {
         const div = this.shadowRoot.querySelector("div");
-        div.style.backgroundColor = item.color ?? "#9e9e9e";
+        div.style.backgroundColor = item.color ?? "#757575";
         if (empty) {
             div.classList.add("empty");
         } else {

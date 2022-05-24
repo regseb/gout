@@ -47,7 +47,7 @@ export default class extends HTMLElement {
 
     async #display(item, empty = false) {
         const object = this.shadowRoot.querySelector("object");
-        object.style.backgroundColor = item.color ?? "#9e9e9e";
+        object.style.backgroundColor = item.color ?? "#757575";
         if (empty) {
             object.classList.add("empty");
         } else {

@@ -64,7 +64,7 @@ Monde.fr](https://www.lemonde.fr/).
     "module": {
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
         "config": {
-            "color": "#9e9e9e",
+            "color": "#757575",
             "cron": "*/10 * * * *",
             "max": 5
         }

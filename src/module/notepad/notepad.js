@@ -64,14 +64,14 @@ export default class extends HTMLElement {
         this.#guid = hashCode(this.#config);
 
         const textarea = this.shadowRoot.querySelector("textarea");
-        textarea.style.backgroundColor = this.#config.color ?? "#9e9e9e";
+        textarea.style.backgroundColor = this.#config.color ?? "#757575";
         if (undefined !== this.#config.icon) {
             textarea.style.backgroundImage = `url("${this.#config.icon}")`;
         }
         textarea.value = localStorage.getItem(import.meta.url + this.#guid);
         textarea.title = this.#config.desc ?? "";
         textarea.placeholder = this.#config.title ?? "";
-        textarea.style.borderColor = this.#config.color ?? "#9e9e9e";
+        textarea.style.borderColor = this.#config.color ?? "#757575";
         textarea.addEventListener("input", this.#save.bind(this));
         this.#resize();
 
