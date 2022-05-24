@@ -175,6 +175,17 @@ des chaines YouTube [ARTE Cinema](https://www.youtube.com/c/ARTECinemafrance) et
 </script>
 ```
 
+## Installation
+
+L'extension est disponible sur [**Firefox Browser
+Add-ons**][link-firefox_add-on]. Après l'avoir installée, téléchargez un
+[template d'un
+dashboard](https://github.com/regseb/gout/tree/HEAD/src/template/dashboard).
+Ouvrez le fichier avec un éditeur de texte. Ajoutez les widgets que vous
+souhaitez dans le code HTML. Ouvrez le fichier avec votre navigateur et ajoutez
+la page dans l'extension (en cliquant sur l'icône de l'extension dans la barre
+d'outils du navigateur). Actualisez la page pour voir apparaitre les widgets.
+
 [img-firefox_add-on]:https://img.shields.io/amo/v/gout.svg?label=add-on&logo=firefox-browser&logoColor=white
 [img-build]:https://img.shields.io/github/workflow/status/regseb/gout/CI
 

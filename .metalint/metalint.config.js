@@ -41,8 +41,16 @@ export default {
                 eslint: ["eslint.config.js", "eslint_config.config.js"],
             },
         }, {
-            patterns: "*.html",
+            patterns: ["!/template/dashboard/", "*.html"],
             linters: "htmlhint",
+        }, {
+            patterns: "/template/dashboard/**/*.html",
+            linters: {
+                htmlhint: [
+                    "htmlhint.config.js",
+                    "htmlhint_dashboard.config.js",
+                ],
+            },
         }, {
             patterns: "*.tpl",
             linters: {
