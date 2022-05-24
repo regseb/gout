@@ -4,16 +4,19 @@
 
 import Cron from "https://cdn.jsdelivr.net/npm/cronnor@1";
 
-/**
- * Résous un chemin relatif à partir du module.
- *
- * @param {string} specifier Le chemin relatif vers un fichier.
- * @returns {string} L'URL absolue vers le fichier.
- * @see https://github.com/whatwg/html/issues/3871
- */
-const resolve = function (specifier) {
-    return new URL(specifier, import.meta.url).href;
-};
+if (undefined === import.meta.resolve) {
+
+    /**
+     * Résous un chemin relatif à partir du module.
+     *
+     * @param {string} specifier Le chemin relatif vers un fichier.
+     * @returns {string} L'URL absolue vers le fichier.
+     * @see https://github.com/whatwg/html/issues/3871
+     */
+    import.meta.resolve = (specifier) => {
+        return new URL(specifier, import.meta.url).href;
+    };
+}
 
 const hashCode = function (item) {
     return Math.abs(Array.from(item.guid ?? JSON.stringify(item))
@@ -32,12 +35,12 @@ const playPause = function (event) {
         a.style.display = "none";
         input.max = Math.trunc(audio.duration);
         input.style.display = "block";
-        img.src = resolve("./img/pause.svg");
+        img.src = import.meta.resolve("./img/pause.svg");
         audio.play();
     } else {
         input.style.display = "none";
         a.style.display = "block";
-        img.src = resolve("./img/play.svg");
+        img.src = import.meta.resolve("./img/play.svg");
         audio.pause();
     }
 };
@@ -96,7 +99,7 @@ export default class extends HTMLElement {
         }
 
         const img = li.querySelector("img");
-        img.src = item.icon ?? resolve("./img/play.svg");
+        img.src = item.icon ?? import.meta.resolve("./img/play.svg");
         img.addEventListener("click", playPause);
 
         const a = li.querySelector("a");
@@ -171,7 +174,7 @@ export default class extends HTMLElement {
     }
 
     async connectedCallback() {
-        const response = await fetch(resolve("./podcast.tpl"));
+        const response = await fetch(import.meta.resolve("./podcast.tpl"));
         const text = await response.text();
         const template = new DOMParser().parseFromString(text, "text/html")
                                         .querySelector("template");
@@ -181,7 +184,7 @@ export default class extends HTMLElement {
 
         const link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = resolve("./podcast.css");
+        link.href = import.meta.resolve("./podcast.css");
         this.shadowRoot.append(link);
 
         this.#cron = new Cron(this.#config.cron ?? [], this.#update.bind(this));
