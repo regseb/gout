@@ -9,10 +9,10 @@
 
 Gout est une **extension** Firefox pour récupérer des informations sur Internet
 (flux RSS, résultats d'API, parsing de sites Internet...) et les afficher dans
-une page Web. Les [dashboards](#Dashboard) sont ces pages Web avec du
+une page Web. Les [dashboards](#dashboard) sont ces pages Web avec du
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") pour les
-[widgets](#Widget). Et il est aussi possible de développer des
-[modules](#Module) et des [scrapers](#Scraper) pour agréger de nouveaux sites
+[widgets](#widget). Et il est aussi possible de développer des
+[modules](#module) et des [scrapers](#scraper) pour agréger de nouveaux sites
 Internet.
 
 ### Dashboard
@@ -96,20 +96,21 @@ Les modules sont les composants du widget définissant comment les données sont
 affichées (une liste de liens, une image...). Dans la configuration du widget,
 l'objet JSON du module est composé de trois propriétés :
 
-- `"extends"` : L'URL (avec le suffixe `#module`) vers la configuration d'un
+- `"$extends"` : L'URL (avec le suffixe `#module`) vers la configuration d'un
   widget pour hériter des réglages de son module. Si cette propriété n'est pas
   renseignée, ce module n'a pas de préréglage.
 - `"url"` : L'URL du script JavaScript du module (par exemple pour le module
   [_list_](https://github.com/regseb/gout/tree/HEAD/src/module/list#readme) :
   `"https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"`). Cette
   propriété est obligatoire sauf si le module a un préréglage (avec
-  `"extends"`).
+  `"$extends"`).
 - `"config"` : Un objet JSON contenant la configuration du module (qui est
-  spécifique pour chaque module). Selon les modules, cette propriété peut être
+  spécifique pour chaque module). Selon les modules, cette propriété est
   optionnelle.
 
-Dans cet exemple, le module est une liste de podcasts (avec un maximum cinq
-éléments) affichée dans un bloc bleu et actualisée toutes les dix minutes :
+Dans cet exemple, le module est une liste de podcasts (avec au maximum cinq
+éléments) affichée dans un bloc bleu `#2196f3` et actualisée toutes les dix
+minutes :
 
 ```HTML
 <script type="application/json">
@@ -135,7 +136,7 @@ peuvent être utilisés avec un module. Dans la configuration du widget, les
 scrapers sont définis dans un tableau d'objets JSON composés de trois
 propriétés :
 
-- `"extends"` : L'URL (avec le suffixe `#scrapers[N]`) vers la configuration
+- `"$extends"` : L'URL (avec le suffixe `#scrapers[N]`) vers la configuration
   d'un widget pour hériter des réglages d'un de ses scrapers (où _N_ est son
   index). Si cette propriété n'est pas renseignée, ce scraper n'a pas de
   préréglages.
@@ -143,9 +144,9 @@ propriétés :
   [_list/rss_](https://github.com/regseb/gout/tree/HEAD/src/scraper/list/rss#readme)
   : `"https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"`).
   Cette propriété est obligatoire sauf si le scraper a un préréglage (avec
-  `"extends"`).
+  `"$extends"`).
 - `"config"` : un objet JSON contenant la configuration du scraper (qui est
-  spécifique pour chaque scraper). Selon les scrapers, cette propriété peut être
+  spécifique pour chaque scraper). Selon les scrapers, cette propriété est
   optionnelle.
 
 Dans cet exemple, deux scrapers sont définis pour récupérer les dernières vidéos
