@@ -41,16 +41,17 @@ propriétés suivantes :
         reçu du serveur. Voici les couleurs par défaut :
       </p>
       <ul>
-        <li><em>1XX</em> : bleu ;</li>
-        <li><em>2XX</em> : vert ;</li>
-        <li><em>3XX</em> : orange ;</li>
-        <li><em>4XX</em> : rouge ;</li>
-        <li><em>5XX</em> : violet ;</li>
+        <li><code>1..</code> : bleu ;</li>
+        <li><code>2..</code> : vert ;</li>
+        <li><code>3..</code> : orange ;</li>
+        <li><code>4..</code> : rouge ;</li>
+        <li><code>5..</code> : violet ;</li>
         <li>autre : gris.</li>
       </ul>
       <p>
         Exemple :
-        <code>{ 1: "blue", 200: "green", 2: "darkgreen", 0: "gray" }</code>.
+        <code>{ "1..": "blue", "200": "green", "2..": "darkgreen", "...":
+              "gray" }</code>.
       </p>
     </td>
   </tr>
