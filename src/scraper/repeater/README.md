@@ -10,12 +10,11 @@ Il peut être utilisé avec tous les modules.
 
 La configuration contient un objet
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") dont les
-dont les clés correspondent aux méthodes simulées et les valeurs aux données
-retournées.
+clés correspondent aux méthodes simulées et les valeurs aux données retournées.
 
 ## Exemple
 
-Ce widget affiche des marques-pages avec deux liens allant vers
+Ce widget affiche une liste avec deux liens allant vers
 [Facebook](https://www.facebook.com/) et
 [Twitter](https://www.twitter.com/).
 

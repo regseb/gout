@@ -3,7 +3,7 @@
 > Mots-clés : gout, gout-scraper, gout-scraper-search-opensearch,
 > gout-module-search.
 
-Ce scraper extrait les données au fomat
+Ce scraper extrait les données au format
 [**OpenSearch**](https://github.com/dewitt/opensearch) d'un moteur de recherche.
 
 Il peut être utilisé avec le module

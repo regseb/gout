@@ -36,9 +36,9 @@ propriétés suivantes :
     <td><code>object</code></td>
     <td>
       <p>
-        Les couleurs retournées en fonction du [statut
-        HTTP](https://developer.mozilla.org/fr/docs/Web/HTTP/Status) reçu du
-        serveur. Voici les couleurs par défaut :
+        Les couleurs retournées en fonction du
+        <a href="https://developer.mozilla.org/Web/HTTP/Status">statut HTTP</a>
+        reçu du serveur. Voici les couleurs par défaut :
       </p>
       <ul>
         <li><em>1XX</em> : bleu ;</li>

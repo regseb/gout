@@ -22,9 +22,9 @@ propriétés suivantes :
     <td>
       <p>
         La
-        <a href="https://developer.mozilla.org/fr/docs/Web/CSS/color_value">couleur</a>
-        de fond du cadre. Par défaut la couleur grise (<code>"#757575"</code>)
-        est utilisée.
+        <a href="https://developer.mozilla.org/CSS/color_value">couleur</a> de
+        fond du cadre. Par défaut la couleur grise (<code>"#757575"</code>) est
+        utilisée.
       </p>
       <p>
         Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>.

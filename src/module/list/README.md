@@ -23,9 +23,9 @@ propriétés suivantes :
     <td>
       <p>
         La
-        <a href="https://developer.mozilla.org/fr/docs/Web/CSS/color_value">couleur</a>
-        de fond du cadre. Par défaut la couleur grise (<code>"#757575"</code>)
-        est utilisée.
+        <a href="https://developer.mozilla.org/CSS/color_value">couleur</a> de
+        fond du cadre. Par défaut la couleur grise (<code>"#757575"</code>) est
+        utilisée.
       </p>
       <p>
         Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>.
@@ -103,8 +103,9 @@ propriétés suivantes :
 Les scrapers associés à ce module doivent définir une méthode `extract()` qui
 prend en paramètre un entier indiquant le nombre maximum d'éléments à retourner.
 La méthode doit retourner une
-[promesse](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-contenant un tableau dont chaque élément est un objet ayant les propriétés :
+[promesse](https://developer.mozilla.org/Web/JavaScript/Reference/Global_Objects/Promise)
+contenant un tableau dont chaque élément est un objet ayant les propriétés
+suivantes :
 
 <table>
   <tr>
@@ -119,7 +120,7 @@ contenant un tableau dont chaque élément est un objet ayant les propriétés :
       <p>
         Le nombre de millisecondes depuis le 1er janvier 1970 à 00:00:00 UTC
         (cf.
-        <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime"><code>Date.prototype.getTime()</code></a>).
+        <a href="https://developer.mozilla.org/JavaScript/Reference/Global_Objects/Date/getTime"><code>Date.prototype.getTime()</code></a>).
         Cette valeur est utilisée pour trier les éléments du plus récent au plus
         ancien. Par défaut, le nombre <code>0</code> est utilisé.
       </p>
@@ -188,7 +189,7 @@ contenant un tableau dont chaque élément est un objet ayant les propriétés :
     <td>
       <p>
         L'emplacement où sera ouvert le lien (cf. l'attribut
-        <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/a#attr-target"><code>target</code></a>
+        <a href="https://developer.mozilla.org/HTML/Element/a#attr-target"><code>target</code></a>
         des liens HTML). Par défaut, les liens s'ouvrent dans un nouvel onglet.
       </p>
       <p>

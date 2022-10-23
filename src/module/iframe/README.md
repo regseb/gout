@@ -46,6 +46,19 @@ propriétés suivantes :
       </p>
     </td>
   </tr>
+  <tr>
+    <td><code>"height"</code></td>
+    <td><code>number</code></td>
+    <td>
+      <p>
+        La hauteur en pixel de l'<code>iframe</code>. Par défaut, la hauteur est
+        fixée à <code>150</code>.
+      </p>
+      <p>
+        Exemple : <code>200</code>.
+      </p>
+    </td>
+  </tr>
 </table>
 
 ## Scrapers
@@ -54,8 +67,9 @@ Les scrapers associés à ce module doivent définir une méthode `extract()` qu
 prend en paramètre un entier indiquant le nombre maximum d'éléments à retourner
 (pour ce module la valeur passée sera toujours `1`). La méthode doit retourner
 une
-[promesse](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-contenant un tableau dont chaque élément est un objet ayant les propriétés :
+[promesse](https://developer.mozilla.org/Web/JavaScript/Reference/Global_Objects/Promise)
+contenant un tableau dont chaque élément est un objet ayant les propriétés
+suivantes :
 
 <table>
   <tr>
@@ -70,7 +84,7 @@ contenant un tableau dont chaque élément est un objet ayant les propriétés :
       <p>
         Le nombre de millisecondes depuis le 1er janvier 1970 à 00:00:00 UTC
         (cf.
-        <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime"><code>Date.prototype.getTime()</code></a>).
+        <a href="https://developer.mozilla.org/JavaScript/Reference/Global_Objects/Date/getTime"><code>Date.prototype.getTime()</code></a>).
         Cette valeur est utilisée pour trier les éléments du plus récent au plus
         ancien. Par défaut, le nombre <code>0</code> est utilisé.
       </p>
