@@ -1,3 +1,7 @@
+/**
+ * @module
+ */
+
 let contentScript;
 
 const register = async function (changes) {

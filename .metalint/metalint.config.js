@@ -17,7 +17,6 @@ export default {
             linters: {
                 eslint: [
                     "eslint.config.js",
-                    "eslint_browser.config.js",
                     "eslint_webext.config.js",
                 ],
             },
@@ -26,6 +25,7 @@ export default {
                 "/src/engine/**/*.js",
                 "/src/module/**/*.js",
                 "/src/scraper/**/*.js",
+                "/src/util/**/*.js",
             ],
             linters: {
                 eslint: ["eslint.config.js", "eslint_browser.config.js"],

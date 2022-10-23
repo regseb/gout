@@ -44,7 +44,8 @@ export default class {
     }
 
     #extractAtom(xml, max) {
-        return Array.from(xml.querySelectorAll(`entry:nth-of-type(-n+${max})`))
+        return Array.from(xml.querySelectorAll("entry"))
+                    .slice(0, max)
                     .map((entry) => ({
             content: entry.querySelector("content")?.textContent ?? "",
             date:    entry.querySelector("published").textContent,

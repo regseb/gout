@@ -4,7 +4,7 @@ export default {
         "import",
         "jsdoc",
         "mocha",
-        "node",
+        "n",
         "no-unsanitized",
         "promise",
         "regexp",
@@ -122,6 +122,9 @@ export default {
         "id-length": 0,
         "id-match": 0,
         "init-declarations": 0,
+        "logical-assignment-operators": [2, "always", {
+            enforceForIfStatements: true,
+        }],
         "max-classes-per-file": 2,
         "max-depth": [1, { max: 5 }],
         "max-lines": [1, {
@@ -501,6 +504,7 @@ export default {
         "promise/valid-params": 2,
         "promise/prefer-await-to-then": 2,
         "promise/prefer-await-to-callbacks": 0,
+        "promise/no-multiple-resolved": 2,
 
         // Plugin eslint-plugin-regexp.
         // Possible Errors.
@@ -595,7 +599,6 @@ export default {
         "unicorn/expiring-todo-comments": 0,
         "unicorn/explicit-length-check": 0,
         "unicorn/filename-case": [2, { case: "kebabCase" }],
-        "unicorn/import-index": 0,
         "unicorn/import-style": 2,
         "unicorn/new-for-builtins": 2,
         "unicorn/no-abusive-eslint-disable": 2,
@@ -623,6 +626,7 @@ export default {
         "unicorn/no-static-only-class": 2,
         "unicorn/no-thenable": 2,
         "unicorn/no-this-assignment": 2,
+        "unicorn/no-unnecessary-await": 2,
         "unicorn/no-unreadable-array-destructuring": 2,
         "unicorn/no-unreadable-iife": 2,
         // Désactiver la règle car il y a des faux-positifs avec les petites
@@ -640,7 +644,7 @@ export default {
         "unicorn/number-literal-case": 2,
         "unicorn/numeric-separators-style": 2,
         "unicorn/prefer-add-event-listener": 2,
-        "unicorn/prefer-array-find": 2,
+        "unicorn/prefer-array-find": [2, { checkFromLast: true }],
         "unicorn/prefer-array-flat": 2,
         "unicorn/prefer-array-flat-map": 2,
         "unicorn/prefer-array-index-of": 2,
@@ -653,10 +657,12 @@ export default {
         "unicorn/prefer-dom-node-dataset": 2,
         "unicorn/prefer-dom-node-remove": 2,
         "unicorn/prefer-dom-node-text-content": 2,
+        "unicorn/prefer-event-target": 2,
         "unicorn/prefer-export-from": [2, { ignoreUsedVariables: true }],
         "unicorn/prefer-includes": 2,
         "unicorn/prefer-json-parse-buffer": 0,
         "unicorn/prefer-keyboard-event-key": 2,
+        "unicorn/prefer-logical-operator-over-ternary": 2,
         "unicorn/prefer-math-trunc": 2,
         "unicorn/prefer-modern-dom-apis": 2,
         "unicorn/prefer-modern-math-apis": 2,
@@ -690,6 +696,7 @@ export default {
         // https://github.com/sindresorhus/eslint-plugin-unicorn/issues/1396
         "unicorn/require-post-message-target-origin": 0,
         "unicorn/string-content": 0,
+        "unicorn/switch-case-braces": [2, "avoid"],
         "unicorn/template-indent": 2,
         "unicorn/text-encoding-identifier-case": 2,
         "unicorn/throw-new-error": 2,

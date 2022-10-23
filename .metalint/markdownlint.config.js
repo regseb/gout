@@ -8,7 +8,8 @@ export default {
     "no-hard-tabs": true,
     "no-reversed-links": true,
     "no-multiple-blanks": true,
-    "line-length": true,
+    // eslint-disable-next-line camelcase
+    "line-length": { code_blocks: false, headings: false, stern: false },
     "commonds-show-output": true,
     "no-missing-space-atx": true,
     "no-multiple-space-atx": true,
@@ -44,4 +45,7 @@ export default {
     "code-fence-style": { style: "backtick" },
     "emphasis-style": { style: "underscore" },
     "strong-style": { style: "asterisk" },
+    "link-fragments": true,
+    "reference-links-images": true,
+    "link-image-reference-definitions": true,
 };

@@ -2,7 +2,7 @@
     "applications": {
         "gecko": {
             "id": "gout@regseb.github.io",
-            "strict_min_version": "100.0"
+            "strict_min_version": "106.0"
         }
     },
     "manifest_version": 2,
@@ -31,7 +31,7 @@
     },
     "homepage_url": "https://github.com/regseb/gout",
     "web_accessible_resources": ["inject/*"],
-    "minimum_chrome_version": "101",
+    "minimum_chrome_version": "106",
     "permissions": [
         "<all_urls>",
         "activeTab",

@@ -1,26 +1,12 @@
+/**
+ * @module
+ */
+
 import { createWriteStream } from "node:fs";
 import fs from "node:fs/promises";
 import https from "node:https";
 import path from "node:path";
 import stream from "node:stream/promises";
-
-const copy = async function (src, dest) {
-    await fs.mkdir(path.dirname(dest), { recursive: true });
-    const stats = await fs.lstat(src);
-    if (stats.isDirectory()) {
-        await fs.mkdir(dest, { recursive: true });
-
-        for (const filename of await fs.readdir(src)) {
-            await copy(path.join(src, filename), path.join(dest, filename));
-        }
-    } else {
-        // Supprimer le fichier de destination s'il existe car la fonction
-        // link() échoue si la destination existe déjà.
-        // https://github.com/nodejs/node/issues/40521
-        await fs.rm(dest, { force: true });
-        await fs.link(src, dest);
-    }
-};
 
 const download = async function (url, dest) {
     await fs.mkdir(path.dirname(dest), { recursive: true });
@@ -31,11 +17,11 @@ const download = async function (url, dest) {
     });
 };
 
-await copy("node_modules/webextension-polyfill/dist/browser-polyfill.js",
-           "src/extension/polyfill/lib/browser-polyfill.js");
+await fs.cp("node_modules/webextension-polyfill/dist/browser-polyfill.js",
+            "src/extension/polyfill/lib/browser-polyfill.js");
 
-await copy("node_modules/typeson/dist/typeson.esm.js",
-           "src/extension/inject/lib/typeson.esm.js");
+await fs.cp("node_modules/typeson/dist/typeson.esm.js",
+            "src/extension/inject/lib/typeson.esm.js");
 
 // Télécharger la prothèse car le paquet npm ne contient pas de module autonome.
 // https://github.com/fregante/content-scripts-register-polyfill/issues/34

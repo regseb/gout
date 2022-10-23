@@ -2,20 +2,6 @@
  * @module
  */
 
-if (undefined === import.meta.resolve) {
-
-    /**
-     * Résous un chemin relatif à partir du module.
-     *
-     * @param {string} specifier Le chemin relatif vers un fichier.
-     * @returns {string} L'URL absolue vers le fichier.
-     * @see https://github.com/whatwg/html/issues/3871
-     */
-    import.meta.resolve = (specifier) => {
-        return new URL(specifier, import.meta.url).href;
-    };
-}
-
 export default class extends HTMLElement {
 
     #scrapers;

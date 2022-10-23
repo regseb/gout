@@ -1,3 +1,7 @@
+/**
+ * @module
+ */
+
 export const PostMessageServer = class {
     #getters = {};
 

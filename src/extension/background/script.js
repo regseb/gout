@@ -1,3 +1,7 @@
+/**
+ * @module
+ */
+
 import { PostMessageServer } from "./postmessageserver.js";
 
 const server = new PostMessageServer();
