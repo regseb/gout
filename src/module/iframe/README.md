@@ -24,7 +24,7 @@ propriétés suivantes :
         La ou les
         <a href="https://www.npmjs.com/package/cronnor#expression-cron">expressions
         <em>cron</em></a> indiquant la fréquence de mise à jour. Sans cette
-        propriété, l'`iframe` n'est jamais rechargé.
+        propriété, l'<code>iframe</code> n'est jamais rechargé.
       </p>
       <p>
         Exemple : <code>"@daily"</code>.
@@ -82,8 +82,8 @@ suivantes :
     <td><code>number</code></td>
     <td>
       <p>
-        Le nombre de millisecondes depuis le 1er janvier 1970 à 00:00:00 UTC
-        (cf.
+        Le nombre de millisecondes depuis le 1<sup>er</sup> janvier 1970 à
+        00:00:00 UTC (cf.
         <a href="https://developer.mozilla.org/JavaScript/Reference/Global_Objects/Date/getTime"><code>Date.prototype.getTime()</code></a>).
         Cette valeur est utilisée pour trier les éléments du plus récent au plus
         ancien. Par défaut, le nombre <code>0</code> est utilisé.

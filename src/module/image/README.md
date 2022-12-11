@@ -86,8 +86,8 @@ suivantes :
     <td><code>number</code></td>
     <td>
       <p>
-        Le nombre de millisecondes depuis le 1er janvier 1970 à 00:00:00 UTC
-        (cf.
+        Le nombre de millisecondes depuis le 1<sup>er</sup> janvier 1970 à
+        00:00:00 UTC (cf.
         <a href="https://developer.mozilla.org/JavaScript/Reference/Global_Objects/Date/getTime"><code>Date.prototype.getTime()</code></a>).
         Cette valeur est utilisée pour trier les éléments du plus récent au plus
         ancien. Par défaut, le nombre <code>0</code> est utilisé.
@@ -117,7 +117,7 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        L'URL de l'image affichée. Par défaut, aucune icône n'est affichée.
+        L'URL de l'image affichée. Par défaut, aucune image n'est affichée.
       </p>
       <p>
         Exemple : <code>"https://example.com/foo/bar.jpg"</code>.
@@ -129,8 +129,8 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        Le lien de l'élément. Par défaut, il n'y a pas de lien (mais le titre de
-        l'élément est affiché).
+        Le lien de l'élément. Par défaut, il n'y a pas de lien (mais l'image est
+        affichée).
       </p>
       <p>
         Exemple : <code>"https://example.com/foo/bar.html"</code>.
@@ -156,8 +156,8 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        La description de l'élément qui sera affichée dans l'info-bulle. Par
-        défaut, aucune info-bulle n'est affichée.
+        Le titre de l'élément affiché dans l'info-bulle. Par défaut, aucune
+        info-bulle n'est affichée.
       </p>
       <p>
         Exemple : <code>"Magnifique photo !"</code>.
@@ -168,8 +168,9 @@ suivantes :
 
 ## Exemple
 
-Ce widget affiche les trois dernières images du site
-[CommitStrip](https://www.commitstrip.com/fr/) avec une mise à jour à minuit.
+Ce widget affiche les `3` dernières images du site
+[CommitStrip](https://www.commitstrip.com/fr/) avec une mise à jour à
+[minuit](https://crontab.guru/#@daily).
 
 ```JSON
 {
@@ -181,7 +182,7 @@ Ce widget affiche les trois dernières images du site
         }
     },
     "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/scraper/list/commitstrip/commitstrip.js"
+        "url": "https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/scraper/image/commitstrip/commitstrip.js"
     }]
 }
 ```

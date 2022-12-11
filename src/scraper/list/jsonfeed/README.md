@@ -3,7 +3,7 @@
 > Mots-clés : gout, gout-scraper, gout-scraper-list-jsonfeed, gout-module-list,
 > gout-module-single.
 
-Ce scraper récupère la liste des dernières éléments d'un flux [**JSON
+Ce scraper récupère la liste des derniers éléments d'un flux [**JSON
 Feed**](https://jsonfeed.org/).
 
 Il peut être utilisé avec les modules :
@@ -42,7 +42,7 @@ propriétés suivantes :
     <td>
       <p>
         Des propriétés qui seront ajoutées dans les éléments retournés. Par
-        défaut aucune propriété est ajoutée.
+        défaut aucune propriété n'est ajoutée.
       </p>
       <p>
         Exemple : <code>{ "icon": "https://example.com/foo/bar.svg" }</code>.

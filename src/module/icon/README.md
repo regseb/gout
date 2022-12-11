@@ -84,8 +84,8 @@ suivantes :
     <td><code>number</code></td>
     <td>
       <p>
-        Le nombre de millisecondes depuis le 1er janvier 1970 à 00:00:00 UTC
-        (cf.
+        Le nombre de millisecondes depuis le 1<sup>er</sup> janvier 1970 à
+        00:00:00 UTC (cf.
         <a href="https://developer.mozilla.org/JavaScript/Reference/Global_Objects/Date/getTime"><code>Date.prototype.getTime()</code></a>).
         Cette valeur est utilisée pour trier les éléments du plus récent au plus
         ancien. Par défaut, le nombre <code>0</code> est utilisé.
@@ -104,7 +104,7 @@ suivantes :
         soit carrée et que le dessin occupe toute la zone de l'image. Si le
         dessin n'est pas carré, il faut le centrer horizontalement et
         verticalement. Seule la couleur blanche doit être utilisée. Par défaut,
-        l'image d'une note de musique est affichée.
+        aucune icône n'est affichée.
       </p>
       <p>
         Exemple : <code>"https://example.com/foo/bar.svg"</code>.
@@ -143,11 +143,11 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        Le texte affiché dans l'info-bulle. Par défaut, aucune info-bulle n'est
-        affichée.
+        Le titre de l'élément affiché dans l'info-bulle. Par défaut, aucune
+        info-bulle est affichée.
       </p>
       <p>
-        Exemple : <code>"La meilleur radio !"</code>.
+        Exemple : <code>"Click me!"</code>.
       </p>
     </td>
   </tr>

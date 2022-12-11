@@ -41,7 +41,7 @@ propriétés suivantes :
       <p>
         L'URL pour récupérer les suggestions avec la balise
         <code>{searchTerms}</code> qui sera remplacée par les termes recherchés.
-        Si cette propriété n'est pas renseignée : aucune suggestion est
+        Si cette propriété n'est pas renseignée : aucune suggestion n'est
         remontée.
       </p>
       <p>

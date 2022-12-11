@@ -52,8 +52,8 @@ propriétés suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        La description du bloc-notes qui sera affichée dans l'info-bulle. Par
-        défaut, aucune info-bulle n'est affichée.
+        La description du bloc-notes affichée dans l'info-bulle. Par défaut,
+        aucune info-bulle n'est affichée.
       </p>
       <p>
         Exemple : <code>"Ce top10 des choses incroyables est incroyable"</code>.

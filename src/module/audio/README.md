@@ -97,8 +97,8 @@ suivantes :
     <td><code>number</code></td>
     <td>
       <p>
-        Le nombre de millisecondes depuis le 1er janvier 1970 à 00:00:00 UTC
-        (cf.
+        Le nombre de millisecondes depuis le 1<sup>er</sup> janvier 1970 à
+        00:00:00 UTC (cf.
         <a href="https://developer.mozilla.org/JavaScript/Reference/Global_Objects/Date/getTime"><code>Date.prototype.getTime()</code></a>).
         Cette valeur est utilisée pour trier les éléments du plus récent au plus
         ancien. Par défaut, le nombre <code>0</code> est utilisé.
@@ -156,8 +156,8 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        Le texte affiché dans l'info-bulle. Par défaut, aucune info-bulle n'est
-        affichée.
+        Le titre de l'élément affiché dans l'info-bulle. Par défaut, aucune
+        info-bulle n'est affichée.
       </p>
       <p>
         Exemple : <code>"La meilleur radio !"</code>.
@@ -179,9 +179,9 @@ Ce widget affiche un cadre pour écouter la radio [Fip](https://www.fip.fr/).
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/repeater/repeater.js",
         "config": {
             "extract": [{
-                "audio": "https://direct.fipradio.fr/live/fip-midfi.mp3",
-                "color": "#e91e63",
-                "link": "https://www.fip.fr/",
+                "audio": "https://direct.radiofrance.fr/live/fip-hifi.aac",
+                "color": "#e2007a",
+                "link": "https://www.radiofrance.fr/fip",
                 "title": "Fip"
             }]
         }

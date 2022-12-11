@@ -1,7 +1,8 @@
 # Gout
 
-[![firefox add-on][img-firefox_add-on]][link-firefox_add-on]
+[![firefox][img-firefox]][link-firefox]
 [![build][img-build]][link-build]
+[![coverage][img-coverage]][link-coverage]
 
 > Agrégateur d'Internet (flux RSS et tout le reste).
 
@@ -21,7 +22,7 @@ Un dashboard est une page Web qui contient des widgets. Elle doit importer le
 moteur de rendu de Gout :
 `"https://cdn.jsdelivr.net/gh/regseb/gout@0/src/engine/script.js"`.
 
-Voici un exemple de dashboard ayant quatre colonnes de widgets :
+Voici un exemple de dashboard ayant quatre colonnes de widgets.
 
 ```HTML
 <!DOCTYPE html>
@@ -64,10 +65,11 @@ Un widget est bloc du dashboard. C'est un élément `<script>` qui contient un
 objet JSON définissant son module et ses scrapers :
 
 - `"module"` : Un objet JSON contenant le règlage du module.
-- `"scrapers"` : La liste des scrapers avec leur configuration.
+- `"scrapers"` : Un tableau d'objet JSON pour les règlages de chaque scraper.
 
-Cette exemple de widget affiche les actualités du site
-[LinuxFr.org](https://linuxfr.org/).
+Cet exemple de widget récupère les dernières publications du flux RSS du site
+[LinuxFr.org](https://linuxfr.org/) et il les affiche sous forme d'une liste de
+liens.
 
 ```HTML
 <script type="application/json">
@@ -94,23 +96,18 @@ Cette exemple de widget affiche les actualités du site
 
 Les modules sont les composants du widget définissant comment les données sont
 affichées (une liste de liens, une image...). Dans la configuration du widget,
-l'objet JSON du module est composé de trois propriétés :
+l'objet JSON du module est composé de deux propriétés :
 
-- `"$extends"` : L'URL (avec le suffixe `#module`) vers la configuration d'un
-  widget pour hériter des réglages de son module. Si cette propriété n'est pas
-  renseignée, ce module n'a pas de préréglage.
-- `"url"` : L'URL du script JavaScript du module (par exemple pour le module
+- `"url"` : L'URL du fichier JavaScript du module (par exemple pour le module
   [_list_](https://github.com/regseb/gout/tree/HEAD/src/module/list#readme) :
-  `"https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"`). Cette
-  propriété est obligatoire sauf si le module a un préréglage (avec
-  `"$extends"`).
+  `"https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"`).
 - `"config"` : Un objet JSON contenant la configuration du module (qui est
   spécifique pour chaque module). Selon les modules, cette propriété est
   optionnelle.
 
-Dans cet exemple, le module est une liste de podcasts (avec au maximum cinq
-éléments) affichée dans un bloc bleu `#2196f3` et actualisée toutes les dix
-minutes :
+Dans cet exemple, le module est une liste (avec au maximum `5` éléments)
+affichée dans un bloc bleu `#2196f3` et actualisée toutes les dix minutes
+[`*/10 * * * *`](https://crontab.guru/#*/10_*_*_*_*).
 
 ```HTML
 <script type="application/json">
@@ -133,25 +130,19 @@ minutes :
 Les scrapers permettent d'extraire des données (flux RSS, parsing de page...) et
 de les transmettre à un module dans un format spécifique. Plusieurs scrapers
 peuvent être utilisés avec un module. Dans la configuration du widget, les
-scrapers sont définis dans un tableau d'objets JSON composés de trois
+scrapers sont définis dans un tableau d'objets JSON composés de deux
 propriétés :
 
-- `"$extends"` : L'URL (avec le suffixe `#scrapers[N]`) vers la configuration
-  d'un widget pour hériter des réglages d'un de ses scrapers (où _N_ est son
-  index). Si cette propriété n'est pas renseignée, ce scraper n'a pas de
-  préréglages.
-- `"url"` : L'URL du script JavaScript du scraper (par exemple pour le scraper
+- `"url"` : L'URL du fichier JavaScript du scraper (par exemple pour le scraper
   [_list/rss_](https://github.com/regseb/gout/tree/HEAD/src/scraper/list/rss#readme)
   : `"https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"`).
-  Cette propriété est obligatoire sauf si le scraper a un préréglage (avec
-  `"$extends"`).
 - `"config"` : un objet JSON contenant la configuration du scraper (qui est
   spécifique pour chaque scraper). Selon les scrapers, cette propriété est
   optionnelle.
 
 Dans cet exemple, deux scrapers sont définis pour récupérer les dernières vidéos
 des chaines YouTube [ARTE Cinema](https://www.youtube.com/c/ARTECinemafrance) et
-[ARTE Séries](https://www.youtube.com/c/ARTES%C3%A9ries) :
+[ARTE Séries](https://www.youtube.com/c/ARTES%C3%A9ries).
 
 ```HTML
 <script type="application/json">
@@ -174,17 +165,18 @@ des chaines YouTube [ARTE Cinema](https://www.youtube.com/c/ARTECinemafrance) et
 
 ## Installation
 
-L'extension est disponible sur [**Firefox Browser
-Add-ons**][link-firefox_add-on]. Après l'avoir installée, téléchargez un
-[template d'un
-dashboard](https://github.com/regseb/gout/tree/HEAD/src/template/dashboard).
+L'extension est disponible sur [**Firefox Browser Add-ons**][link-firefox].
+Après l'avoir installée, téléchargez un [template d'un
+dashboard](https://github.com/regseb/gout/tree/HEAD/template/dashboard).
 Ouvrez le fichier avec un éditeur de texte. Ajoutez les widgets que vous
 souhaitez dans le code HTML. Ouvrez le fichier avec votre navigateur et ajoutez
 la page dans l'extension (en cliquant sur l'icône de l'extension dans la barre
 d'outils du navigateur). Actualisez la page pour voir apparaitre les widgets.
 
-[img-firefox_add-on]:https://img.shields.io/amo/v/gout.svg?label=add-on&logo=firefox-browser&logoColor=white
-[img-build]:https://img.shields.io/github/workflow/status/regseb/gout/CI
+[img-firefox]:https://img.shields.io/amo/v/gout.svg?label=add-on&logo=firefox-browser&logoColor=white
+[img-build]:https://img.shields.io/github/workflow/status/regseb/gout/CI?logo=github&logoColor=white
+[img-coverage]:https://img.shields.io/endpoint?label=coverage&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fregseb%2Fgout%2Fmain
 
-[link-firefox_add-on]:https://addons.mozilla.org/addon/gout/
+[link-firefox]:https://addons.mozilla.org/addon/gout/
 [link-build]:https://github.com/regseb/gout/actions/workflows/ci.yml?query=branch%3Amain
+[link-coverage]:https://dashboard.stryker-mutator.io/reports/github.com/regseb/gout/main

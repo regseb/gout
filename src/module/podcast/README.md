@@ -130,8 +130,8 @@ suivantes :
     <td><code>number</code></td>
     <td>
       <p>
-        Le nombre de millisecondes depuis le 1er janvier 1970 à 00:00:00 UTC
-        (cf.
+        Le nombre de millisecondes depuis le 1<sup>er</sup> janvier 1970 à
+        00:00:00 UTC (cf.
         <a href="https://developer.mozilla.org/JavaScript/Reference/Global_Objects/Date/getTime"><code>Date.prototype.getTime()</code></a>).
         Cette valeur est utilisée pour trier les éléments du plus récent au plus
         ancien. Par défaut, le nombre <code>0</code> est utilisé.
@@ -146,8 +146,8 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        La description de l'élément qui sera affichée dans l'info-bulle. Par
-        défaut, aucune info-bulle n'est affichée.
+        La description de l'élément affichée dans l'info-bulle. Par défaut,
+        aucune info-bulle n'est affichée.
       </p>
       <p>
         Exemple : <code>"Ce top10 des choses incroyables est incroyable"</code>.
