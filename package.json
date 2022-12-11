@@ -38,7 +38,6 @@
         "clean": "node .script/clean.js"
     },
     "dependencies": {
-        "typeson": "7.0.2",
         "webextension-polyfill": "0.10.0"
     },
     "devDependencies": {

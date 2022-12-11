@@ -3,7 +3,6 @@ export default {
         "!/.git/",
         "!/jsdocs/",
         "!/node_modules/",
-        "!/src/extension/inject/lib/",
         "!/src/extension/polyfill/lib/",
         "!*.swp",
         "**",

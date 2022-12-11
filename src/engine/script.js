@@ -58,14 +58,6 @@ link.rel = "stylesheet";
 link.href = import.meta.resolve("./style.css");
 document.head.append(link);
 
-// Attendre que le script d'enrichissement soit chargé par l'extension avant
-// d'activer les widgets.
-document.head.addEventListener("load", (event) => {
-    if ("SCRIPT" === event.target.nodeName &&
-            event.target.src.endsWith("/inject/enrich.js")) {
-        // Activer les widgets.
-        Array.from(document.querySelectorAll("body script" +
-                                                   `[type="application/json"]`))
-             .forEach(liven);
-    }
-}, true);
+// Activer les widgets.
+Array.from(document.querySelectorAll(`body script[type="application/json"]`))
+     .forEach(liven);
