@@ -4,13 +4,14 @@ export default {
         "!/jsdocs/",
         "!/node_modules/",
         "!/src/extension/polyfill/lib/",
+        "!/.stryker/",
         "!*.swp",
         "**",
     ],
     checkers: [
         {
             patterns: ["/build/*.zip", "/src/extension/"],
-            linters: { "addons-linter": null },
+            linters: "addons-linter",
         }, {
             patterns: "/src/extension/**/*.js",
             linters: {
@@ -35,7 +36,7 @@ export default {
                 eslint: ["eslint.config.js", "eslint_node.config.js"],
             },
         }, {
-            patterns: "/.metalint/**/*.js",
+            patterns: ["/.metalint/**/*.js", "/.stryker.conf.js"],
             linters: {
                 eslint: ["eslint.config.js", "eslint_config.config.js"],
             },
@@ -70,6 +71,9 @@ export default {
         }, {
             patterns: "*.json",
             linters: { "jsonlint-mod": null },
+        }, {
+            patterns: "/package.json",
+            linters: "npm-package-json-lint",
         }, {
             patterns: "*.yml",
             linters: { "yaml-lint": null },

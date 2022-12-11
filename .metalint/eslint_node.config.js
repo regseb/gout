@@ -4,6 +4,25 @@ export default {
     },
 
     rules: {
+        // Suggestions.
+        "no-restricted-properties": [2, {
+            object: "assert",
+            property: "deepStrictEqual",
+            message: "Use assert.deepEqual instead.",
+        }, {
+            object: "assert",
+            property: "notDeepStrictEqual",
+            message: "Use assert.notDeepEqual instead.",
+        }, {
+            object: "assert",
+            property: "notStrictEqual",
+            message: "Use assert.notEqual instead.",
+        }, {
+            object: "assert",
+            property: "strictEqual",
+            message: "Use assert.equal instead.",
+        }],
+
         // Plugin eslint-plugin-import.
         // Module systems.
         "import/no-nodejs-modules": 0,
@@ -41,7 +60,9 @@ export default {
         "n/global-require": 0,
         "n/no-mixed-requires": 2,
         "n/no-process-env": 0,
-        "n/no-restricted-import": 2,
+        // Interdire l'import "node:assert" (et préférer "node:assert/strict").
+        // https://github.com/eslint-community/eslint-plugin-n/issues/59
+        "n/no-restricted-import": [2, ["node:assert"]],
         "n/no-restricted-require": 2,
         "n/no-sync": [2, { allowAtRootLevel: true }],
         "n/prefer-global/buffer": 2,
