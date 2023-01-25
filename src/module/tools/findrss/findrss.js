@@ -9,24 +9,24 @@ const extract = async function (url) {
 
     const selector = `link[type="application/rss+xml"][href], ` +
                      ` link[type="application/atom+xml"][href]`;
-    return Array.from(doc.querySelectorAll(selector)).map((link) => ({
+    return Array.from(doc.querySelectorAll(selector), (link) => ({
         icon:  import.meta.resolve("./img/rss.svg"),
         link:  new URL(link.getAttribute("href"), url).href,
         title: link.title,
     }));
 };
 
-export default class extends HTMLElement {
+export default class FindRSS extends HTMLElement {
 
-    #config;
+    #options;
 
     #max;
 
     #empty;
 
-    constructor(config) {
+    constructor(options) {
         super();
-        this.#config = config;
+        this.#options = options;
     }
 
     #clean() {
@@ -92,13 +92,13 @@ export default class extends HTMLElement {
         link.href = import.meta.resolve("./findrss.css");
         this.shadowRoot.append(link);
 
-        this.#max = this.#config.max ?? Number.MAX_SAFE_INTEGER;
-        this.#empty = this.#config.empty ?? { title: "(aucun flux)" };
+        this.#max = this.#options.max ?? Number.MAX_SAFE_INTEGER;
+        this.#empty = this.#options.empty ?? { title: "(aucun flux)" };
 
         const div = this.shadowRoot.querySelector("div");
-        div.style.backgroundColor = this.#config.color ?? "#757575";
-        if (undefined !== this.#config.icon) {
-            div.style.backgroundImage = `url("${this.#config.icon}")`;
+        div.style.backgroundColor = this.#options.color ?? "#757575";
+        if (undefined !== this.#options.icon) {
+            div.style.backgroundImage = `url("${this.#options.icon}")`;
         }
 
         const input = this.shadowRoot.querySelector("input");

@@ -4,9 +4,9 @@
 
 Ce module permet d'écouter un flux audio.
 
-## Configuration
+## Options
 
-La configuration est un objet
+Les options sont dans un objet
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
 propriétés suivantes :
 
@@ -177,7 +177,7 @@ Ce widget affiche un cadre pour écouter la radio [Fip](https://www.fip.fr/).
     },
     "scrapers": [{
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/repeater/repeater.js",
-        "config": {
+        "options": {
             "extract": [{
                 "audio": "https://direct.radiofrance.fr/live/fip-hifi.aac",
                 "color": "#e2007a",

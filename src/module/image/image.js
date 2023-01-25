@@ -11,9 +11,9 @@ const hashCode = function (item) {
     }, 0)).toString(36);
 };
 
-export default class extends HTMLElement {
+export default class Image extends HTMLElement {
 
-    #config;
+    #options;
 
     #scrapers;
 
@@ -25,9 +25,9 @@ export default class extends HTMLElement {
 
     #index;
 
-    constructor(config, scrapers) {
+    constructor(options, scrapers) {
         super();
-        this.#config = config;
+        this.#options = options;
         this.#scrapers = scrapers;
     }
 
@@ -110,8 +110,7 @@ export default class extends HTMLElement {
             let pos = 0;
             // Trouver la future position chronologique de l'image.
             for (const other of ul.children) {
-                if (Number.parseInt(li.dataset.date, 10) <=
-                                      Number.parseInt(other.dataset.date, 10)) {
+                if (Number(li.dataset.date) <= Number(other.dataset.date)) {
                     ++pos;
                 }
             }
@@ -175,8 +174,8 @@ export default class extends HTMLElement {
         link.href = import.meta.resolve("./image.css");
         this.shadowRoot.append(link);
 
-        this.#max = this.#config.max ?? Number.MAX_SAFE_INTEGER;
-        this.#empty = this.#config.empty ?? {};
+        this.#max = this.#options.max ?? Number.MAX_SAFE_INTEGER;
+        this.#empty = this.#options.empty ?? {};
         this.#index = 0;
 
         if (1 === this.#max) {
@@ -189,8 +188,8 @@ export default class extends HTMLElement {
                            .addEventListener("click", this.#next.bind(this));
         }
 
-        if (undefined !== this.#config.cron) {
-            this.#cron = new Cron(this.#config.cron, this.#update.bind(this));
+        if (undefined !== this.#options.cron) {
+            this.#cron = new Cron(this.#options.cron, this.#update.bind(this));
             document.addEventListener("visibilitychange",
                                       this.#wake.bind(this));
         }

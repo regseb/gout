@@ -9,15 +9,15 @@ const hashCode = function (item) {
     }, 0)).toString(36);
 };
 
-export default class extends HTMLElement {
+export default class Notepad extends HTMLElement {
 
-    #config;
+    #options;
 
     #guid;
 
-    constructor(config) {
+    constructor(options) {
         super();
-        this.#config = config;
+        this.#options = options;
     }
 
     #save() {
@@ -47,17 +47,17 @@ export default class extends HTMLElement {
         link.href = import.meta.resolve("./notepad.css");
         this.shadowRoot.append(link);
 
-        this.#guid = hashCode(this.#config);
+        this.#guid = hashCode(this.#options);
 
         const textarea = this.shadowRoot.querySelector("textarea");
-        textarea.style.backgroundColor = this.#config.color ?? "#757575";
-        if (undefined !== this.#config.icon) {
-            textarea.style.backgroundImage = `url("${this.#config.icon}")`;
+        textarea.style.backgroundColor = this.#options.color ?? "#757575";
+        if (undefined !== this.#options.icon) {
+            textarea.style.backgroundImage = `url("${this.#options.icon}")`;
         }
         textarea.value = localStorage.getItem(import.meta.url + this.#guid);
-        textarea.title = this.#config.desc ?? "";
-        textarea.placeholder = this.#config.title ?? "";
-        textarea.style.borderColor = this.#config.color ?? "#757575";
+        textarea.title = this.#options.desc ?? "";
+        textarea.placeholder = this.#options.title ?? "";
+        textarea.style.borderColor = this.#options.color ?? "#757575";
         textarea.addEventListener("input", this.#save.bind(this));
         this.#resize();
 

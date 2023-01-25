@@ -12,9 +12,9 @@ Il peut être utilisé avec les modules :
 - [_single_](https://github.com/regseb/gout/tree/HEAD/src/module/single#readme)
   pour afficher seulement le dernier élément.
 
-## Configuration
+## Options
 
-La configuration contient un objet
+Les options sont dans un objet
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
 propriétés suivantes :
 
@@ -60,7 +60,7 @@ Ce widget affiche les cinq dernières actualités scientifiques du site
 {
     "module": {
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
-        "config": {
+        "options": {
             "color": "#2196f3",
             "cron": "*/10 * * * *",
             "max": 5
@@ -68,7 +68,7 @@ Ce widget affiche les cinq dernières actualités scientifiques du site
     },
     "scrapers": [{
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/jsonfeed/jsonfeed.js",
-        "config": {
+        "options": {
             "url": "https://refind.com/science.json"
         }
     }]

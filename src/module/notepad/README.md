@@ -4,9 +4,9 @@
 
 Ce module affiche un bloc-notes.
 
-## Configuration
+## Options
 
-La configuration contient un objet
+Les options sont dans un objet
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
 propriétés suivantes :
 
@@ -101,7 +101,7 @@ Ce widget affiche un bloc-notes pour une liste de courses.
 {
     "module": {
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/notepad/notepad.js",
-        "config": {
+        "options": {
             "color": "#607d8b",
             "desc": "Liste de courses",
             "title": "..."

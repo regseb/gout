@@ -10,11 +10,10 @@
 
 Gout est une **extension** Firefox pour récupérer des informations sur Internet
 (flux RSS, résultats d'API, parsing de sites Internet...) et les afficher dans
-une page Web. Les [dashboards](#dashboard) sont ces pages Web avec du
-[JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") pour les
-[widgets](#widget). Et il est aussi possible de développer des
-[modules](#module) et des [scrapers](#scraper) pour agréger de nouveaux sites
-Internet.
+une page Web. Les [dashboards](#dashboard) sont ces pages Web avec du JSON pour
+configurer chaque [widget](#widget). La configuration d'un widget comporte un
+[module](#module) pour définir le format d'affichage ; et des
+[scrapers](#scraper) pour extraire des données.
 
 ### Dashboard
 
@@ -61,11 +60,14 @@ Voici un exemple de dashboard ayant quatre colonnes de widgets.
 
 ### Widget
 
-Un widget est bloc du dashboard. C'est un élément `<script>` qui contient un
-objet JSON définissant son module et ses scrapers :
+Un widget est un bloc du dashboard. C'est un élément `<script>` (avec le
+`type="application/json"`) qui contient un objet
+[JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") ayant
+deux propriétés :
 
-- `"module"` : Un objet JSON contenant le règlage du module.
-- `"scrapers"` : Un tableau d'objet JSON pour les règlages de chaque scraper.
+- `"module"` : Un objet JSON contenant la configuration du [module](#module).
+- `"scrapers"` : Un tableau d'objets JSON pour les configurations de chaque
+  [scraper](#scraper).
 
 Cet exemple de widget récupère les dernières publications du flux RSS du site
 [LinuxFr.org](https://linuxfr.org/) et il les affiche sous forme d'une liste de
@@ -76,7 +78,7 @@ liens.
     {
         "module": {
             "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
-            "config": {
+            "options": {
                 "color": "#ffc107",
                 "cron": "*/10 * * * *",
                 "max": 5
@@ -84,7 +86,7 @@ liens.
         },
         "scrapers": [{
             "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
-            "config": {
+            "options": {
                 "url": "https://linuxfr.org/news.atom"
             }
         }]
@@ -92,18 +94,23 @@ liens.
 </script>
 ```
 
+<!-- Une description détaillée des widgets est disponible sur le site de
+     Gout. -->
+Si vous voulez des widgets, vous pouvez chercher
+[_gout-widget_](https://github.com/search?q=%22gout-widget%22&type=Code&l=Markdown)
+dans GitHub.
+
 ### Module
 
 Les modules sont les composants du widget définissant comment les données sont
-affichées (une liste de liens, une image...). Dans la configuration du widget,
-l'objet JSON du module est composé de deux propriétés :
+affichées (une liste de liens, une image...). La configuration d'un module est
+un objet JSON composé de deux propriétés :
 
 - `"url"` : L'URL du fichier JavaScript du module (par exemple pour le module
   [_list_](https://github.com/regseb/gout/tree/HEAD/src/module/list#readme) :
   `"https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"`).
-- `"config"` : Un objet JSON contenant la configuration du module (qui est
-  spécifique pour chaque module). Selon les modules, cette propriété est
-  optionnelle.
+- `"options"` : Un objet JSON contenant les options du module (qui sont
+  spécifiques pour chaque module).
 
 Dans cet exemple, le module est une liste (avec au maximum `5` éléments)
 affichée dans un bloc bleu `#2196f3` et actualisée toutes les dix minutes
@@ -114,7 +121,7 @@ affichée dans un bloc bleu `#2196f3` et actualisée toutes les dix minutes
     {
         "module": {
             "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
-            "config": {
+            "options": {
                 "color": "#2196f3",
                 "cron": "*/10 * * * *",
                 "max": 5
@@ -125,20 +132,25 @@ affichée dans un bloc bleu `#2196f3` et actualisée toutes les dix minutes
 </script>
 ```
 
+<!-- Une description détaillée des modules est disponible sur le site de
+     Gout. -->
+Si vous voulez des modules, vous pouvez chercher
+[_gout-module_](https://github.com/search?q=%22gout-module%22&type=Code&l=Markdown)
+dans GitHub.
+
 ### Scraper
 
 Les scrapers permettent d'extraire des données (flux RSS, parsing de page...) et
 de les transmettre à un module dans un format spécifique. Plusieurs scrapers
-peuvent être utilisés avec un module. Dans la configuration du widget, les
+peuvent être associés avec un module. Dans la configuration du widget, les
 scrapers sont définis dans un tableau d'objets JSON composés de deux
 propriétés :
 
 - `"url"` : L'URL du fichier JavaScript du scraper (par exemple pour le scraper
   [_list/rss_](https://github.com/regseb/gout/tree/HEAD/src/scraper/list/rss#readme)
   : `"https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"`).
-- `"config"` : un objet JSON contenant la configuration du scraper (qui est
-  spécifique pour chaque scraper). Selon les scrapers, cette propriété est
-  optionnelle.
+- `"options"` : un objet JSON contenant les options du scraper (qui sont
+  spécifiques pour chaque scraper).
 
 Dans cet exemple, deux scrapers sont définis pour récupérer les dernières vidéos
 des chaines YouTube [ARTE Cinema](https://www.youtube.com/c/ARTECinemafrance) et
@@ -150,18 +162,24 @@ des chaines YouTube [ARTE Cinema](https://www.youtube.com/c/ARTECinemafrance) et
         "module": { "...": "..." },
         "scrapers": [{
             "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
-            "config": {
+            "options": {
                 "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UClo03hULFynpoX3w1Jv7fhw",
             }
         }, {
             "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
-            "config": {
+            "options": {
                 "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCzaf-8cAEiXfynukcmV5MXw"
             }
         }]
     }
 </script>
 ```
+
+<!-- Une description détaillée des scrapers est disponible sur le site de
+     Gout. -->
+Si vous voulez des scrapers, vous pouvez chercher
+[_gout-scraper_](https://github.com/search?q=%22gout-scraper%22&type=Code&l=Markdown)
+dans GitHub.
 
 ## Installation
 

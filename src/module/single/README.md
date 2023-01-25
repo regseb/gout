@@ -4,9 +4,9 @@
 
 Ce module affiche un lien.
 
-## Configuration
+## Options
 
-La configuration contient un objet
+Les options sont dans un objet
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
 propriétés suivantes :
 
@@ -175,7 +175,7 @@ Ce widget affiche un lien vers un article au hasard de
 {
     "module": {
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/single/single.js",
-        "config": {
+        "options": {
             "cron": "*/5 * * * *"
         }
     },

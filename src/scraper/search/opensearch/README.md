@@ -9,9 +9,9 @@ Ce scraper extrait les données au format
 Il peut être utilisé avec le module
 [_search_](https://github.com/regseb/gout/tree/HEAD/src/module/search#readme).
 
-## Configuration
+## Options
 
-La configuration contient un objet
+Les options sont dans un objet
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
 propriétés suivantes :
 
@@ -54,7 +54,8 @@ propriétés suivantes :
     <td><code>object</code></td>
     <td>
       <p>
-        Des propriétés qui seront retournées par la méthode <code>info()</code>.
+        Des propriétés qui seront retournées par la méthode
+        <a href="../../module/search#scrapers"><code>info()</code></a>.
       </p>
       <p>
         Exemple : <code>{ "title": "Google", "color": "#2196f3" }</code>.
@@ -75,7 +76,7 @@ Ce widget fourni un champ pour faire une recherche avec
     },
     "scrapers": [{
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js",
-        "config": {
+        "options": {
             "url": "https://www.google.com/search?q={searchTerms}",
             "suggestions": "https://www.google.com/complete/search?client=firefox&q={searchTerms}",
             "complements": {
@@ -85,7 +86,7 @@ Ce widget fourni un champ pour faire une recherche avec
         }
     }, {
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js",
-         "config": {
+         "options": {
             "url": "https://www.bing.com/search?q={searchTerms}",
             "suggestions": "https://www.bing.com/osjson.aspx?query={searchTerms}",
             "complements": {

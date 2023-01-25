@@ -4,9 +4,9 @@
 
 Ce module affiche un `iframe`.
 
-## Configuration
+## Options
 
-La configuration contient un objet
+Les options sont dans un objet
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
 propriétés suivantes :
 
@@ -118,7 +118,7 @@ Ce widget affiche [Wikipédia](https://fr.wikipedia.org/) dans un `iframe`.
     },
     "scrapers": [{
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/repeater/repeater.js",
-        "config": {
+        "options": {
             "extract": [{
                 "link": "https://fr.wikipedia.org/wiki/Wikipédia:Accueil_principal"
             }]

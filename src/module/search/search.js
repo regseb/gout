@@ -2,13 +2,13 @@
  * @module
  */
 
-export default class extends HTMLElement {
+export default class Search extends HTMLElement {
 
     #scrapers;
 
     #scraper;
 
-    constructor(_config, scrapers) {
+    constructor(_options, scrapers) {
         super();
         this.#scrapers = scrapers;
     }
@@ -44,7 +44,7 @@ export default class extends HTMLElement {
 
         // Mettre à jour le formulaire.
         const li = event.target.closest("li");
-        this.#scraper = this.#scrapers[Number.parseInt(li.dataset.index, 10)];
+        this.#scraper = this.#scrapers[Number(li.dataset.index)];
 
         const div = this.shadowRoot.querySelector("div");
         div.style.backgroundColor = li.dataset.color;

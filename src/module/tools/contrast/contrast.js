@@ -114,7 +114,7 @@ for (let r = 0; 255 > r; r += 1) {
 }
 
 
-export default class extends HTMLElement {
+export default class Contrast extends HTMLElement {
 
     #calculate() {
         const input = this.shadowRoot.querySelector("input");

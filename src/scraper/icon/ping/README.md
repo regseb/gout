@@ -7,9 +7,9 @@ Ce scraper vérifie si un serveur est toujours accessible.
 Il peut être utilisé avec le module
 [_icon_](https://github.com/regseb/gout/tree/HEAD/src/module/icon#readme).
 
-## Configuration
+## Options
 
-La configuration contient un objet
+Les options sont dans un objet
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
 propriétés suivantes :
 
@@ -78,13 +78,13 @@ Ce widget teste le site _localhost_ toutes les heures.
 {
     "module": {
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/icon/icon.js",
-        "config": {
+        "options": {
             "cron": "@hourly"
         }
     },
     "scrapers": [{
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/icon/ping/ping.js",
-        "config": {
+        "options": {
             "url": "http://localhost"
         }
     }]

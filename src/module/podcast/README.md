@@ -4,9 +4,9 @@
 
 Ce module affiche une liste des dernières émissions audio d'un podcast.
 
-## Configuration
+## Options
 
-La configuration contient un objet
+Les options sont dans un objet
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
 propriétés suivantes :
 
@@ -232,7 +232,7 @@ Podcast](https://lescastcodeurs.com/).
 {
     "module": {
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/podcast/podcast.js",
-        "config": {
+        "options": {
             "color": "black",
             "cron": "@daily",
             "max": 2
@@ -240,7 +240,7 @@ Podcast](https://lescastcodeurs.com/).
     },
     "scrapers": [{
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
-        "config": {
+        "options": {
             "url": "https://lescastcodeurs.com/podcast-rss"
         }
     }]

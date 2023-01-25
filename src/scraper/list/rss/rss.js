@@ -2,7 +2,7 @@
  * @module
  */
 
-export default class {
+export default class RSS {
 
     #url;
 
@@ -14,8 +14,8 @@ export default class {
     }
 
     #extractRSS(xml, max) {
-        return Array.from(xml.querySelectorAll("item"))
-                    .map((item) => ({
+        // eslint-disable-next-line array-func/from-map
+        return Array.from(xml.querySelectorAll("item"), (item) => ({
             audio: item.querySelector(`enclosure[type^="audio/"]`)
                        ?.getAttribute("url"),
             date:  item.querySelector("pubDate")?.textContent ??

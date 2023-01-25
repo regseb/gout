@@ -5,9 +5,9 @@
 Ce module affiche un cadre avec du texte et dont la couleur de fond est
 personnalisable.
 
-## Configuration
+## Options
 
-La configuration contient un objet
+Les options sont dans un objet
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
 propriétés suivantes :
 
@@ -160,7 +160,7 @@ Ce widget affiche le texte _Carpe diem_.
     },
     "scrapers": [{
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/repeater/repeater.js",
-        "config": {
+        "options": {
             "extract": [{
                 "title": "Carpe diem"
             }]

@@ -15,9 +15,9 @@ Il peut être utilisé avec les modules :
 - [_image_](https://github.com/regseb/gout/tree/HEAD/src/module/image#readme)
   pour un flux RSS avec des `enclosure` de type `image`.
 
-## Configuration
+## Options
 
-La configuration contient un objet
+Les options sont dans un objet
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
 propriétés suivantes :
 
@@ -63,7 +63,7 @@ Monde.fr](https://www.lemonde.fr/).
 {
     "module": {
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
-        "config": {
+        "options": {
             "color": "#757575",
             "cron": "*/10 * * * *",
             "max": 5
@@ -71,7 +71,7 @@ Monde.fr](https://www.lemonde.fr/).
     },
     "scrapers": [{
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
-        "config": {
+        "options": {
             "url": "https://www.lemonde.fr/rss/une.xml"
         }
     }]

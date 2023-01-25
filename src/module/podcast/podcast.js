@@ -43,9 +43,9 @@ const move = function (event) {
     audio.currentTime = li.querySelector("input").valueAsNumber;
 };
 
-export default class extends HTMLElement {
+export default class Podcast extends HTMLElement {
 
-    #config;
+    #options;
 
     #scrapers;
 
@@ -55,9 +55,9 @@ export default class extends HTMLElement {
 
     #empty;
 
-    constructor(config, scrapers) {
+    constructor(options, scrapers) {
         super();
-        this.#config = config;
+        this.#options = options;
         this.#scrapers = scrapers;
     }
 
@@ -111,8 +111,7 @@ export default class extends HTMLElement {
             let pos = 0;
             // Trouver la future position chronologique de l'élément.
             for (const other of ul.children) {
-                if (Number.parseInt(li.dataset.date, 10) <=
-                                      Number.parseInt(other.dataset.date, 10)) {
+                if (Number(li.dataset.date) <= Number(other.dataset.date)) {
                     ++pos;
                 }
             }
@@ -173,17 +172,17 @@ export default class extends HTMLElement {
         link.href = import.meta.resolve("./podcast.css");
         this.shadowRoot.append(link);
 
-        this.#max = this.#config.max ?? Number.MAX_SAFE_INTEGER;
-        this.#empty = this.#config.empty ?? {};
+        this.#max = this.#options.max ?? Number.MAX_SAFE_INTEGER;
+        this.#empty = this.#options.empty ?? {};
 
         const ul = this.shadowRoot.querySelector("ul");
-        ul.style.backgroundColor = this.#config.color ?? "#757575";
-        if (undefined !== this.#config.icon) {
-            ul.style.backgroundImage = `url("${this.#config.icon}")`;
+        ul.style.backgroundColor = this.#options.color ?? "#757575";
+        if (undefined !== this.#options.icon) {
+            ul.style.backgroundImage = `url("${this.#options.icon}")`;
         }
 
-        if (undefined !== this.#config.cron) {
-            this.#cron = new Cron(this.#config.cron, this.#update.bind(this));
+        if (undefined !== this.#options.cron) {
+            this.#cron = new Cron(this.#options.cron, this.#update.bind(this));
             document.addEventListener("visibilitychange",
                                       this.#wake.bind(this));
         }

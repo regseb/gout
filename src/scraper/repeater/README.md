@@ -2,13 +2,14 @@
 
 > Mots-clés : gout, gout-scraper, gout-scraper-repeater.
 
-Ce scraper retourne simplement les données de la configuration.
+Ce scraper permet de simuler un scraper spécifique retournant des données
+statiques pour un module.
 
 Il peut être utilisé avec tous les modules.
 
-## Configuration
+## Options
 
-La configuration contient un objet
+Les options sont dans un objet
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") dont les
 clés correspondent aux méthodes simulées et les valeurs aux données retournées.
 
@@ -22,13 +23,13 @@ Ce widget affiche une liste avec deux liens allant vers
 {
     "module": {
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
-        "config": {
+        "options": {
             "color": "#f0a30a"
         }
     },
     "scrapers": [{
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/repeater/repeater.js",
-        "config": {
+        "options": {
             "extract": [{
                 "title": "Facebook",
                 "link": "https://www.facebook.com/"

@@ -4,9 +4,9 @@
 
 Ce module affiche des images.
 
-## Configuration
+## Options
 
-La configuration contient un objet
+Les options sont dans un objet
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
 propriétés suivantes :
 
@@ -176,7 +176,7 @@ Ce widget affiche les `3` dernières images du site
 {
     "module": {
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/image/image.js",
-        "config": {
+        "options": {
             "cron": "@daily",
             "max": 3
         }

@@ -17,7 +17,7 @@ const DEFAULT_COLORS = {
     "...": "#757575",
 };
 
-export default class {
+export default class Ping {
 
     #url;
 

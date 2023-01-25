@@ -4,9 +4,9 @@
 
 Ce module affiche une icône dans un lien.
 
-## Configuration
+## Options
 
-La configuration contient un objet
+Les options sont dans un objet
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
 propriétés suivantes :
 
@@ -164,7 +164,7 @@ Ce widget affiche un bouton qui redirige vers [GitHub](https://github.com/).
     },
     "scrapers": [{
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/repeater/repeater.js",
-        "config": {
+        "options": {
             "extract": [{
                 "color": "black",
                 "link": "https://github.com/",

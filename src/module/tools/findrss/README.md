@@ -4,9 +4,9 @@
 
 Ce module cherche les liens RSS / Atom dans une page Web.
 
-## Configuration
+## Options
 
-La configuration contient un objet
+Les options sont dans un objet
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
 propriétés suivantes :
 

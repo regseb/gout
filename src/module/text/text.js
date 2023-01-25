@@ -4,9 +4,9 @@
 
 import Cron from "https://cdn.jsdelivr.net/npm/cronnor@2/+esm";
 
-export default class extends HTMLElement {
+export default class Text extends HTMLElement {
 
-    #config;
+    #options;
 
     #scrapers;
 
@@ -14,9 +14,9 @@ export default class extends HTMLElement {
 
     #empty;
 
-    constructor(config, scrapers) {
+    constructor(options, scrapers) {
         super();
-        this.#config = config;
+        this.#options = options;
         this.#scrapers = scrapers;
     }
 
@@ -81,10 +81,10 @@ export default class extends HTMLElement {
         link.href = import.meta.resolve("./text.css");
         this.shadowRoot.append(link);
 
-        this.#empty = this.#config.empty ?? {};
+        this.#empty = this.#options.empty ?? {};
 
-        if (undefined !== this.#config.cron) {
-            this.#cron = new Cron(this.#config.cron, this.#update.bind(this));
+        if (undefined !== this.#options.cron) {
+            this.#cron = new Cron(this.#options.cron, this.#update.bind(this));
             document.addEventListener("visibilitychange",
                                       this.#wake.bind(this));
         }

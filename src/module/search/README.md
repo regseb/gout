@@ -4,10 +4,9 @@
 
 Ce module affiche une zone de saisie pour faire une recherche.
 
-## Configuration
+## Options
 
-Aucun configuration est nécessaire. Tout le paramètrage se fait avec les
-scrapers.
+Aucune option est nécessaire. Tout le paramètrage se fait avec les scrapers.
 
 ## Scrapers
 
@@ -35,15 +34,14 @@ Ce widget fourni un champ pour faire une recherche avec
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/search/search.js"
     },
     "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/ropensearch/opensearch.js",
-        "config": {
-            "title": "DuckDuckGo",
-            "urls": {
-                "results": "https://duckduckgo.com/?q={searchTerms}",
-                "suggestions": "https://ac.duckduckgo.com/ac/?q={searchTerms}&type=list"
+        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js",
+        "options": {
+            "url": "https://duckduckgo.com/?q={searchTerms}",
+            "suggestions": "https://ac.duckduckgo.com/ac/?q={searchTerms}&type=list",
+            "complements": {
+                "title": "DuckDuckGo",
+                "color": "#f44336"
             },
-            "color": "#f44336",
-            "icon": "widget/me/search/duckduckgo.svg"
         }
     }]
 }

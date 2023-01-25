@@ -2,7 +2,7 @@
  * @module
  */
 
-export default class {
+export default class JSONFeed {
 
     #url;
 

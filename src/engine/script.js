@@ -2,7 +2,7 @@
  * @module
  */
 
-import * as json from "./json.js";
+import * as jfather from "./jfather.js";
 
 const hashCode = function (text) {
     return Math.abs(Array.from(text).reduce((code, character) => {
@@ -10,42 +10,48 @@ const hashCode = function (text) {
     }, 0)).toString(36);
 };
 
+/**
+ * Charge récursivement des scrapers.
+ *
+ * @param {Object[]} scrapers La liste des configurations des scrapers.
+ * @returns {Promise<Object[]>} Les scrapers.
+ */
+const loadScrapers = function (scrapers) {
+    return Promise.all(scrapers.map(async (scraper) => {
+        const subScrapers = await loadScrapers(scraper.scrapers ?? []);
+
+        // eslint-disable-next-line no-unsanitized/method
+        const { default: Scraper } = await import(scraper.url);
+        return new Scraper(scraper.options ?? {}, subScrapers);
+    }));
+};
+
+/**
+ * Charge un widget.
+ *
+ * @param {Object} widget La configuration du widget (un module et des éventuels
+ *                        scrapers).
+ * @returns {Promise<Object>} Le module avec ses éventuels scrapers.
+ */
+const loadWidget = async function (widget) {
+    const scrapers = await loadScrapers(widget.scrapers ?? []);
+
+    // eslint-disable-next-line no-unsanitized/method
+    const { default: Module } = await import(widget.module.url);
+    const name = "gout-" + hashCode(widget.module.url);
+    if (undefined === customElements.get(name)) {
+        customElements.define(name, Module);
+    }
+    return new Module(widget.module.options ?? {}, scrapers);
+};
+
 const liven = async function (script) {
     try {
-        // Récupérer le widget.
-        const widgets = [{ module: {}, scrapers: [] }];
-        if ("" !== script.src) {
-            widgets.push(await json.load(script.src));
-        }
-        if ("" !== script.text) {
-            widgets.push(await json.parse(script.text));
-        }
-        const widget = widgets.reduce(json.merge);
-
-        // Récupérer les éventuels scrapers.
-        const scrapers = await Promise.all(widget.scrapers
-                                                       .map(async (scraper) => {
-            try {
-                // eslint-disable-next-line no-unsanitized/method
-                const { default: Scraper } = await import(scraper.url);
-                return new Scraper(scraper.config ?? {});
-            } catch (err) {
-                // eslint-disable-next-line no-console
-                console.log(scraper.url, err);
-                throw err;
-            }
-        }));
-
-        // Récupérer le module.
-        // eslint-disable-next-line no-unsanitized/method
-        const { default: Module } = await import(widget.module.url);
-        const name = "gout-" + hashCode(widget.module.url);
-        if (undefined === customElements.get(name)) {
-            customElements.define(name, Module);
-        }
-        const module = new Module(widget.module.config ?? {}, scrapers);
-        module.classList.add("widget");
-        script.after(module);
+        const config = "" === script.src ? await jfather.parse(script.text)
+                                         : await jfather.load(script.src);
+        const widget = await loadWidget(config);
+        widget.classList.add("widget");
+        script.after(widget);
     } catch (err) {
         // eslint-disable-next-line no-console
         console.log(script.src, script.text, err);
@@ -59,5 +65,5 @@ link.href = import.meta.resolve("./style.css");
 document.head.append(link);
 
 // Activer les widgets.
-Array.from(document.querySelectorAll(`body script[type="application/json"]`))
-     .forEach(liven);
+Array.from(document.querySelectorAll(`body script[type="application/json"]`),
+           liven);

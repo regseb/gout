@@ -2,13 +2,13 @@
  * @module
  */
 
-export default class {
+export default class Repeater {
 
-    constructor(config) {
+    constructor(options) {
         // eslint-disable-next-line no-constructor-return
         return new Proxy({}, {
-            get: (target, prop) => (prop in config ? () => config[prop]
-                                                   : target[prop]),
+            get: (target, prop) => (prop in options ? () => options[prop]
+                                                    : target[prop]),
         });
     }
 }
