@@ -28,7 +28,7 @@
     "author": "Sébastien Règne",
     "background": {
         "page": "background/page.html",
-        "persistent": false
+        "persistent": true
     },
     "homepage_url": "https://github.com/regseb/gout",
     "minimum_chrome_version": "108",
