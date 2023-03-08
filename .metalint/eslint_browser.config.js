@@ -1,11 +1,20 @@
+/**
+ * @module
+ * @license MIT
+ * @author Sébastien Règne
+ */
+
 export default {
     env: {
         browser: true,
     },
 
     rules: {
-        "import/no-unresolved": [2, {
-            ignore: ["^https:\\/\\/cdn\\.jsdelivr\\.net\\/"],
-        }],
+        "import/no-unresolved": [
+            "error",
+            {
+                ignore: ["^https:\\/\\/cdn\\.jsdelivr\\.net\\/"],
+            },
+        ],
     },
 };

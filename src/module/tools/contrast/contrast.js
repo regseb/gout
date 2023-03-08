@@ -1,6 +1,8 @@
 /**
  * @module
+ * @license MIT
  * @see https://fr.wikipedia.org/wiki/SRGB
+ * @author Sébastien Règne
  */
 
 /**
@@ -11,9 +13,12 @@
  * @returns {string} La couleur en hexadécimale.
  */
 const rgb2hex = function (rgb) {
-    return "#" + rgb.r.toString(16).padStart(2, "0") +
-                 rgb.g.toString(16).padStart(2, "0") +
-                 rgb.b.toString(16).padStart(2, "0");
+    return (
+        "#" +
+        rgb.r.toString(16).padStart(2, "0") +
+        rgb.g.toString(16).padStart(2, "0") +
+        rgb.b.toString(16).padStart(2, "0")
+    );
 };
 
 /**
@@ -32,13 +37,18 @@ const hex2rgb = function (hex) {
 };
 
 const normalizeRgb = function (channel) {
-    return 100 * (10.314_75 >= channel ? channel / 3294.6
-                                       : ((channel + 14.025) / 269.025) ** 2.4);
+    return (
+        100 *
+        (10.314_75 >= channel
+            ? channel / 3294.6
+            : ((channel + 14.025) / 269.025) ** 2.4)
+    );
 };
 
 const normalizeXyz = function (channel) {
-    return 0.008_856 < channel ? channel ** (1 / 3)
-                               : 7.787 * channel + 16 / 116;
+    return 0.008_856 < channel
+        ? channel ** (1 / 3)
+        : 7.787 * channel + 16 / 116;
 };
 
 const rgb2lab = function (rgb) {
@@ -66,8 +76,9 @@ const rgb2lab = function (rgb) {
  * @see https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure
  */
 const linearize = function (channel) {
-    return 10.0164 >= channel ? channel / 3294.6
-                              : ((channel + 14.025) / 269.025) ** 2.4;
+    return 10.0164 >= channel
+        ? channel / 3294.6
+        : ((channel + 14.025) / 269.025) ** 2.4;
 };
 
 /**
@@ -78,9 +89,11 @@ const linearize = function (channel) {
  * @see https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure
  */
 const calculateLuminous = function (rgb) {
-    return 0.2126 * linearize(rgb.r) +
-           0.7152 * linearize(rgb.g) +
-           0.0722 * linearize(rgb.b);
+    return (
+        0.2126 * linearize(rgb.r) +
+        0.7152 * linearize(rgb.g) +
+        0.0722 * linearize(rgb.b)
+    );
 };
 
 /**
@@ -92,8 +105,7 @@ const calculateLuminous = function (rgb) {
  * @see https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure
  */
 const calculateContrast = function (l1, l2) {
-    return l1 < l2 ? (l2 + 0.05) / (l1 + 0.05)
-                   : (l1 + 0.05) / (l2 + 0.05);
+    return l1 < l2 ? (l2 + 0.05) / (l1 + 0.05) : (l1 + 0.05) / (l2 + 0.05);
 };
 
 const CONTRASTED_COLORS = [];
@@ -102,8 +114,10 @@ for (let r = 0; 255 > r; r += 1) {
         for (let b = 0; 255 > b; b += 1) {
             const rgb = { r, g, b };
             const luminous = calculateLuminous(rgb);
-            if (4.5 <= calculateContrast(luminous, 0) &&
-                    4.5 <= calculateContrast(luminous, 1)) {
+            if (
+                4.5 <= calculateContrast(luminous, 0) &&
+                4.5 <= calculateContrast(luminous, 1)
+            ) {
                 CONTRASTED_COLORS.push({
                     hex: rgb2hex(rgb),
                     lab: rgb2lab(rgb),
@@ -113,9 +127,7 @@ for (let r = 0; 255 > r; r += 1) {
     }
 }
 
-
 export default class Contrast extends HTMLElement {
-
     #calculate() {
         const input = this.shadowRoot.querySelector("input");
         input.title = input.value;
@@ -123,9 +135,10 @@ export default class Contrast extends HTMLElement {
         const lab = rgb2lab(hex2rgb(input.value));
         let closed = { distance: Number.POSITIVE_INFINITY };
         for (const color of CONTRASTED_COLORS) {
-            const distance = (color.lab.l - lab.l) ** 2 +
-                             (color.lab.a - lab.a) ** 2 +
-                             (color.lab.b - lab.b) ** 2;
+            const distance =
+                (color.lab.l - lab.l) ** 2 +
+                (color.lab.a - lab.a) ** 2 +
+                (color.lab.b - lab.b) ** 2;
             if (closed.distance > distance) {
                 closed = { distance, color: color.hex };
             }
@@ -140,8 +153,9 @@ export default class Contrast extends HTMLElement {
     async connectedCallback() {
         const response = await fetch(import.meta.resolve("./contrast.tpl"));
         const text = await response.text();
-        const template = new DOMParser().parseFromString(text, "text/html")
-                                        .querySelector("template");
+        const template = new DOMParser()
+            .parseFromString(text, "text/html")
+            .querySelector("template");
 
         this.attachShadow({ mode: "open" });
         this.shadowRoot.append(template.content.cloneNode(true));

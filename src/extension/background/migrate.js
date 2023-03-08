@@ -1,5 +1,7 @@
 /**
  * @module
+ * @license MIT
+ * @author Sébastien Règne
  */
 
 // Utiliser un then() car addons-linter échoue à analyser les fichiers sans
@@ -15,12 +17,12 @@ browser.storage.sync.get().then(async (current) => {
 
     if ("version" in current) {
         await browser.storage.sync.set({
-            version:    current.version,
+            version: current.version,
             dashboards: current.dashboards,
         });
     } else {
         await browser.storage.sync.set({
-            version:    1,
+            version: 1,
             dashboards: [],
         });
     }

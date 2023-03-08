@@ -1,13 +1,17 @@
 /**
  * @module
+ * @license MIT
+ * @author Sébastien Règne
  */
 
 import * as jfather from "./jfather.js";
 
 const hashCode = function (text) {
-    return Math.abs(Array.from(text).reduce((code, character) => {
-        return (code << 5) - code + character.codePointAt();
-    }, 0)).toString(36);
+    return Math.abs(
+        Array.from(text).reduce((code, character) => {
+            return (code << 5) - code + character.codePointAt();
+        }, 0),
+    ).toString(36);
 };
 
 /**
@@ -17,13 +21,15 @@ const hashCode = function (text) {
  * @returns {Promise<Object[]>} Les scrapers.
  */
 const loadScrapers = function (scrapers) {
-    return Promise.all(scrapers.map(async (scraper) => {
-        const subScrapers = await loadScrapers(scraper.scrapers ?? []);
+    return Promise.all(
+        scrapers.map(async (scraper) => {
+            const subScrapers = await loadScrapers(scraper.scrapers ?? []);
 
-        // eslint-disable-next-line no-unsanitized/method
-        const { default: Scraper } = await import(scraper.url);
-        return new Scraper(scraper.options ?? {}, subScrapers);
-    }));
+            // eslint-disable-next-line no-unsanitized/method
+            const { default: Scraper } = await import(scraper.url);
+            return new Scraper(scraper.options ?? {}, subScrapers);
+        }),
+    );
 };
 
 /**
@@ -47,8 +53,10 @@ const loadWidget = async function (widget) {
 
 const liven = async function (script) {
     try {
-        const config = "" === script.src ? await jfather.parse(script.text)
-                                         : await jfather.load(script.src);
+        const config =
+            "" === script.src
+                ? await jfather.parse(script.text)
+                : await jfather.load(script.src);
         const widget = await loadWidget(config);
         widget.classList.add("widget");
         script.after(widget);
@@ -65,5 +73,7 @@ link.href = import.meta.resolve("./style.css");
 document.head.append(link);
 
 // Activer les widgets.
-Array.from(document.querySelectorAll(`body script[type="application/json"]`),
-           liven);
+Array.from(
+    document.querySelectorAll(`body script[type="application/json"]`),
+    liven,
+);

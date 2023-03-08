@@ -2,6 +2,8 @@
  * <em>Boys use JSON; Men use JFather.</em>
  *
  * @module
+ * @license MIT
+ * @author Sébastien Règne
  */
 
 /**
@@ -14,9 +16,11 @@
  */
 export const walk = function (obj, fn) {
     if (Object === obj?.constructor) {
-        return fn(Object.fromEntries(
-            Object.entries(obj).map(([k, v]) => [k, walk(v, fn)]),
-        ));
+        return fn(
+            Object.fromEntries(
+                Object.entries(obj).map(([k, v]) => [k, walk(v, fn)]),
+            ),
+        );
     }
 
     if (Array.isArray(obj)) {
@@ -36,12 +40,16 @@ export const walk = function (obj, fn) {
  */
 export const walkAsync = async function (obj, fn) {
     if (Object === obj?.constructor) {
-        return fn(Object.fromEntries(
-            await Promise.all(Object.entries(obj).map(async ([key, value]) => [
-                key,
-                await walkAsync(value, fn),
-            ])),
-        ));
+        return fn(
+            Object.fromEntries(
+                await Promise.all(
+                    Object.entries(obj).map(async ([key, value]) => [
+                        key,
+                        await walkAsync(value, fn),
+                    ]),
+                ),
+            ),
+        );
     }
 
     if (Array.isArray(obj)) {
@@ -76,7 +84,7 @@ export const query = function (obj, chain) {
         const result = re.exec(sub.chain);
         if (undefined !== result?.groups.prop) {
             sub.obj = sub.obj[result.groups.prop];
-        // eslint-disable-next-line no-negated-condition
+            // eslint-disable-next-line no-negated-condition
         } else if (undefined !== result?.groups.index) {
             sub.obj = sub.obj[Number(result.groups.index)];
         } else {
@@ -100,8 +108,10 @@ export const merge = function (parent, child) {
     }
 
     const overrode = {};
-    for (const key of new Set([...Object.keys(parent),
-                               ...Object.keys(child)])) {
+    for (const key of new Set([
+        ...Object.keys(parent),
+        ...Object.keys(child),
+    ])) {
         // Ne pas copier les surcharges d'éléments.
         if (key.startsWith("$")) {
             continue;
@@ -111,10 +121,10 @@ export const merge = function (parent, child) {
         // valeurs.
         if (key in parent && key in child) {
             overrode[key] = merge(parent[key], child[key]);
-        // Si la propriété est seulement dans l'objet parent.
+            // Si la propriété est seulement dans l'objet parent.
         } else if (key in parent) {
             overrode[key] = clone(parent[key]);
-        // Si la propriété est seulement dans l'objet enfant.
+            // Si la propriété est seulement dans l'objet enfant.
         } else {
             overrode[key] = clone(child[key]);
         }
@@ -122,12 +132,13 @@ export const merge = function (parent, child) {
         // Si la valeur est un tableau : chercher si l'objet enfant a des
         // surcharges d'éléments.
         if (Array.isArray(overrode[key])) {
-            const overelemRegex = new RegExp(`^\\$${key}\\[(?<index>\\d*)\\]$`,
-                                             "u");
-            const overelems =
-                Object.entries(child)
-                      .map(([k, v]) => [overelemRegex.exec(k)?.groups.index, v])
-                      .filter(([i]) => undefined !== i);
+            const overelemRegex = new RegExp(
+                `^\\$${key}\\[(?<index>\\d*)\\]$`,
+                "u",
+            );
+            const overelems = Object.entries(child)
+                .map(([k, v]) => [overelemRegex.exec(k)?.groups.index, v])
+                .filter(([i]) => undefined !== i);
             for (const [index, value] of overelems) {
                 if ("" === index) {
                     overrode[key].push(clone(value));

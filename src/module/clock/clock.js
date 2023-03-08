@@ -1,22 +1,25 @@
 /**
  * @module
+ * @license MIT
+ * @author Sébastien Règne
  */
 
 import Cron from "https://cdn.jsdelivr.net/npm/cronnor@2/+esm";
 
 const animate = function (time, center) {
-    const element = document.createElementNS("http://www.w3.org/2000/svg",
-                                             "animateTransform");
+    const element = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "animateTransform",
+    );
     element.setAttribute("attributeName", "transform");
-    element.setAttribute("type",          "rotate");
-    element.setAttribute("dur",           time + "s");
-    element.setAttribute("values",        center);
-    element.setAttribute("repeatCount",   "indefinite");
+    element.setAttribute("type", "rotate");
+    element.setAttribute("dur", time + "s");
+    element.setAttribute("values", center);
+    element.setAttribute("repeatCount", "indefinite");
     return element;
 };
 
 export default class Clock extends HTMLElement {
-
     #options;
 
     #scrapers;
@@ -40,14 +43,15 @@ export default class Clock extends HTMLElement {
             object.classList.remove("empty");
         }
 
-        const response = await fetch(item.icon ??
-                                     import.meta.resolve("./img/icon.svg"));
+        const response = await fetch(
+            item.icon ?? import.meta.resolve("./img/icon.svg"),
+        );
         const text = await response.text();
         const xml = new DOMParser().parseFromString(text, "image/svg+xml");
         object.replaceChildren(xml.documentElement);
         const svg = this.shadowRoot.querySelector("svg");
 
-        const cx = svg.viewBox.baseVal.width  / 2;
+        const cx = svg.viewBox.baseVal.width / 2;
         const cy = svg.viewBox.baseVal.height / 2;
         const center = `0, ${cx}, ${cy}; 360, ${cx}, ${cy}`;
 
@@ -58,20 +62,26 @@ export default class Clock extends HTMLElement {
         const date = new Date(item.date ?? Date.now());
         const seconds = date.getSeconds();
         for (const child of svg.querySelector("#second").children) {
-            child.setAttribute("transform",
-                               `rotate(${seconds * 6}, ${cx}, ${cy})`);
+            child.setAttribute(
+                "transform",
+                `rotate(${seconds * 6}, ${cx}, ${cy})`,
+            );
         }
 
         const minutes = date.getMinutes() + seconds / 60;
         for (const child of svg.querySelector("#minute").children) {
-            child.setAttribute("transform",
-                               `rotate(${minutes * 6}, ${cx}, ${cy})`);
+            child.setAttribute(
+                "transform",
+                `rotate(${minutes * 6}, ${cx}, ${cy})`,
+            );
         }
 
         const hours = date.getHours() + minutes / 60;
         for (const child of svg.querySelector("#hour").children) {
-            child.setAttribute("transform",
-                               `rotate(${hours * 30}, ${cx}, ${cy})`);
+            child.setAttribute(
+                "transform",
+                `rotate(${hours * 30}, ${cx}, ${cy})`,
+            );
         }
     }
 
@@ -87,8 +97,7 @@ export default class Clock extends HTMLElement {
         const results = await Promise.all(
             this.#scrapers.map((s) => s.extract(1)),
         );
-        const items = results.flat()
-                             .slice(0, 1);
+        const items = results.flat().slice(0, 1);
 
         if (0 === items.length) {
             this.#display(this.#empty, true);
@@ -107,8 +116,9 @@ export default class Clock extends HTMLElement {
     async connectedCallback() {
         const response = await fetch(import.meta.resolve("./clock.tpl"));
         const text = await response.text();
-        const template = new DOMParser().parseFromString(text, "text/html")
-                                        .querySelector("template");
+        const template = new DOMParser()
+            .parseFromString(text, "text/html")
+            .querySelector("template");
 
         this.attachShadow({ mode: "open" });
         this.shadowRoot.append(template.content.cloneNode(true));
@@ -122,8 +132,10 @@ export default class Clock extends HTMLElement {
 
         if (undefined !== this.#options.cron) {
             this.#cron = new Cron(this.#options.cron, this.#update.bind(this));
-            document.addEventListener("visibilitychange",
-                                      this.#wake.bind(this));
+            document.addEventListener(
+                "visibilitychange",
+                this.#wake.bind(this),
+            );
         }
         this.#update(true);
     }

@@ -1,5 +1,7 @@
 /**
  * @module
+ * @license MIT
+ * @author Sébastien Règne
  */
 
 const DEFAULT_COLORS = {
@@ -18,7 +20,6 @@ const DEFAULT_COLORS = {
 };
 
 export default class Ping {
-
     #url;
 
     #colors;
@@ -29,9 +30,11 @@ export default class Ping {
 
     constructor({ url, colors, complements }) {
         this.#url = url;
-        this.#colors = new Map(Object.entries({ ...colors, ...DEFAULT_COLORS })
-                                     .filter(([p]) => "..." !== p)
-                                     .map(([p, c]) => [new RegExp(p, "u"), c]));
+        this.#colors = new Map(
+            Object.entries({ ...colors, ...DEFAULT_COLORS })
+                .filter(([p]) => "..." !== p)
+                .map(([p, c]) => [new RegExp(p, "u"), c]),
+        );
         this.#defaultColor = colors?.["..."] ?? DEFAULT_COLORS["..."];
         this.#complements = { desc: url, link: url, ...complements };
     }
@@ -46,21 +49,25 @@ export default class Ping {
             // Choisir la couleur en fonction du code HTTP.
             for (const prefix of this.#colors.keys()) {
                 if (prefix.test(response.status.toString())) {
-                    return [{
-                        ...this.#complements,
-                        color: this.#colors.get(prefix),
-                        date:  Date.now(),
-                    }];
+                    return [
+                        {
+                            ...this.#complements,
+                            color: this.#colors.get(prefix),
+                            date: Date.now(),
+                        },
+                    ];
                 }
             }
         } catch {
             // Ne rien faire (pour retourner la couleur d'un code HTTP inconnu).
         }
 
-        return [{
-            ...this.#complements,
-            color: this.#defaultColor,
-            date:  Date.now(),
-        }];
+        return [
+            {
+                ...this.#complements,
+                color: this.#defaultColor,
+                date: Date.now(),
+            },
+        ];
     }
 }

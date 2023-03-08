@@ -1,5 +1,7 @@
 /**
  * @module
+ * @license MIT
+ * @author Sébastien Règne
  */
 
 const check = function (href) {
@@ -24,7 +26,10 @@ const remove = async function (event) {
     const url = li.querySelector("span").title;
 
     const { dashboards } = await browser.storage.sync.get("dashboards");
-    dashboards.splice(dashboards.findIndex((d) => url === d.url), 1);
+    dashboards.splice(
+        dashboards.findIndex((d) => url === d.url),
+        1,
+    );
     await browser.storage.sync.set({ dashboards });
 
     li.remove();
@@ -53,7 +58,7 @@ const set = async function () {
     const button = document.querySelector("#set");
     const dashboard = {
         title: button.dataset.title,
-        url:   button.dataset.url,
+        url: button.dataset.url,
     };
 
     const { dashboards } = await browser.storage.sync.get("dashboards");
@@ -64,7 +69,7 @@ const set = async function () {
     } else {
         dashboards[index] = dashboard;
         document.querySelector(`ul li:nth-child(${index}) span`).textContent =
-                                                                dashboard.title;
+            dashboard.title;
     }
     await browser.storage.sync.set({ dashboards });
 
@@ -77,7 +82,7 @@ const init = async function () {
     // Attention avec Chromium ! Quand la popup est ouverte dans un onglet : la
     // méthode retourne un élément, mais sans titre, ni URL.
     const [{ title, url }] = await browser.tabs.query({
-        active:        true,
+        active: true,
         currentWindow: true,
     });
 

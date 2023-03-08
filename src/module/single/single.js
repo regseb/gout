@@ -1,11 +1,12 @@
 /**
  * @module
+ * @license MIT
+ * @author Sébastien Règne
  */
 
 import Cron from "https://cdn.jsdelivr.net/npm/cronnor@2/+esm";
 
 export default class Single extends HTMLElement {
-
     #options;
 
     #scrapers;
@@ -55,9 +56,10 @@ export default class Single extends HTMLElement {
         const results = await Promise.all(
             this.#scrapers.map((s) => s.extract(1)),
         );
-        const items = results.flat()
-                             .sort((i1, i2) => (i2.date ?? 0) - (i1.date ?? 0))
-                             .slice(0, 1);
+        const items = results
+            .flat()
+            .sort((i1, i2) => (i2.date ?? 0) - (i1.date ?? 0))
+            .slice(0, 1);
 
         if (0 === items.length) {
             this.#display(this.#empty, true);
@@ -76,8 +78,9 @@ export default class Single extends HTMLElement {
     async connectedCallback() {
         const response = await fetch(import.meta.resolve("./single.tpl"));
         const text = await response.text();
-        const template = new DOMParser().parseFromString(text, "text/html")
-                                        .querySelector("template");
+        const template = new DOMParser()
+            .parseFromString(text, "text/html")
+            .querySelector("template");
 
         this.attachShadow({ mode: "open" });
         this.shadowRoot.append(template.content.cloneNode(true));
@@ -91,8 +94,10 @@ export default class Single extends HTMLElement {
 
         if (undefined !== this.#options.cron) {
             this.#cron = new Cron(this.#options.cron, this.#update.bind(this));
-            document.addEventListener("visibilitychange",
-                                      this.#wake.bind(this));
+            document.addEventListener(
+                "visibilitychange",
+                this.#wake.bind(this),
+            );
         }
         this.#update(true);
     }

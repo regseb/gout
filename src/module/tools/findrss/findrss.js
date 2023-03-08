@@ -1,5 +1,7 @@
 /**
  * @module
+ * @license MIT
+ * @author Sébastien Règne
  */
 
 const extract = async function (url) {
@@ -7,17 +9,17 @@ const extract = async function (url) {
     const text = await response.text();
     const doc = new DOMParser().parseFromString(text, "text/html");
 
-    const selector = `link[type="application/rss+xml"][href], ` +
-                     ` link[type="application/atom+xml"][href]`;
+    const selector =
+        `link[type="application/rss+xml"][href], ` +
+        ` link[type="application/atom+xml"][href]`;
     return Array.from(doc.querySelectorAll(selector), (link) => ({
-        icon:  import.meta.resolve("./img/rss.svg"),
-        link:  new URL(link.getAttribute("href"), url).href,
+        icon: import.meta.resolve("./img/rss.svg"),
+        link: new URL(link.getAttribute("href"), url).href,
         title: link.title,
     }));
 };
 
 export default class FindRSS extends HTMLElement {
-
     #options;
 
     #max;
@@ -35,9 +37,10 @@ export default class FindRSS extends HTMLElement {
 
     #display(item, empty = false) {
         const ul = this.shadowRoot.querySelector("ul");
-        const li = this.shadowRoot.querySelector("template")
-                                  .content.querySelector("li")
-                                  .cloneNode(true);
+        const li = this.shadowRoot
+            .querySelector("template")
+            .content.querySelector("li")
+            .cloneNode(true);
 
         if (empty) {
             li.classList.add("empty");
@@ -65,8 +68,7 @@ export default class FindRSS extends HTMLElement {
         const input = this.shadowRoot.querySelector("input");
 
         const results = await extract(input.value);
-        const items = results.flat()
-                             .slice(0, this.#max);
+        const items = results.flat().slice(0, this.#max);
 
         this.#clean();
         if (0 === items.length) {
@@ -81,8 +83,9 @@ export default class FindRSS extends HTMLElement {
     async connectedCallback() {
         const response = await fetch(import.meta.resolve("./findrss.tpl"));
         const text = await response.text();
-        const template = new DOMParser().parseFromString(text, "text/html")
-                                        .querySelector("template");
+        const template = new DOMParser()
+            .parseFromString(text, "text/html")
+            .querySelector("template");
 
         this.attachShadow({ mode: "open" });
         this.shadowRoot.append(template.content.cloneNode(true));

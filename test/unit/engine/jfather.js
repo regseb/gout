@@ -1,5 +1,7 @@
 /**
  * @module
+ * @license MIT
+ * @author Sébastien Règne
  */
 
 import assert from "node:assert/strict";
@@ -9,9 +11,8 @@ describe("engine/jfather.js", function () {
     describe("walkAsync()", function () {
         it("should apply on object", async function () {
             const obj = { foo: "bar" };
-            const result = await jfather.walkAsync(
-                obj,
-                (o) => Promise.resolve({ ...o, baz: 42 }),
+            const result = await jfather.walkAsync(obj, (o) =>
+                Promise.resolve({ ...o, baz: 42 }),
             );
             assert.deepEqual(result, { foo: "bar", baz: 42 });
             // Vérifier que l'objet d'entrée n'a pas été modifié.
@@ -20,9 +21,8 @@ describe("engine/jfather.js", function () {
 
         it("should apply on all elements of array", async function () {
             const obj = [{ foo: "bar" }, { baz: "qux", quux: "corge" }];
-            const result = await jfather.walkAsync(
-                obj,
-                (o) => Promise.resolve(Object.keys(o)),
+            const result = await jfather.walkAsync(obj, (o) =>
+                Promise.resolve(Object.keys(o)),
             );
             assert.deepEqual(result, [["foo"], ["baz", "quux"]]);
             // Vérifier que l'objet d'entrée n'a pas été modifié.
@@ -34,8 +34,9 @@ describe("engine/jfather.js", function () {
 
         it("should ignore others types", async function () {
             const obj = "foo";
-            const result = await jfather.walkAsync("foo",
-                                                   () => Promise.resolve(42));
+            const result = await jfather.walkAsync("foo", () =>
+                Promise.resolve(42),
+            );
             assert.deepEqual(result, "foo");
             // Vérifier que l'objet d'entrée n'a pas été modifié.
             assert.deepEqual(obj, "foo");
@@ -43,9 +44,8 @@ describe("engine/jfather.js", function () {
 
         it("should apply on sub-object", async function () {
             const obj = { foo: { bar: "baz" } };
-            const result = await jfather.walkAsync(
-                obj,
-                (o) => Promise.resolve({ ...o, qux: 42 }),
+            const result = await jfather.walkAsync(obj, (o) =>
+                Promise.resolve({ ...o, qux: 42 }),
             );
             assert.deepEqual(result, { foo: { bar: "baz", qux: 42 }, qux: 42 });
             // Vérifier que l'objet d'entrée n'a pas été modifié.
@@ -54,9 +54,8 @@ describe("engine/jfather.js", function () {
 
         it("should apply on all elements of array of array", async function () {
             const obj = [[{ foo: "bar" }], { baz: ["qux"], quux: "corge" }];
-            const result = await jfather.walkAsync(
-                obj,
-                (o) => Promise.resolve(Object.values(o)),
+            const result = await jfather.walkAsync(obj, (o) =>
+                Promise.resolve(Object.values(o)),
             );
             assert.deepEqual(result, [[["bar"]], [["qux"], "corge"]]);
             // Vérifier que l'objet d'entrée n'a pas été modifié.
@@ -89,16 +88,19 @@ describe("engine/jfather.js", function () {
         });
 
         it("should get reject invalid chain", function () {
-            assert.throws(() => jfather.query({ foo: { bar: "baz" } },
-                                              ".qux.quux"), {
-                name:    "TypeError",
-                message: "Cannot read properties of undefined (reading 'quux')",
-            });
+            assert.throws(
+                () => jfather.query({ foo: { bar: "baz" } }, ".qux.quux"),
+                {
+                    name: "TypeError",
+                    message:
+                        "Cannot read properties of undefined (reading 'quux')",
+                },
+            );
         });
 
         it("should get reject unsupported chain", function () {
             assert.throws(() => jfather.query({ foo: "bar" }, ".?foo"), {
-                name:    "TypeError",
+                name: "TypeError",
                 message: "Invalid chain: .?foo",
             });
         });
@@ -126,8 +128,8 @@ describe("engine/jfather.js", function () {
                 { foo: "quux", corge: "grault" },
             );
             assert.deepEqual(overrode, {
-                foo:   "quux",
-                baz:   "qux",
+                foo: "quux",
+                baz: "qux",
                 corge: "grault",
             });
         });
@@ -145,8 +147,8 @@ describe("engine/jfather.js", function () {
                 { foo: ["bar", "baz"], qux: { quux: ["corge", "grault"] } },
                 {
                     "$foo[0]": "garply",
-                    "$foo[]":  "waldo",
-                    qux:       { fred: "plugh", "$quux[1]": "xyzzy" },
+                    "$foo[]": "waldo",
+                    qux: { fred: "plugh", "$quux[1]": "xyzzy" },
                 },
             );
             assert.deepEqual(overrode, {

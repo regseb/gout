@@ -1,9 +1,10 @@
 /**
  * @module
+ * @license MIT
+ * @author Sébastien Règne
  */
 
 export default class OpenSearch {
-
     #url;
 
     #suggestions;
@@ -25,8 +26,9 @@ export default class OpenSearch {
             return [];
         }
 
-        const response = await fetch(this.#suggestions.replace("{searchTerms}",
-                                                               searchTerms));
+        const response = await fetch(
+            this.#suggestions.replace("{searchTerms}", searchTerms),
+        );
         const results = await response.json();
         return results[1];
     }

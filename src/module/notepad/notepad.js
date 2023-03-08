@@ -1,16 +1,21 @@
 /**
  * @module
+ * @license MIT
+ * @author Sébastien Règne
  */
 
 const hashCode = function (item) {
-    return Math.abs(Array.from(item.guid ?? JSON.stringify(item))
-                         .reduce((code, character) => {
-        return (code << 5) - code + character.codePointAt();
-    }, 0)).toString(36);
+    return Math.abs(
+        Array.from(item.guid ?? JSON.stringify(item)).reduce(
+            (code, character) => {
+                return (code << 5) - code + character.codePointAt();
+            },
+            0,
+        ),
+    ).toString(36);
 };
 
 export default class Notepad extends HTMLElement {
-
     #options;
 
     #guid;
@@ -36,8 +41,9 @@ export default class Notepad extends HTMLElement {
     async connectedCallback() {
         const response = await fetch(import.meta.resolve("./notepad.tpl"));
         const text = await response.text();
-        const template = new DOMParser().parseFromString(text, "text/html")
-                                        .querySelector("template");
+        const template = new DOMParser()
+            .parseFromString(text, "text/html")
+            .querySelector("template");
 
         this.attachShadow({ mode: "open" });
         this.shadowRoot.append(template.content.cloneNode(true));

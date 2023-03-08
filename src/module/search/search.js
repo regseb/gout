@@ -1,9 +1,10 @@
 /**
  * @module
+ * @license MIT
+ * @author Sébastien Règne
  */
 
 export default class Search extends HTMLElement {
-
     #scrapers;
 
     #scraper;
@@ -49,9 +50,9 @@ export default class Search extends HTMLElement {
         const div = this.shadowRoot.querySelector("div");
         div.style.backgroundColor = li.dataset.color;
         this.shadowRoot.querySelector("form img").src =
-                                                    li.querySelector("img").src;
+            li.querySelector("img").src;
         this.shadowRoot.querySelector("input").placeholder =
-                                           li.querySelector("span").textContent;
+            li.querySelector("span").textContent;
         this.shadowRoot.querySelector("input").title = li.title;
 
         this.shadowRoot.querySelector("datalist").replaceChildren();
@@ -68,9 +69,10 @@ export default class Search extends HTMLElement {
     }
 
     #display(i, data) {
-        const li = this.shadowRoot.querySelector("template")
-                                  .content.querySelector("li")
-                                  .cloneNode(true);
+        const li = this.shadowRoot
+            .querySelector("template")
+            .content.querySelector("li")
+            .cloneNode(true);
         li.title = data.desc ?? "";
         li.dataset.index = i.toString();
         li.dataset.color = data.color;
@@ -84,8 +86,9 @@ export default class Search extends HTMLElement {
     async connectedCallback() {
         const response = await fetch(import.meta.resolve("./search.tpl"));
         const text = await response.text();
-        const template = new DOMParser().parseFromString(text, "text/html")
-                                        .querySelector("template");
+        const template = new DOMParser()
+            .parseFromString(text, "text/html")
+            .querySelector("template");
 
         this.attachShadow({ mode: "open" });
         this.shadowRoot.append(template.content.cloneNode(true));
@@ -95,12 +98,15 @@ export default class Search extends HTMLElement {
         link.href = import.meta.resolve("./search.css");
         this.shadowRoot.append(link);
 
-        this.shadowRoot.querySelector("form")
-                       .addEventListener("submit", this.#search.bind(this));
-        this.shadowRoot.querySelector("img")
-                       .addEventListener("click", this.#propose.bind(this));
-        this.shadowRoot.querySelector("input")
-                       .addEventListener("input", this.#suggest.bind(this));
+        this.shadowRoot
+            .querySelector("form")
+            .addEventListener("submit", this.#search.bind(this));
+        this.shadowRoot
+            .querySelector("img")
+            .addEventListener("click", this.#propose.bind(this));
+        this.shadowRoot
+            .querySelector("input")
+            .addEventListener("input", this.#suggest.bind(this));
 
         const infos = await Promise.all(this.#scrapers.map((s) => s.info()));
         for (const [i, info] of infos.entries()) {

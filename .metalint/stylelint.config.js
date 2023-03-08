@@ -1,3 +1,9 @@
+/**
+ * @module
+ * @license MIT
+ * @author Sébastien Règne
+ */
+
 export default {
     plugins: ["stylelint-order"],
 
@@ -68,9 +74,12 @@ export default {
         "color-no-hex": null,
 
         // Comment.
-        "comment-word-disallowed-list": [["/^TODO /", "/^FIXME /"], {
-            severity: "warning",
-        }],
+        "comment-word-disallowed-list": [
+            ["/^TODO /", "/^FIXME /"],
+            {
+                severity: "warning",
+            },
+        ],
 
         // Declaration.
         "declaration-no-important": true,
@@ -99,9 +108,12 @@ export default {
         // Property.
         "property-allowed-list": null,
         "property-disallowed-list": null,
-        "property-no-vendor-prefix": [true, {
-            ignoreProperties: ["appearance"],
-        }],
+        "property-no-vendor-prefix": [
+            true,
+            {
+                ignoreProperties: ["appearance"],
+            },
+        ],
 
         // Rules.
         "rule-selector-property-disallowed-list": null,
@@ -159,9 +171,12 @@ export default {
         "alpha-value-notation": "percentage",
         "color-function-notation": "modern",
         "color-hex-length": "long",
-        "font-weight-notation": ["named-where-possible", {
-            ignore: ["relative"],
-        }],
+        "font-weight-notation": [
+            "named-where-possible",
+            {
+                ignore: ["relative"],
+            },
+        ],
         "hue-degree-notation": "angle",
         "import-notation": "string",
         "keyframe-selector-notation": "keyword",

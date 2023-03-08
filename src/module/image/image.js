@@ -1,18 +1,23 @@
 /**
  * @module
+ * @license MIT
+ * @author Sébastien Règne
  */
 
 import Cron from "https://cdn.jsdelivr.net/npm/cronnor@2/+esm";
 
 const hashCode = function (item) {
-    return Math.abs(Array.from(item.guid ?? JSON.stringify(item))
-                         .reduce((code, character) => {
-        return (code << 5) - code + character.codePointAt();
-    }, 0)).toString(36);
+    return Math.abs(
+        Array.from(item.guid ?? JSON.stringify(item)).reduce(
+            (code, character) => {
+                return (code << 5) - code + character.codePointAt();
+            },
+            0,
+        ),
+    ).toString(36);
 };
 
 export default class Image extends HTMLElement {
-
     #options;
 
     #scrapers;
@@ -38,20 +43,24 @@ export default class Image extends HTMLElement {
         }
         lis[this.#index].classList.add("active");
         if (0 === this.#index) {
-            this.shadowRoot.querySelector("span:first-of-type")
-                           .classList.add("not-allowed");
+            this.shadowRoot
+                .querySelector("span:first-of-type")
+                .classList.add("not-allowed");
         } else {
-            this.shadowRoot.querySelector("span:first-of-type")
-                           .classList.remove("not-allowed");
+            this.shadowRoot
+                .querySelector("span:first-of-type")
+                .classList.remove("not-allowed");
         }
 
         const ul = this.shadowRoot.querySelector("ul");
         if (ul.childElementCount - 1 === this.#index) {
-            this.shadowRoot.querySelector("span:last-of-type")
-                           .classList.add("not-allowed");
+            this.shadowRoot
+                .querySelector("span:last-of-type")
+                .classList.add("not-allowed");
         } else {
-            this.shadowRoot.querySelector("span:last-of-type")
-                           .classList.remove("not-allowed");
+            this.shadowRoot
+                .querySelector("span:last-of-type")
+                .classList.remove("not-allowed");
         }
     }
 
@@ -73,17 +82,19 @@ export default class Image extends HTMLElement {
     #clean(items) {
         const guids = new Set(items.map(hashCode));
         Array.from(this.shadowRoot.querySelectorAll("li"))
-             .filter((l) => !guids.has(l.dataset.guid))
-             .forEach((l) => l.remove());
+            .filter((l) => !guids.has(l.dataset.guid))
+            .forEach((l) => l.remove());
     }
 
     #display(item, empty = false) {
         const ul = this.shadowRoot.querySelector("ul");
         const guid = hashCode(item);
-        const li = ul.querySelector(`li[data-guid="${guid}"]`) ??
-                   this.shadowRoot.querySelector("template")
-                                  .content.querySelector("li")
-                                  .cloneNode(true);
+        const li =
+            ul.querySelector(`li[data-guid="${guid}"]`) ??
+            this.shadowRoot
+                .querySelector("template")
+                .content.querySelector("li")
+                .cloneNode(true);
 
         li.dataset.guid = guid;
         li.dataset.date = item.date?.toString() ?? "0";
@@ -135,9 +146,10 @@ export default class Image extends HTMLElement {
         const results = await Promise.all(
             this.#scrapers.map((s) => s.extract(this.#max)),
         );
-        const items = results.flat()
-                             .sort((i1, i2) => (i2.date ?? 0) - (i1.date ?? 0))
-                             .slice(0, this.#max);
+        const items = results
+            .flat()
+            .sort((i1, i2) => (i2.date ?? 0) - (i1.date ?? 0))
+            .slice(0, this.#max);
 
         if (0 === items.length) {
             this.#clean([this.#empty]);
@@ -163,8 +175,9 @@ export default class Image extends HTMLElement {
     async connectedCallback() {
         const response = await fetch(import.meta.resolve("./image.tpl"));
         const text = await response.text();
-        const template = new DOMParser().parseFromString(text, "text/html")
-                                        .querySelector("template");
+        const template = new DOMParser()
+            .parseFromString(text, "text/html")
+            .querySelector("template");
 
         this.attachShadow({ mode: "open" });
         this.shadowRoot.append(template.content.cloneNode(true));
@@ -179,19 +192,24 @@ export default class Image extends HTMLElement {
         this.#index = 0;
 
         if (1 === this.#max) {
-            Array.from(this.shadowRoot.querySelectorAll("span"))
-                 .forEach((s) => s.remove());
+            Array.from(this.shadowRoot.querySelectorAll("span")).forEach((s) =>
+                s.remove(),
+            );
         } else {
-            this.shadowRoot.querySelector("span:first-of-type")
-                           .addEventListener("click", this.#prev.bind(this));
-            this.shadowRoot.querySelector("span:last-of-type")
-                           .addEventListener("click", this.#next.bind(this));
+            this.shadowRoot
+                .querySelector("span:first-of-type")
+                .addEventListener("click", this.#prev.bind(this));
+            this.shadowRoot
+                .querySelector("span:last-of-type")
+                .addEventListener("click", this.#next.bind(this));
         }
 
         if (undefined !== this.#options.cron) {
             this.#cron = new Cron(this.#options.cron, this.#update.bind(this));
-            document.addEventListener("visibilitychange",
-                                      this.#wake.bind(this));
+            document.addEventListener(
+                "visibilitychange",
+                this.#wake.bind(this),
+            );
         }
         this.#update(true);
     }
