@@ -2,19 +2,12 @@
     "browser_specific_settings": {
         "gecko": {
             "id": "gout@regseb.github.io",
-            "strict_min_version": "107.0"
+            "strict_min_version": "110.0"
         }
     },
     "manifest_version": 2,
     "name": "Gout",
     "version": "0.9.6",
-    "description": "Agrégateur d'Internet (flux RSS et tout le reste).",
-    "icons": {
-        "16": "img/icon16.png",
-        "48": "img/icon48.png",
-        "96": "img/icon96.png",
-        "128": "img/icon128.png"
-    },
     "browser_action": {
         "default_icon": {
             "16": "img/icon16.png",
@@ -25,13 +18,20 @@
         "default_title": "Gout",
         "default_popup": "popup/index.html"
     },
+    "description": "Agrégateur d'Internet (flux RSS et tout le reste).",
+    "icons": {
+        "16": "img/icon16.png",
+        "48": "img/icon48.png",
+        "96": "img/icon96.png",
+        "128": "img/icon128.png"
+    },
     "author": "Sébastien Règne",
     "background": {
         "page": "background/page.html",
         "persistent": true
     },
     "homepage_url": "https://github.com/regseb/gout",
-    "minimum_chrome_version": "108",
+    "minimum_chrome_version": "110",
     "permissions": [
         "<all_urls>",
         "activeTab",

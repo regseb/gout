@@ -1,5 +1,6 @@
 export default {
     patterns: [
+        "!/CHANGELOG.md",
         "!/.git/",
         "!/jsdocs/",
         "!/node_modules/",
@@ -10,7 +11,7 @@ export default {
     ],
     checkers: [
         {
-            patterns: ["/build/*.zip", "/src/extension/"],
+            patterns: ["/build/**/*.zip", "/src/extension/"],
             linters: "addons-linter",
         }, {
             patterns: "/src/extension/**/*.js",
@@ -25,10 +26,18 @@ export default {
                 "/src/engine/**/*.js",
                 "/src/module/**/*.js",
                 "/src/scraper/**/*.js",
-                "/src/util/**/*.js",
             ],
             linters: {
                 eslint: ["eslint.config.js", "eslint_browser.config.js"],
+            },
+        }, {
+            patterns: "/test/**/*.js",
+            linters: {
+                eslint: [
+                    "eslint.config.js",
+                    "eslint_node.config.js",
+                    "eslint_test.config.js",
+                ],
             },
         }, {
             patterns: "/.script/**/*.js",
@@ -36,7 +45,7 @@ export default {
                 eslint: ["eslint.config.js", "eslint_node.config.js"],
             },
         }, {
-            patterns: ["/.metalint/**/*.js", "/.stryker.conf.js"],
+            patterns: "*.config.js",
             linters: {
                 eslint: ["eslint.config.js", "eslint_config.config.js"],
             },
@@ -66,7 +75,7 @@ export default {
             patterns: "/src/extension/popup/*.css",
             linters: { purgecss: "purgecss_popup.config.js" },
         }, {
-            patterns: ["!/CHANGELOG.md", "*.md"],
+            patterns: "*.md",
             linters: "markdownlint",
         }, {
             patterns: "*.json",

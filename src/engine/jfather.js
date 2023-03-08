@@ -64,7 +64,7 @@ export const clone = function (obj) {
 /**
  * Extrait un élément d'un objet.
  *
- * @param {Object} obj L'objet où sera extrait l'élément.
+ * @param {Object} obj   L'objet où sera extrait l'élément.
  * @param {string} chain Le chemin de l'élément.
  * @returns {any} L'élément extrait.
  * @throws {TypeError} Si le chemin est invalide.
