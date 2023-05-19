@@ -74,6 +74,6 @@ document.head.append(link);
 
 // Activer les widgets.
 Array.from(
-    document.querySelectorAll(`body script[type="application/json"]`),
+    document.querySelectorAll('body script[type="application/json"]'),
     liven,
 );

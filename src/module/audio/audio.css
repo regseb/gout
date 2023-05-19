@@ -48,7 +48,8 @@ input::-moz-range-thumb {
     height: 12px;
     width: 12px;
 }
-div:hover input, input.active {
+div:hover input,
+input.active {
     opacity: 80%;
 }
 div input:hover {

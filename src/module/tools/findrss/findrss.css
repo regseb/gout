@@ -67,7 +67,8 @@ a {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-a:visited, li.empty a {
+a:visited,
+li.empty a {
     color: black;
 }
 a[href]:hover {

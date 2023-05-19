@@ -18,7 +18,7 @@ export default class RSS {
         // eslint-disable-next-line array-func/from-map
         return Array.from(xml.querySelectorAll("item"), (item) => ({
             audio: item
-                .querySelector(`enclosure[type^="audio/"]`)
+                .querySelector('enclosure[type^="audio/"]')
                 ?.getAttribute("url"),
             date:
                 item.querySelector("pubDate")?.textContent ??
@@ -27,7 +27,7 @@ export default class RSS {
             desc: item.querySelector("description")?.textContent ?? "",
             guid: item.querySelector("guid")?.textContent ?? "",
             img: item
-                .querySelector(`enclosure[type^="image/"]`)
+                .querySelector('enclosure[type^="image/"]')
                 ?.getAttribute("url"),
             link: item.querySelector("link")?.textContent,
             title: item.querySelector("title").textContent,

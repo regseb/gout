@@ -29,7 +29,8 @@ a {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-a:visited, div.empty a {
+a:visited,
+div.empty a {
     color: black;
 }
 a[href]:hover {

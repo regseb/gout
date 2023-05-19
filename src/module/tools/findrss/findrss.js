@@ -10,8 +10,8 @@ const extract = async function (url) {
     const doc = new DOMParser().parseFromString(text, "text/html");
 
     const selector =
-        `link[type="application/rss+xml"][href], ` +
-        ` link[type="application/atom+xml"][href]`;
+        'link[type="application/rss+xml"][href],' +
+        ' link[type="application/atom+xml"][href]';
     return Array.from(doc.querySelectorAll(selector), (link) => ({
         icon: import.meta.resolve("./img/rss.svg"),
         link: new URL(link.getAttribute("href"), url).href,
