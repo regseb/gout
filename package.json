@@ -35,7 +35,6 @@
     "extension:chromium": "web-ext run -t chromium -s src/extension/",
     "extension:firefox": "web-ext run -t firefox-desktop -s src/extension/",
     "build": "web-ext build -s src/extension/ -a build/ -o",
-    "release": "standard-version",
     "clean": "node .script/clean.js"
   },
   "dependencies": {
@@ -67,7 +66,6 @@
     "npm-package-json-lint": "6.4.0",
     "prettier": "2.8.4",
     "purgecss": "5.0.0",
-    "standard-version": "9.5.0",
     "stylelint": "15.2.0",
     "stylelint-order": "6.0.3",
     "typedoc": "0.23.26",

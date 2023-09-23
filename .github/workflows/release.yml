@@ -1,0 +1,17 @@
+name: Release
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Run Release Please
+        uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: node
+          extra-files: src/extension/manifest.json
