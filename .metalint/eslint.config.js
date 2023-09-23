@@ -24,7 +24,7 @@ export default {
 
     env: {
         "shared-node-browser": true,
-        es2022: true,
+        es2023: true,
     },
 
     rules: {
@@ -222,9 +222,9 @@ export default {
         "no-nested-ternary": "off",
         "no-new": "error",
         "no-new-func": "error",
-        "no-new-object": "error",
         "no-new-wrappers": "error",
         "no-nonoctal-decimal-escape": "error",
+        "no-object-constructor": "error",
         "no-octal": "error",
         "no-octal-escape": "error",
         "no-param-reassign": [
@@ -265,7 +265,6 @@ export default {
             "JSXText",
         ],
         "no-return-assign": "error",
-        "no-return-await": "error",
         "no-script-url": "error",
         "no-sequences": ["error", { allowInParentheses: false }],
         "no-shadow": "error",
@@ -370,7 +369,22 @@ export default {
             },
         ],
         "lines-between-class-members": "error",
-        "max-len": "warn",
+        "max-len": [
+            "warn",
+            {
+                // Ignorer les imports et les déclarations de tests unitaires,
+                // car Prettier n'ajoute pas de retour à la ligne pour ne pas
+                // dépasser les 80 caractères.
+                ignorePattern:
+                    "^import " +
+                    "|^ +\\* @typedef \\{import\\(" +
+                    "|^ +\\* @see " +
+                    '|^ +it\\("',
+                // Ignorer les expressions rationnelles, car il n'est pas
+                // possible de les écrire sur plusieurs lignes.
+                ignoreRegExpLiterals: true,
+            },
+        ],
         "max-statements-per-line": ["error", { max: 2 }],
         "multiline-ternary": "off",
         "new-parens": "off",
@@ -379,7 +393,9 @@ export default {
         "no-mixed-spaces-and-tabs": "off",
         "no-multi-spaces": "off",
         "no-multiple-empty-lines": "off",
-        "no-tabs": "off",
+        // Activer cette règle, car Prettier garde des tabulations (par exemple
+        // dans les chaines de caractères).
+        "no-tabs": "error",
         "no-trailing-spaces": "off",
         "no-whitespace-before-property": "off",
         "nonblock-statement-body-position": "off",
@@ -396,11 +412,7 @@ export default {
                 next: "*",
             },
         ],
-        quotes: [
-            "error",
-            "double",
-            { avoidEscape: true, allowTemplateLiterals: true },
-        ],
+        quotes: ["error", "double", { avoidEscape: true }],
         "rest-spread-spacing": "off",
         semi: "off",
         "semi-spacing": "off",
@@ -460,7 +472,11 @@ export default {
         "import/no-extraneous-dependencies": [
             "error",
             {
-                devDependencies: [".script/**/*.js", "test/**/*.js"],
+                devDependencies: [
+                    ".script/**/*.js",
+                    "test/**/*.js",
+                    "{.,}**/{.,}*.config.js",
+                ],
             },
         ],
         "import/no-mutable-exports": "error",
@@ -532,7 +548,7 @@ export default {
         "import/no-named-default": "error",
         "import/no-named-export": "off",
         "import/no-namespace": "off",
-        "import/no-unassigned-import": "error",
+        "import/no-unassigned-import": ["error", { allow: ["**/polyfill/**"] }],
         "import/order": [
             "error",
             {
@@ -569,17 +585,22 @@ export default {
         "jsdoc/check-values": "error",
         "jsdoc/empty-tags": "error",
         "jsdoc/implements-on-classes": "error",
+        // Désactiver la règle, car elle ne supporte pas la propriété "exports".
+        // https://github.com/gajus/eslint-plugin-jsdoc/issues/1114
+        "jsdoc/imports-as-dependencies": "off",
+        "jsdoc/informative-docs": "error",
         "jsdoc/match-description": ["error", { matchDescription: "[A-ZÉ].*" }],
         "jsdoc/match-name": "off",
         "jsdoc/multiline-blocks": "error",
-        "jsdoc/newline-after-description": "error",
         "jsdoc/no-bad-blocks": "error",
+        "jsdoc/no-blank-block-descriptions": "error",
+        "jsdoc/no-blank-blocks": "error",
         "jsdoc/no-defaults": "error",
         "jsdoc/no-missing-syntax": "off",
         "jsdoc/no-multi-asterisks": "error",
         "jsdoc/no-restricted-syntax": "off",
         "jsdoc/no-types": "off",
-        "jsdoc/no-undefined-types": ["error", { definedTypes: ["Timeout"] }],
+        "jsdoc/no-undefined-types": "error",
         "jsdoc/require-asterisk-prefix": "error",
         "jsdoc/require-description": "error",
         "jsdoc/require-description-complete-sentence": "off",
@@ -611,7 +632,7 @@ export default {
         "jsdoc/require-yields": "error",
         "jsdoc/require-yields-check": "error",
         "jsdoc/sort-tags": "error",
-        "jsdoc/tag-lines": "error",
+        "jsdoc/tag-lines": ["error", "never", { startLines: 1 }],
         "jsdoc/valid-types": "error",
 
         // Plugin eslint-plugin-no-unsanitized.
@@ -734,7 +755,7 @@ export default {
         "unicorn/escape-case": "error",
         "unicorn/expiring-todo-comments": "off",
         "unicorn/explicit-length-check": "off",
-        "unicorn/filename-case": ["error", { case: "kebabCase" }],
+        "unicorn/filename-case": "error",
         "unicorn/import-style": "error",
         "unicorn/new-for-builtins": "error",
         "unicorn/no-abusive-eslint-disable": "error",
@@ -772,10 +793,6 @@ export default {
         "unicorn/no-unnecessary-await": "error",
         "unicorn/no-unreadable-array-destructuring": "error",
         "unicorn/no-unreadable-iife": "error",
-        // Désactiver la règle car il y a des faux-positifs avec les petites
-        // valeurs de quantification.
-        // https://github.com/davisjam/safe-regex/issues/10
-        "unicorn/no-unsafe-regex": "off",
         "unicorn/no-unused-properties": "error",
         "unicorn/no-useless-fallback-in-spread": "error",
         "unicorn/no-useless-length-check": "error",
@@ -794,6 +811,7 @@ export default {
         "unicorn/prefer-array-index-of": "error",
         "unicorn/prefer-array-some": "error",
         "unicorn/prefer-at": "error",
+        "unicorn/prefer-blob-reading-methods": "error",
         "unicorn/prefer-code-point": "error",
         "unicorn/prefer-date-now": "error",
         "unicorn/prefer-default-parameters": "error",
@@ -849,7 +867,6 @@ export default {
 
     settings: {
         jsdoc: {
-            mode: "typescript",
             preferredTypes: {
                 ".<>": "<>",
                 "Array<>": "[]",

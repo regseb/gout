@@ -5,8 +5,5 @@
  */
 
 export default {
-    content: "/src/extension/popup/*.html",
-    safelist: {
-        standard: ["active"],
-    },
+    content: ["/src/extension/popup/*.html", "/src/extension/popup/*.js"],
 };

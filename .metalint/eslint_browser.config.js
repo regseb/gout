@@ -13,7 +13,7 @@ export default {
         "import/no-unresolved": [
             "error",
             {
-                ignore: ["^https:\\/\\/cdn\\.jsdelivr\\.net\\/"],
+                ignore: ["^https:\\/\\/esm\\.sh\\/"],
             },
         ],
     },

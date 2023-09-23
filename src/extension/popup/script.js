@@ -4,6 +4,8 @@
  * @author Sébastien Règne
  */
 
+import "../polyfill/browser.js";
+
 const check = function (href) {
     try {
         const url = new URL(href);
@@ -76,38 +78,30 @@ const set = async function () {
     button.textContent = "Mettre à jour";
 };
 
-const init = async function () {
-    const { dashboards } = await browser.storage.sync.get("dashboards");
-    // Récupérer le titre et l'URL de l'onglet courant.
-    // Attention avec Chromium ! Quand la popup est ouverte dans un onglet : la
-    // méthode retourne un élément, mais sans titre, ni URL.
-    const [{ title, url }] = await browser.tabs.query({
-        active: true,
-        currentWindow: true,
-    });
+const { dashboards } = await browser.storage.sync.get("dashboards");
+// Récupérer le titre et l'URL de l'onglet courant.
+// Attention avec Chromium ! Quand la popup est ouverte dans un onglet : la
+// méthode retourne un élément, mais sans titre, ni URL.
+const [{ title, url }] = await browser.tabs.query({
+    active: true,
+    currentWindow: true,
+});
 
-    const button = document.querySelector("#set");
-    if (check(url)) {
-        if (dashboards.some((d) => url === d.url)) {
-            button.textContent = "Mettre à jour";
-        }
-
-        button.dataset.title = title;
-        button.dataset.url = url;
-        button.addEventListener("click", set);
-        button.disabled = false;
-    } else {
-        button.textContent = "(Impossible pour cette page)";
+const button = document.querySelector("#set");
+if (check(url)) {
+    if (dashboards.some((d) => url === d.url)) {
+        button.textContent = "Mettre à jour";
     }
 
-    const ul = document.querySelector("ul");
-    for (const dashboard of dashboards) {
-        ul.append(create(dashboard, url === dashboard.url));
-    }
-};
+    button.dataset.title = title;
+    button.dataset.url = url;
+    button.addEventListener("click", set);
+    button.disabled = false;
+} else {
+    button.textContent = "(Impossible pour cette page)";
+}
 
-// Ne pas ajouter d'await car addons-linter échoue à analyser les fichiers sans
-// import / export et avec un await dans le scope global.
-// https://github.com/mozilla/addons-linter/issues/4020
-// eslint-disable-next-line unicorn/prefer-top-level-await
-init();
+const ul = document.querySelector("ul");
+for (const dashboard of dashboards) {
+    ul.append(create(dashboard, url === dashboard.url));
+}

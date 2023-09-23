@@ -4,7 +4,7 @@
  * @author Sébastien Règne
  */
 
-import Cron from "https://cdn.jsdelivr.net/npm/cronnor@2/+esm";
+import Cron from "https://esm.sh/cronnor@2";
 
 export default class IconModule extends HTMLElement {
     #options;

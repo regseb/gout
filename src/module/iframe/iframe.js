@@ -4,7 +4,7 @@
  * @author Sébastien Règne
  */
 
-import Cron from "https://cdn.jsdelivr.net/npm/cronnor@2/+esm";
+import Cron from "https://esm.sh/cronnor@2";
 
 export default class IFrameModule extends HTMLElement {
     #options;
@@ -24,7 +24,7 @@ export default class IFrameModule extends HTMLElement {
     #display(item, empty = false) {
         const iframe = this.shadowRoot.querySelector("iframe");
         if (item.link === iframe.src) {
-            iframe.contentWindow.location.reload(true);
+            iframe.contentWindow.location.reload();
         } else {
             iframe.src = item.link;
         }
@@ -84,7 +84,7 @@ export default class IFrameModule extends HTMLElement {
         this.#empty = this.#options.empty ?? {};
 
         const iframe = this.shadowRoot.querySelector("iframe");
-        iframe.height = this.#options.height ?? 150;
+        iframe.height = (this.#options.height ?? 150).toString();
 
         if (undefined !== this.#options.cron) {
             this.#cron = new Cron(this.#options.cron, this.#update.bind(this));

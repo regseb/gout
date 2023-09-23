@@ -4,4 +4,6 @@
  * @author Sébastien Règne
  */
 
-export default {};
+export default {
+    allowDuplicateObjectKeys: false,
+};
