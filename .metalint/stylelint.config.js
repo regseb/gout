@@ -41,7 +41,7 @@ export default {
         "custom-property-no-missing-var-function": true,
         "font-family-no-missing-generic-family-keyword": true,
 
-        // Non-stantard.
+        // Non-standard.
         "function-linear-gradient-no-nonstandard-direction": true,
 
         // Overrides

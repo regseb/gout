@@ -156,8 +156,8 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        Le titre de l'élément affiché dans l'info-bulle. Par défaut, aucune
-        info-bulle n'est affichée.
+        Le titre de l'élément affiché dans l'infobulle. Par défaut, aucune
+        infobulle n'est affichée.
       </p>
       <p>
         Exemple : <code>"La meilleur radio !"</code>.

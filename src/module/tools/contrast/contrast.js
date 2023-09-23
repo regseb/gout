@@ -101,7 +101,7 @@ const calculateLuminous = function (rgb) {
  *
  * @param {number} l1 La première luminance.
  * @param {number} l2 La deuxième luminance.
- * @returns {number} Le constraste.
+ * @returns {number} Le contraste.
  * @see https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure
  */
 const calculateContrast = function (l1, l2) {

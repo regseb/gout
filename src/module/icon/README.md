@@ -143,8 +143,8 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        Le titre de l'élément affiché dans l'info-bulle. Par défaut, aucune
-        info-bulle est affichée.
+        Le titre de l'élément affiché dans l'infobulle. Par défaut, aucune
+        infobulle est affichée.
       </p>
       <p>
         Exemple : <code>"Click me!"</code>.
@@ -168,8 +168,8 @@ Ce widget affiche un bouton qui redirige vers [GitHub](https://github.com/).
             "extract": [{
                 "color": "black",
                 "link": "https://github.com/",
-                "target": "_top"
-                "title": "GitHub",
+                "target": "_top",
+                "title": "GitHub"
             }]
         }
     }]

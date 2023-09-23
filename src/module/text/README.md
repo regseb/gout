@@ -113,8 +113,8 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        La description de l'élément affichée dans l'info-bulle. Par défaut,
-        aucune info-bulle n'est affichée.
+        La description de l'élément affichée dans l'infobulle. Par défaut,
+        aucune infobulle n'est affichée.
       </p>
       <p>
         Exemple : <code>"Ce top10 des choses incroyables est incroyable"</code>.

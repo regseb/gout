@@ -6,7 +6,7 @@ Ce module affiche une zone de saisie pour faire une recherche.
 
 ## Options
 
-Aucune option est nécessaire. Tout le paramètrage se fait avec les scrapers.
+Aucune option n'est nécessaire. Tout le paramétrage se fait avec les scrapers.
 
 ## Scrapers
 
