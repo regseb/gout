@@ -6,7 +6,7 @@
 
 import Cron from "https://cdn.jsdelivr.net/npm/cronnor@2/+esm";
 
-export default class Single extends HTMLElement {
+export default class SingleModule extends HTMLElement {
     #options;
 
     #scrapers;

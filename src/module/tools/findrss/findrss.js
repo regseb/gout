@@ -19,7 +19,7 @@ const extract = async function (url) {
     }));
 };
 
-export default class FindRSS extends HTMLElement {
+export default class FindRSSModule extends HTMLElement {
     #options;
 
     #max;

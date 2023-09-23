@@ -4,7 +4,7 @@
  * @author Sébastien Règne
  */
 
-export default class Search extends HTMLElement {
+export default class SearchModule extends HTMLElement {
     #scrapers;
 
     #scraper;

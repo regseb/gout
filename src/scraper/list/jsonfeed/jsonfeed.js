@@ -4,7 +4,7 @@
  * @author Sébastien Règne
  */
 
-export default class JSONFeed {
+export default class JSONFeedScraper {
     #url;
 
     #complements;

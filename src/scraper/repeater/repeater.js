@@ -4,7 +4,7 @@
  * @author Sébastien Règne
  */
 
-export default class Repeater {
+export default class RepeaterScraper {
     constructor(options) {
         // eslint-disable-next-line no-constructor-return
         return new Proxy(

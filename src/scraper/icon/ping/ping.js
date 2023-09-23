@@ -19,7 +19,7 @@ const DEFAULT_COLORS = {
     "...": "#757575",
 };
 
-export default class Ping {
+export default class PingScraper {
     #url;
 
     #colors;

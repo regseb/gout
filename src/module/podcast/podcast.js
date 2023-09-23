@@ -49,7 +49,7 @@ const move = function (event) {
     audio.currentTime = li.querySelector("input").valueAsNumber;
 };
 
-export default class Podcast extends HTMLElement {
+export default class PodcastModule extends HTMLElement {
     #options;
 
     #scrapers;

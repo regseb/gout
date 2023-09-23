@@ -44,9 +44,12 @@ const loadWidget = async function (widget) {
 
     // eslint-disable-next-line no-unsanitized/method
     const { default: Module } = await import(widget.module.url);
-    const name = "gout-" + hashCode(widget.module.url);
-    if (undefined === customElements.get(name)) {
-        customElements.define(name, Module);
+    if (null === customElements.getName(Module)) {
+        customElements.define(
+            `gout-${Module.name.toLowerCase()}` +
+                `-${hashCode(widget.module.url)}`,
+            Module,
+        );
     }
     return new Module(widget.module.options ?? {}, scrapers);
 };

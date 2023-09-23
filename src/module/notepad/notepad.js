@@ -15,7 +15,7 @@ const hashCode = function (item) {
     ).toString(36);
 };
 
-export default class Notepad extends HTMLElement {
+export default class NotepadModule extends HTMLElement {
     #options;
 
     #guid;

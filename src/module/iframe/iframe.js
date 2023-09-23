@@ -6,7 +6,7 @@
 
 import Cron from "https://cdn.jsdelivr.net/npm/cronnor@2/+esm";
 
-export default class IFrame extends HTMLElement {
+export default class IFrameModule extends HTMLElement {
     #options;
 
     #scrapers;

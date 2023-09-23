@@ -4,7 +4,7 @@
  * @author Sébastien Règne
  */
 
-export default class OpenSearch {
+export default class OpenSearchScraper {
     #url;
 
     #suggestions;

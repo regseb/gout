@@ -4,7 +4,7 @@
  * @author Sébastien Règne
  */
 
-export default class RSS {
+export default class RSSScraper {
     #url;
 
     #complements;

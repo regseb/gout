@@ -6,7 +6,7 @@
 
 import Cron from "https://cdn.jsdelivr.net/npm/cronnor@2/+esm";
 
-export default class Audio extends HTMLElement {
+export default class AudioModule extends HTMLElement {
     #options;
 
     #scrapers;

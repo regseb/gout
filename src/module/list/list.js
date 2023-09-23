@@ -17,7 +17,7 @@ const hashCode = function (item) {
     ).toString(36);
 };
 
-export default class List extends HTMLElement {
+export default class ListModule extends HTMLElement {
     #options;
 
     #scrapers;

@@ -17,7 +17,7 @@ const hashCode = function (item) {
     ).toString(36);
 };
 
-export default class Image extends HTMLElement {
+export default class ImageModule extends HTMLElement {
     #options;
 
     #scrapers;

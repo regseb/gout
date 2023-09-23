@@ -19,7 +19,7 @@ const animate = function (time, center) {
     return element;
 };
 
-export default class Clock extends HTMLElement {
+export default class ClockModule extends HTMLElement {
     #options;
 
     #scrapers;
