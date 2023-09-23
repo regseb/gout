@@ -100,16 +100,16 @@ export default class ClockModule extends HTMLElement {
         const items = results.flat().slice(0, 1);
 
         if (0 === items.length) {
-            this.#display(this.#empty, true);
+            await this.#display(this.#empty, true);
         } else {
-            this.#display(items[0]);
+            await this.#display(items[0]);
         }
     }
 
-    #wake() {
+    async #wake() {
         if (!this.#cron.active) {
             this.#cron.start();
-            this.#update();
+            await this.#update();
         }
     }
 
@@ -137,6 +137,6 @@ export default class ClockModule extends HTMLElement {
                 this.#wake.bind(this),
             );
         }
-        this.#update(true);
+        await this.#update(true);
     }
 }

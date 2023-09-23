@@ -165,10 +165,10 @@ export default class ImageModule extends HTMLElement {
         this.#refresh();
     }
 
-    #wake() {
+    async #wake() {
         if (!this.#cron.active) {
             this.#cron.start();
-            this.#update();
+            await this.#update();
         }
     }
 
@@ -211,6 +211,6 @@ export default class ImageModule extends HTMLElement {
                 this.#wake.bind(this),
             );
         }
-        this.#update(true);
+        await this.#update(true);
     }
 }

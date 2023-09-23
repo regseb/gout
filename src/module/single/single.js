@@ -68,10 +68,10 @@ export default class SingleModule extends HTMLElement {
         }
     }
 
-    #wake() {
+    async #wake() {
         if (!this.#cron.active) {
             this.#cron.start();
-            this.#update();
+            await this.#update();
         }
     }
 
@@ -99,6 +99,6 @@ export default class SingleModule extends HTMLElement {
                 this.#wake.bind(this),
             );
         }
-        this.#update(true);
+        await this.#update(true);
     }
 }
