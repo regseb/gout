@@ -1,6 +1,6 @@
 {
   "name": "gout",
-  "version": "0.9.7",
+  "version": "0.9.8",
   "description": "Agrégateur d'Internet (flux RSS et tout le reste).",
   "keywords": [
     "gout",

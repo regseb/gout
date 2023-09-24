@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.8](https://github.com/regseb/gout/compare/v0.9.7...v0.9.8) (2023-09-24)
+
+
+### Bug Fixes
+
+* Corriger des fautes de français. ([ebb3cba](https://github.com/regseb/gout/commit/ebb3cba7bc03a738ef59055d857b2673dade3e32))
+* Corriger le nom des classes. ([c91d0fa](https://github.com/regseb/gout/commit/c91d0fa7befa9582dad35712b2a3fdf630183f31))
+* Gérer correctement les async / await. ([b017aaa](https://github.com/regseb/gout/commit/b017aaade74a678200fa4a8c597463fcd6296c33))
+
 ### [0.9.7](https://github.com/regseb/gout/compare/v0.9.6...v0.9.7) (2023-03-10)
 
 
