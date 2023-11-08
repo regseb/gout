@@ -6,17 +6,17 @@
 
 const DEFAULT_COLORS = {
     // Bleu.
-    "1..": "#4975b6",
+    "1xx": "#4975b6",
     // Vert.
-    "2..": "#148a00",
+    "2xx": "#148a00",
     // Orange.
-    "3..": "#c75300",
+    "3xx": "#c75300",
     // Rouge.
-    "4..": "#e12712",
+    "4xx": "#e12712",
     // Violet.
-    "5..": "#8d6794",
+    "5xx": "#8d6794",
     // Gris.
-    "...": "#757575",
+    xxx: "#757575",
 };
 
 export default class PingScraper {
@@ -32,11 +32,11 @@ export default class PingScraper {
         this.#url = url;
         this.#colors = new Map(
             Object.entries({ ...colors, ...DEFAULT_COLORS })
-                .filter(([p]) => "..." !== p)
+                .filter(([p]) => "xxx" !== p)
                 .map(([p, c]) => [new RegExp(p, "u"), c]),
         );
-        this.#defaultColor = colors?.["..."] ?? DEFAULT_COLORS["..."];
         this.#complements = { desc: url, link: url, ...complements };
+        this.#defaultColor = colors?.xxx ?? DEFAULT_COLORS.xxx;
     }
 
     async extract(max = Number.MAX_SAFE_INTEGER) {
