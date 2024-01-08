@@ -125,7 +125,7 @@ Ce widget affiche une horloge avec l'heure courante.
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/clock/clock.js"
     },
     "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/repeater/repeater.js",
+        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js",
         "options": {
             "extract": [{
                 "color": "#795548"

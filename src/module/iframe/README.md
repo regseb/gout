@@ -117,7 +117,7 @@ Ce widget affiche [Wikipédia](https://fr.wikipedia.org/) dans un `iframe`.
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/iframe/iframe.js"
     },
     "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/repeater/repeater.js",
+        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js",
         "options": {
             "extract": [{
                 "link": "https://fr.wikipedia.org/wiki/Wikipédia:Accueil_principal"

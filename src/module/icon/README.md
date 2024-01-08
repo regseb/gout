@@ -163,7 +163,7 @@ Ce widget affiche un bouton qui redirige vers [GitHub](https://github.com/).
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/icon/icon.js"
     },
     "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/repeater/repeater.js",
+        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js",
         "options": {
             "extract": [{
                 "color": "black",

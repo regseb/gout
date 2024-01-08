@@ -1,6 +1,6 @@
-# Scraper _repeater_
+# Scraper _tools/repeater_
 
-> Mots-clés : gout, gout-scraper, gout-scraper-repeater.
+> Mots-clés : gout, gout-scraper, gout-scraper-tools-repeater.
 
 Ce scraper permet de simuler un scraper spécifique retournant des données
 statiques pour un module.
@@ -28,7 +28,7 @@ Ce widget affiche une liste avec deux liens allant vers
         }
     },
     "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/repeater/repeater.js",
+        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js",
         "options": {
             "extract": [{
                 "title": "Facebook",

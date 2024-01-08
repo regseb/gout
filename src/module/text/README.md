@@ -159,7 +159,7 @@ Ce widget affiche le texte _Carpe diem_.
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/text/text.js"
     },
     "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/repeater/repeater.js",
+        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js",
         "options": {
             "extract": [{
                 "title": "Carpe diem"

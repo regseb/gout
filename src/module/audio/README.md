@@ -176,7 +176,7 @@ Ce widget affiche un cadre pour écouter la radio [Fip](https://www.fip.fr/).
         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/audio/audio.js"
     },
     "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/repeater/repeater.js",
+        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js",
         "options": {
             "extract": [{
                 "audio": "https://direct.radiofrance.fr/live/fip-hifi.aac",
