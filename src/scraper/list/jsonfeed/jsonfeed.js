@@ -4,14 +4,15 @@
  * @author Sébastien Règne
  */
 
-export default class JSONFeedScraper {
+import chain from "../../../utils/scraper/chain.js";
+import ComplementsScraper from "../../tools/complements/complements.js";
+import FilterScraper from "../../tools/filter/filter.js";
+
+const JSONFeedScraper = class {
     #url;
 
-    #complements;
-
-    constructor({ url, complements }) {
+    constructor({ url }) {
         this.#url = url;
-        this.#complements = complements;
     }
 
     async extract(max = Number.MAX_SAFE_INTEGER) {
@@ -28,7 +29,15 @@ export default class JSONFeedScraper {
                 title: item.title,
             }))
             .sort((i1, i2) => i2.date - i1.date)
-            .slice(0, max)
-            .map((i) => ({ ...this.#complements, ...i }));
+            .slice(0, max);
     }
-}
+};
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default chain(FilterScraper, ComplementsScraper, JSONFeedScraper, {
+    dispatch: ({ filter, complements, ...others }) => [
+        { filter },
+        { complements },
+        others,
+    ],
+});

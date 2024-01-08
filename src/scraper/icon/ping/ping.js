@@ -4,6 +4,10 @@
  * @author Sébastien Règne
  */
 
+import chain from "../../../utils/scraper/chain.js";
+import ComplementsScraper from "../../tools/complements/complements.js";
+import FilterScraper from "../../tools/filter/filter.js";
+
 const DEFAULT_COLORS = {
     // Bleu.
     "1xx": "#4975b6",
@@ -19,23 +23,20 @@ const DEFAULT_COLORS = {
     xxx: "#757575",
 };
 
-export default class PingScraper {
+const PingScraper = class {
     #url;
 
     #colors;
 
     #defaultColor;
 
-    #complements;
-
-    constructor({ url, colors, complements }) {
+    constructor({ url, colors }) {
         this.#url = url;
         this.#colors = new Map(
             Object.entries({ ...colors, ...DEFAULT_COLORS })
                 .filter(([p]) => "xxx" !== p)
                 .map(([p, c]) => [new RegExp(p, "u"), c]),
         );
-        this.#complements = { desc: url, link: url, ...complements };
         this.#defaultColor = colors?.xxx ?? DEFAULT_COLORS.xxx;
     }
 
@@ -51,7 +52,6 @@ export default class PingScraper {
                 if (prefix.test(response.status.toString())) {
                     return [
                         {
-                            ...this.#complements,
                             color: this.#colors.get(prefix),
                             date: Date.now(),
                         },
@@ -64,10 +64,18 @@ export default class PingScraper {
 
         return [
             {
-                ...this.#complements,
                 color: this.#defaultColor,
                 date: Date.now(),
             },
         ];
     }
-}
+};
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default chain(FilterScraper, ComplementsScraper, PingScraper, {
+    dispatch: ({ filter, complements, url, ...others }) => [
+        { filter },
+        { complements: { desc: url, link: url, ...complements } },
+        { url, ...others },
+    ],
+});
