@@ -186,6 +186,7 @@ export default {
         "hue-degree-notation": "angle",
         "import-notation": "string",
         "keyframe-selector-notation": "keyword",
+        "lightness-notation": "percentage",
         "media-feature-range-notation": "context",
         "selector-not-notation": "complex",
         "selector-pseudo-element-colon-notation": "double",
