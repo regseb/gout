@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.10.0](https://github.com/regseb/gout/compare/v0.9.8...v0.10.0) (2024-01-08)
+
+
+### Features
+
+* Chainer les scrapers. ([04c094b](https://github.com/regseb/gout/commit/04c094b9f08b7ed980e27c57fd922d7e3f86e1fb))
+
+
+### Bug Fixes
+
+* Déplacer le scraper Repeater dans tools. ([da4af6f](https://github.com/regseb/gout/commit/da4af6fbf59a68223468b52abb401c2e683e5630))
+* **scraper/icon/ping:** Remplacer les points par des "x". ([402e2b4](https://github.com/regseb/gout/commit/402e2b400f16b92b6e9e193a7ae70f1dacc5ff9b))
+
 ## [0.9.8](https://github.com/regseb/gout/compare/v0.9.7...v0.9.8) (2023-09-24)
 
 
