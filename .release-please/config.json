@@ -1,0 +1,8 @@
+{
+  "release-type": "node",
+  "include-component-in-tag": false,
+  "extra-files": ["src/extension/manifest.json"],
+  "packages": {
+    ".": {}
+  }
+}
