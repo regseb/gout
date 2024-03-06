@@ -4,7 +4,7 @@
  * @author Sébastien Règne
  */
 
-import * as jfather from "./jfather.js";
+import JFather from "https://esm.sh/jfather@0";
 
 const hashCode = function (text) {
     return Math.abs(
@@ -58,8 +58,8 @@ const liven = async function (script) {
     try {
         const config =
             "" === script.src
-                ? await jfather.parse(script.text)
-                : await jfather.load(script.src);
+                ? await JFather.parse(script.text)
+                : await JFather.load(script.src);
         const widget = await loadWidget(config);
         widget.classList.add("widget");
         script.after(widget);
