@@ -59,20 +59,33 @@ const RSSScraper = class {
                 date: entry.querySelector("published").textContent,
                 guid: entry.querySelector("id").textContent,
                 link: entry.querySelector("link").getAttribute("href"),
-                summary: entry.querySelector("summary")?.textContent ?? "",
-                title: entry.querySelector("title").textContent,
+                summary:
+                    entry.querySelector("summary")?.textContent ??
+                    // Essayer la description dans "media:group
+                    // media:description".
+                    entry.querySelector("group description")?.textContent ??
+                    "",
+                title:
+                    entry.querySelector("title").textContent ??
+                    // Essayer le titre dans "media:group media:title".
+                    entry.querySelector("group title")?.textContent,
+                thumbnail: entry
+                    // Essayer la miniature dans "media:group media:thumbnail".
+                    .querySelector("group thumbnail")
+                    ?.getAttribute("url"),
             }))
             .map((item) => ({
                 date: new Date(item.date).getTime(),
                 desc: new DOMParser()
                     .parseFromString(
-                        0 === item.summary.trim().length
-                            ? item.content.trim()
-                            : item.summary.trim(),
+                        /^\s*$/u.test(item.summary)
+                            ? item.content
+                            : item.summary,
                         "text/html",
                     )
                     .body.textContent.trim(),
                 guid: this.#url + item.guid,
+                img: item.thumbnail,
                 link: item.link,
                 title: item.title,
             }));
