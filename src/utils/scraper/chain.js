@@ -37,9 +37,9 @@ export default function chain(FirstScraper, ...others) {
         constructor(options, scrapers) {
             const allOptions = dispatch(options);
             const subScrapers = AllScraperss.reduce(
-                (dependancies, Scrapers) => {
+                (dependencies, Scrapers) => {
                     return Scrapers.map(
-                        (S) => new S(allOptions.pop(), dependancies),
+                        (S) => new S(allOptions.pop(), dependencies),
                     );
                 },
                 scrapers,

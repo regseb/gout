@@ -22,6 +22,7 @@ export default {
         "prefer-arrow-callback": "off",
 
         // Plugin eslint-plugin-mocha.
+        "mocha/consistent-spacing-between-blocks": "error",
         "mocha/handle-done-callback": "error",
         "mocha/max-top-level-suites": "error",
         "mocha/no-async-describe": "error",
@@ -48,5 +49,12 @@ export default {
 
         // Plugin eslint-plugin-no-unsanitized.
         "no-unsanitized/method": "off",
+
+        // Plugin eslint-plugin-unicorn.
+        // Ne pas obliger à sortir les fonctions des tests.
+        "unicorn/consistent-function-scoping": "off",
+        // Autoriser la valeur null pour pouvoir tester cette valeur dans les
+        // tests.
+        "unicorn/no-null": "off",
     },
 };

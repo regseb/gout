@@ -73,6 +73,12 @@ const compile = (filter) => {
 };
 
 export default class FilterScraper {
+    /**
+     * La fonction pour filtrer prennant en argument un élément et retournant un
+     * booléen.
+     *
+     * @type {Function}
+     */
     #filter;
 
     /**
