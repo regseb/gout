@@ -55,7 +55,7 @@ propriétés suivantes :
     <td>
       <p>
         Des propriétés qui seront retournées par la méthode
-        <a href="../../module/search#scrapers"><code>info()</code></a>.
+        <a href="https://github.com/regseb/gout/tree/HEAD/src/module/search#scrapers"><code>info()</code></a>.
       </p>
       <p>
         Exemple : <code>{ "title": "Google", "color": "#2196f3" }</code>.
@@ -71,29 +71,29 @@ Ce widget fourni un champ pour faire une recherche avec
 
 ```JSON
 {
-    "module": {
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/search/search.js"
-    },
-    "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js",
-        "options": {
-            "url": "https://www.google.com/search?q={searchTerms}",
-            "suggestions": "https://www.google.com/complete/search?client=firefox&q={searchTerms}",
-            "complements": {
-                "title": "Google",
-                "color": "#2196f3"
-            }
-        }
-    }, {
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js",
-         "options": {
-            "url": "https://www.bing.com/search?q={searchTerms}",
-            "suggestions": "https://www.bing.com/osjson.aspx?query={searchTerms}",
-            "complements": {
-                "title": "Bing",
-                "color": "#ffc107"
-            }
-        }
-    }]
+  "module": {
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/search/search.js"
+  },
+  "scrapers": [{
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js",
+    "options": {
+      "url": "https://www.google.com/search?q={searchTerms}",
+      "suggestions": "https://www.google.com/complete/search?client=firefox&q={searchTerms}",
+      "complements": {
+        "title": "Google",
+        "color": "#2196f3"
+      }
+    }
+  }, {
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js",
+    "options": {
+      "url": "https://www.bing.com/search?q={searchTerms}",
+      "suggestions": "https://www.bing.com/osjson.aspx?query={searchTerms}",
+      "complements": {
+        "title": "Bing",
+        "color": "#ffc107"
+      }
+    }
+  }]
 }
 ```

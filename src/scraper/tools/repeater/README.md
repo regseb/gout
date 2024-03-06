@@ -17,27 +17,27 @@ clés correspondent aux méthodes simulées et les valeurs aux données retourn�
 
 Ce widget affiche une liste avec deux liens allant vers
 [Facebook](https://www.facebook.com/) et
-[Twitter](https://www.twitter.com/).
+[Instagram](https://www.instagram.com/).
 
 ```JSON
 {
-    "module": {
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
-        "options": {
-            "color": "#f0a30a"
-        }
-    },
-    "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js",
-        "options": {
-            "extract": [{
-                "title": "Facebook",
-                "link": "https://www.facebook.com/"
-            }, {
-                "title": "Twitter",
-                "link": "https://www.twitter.com/"
-            }]
-        }
-    }]
+  "module": {
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
+    "options": {
+      "color": "#f0a30a"
+    }
+  },
+  "scrapers": [{
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js",
+    "options": {
+      "extract": [{
+        "title": "Facebook",
+        "link": "https://www.facebook.com/"
+      }, {
+        "title": "Instagram",
+        "link": "https://www.instagram.com/"
+      }]
+    }
+  }]
 }
 ```

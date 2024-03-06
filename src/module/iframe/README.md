@@ -63,6 +63,10 @@ propriétés suivantes :
 
 ## Scrapers
 
+> [!NOTE]
+> Ce chapitre est utile principalement pour le développement de scrapers
+> compatibles avec ce module.
+
 Les scrapers associés à ce module doivent définir une méthode `extract()` qui
 prend en paramètre un entier indiquant le nombre maximum d'éléments à retourner
 (pour ce module la valeur passée sera toujours `1`). La méthode doit retourner
@@ -109,20 +113,21 @@ suivantes :
 
 ## Exemple
 
-Ce widget affiche [Wikipédia](https://fr.wikipedia.org/) dans un `iframe`.
+Ce widget affiche la [Lofi Girl](https://youtu.be/jfKfPfyJRdk) de YouTube dans
+un `iframe`.
 
 ```JSON
 {
-    "module": {
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/iframe/iframe.js"
-    },
-    "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js",
-        "options": {
-            "extract": [{
-                "link": "https://fr.wikipedia.org/wiki/Wikipédia:Accueil_principal"
-            }]
-        }
-    }]
+  "module": {
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/iframe/iframe.js"
+  },
+  "scrapers": [{
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js",
+    "options": {
+      "extract": [{
+        "link": "https://www.youtube-nocookie.com/embed/jfKfPfyJRdk"
+      }]
+    }
+  }]
 }
 ```

@@ -61,10 +61,26 @@ propriétés suivantes :
     <td>
       <p>
         Des propriétés qui seront ajoutées dans les éléments retournés. Par
-        défaut aucune propriété n'est ajoutée.
+        défaut aucune propriété n'est ajoutée. Pour plus de détails, voir le
+        scraper
+        <a href="https://github.com/regseb/gout/tree/HEAD/src/scraper/tools/complements#readme"><em>tools/complements</em></a>.
       </p>
       <p>
         Exemple : <code>{ "target": "_top" }</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><code>"filter"</code></td>
+    <td><code>string</code></td>
+    <td>
+      <p>
+        Le filtre qui sera appliqué sur les éléments retournées. Par défaut
+        aucun filtre n'est appliqué. Pour plus de détails, voir le scraper
+        <a href="https://github.com/regseb/gout/tree/HEAD/src/scraper/tools/filter#readme"><em>tools/filter</em></a>.
+      </p>
+      <p>
+        Exemple : <code>"color != 'green'"</code>.
       </p>
     </td>
   </tr>
@@ -76,17 +92,17 @@ Ce widget teste le site _localhost_ toutes les heures.
 
 ```JSON
 {
-    "module": {
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/icon/icon.js",
-        "options": {
-            "cron": "@hourly"
-        }
-    },
-    "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/icon/ping/ping.js",
-        "options": {
-            "url": "http://localhost"
-        }
-    }]
+  "module": {
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/icon/icon.js",
+    "options": {
+      "cron": "@hourly"
+    }
+  },
+  "scrapers": [{
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/icon/ping/ping.js",
+    "options": {
+      "url": "http://localhost"
+    }
+  }]
 }
 ```

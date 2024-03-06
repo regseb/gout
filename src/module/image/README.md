@@ -68,6 +68,10 @@ propriétés suivantes :
 
 ## Scrapers
 
+> [!NOTE]
+> Ce chapitre est utile principalement pour le développement de scrapers
+> compatibles avec ce module.
+
 Les scrapers associés à ce module doivent définir une méthode `extract()` qui
 prend en paramètre un entier indiquant le nombre maximum d'éléments à retourner.
 La méthode doit retourner une
@@ -174,15 +178,15 @@ Ce widget affiche les `3` dernières images du site
 
 ```JSON
 {
-    "module": {
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/image/image.js",
-        "options": {
-            "cron": "@daily",
-            "max": 3
-        }
-    },
-    "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/scraper/image/commitstrip/commitstrip.js"
-    }]
+  "module": {
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/image/image.js",
+    "options": {
+      "cron": "@daily",
+      "max": 3
+    }
+  },
+  "scrapers": [{
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/scraper/image/commitstrip/commitstrip.js"
+  }]
 }
 ```

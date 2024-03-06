@@ -10,6 +10,10 @@ Aucune option n'est nécessaire. Tout le paramétrage se fait avec les scrapers.
 
 ## Scrapers
 
+> [!NOTE]
+> Ce chapitre est utile principalement pour le développement de scrapers
+> compatibles avec ce module.
+
 Les scrapers associés à ce module doivent définir trois méthodes :
 
 - `info()` qui retourne une promesse contenant les informations du moteur de
@@ -30,19 +34,19 @@ Ce widget fourni un champ pour faire une recherche avec
 
 ```JSON
 {
-    "module": {
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/search/search.js"
-    },
-    "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js",
-        "options": {
-            "url": "https://duckduckgo.com/?q={searchTerms}",
-            "suggestions": "https://ac.duckduckgo.com/ac/?q={searchTerms}&type=list",
-            "complements": {
-                "title": "DuckDuckGo",
-                "color": "#f44336"
-            },
-        }
-    }]
+  "module": {
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/search/search.js"
+  },
+  "scrapers": [{
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js",
+    "options": {
+      "url": "https://duckduckgo.com/?q={searchTerms}",
+      "suggestions": "https://ac.duckduckgo.com/ac/?q={searchTerms}&type=list",
+      "complements": {
+        "title": "DuckDuckGo",
+        "color": "#f44336"
+      },
+    }
+  }]
 }
 ```

@@ -73,8 +73,8 @@ la liste des flux RSS est affichée en dessous.
 
 ```JSON
 {
-    "module": {
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/tools/findrss/findress.js"
-    }
+  "module": {
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/tools/findrss/findrss.js"
+  }
 }
 ```

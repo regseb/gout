@@ -45,10 +45,26 @@ propriétés suivantes :
     <td>
       <p>
         Des propriétés qui seront ajoutées dans les éléments retournés. Par
-        défaut aucune propriété n'est ajoutée.
+        défaut aucune propriété n'est ajoutée. Pour plus de détails, voir le
+        scraper
+        <a href="https://github.com/regseb/gout/tree/HEAD/src/scraper/tools/complements#readme"><em>tools/complements</em></a>.
       </p>
       <p>
         Exemple : <code>{ "icon": "https://example.com/foo/bar.svg" }</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><code>"filter"</code></td>
+    <td><code>string</code></td>
+    <td>
+      <p>
+        Le filtre qui sera appliqué sur les éléments retournées. Par défaut
+        aucun filtre n'est appliqué. Pour plus de détails, voir le scraper
+        <a href="https://github.com/regseb/gout/tree/HEAD/src/scraper/tools/filter#readme"><em>tools/filter</em></a>.
+      </p>
+      <p>
+        Exemple : <code>"title != 'foo'"</code>.
       </p>
     </td>
   </tr>
@@ -61,19 +77,18 @@ Monde.fr](https://www.lemonde.fr/).
 
 ```JSON
 {
-    "module": {
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
-        "options": {
-            "color": "#757575",
-            "cron": "*/10 * * * *",
-            "max": 5
-        }
-    },
-    "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
-        "options": {
-            "url": "https://www.lemonde.fr/rss/une.xml"
-        }
-    }]
+  "module": {
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
+    "options": {
+      "cron": "*/10 * * * *",
+      "max": 5
+    }
+  },
+  "scrapers": [{
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
+    "options": {
+      "url": "https://www.lemonde.fr/rss/une.xml"
+    }
+  }]
 }
 ```

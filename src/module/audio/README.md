@@ -50,6 +50,10 @@ propriétés suivantes :
 
 ## Scrapers
 
+> [!NOTE]
+> Ce chapitre est utile principalement pour le développement de scrapers
+> compatibles avec ce module.
+
 Les scrapers associés à ce module doivent définir une méthode `extract()` qui
 prend en paramètre un entier indiquant le nombre maximum d'éléments à retourner
 (pour ce module la valeur passée sera toujours `1`). La méthode doit retourner
@@ -172,19 +176,19 @@ Ce widget affiche un cadre pour écouter la radio [Fip](https://www.fip.fr/).
 
 ```JSON
 {
-    "module": {
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/audio/audio.js"
-    },
-    "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js",
-        "options": {
-            "extract": [{
-                "audio": "https://direct.radiofrance.fr/live/fip-hifi.aac",
-                "color": "#e2007a",
-                "link": "https://www.radiofrance.fr/fip",
-                "title": "Fip"
-            }]
-        }
-    }]
+  "module": {
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/audio/audio.js"
+  },
+  "scrapers": [{
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js",
+    "options": {
+      "extract": [{
+        "audio": "https://direct.radiofrance.fr/live/fip-hifi.aac",
+        "color": "#e2007a",
+        "link": "https://www.radiofrance.fr/fip",
+        "title": "Fip"
+      }]
+    }
+  }]
 }
 ```

@@ -3,12 +3,12 @@
 > Mots-clés : gout, gout-scraper, gout-scraper-tools-complements.
 
 Ce scraper ajoute des propriétés dans les résultats d'un autre scraper. Il est
-rare d'utiliser ce scraper directement dans un widget. Il peut être utiliser
-pour ajouer la fonctionnalité dans un scraper :
+rare d'utiliser ce scraper directement dans un widget. Il peut être utilisé
+pour ajouter la fonctionnalité dans un autre scraper :
 
 ```JavaScript
-import chain from "https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/utils/scraper/chain.js";
-import ComplementsScraper from "https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/scraper/tools/complements/complements.js";
+import chain from "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/utils/scraper/chain.js";
+import ComplementsScraper from "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/complements/complements.js";
 
 const MyAwesomeScraper = class { /* ... */ };
 
@@ -53,29 +53,29 @@ d'éléments à retourner. La méthode doit retourner une
 contenant un tableau d'objet. Les propriétés seront ajoutées dans chaque élément
 du tableau.
 
-## Example
+## Exemple
 
 Ce widget affiche les dernières vidéos de la chaine YouTube de
 [FIP](https://www.youtube.com/@FipradioFr) en ajoutant le logo de FIP à chaque
-élément. L'option `"complements"` est passée au scraper `list/rss` car ce
-scraper utilise `ComplementsScraper`.
+élément. L'option `"complements"` est passée au scraper _list/rss_ car ce
+scraper utilise _tools/complements_.
 
 ```JSON
 {
-    "module": {
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
-        "options": {
-            "color": "#757575",
-            "cron": "*/10 * * * *",
-            "max": 5
-        }
-    },
-    "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
-        "options": {
-            "url": "https://www.youtube.com/feeds/videos.xml?user=arte"
-            "complements": { "icon": "https://example.com/fip.svg" },
-        }
-    }]
+  "module": {
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
+    "options": {
+      "color": "#757575",
+      "cron": "*/10 * * * *",
+      "max": 5
+    }
+  },
+  "scrapers": [{
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
+    "options": {
+      "url": "https://www.youtube.com/feeds/videos.xml?user=arte",
+      "complements": { "icon": "https://example.com/fip.svg" },
+    }
+  }]
 }
 ```

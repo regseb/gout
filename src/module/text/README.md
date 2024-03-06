@@ -51,6 +51,10 @@ propriétés suivantes :
 
 ## Scrapers
 
+> [!NOTE]
+> Ce chapitre est utile principalement pour le développement de scrapers
+> compatibles avec ce module.
+
 Les scrapers associés à ce module doivent définir une méthode `extract()` qui
 recevra en paramètre le nombre `1` indiquant le nombre maximum d'éléments à
 retourner. La méthode doit retourner une
@@ -155,16 +159,16 @@ Ce widget affiche le texte _Carpe diem_.
 
 ```JSON
 {
-    "module": {
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/text/text.js"
-    },
-    "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js",
-        "options": {
-            "extract": [{
-                "title": "Carpe diem"
-            }]
-        }
-    }]
+  "module": {
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/text/text.js"
+  },
+  "scrapers": [{
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js",
+    "options": {
+      "extract": [{
+        "title": "Carpe diem"
+      }]
+    }
+  }]
 }
 ```

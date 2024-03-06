@@ -39,18 +39,18 @@ Voici un exemple de dashboard ayant quatre colonnes de widgets.
     </style>
   </head>
   <body>
-    <div style="width: 25%;">
+    <div style="width: 30%;">
       <script type="application/json">{ "...": "..." }</script>
       <script type="application/json">{ "...": "..." }</script>
       <!-- ... -->
     </div>
-    <div style="width: 25%;">
+    <div style="width: 30%;">
       <script type="application/json">{ "...": "..." }</script>
     </div>
-    <div style="width: 25%;">
+    <div style="width: 20%;">
       <script type="application/json">{ "...": "..." }</script>
     </div>
-    <div style="width: 25%;">
+    <div style="width: 20%;">
       <script type="application/json">{ "...": "..." }</script>
       <script type="application/json">{ "...": "..." }</script>
     </div>
@@ -61,7 +61,8 @@ Voici un exemple de dashboard ayant quatre colonnes de widgets.
 ### Widget
 
 Un widget est un bloc du dashboard. C'est un élément `<script>` (avec le
-`type="application/json"`) qui contient un objet
+`type="application/json"`). Le widget sera ajouté dans le DOM de la page au même
+endroit que l'élément `<script>`. Le contenu du `<script>` est un objet
 [JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") ayant
 deux propriétés :
 
@@ -75,30 +76,27 @@ liens.
 
 ```HTML
 <script type="application/json">
-    {
-        "module": {
-            "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
-            "options": {
-                "color": "#ffc107",
-                "cron": "*/10 * * * *",
-                "max": 5
-            }
-        },
-        "scrapers": [{
-            "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
-            "options": {
-                "url": "https://linuxfr.org/news.atom"
-            }
-        }]
-    }
+  {
+    "module": {
+      "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
+      "options": {
+        "max": 5,
+        "color": "#ffc107",
+        "cron": "*/10 * * * *"
+      }
+    },
+    "scrapers": [{
+      "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
+      "options": {
+        "url": "https://linuxfr.org/news.atom"
+      }
+    }]
+  }
 </script>
 ```
 
-<!-- Une description détaillée des widgets est disponible sur le site de
-     Gout. -->
-
 Si vous voulez des widgets, vous pouvez chercher
-[_gout-widget_](https://github.com/search?q=%22gout-widget%22&type=Code&l=Markdown)
+[_gout-widget_](https://github.com/search?q=%22+gout-widget%22+language%3AMarkdown&type=Code&l=Markdown)
 dans GitHub.
 
 ### Module
@@ -119,25 +117,22 @@ affichée dans un bloc bleu `#2196f3` et actualisée toutes les dix minutes
 
 ```HTML
 <script type="application/json">
-    {
-        "module": {
-            "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
-            "options": {
-                "color": "#2196f3",
-                "cron": "*/10 * * * *",
-                "max": 5
-            }
-        },
-        "scrapers": [{ "...": "..." }]
-    }
+  {
+    "module": {
+      "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
+      "options": {
+        "color": "#2196f3",
+        "cron": "*/10 * * * *",
+        "max": 5
+      }
+    },
+    "scrapers": [{ "...": "..." }]
+  }
 </script>
 ```
 
-<!-- Une description détaillée des modules est disponible sur le site de
-     Gout. -->
-
 Si vous voulez des modules, vous pouvez chercher
-[_gout-module_](https://github.com/search?q=%22gout-module%22&type=Code&l=Markdown)
+[_gout-module_](https://github.com/search?q=%22+gout-module%22+language%3AMarkdown&type=Code&l=Markdown)
 dans GitHub.
 
 ### Scraper
@@ -155,33 +150,30 @@ propriétés :
   spécifiques pour chaque scraper).
 
 Dans cet exemple, deux scrapers sont définis pour récupérer les dernières vidéos
-des chaines YouTube [ARTE Cinema](https://www.youtube.com/c/ARTECinemafrance) et
-[ARTE Séries](https://www.youtube.com/c/ARTES%C3%A9ries).
+des chaines YouTube [ARTE Cinema](https://www.youtube.com/@artecinemafr) et
+[ARTE Séries](https://www.youtube.com/@arteseries).
 
 ```HTML
 <script type="application/json">
-    {
-        "module": { "...": "..." },
-        "scrapers": [{
-            "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
-            "options": {
-                "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UClo03hULFynpoX3w1Jv7fhw",
-            }
-        }, {
-            "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
-            "options": {
-                "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCzaf-8cAEiXfynukcmV5MXw"
-            }
-        }]
-    }
+  {
+    "module": { "...": "..." },
+    "scrapers": [{
+      "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
+      "options": {
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UClo03hULFynpoX3w1Jv7fhw",
+      }
+    }, {
+      "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
+      "options": {
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCzaf-8cAEiXfynukcmV5MXw"
+      }
+    }]
+  }
 </script>
 ```
 
-<!-- Une description détaillée des scrapers est disponible sur le site de
-     Gout. -->
-
 Si vous voulez des scrapers, vous pouvez chercher
-[_gout-scraper_](https://github.com/search?q=%22gout-scraper%22&type=Code&l=Markdown)
+[_gout-scraper_](https://github.com/search?q=%22+gout-scraper%22+language%3AMarkdown&type=Code&l=Markdown)
 dans GitHub.
 
 ## Installation

@@ -50,6 +50,10 @@ propriétés suivantes :
 
 ## Scrapers
 
+> [!NOTE]
+> Ce chapitre est utile principalement pour le développement de scrapers
+> compatibles avec ce module.
+
 Les scrapers associés à ce module doivent définir une méthode `extract()` qui
 prend en paramètre un entier indiquant le nombre maximum d'éléments à retourner
 (pour ce module la valeur passée sera toujours `1`). La méthode doit retourner
@@ -159,19 +163,19 @@ Ce widget affiche un bouton qui redirige vers [GitHub](https://github.com/).
 
 ```JSON
 {
-    "module": {
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/icon/icon.js"
-    },
-    "scrapers": [{
-        "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js",
-        "options": {
-            "extract": [{
-                "color": "black",
-                "link": "https://github.com/",
-                "target": "_top",
-                "title": "GitHub"
-            }]
-        }
-    }]
+  "module": {
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/icon/icon.js"
+  },
+  "scrapers": [{
+    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js",
+    "options": {
+      "extract": [{
+        "color": "black",
+        "link": "https://github.com/",
+        "target": "_top",
+        "title": "GitHub"
+      }]
+    }
+  }]
 }
 ```
