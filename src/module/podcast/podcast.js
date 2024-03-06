@@ -19,21 +19,29 @@ const hashCode = function (item) {
 
 const playPause = function (event) {
     const li = event.target.closest("li");
+    const audio = li.querySelector("audio");
+    if (audio.paused) {
+        audio.play();
+    } else {
+        audio.pause();
+    }
+};
+
+const change = function (event) {
+    const li = event.target.closest("li");
     const img = li.querySelector("img");
     const a = li.querySelector("a");
     const input = li.querySelector("input");
     const audio = li.querySelector("audio");
     if (audio.paused) {
+        input.style.display = "none";
+        a.style.display = "block";
+        img.src = import.meta.resolve("./img/play.svg");
+    } else {
         a.style.display = "none";
         input.max = Math.trunc(audio.duration);
         input.style.display = "block";
         img.src = import.meta.resolve("./img/pause.svg");
-        audio.play();
-    } else {
-        input.style.display = "none";
-        a.style.display = "block";
-        img.src = import.meta.resolve("./img/play.svg");
-        audio.pause();
     }
 };
 
@@ -111,6 +119,8 @@ export default class PodcastModule extends HTMLElement {
         const audio = li.querySelector("audio");
         audio.src = item.audio;
         audio.addEventListener("timeupdate", elapse);
+        audio.addEventListener("pause", change);
+        audio.addEventListener("play", change);
 
         // Si l'élément n'est pas dans la liste.
         if (!li.isConnected) {
