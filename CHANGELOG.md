@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.11.0](https://github.com/regseb/gout/compare/v0.10.0...v0.11.0) (2024-03-07)
+
+
+### Features
+
+* Récupérer les données dans le group (Atom). ([e84592f](https://github.com/regseb/gout/commit/e84592f29543e54ac754a630766e9bc9f8ebb783))
+
+
+### Bug Fixes
+
+* **module/podcast:** Gérer les actions play/pause. ([d950ff3](https://github.com/regseb/gout/commit/d950ff3890482cd473f4b8883ced66cb597cc12d))
+
 ## [0.10.0](https://github.com/regseb/gout/compare/v0.9.8...v0.10.0) (2024-01-08)
 
 ### Features
