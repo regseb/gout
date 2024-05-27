@@ -12,8 +12,8 @@ Il peut être utilisé avec le module
 ## Options
 
 Les options sont dans un objet
-[JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
-propriétés suivantes :
+[YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
+suivantes :
 
 <table>
   <tr>
@@ -22,7 +22,7 @@ propriétés suivantes :
     <th>Description</th>
   </tr>
   <tr>
-    <td><code>"url"</code></td>
+    <td><code>url</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -35,7 +35,7 @@ propriétés suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"suggestions"</code></td>
+    <td><code>suggestions</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -50,7 +50,7 @@ propriétés suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"complements"</code></td>
+    <td><code>complements</code></td>
     <td><code>object</code></td>
     <td>
       <p>
@@ -69,31 +69,24 @@ propriétés suivantes :
 Ce widget fourni un champ pour faire une recherche avec
 [Google](https://www.google.com/) ou [Bing](https://www.bing.com/).
 
-```JSON
-{
-  "module": {
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/search/search.js"
-  },
-  "scrapers": [{
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js",
-    "options": {
-      "url": "https://www.google.com/search?q={searchTerms}",
-      "suggestions": "https://www.google.com/complete/search?client=firefox&q={searchTerms}",
-      "complements": {
-        "title": "Google",
-        "color": "#2196f3"
-      }
-    }
-  }, {
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js",
-    "options": {
-      "url": "https://www.bing.com/search?q={searchTerms}",
-      "suggestions": "https://www.bing.com/osjson.aspx?query={searchTerms}",
-      "complements": {
-        "title": "Bing",
-        "color": "#ffc107"
-      }
-    }
-  }]
-}
+```html
+<script type="application/yaml">
+  module:
+    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/search/search.js"
+    scrapers:
+      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js"
+        options:
+          url: "https://www.google.com/search?q={searchTerms}"
+          suggestions: "https://www.google.com/complete/search?client=firefox&q={searchTerms}"
+          complements:
+            title: "Google"
+            color: "#2196f3"
+      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js"
+        options:
+          url: "https://www.bing.com/search?q={searchTerms}"
+          suggestions: "https://www.bing.com/osjson.aspx?query={searchTerms}"
+          complements:
+            title: "Bing"
+            color: "#ffc107"
+</script>
 ```

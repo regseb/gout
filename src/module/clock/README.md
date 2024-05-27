@@ -7,8 +7,8 @@ Ce module affiche une horloge.
 ## Options
 
 Les options sont dans un objet
-[JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
-propriétés suivantes :
+[YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
+suivantes :
 
 <table>
   <tr>
@@ -17,7 +17,7 @@ propriétés suivantes :
     <th>Description</th>
   </tr>
   <tr>
-    <td><code>"cron"</code></td>
+    <td><code>cron</code></td>
     <td><code>string</code><br /><code>string[]</code></td>
     <td>
       <p>
@@ -32,7 +32,7 @@ propriétés suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"empty"</code></td>
+    <td><code>empty</code></td>
     <td><code>object</code></td>
     <td>
       <p>
@@ -42,7 +42,7 @@ propriétés suivantes :
         laissé vide.
       </p>
       <p>
-        Exemple : <code>{ "title": "(aucun élément)" }</code>.
+        Exemple : <code>title: "(aucun élément)"</code>.
       </p>
     </td>
   </tr>
@@ -69,7 +69,7 @@ suivantes :
     <th>Description</th>
   </tr>
   <tr>
-    <td><code>"color"</code></td>
+    <td><code>color</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -84,7 +84,7 @@ suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"date"</code></td>
+    <td><code>date</code></td>
     <td><code>number</code></td>
     <td>
       <p>
@@ -100,7 +100,7 @@ suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"icon"</code></td>
+    <td><code>icon</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -123,18 +123,14 @@ suivantes :
 
 Ce widget affiche une horloge avec l'heure courante.
 
-```JSON
-{
-  "module": {
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/clock/clock.js"
-  },
-  "scrapers": [{
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js",
-    "options": {
-      "extract": [{
-        "color": "#795548"
-      }]
-    }
-  }]
-}
+```html
+<script type="application/yaml">
+  module:
+    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/clock/clock.js"
+    scrapers:
+      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js"
+        options:
+          extract:
+            - color: "#795548"
+</script>
 ```

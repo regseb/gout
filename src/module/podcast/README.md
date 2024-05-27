@@ -7,8 +7,8 @@ Ce module affiche une liste des dernières émissions audio d'un podcast.
 ## Options
 
 Les options sont dans un objet
-[JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
-propriétés suivantes :
+[YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
+suivantes :
 
 <table>
   <tr>
@@ -17,7 +17,7 @@ propriétés suivantes :
     <th>Description</th>
   </tr>
   <tr>
-    <td><code>"color"</code></td>
+    <td><code>color</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -32,7 +32,7 @@ propriétés suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"cron"</code></td>
+    <td><code>cron</code></td>
     <td><code>string</code><br /><code>string[]</code></td>
     <td>
       <p>
@@ -52,7 +52,7 @@ propriétés suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"empty"</code></td>
+    <td><code>empty</code></td>
     <td><code>object</code></td>
     <td>
       <p>
@@ -62,12 +62,12 @@ propriétés suivantes :
         laissé vide.
       </p>
       <p>
-        Exemple : <code>{ "title": "(aucun élément)" }</code>.
+        Exemple : <code>title: "(aucun élément)"</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><code>"icon"</code></td>
+    <td><code>icon</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -84,7 +84,7 @@ propriétés suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"max"</code></td>
+    <td><code>max</code></td>
     <td><code>number</code></td>
     <td>
       <p>
@@ -118,7 +118,7 @@ suivantes :
     <th>Description</th>
   </tr>
   <tr>
-    <td><code>"audio"</code></td>
+    <td><code>audio</code></td>
     <td><code>number</code></td>
     <td>
       <p>
@@ -130,7 +130,7 @@ suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"date"</code></td>
+    <td><code>date</code></td>
     <td><code>number</code></td>
     <td>
       <p>
@@ -146,7 +146,7 @@ suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"desc"</code></td>
+    <td><code>desc</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -159,7 +159,7 @@ suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"guid"</code></td>
+    <td><code>guid</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -174,7 +174,7 @@ suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"icon"</code></td>
+    <td><code>icon</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -187,7 +187,7 @@ suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"link"</code></td>
+    <td><code>link</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -200,7 +200,7 @@ suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"target"</code></td>
+    <td><code>target</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -214,7 +214,7 @@ suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"title"</code></td>
+    <td><code>title</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -232,21 +232,17 @@ suivantes :
 Ce widget affiche les deux derniers épisodes des [Cast Codeurs
 Podcast](https://lescastcodeurs.com/).
 
-```JSON
-{
-  "module": {
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/podcast/podcast.js",
-    "options": {
-      "color": "black",
-      "cron": "@daily",
-      "max": 2
-    }
-  },
-  "scrapers": [{
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
-    "options": {
-      "url": "https://lescastcodeurs.com/podcast-rss"
-    }
-  }]
-}
+```html
+<script type="application/yaml">
+  module:
+    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/podcast/podcast.js"
+    options:
+      color: "black"
+      cron: "@daily"
+      max: 2
+    scrapers:
+      - url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"
+        options:
+          url: "https://lescastcodeurs.com/podcast-rss"
+</script>
 ```

@@ -19,10 +19,9 @@ Ce module n'utilise pas de scraper.
 
 Ce widget affiche un hello world développé avec Preact.
 
-```JSON
-{
-  "module": {
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/examples/preact/helloworld/helloworld.js"
-  }
-}
+```html
+<script type="application/yaml">
+  module:
+    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/examples/preact/helloworld/helloworld.js"
+</script>
 ```

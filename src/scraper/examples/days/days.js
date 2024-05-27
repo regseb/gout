@@ -109,32 +109,34 @@ export default chain(FilterScraper, ComplementsScraper, DaysScraper, {
 // Grâce à la chaine de scrapers, la configuration du widget est simplifiée. Par
 // exemple, la configuration suivante :
 //
-// ```JSON
-// {
-//   "module": "...",
-//   "scrapers": [{
-//     "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/filter/filter.js",
-//     "options": { "filter": "..." },
-//     "scrapers": [{
-//       "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/complements/complements.js",
-//       "options": { "complements": "..." },
-//       "scrapers": [{
-//         "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/days/days.js",
-//         "options": { "lang": "..." }
-//       }]
-//     }]
-//   }]
-// }
+// ```yaml
+// module:
+//   url: # ...
+//   options: # ...
+//   scrapers:
+//     - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/filter/filter.js"
+//       options:
+//         filter: # ...
+//       scrapers:
+//         - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/complements/complements.js"
+//           options:
+//             complements: # ...
+//           scrapers:
+//             - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/days/days.js"
+//               options:
+//                 lang: # ...
 // ```
 //
 // peut être simplifiée en :
 //
-// ```JSON
-// {
-//   "module": "...",
-//   "scrapers": [{
-//     "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/days/days.js",
-//     "options": { "filter": "...", "complements": "...", "lang": "..." }
-//   }]
-// }
+// ```yaml
+// module:
+//   url: # ...
+//   options: # ...
+//   scrapers:
+//     - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/days/days.js"
+//       options:
+//         filter: # ...
+//         complements: # ...
+//         lang: # ...
 // ```

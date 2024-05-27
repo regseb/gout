@@ -7,8 +7,8 @@ Ce module affiche des images.
 ## Options
 
 Les options sont dans un objet
-[JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
-propriétés suivantes :
+[YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
+suivantes :
 
 <table>
   <tr>
@@ -17,7 +17,7 @@ propriétés suivantes :
     <th>Description</th>
   </tr>
   <tr>
-    <td><code>"cron"</code></td>
+    <td><code>cron</code></td>
     <td><code>string</code><br /><code>string[]</code></td>
     <td>
       <p>
@@ -37,7 +37,7 @@ propriétés suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"empty"</code></td>
+    <td><code>empty</code></td>
     <td><code>object</code></td>
     <td>
       <p>
@@ -47,12 +47,12 @@ propriétés suivantes :
         laissé vide.
       </p>
       <p>
-        Exemple : <code>{ "title": "(aucun élément)" }</code>.
+        Exemple : <code>title: "(aucun élément)"</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><code>"max"</code></td>
+    <td><code>max</code></td>
     <td><code>number</code></td>
     <td>
       <p>
@@ -86,7 +86,7 @@ suivantes :
     <th>Description</th>
   </tr>
   <tr>
-    <td><code>"date"</code></td>
+    <td><code>date</code></td>
     <td><code>number</code></td>
     <td>
       <p>
@@ -102,7 +102,7 @@ suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"guid"</code></td>
+    <td><code>guid</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -117,7 +117,7 @@ suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"img"</code></td>
+    <td><code>img</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -129,7 +129,7 @@ suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"link"</code></td>
+    <td><code>link</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -142,7 +142,7 @@ suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"target"</code></td>
+    <td><code>target</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -156,7 +156,7 @@ suivantes :
     </td>
   </tr>
   <tr>
-    <td><code>"title"</code></td>
+    <td><code>title</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -176,17 +176,14 @@ Ce widget affiche les `3` dernières images du site
 [CommitStrip](https://www.commitstrip.com/fr/) avec une mise à jour à
 [minuit](https://crontab.guru/#@daily).
 
-```JSON
-{
-  "module": {
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/image/image.js",
-    "options": {
-      "cron": "@daily",
-      "max": 3
-    }
-  },
-  "scrapers": [{
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/scraper/image/commitstrip/commitstrip.js"
-  }]
-}
+```html
+<script type="application/yaml">
+  module:
+    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/image/image.js"
+    options:
+      cron: "@daily"
+      max: 3
+    scrapers:
+      - url: "https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/scraper/image/commitstrip/commitstrip.js"
+</script>
 ```

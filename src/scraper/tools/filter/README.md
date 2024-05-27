@@ -6,22 +6,24 @@ Ce scraper filtre les résultats d'un autre scraper. Il est rare d'utiliser ce
 scraper directement dans un widget. Il peut être utilisé pour ajouter la
 fonctionnalité dans un autre scraper :
 
-```JavaScript
+```javascript
 import chain from "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/utils/scraper/chain.js";
 import FilterScraper from "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/filter/filter.js";
 
-const MyAwesomeScraper = class { /* ... */ };
+const MyAwesomeScraper = class {
+  /* ... */
+};
 
 export default chain(FilterScraper, MyAwesomeScraper, {
-    dispatch: ({ filter, ...others }) => [{ filter }, others],
+  dispatch: ({ filter, ...others }) => [{ filter }, others],
 });
 ```
 
 ## Options
 
 Les options sont dans un objet
-[JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec la
-propriété suivante :
+[YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
+suivantes :
 
 <table>
   <tr>
@@ -30,7 +32,7 @@ propriété suivante :
     <th>Description</th>
   </tr>
   <tr>
-    <td><code>"filter"</code></td>
+    <td><code>filter</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -87,22 +89,18 @@ Ce widget affiche les dernières reportages de la chaine YouTube de
 [Arte](https://www.youtube.com/@arte). L'option `"filter"` est passée au scraper
 _list/rss_ car ce scraper utilise _tools/filter_.
 
-```JSON
-{
-  "module": {
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
-    "options": {
-      "color": "#757575",
-      "cron": "*/10 * * * *",
-      "max": 5
-    }
-  },
-  "scrapers": [{
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
-    "options": {
-      "url": "https://www.youtube.com/feeds/videos.xml?user=arte",
-      "filter": "title $= 'ARTE Reportage'",
-    }
-  }]
-}
+```html
+<script type="application/yaml">
+  module:
+    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"
+    options:
+      color: "#757575"
+      cron: "*/10 * * * *"
+      max: 5
+    scrapers:
+      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"
+        options:
+          url: "https://www.youtube.com/feeds/videos.xml?user=arte"
+          filter: "title $= 'ARTE Reportage'"
+</script>
 ```

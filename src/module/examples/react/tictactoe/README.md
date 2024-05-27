@@ -19,10 +19,9 @@ Ce module n'utilise pas de scraper.
 
 Ce widget affiche un morpion dévéloppé avec React.
 
-```JSON
-{
-  "module": {
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/examples/react/tictactoe/tictactoe.js"
-  }
-}
+```html
+<script type="application/yaml">
+  module:
+    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/examples/react/tictactoe/tictactoe.js"
+</script>
 ```

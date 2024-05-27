@@ -18,10 +18,9 @@ Ce module n'utilise pas de scraper.
 
 Ce widget affiche le module.
 
-```JSON
-{
-  "module": {
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/tools/conntrast/contrast.js"
-  }
-}
+```html
+<script type="application/yaml">
+  module:
+    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/tools/conntrast/contrast.js"
+</script>
 ```

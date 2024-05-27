@@ -14,8 +14,8 @@ Il peut être utilisé avec les modules :
 ## Options
 
 Les options sont dans un objet
-[JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec les
-propriétés suivantes :
+[YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
+suivantes :
 
 <table>
   <tr>
@@ -24,7 +24,7 @@ propriétés suivantes :
     <th>Description</th>
   </tr>
   <tr>
-    <td><code>"lang"</code></td>
+    <td><code>lang</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -45,34 +45,28 @@ propriétés suivantes :
 
 Ce widget affiche le nom du lendemain en français.
 
-```JSON
-{
-  "module": {
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/single/single.js"
-  },
-  "scrapers": [{
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/days/days.js"
-  }]
-}
+```html
+<script type="application/yaml">
+  module:
+    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/single/single.js"
+    scrapers:
+      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/days/days.js"
+</script>
 ```
 
 Ce widget affiche les noms des trois prochains jours (sauf le dimanche) en
 anglais.
 
-```JSON
-{
-  "module": {
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
-    "options": {
-      "max": 3
-    }
-  },
-  "scrapers": [{
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/days/days.js",
-    "options": {
-      "lang": "en",
-      "filter": "title != 'Sunday'"
-    }
-  }]
-}
+```html
+<script type="application/yaml">
+  module:
+    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"
+    options:
+      max: 3
+    scrapers:
+      - url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/days/days.js"
+        options:
+          lang: "en",
+          filter: "title != 'Sunday'"
+</script>
 ```

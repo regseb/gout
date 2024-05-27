@@ -4,7 +4,8 @@
  * @author Sébastien Règne
  */
 
-import JFather from "https://esm.sh/jfather@0";
+import JFather from "https://esm.sh/jfather@0.3.0";
+import YAML from "https://esm.sh/yaml@2.4.2";
 
 const hashCode = function (text) {
     return Math.abs(
@@ -40,7 +41,7 @@ const loadScrapers = function (scrapers) {
  * @returns {Promise<Object>} Le module avec ses éventuels scrapers.
  */
 const loadWidget = async function (widget) {
-    const scrapers = await loadScrapers(widget.scrapers ?? []);
+    const scrapers = await loadScrapers(widget.module.scrapers ?? []);
 
     // eslint-disable-next-line no-unsanitized/method
     const { default: Module } = await import(widget.module.url);
@@ -56,10 +57,24 @@ const loadWidget = async function (widget) {
 
 const liven = async function (script) {
     try {
-        const config =
-            "" === script.src
-                ? await JFather.parse(script.text)
-                : await JFather.load(script.src);
+        let config;
+        if ("application/yaml" === script.type) {
+            config =
+                "" === script.src
+                    ? await JFather.extend(YAML.parse(script.text))
+                    : await JFather.load(script.src, {
+                          request: async (url) => {
+                              const response = await fetch(url);
+                              const yaml = await response.text();
+                              return YAML.parse(yaml);
+                          },
+                      });
+        } else {
+            config =
+                "" === script.src
+                    ? await JFather.parse(script.text)
+                    : await JFather.load(script.src);
+        }
         const widget = await loadWidget(config);
         widget.classList.add("widget");
         script.after(widget);
@@ -77,6 +92,9 @@ document.head.append(link);
 
 // Activer les widgets.
 Array.from(
-    document.querySelectorAll('body script[type="application/json"]'),
+    document.querySelectorAll(
+        'body script[type="application/yaml"],' +
+            ' body script[type="application/json"]',
+    ),
     liven,
 );

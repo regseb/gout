@@ -6,22 +6,24 @@ Ce scraper ajoute des propriétés dans les résultats d'un autre scraper. Il es
 rare d'utiliser ce scraper directement dans un widget. Il peut être utilisé
 pour ajouter la fonctionnalité dans un autre scraper :
 
-```JavaScript
+```javascript
 import chain from "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/utils/scraper/chain.js";
 import ComplementsScraper from "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/complements/complements.js";
 
-const MyAwesomeScraper = class { /* ... */ };
+const MyAwesomeScraper = class {
+  /* ... */
+};
 
 export default chain(ComplementsScraper, MyAwesomeScraper, {
-    dispatch: ({ complements, ...others }) => [{ complements }, others],
+  dispatch: ({ complements, ...others }) => [{ complements }, others],
 });
 ```
 
 ## Options
 
 Les options sont dans un objet
-[JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec la
-propriété suivante :
+[YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
+suivantes :
 
 <table>
   <tr>
@@ -30,7 +32,7 @@ propriété suivante :
     <th>Description</th>
   </tr>
   <tr>
-    <td><code>"complements"</code></td>
+    <td><code>complements</code></td>
     <td><code>object</code></td>
     <td>
       <p>
@@ -60,22 +62,19 @@ Ce widget affiche les dernières vidéos de la chaine YouTube de
 élément. L'option `"complements"` est passée au scraper _list/rss_ car ce
 scraper utilise _tools/complements_.
 
-```JSON
-{
-  "module": {
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js",
-    "options": {
-      "color": "#757575",
-      "cron": "*/10 * * * *",
-      "max": 5
-    }
-  },
-  "scrapers": [{
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js",
-    "options": {
-      "url": "https://www.youtube.com/feeds/videos.xml?user=arte",
-      "complements": { "icon": "https://example.com/fip.svg" },
-    }
-  }]
-}
+```html
+<script type="application/yaml">
+  module:
+    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"
+    options:
+      color: "#757575"
+      cron: "*/10 * * * *"
+      max: 5
+    scrapers:
+      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"
+        options:
+          url: "https://www.youtube.com/feeds/videos.xml?user=arte"
+          complements:
+            icon: "https://example.com/fip.svg"
+</script>
 ```

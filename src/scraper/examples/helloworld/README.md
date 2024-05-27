@@ -15,8 +15,8 @@ Il peut être utilisé avec les modules :
 ## Options
 
 Les options sont dans un objet
-[JSON](https://www.json.org/json-fr.html "JavaScript Object Notation") avec la
-propriété suivante :
+[YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
+suivantes :
 
 <table>
   <tr>
@@ -25,7 +25,7 @@ propriété suivante :
     <th>Description</th>
   </tr>
   <tr>
-    <td><code>"who"</code></td>
+    <td><code>who</code></td>
     <td><code>string</code></td>
     <td>
       <p>
@@ -42,29 +42,24 @@ propriété suivante :
 
 Ce widget affiche le texte `"Hello world!"`.
 
-```JSON
-{
-  "module": {
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/single/single.js"
-  },
-  "scrapers": [{
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/helloworld/helloworld.js"
-  }]
-}
+```html
+<script type="application/yaml">
+  module:
+    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/single/single.js"
+    scrapers:
+      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/helloworld/helloworld.js"
+</script>
 ```
 
 Ce widget affiche le texte `"Hello Doctor!"`.
 
-```JSON
-{
-  "module": {
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/single/single.js"
-  },
-  "scrapers": [{
-    "url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/helloworld/helloworld.js",
-    "options": {
-      "who": "Doctor"
-    }
-  }]
-}
+```html
+<script type="application/yaml">
+  module:
+    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/single/single.js"
+    scrapers:
+      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/helloworld/helloworld.js"
+        options:
+          who: "Doctor"
+</script>
 ```
