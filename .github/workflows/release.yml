@@ -51,7 +51,8 @@ jobs:
           CHANGELOG.md
           package.json
           package-lock.json
-          src/extension/manifest.json
+          src/extension/chromium/manifest.json
+          src/extension/firefox/manifest.json
 
       - name: Commit and push
         if: ${{ steps.release.outputs.pr }}
