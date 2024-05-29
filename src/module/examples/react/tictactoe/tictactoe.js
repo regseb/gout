@@ -4,11 +4,9 @@
  * @author Sébastien Règne
  */
 
-/* eslint-disable no-restricted-syntax */
-
 import { html } from "https://esm.sh/htm@3.1.1/react";
-import { createRoot } from "https://esm.sh/react-dom@18.2.0";
-import { useState } from "https://esm.sh/react@18.2.0";
+import { createRoot } from "https://esm.sh/react-dom@18.3.1";
+import { useState } from "https://esm.sh/react@18.3.1";
 
 const calculateWinner = (squares) => {
     const lines = [

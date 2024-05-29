@@ -4,6 +4,9 @@
  * @author Sébastien Règne
  */
 
+/**
+ * @type {import("eslint").Linter.Config}
+ */
 export default {
     env: {
         browser: true,
@@ -15,7 +18,7 @@ export default {
         "import/no-unresolved": [
             "error",
             {
-                ignore: ["^https://esm\\.sh/"],
+                ignore: [String.raw`^https://esm\.sh/`],
                 caseSensitiveStrict: true,
             },
         ],

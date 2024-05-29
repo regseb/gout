@@ -14,7 +14,7 @@
  * @see https://developer.mozilla.org/Web/JavaScript/Guide/Regular_expressions
  */
 const quote = function (pattern) {
-    return pattern.replaceAll(/[$()*+.?[\\\]^{|}]/gu, "\\$&");
+    return pattern.replaceAll(/[$()*+.?[\\\]^{|}]/gu, String.raw`\$&`);
 };
 
 const GENERIC_OP = {
@@ -38,20 +38,20 @@ const NUMBER_OP = {
 };
 
 const STRING_PATTERN = new RegExp(
-    "^\\s*(?<prop>[a-zA-Z_][a-zA-Z_0-9]*)\\s*" +
+    String.raw`^\s*(?<prop>[a-zA-Z_][a-zA-Z_0-9]*)\s*` +
         "(?<op>(?:" +
         Object.keys(STRING_OP).map(quote).join("|") +
-        "))\\s*" +
-        "'(?<val>.*)'\\s*$",
+        String.raw`))\s*` +
+        String.raw`'(?<val>.*)'\s*$`,
     "u",
 );
 
 const NUMBER_PATTERN = new RegExp(
-    "^\\s*(?<prop>[a-zA-Z_][a-zA-Z_0-9]*)\\s*" +
+    String.raw`^\s*(?<prop>[a-zA-Z_][a-zA-Z_0-9]*)\s*` +
         "(?<op>(?:" +
         Object.keys(NUMBER_OP).map(quote).join("|") +
-        "))\\s*" +
-        "(?<val>[0-9]+)\\s*$",
+        String.raw`))\s*` +
+        String.raw`(?<val>[0-9]+)\s*$`,
     "u",
 );
 

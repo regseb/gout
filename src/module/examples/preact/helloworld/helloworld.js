@@ -4,10 +4,10 @@
  * @author Sébastien Règne
  */
 
-/* eslint-disable max-classes-per-file, no-restricted-syntax */
+/* eslint-disable max-classes-per-file */
 
 import htm from "https://esm.sh/htm@3.1.1";
-import { Component, h, render } from "https://esm.sh/preact@10.19.6";
+import { Component, h, render } from "https://esm.sh/preact@10.22.0";
 
 // Initialize htm with Preact
 const html = htm.bind(h);

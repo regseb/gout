@@ -4,6 +4,9 @@
  * @author Sébastien Règne
  */
 
+/**
+ * @type {import("eslint").Linter.Config}
+ */
 export default {
     rules: {
         // Suggestions.
@@ -38,6 +41,7 @@ export default {
         // Plugin eslint-plugin-n.
         // Possible Errors.
         "n/handle-callback-err": "error",
+        "n/hashbang": "error",
         "n/no-callback-literal": "error",
         "n/no-exports-assign": "error",
         "n/no-extraneous-import": "error",
@@ -51,15 +55,9 @@ export default {
         "n/no-unpublished-import": "off",
         "n/no-unpublished-require": "error",
         "n/no-unsupported-features/es-builtins": "error",
-        "n/no-unsupported-features/es-syntax": [
-            "error",
-            {
-                ignores: ["dynamicImport", "modules"],
-            },
-        ],
+        "n/no-unsupported-features/es-syntax": "error",
         "n/no-unsupported-features/node-builtins": "error",
         "n/process-exit-as-throw": "error",
-        "n/shebang": "error",
 
         // Best Practices.
         "n/no-deprecated-api": "error",
@@ -86,6 +84,7 @@ export default {
         "n/prefer-global/text-encoder": "off",
         "n/prefer-global/url-search-params": "off",
         "n/prefer-global/url": "off",
+        "n/prefer-node-protocol": "error",
         "n/prefer-promises/dns": "error",
         "n/prefer-promises/fs": "error",
 

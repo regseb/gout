@@ -24,19 +24,28 @@ moteur de rendu de Gout :
 
 Voici un exemple de dashboard ayant quatre colonnes de widgets.
 
-```HTML
-<!DOCTYPE html>
+```html
+<!doctype html>
 <html lang="fr-FR">
   <head>
-    <meta charset="utf-8">
-    <link href="https://cdn.jsdelivr.net/gh/regseb/gout@0/src/engine/img/icon.svg"
-          rel="shortcut icon">
+    <meta charset="utf-8" />
+    <link
+      href="https://cdn.jsdelivr.net/gh/regseb/gout@0/src/engine/img/icon.svg"
+      rel="shortcut icon"
+    />
     <title>Gout</title>
-    <script src="https://cdn.jsdelivr.net/gh/regseb/gout@0/src/engine/script.js"
-            type="module"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/regseb/gout@0/src/engine/script.js"
+      type="module"
+    ></script>
     <style>
-        body { display: flex; }
-        div  { display: flex; flex-direction: column; }
+      body {
+        display: flex;
+      }
+      div {
+        display: flex;
+        flex-direction: column;
+      }
     </style>
   </head>
   <body>
@@ -192,7 +201,7 @@ d'outils du navigateur). Actualisez la page pour voir apparaitre les widgets.
 
 [img-firefox]: https://img.shields.io/amo/v/gout.svg?label=add-on&logo=firefox-browser&logoColor=whitesmoke
 [img-build]: https://img.shields.io/github/actions/workflow/status/regseb/gout/ci.yml?branch=main&logo=github&logoColor=whitesmoke
-[img-coverage]: https://img.shields.io/endpoint?label=coverage&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fregseb%2Fgout%2Fmain&logo=stryker&logoColor=whitesmoke
+[img-coverage]: https://img.shields.io/endpoint?label=coverage&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fregseb%2Fgout%2Fmain
 [link-firefox]: https://addons.mozilla.org/addon/gout/
 [link-build]: https://github.com/regseb/gout/actions/workflows/ci.yml?query=branch%3Amain
 [link-coverage]: https://dashboard.stryker-mutator.io/reports/github.com/regseb/gout/main

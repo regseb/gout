@@ -4,6 +4,9 @@
  * @author Sébastien Règne
  */
 
+/**
+ * @type {import("eslint").Linter.Config}
+ */
 export default {
     plugins: [
         "array-func",
@@ -242,7 +245,6 @@ export default {
             "ForInStatement",
             "LabeledStatement",
             "SequenceExpression",
-            "TaggedTemplateExpression",
             "WithStatement",
             "YieldExpression",
             "JSXIdentifier",
@@ -642,11 +644,13 @@ export default {
         "regexp/sort-character-class-elements": "error",
         "regexp/sort-flags": "error",
         "regexp/unicode-escape": "error",
+        "regexp/unicode-property": "error",
 
         // Plugin eslint-plugin-unicorn.
         "unicorn/better-regex": "error",
         "unicorn/catch-error-name": ["error", { ignore: [/^err$/u, /^e$/u] }],
         "unicorn/consistent-destructuring": "error",
+        "unicorn/consistent-empty-array-spread": "error",
         "unicorn/consistent-function-scoping": "error",
         "unicorn/custom-error-definition": "error",
         // Laisser Prettier gérer cette règle.
@@ -659,21 +663,25 @@ export default {
         "unicorn/import-style": "error",
         "unicorn/new-for-builtins": "error",
         "unicorn/no-abusive-eslint-disable": "error",
+        "unicorn/no-anonymous-default-export": "error",
         "unicorn/no-array-callback-reference": "off",
         "unicorn/no-array-for-each": "off",
         "unicorn/no-array-method-this-argument": "error",
         "unicorn/no-array-push-push": "error",
         "unicorn/no-array-reduce": "off",
         "unicorn/no-await-expression-member": "error",
+        "unicorn/no-await-in-promise-methods": "error",
         "unicorn/no-console-spaces": "error",
         "unicorn/no-document-cookie": "error",
         "unicorn/no-empty-file": "error",
         "unicorn/no-for-loop": "error",
         "unicorn/no-hex-escape": "error",
         "unicorn/no-instanceof-array": "error",
+        "unicorn/no-invalid-fetch-options": "error",
         "unicorn/no-invalid-remove-event-listener": "error",
         "unicorn/no-keyword-prefix": "error",
         "unicorn/no-lonely-if": "error",
+        "unicorn/no-magic-array-flat-depth": "error",
         // Utiliser la règle no-negated-condition d'ESLint, car celle d'unicorn
         // apporte seulement la correction automatique.
         "unicorn/no-negated-condition": "off",
@@ -683,6 +691,7 @@ export default {
         "unicorn/no-null": "error",
         "unicorn/no-object-as-default-parameter": "error",
         "unicorn/no-process-exit": "error",
+        "unicorn/no-single-promise-in-promise-methods": "error",
         "unicorn/no-static-only-class": "error",
         "unicorn/no-thenable": "error",
         "unicorn/no-this-assignment": "error",
@@ -732,7 +741,8 @@ export default {
         "unicorn/prefer-module": "error",
         "unicorn/prefer-native-coercion-functions": "error",
         "unicorn/prefer-negative-index": "error",
-        "unicorn/prefer-node-protocol": "error",
+        // Désactiver cette règle et préférer la règle "n/prefer-node-protocol".
+        "unicorn/prefer-node-protocol": "off",
         "unicorn/prefer-number-properties": "error",
         "unicorn/prefer-object-from-entries": "error",
         "unicorn/prefer-optional-catch-binding": "error",
@@ -743,10 +753,12 @@ export default {
         "unicorn/prefer-set-has": "error",
         "unicorn/prefer-set-size": "error",
         "unicorn/prefer-spread": "off",
+        "unicorn/prefer-string-raw": "error",
         "unicorn/prefer-string-replace-all": "error",
         "unicorn/prefer-string-slice": "error",
         "unicorn/prefer-string-starts-ends-with": "error",
         "unicorn/prefer-string-trim-start-end": "error",
+        "unicorn/prefer-structured-clone": "error",
         "unicorn/prefer-switch": "off",
         "unicorn/prefer-ternary": "off",
         "unicorn/prefer-top-level-await": "error",
@@ -800,7 +812,7 @@ export default {
                 var: "member",
                 arg: "param",
                 argument: "param",
-                prop: "property",
+                property: "prop",
                 return: "returns",
                 exception: "throws",
                 yield: "yields",

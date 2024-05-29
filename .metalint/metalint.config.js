@@ -4,6 +4,9 @@
  * @author Sébastien Règne
  */
 
+/**
+ * @type {import("metalint/types").Config}
+ */
 export default {
     patterns: [
         "**",
