@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.12.0](https://github.com/regseb/gout/compare/v0.11.0...v0.12.0) (2024-05-29)
+
+### Features
+
+- Fournir une extension pour Chromium. ([b1cec7e](https://github.com/regseb/gout/commit/b1cec7e8bd92fb3f27e2f6689076e7dd4c1fc662))
+- Utiliser YAML pour les configurations. ([91b03ee](https://github.com/regseb/gout/commit/91b03eed5cbc4e8d5697863ddadd7792634f67b6))
+
+### Bug Fixes
+
+- Gérer la release avec deux extensions. ([20c55a5](https://github.com/regseb/gout/commit/20c55a51eb3e6d2cdbc7dbaab9b2819176f09cf1))
+
 ## [0.11.0](https://github.com/regseb/gout/compare/v0.10.0...v0.11.0) (2024-03-07)
 
 ### Features
