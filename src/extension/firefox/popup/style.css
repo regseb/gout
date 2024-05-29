@@ -1,0 +1,67 @@
+body {
+    font-family: system-ui;
+    font-size: 14px;
+    min-width: 200px;
+}
+
+button.icon {
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    height: 34px;
+    width: 34px;
+}
+button.icon:hover {
+    background-color: rgba(0 0 0 / 6%);
+}
+
+button.outlined {
+    background: transparent;
+    border: 1px solid rgba(0 0 0 / 12%);
+    border-radius: 4px;
+    color: rgba(0 0 0 / 87%);
+    line-height: 34px;
+    padding: 0 15px;
+    text-align: center;
+    text-transform: uppercase;
+}
+button.outlined::-moz-focus-inner {
+    border: none;
+}
+button.outlined:hover {
+    background-color: rgba(0 0 0 / 6%);
+}
+
+ul {
+    list-style-type: none;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-left: 0;
+}
+li {
+    align-items: center;
+    display: flex;
+    height: 34px;
+}
+span {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Ne pas sélectionner un mot durant un double-clic (pour copier l'URL dans
+       le presse-papier). */
+    user-select: none;
+    white-space: nowrap;
+}
+span.active {
+    font-weight: bold;
+}
+li button {
+    display: none;
+}
+li:hover button {
+    display: block;
+}
+
+#set {
+    width: 100%;
+}

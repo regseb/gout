@@ -26,8 +26,12 @@ export default {
     ],
     checkers: [
         {
-            patterns: ["/build/*.zip", "/src/extension/"],
+            patterns: ["/build/*.zip", "/src/extension/*/"],
             linters: "addons-linter",
+            overrides: {
+                patterns: "/src/extension/chromium/",
+                linters: "addons-linter_mv3",
+            },
         },
         {
             patterns: "*.js",

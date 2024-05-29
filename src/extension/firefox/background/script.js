@@ -4,6 +4,9 @@
  * @author Sébastien Règne
  */
 
+import "../polyfill/browser.js";
+import migrate from "./migrate.js";
+
 const replace = (headers, replacements) => {
     const names = new Set(replacements.map((r) => r.name.toLowerCase()));
     return [
@@ -43,3 +46,7 @@ browser.webRequest.onHeadersReceived.addListener(
     { urls: ["<all_urls>"] },
     ["blocking", "responseHeaders"],
 );
+
+browser.runtime.onInstalled.addListener(async () => {
+    await migrate();
+});

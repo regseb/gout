@@ -23,7 +23,6 @@
   "repository": "regseb/gout",
   "type": "module",
   "scripts": {
-    "postinstall": "node .script/sync.js",
     "lint": "metalint",
     "lint:fix": "metalint --fix",
     "lint:types": "tsc --project .tsconfig_lint.json",
@@ -32,13 +31,11 @@
     "test:coverage": "stryker run",
     "jsdocs": "typedoc --tsconfig .tsconfig_jsdocs.json",
     "serve": "http-server -p6007 -c-1 --cors",
-    "extension:chromium": "web-ext run -t chromium -s src/extension/",
-    "extension:firefox": "web-ext run -t firefox-desktop -s src/extension/",
-    "build": "web-ext build -s src/extension/ -a build/ -o",
+    "extension:chromium": "web-ext run -t chromium -s src/extension/chromium/",
+    "extension:firefox": "web-ext run -t firefox-desktop -s src/extension/firefox/",
+    "build:chromium": "web-ext build -s src/extension/chromium/ -a build/chromium/ -o",
+    "build:firefox": "web-ext build -s src/extension/firefox/ -a build/firefox/ -o",
     "clean": "node .script/clean.js"
-  },
-  "dependencies": {
-    "webextension-polyfill": "0.10.0"
   },
   "devDependencies": {
     "@prantlf/jsonlint": "14.0.3",
