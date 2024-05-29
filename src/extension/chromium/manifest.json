@@ -31,9 +31,7 @@
     "type": "module"
   },
   "homepage_url": "https://github.com/regseb/gout",
-  "host_permissions": [
-    "<all_urls>"
-  ],
+  "host_permissions": ["<all_urls>"],
   "minimum_chrome_version": "125",
   "permissions": [
     "activeTab",
