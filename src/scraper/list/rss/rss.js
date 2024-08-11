@@ -24,7 +24,8 @@ const RSSScraper = class {
             date:
                 item.querySelector("pubDate")?.textContent ??
                 // S'il n'y a pas de date de publication, utiliser la "dc:date".
-                item.querySelector("date").textContent,
+                item.querySelector("date")?.textContent ??
+                0,
             desc: item.querySelector("description")?.textContent ?? "",
             guid: item.querySelector("guid")?.textContent ?? "",
             img: item
