@@ -2,8 +2,8 @@
 
 > Mots-clés : gout, gout-scraper, gout-scraper-examples-days.
 
-Ce scraper d'exemple d'exemple retourne les noms des prochains jours de la
-semaine. La langue des noms est paramétrable dans les options du scraper.
+Ce scraper d'exemple retourne les noms des prochains jours de la semaine. La
+langue des noms est paramétrable dans les options du scraper.
 
 Il peut être utilisé avec les modules :
 
@@ -28,11 +28,12 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        Le code ISO 639-1 de la langue. Par défaut, c'est le français qui est
-        utilisé.
+        Le code
+        <a href="https://fr.wikipedia.org/wiki/Liste_des_codes_ISO_639-1">ISO 639-1</a>
+        de la langue. Par défaut, c'est le français qui est utilisé.
       </p>
       <p>
-        Exemple : <code>"en"</code>.
+        Exemple : <code>"en"</code>
       </p>
     </td>
   </tr>

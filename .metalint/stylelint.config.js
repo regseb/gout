@@ -5,7 +5,11 @@
  */
 
 /**
- * @type {import("stylelint").Config}
+ * @import { Config } from "stylelint"
+ */
+
+/**
+ * @type {Config}
  */
 export default {
     plugins: ["stylelint-order"],
@@ -62,6 +66,7 @@ export default {
         "media-feature-name-no-unknown": true,
         "media-feature-name-value-no-unknown": true,
         "no-unknown-animations": true,
+        "no-unknown-custom-media": true,
         "no-unknown-custom-properties": true,
         "property-no-unknown": true,
         "selector-pseudo-class-no-unknown": true,

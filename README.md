@@ -1,7 +1,6 @@
 # Gout
 
-[![firefox][img-firefox]][link-firefox]
-[![build][img-build]][link-build]
+[![firefox][img-firefox]][link-firefox] [![build][img-build]][link-build]
 [![coverage][img-coverage]][link-coverage]
 
 > Agrégateur d'Internet (flux RSS et tout le reste).
@@ -205,16 +204,21 @@ dans GitHub.
 ## Installation
 
 L'extension est disponible sur [**Firefox Browser Add-ons**][link-firefox].
-Après l'avoir installée, téléchargez un [template d'un
-dashboard](https://github.com/regseb/gout/tree/HEAD/template/dashboard).
+Après l'avoir installée, téléchargez un
+[template d'un dashboard](https://github.com/regseb/gout/tree/HEAD/template/dashboard).
 Ouvrez le fichier avec un éditeur de texte. Ajoutez les widgets que vous
 souhaitez dans le code HTML. Ouvrez le fichier avec votre navigateur et ajoutez
 la page dans l'extension (en cliquant sur l'icône de l'extension dans la barre
 d'outils du navigateur). Actualisez la page pour voir apparaitre les widgets.
 
-[img-firefox]: https://img.shields.io/amo/v/gout.svg?label=add-on&logo=firefox-browser&logoColor=whitesmoke
-[img-build]: https://img.shields.io/github/actions/workflow/status/regseb/gout/ci.yml?branch=main&logo=github&logoColor=whitesmoke
-[img-coverage]: https://img.shields.io/endpoint?label=coverage&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fregseb%2Fgout%2Fmain
+[img-firefox]:
+  https://img.shields.io/amo/v/gout.svg?label=add-on&logo=firefox-browser&logoColor=whitesmoke
+[img-build]:
+  https://img.shields.io/github/actions/workflow/status/regseb/gout/ci.yml?branch=main&logo=github&logoColor=whitesmoke
+[img-coverage]:
+  https://img.shields.io/endpoint?label=coverage&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fregseb%2Fgout%2Fmain
 [link-firefox]: https://addons.mozilla.org/addon/gout/
-[link-build]: https://github.com/regseb/gout/actions/workflows/ci.yml?query=branch%3Amain
-[link-coverage]: https://dashboard.stryker-mutator.io/reports/github.com/regseb/gout/main
+[link-build]:
+  https://github.com/regseb/gout/actions/workflows/ci.yml?query=branch%3Amain
+[link-coverage]:
+  https://dashboard.stryker-mutator.io/reports/github.com/regseb/gout/main

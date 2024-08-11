@@ -27,7 +27,7 @@ suivantes :
         L'URL du serveur qui sera testé.
       </p>
       <p>
-        Exemple : <code>"https://example.com/"</code>.
+        Exemple : <code>"https://example.com/"</code>
       </p>
     </td>
   </tr>
@@ -49,9 +49,12 @@ suivantes :
         <li>autre : gris.</li>
       </ul>
       <p>
-        Exemple :
-        <code>{ "1xx": "blue", "200": "green", "2xx": "darkgreen", "xxx":
-              "gray" }</code>.
+        Exemple : <pre><code>
+1xx: blue
+200: green
+2xx: darkgreen
+xxx: gray
+        </code></pre>
       </p>
     </td>
   </tr>
@@ -66,7 +69,7 @@ suivantes :
         <a href="https://github.com/regseb/gout/tree/HEAD/src/scraper/tools/complements#readme"><em>tools/complements</em></a>.
       </p>
       <p>
-        Exemple : <code>{ "target": "_top" }</code>.
+        Exemple : <code>target: "_top"</code>
       </p>
     </td>
   </tr>
@@ -75,12 +78,12 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        Le filtre qui sera appliqué sur les éléments retournées. Par défaut
-        aucun filtre n'est appliqué. Pour plus de détails, voir le scraper
+        Le filtre qui sera appliqué sur les éléments retournés. Par défaut aucun
+        filtre n'est appliqué. Pour plus de détails, voir le scraper
         <a href="https://github.com/regseb/gout/tree/HEAD/src/scraper/tools/filter#readme"><em>tools/filter</em></a>.
       </p>
       <p>
-        Exemple : <code>"color != 'green'"</code>.
+        Exemple : <code>"color != 'green'"</code>
       </p>
     </td>
   </tr>

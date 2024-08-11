@@ -28,7 +28,7 @@ suivantes :
         propriété, les données ne sont jamais mises à jour.
       </p>
       <p>
-        Exemple : <code>"@daily"</code>.
+        Exemple : <code>"@daily"</code>
       </p>
     </td>
   </tr>
@@ -43,7 +43,7 @@ suivantes :
         laissé vide.
       </p>
       <p>
-        Exemple : <code>title: "(aucun élément)"</code>.
+        Exemple : <code>title: "(aucun élément)"</code>
       </p>
     </td>
   </tr>
@@ -52,6 +52,7 @@ suivantes :
 ## Scrapers
 
 > [!NOTE]
+>
 > Ce chapitre est utile principalement pour le développement de scrapers
 > compatibles avec ce module.
 
@@ -77,7 +78,7 @@ suivantes :
         du texte. Par défaut, le texte est aligné à gauche.
       </p>
       <p>
-        Exemple : <code>"justify"</code>.
+        Exemple : <code>"justify"</code>
       </p>
     </td>
   </tr>
@@ -92,7 +93,7 @@ suivantes :
         utilisée.
       </p>
       <p>
-        Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>.
+        Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>
       </p>
     </td>
   </tr>
@@ -108,7 +109,7 @@ suivantes :
         récent. Par défaut, le nombre <code>0</code> est utilisé.
       </p>
       <p>
-        Exemple : <code>900277200000</code>.
+        Exemple : <code>900277200000</code>
       </p>
     </td>
   </tr>
@@ -121,7 +122,7 @@ suivantes :
         aucune infobulle n'est affichée.
       </p>
       <p>
-        Exemple : <code>"Ce top10 des choses incroyables est incroyable"</code>.
+        Exemple : <code>"Ce top10 des choses incroyables est incroyable"</code>
       </p>
     </td>
   </tr>
@@ -134,7 +135,7 @@ suivantes :
         affichée.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo/bar.svg"</code>.
+        Exemple : <code>"https://example.com/foo/bar.svg"</code>
       </p>
     </td>
   </tr>
@@ -147,7 +148,7 @@ suivantes :
         concaténé et affiché dans le cadre.
       </p>
       <p>
-        Exemple : <code>"La 7e va vous étonner"</code>.
+        Exemple : <code>"La 7e va vous étonner"</code>
       </p>
     </td>
   </tr>

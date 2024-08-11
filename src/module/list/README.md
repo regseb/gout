@@ -28,7 +28,7 @@ suivantes :
         utilisée.
       </p>
       <p>
-        Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>.
+        Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>
       </p>
     </td>
   </tr>
@@ -48,7 +48,7 @@ suivantes :
              faux-positifs avec les expressions cron.
              https://github.com/DavidAnson/markdownlint/issues/427 -->
         <!-- markdownlint-disable-next-line no-space-in-emphasis -->
-        Exemple : <code>"*/5 * * * *"</code>.
+        Exemple : <code>"*/5 * * * *"</code>
       </p>
     </td>
   </tr>
@@ -63,7 +63,7 @@ suivantes :
         laissé vide.
       </p>
       <p>
-        Exemple : <code>title: "(aucun élément)"</code>.
+        Exemple : <code>title: "(aucun élément)"</code>
       </p>
     </td>
   </tr>
@@ -79,7 +79,7 @@ suivantes :
         opacité de <code>0.2</code>. Par défaut, aucune icône n'est affichée.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo/bar.svg"</code>.
+        Exemple : <code>"https://example.com/foo/bar.svg"</code>
       </p>
     </td>
   </tr>
@@ -92,7 +92,7 @@ suivantes :
         les éléments retournés par les scrapers sont affichés.
       </p>
       <p>
-        Exemple : <code>5</code>.
+        Exemple : <code>5</code>
       </p>
     </td>
   </tr>
@@ -101,6 +101,7 @@ suivantes :
 ## Scrapers
 
 > [!NOTE]
+>
 > Ce chapitre est utile principalement pour le développement de scrapers
 > compatibles avec ce module.
 
@@ -129,7 +130,7 @@ suivantes :
         ancien. Par défaut, le nombre <code>0</code> est utilisé.
       </p>
       <p>
-        Exemple : <code>900277200000</code>.
+        Exemple : <code>900277200000</code>
       </p>
     </td>
   </tr>
@@ -142,7 +143,7 @@ suivantes :
         aucune infobulle n'est affichée.
       </p>
       <p>
-        Exemple : <code>"Ce top10 des choses incroyables est incroyable"</code>.
+        Exemple : <code>"Ce top10 des choses incroyables est incroyable"</code>
       </p>
     </td>
   </tr>
@@ -157,7 +158,7 @@ suivantes :
         propriétés.
       </p>
       <p>
-        Exemple : <code>"example.com:12345"</code>.
+        Exemple : <code>"example.com:12345"</code>
       </p>
     </td>
   </tr>
@@ -170,7 +171,7 @@ suivantes :
         affichée.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo/bar.svg"</code>.
+        Exemple : <code>"https://example.com/foo/bar.svg"</code>
       </p>
     </td>
   </tr>
@@ -183,7 +184,7 @@ suivantes :
         l'élément est affiché).
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo/bar.html"</code>.
+        Exemple : <code>"https://example.com/foo/bar.html"</code>
       </p>
     </td>
   </tr>
@@ -197,7 +198,7 @@ suivantes :
         des liens HTML). Par défaut, les liens s'ouvrent dans un nouvel onglet.
       </p>
       <p>
-        Exemple : <code>"_top"</code>.
+        Exemple : <code>"_top"</code>
       </p>
     </td>
   </tr>
@@ -209,7 +210,7 @@ suivantes :
         Le texte affiché dans la ligne.
       </p>
       <p>
-        Exemple : <code>"La 7e va vous étonner"</code>.
+        Exemple : <code>"La 7e va vous étonner"</code>
       </p>
     </td>
   </tr>
@@ -218,7 +219,8 @@ suivantes :
 ## Exemple
 
 Ce widget affiche les cinq dernières actualités du site
-[LinuxFr.org](https://linuxfr.org/) avec une mise à jour toutes les dix minutes.
+[LinuxFr.org](https://linuxfr.org/) avec une mise à jour toutes les
+[dix minutes](https://crontab.guru/#*/10_*_*_*_*).
 
 ```html
 <script type="application/yaml">

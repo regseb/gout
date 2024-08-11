@@ -7,45 +7,73 @@
 import "../polyfill/browser.js";
 import migrate from "./migrate.js";
 
-const replace = (headers, replacements) => {
-    const names = new Set(replacements.map((r) => r.name.toLowerCase()));
-    return [
-        ...headers.filter((h) => !names.has(h.name.toLowerCase())),
-        ...replacements,
+const handleBeforeNavigate = async (details) => {
+    // Récupérer les identifiants des onglets déjà impactés par l'extension.
+    const rules = await browser.declarativeNetRequest.getSessionRules();
+    const tabIds = [
+        ...rules.flatMap((r) => r.condition.tabIds),
+        // Ajouter le nouvel onglet.
+        details.tabId,
     ];
+
+    // Ajouter la règle de modification des entêtes HTTP pour tous les onglets
+    // affichant un dashboard.
+    await browser.declarativeNetRequest.updateSessionRules({
+        addRules: [
+            {
+                action: {
+                    type: "modifyHeaders",
+                    responseHeaders: [
+                        {
+                            header: "Access-Control-Allow-Methods",
+                            value: "GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS",
+                            operation: "set",
+                        },
+                        {
+                            header: "Access-Control-Allow-Credentials",
+                            value: "true",
+                            operation: "set",
+                        },
+                        {
+                            header: "Access-Control-Expose-Headers",
+                            value: "*",
+                            operation: "set",
+                        },
+                        {
+                            header: "Access-Control-Allow-Headers",
+                            value: "*",
+                            operation: "set",
+                        },
+                        {
+                            header: "Access-Control-Allow-Origin",
+                            value: "*",
+                            operation: "set",
+                        },
+                    ],
+                },
+                condition: {
+                    tabIds,
+                    urlFilter: "|http*",
+                    resourceTypes: ["xmlhttprequest"],
+                },
+                id: 1,
+            },
+        ],
+        removeRuleIds: [1],
+    });
 };
 
-browser.webRequest.onBeforeSendHeaders.addListener(
-    async (details) => {
-        const { dashboards } = await browser.storage.sync.get("dashboards");
-        if (dashboards.some((d) => details.documentUrl === d.url)) {
-            return {
-                requestHeaders: replace(details.requestHeaders, [
-                    { name: "Sec-Fetch-Mode", value: "navigate" },
-                ]),
-            };
-        }
-        return {};
-    },
-    { urls: ["<all_urls>"] },
-    ["blocking", "requestHeaders"],
-);
+browser.storage.onChanged.addListener(async () => {
+    const { dashboards } = await browser.storage.sync.get("dashboards");
+    if (undefined === dashboards) {
+        return;
+    }
 
-browser.webRequest.onHeadersReceived.addListener(
-    async (details) => {
-        const { dashboards } = await browser.storage.sync.get("dashboards");
-        if (dashboards.some((d) => details.documentUrl === d.url)) {
-            return {
-                responseHeaders: replace(details.responseHeaders, [
-                    { name: "Access-Control-Allow-Origin", value: "*" },
-                ]),
-            };
-        }
-        return {};
-    },
-    { urls: ["<all_urls>"] },
-    ["blocking", "responseHeaders"],
-);
+    browser.webNavigation.onBeforeNavigate.removeListener(handleBeforeNavigate);
+    browser.webNavigation.onBeforeNavigate.addListener(handleBeforeNavigate, {
+        url: dashboards.map((d) => ({ urlEquals: d.url })),
+    });
+});
 
 browser.runtime.onInstalled.addListener(async () => {
     await migrate();

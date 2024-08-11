@@ -25,7 +25,7 @@ export default class HelloWorldScraper {
      */
     constructor({ who }) {
         // Le premier paramètre du constructeur contient les options du scraper.
-        // Si aucune option est spécifiée dans la configuration du widget, le
+        // Si aucune option n'est spécifiée dans la configuration du widget, le
         // constructeur recevra un objet vide.
 
         // Récupérer le nom de la personne à saluer dans les options du scraper.

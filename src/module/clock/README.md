@@ -27,7 +27,7 @@ suivantes :
         propriété, les données ne sont jamais mises à jour.
       </p>
       <p>
-        Exemple : <code>"@daily"</code>.
+        Exemple : <code>"@daily"</code>
       </p>
     </td>
   </tr>
@@ -42,7 +42,7 @@ suivantes :
         laissé vide.
       </p>
       <p>
-        Exemple : <code>title: "(aucun élément)"</code>.
+        Exemple : <code>title: "(aucun élément)"</code>
       </p>
     </td>
   </tr>
@@ -51,6 +51,7 @@ suivantes :
 ## Scrapers
 
 > [!NOTE]
+>
 > Ce chapitre est utile principalement pour le développement de scrapers
 > compatibles avec ce module.
 
@@ -79,7 +80,7 @@ suivantes :
         utilisée.
       </p>
       <p>
-        Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>.
+        Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>
       </p>
     </td>
   </tr>
@@ -95,7 +96,7 @@ suivantes :
         courante est utilisée.
       </p>
       <p>
-        Exemple : <code>900277200000</code>.
+        Exemple : <code>900277200000</code>
       </p>
     </td>
   </tr>
@@ -113,7 +114,7 @@ suivantes :
         d'une simple horloge est affichée.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo/bar.svg"</code>.
+        Exemple : <code>"https://example.com/foo/bar.svg"</code>
       </p>
     </td>
   </tr>

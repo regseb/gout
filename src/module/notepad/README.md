@@ -7,6 +7,7 @@ Ce module affiche un bloc-notes.
 ## Options
 
 > [!NOTE]
+>
 > Ce chapitre est utile principalement pour le développement de scrapers
 > compatibles avec ce module.
 
@@ -31,7 +32,7 @@ suivantes :
         utilisée.
       </p>
       <p>
-        Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>.
+        Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>
       </p>
     </td>
   </tr>
@@ -47,7 +48,7 @@ suivantes :
         opacité de <code>0.2</code>. Par défaut, aucune icône n'est affichée.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo/bar.svg"</code>.
+        Exemple : <code>"https://example.com/foo/bar.svg"</code>
       </p>
     </td>
   </tr>
@@ -60,7 +61,7 @@ suivantes :
         aucune infobulle n'est affichée.
       </p>
       <p>
-        Exemple : <code>"Ce top10 des choses incroyables est incroyable"</code>.
+        Exemple : <code>"Ce top10 des choses incroyables est incroyable"</code>
       </p>
     </td>
   </tr>
@@ -75,7 +76,7 @@ suivantes :
         propriétés.
       </p>
       <p>
-        Exemple : <code>"example.com:12345"</code>.
+        Exemple : <code>"example.com:12345"</code>
       </p>
     </td>
   </tr>
@@ -87,7 +88,7 @@ suivantes :
         L'indication affichée dans le bloc-notes quand celui-ci est vide.
       </p>
       <p>
-        Exemple : <code>"La 7e va vous étonner"</code>.
+        Exemple : <code>"La 7e va vous étonner"</code>
       </p>
     </td>
   </tr>

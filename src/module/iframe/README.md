@@ -27,7 +27,7 @@ suivantes :
         propriété, l'<code>iframe</code> n'est jamais rechargé.
       </p>
       <p>
-        Exemple : <code>"@daily"</code>.
+        Exemple : <code>"@daily"</code>
       </p>
     </td>
   </tr>
@@ -42,7 +42,7 @@ suivantes :
         laissé vide.
       </p>
       <p>
-        Exemple : <code>title: "(aucun élément)"</code>.
+        Exemple : <code>title: "(aucun élément)"</code>
       </p>
     </td>
   </tr>
@@ -55,7 +55,7 @@ suivantes :
         fixée à <code>150</code>.
       </p>
       <p>
-        Exemple : <code>200</code>.
+        Exemple : <code>200</code>
       </p>
     </td>
   </tr>
@@ -64,6 +64,7 @@ suivantes :
 ## Scrapers
 
 > [!NOTE]
+>
 > Ce chapitre est utile principalement pour le développement de scrapers
 > compatibles avec ce module.
 
@@ -93,7 +94,7 @@ suivantes :
         ancien. Par défaut, le nombre <code>0</code> est utilisé.
       </p>
       <p>
-        Exemple : <code>900277200000</code>.
+        Exemple : <code>900277200000</code>
       </p>
     </td>
   </tr>
@@ -105,7 +106,7 @@ suivantes :
         Le lien de la page Internet qui sera affiché dans l'<code>iframe</code>.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo/bar.html"</code>.
+        Exemple : <code>"https://example.com/foo/bar.html"</code>
       </p>
     </td>
   </tr>

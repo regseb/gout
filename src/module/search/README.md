@@ -11,6 +11,7 @@ Aucune option n'est nécessaire. Tout le paramétrage se fait avec les scrapers.
 ## Scrapers
 
 > [!NOTE]
+>
 > Ce chapitre est utile principalement pour le développement de scrapers
 > compatibles avec ce module.
 

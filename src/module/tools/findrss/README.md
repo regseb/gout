@@ -27,7 +27,7 @@ suivantes :
         utilisée.
       </p>
       <p>
-        Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>.
+        Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>
       </p>
     </td>
   </tr>
@@ -43,7 +43,7 @@ suivantes :
         opacité de <code>0.2</code>. Par défaut, aucune icône n'est affichée.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo/bar.svg"</code>.
+        Exemple : <code>"https://example.com/foo/bar.svg"</code>
       </p>
     </td>
   </tr>
@@ -56,7 +56,7 @@ suivantes :
         tous les flux extraits sont affichés.
       </p>
       <p>
-        Exemple : <code>5</code>.
+        Exemple : <code>5</code>
       </p>
     </td>
   </tr>

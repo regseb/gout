@@ -3,8 +3,8 @@
 > Mots-clés : gout, gout-scraper, gout-scraper-tools-complements.
 
 Ce scraper ajoute des propriétés dans les résultats d'un autre scraper. Il est
-rare d'utiliser ce scraper directement dans un widget. Il peut être utilisé
-pour ajouter la fonctionnalité dans un autre scraper :
+rare d'utiliser ce scraper directement dans un widget. Il peut être utilisé pour
+ajouter la fonctionnalité dans un autre scraper :
 
 ```javascript
 import chain from "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/utils/scraper/chain.js";
@@ -40,7 +40,7 @@ suivantes :
         défaut aucune propriété n'est ajoutée.
       </p>
       <p>
-        Exemple : <code>{ "icon": "https://example.com/foo/bar.svg" }</code>.
+        Exemple : <code>icon: "https://example.com/foo/bar.svg"</code>
       </p>
     </td>
   </tr>
@@ -58,23 +58,24 @@ du tableau.
 ## Exemple
 
 Ce widget affiche les dernières vidéos de la chaine YouTube de
-[FIP](https://www.youtube.com/@FipradioFr) en ajoutant le logo de FIP à chaque
-élément. L'option `"complements"` est passée au scraper _list/rss_ car ce
-scraper utilise _tools/complements_.
+[Arte](https://www.youtube.com/@arte) en ajoutant le logo de Arte à chaque
+élément. L'option `complements` est passée au scraper
+[_list/rss_](https://github.com/regseb/gout/tree/HEAD/src/scraper/list/rss#readme)
+car ce scraper utilise _tools/complements_.
 
 ```html
 <script type="application/yaml">
   module:
     url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"
     options:
-      color: "#757575"
-      cron: "*/10 * * * *"
+      cron: "@hourly"
       max: 5
+      color: "#e23014"
     scrapers:
       - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"
         options:
           url: "https://www.youtube.com/feeds/videos.xml?user=arte"
           complements:
-            icon: "https://example.com/fip.svg"
+            icon: "https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/widget/arte/arte_white.svg"
 </script>
 ```

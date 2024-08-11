@@ -3,8 +3,8 @@
 > Mots-clés : gout, gout-scraper, gout-scraper-list-jsonfeed, gout-module-list,
 > gout-module-single.
 
-Ce scraper récupère la liste des derniers éléments d'un flux [**JSON
-Feed**](https://jsonfeed.org/).
+Ce scraper récupère la liste des derniers éléments d'un flux
+[**JSON Feed**](https://jsonfeed.org/).
 
 Il peut être utilisé avec les modules :
 
@@ -32,7 +32,7 @@ suivantes :
         L'URL vers un JSON Feed.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo/bar.json"</code>.
+        Exemple : <code>"https://example.com/foo/bar.json"</code>
       </p>
     </td>
   </tr>
@@ -47,7 +47,7 @@ suivantes :
         <a href="https://github.com/regseb/gout/tree/HEAD/src/scraper/tools/complements#readme"><em>tools/complements</em></a>.
       </p>
       <p>
-        Exemple : <code>{ "icon": "https://example.com/foo/bar.svg" }</code>.
+        Exemple : <code>icon: "https://example.com/foo/bar.svg"</code>
       </p>
     </td>
   </tr>
@@ -56,12 +56,12 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        Le filtre qui sera appliqué sur les éléments retournées. Par défaut
-        aucun filtre n'est appliqué. Pour plus de détails, voir le scraper
+        Le filtre qui sera appliqué sur les éléments retournés. Par défaut aucun
+        filtre n'est appliqué. Pour plus de détails, voir le scraper
         <a href="https://github.com/regseb/gout/tree/HEAD/src/scraper/tools/filter#readme"><em>tools/filter</em></a>.
       </p>
       <p>
-        Exemple : <code>"title != 'foo'"</code>.
+        Exemple : <code>"title != 'foo'"</code>
       </p>
     </td>
   </tr>

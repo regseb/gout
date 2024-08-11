@@ -22,6 +22,14 @@ const check = async (value, filter, expected) => {
 
 describe("scraper/tools/filter/filter.js", function () {
     describe("extract()", function () {
+        it("should support no filter", async function () {
+            await check(
+                [{ foo: "bar" }, { foo: "baz" }, { foo: 42 }],
+                undefined,
+                [{ foo: "bar" }, { foo: "baz" }, { foo: 42 }],
+            );
+        });
+
         it("should support '==' with string", async function () {
             await check(
                 [{ foo: "bar" }, { foo: "baz" }, { foo: 42 }],

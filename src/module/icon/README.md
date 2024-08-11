@@ -27,7 +27,7 @@ suivantes :
         propriété, les données ne sont jamais mises à jour.
       </p>
       <p>
-        Exemple : <code>"@daily"</code>.
+        Exemple : <code>"@daily"</code>
       </p>
     </td>
   </tr>
@@ -42,7 +42,7 @@ suivantes :
         laissé vide.
       </p>
       <p>
-        Exemple : <code>title: "(aucun élément)"</code>.
+        Exemple : <code>title: "(aucun élément)"</code>
       </p>
     </td>
   </tr>
@@ -51,6 +51,7 @@ suivantes :
 ## Scrapers
 
 > [!NOTE]
+>
 > Ce chapitre est utile principalement pour le développement de scrapers
 > compatibles avec ce module.
 
@@ -79,7 +80,7 @@ suivantes :
         utilisée.
       </p>
       <p>
-        Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>.
+        Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>
       </p>
     </td>
   </tr>
@@ -95,7 +96,7 @@ suivantes :
         ancien. Par défaut, le nombre <code>0</code> est utilisé.
       </p>
       <p>
-        Exemple : <code>900277200000</code>.
+        Exemple : <code>900277200000</code>
       </p>
     </td>
   </tr>
@@ -111,7 +112,7 @@ suivantes :
         aucune icône n'est affichée.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo/bar.svg"</code>.
+        Exemple : <code>"https://example.com/foo/bar.svg"</code>
       </p>
     </td>
   </tr>
@@ -124,7 +125,7 @@ suivantes :
         de lien.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo/bar.html"</code>.
+        Exemple : <code>"https://example.com/foo/bar.html"</code>
       </p>
     </td>
   </tr>
@@ -138,7 +139,7 @@ suivantes :
         des liens HTML). Par défaut, les liens s'ouvrent dans un nouvel onglet.
       </p>
       <p>
-        Exemple : <code>"_top"</code>.
+        Exemple : <code>"_top"</code>
       </p>
     </td>
   </tr>
@@ -151,7 +152,7 @@ suivantes :
         infobulle est affichée.
       </p>
       <p>
-        Exemple : <code>"Click me!"</code>.
+        Exemple : <code>"Click me!"</code>
       </p>
     </td>
   </tr>

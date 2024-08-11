@@ -11,7 +11,9 @@ Il peut être utilisé avec les modules :
 - [_single_](https://github.com/regseb/gout/tree/HEAD/src/module/single#readme)
   pour afficher seulement le dernier élément ;
 - [_podcast_](https://github.com/regseb/gout/tree/HEAD/src/module/podcast#readme)
-  pour un flux RSS avec des `enclosure` de type `audio` ;
+  pour un flux RSS avec des
+  [`enclosure`](https://www.rssboard.org/rss-specification#ltenclosuregtSubelementOfLtitemgt)
+  de type `audio` ;
 - [_image_](https://github.com/regseb/gout/tree/HEAD/src/module/image#readme)
   pour un flux RSS avec des `enclosure` de type `image`.
 
@@ -35,7 +37,7 @@ suivantes :
         L'URL vers un flux RSS ou Atom.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo/bar.rss"</code>.
+        Exemple : <code>"https://example.com/foo/bar.rss"</code>
       </p>
     </td>
   </tr>
@@ -50,7 +52,7 @@ suivantes :
         <a href="https://github.com/regseb/gout/tree/HEAD/src/scraper/tools/complements#readme"><em>tools/complements</em></a>.
       </p>
       <p>
-        Exemple : <code>{ "icon": "https://example.com/foo/bar.svg" }</code>.
+        Exemple : <code>icon: "https://example.com/foo/bar.svg"</code>
       </p>
     </td>
   </tr>
@@ -59,12 +61,12 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        Le filtre qui sera appliqué sur les éléments retournées. Par défaut
-        aucun filtre n'est appliqué. Pour plus de détails, voir le scraper
+        Le filtre qui sera appliqué sur les éléments retournés. Par défaut aucun
+        filtre n'est appliqué. Pour plus de détails, voir le scraper
         <a href="https://github.com/regseb/gout/tree/HEAD/src/scraper/tools/filter#readme"><em>tools/filter</em></a>.
       </p>
       <p>
-        Exemple : <code>"title != 'foo'"</code>.
+        Exemple : <code>"title != 'foo'"</code>
       </p>
     </td>
   </tr>
@@ -72,8 +74,8 @@ suivantes :
 
 ## Exemple
 
-Ce widget affiche les cinq dernières actualités du site [Le
-Monde.fr](https://www.lemonde.fr/).
+Ce widget affiche les cinq dernières actualités du site
+[Le Monde.fr](https://www.lemonde.fr/).
 
 ```html
 <script type="application/yaml">

@@ -5,7 +5,11 @@
  */
 
 /**
- * @type {import("metalint/types").Config}
+ * @import { Config } from "metalint/types"
+ */
+
+/**
+ * @type {Config}
  */
 export default {
     patterns: [
@@ -93,10 +97,6 @@ export default {
         {
             patterns: "*.md",
             linters: ["prettier", "markdownlint"],
-            overrides: {
-                patterns: "/CHANGELOG.md",
-                linters: "markdownlint_changelog",
-            },
         },
         {
             patterns: "*.json",

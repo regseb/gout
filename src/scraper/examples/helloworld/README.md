@@ -9,8 +9,8 @@ Il peut être utilisé avec les modules :
 
 - [_single_](https://github.com/regseb/gout/tree/HEAD/src/module/single#readme)
   ;
-- [_list_](https://github.com/regseb/gout/tree/HEAD/src/module/list#readme)
-  pour afficher un seul élément.
+- [_list_](https://github.com/regseb/gout/tree/HEAD/src/module/list#readme) pour
+  afficher un seul élément.
 
 ## Options
 
@@ -29,10 +29,11 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        Le nom de la personne à saluer. Par défaut, c'est le `"world"`.
+        Le nom de la personne à saluer. Par défaut, c'est le
+        <code>"world"</code>.
       </p>
       <p>
-        Exemple : <code>"there"</code>.
+        Exemple : <code>"there"</code>
       </p>
     </td>
   </tr>
@@ -40,7 +41,7 @@ suivantes :
 
 ## Exemples
 
-Ce widget affiche le texte `"Hello world!"`.
+Ce widget affiche le texte _Hello world!_
 
 ```html
 <script type="application/yaml">
@@ -51,7 +52,7 @@ Ce widget affiche le texte `"Hello world!"`.
 </script>
 ```
 
-Ce widget affiche le texte `"Hello Doctor!"`.
+Ce widget affiche le texte _Hello Doctor!_
 
 ```html
 <script type="application/yaml">

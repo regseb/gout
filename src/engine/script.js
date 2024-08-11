@@ -10,7 +10,7 @@ import YAML from "https://esm.sh/yaml@2.4.2";
 const hashCode = function (text) {
     return Math.abs(
         Array.from(text).reduce((code, character) => {
-            return (code << 5) - code + character.codePointAt();
+            return (code << 5) - code + character.codePointAt(0);
         }, 0),
     ).toString(36);
 };
@@ -38,7 +38,7 @@ const loadScrapers = function (scrapers) {
  *
  * @param {Object} widget La configuration du widget (un module et des éventuels
  *                        scrapers).
- * @returns {Promise<Object>} Le module avec ses éventuels scrapers.
+ * @returns {Promise<HTMLElement>} L'élément HTML du widget.
  */
 const loadWidget = async function (widget) {
     const scrapers = await loadScrapers(widget.module.scrapers ?? []);

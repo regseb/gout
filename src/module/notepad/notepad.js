@@ -8,7 +8,7 @@ const hashCode = function (item) {
     return Math.abs(
         Array.from(item.guid ?? JSON.stringify(item)).reduce(
             (code, character) => {
-                return (code << 5) - code + character.codePointAt();
+                return (code << 5) - code + character.codePointAt(0);
             },
             0,
         ),

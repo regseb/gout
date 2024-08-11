@@ -30,7 +30,7 @@ suivantes :
         qui sera remplacée par les termes recherchés.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo.html?q={searchTerms}"</code>.
+        Exemple : <code>"https://example.com/foo.html?q={searchTerms}"</code>
       </p>
     </td>
   </tr>
@@ -45,7 +45,7 @@ suivantes :
         remontée.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo.html?q={searchTerms}"</code>.
+        Exemple : <code>"https://example.com/foo.html?q={searchTerms}"</code>
       </p>
     </td>
   </tr>
@@ -58,7 +58,10 @@ suivantes :
         <a href="https://github.com/regseb/gout/tree/HEAD/src/module/search#scrapers"><code>info()</code></a>.
       </p>
       <p>
-        Exemple : <code>{ "title": "Google", "color": "#2196f3" }</code>.
+        Exemple : <pre><code>
+title: "Google"
+color: "#2196f3"
+        </code></pre>
       </p>
     </td>
   </tr>

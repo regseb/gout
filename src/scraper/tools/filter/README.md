@@ -36,11 +36,11 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        Le filtre qui sera appliqué sur les éléments retournées. Par défaut
-        aucun filtre n'est appliqué.
+        Le filtre qui sera appliqué sur les éléments retournés. Par défaut aucun
+        filtre n'est appliqué.
       </p>
       <p>
-        Exemple : <code>"title != 'foo'"</code>.
+        Exemple : <code>"title != 'foo'"</code>
       </p>
     </td>
   </tr>
@@ -67,7 +67,7 @@ Les filtres sont composés de trois éléments :
     - `^=` : garder les éléments dont la propriété commence par la valeur
       ([`.startsWith()`](https://developer.mozilla.org/Web/JavaScript/Reference/Global_Objects/String/startsWith)
       sous le capot) ;
-    - `^=` : garder les éléments dont la propriété finit par la valeur
+    - `$=` : garder les éléments dont la propriété finit par la valeur
       ([`.endsWith()`](https://developer.mozilla.org/Web/JavaScript/Reference/Global_Objects/String/endsWith)
       sous le capot) ;
 - la valeur comparée :
@@ -85,9 +85,10 @@ tableau.
 
 ## Exemple
 
-Ce widget affiche les dernières reportages de la chaine YouTube de
-[Arte](https://www.youtube.com/@arte). L'option `"filter"` est passée au scraper
-_list/rss_ car ce scraper utilise _tools/filter_.
+Ce widget affiche les derniers reportages de la chaine YouTube de
+[Arte](https://www.youtube.com/@arte). L'option `filter` est passée au scraper
+[_list/rss_](https://github.com/regseb/gout/tree/HEAD/src/scraper/list/rss#readme)
+car ce scraper utilise _tools/filter_.
 
 ```html
 <script type="application/yaml">

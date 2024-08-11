@@ -9,16 +9,16 @@
  *
  * @param {any} options Les options des scrapers.
  * @returns {Object} Une simulation d'un tableau dont la méthode
- *                   <code>pop()</code> retourne toujours les options.
+ *                   <code>pop()</code> retourne toujours toutes les options.
  */
 const DEFAULT_DISPATCH = (options) => ({ pop: () => options });
 
 /**
- * Chaine des scrapers pour combiner leurs fonctionnalités.
+ * Chaine des classes de scrapers pour combiner leurs fonctionnalités.
  *
- * @param {Function}             FirstScraper Le premier scraper.
- * @param {...(Function|Object)} others       Les autres scrapers et/ou les
- *                                            options.
+ * @param {Function}             FirstScraper La classe du premier scraper.
+ * @param {...(Function|Object)} others       Les classes des autres scrapers
+ *                                            et/ou les options.
  */
 export default function chain(FirstScraper, ...others) {
     const AllScraperss = [];
