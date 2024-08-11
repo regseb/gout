@@ -57,7 +57,7 @@ const NUMBER_PATTERN = new RegExp(
 
 const compile = (filter) => {
     if (undefined === filter) {
-        return (_item) => true;
+        return undefined;
     }
     let result = STRING_PATTERN.exec(filter);
     if (null !== result) {
@@ -74,7 +74,7 @@ const compile = (filter) => {
 
 export default class FilterScraper {
     /**
-     * La fonction pour filtrer prennant en argument un élément et retournant un
+     * La fonction pour filtrer prenant en argument un élément et retournant un
      * booléen.
      *
      * @type {Function}
@@ -94,6 +94,9 @@ export default class FilterScraper {
     }
 
     async extract(max = Number.MAX_SAFE_INTEGER) {
+        if (undefined === this.#filter) {
+            return this.#scraper.extract(max);
+        }
         const items = await this.#scraper.extract(Number.MAX_SAFE_INTEGER);
         return items.filter(this.#filter).slice(0, max);
     }
