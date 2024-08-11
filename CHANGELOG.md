@@ -2,12 +2,14 @@
 
 ## [0.12.1](https://github.com/regseb/gout/compare/v0.12.0...v0.12.1) (2024-08-11)
 
-
 ### Bug Fixes
 
-* Corriger les exemples. ([cc9c871](https://github.com/regseb/gout/commit/cc9c871d4a854d62787c6133a4d158ac49be1b3b))
-* Gérer les flux RSS sans date. ([b9e5397](https://github.com/regseb/gout/commit/b9e5397cf8dd9b886fbf7902a97693930a3f43fa))
-* Optimiser les filtres. ([f1b9522](https://github.com/regseb/gout/commit/f1b9522454904b2011dead14ce5abb53d7b68259))
+- Corriger les exemples.
+  ([cc9c871](https://github.com/regseb/gout/commit/cc9c871d4a854d62787c6133a4d158ac49be1b3b))
+- Gérer les flux RSS sans date.
+  ([b9e5397](https://github.com/regseb/gout/commit/b9e5397cf8dd9b886fbf7902a97693930a3f43fa))
+- Optimiser les filtres.
+  ([f1b9522](https://github.com/regseb/gout/commit/f1b9522454904b2011dead14ce5abb53d7b68259))
 
 ## [0.12.0](https://github.com/regseb/gout/compare/v0.11.0...v0.12.0) (2024-05-29)
 
