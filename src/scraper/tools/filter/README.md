@@ -94,9 +94,9 @@ _list/rss_ car ce scraper utilise _tools/filter_.
   module:
     url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"
     options:
-      color: "#757575"
       cron: "*/10 * * * *"
       max: 5
+      color: "#757575"
     scrapers:
       - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"
         options:

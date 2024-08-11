@@ -77,9 +77,9 @@ Ce widget affiche les cinq dernières actualités scientifiques du site
   module:
     url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"
     options:
-      color: "#2196f3"
       cron: "*/10 * * * *"
       max: 5
+      color: "#2196f3"
     scrapers:
       - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/jsonfeed/jsonfeed.js"
         options:

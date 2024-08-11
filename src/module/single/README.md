@@ -182,6 +182,6 @@ Ce widget affiche un lien vers un article au hasard de
     options:
       cron: "*/5 * * * *"
     scrapers:
-      - url": "https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/scraper/single/articleauhasard/articleauhasard.js"
+      - url: "https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/scraper/single/articleauhasard/articleauhasard.js"
 </script>
 ```

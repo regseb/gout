@@ -237,11 +237,11 @@ Podcast](https://lescastcodeurs.com/).
   module:
     url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/podcast/podcast.js"
     options:
-      color: "black"
       cron: "@daily"
       max: 2
+      color: "black"
     scrapers:
-      - url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"
+      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"
         options:
           url: "https://lescastcodeurs.com/podcast-rss"
 </script>

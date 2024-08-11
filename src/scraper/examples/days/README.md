@@ -64,9 +64,9 @@ anglais.
     options:
       max: 3
     scrapers:
-      - url": "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/days/days.js"
+      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/days/days.js"
         options:
-          lang: "en",
+          lang: "en"
           filter: "title != 'Sunday'"
 </script>
 ```

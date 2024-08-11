@@ -225,9 +225,9 @@ Ce widget affiche les cinq dernières actualités du site
   module:
     url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"
     options:
-      color": "#ffc107"
-      cron": "*/10 * * * *"
-      max": 5
+      cron: "*/10 * * * *"
+      max: 5
+      color: "#ffc107"
     scrapers:
       - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"
         options:

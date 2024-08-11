@@ -108,14 +108,27 @@ liens.
   module:
     url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"
     options:
+      cron: "0 * * * *"
       max: 5
       color: "#ffc107"
-      cron: "*/10 * * * *"
     scrapers:
       - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"
         options:
           url: "https://linuxfr.org/news.atom"
 </script>
+```
+
+Vous pouvez aussi importer des widgets directement dans votre dashboard. Il faut
+ajouter un élément `<script>` avec l'attribut `src` (ainsi que le `type`). Dans
+l'exemple ci-dessous, le widget permettant d'écouter la radio
+[Fip](https://github.com/regseb/gout-regseb/tree/main/src/widget/radiofrance#readme)
+est intégré dans le dashboard :
+
+```html
+<script
+  type="application/yaml"
+  src="https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/widget/radiofrance/fip.yaml"
+></script>
 ```
 
 Si vous voulez des widgets, vous pouvez chercher
@@ -143,9 +156,9 @@ affichée dans un bloc bleu `#2196f3` et actualisée toutes les dix minutes
   module:
     url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"
     options:
-      color: "#2196f3"
       cron: "*/10 * * * *"
-        "max": 5
+      max: 5
+      color: "#2196f3"
     scrapers: # ...
 </script>
 ```
@@ -159,7 +172,7 @@ dans GitHub.
 Les scrapers permettent d'extraire des données (flux RSS, parsing de page...) et
 de les transmettre à un module dans un format spécifique. Plusieurs scrapers
 peuvent être associés avec un module. Dans la configuration du widget, les
-scrapers sont définis dans un tableau avec deux propriétés :
+scrapers sont définis dans une liste ou chaque élément a deux propriétés :
 
 - `url` : L'URL du fichier JavaScript du scraper (par exemple pour le scraper
   [_list/rss_](https://github.com/regseb/gout/tree/HEAD/src/scraper/list/rss#readme)
