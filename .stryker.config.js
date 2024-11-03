@@ -1,11 +1,14 @@
 /**
- * @module
  * @license MIT
  * @author Sébastien Règne
  */
 
 /**
- * @type {import("@stryker-mutator/api/core").PartialStrykerOptions}
+ * @import { PartialStrykerOptions } from "@stryker-mutator/api/core"
+ */
+
+/**
+ * @type {PartialStrykerOptions}
  */
 export default {
     disableTypeChecks: false,

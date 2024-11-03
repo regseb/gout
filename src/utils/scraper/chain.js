@@ -8,8 +8,8 @@
  * Envoie les options à tous les scrapers.
  *
  * @param {any} options Les options des scrapers.
- * @returns {Object} Une simulation d'un tableau dont la méthode
- *                   <code>pop()</code> retourne toujours toutes les options.
+ * @returns {Object} Une simulation d'un tableau dont la méthode `pop()`
+ *                   retourne toujours toutes les options.
  */
 const DEFAULT_DISPATCH = (options) => ({ pop: () => options });
 

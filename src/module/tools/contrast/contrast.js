@@ -7,7 +7,7 @@
 
 /**
  * Convertit une couleur du format RGB vers de l'hexadécimal (avec le préfixe
- * <code>"#"</code>).
+ * `"#"`).
  *
  * @param {Object} rgb La couleur au format RGB.
  * @returns {string} La couleur en hexadécimale.
@@ -22,8 +22,8 @@ const rgb2hex = function (rgb) {
 };
 
 /**
- * Convertit une couleur en hexadécimale (avec le préfixe <code>"#"</code>) vers
- * le format RGB.
+ * Convertit une couleur en hexadécimale (avec le préfixe `"#"`) vers le format
+ * RGB.
  *
  * @param {string} hex La couleur en hexadécimale.
  * @returns {Object} La couleur au format RGB.
@@ -70,8 +70,7 @@ const rgb2lab = function (rgb) {
 /**
  * Calcule la valeur linéaire d'un canal.
  *
- * @param {number} channel Le canal d'une couleur (entre <code>0</code> et
- *                         <code>255</code>).
+ * @param {number} channel Le canal d'une couleur (entre `0` et `255`).
  * @returns {number} La valeur linéaire.
  * @see https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure
  */
