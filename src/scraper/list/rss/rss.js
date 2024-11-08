@@ -57,7 +57,9 @@ const RSSScraper = class {
             .slice(0, max)
             .map((entry) => ({
                 content: entry.querySelector("content")?.textContent ?? "",
-                date: entry.querySelector("published").textContent,
+                date:
+                    entry.querySelector("published")?.textContent ??
+                    entry.querySelector("updated").textContent,
                 guid: entry.querySelector("id").textContent,
                 link: entry.querySelector("link").getAttribute("href"),
                 summary:
@@ -70,16 +72,16 @@ const RSSScraper = class {
                     entry.querySelector("title").textContent ??
                     // Essayer le titre dans "media:group media:title".
                     entry.querySelector("group title")?.textContent,
-                thumbnail: entry
-                    // Essayer la miniature dans "media:group media:thumbnail".
-                    .querySelector("group thumbnail")
-                    ?.getAttribute("url"),
+                thumbnail:
+                    // Essayer la miniature dans "media:thumbnail" ou
+                    // "media:group media:thumbnail".
+                    entry.querySelector("thumbnail")?.getAttribute("url"),
             }))
             .map((item) => ({
                 date: new Date(item.date).getTime(),
                 desc: new DOMParser()
                     .parseFromString(
-                        /^\s*$/u.test(item.summary)
+                        /^\s*$/v.test(item.summary)
                             ? item.content
                             : item.summary,
                         "text/html",
@@ -103,7 +105,10 @@ const RSSScraper = class {
             case "feed":
                 return this.#extractAtom(xml, max);
             default:
-                throw new Error("Unknown format");
+                throw new Error(
+                    `Unknown format '${xml.documentElement.nodeName}' of ` +
+                        this.#url,
+                );
         }
     }
 };
