@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+  <style>
+    svg {
+        color: #15141a;
+    }
+    @media (prefers-color-scheme: dark) {
+        svg {
+            color: white;
+        }
+    }
+  </style>
+  <polyline
+    points="14.939,3.54 6.23,12.25 1.06,7.081"
+    fill="none"
+    stroke="currentColor"
+  />
+</svg>

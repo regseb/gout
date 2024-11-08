@@ -8,20 +8,41 @@
     <link href="/img/icon.svg" rel="shortcut icon" />
   </head>
   <body>
-    <template>
-      <li>
-        <span></span>
-        <button class="icon" title="Enlever">
-          <img src="img/remove.svg" alt="remove" />
-        </button>
-      </li>
-    </template>
+    <header>
+      <h1>Gout</h1>
+    </header>
 
-    <div>
-      <button class="outlined" id="set" disabled="disabled">Ajouter</button>
-    </div>
+    <main id="ok">
+      <p>Activer / désactiver l'extension Gout pour la page&nbsp;:</p>
+      <p>
+        <a rel="noopener noreferrer"><code></code></a>
+      </p>
+      <form>
+        <label class="switch">
+          <input type="checkbox" />
+          <span>Inactif</span>
+          <span>Actif</span>
+        </label>
+      </form>
+      <p class="detail">
+        Quand Gout est actif, les widgets de la page peuvent récupérer des
+        données externes. Pour plus d'informations, consultez la
+        <a href="https://github.com/regseb/gout" rel="noopener noreferrer"
+          >documentation</a
+        >.
+      </p>
+    </main>
 
-    <ul></ul>
+    <main id="forbidden">
+      <p>Impossible d'activer l'extension Gout pour la page&nbsp;:</p>
+      <p>
+        <a rel="noopener noreferrer"><code></code></a>
+      </p>
+      <p>
+        Seules les pages <code>https</code>, <code>http</code>,
+        <code>file</code> et <code>data</code> sont supportées.
+      </p>
+    </main>
 
     <script src="script.js" type="module"></script>
   </body>

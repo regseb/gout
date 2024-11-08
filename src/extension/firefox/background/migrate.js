@@ -16,12 +16,12 @@ export default async function migrate() {
     if ("version" in current) {
         await browser.storage.sync.set({
             version: current.version,
-            dashboards: current.dashboards,
+            urls: current.urls,
         });
     } else {
         await browser.storage.sync.set({
             version: 1,
-            dashboards: [],
+            urls: [],
         });
     }
 }

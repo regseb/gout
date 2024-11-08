@@ -1,67 +1,125 @@
+:root {
+    --background-color: white;
+    --inactive-color: #bbbbc4;
+    --inactive-color-hover: #8f8f9d;
+    --color: #15141a;
+    --accent-color: #0060df;
+    --accent-color-hover: #0250bb;
+    --line-color: #5e5e5e;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #272727;
+        --inactive-color: #484854;
+        --inactive-color-hover: #5c5c6a;
+        --color: white;
+        --accent-color: #00ddff;
+        --accent-color-hover: #80ebff;
+        --line-color: #5e5e5e;
+    }
+}
+
 body {
-    font-family: system-ui;
+    background-color: var(--background-color);
+    color: var(--color);
+    font-family: sans-serif;
     font-size: 14px;
-    min-width: 200px;
 }
 
-button.icon {
-    background: transparent;
-    border: none;
-    border-radius: 4px;
-    height: 34px;
-    width: 34px;
+a,
+a:visited {
+    color: var(--accent-color);
 }
-button.icon:hover {
-    background-color: rgba(0 0 0 / 6%);
+a:hover {
+    color: var(--accent-color-hover);
 }
 
-button.outlined {
-    background: transparent;
-    border: 1px solid rgba(0 0 0 / 12%);
-    border-radius: 4px;
-    color: rgba(0 0 0 / 87%);
-    line-height: 34px;
-    padding: 0 15px;
+header {
+    border-bottom: 1px solid var(--line-color);
     text-align: center;
-    text-transform: uppercase;
 }
-button.outlined::-moz-focus-inner {
-    border: none;
-}
-button.outlined:hover {
-    background-color: rgba(0 0 0 / 6%);
+h1 {
+    font-size: 14px;
 }
 
-ul {
-    list-style-type: none;
-    margin-bottom: 0;
-    margin-top: 0;
-    padding-left: 0;
-}
-li {
-    align-items: center;
-    display: flex;
-    height: 34px;
-}
-span {
-    flex-grow: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    /* Ne pas sélectionner un mot durant un double-clic (pour copier l'URL dans
-       le presse-papier). */
-    user-select: none;
-    white-space: nowrap;
-}
-span.active {
-    font-weight: bold;
-}
-li button {
+main {
     display: none;
+    margin: 0 8px;
+    width: 340px;
 }
-li:hover button {
+main.visible {
     display: block;
 }
 
-#set {
+form {
+    display: flex;
+    justify-content: center;
+    margin: 28px;
+}
+
+label.switch {
+    align-items: center;
+    background-color: var(--inactive-color);
+    border-radius: 64px;
+    color: var(--color);
+    display: flex;
+    font-size: 22px;
+    font-weight: 600;
+    height: 64px;
+    position: relative;
+    transition: 0.4s;
+    width: 164px;
+}
+
+label.switch input {
+    display: none;
+}
+
+label.switch::before {
+    background: url("./img/checkmark.svg") center / 50% no-repeat var(--color);
+    border-radius: 50%;
+    bottom: 8px;
+    content: "";
+    height: 48px;
+    left: 8px;
+    position: absolute;
+    transition: 0.4s;
+    width: 48px;
+}
+
+label.switch:has(input:checked) {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+}
+label.switch:has(input:hover) {
+    background-color: var(--inactive-color-hover);
+}
+label.switch:has(input:checked:hover) {
+    background-color: var(--accent-color-hover);
+}
+label.switch:has(input:checked)::before {
+    background-color: var(--background-color);
+    transform: translateX(98px);
+}
+
+label.switch input ~ span {
+    box-sizing: border-box;
+    padding: 0 25px;
+    position: absolute;
+    transition: 0.4s;
     width: 100%;
+}
+label.switch input ~ span:first-of-type {
+    text-align: right;
+}
+label.switch input ~ span:last-of-type {
+    text-align: left;
+}
+label.switch input ~ span:last-of-type,
+label.switch input:checked ~ span:first-of-type {
+    opacity: 0%;
+}
+label.switch input ~ span:first-of-type,
+label.switch input:checked ~ span:last-of-type {
+    opacity: 100%;
 }
