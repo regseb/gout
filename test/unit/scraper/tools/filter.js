@@ -95,6 +95,56 @@ describe("scraper/tools/filter/filter.js", function () {
             );
         });
 
+        it("should support '~=' with string", async function () {
+            await check(
+                [
+                    { foo: "bar" },
+                    { foo: "42 bar" },
+                    { foo: "bar 42" },
+                    { foo: "42bar42" },
+                    { foo: "baz" },
+                    { foo: 42 },
+                ],
+                "foo ~= 'bar'",
+                [{ foo: "bar" }, { foo: "42 bar" }, { foo: "bar 42" }],
+            );
+        });
+
+        it("should support '==' with regex", async function () {
+            await check(
+                [
+                    { foo: "bar" },
+                    { foo: "42bar" },
+                    { foo: "bar42" },
+                    { foo: "42bar42" },
+                    { foo: "baz42" },
+                    { foo: 42 },
+                ],
+                String.raw`foo == /bar\d+/`,
+                [{ foo: "bar42" }, { foo: "42bar42" }],
+            );
+        });
+
+        it("should support '!=' with regex", async function () {
+            await check(
+                [
+                    { foo: "bar" },
+                    { foo: "42bar" },
+                    { foo: "bar42" },
+                    { foo: "42bar42" },
+                    { foo: "baz42" },
+                    { foo: 42 },
+                ],
+                String.raw`foo != /bar\d+/`,
+                [
+                    { foo: "bar" },
+                    { foo: "42bar" },
+                    { foo: "baz42" },
+                    { foo: 42 },
+                ],
+            );
+        });
+
         it("should support '==' with number", async function () {
             await check([{ foo: 1 }, { foo: 2 }, { foo: "bar" }], "foo == 1", [
                 { foo: 1 },

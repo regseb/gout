@@ -52,15 +52,10 @@ Les filtres sont composés de trois éléments :
 
 - la propriété récupérée dans un élément des résultats ;
 - le type de comparaison :
-  - générique :
-    - [`==`](https://developer.mozilla.org/Web/JavaScript/Reference/Operators/Strict_equality),
-      [`!=`](https://developer.mozilla.org/Web/JavaScript/Reference/Operators/Strict_inequality),
-      [`<`](https://developer.mozilla.org/Web/JavaScript/Reference/Operators/Less_than),
-      [`<=`](https://developer.mozilla.org/Web/JavaScript/Reference/Operators/Less_than_or_equal),
-      [`>`](https://developer.mozilla.org/Web/JavaScript/Reference/Operators/Greater_than),
-      [`>=`](https://developer.mozilla.org/Web/JavaScript/Reference/Operators/Greater_than_or_equal)
-      ;
   - chaine de caractères :
+    - [`==`](https://developer.mozilla.org/Web/JavaScript/Reference/Operators/Strict_equality),
+      [`!=`](https://developer.mozilla.org/Web/JavaScript/Reference/Operators/Strict_inequality)
+      ;
     - `*=` : garder les éléments dont la propriété contient la valeur
       ([`.includes()`](https://developer.mozilla.org/Web/JavaScript/Reference/Global_Objects/String/includes)
       sous le capot) ;
@@ -70,9 +65,26 @@ Les filtres sont composés de trois éléments :
     - `$=` : garder les éléments dont la propriété finit par la valeur
       ([`.endsWith()`](https://developer.mozilla.org/Web/JavaScript/Reference/Global_Objects/String/endsWith)
       sous le capot) ;
+    - `~=` : garder les éléments dont la propriété contient la valeur entourée
+      par des caractères blancs ;
+  - expression rationnelle :
+    - `==` : utiliser la méthode
+      [`test()`](https://developer.mozilla.org/Web/JavaScript/Reference/Global_Objects/RegExp/test)
+      ;
+    - `!=` : inverser le retour de la méthode `test()` ;
+  - nombre :
+    [`==`](https://developer.mozilla.org/Web/JavaScript/Reference/Operators/Strict_equality),
+    [`!=`](https://developer.mozilla.org/Web/JavaScript/Reference/Operators/Strict_inequality),
+    [`<`](https://developer.mozilla.org/Web/JavaScript/Reference/Operators/Less_than),
+    [`<=`](https://developer.mozilla.org/Web/JavaScript/Reference/Operators/Less_than_or_equal),
+    [`>`](https://developer.mozilla.org/Web/JavaScript/Reference/Operators/Greater_than),
+    [`>=`](https://developer.mozilla.org/Web/JavaScript/Reference/Operators/Greater_than_or_equal)
+    ;
 - la valeur comparée :
-  - un nombre : `42` ;
-  - une chaine de caractères (entourée par des apostrophes) : `'foo'`.
+  - une chaine de caractères (entourée par des apostrophes) : `'foo'`, `'BAR'`
+  - une expression rationnelle (sans les marqueurs) : `/fo+/`, `/^bar/`,
+    `/Baz|Qux/`
+  - un nombre : `42`, `3.14`
 
 ## Scrapers
 
