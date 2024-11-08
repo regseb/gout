@@ -1,5 +1,8 @@
 object {
     display: block;
     padding: 8px;
-    vertical-align: top;
+}
+
+svg {
+    width: 100%;
 }

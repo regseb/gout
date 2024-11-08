@@ -44,7 +44,7 @@ export default class ClockModule extends HTMLElement {
         }
 
         const response = await fetch(
-            item.icon ?? import.meta.resolve("./img/icon.svg"),
+            item.icon ?? import.meta.resolve("./img/default.svg"),
         );
         const text = await response.text();
         const xml = new DOMParser().parseFromString(text, "image/svg+xml");

@@ -60,7 +60,7 @@ export default class AudioModule extends HTMLElement {
         a.title = item.title ?? "";
 
         const img = this.shadowRoot.querySelector("img");
-        img.src = item.icon ?? import.meta.resolve("./img/icon.svg");
+        img.src = item.icon ?? import.meta.resolve("./img/icon_fff.svg");
 
         const input = this.shadowRoot.querySelector("input");
         input.dataset.audio = item.audio;

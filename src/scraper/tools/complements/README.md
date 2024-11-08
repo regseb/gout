@@ -76,6 +76,6 @@ car ce scraper utilise _tools/complements_.
         options:
           url: "https://www.youtube.com/feeds/videos.xml?user=arte"
           complements:
-            icon: "https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/widget/arte/arte_white.svg"
+            icon: "https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/widget/arte/arte_wc.svg"
 </script>
 ```

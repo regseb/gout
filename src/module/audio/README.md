@@ -118,10 +118,10 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        L'URL de l'icône qui sera affichée en fond. Il est conseillé que l'image
-        soit carrée et que le dessin occupe toute la zone de l'image. Si le
-        dessin n'est pas carré, il faut le centrer horizontalement et
-        verticalement. Seule la couleur blanche doit être utilisée. Par défaut,
+        L'URL de l'icône qui sera affichée en fond. Pour avoir une harmonie avec
+        les autres widgets, il est conseillé d'utiliser une image carrée avec un
+        dessin occupant toute l'image. Si le dessin n'est pas carré, il faut le
+        centrer. Seule la couleur blanche doit être utilisée. Par défaut,
         l'image d'une note de musique est affichée.
       </p>
       <p>

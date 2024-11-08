@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+  <!-- Version du logo static (fond noir et icône blanche) pour l'exporter en
+       PNG. Car Chromium ne gère pas les images en SVG pour les WebExtensions.
+       https://issues.chromium.org/issues/41057033 -->
   <style>
-    @media (prefers-color-scheme: dark) {
-        svg {
-            color: white;
-        }
+    svg {
+        color: white;
     }
   </style>
+  <rect x="0" y="0" width="32" height="32" fill="black" rx="4" ry="4" />
   <polygon points="6,14 26,14 16,0" fill="currentColor" />
   <line
     x1="16"

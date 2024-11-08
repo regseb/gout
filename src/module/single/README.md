@@ -122,8 +122,11 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        L'URL de l'icône affichée dans le cadre. Par défaut, aucune icône n'est
-        affichée.
+        L'URL de l'icône affichée dans le cadre. Pour avoir une harmonie avec
+        les autres widgets, il est conseillé d'utiliser une image carrée avec un
+        dessin occupant toute l'image. Si le dessin n'est pas carré, il faut le
+        centrer. Seule la couleur blanche doit être utilisée. Par défaut, aucune
+        icône n'est affichée.
       </p>
       <p>
         Exemple : <code>"https://example.com/foo/bar.svg"</code>

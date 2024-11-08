@@ -72,11 +72,12 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        L'URL de l'icône qui sera affichée en fond. Il est conseillé que l'image
-        soit carrée et que le dessin occupe toute la zone de l'image. Si le
-        dessin n'est pas carré, il faut le centrer verticalement et l'aligner à
-        droite. Seule la couleur noire doit être utilisée et elle doit avoir une
-        opacité de <code>0.2</code>. Par défaut, aucune icône n'est affichée.
+        L'URL de l'icône qui sera affichée en fond. Pour avoir une harmonie avec
+        les autres widgets, il est conseillé d'utiliser une image carrée avec un
+        dessin occupant toute l'image. Si le dessin n'est pas carré, il faut le
+        centrer. Seule la couleur noire doit être utilisée et elle doit avoir
+        une opacité de <code>0.2</code>. Par défaut, aucune icône n'est
+        affichée.
       </p>
       <p>
         Exemple : <code>"https://example.com/foo/bar.svg"</code>
@@ -167,8 +168,11 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        L'URL de l'icône qui préfixera le titre. Par défaut, aucune icône n'est
-        affichée.
+        L'URL de l'icône qui préfixera le titre. Pour avoir une harmonie avec
+        les autres widgets, il est conseillé d'utiliser une image carrée avec un
+        dessin occupant toute l'image. Si le dessin n'est pas carré, il faut le
+        centrer. Seule la couleur blanche doit être utilisée. Par défaut, aucune
+        icône n'est affichée.
       </p>
       <p>
         Exemple : <code>"https://example.com/foo/bar.svg"</code>

@@ -131,7 +131,11 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        L'URL de l'icône affichée dans le cadre. Par défaut, aucune icône n'est
+        L'URL de l'icône qui sera affichée en fond. Pour avoir une harmonie avec
+        les autres widgets, il est conseillé d'utiliser une image carrée avec un
+        dessin occupant toute l'image. Si le dessin n'est pas carré, il faut le
+        centrer. Seule la couleur noire doit être utilisée et elle doit avoir
+        une opacité de <code>0.2</code>. Par défaut, aucune icône n'est
         affichée.
       </p>
       <p>

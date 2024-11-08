@@ -105,13 +105,14 @@ suivantes :
     <td><code>string</code></td>
     <td>
       <p>
-        L'URL de l'image qui sera utilisée comme horloge. Il est conseillé que
-        l'image soit carrée et que le dessin occupe toute la zone de l'image. Le
-        document <a href="https://www.w3.org/Graphics/SVG/">SVG</a> doit avoir
-        trois enfants avec les identifiants <code>hour</code>,
-        <code>minute</code> et <code>second</code>. Tous les sous-éléments
-        tourneront avec comme axe le centre de l'image. Par défaut, l'image
-        d'une simple horloge est affichée.
+        L'URL de l'image qui sera utilisée comme horloge. Pour avoir une
+        harmonie avec les autres widgets, il est conseillé d'utiliser une image
+        carrée avec un dessin occupant toute l'image. Le document
+        <a href="https://www.w3.org/Graphics/SVG/">SVG</a> doit avoir trois
+        enfants avec les identifiants <code>hour</code>, <code>minute</code> et
+        <code>second</code>. Tous ces sous-éléments tourneront avec comme axe le
+        centre de l'image. Par défaut, l'image d'une simple horloge est
+        affichée.
       </p>
       <p>
         Exemple : <code>"https://example.com/foo/bar.svg"</code>

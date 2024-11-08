@@ -13,7 +13,7 @@ const extract = async function (url) {
         'link[type="application/rss+xml"][href],' +
         ' link[type="application/atom+xml"][href]';
     return Array.from(doc.querySelectorAll(selector), (link) => ({
-        icon: import.meta.resolve("./img/rss.svg"),
+        icon: "https://cdn.simpleicons.org/rss/fff",
         link: new URL(link.getAttribute("href"), url).href,
         title: link.title,
     }));
