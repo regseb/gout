@@ -74,7 +74,7 @@ export default {
             linters: ["prettier", "htmlhint"],
             overrides: [
                 {
-                    patterns: "/template/dashboard/**",
+                    patterns: "/examples/**",
                     linters: "htmlhint_dashboard",
                 },
             ],

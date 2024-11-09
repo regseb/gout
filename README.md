@@ -15,6 +15,18 @@ une page Web. Les [dashboards](#dashboard) sont ces pages Web avec du
 pour définir le format d'affichage ; et des [scrapers](#scraper) pour extraire
 des données.
 
+## Démarrage rapide
+
+- Installez l'extension Gout depuis le [**Firefox Browser
+  Add-ons**][link-firefox].
+- Téléchargez et décompressez le zip
+  [`gout-dashboard-example.zip`](./examples/gout-dashboard-example.zip).
+- Ouvrez le fichier `gout-dashboard-example/index.html` dans Firefox.
+- Ouvrez la popup de l'extension Gout et activez Gout pour la page courant.
+- Découvrez les widgets qui s'affichent.
+
+## Composants
+
 ### Dashboard
 
 Un dashboard est une page Web qui contient des widgets. Elle doit importer le
@@ -200,16 +212,6 @@ des chaines YouTube [ARTE Cinema](https://www.youtube.com/@artecinemafr) et
 Si vous voulez des scrapers, vous pouvez chercher
 [_gout-scraper_](https://github.com/search?q=%22+gout-scraper%22+language%3AMarkdown&type=Code&l=Markdown)
 dans GitHub.
-
-## Installation
-
-L'extension est disponible sur [**Firefox Browser Add-ons**][link-firefox].
-Après l'avoir installée, téléchargez un
-[template d'un dashboard](https://github.com/regseb/gout/tree/HEAD/template/dashboard).
-Ouvrez le fichier avec un éditeur de texte. Ajoutez les widgets que vous
-souhaitez dans le code HTML. Ouvrez le fichier avec votre navigateur et ajoutez
-la page dans l'extension (en cliquant sur l'icône de l'extension dans la barre
-d'outils du navigateur). Actualisez la page pour voir apparaitre les widgets.
 
 [img-firefox]:
   https://img.shields.io/amo/v/gout.svg?label=add-on&logo=firefox-browser&logoColor=whitesmoke

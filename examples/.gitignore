@@ -1,0 +1,4 @@
+# Ignorer tous les fichiers / répertoires sauf les archives.
+*
+!.gitignore
+!*.zip
