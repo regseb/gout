@@ -20,7 +20,7 @@ des données.
 - Installez l'extension Gout depuis le [**Firefox Browser
   Add-ons**][link-firefox].
 - Téléchargez et décompressez le zip
-  [`gout-dashboard-example.zip`](./examples/gout-dashboard-example.zip).
+  [`gout-dashboard-example.zip`](examples/gout-dashboard-example.zip).
 - Ouvrez le fichier `gout-dashboard-example/index.html` dans Firefox.
 - Ouvrez la popup de l'extension Gout et activez Gout pour la page courant.
 - Découvrez les widgets qui s'affichent.
@@ -148,12 +148,12 @@ dans GitHub.
 
 ### Module
 
-Les modules sont les composants du widget définissant comment les données sont
+Les modules sont les composants des widgets définissant comment les données sont
 affichées (une liste de liens, une image...). La configuration d'un module a
 trois propriétés :
 
 - `url` : L'URL du fichier JavaScript du module (par exemple pour le module
-  [_list_](https://github.com/regseb/gout/tree/HEAD/src/module/list#readme) :
+  [_list_](src/module/list#readme) :
   `"https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"`).
 - `options` : Les options du module (qui sont spécifiques pour chaque module).
 - `scrapers` : La liste des [scrapers](#scraper) associés au module.
@@ -186,8 +186,8 @@ peuvent être associés avec un module. Dans la configuration du widget, les
 scrapers sont définis dans une liste ou chaque élément a deux propriétés :
 
 - `url` : L'URL du fichier JavaScript du scraper (par exemple pour le scraper
-  [_list/rss_](https://github.com/regseb/gout/tree/HEAD/src/scraper/list/rss#readme)
-  : `"https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"`).
+  [_list/rss_](src/scraper/list/rss#readme) :
+  `"https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"`).
 - `options` : Les options du scraper (qui sont spécifiques pour chaque scraper).
 
 Dans cet exemple, deux scrapers sont définis pour récupérer les dernières vidéos

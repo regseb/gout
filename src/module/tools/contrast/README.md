@@ -4,7 +4,8 @@
 
 Ce module affiche un champ pour saisir une couleur et il retourne la couleur la
 plus proche ayant un rapport de contraste supérieur à 4,5 avec le noir et le
-blanc.
+blanc (cf.
+[WebAIM: Contrast Checker](https://webaim.org/resources/contrastchecker/)).
 
 ## Options
 

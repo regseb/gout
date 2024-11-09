@@ -17,8 +17,8 @@ assignees: ""
 
 ### Environment
 
-- Gout extension version<!-- e.g. 0.12.1 -->:
-- Browser version<!-- e.g. Chrome 127.0.6533.88, Firefox 129.0 -->:
+- Gout extension version<!-- e.g. 0.13.0 -->:
+- Browser version<!-- e.g. Chrome 130.0.6723.91, Firefox 132.0 -->:
 
 ### Additional context
 

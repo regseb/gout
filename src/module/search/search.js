@@ -30,7 +30,7 @@ export default class SearchModule extends HTMLElement {
 
             this.shadowRoot.querySelector("datalist").replaceChildren();
         } else {
-            window.location.assign(url);
+            globalThis.location.assign(url);
         }
     }
 

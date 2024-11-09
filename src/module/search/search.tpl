@@ -9,7 +9,7 @@
   <div>
     <form>
       <img />
-      <input name="" list="suggestions" placeholder="" />
+      <input name="" type="search" list="suggestions" placeholder="" />
       <datalist id="suggestions" />
     </form>
     <ul></ul>

@@ -6,8 +6,7 @@
 Ce scraper extrait les données au format
 [**OpenSearch**](https://github.com/dewitt/opensearch) d'un moteur de recherche.
 
-Il peut être utilisé avec le module
-[_search_](https://github.com/regseb/gout/tree/HEAD/src/module/search#readme).
+Il peut être utilisé avec le module [_search_](../../../module/search#readme).
 
 ## Options
 
@@ -55,7 +54,7 @@ suivantes :
     <td>
       <p>
         Des propriétés qui seront retournées par la méthode
-        <a href="https://github.com/regseb/gout/tree/HEAD/src/module/search#scrapers"><code>info()</code></a>.
+        <a href="../../../module/search#scrapers"><code>info()</code></a>.
       </p>
       <p>
         Exemple : <pre><code>

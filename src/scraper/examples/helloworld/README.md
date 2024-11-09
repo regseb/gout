@@ -7,10 +7,8 @@ dans les options du scraper.
 
 Il peut être utilisé avec les modules :
 
-- [_single_](https://github.com/regseb/gout/tree/HEAD/src/module/single#readme)
-  ;
-- [_list_](https://github.com/regseb/gout/tree/HEAD/src/module/list#readme) pour
-  afficher un seul élément.
+- [_single_](../../../module/single#readme) ;
+- [_list_](../../../module/list#readme) pour afficher un seul élément.
 
 ## Options
 

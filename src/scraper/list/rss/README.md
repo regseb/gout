@@ -7,15 +7,14 @@ Ce scraper récupère les derniers éléments d'un flux **RSS** / **Atom**.
 
 Il peut être utilisé avec les modules :
 
-- [_list_](https://github.com/regseb/gout/tree/HEAD/src/module/list#readme) ;
-- [_single_](https://github.com/regseb/gout/tree/HEAD/src/module/single#readme)
-  pour afficher seulement le dernier élément ;
-- [_podcast_](https://github.com/regseb/gout/tree/HEAD/src/module/podcast#readme)
-  pour un flux RSS avec des
+- [_list_](../../../module/list#readme) ;
+- [_single_](../../../module/single#readme) pour afficher seulement le dernier
+  élément ;
+- [_podcast_](../../../module/podcast#readme) pour un flux RSS avec des
   [`enclosure`](https://www.rssboard.org/rss-specification#ltenclosuregtSubelementOfLtitemgt)
   de type `audio` ;
-- [_image_](https://github.com/regseb/gout/tree/HEAD/src/module/image#readme)
-  pour un flux RSS avec des `enclosure` de type `image`.
+- [_image_](../../../module/image#readme) pour un flux RSS avec des `enclosure`
+  de type `image`.
 
 ## Options
 
@@ -49,7 +48,7 @@ suivantes :
         Des propriétés qui seront ajoutées dans les éléments retournés. Par
         défaut aucune propriété n'est ajoutée. Pour plus de détails, voir le
         scraper
-        <a href="https://github.com/regseb/gout/tree/HEAD/src/scraper/tools/complements#readme"><em>tools/complements</em></a>.
+        <a href="../../tools/complements#readme"><em>tools/complements</em></a>.
       </p>
       <p>
         Exemple : <code>icon: "https://example.com/foo/bar.svg"</code>
@@ -63,7 +62,7 @@ suivantes :
       <p>
         Le filtre qui sera appliqué sur les éléments retournés. Par défaut aucun
         filtre n'est appliqué. Pour plus de détails, voir le scraper
-        <a href="https://github.com/regseb/gout/tree/HEAD/src/scraper/tools/filter#readme"><em>tools/filter</em></a>.
+        <a href="../../tools/filter#readme"><em>tools/filter</em></a>.
       </p>
       <p>
         Exemple : <code>"title != 'foo'"</code>

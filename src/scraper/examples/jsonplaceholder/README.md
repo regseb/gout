@@ -9,12 +9,11 @@ scraper.
 
 Il peut être utilisé avec les modules :
 
-- [_image_](https://github.com/regseb/gout/tree/HEAD/src/module/image#readme) ;
-- [_single_](https://github.com/regseb/gout/tree/HEAD/src/module/single#readme)
-  pour afficher seulement le nom de la dernière image (avec un lien vers
-  l'image) ;
-- [_list_](https://github.com/regseb/gout/tree/HEAD/src/module/list#readme) pour
-  afficher seulement le nom des images (avec un lien pour voir chaque image).
+- [_image_](../../../module/image#readme) ;
+- [_single_](../../../module/single#readme) pour afficher seulement le nom de la
+  dernière image (avec un lien vers l'image) ;
+- [_list_](../../../module/list#readme) pour afficher seulement le nom des
+  images (avec un lien pour voir chaque image).
 
 ## Options
 
@@ -49,7 +48,7 @@ suivantes :
         Des propriétés qui seront ajoutées dans les éléments retournés. Par
         défaut aucune propriété n'est ajoutée. Pour plus de détails, voir le
         scraper
-        <a href="https://github.com/regseb/gout/tree/HEAD/src/scraper/tools/complements#readme"><em>tools/complements</em></a>.
+        <a href="../../tools/complements#readme"><em>tools/complements</em></a>.
       </p>
       <p>
         Exemple : <code>icon: "https://example.com/foo/bar.svg"</code>
@@ -63,7 +62,7 @@ suivantes :
       <p>
         Le filtre qui sera appliqué sur les éléments retournés. Par défaut aucun
         filtre n'est appliqué. Pour plus de détails, voir le scraper
-        <a href="https://github.com/regseb/gout/tree/HEAD/src/scraper/tools/filter#readme"><em>tools/filter</em></a>.
+        <a href="../../tools/filter#readme"><em>tools/filter</em></a>.
       </p>
       <p>
         Exemple : <code>"title != 'foo'"</code>

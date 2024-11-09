@@ -60,8 +60,7 @@ du tableau.
 Ce widget affiche les dernières vidéos de la chaine YouTube de
 [Arte](https://www.youtube.com/@arte) en ajoutant le logo de Arte à chaque
 élément. L'option `complements` est passée au scraper
-[_list/rss_](https://github.com/regseb/gout/tree/HEAD/src/scraper/list/rss#readme)
-car ce scraper utilise _tools/complements_.
+[_list/rss_](../../list/rss#readme) car ce scraper utilise _tools/complements_.
 
 ```html
 <script type="application/yaml">

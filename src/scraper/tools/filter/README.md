@@ -99,8 +99,7 @@ tableau.
 
 Ce widget affiche les derniers reportages de la chaine YouTube de
 [Arte](https://www.youtube.com/@arte). L'option `filter` est passée au scraper
-[_list/rss_](https://github.com/regseb/gout/tree/HEAD/src/scraper/list/rss#readme)
-car ce scraper utilise _tools/filter_.
+[_list/rss_](../../list/rss#readme) car ce scraper utilise _tools/filter_.
 
 ```html
 <script type="application/yaml">

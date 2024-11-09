@@ -32,7 +32,7 @@ suivantes :
              faux-positifs avec les expressions cron.
              https://github.com/DavidAnson/markdownlint/issues/427 -->
         <!-- markdownlint-disable-next-line no-space-in-emphasis -->
-        Exemple : <code>"*/5 * * * *"</code>
+        Exemple : <a href="https://crontab.guru/#*/5_*_*_*_*"><code>"*/5 * * * *"</code></a>
       </p>
     </td>
   </tr>

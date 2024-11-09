@@ -38,9 +38,10 @@ suivantes :
     <td>
       <p>
         La ou les
-        <a href="https://www.npmjs.com/package/cronnor#expression-cron">expressions
-        <em>cron</em></a> indiquant la fréquence de mise à jour. Sans cette
-        propriété, les données ne sont jamais mises à jour.
+        <a href="https://www.npmjs.com/package/cronnor#expression-cron"
+          >expressions<em>cron</em></a
+        > indiquant la fréquence de mise à jour. Sans cette propriété, les
+        données ne sont jamais mises à jour.
       </p>
       <p>
         <!-- Ne pas vérifier les espaces dans les éléments d'emphase car cette
@@ -48,7 +49,10 @@ suivantes :
              faux-positifs avec les expressions cron.
              https://github.com/DavidAnson/markdownlint/issues/427 -->
         <!-- markdownlint-disable-next-line no-space-in-emphasis -->
-        Exemple : <code>"*/5 * * * *"</code>
+        Exemple :
+        <a href="https://crontab.guru/#*/5_*_*_*_*"
+          ><code>"*/5 * * * *"</code></a
+        >
       </p>
     </td>
   </tr>
@@ -126,9 +130,10 @@ suivantes :
       <p>
         Le nombre de millisecondes depuis le 1<sup>er</sup> janvier 1970 à
         00:00:00 UTC (cf.
-        <a href="https://developer.mozilla.org/JavaScript/Reference/Global_Objects/Date/getTime"><code>Date.prototype.getTime()</code></a>).
-        Cette valeur est utilisée pour trier les éléments du plus récent au plus
-        ancien. Par défaut, le nombre <code>0</code> est utilisé.
+        <a href="https://developer.mozilla.org/JavaScript/Reference/Global_Objects/Date/getTime"
+          ><code>Date.prototype.getTime()</code></a
+        >). Cette valeur est utilisée pour trier les éléments du plus récent au
+        plus ancien. Par défaut, le nombre <code>0</code> est utilisé.
       </p>
       <p>
         Exemple : <code>900277200000</code>
@@ -198,7 +203,9 @@ suivantes :
     <td>
       <p>
         L'emplacement où sera ouvert le lien (cf. l'attribut
-        <a href="https://developer.mozilla.org/HTML/Element/a#attr-target"><code>target</code></a>
+        <a href="https://developer.mozilla.org/HTML/Element/a#attr-target"
+          ><code>target</code></a
+        >
         des liens HTML). Par défaut, les liens s'ouvrent dans un nouvel onglet.
       </p>
       <p>

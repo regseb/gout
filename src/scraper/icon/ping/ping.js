@@ -35,7 +35,7 @@ const PingScraper = class {
         this.#colors = new Map(
             Object.entries({ ...colors, ...DEFAULT_COLORS })
                 .filter(([p]) => "xxx" !== p)
-                .map(([p, c]) => [new RegExp(p, "u"), c]),
+                .map(([p, c]) => [new RegExp(p, "v"), c]),
         );
         this.#defaultColor = colors?.xxx ?? DEFAULT_COLORS.xxx;
     }
