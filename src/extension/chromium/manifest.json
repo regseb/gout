@@ -27,16 +27,12 @@
   },
   "author": "Sébastien Règne",
   "background": {
-    "scripts": [
-      "background/script.js"
-    ],
+    "scripts": ["background/script.js"],
     "service_worker": "background/script.js",
     "type": "module"
   },
   "homepage_url": "https://github.com/regseb/gout",
-  "host_permissions": [
-    "<all_urls>"
-  ],
+  "host_permissions": ["<all_urls>"],
   "minimum_chrome_version": "130",
   "permissions": [
     "activeTab",
