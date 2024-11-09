@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.13.0](https://github.com/regseb/gout/compare/v0.12.1...v0.13.0) (2024-11-09)
+
+
+### Features
+
+* Simplifier les images SVG. ([75b0ec7](https://github.com/regseb/gout/commit/75b0ec7b16137c074f21de62d0afd34b744599bc))
+* **tools/filter:** Ajouter le support des RegExp. ([f1dce28](https://github.com/regseb/gout/commit/f1dce28a5af028e6bd5e92acceb1821b110864d8))
+
+
+### Bug Fixes
+
+* Gérer les différents cas pour modifier les entêtes. ([06ea93b](https://github.com/regseb/gout/commit/06ea93b0fa202297a88c2859c774aaa1657975af))
+* **list/rss:** Récupérer les données dans "updated". ([48ae531](https://github.com/regseb/gout/commit/48ae5313d7c65176ac9db1fe61ebfcc85801401f))
+
 ## [0.12.1](https://github.com/regseb/gout/compare/v0.12.0...v0.12.1) (2024-08-11)
 
 ### Bug Fixes
