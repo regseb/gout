@@ -1,6 +1,9 @@
 # Module _search_
 
-> Mots-clés : gout, gout-module, gout-module-search.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module_](https://github.com/search?q=_gout-module_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-search_](https://github.com/search?q=_gout-module-search_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce module affiche une zone de saisie pour faire une recherche.
 

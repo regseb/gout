@@ -1,7 +1,10 @@
 # Scraper _list/jsonfeed_
 
-> Mots-clés : gout, gout-scraper, gout-scraper-list-jsonfeed, gout-module-list,
-> gout-module-single.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper_](https://github.com/search?q=_gout-scraper_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper-list-jsonfeed_](https://github.com/search?q=_gout-scraper-list-jsonfeed_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-list_](https://github.com/search?q=_gout-module-list_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce scraper récupère la liste des derniers éléments d'un flux
 [**JSON Feed**](https://jsonfeed.org/).

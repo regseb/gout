@@ -1,6 +1,10 @@
 # Scraper _examples/jsonplaceholder_
 
-> Mots-clés : gout, gout-scraper, gout-scraper-examples-jsonplaceholder.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper_](https://github.com/search?q=_gout-scraper_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper-examples_](https://github.com/search?q=_gout-scraper-examples_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper-examples-jsonplaceholder_](https://github.com/search?q=_gout-scraper-examples-jsonplaceholder_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce scraper d'exemple appelle l'API
 **[JSONPlaceholder](https://jsonplaceholder.typicode.com/)** et retourne les

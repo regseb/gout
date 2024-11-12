@@ -1,7 +1,10 @@
 # Scraper _search/opensearch_
 
-> Mots-clés : gout, gout-scraper, gout-scraper-search-opensearch,
-> gout-module-search.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper_](https://github.com/search?q=_gout-scraper_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper-search-opensearch_](https://github.com/search?q=_gout-scraper-search-opensearch_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-search_](https://github.com/search?q=_gout-module-search_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce scraper extrait les données au format
 [**OpenSearch**](https://github.com/dewitt/opensearch) d'un moteur de recherche.

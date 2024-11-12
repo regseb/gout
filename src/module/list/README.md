@@ -1,6 +1,9 @@
 # Module _list_
 
-> Mots-clés : gout, gout-module, gout-module-list.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module_](https://github.com/search?q=_gout-module_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-list_](https://github.com/search?q=_gout-module-list_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce module affiche une liste d'éléments avec un lien éventuellement préfixé par
 une icône.

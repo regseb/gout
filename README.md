@@ -143,7 +143,7 @@ est intégré dans le dashboard :
 ```
 
 Si vous voulez des widgets, vous pouvez chercher
-[_gout-widget_](https://github.com/search?q=%22+gout-widget%22+language%3AMarkdown&type=Code&l=Markdown)
+[`_gout-widget_`](https://github.com/search?q=_gout-widget_+language%3AMarkdown&type=Code&l=Markdown)
 dans GitHub.
 
 ### Module
@@ -175,7 +175,7 @@ affichée dans un bloc bleu `#2196f3` et actualisée toutes les dix minutes
 ```
 
 Si vous voulez des modules, vous pouvez chercher
-[_gout-module_](https://github.com/search?q=%22+gout-module%22+language%3AMarkdown&type=Code&l=Markdown)
+[`_gout-module_`](https://github.com/search?q=_gout-module_+language%3AMarkdown&type=Code&l=Markdown)
 dans GitHub.
 
 ### Scraper
@@ -210,7 +210,7 @@ des chaines YouTube [ARTE Cinema](https://www.youtube.com/@artecinemafr) et
 ```
 
 Si vous voulez des scrapers, vous pouvez chercher
-[_gout-scraper_](https://github.com/search?q=%22+gout-scraper%22+language%3AMarkdown&type=Code&l=Markdown)
+[`_gout-scraper_`](https://github.com/search?q=_gout-scraper_+language%3AMarkdown&type=Code&l=Markdown)
 dans GitHub.
 
 [img-firefox]:

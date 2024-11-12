@@ -1,7 +1,10 @@
 # Module _examples/preact/helloworld_
 
-> Mots-clés : gout, gout-module, gout-module-examples,
-> gout-module-examples-preact, gout-module-examples-preact-helloworld.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module_](https://github.com/search?q=_gout-module_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-examples_](https://github.com/search?q=_gout-module-examples_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-examples-preact-helloworld_](https://github.com/search?q=_gout-module-examples-preact-helloworld_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce module est un exemple utilisant **[Preact](https://preactjs.com/)**. Il
 implémente un _hello world_ récupéré du tutoriel

@@ -1,6 +1,9 @@
 # Scraper _tools/complements_
 
-> Mots-clés : gout, gout-scraper, gout-scraper-tools-complements.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper_](https://github.com/search?q=_gout-scraper_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper-tools-complements_](https://github.com/search?q=_gout-scraper-tools-complements_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce scraper ajoute des propriétés dans les résultats d'un autre scraper. Il est
 rare d'utiliser ce scraper directement dans un widget. Il peut être utilisé pour

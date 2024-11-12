@@ -1,6 +1,10 @@
 # Scraper _examples/helloworld_
 
-> Mots-clés : gout, gout-scraper, gout-scraper-examples-helloworld.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper_](https://github.com/search?q=_gout-scraper_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper-examples_](https://github.com/search?q=_gout-scraper-examples_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper-examples-helloworld_](https://github.com/search?q=_gout-scraper-examples-helloworld_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce scraper d'exemple retourne un _Hello world!_. Le mot _world_ est paramétrable
 dans les options du scraper.

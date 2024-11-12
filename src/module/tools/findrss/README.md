@@ -1,6 +1,9 @@
 # Module _tools/findrss_
 
-> Mots-clés : gout, gout-module, gout-module-tools, gout-module-tools-findrss.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module_](https://github.com/search?q=_gout-module_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-tools-findrss_](https://github.com/search?q=_gout-module-tools-findrss_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce module cherche les liens RSS / Atom dans une page Web.
 

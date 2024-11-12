@@ -1,7 +1,10 @@
 # Module _examples/react/tictactoe_
 
-> Mots-clés : gout, gout-module, gout-module-examples,
-> gout-module-examples-react, gout-module-examples-react-tictactoe.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module_](https://github.com/search?q=_gout-module_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-examples_](https://github.com/search?q=_gout-module-examples_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-examples-react-tictactoe_](https://github.com/search?q=_gout-module-examples-react-tictactoe_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce module est un exemple utilisant **[React](https://react.dev/)**. Il
 implémente un jeu de morpion récupéré du tutoriel

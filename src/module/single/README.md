@@ -1,6 +1,9 @@
 # Module _single_
 
-> Mots-clés : gout, gout-module, gout-module-single.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module_](https://github.com/search?q=_gout-module_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-single_](https://github.com/search?q=_gout-module-single_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce module affiche un lien.
 

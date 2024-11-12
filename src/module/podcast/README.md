@@ -1,6 +1,9 @@
 # Module _podcast_
 
-> Mots-clés : gout, gout-module, gout-module-podcast.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module_](https://github.com/search?q=_gout-module_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-podcast_](https://github.com/search?q=_gout-module-podcast_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce module affiche une liste des dernières émissions audio d'un podcast.
 

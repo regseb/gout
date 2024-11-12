@@ -1,6 +1,9 @@
 # Module _text_
 
-> Mots-clés : gout, gout-module, gout-module-text.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module_](https://github.com/search?q=_gout-module_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-text_](https://github.com/search?q=_gout-module-text_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce module affiche un cadre avec du texte et dont la couleur de fond est
 personnalisable.

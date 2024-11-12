@@ -1,6 +1,9 @@
 # Scraper _tools/repeater_
 
-> Mots-clés : gout, gout-scraper, gout-scraper-tools-repeater.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper_](https://github.com/search?q=_gout-scraper_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper-tools-repeater_](https://github.com/search?q=_gout-scraper-tools-repeater_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce scraper permet de simuler un scraper spécifique retournant des données
 statiques pour un module.

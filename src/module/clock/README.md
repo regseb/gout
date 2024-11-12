@@ -1,6 +1,9 @@
 # Module _clock_
 
-> Mots-clés : gout, gout-module, gout-module-clock.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module_](https://github.com/search?q=_gout-module_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-clock_](https://github.com/search?q=_gout-module-clock_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce module affiche une horloge.
 

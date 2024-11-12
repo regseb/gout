@@ -1,7 +1,13 @@
 # Scraper _list/rss_
 
-> Mots-clés : gout, gout-scraper, gout-scraper-list-rss, gout-module-list,
-> gout-module-single, gout-module-podcast, gout-module-image.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper_](https://github.com/search?q=_gout-scraper_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper-list-rss_](https://github.com/search?q=_gout-scraper-list-rss_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-list_](https://github.com/search?q=_gout-module-list_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-single_](https://github.com/search?q=_gout-module-single_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-podcast_](https://github.com/search?q=_gout-module-podcast+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-image_](https://github.com/search?q=_gout-module-image_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce scraper récupère les derniers éléments d'un flux **RSS** / **Atom**.
 

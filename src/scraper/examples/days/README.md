@@ -1,6 +1,10 @@
 # Scraper _examples/days_
 
-> Mots-clés : gout, gout-scraper, gout-scraper-examples-days.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper_](https://github.com/search?q=_gout-scraper_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper-examples_](https://github.com/search?q=_gout-scraper-examples_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper-examples-days_](https://github.com/search?q=_gout-scraper-examples-days_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce scraper d'exemple retourne les noms des prochains jours de la semaine. La
 langue des noms est paramétrable dans les options du scraper.

@@ -1,6 +1,9 @@
 # Scraper _tools/filter_
 
-> Mots-clés : gout, gout-scraper, gout-scraper-tools-filter.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper_](https://github.com/search?q=_gout-scraper_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper-tools-filters_](https://github.com/search?q=_gout-scraper-tools-filters_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce scraper filtre les résultats d'un autre scraper. Il est rare d'utiliser ce
 scraper directement dans un widget. Il peut être utilisé pour ajouter la

@@ -1,6 +1,10 @@
 # Scraper _icon/ping_
 
-> Mots-clés : gout, gout-scraper, gout-scraper-icon-ping, gout-module-icon.
+> Mots-clés :
+> [_gout_](https://github.com/search?q=_gout_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper_](https://github.com/search?q=_gout-scraper_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-scraper-icon-ping_](https://github.com/search?q=_gout-scraper-icon-ping_+language%3AMarkdown&type=Code&l=Markdown),
+> [_gout-module-icon_](https://github.com/search?q=_gout-module-icon_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce scraper vérifie si un serveur est toujours accessible.
 
