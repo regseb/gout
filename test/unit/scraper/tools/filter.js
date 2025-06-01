@@ -23,25 +23,41 @@ describe("scraper/tools/filter/filter.js", function () {
     describe("extract()", function () {
         it("should support no filter", async function () {
             await check(
-                [{ foo: "bar" }, { foo: "baz" }, { foo: 42 }],
+                [{ foo: "bar" }, { foo: "Baz" }, { foo: 42 }],
                 undefined,
-                [{ foo: "bar" }, { foo: "baz" }, { foo: 42 }],
+                [{ foo: "bar" }, { foo: "Baz" }, { foo: 42 }],
             );
         });
 
         it("should support '==' with string", async function () {
             await check(
-                [{ foo: "bar" }, { foo: "baz" }, { foo: 42 }],
+                [{ foo: "bar" }, { foo: "Baz" }, { foo: 42 }],
                 "foo == 'bar'",
                 [{ foo: "bar" }],
             );
         });
 
+        it("should support '==' case-insensitive with string", async function () {
+            await check(
+                [{ foo: "bar" }, { foo: "Baz" }, { foo: 42 }],
+                "foo == 'baz'i",
+                [{ foo: "Baz" }],
+            );
+        });
+
         it("should support '!=' with string", async function () {
             await check(
-                [{ foo: "bar" }, { foo: "baz" }, { foo: 42 }],
+                [{ foo: "bar" }, { foo: "Baz" }, { foo: 42 }],
                 "foo != 'bar'",
-                [{ foo: "baz" }, { foo: 42 }],
+                [{ foo: "Baz" }, { foo: 42 }],
+            );
+        });
+
+        it("should support '!=' case-insensitive with string", async function () {
+            await check(
+                [{ foo: "bar" }, { foo: "Baz" }, { foo: 42 }],
+                "foo != 'baz'i",
+                [{ foo: "bar" }, { foo: 42 }],
             );
         });
 
@@ -49,6 +65,7 @@ describe("scraper/tools/filter/filter.js", function () {
             await check(
                 [
                     { foo: "bar" },
+                    { foo: "Bar" },
                     { foo: "42bar" },
                     { foo: "bar42" },
                     { foo: "42bar42" },
@@ -65,10 +82,33 @@ describe("scraper/tools/filter/filter.js", function () {
             );
         });
 
+        it("should support '*=' case-insensitive with string", async function () {
+            await check(
+                [
+                    { foo: "bar" },
+                    { foo: "Bar" },
+                    { foo: "42Bar" },
+                    { foo: "bar42" },
+                    { foo: "42Bar42" },
+                    { foo: "baz" },
+                    { foo: 42 },
+                ],
+                "foo *= 'bar'i",
+                [
+                    { foo: "bar" },
+                    { foo: "Bar" },
+                    { foo: "42Bar" },
+                    { foo: "bar42" },
+                    { foo: "42Bar42" },
+                ],
+            );
+        });
+
         it("should support '^=' with string", async function () {
             await check(
                 [
                     { foo: "bar" },
+                    { foo: "Bar" },
                     { foo: "42bar" },
                     { foo: "bar42" },
                     { foo: "42bar42" },
@@ -80,10 +120,27 @@ describe("scraper/tools/filter/filter.js", function () {
             );
         });
 
+        it("should support '^=' case-insensitive with string", async function () {
+            await check(
+                [
+                    { foo: "bar" },
+                    { foo: "Bar" },
+                    { foo: "42bar" },
+                    { foo: "Bar42" },
+                    { foo: "42bar42" },
+                    { foo: "Baz" },
+                    { foo: 42 },
+                ],
+                "foo ^= 'bar'i",
+                [{ foo: "bar" }, { foo: "Bar" }, { foo: "Bar42" }],
+            );
+        });
+
         it("should support '$=' with string", async function () {
             await check(
                 [
                     { foo: "bar" },
+                    { foo: "Bar" },
                     { foo: "42bar" },
                     { foo: "bar42" },
                     { foo: "42bar42" },
@@ -95,10 +152,27 @@ describe("scraper/tools/filter/filter.js", function () {
             );
         });
 
+        it("should support '$=' case-insensitive with string", async function () {
+            await check(
+                [
+                    { foo: "bar" },
+                    { foo: "Bar" },
+                    { foo: "42Bar" },
+                    { foo: "bar42" },
+                    { foo: "42Bar42" },
+                    { foo: "baz" },
+                    { foo: 42 },
+                ],
+                "foo $= 'bar'i",
+                [{ foo: "bar" }, { foo: "Bar" }, { foo: "42Bar" }],
+            );
+        });
+
         it("should support '~=' with string", async function () {
             await check(
                 [
                     { foo: "bar" },
+                    { foo: "Bar" },
                     { foo: "42 bar" },
                     { foo: "bar 42" },
                     { foo: "42bar42" },
@@ -107,6 +181,27 @@ describe("scraper/tools/filter/filter.js", function () {
                 ],
                 "foo ~= 'bar'",
                 [{ foo: "bar" }, { foo: "42 bar" }, { foo: "bar 42" }],
+            );
+        });
+
+        it("should support '~=' case-insensitive with string", async function () {
+            await check(
+                [
+                    { foo: "bar" },
+                    { foo: "Bar" },
+                    { foo: "42 bar" },
+                    { foo: "Bar 42" },
+                    { foo: "42bar42" },
+                    { foo: "Baz" },
+                    { foo: 42 },
+                ],
+                "foo ~= 'bar'i",
+                [
+                    { foo: "bar" },
+                    { foo: "Bar" },
+                    { foo: "42 bar" },
+                    { foo: "Bar 42" },
+                ],
             );
         });
 

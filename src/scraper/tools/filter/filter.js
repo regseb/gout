@@ -34,17 +34,20 @@ const STRING_OP = Object.fromEntries(
         "^=": (a, e) => "string" === typeof a && a.startsWith(e),
         "$=": (a, e) => "string" === typeof a && a.endsWith(e),
         "~=": {
-            prepare: (e) =>
+            prepare: (e, f) =>
                 new RegExp(
                     String.raw`(?:^|\s)${RegExp.escape(e)}(?:$|\s)`,
-                    "v",
+                    f + "v",
                 ),
             test: (a, e) => "string" === typeof a && e.test(a),
         },
     }).map(([op, value]) => [
         op,
         "function" === typeof value
-            ? { prepare: (e) => e, test: value }
+            ? {
+                  prepare: (e, f) => (f.includes("i") ? e.toLowerCase() : e),
+                  test: value,
+              }
             : { prepare: value.prepare, test: value.test },
     ]),
 );
@@ -56,11 +59,11 @@ const STRING_OP = Object.fromEntries(
  */
 const REGEX_OP = {
     "==": {
-        prepare: (e) => new RegExp(e, "v"),
+        prepare: (e, f) => new RegExp(e, f + "v"),
         test: (a, e) => "string" === typeof a && e.test(a),
     },
     "!=": {
-        prepare: (e) => new RegExp(e, "v"),
+        prepare: (e, f) => new RegExp(e, f + "v"),
         test: (a, e) => !("string" === typeof a && e.test(a)),
     },
 };
@@ -92,7 +95,8 @@ const STRING_PATTERN = new RegExp(
         "(?<op>(?:" +
         Object.keys(STRING_OP).map(RegExp.escape).join("|") +
         String.raw`))\s*` +
-        String.raw`'(?<val>.*)'\s*$`,
+        String.raw`'(?<val>.*)'` +
+        String.raw`(?<flag>i?)\s*$`,
     "v",
 );
 
@@ -107,7 +111,8 @@ const REGEX_PATTERN = new RegExp(
         "(?<op>(?:" +
         Object.keys(REGEX_OP).map(RegExp.escape).join("|") +
         String.raw`))\s*` +
-        String.raw`/(?<val>.*)/\s*$`,
+        String.raw`/(?<val>.*)/` +
+        String.raw`(?<flag>[ims]*)\s*$`,
     "v",
 );
 
@@ -133,15 +138,21 @@ const compile = (filter) => {
     }
     let result = STRING_PATTERN.exec(filter);
     if (null !== result) {
-        const { prop, op, val } = result.groups;
-        const prepared = STRING_OP[op].prepare(val);
+        const { prop, op, val, flag } = result.groups;
+        const prepared = STRING_OP[op].prepare(val, flag);
         const test = STRING_OP[op].test;
-        return (item) => test(item[prop], prepared);
+        return (item) =>
+            test(
+                flag.includes("i") && "string" === typeof item[prop]
+                    ? item[prop].toLowerCase()
+                    : item[prop],
+                prepared,
+            );
     }
     result = REGEX_PATTERN.exec(filter);
     if (null !== result) {
-        const { prop, op, val } = result.groups;
-        const prepared = REGEX_OP[op].prepare(val);
+        const { prop, op, val, flag } = result.groups;
+        const prepared = REGEX_OP[op].prepare(val, flag);
         const test = REGEX_OP[op].test;
         return (item) => test(item[prop], prepared);
     }

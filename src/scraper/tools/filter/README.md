@@ -70,7 +70,8 @@ Les filtres sont composés de trois éléments :
       sous le capot) ;
     - `~=` : garder les éléments dont la propriété contient la valeur entourée
       par des caractères blancs ;
-  - expression rationnelle :
+  - [expression rationnelle](https://developer.mozilla.org/Web/JavaScript/Guide/Regular_expressions)
+    :
     - `==` : utiliser la méthode
       [`test()`](https://developer.mozilla.org/Web/JavaScript/Reference/Global_Objects/RegExp/test)
       ;
@@ -84,10 +85,13 @@ Les filtres sont composés de trois éléments :
     [`>=`](https://developer.mozilla.org/Web/JavaScript/Reference/Operators/Greater_than_or_equal)
     ;
 - la valeur comparée :
-  - une chaine de caractères (entourée par des apostrophes) : `'foo'`, `'BAR'`
-  - une expression rationnelle (sans les marqueurs) : `/fo+/`, `/^bar/`,
-    `/Baz|Qux/`
-  - un nombre : `42`, `3.14`
+  - une chaine de caractères (entourée par des apostrophes) : `'foo'`, `'BAR'`,
+    `'baz'i` (`i` pour rendre la comparaison insensible à la casse) ;
+  - une
+    [expression rationnelle](https://developer.mozilla.org/Web/JavaScript/Guide/Regular_expressions)
+    (seuls les marqueurs `i`, `m` et `s` sont autorisés) : `/fo+/`, `/^bar/`,
+    `/Baz|Qux/`, `/quux/i`
+  - un nombre : `42`, `3.14`, `-273.15`
 
 ## Scrapers
 
