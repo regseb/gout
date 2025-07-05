@@ -10,7 +10,7 @@
   },
   "manifest_version": 3,
   "name": "Gout",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "action": {
     "default_icon": {
       "16": "img/icon16.png",
