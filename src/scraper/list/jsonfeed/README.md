@@ -21,6 +21,7 @@ Les options sont dans un objet
 [YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -35,7 +36,7 @@ suivantes :
         L'URL vers un JSON Feed.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo/bar.json"</code>
+        Exemple : <code>https://example.com/foo/bar.json</code>
       </p>
     </td>
   </tr>
@@ -50,7 +51,7 @@ suivantes :
         <a href="../../tools/complements#readme"><em>tools/complements</em></a>.
       </p>
       <p>
-        Exemple : <code>icon: "https://example.com/foo/bar.svg"</code>
+        Exemple : <code>icon: https://example.com/foo/bar.svg</code>
       </p>
     </td>
   </tr>
@@ -68,6 +69,21 @@ suivantes :
       </p>
     </td>
   </tr>
+  <tr>
+    <td><code>transforms</code></td>
+    <td><code>object</code></td>
+    <td>
+      <p>
+        Les transformations qui seront appliquées sur les éléments retournés.
+        Par défaut aucune transformation n'est appliqué. Pour plus de détails,
+        voir le scraper
+        <a href="../../tools/transforms#readme"><em>tools/transforms</em></a>.
+      </p>
+      <p>
+        Exemple : <code>title: "title.replace('podcast', '')"</code>
+      </p>
+    </td>
+  </tr>
 </table>
 
 ## Exemple
@@ -78,14 +94,14 @@ Ce widget affiche les cinq dernières actualités scientifiques du site
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js
     options:
       cron: "*/10 * * * *"
       max: 5
       color: "#2196f3"
     scrapers:
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/jsonfeed/jsonfeed.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/jsonfeed/jsonfeed.js
         options:
-          url: "https://refind.com/science.json"
+          url: https://refind.com/science.json
 </script>
 ```

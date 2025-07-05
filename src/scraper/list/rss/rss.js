@@ -7,6 +7,7 @@
 import chain from "../../../utils/scraper/chain.js";
 import ComplementsScraper from "../../tools/complements/complements.js";
 import FilterScraper from "../../tools/filter/filter.js";
+import TransformsScraper from "../../tools/transforms/transforms.js";
 
 const RSSScraper = class {
     #url;
@@ -27,7 +28,7 @@ const RSSScraper = class {
                 item.querySelector("date")?.textContent ??
                 0,
             desc: item.querySelector("description")?.textContent ?? "",
-            guid: item.querySelector("guid")?.textContent ?? "",
+            guid: item.querySelector("guid")?.textContent,
             img: item
                 .querySelector('enclosure[type^="image/"]')
                 ?.getAttribute("url"),
@@ -41,7 +42,7 @@ const RSSScraper = class {
                     .parseFromString(item.desc, "text/html")
                     .body.textContent.trim(),
                 guid:
-                    0 === item.guid.length
+                    undefined === item.guid
                         ? this.#url + item.title + item.desc
                         : this.#url + item.guid,
                 img: item.img,
@@ -69,9 +70,9 @@ const RSSScraper = class {
                     entry.querySelector("group description")?.textContent ??
                     "",
                 title:
-                    entry.querySelector("title").textContent ??
-                    // Essayer le titre dans "media:group media:title".
-                    entry.querySelector("group title")?.textContent,
+                    // Essayer le titre dans "title" ou "media:group
+                    // media:title".
+                    entry.querySelector("title").textContent,
                 thumbnail:
                     // Essayer la miniature dans "media:thumbnail" ou
                     // "media:group media:thumbnail".
@@ -104,6 +105,8 @@ const RSSScraper = class {
                 return this.#extractRSS(xml, max);
             case "feed":
                 return this.#extractAtom(xml, max);
+            case "parsererror":
+                throw new Error(`XML invalid in ${this.#url}`);
             default:
                 throw new Error(
                     `Unknown format '${xml.documentElement.nodeName}' of ` +
@@ -114,10 +117,17 @@ const RSSScraper = class {
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default chain(FilterScraper, ComplementsScraper, RSSScraper, {
-    dispatch: ({ filter, complements, ...others }) => [
-        { filter },
-        { complements },
-        others,
-    ],
-});
+export default chain(
+    TransformsScraper,
+    FilterScraper,
+    ComplementsScraper,
+    RSSScraper,
+    {
+        dispatch: ({ transforms, filter, complements, ...others }) => [
+            { transforms },
+            { filter },
+            { complements },
+            others,
+        ],
+    },
+);

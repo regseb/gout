@@ -10,6 +10,8 @@ import chain from "../../../utils/scraper/chain.js";
 import ComplementsScraper from "../../tools/complements/complements.js";
 // Importer le scraper pour filtrer les éléments.
 import FilterScraper from "../../tools/filter/filter.js";
+// Importer le scraper pour transformer les valeurs des éléments.
+import TransformsScraper from "../../tools/transforms/transforms.js";
 
 /**
  * Mettre la première lettre d'une chaîne de caractères en majuscule.
@@ -91,20 +93,28 @@ const DaysScraper = class {
     }
 };
 
-// Chainer les scrapers pour ajouter les fonctionnalités de filtrage et de
-// complétion dans DaysScraper.
+// Chainer les scrapers pour ajouter les fonctionnalités de filtrage, de
+// complétion et de transformation dans DaysScraper.
 // eslint-disable-next-line import/no-anonymous-default-export
-export default chain(FilterScraper, ComplementsScraper, DaysScraper, {
-    // Définir comment répartir les options entre les scrapers.
-    dispatch: ({ filter, complements, ...others }) => [
-        // Envoyer la propriété "filter" des options à FilterScraper.
-        { filter },
-        // Envoyer la propriété "complements" des options à ComplementsScraper.
-        { complements },
-        // Envoyer les autres propriétés des options à DaysScraper.
-        others,
-    ],
-});
+export default chain(
+    TransformsScraper,
+    FilterScraper,
+    ComplementsScraper,
+    DaysScraper,
+    {
+        // Définir comment répartir les options entre les scrapers.
+        dispatch: ({ transforms, filter, complements, ...others }) => [
+            // Envoyer la propriété "transforms" des options à TransformsScraper.
+            { transforms },
+            // Envoyer la propriété "filter" des options à FilterScraper.
+            { filter },
+            // Envoyer la propriété "complements" des options à ComplementsScraper.
+            { complements },
+            // Envoyer les autres propriétés des options à DaysScraper.
+            others,
+        ],
+    },
+);
 
 // Grâce à la chaine de scrapers, la configuration du widget est simplifiée. Par
 // exemple, la configuration suivante :
@@ -114,17 +124,21 @@ export default chain(FilterScraper, ComplementsScraper, DaysScraper, {
 //   url: # ...
 //   options: # ...
 //   scrapers:
-//     - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/filter/filter.js"
+//     - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/transforms/transforms.js"
 //       options:
-//         filter: # ...
+//         transforms: # ...
 //       scrapers:
-//         - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/complements/complements.js"
-//           options:
-//             complements: # ...
-//           scrapers:
-//             - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/days/days.js"
-//               options:
-//                 lang: # ...
+//       - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/filter/filter.js"
+//         options:
+//           filter: # ...
+//         scrapers:
+//           - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/complements/complements.js"
+//             options:
+//               complements: # ...
+//             scrapers:
+//               - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/days/days.js"
+//                 options:
+//                   lang: # ...
 // ```
 //
 // peut être simplifiée en :
@@ -136,6 +150,7 @@ export default chain(FilterScraper, ComplementsScraper, DaysScraper, {
 //   scrapers:
 //     - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/days/days.js"
 //       options:
+//         transforms: # ...
 //         filter: # ...
 //         complements: # ...
 //         lang: # ...

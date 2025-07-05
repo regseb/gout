@@ -16,6 +16,7 @@ Les options sont dans un objet
 [YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -30,7 +31,7 @@ suivantes :
         L'URL du serveur qui sera testé.
       </p>
       <p>
-        Exemple : <code>"https://example.com/"</code>
+        Exemple : <code>https://example.com/</code>
       </p>
     </td>
   </tr>
@@ -52,13 +53,12 @@ suivantes :
         <li>autre : gris.</li>
       </ul>
       <p>
-        Exemple : <pre><code>
-1xx: blue
+        Exemple :
+      </p>
+      <pre><code>1xx: blue
 200: green
 2xx: darkgreen
-xxx: gray
-        </code></pre>
-      </p>
+xxx: gray</code></pre>
     </td>
   </tr>
   <tr>
@@ -72,7 +72,7 @@ xxx: gray
         <a href="../../tools/complements#readme"><em>tools/complements</em></a>.
       </p>
       <p>
-        Exemple : <code>target: "_top"</code>
+        Exemple : <code>target: _top</code>
       </p>
     </td>
   </tr>
@@ -90,6 +90,21 @@ xxx: gray
       </p>
     </td>
   </tr>
+  <tr>
+    <td><code>transforms</code></td>
+    <td><code>object</code></td>
+    <td>
+      <p>
+        Les transformations qui seront appliquées sur les éléments retournés.
+        Par défaut aucune transformation n'est appliqué. Pour plus de détails,
+        voir le scraper
+        <a href="../../tools/transforms#readme"><em>tools/transforms</em></a>.
+      </p>
+      <p>
+        Exemple : <code>url: "url.replace(/\/actuator\/health$/, '')"</code>
+      </p>
+    </td>
+  </tr>
 </table>
 
 ## Exemple
@@ -99,12 +114,12 @@ Ce widget teste le site _localhost_ toutes les heures.
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/icon/icon.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/icon/icon.js
     options:
       cron: "@hourly"
     scrapers:
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/icon/ping/ping.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/icon/ping/ping.js
         options:
-          url: "http://localhost"
+          url: http://localhost
 </script>
 ```

@@ -7,6 +7,7 @@
 import chain from "../../../utils/scraper/chain.js";
 import ComplementsScraper from "../../tools/complements/complements.js";
 import FilterScraper from "../../tools/filter/filter.js";
+import TransformsScraper from "../../tools/transforms/transforms.js";
 
 const JSONFeedScraper = class {
     #url;
@@ -34,10 +35,17 @@ const JSONFeedScraper = class {
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default chain(FilterScraper, ComplementsScraper, JSONFeedScraper, {
-    dispatch: ({ filter, complements, ...others }) => [
-        { filter },
-        { complements },
-        others,
-    ],
-});
+export default chain(
+    TransformsScraper,
+    FilterScraper,
+    ComplementsScraper,
+    JSONFeedScraper,
+    {
+        dispatch: ({ transforms, filter, complements, ...others }) => [
+            { transforms },
+            { filter },
+            { complements },
+            others,
+        ],
+    },
+);

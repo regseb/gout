@@ -25,6 +25,7 @@ Les options sont dans un objet
 [YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -55,7 +56,7 @@ suivantes :
         <a href="../../tools/complements#readme"><em>tools/complements</em></a>.
       </p>
       <p>
-        Exemple : <code>icon: "https://example.com/foo/bar.svg"</code>
+        Exemple : <code>icon: https://example.com/foo/bar.svg</code>
       </p>
     </td>
   </tr>
@@ -73,6 +74,21 @@ suivantes :
       </p>
     </td>
   </tr>
+  <tr>
+    <td><code>transforms</code></td>
+    <td><code>object</code></td>
+    <td>
+      <p>
+        Les transformations qui seront appliquées sur les éléments retournés.
+        Par défaut aucune transformation n'est appliqué. Pour plus de détails,
+        voir le scraper
+        <a href="../../tools/transforms#readme"><em>tools/transforms</em></a>.
+      </p>
+      <p>
+        Exemple : <code>title: "title[0].toUpperCase() + title.slice(1)"</code>
+      </p>
+    </td>
+  </tr>
 </table>
 
 ## Exemple
@@ -82,11 +98,11 @@ Ce widget affiche 5 images de l'album ayant l'identifiant `13`.
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/image/image.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/image/image.js
     options:
       max: 5
     scrapers:
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/jsonplaceholder/jsonplaceholder.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/examples/jsonplaceholder/jsonplaceholder.js
         options:
           album: 13
 </script>

@@ -10,6 +10,8 @@ import chain from "../../../utils/scraper/chain.js";
 import ComplementsScraper from "../../tools/complements/complements.js";
 // Importer le scraper pour filtrer les éléments.
 import FilterScraper from "../../tools/filter/filter.js";
+// Importer le scraper pour transformer les valeurs des éléments.
+import TransformsScraper from "../../tools/transforms/transforms.js";
 
 /**
  * Scraper d'exemple qui retourne les photos d'un album de l'API
@@ -77,16 +79,19 @@ const JSONPlaceholderScraper = class {
     }
 };
 
-// Chainer les scrapers pour ajouter les fonctionnalités de filtrage et de
-// complétion dans JSONPlaceholderScraper.
+// Chainer les scrapers pour ajouter les fonctionnalités de filtrage, de
+// complétion et de transformation dans JSONPlaceholderScraper.
 // eslint-disable-next-line import/no-anonymous-default-export
 export default chain(
+    TransformsScraper,
     FilterScraper,
     ComplementsScraper,
     JSONPlaceholderScraper,
     {
         // Définir comment répartir les options entre les scrapers.
-        dispatch: ({ filter, complements, ...others }) => [
+        dispatch: ({ transforms, filter, complements, ...others }) => [
+            // Envoyer la propriété "transforms" des options à TransformsScraper.
+            { transforms },
             // Envoyer la propriété "filter" des options à FilterScraper.
             { filter },
             // Envoyer la propriété "complements" des options à

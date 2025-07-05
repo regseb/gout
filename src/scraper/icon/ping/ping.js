@@ -7,6 +7,7 @@
 import chain from "../../../utils/scraper/chain.js";
 import ComplementsScraper from "../../tools/complements/complements.js";
 import FilterScraper from "../../tools/filter/filter.js";
+import TransformsScraper from "../../tools/transforms/transforms.js";
 
 const DEFAULT_COLORS = {
     // Bleu.
@@ -72,10 +73,17 @@ const PingScraper = class {
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default chain(FilterScraper, ComplementsScraper, PingScraper, {
-    dispatch: ({ filter, complements, url, ...others }) => [
-        { filter },
-        { complements: { desc: url, link: url, ...complements } },
-        { url, ...others },
-    ],
-});
+export default chain(
+    TransformsScraper,
+    FilterScraper,
+    ComplementsScraper,
+    PingScraper,
+    {
+        dispatch: ({ transforms, filter, complements, url, ...others }) => [
+            { transforms },
+            { filter },
+            { complements: { desc: url, link: url, ...complements } },
+            { url, ...others },
+        ],
+    },
+);
