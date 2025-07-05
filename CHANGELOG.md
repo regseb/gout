@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.14.0](https://github.com/regseb/gout/compare/v0.13.0...v0.14.0) (2025-07-05)
+
+### Features
+
+- Publier l'extension pour Firefox Android.
+  ([91185c3](https://github.com/regseb/gout/commit/91185c31f6b0d9bf11fca0137a65963eae4b9f39))
+- **scraper/tools/filter:** Permettre une comparaison insensible à la casse.
+  ([a22d03d](https://github.com/regseb/gout/commit/a22d03d3a88b128e6f69e4da6ef5a132ee8ee9f4))
+- **scraper/tools/transforms:** Ajouter un scraper pour transformer des
+  résultats.
+  ([0b01359](https://github.com/regseb/gout/commit/0b01359ad183a7035b78cb5163b6724b56fe7f76))
+
 ## [0.13.0](https://github.com/regseb/gout/compare/v0.12.1...v0.13.0) (2024-11-09)
 
 ### Features
