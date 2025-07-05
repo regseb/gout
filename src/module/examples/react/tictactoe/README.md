@@ -25,6 +25,6 @@ Ce widget affiche un morpion dévéloppé avec React.
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/examples/react/tictactoe/tictactoe.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/examples/react/tictactoe/tictactoe.js
 </script>
 ```

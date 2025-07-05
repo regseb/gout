@@ -28,6 +28,7 @@ Les options sont dans un objet
 [YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -51,7 +52,7 @@ suivantes :
 
 ### Filtre
 
-Les filtres sont composés de trois éléments :
+Le filtre est composé de trois éléments :
 
 - la propriété récupérée dans un élément des résultats ;
 - le type de comparaison :
@@ -111,15 +112,15 @@ Ce widget affiche les derniers reportages de la chaine YouTube de
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js
     options:
       cron: "*/10 * * * *"
       max: 5
       color: "#757575"
     scrapers:
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js
         options:
-          url: "https://www.youtube.com/feeds/videos.xml?user=arte"
+          url: https://www.youtube.com/feeds/videos.xml?user=arte
           filter: "title $= 'ARTE Reportage'"
 </script>
 ```

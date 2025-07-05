@@ -1,10 +1,10 @@
 textarea {
+    background-color: var(--color);
     background-position: right 8px center;
     background-repeat: no-repeat;
     background-size: auto calc(100% - 16px);
+    border: 1px solid var(--color);
     border-radius: 2px;
-    border-style: solid;
-    border-width: 1px;
     box-sizing: border-box;
     color: white;
     font-family: sans-serif;

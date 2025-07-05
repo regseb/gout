@@ -1,5 +1,6 @@
 div {
     align-items: center;
+    background-color: var(--color);
     display: flex;
     font-family: sans-serif;
     font-size: 12px;
@@ -30,9 +31,17 @@ a {
     white-space: nowrap;
 }
 a:visited,
-div.empty a {
-    color: black;
+li.empty a {
+    color: color-mix(in oklch, white 50%, var(--color) 50%);
 }
 a[href]:hover {
     text-decoration: underline;
+}
+a[href]:visited:hover,
+li.empty a[href]:hover {
+    color: color-mix(in oklch, white 80%, var(--color) 20%);
+}
+
+.empty {
+    font-style: italic;
 }

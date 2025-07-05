@@ -13,6 +13,7 @@ Les options sont dans un objet
 [YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -30,7 +31,7 @@ suivantes :
         utilisée.
       </p>
       <p>
-        Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>
+        Exemples : <code>"#673ab7"</code>, <code>chocolate</code>
       </p>
     </td>
   </tr>
@@ -47,7 +48,7 @@ suivantes :
         affichée.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo/bar.svg"</code>
+        Exemple : <code>https://example.com/foo/bar.svg</code>
       </p>
     </td>
   </tr>
@@ -78,6 +79,6 @@ la liste des flux RSS est affichée en dessous.
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/tools/findrss/findrss.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/tools/findrss/findrss.js
 </script>
 ```

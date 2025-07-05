@@ -13,6 +13,7 @@ Les options sont dans un objet
 [YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -45,7 +46,7 @@ suivantes :
         laissé vide.
       </p>
       <p>
-        Exemple : <code>title: "(aucun élément)"</code>
+        Exemple : <code>title: (aucun élément)</code>
       </p>
     </td>
   </tr>
@@ -66,6 +67,7 @@ une
 contenant un tableau dont chaque élément est un objet ayant les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -168,14 +170,14 @@ Ce widget affiche un bouton qui redirige vers [GitHub](https://github.com/).
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/icon/icon.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/icon/icon.js
     scrapers:
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js
         options:
           extract:
-            - color: "black"
-              link: "https://github.com/"
-              target: "_top"
-              title: "GitHub"
+            - color: black
+              link: https://github.com/
+              target: _top
+              title: GitHub
 </script>
 ```

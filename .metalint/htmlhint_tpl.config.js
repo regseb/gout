@@ -4,6 +4,12 @@
  */
 
 export default {
-    "alt-require": false,
+    // Doctype and Head.
     "doctype-first": false,
+
+    // Attributes.
+    "alt-require": false,
+
+    // Tags.
+    "frame-title-require": false,
 };

@@ -13,6 +13,7 @@ Les options sont dans un objet
 [YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -45,7 +46,7 @@ suivantes :
         laissé vide.
       </p>
       <p>
-        Exemple : <code>title: "(aucun élément)"</code>
+        Exemple : <code>title: (aucun élément)</code>
       </p>
     </td>
   </tr>
@@ -79,6 +80,7 @@ une
 contenant un tableau dont chaque élément est un objet ayant les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -123,11 +125,11 @@ un `iframe`.
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/iframe/iframe.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/iframe/iframe.js
     scrapers:
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js
         options:
           extract:
-            - link: "https://www.youtube-nocookie.com/embed/jfKfPfyJRdk"
+            - link: https://www.youtube-nocookie.com/embed/jfKfPfyJRdk
 </script>
 ```

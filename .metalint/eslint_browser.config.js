@@ -14,9 +14,7 @@ import globals from "globals";
  */
 export default {
     languageOptions: {
-        globals: {
-            ...globals.browser,
-        },
+        globals: globals.browser,
     },
 
     rules: {
@@ -29,7 +27,7 @@ export default {
                 // rationnelles ne sont pas supportées.
                 // https://github.com/import-js/eslint-plugin-import/issues/3087
                 // Ne pas utiliser le drapeau "v", car la RegExp est créée sans
-                // drapeau (dans le eslint-plugin-import).
+                // drapeau (dans eslint-plugin-import).
                 // eslint-disable-next-line require-unicode-regexp
                 ignore: [/^https:\/\/esm\.sh\//.source],
                 caseSensitiveStrict: true,

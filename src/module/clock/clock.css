@@ -1,4 +1,5 @@
 object {
+    background-color: var(--color);
     display: block;
     padding: 8px;
 }

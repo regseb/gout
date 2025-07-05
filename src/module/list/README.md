@@ -14,6 +14,7 @@ Les options sont dans un objet
 [YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -31,7 +32,7 @@ suivantes :
         utilisée.
       </p>
       <p>
-        Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>
+        Exemples : <code>"#673ab7"</code>, <code>chocolate</code>
       </p>
     </td>
   </tr>
@@ -42,7 +43,7 @@ suivantes :
       <p>
         La ou les
         <a href="https://www.npmjs.com/package/cronnor#expression-cron"
-          >expressions<em>cron</em></a
+          >expressions <em>cron</em></a
         > indiquant la fréquence de mise à jour. Sans cette propriété, les
         données ne sont jamais mises à jour.
       </p>
@@ -70,7 +71,7 @@ suivantes :
         laissé vide.
       </p>
       <p>
-        Exemple : <code>title: "(aucun élément)"</code>
+        Exemple : <code>title: (aucun élément)</code>
       </p>
     </td>
   </tr>
@@ -87,7 +88,7 @@ suivantes :
         affichée.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo/bar.svg"</code>
+        Exemple : <code>https://example.com/foo/bar.svg</code>
       </p>
     </td>
   </tr>
@@ -120,6 +121,7 @@ La méthode doit retourner une
 contenant un tableau dont chaque élément est un objet ayant les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -239,14 +241,14 @@ Ce widget affiche les cinq dernières actualités du site
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js
     options:
       cron: "*/10 * * * *"
       max: 5
       color: "#ffc107"
     scrapers:
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js
         options:
-          url: "https://linuxfr.org/news.atom"
+          url: https://linuxfr.org/news.atom
 </script>
 ```

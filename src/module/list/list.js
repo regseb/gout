@@ -63,7 +63,13 @@ export default class ListModule extends HTMLElement {
         img.src = item.icon ?? "";
 
         const a = li.querySelector("a");
-        a.textContent = item.title ?? "";
+        if (undefined === item.title || "" === item.title) {
+            a.textContent = "(sans titre)";
+            a.classList.add("empty");
+        } else {
+            a.textContent = item.title;
+            a.classList.remove("empty");
+        }
         if (undefined === item.link) {
             a.removeAttribute("href");
         } else {
@@ -135,6 +141,8 @@ export default class ListModule extends HTMLElement {
         this.attachShadow({ mode: "open" });
         this.shadowRoot.append(template.content.cloneNode(true));
 
+        this.style.setProperty("--color", this.#options.color ?? "#757575");
+
         const link = document.createElement("link");
         link.rel = "stylesheet";
         link.href = import.meta.resolve("./list.css");
@@ -143,10 +151,9 @@ export default class ListModule extends HTMLElement {
         this.#max = this.#options.max ?? Number.MAX_SAFE_INTEGER;
         this.#empty = this.#options.empty ?? {};
 
-        const ul = this.shadowRoot.querySelector("ul");
-        ul.style.backgroundColor = this.#options.color ?? "#757575";
         if (undefined !== this.#options.icon) {
-            ul.style.backgroundImage = `url("${this.#options.icon}")`;
+            this.shadowRoot.querySelector("ul").style.backgroundImage =
+                `url("${this.#options.icon}")`;
         }
 
         if (undefined !== this.#options.cron) {

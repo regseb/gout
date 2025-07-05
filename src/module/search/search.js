@@ -47,8 +47,8 @@ export default class SearchModule extends HTMLElement {
         const li = event.target.closest("li");
         this.#scraper = this.#scrapers[Number(li.dataset.index)];
 
-        const div = this.shadowRoot.querySelector("div");
-        div.style.backgroundColor = li.dataset.color;
+        this.style.setProperty("--color", li.dataset.color);
+
         this.shadowRoot.querySelector("form img").src =
             li.querySelector("img").src;
         this.shadowRoot.querySelector("input").placeholder =

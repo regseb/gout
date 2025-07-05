@@ -28,6 +28,7 @@ export default class IFrameModule extends HTMLElement {
         } else {
             iframe.src = item.link;
         }
+        iframe.title = item.title ?? "";
         if (empty) {
             iframe.classList.add("empty");
         } else {

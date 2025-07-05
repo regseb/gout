@@ -35,8 +35,9 @@ export default class ClockModule extends HTMLElement {
     }
 
     async #display(item, empty = false) {
+        this.style.setProperty("--color", item.color ?? "#757575");
+
         const object = this.shadowRoot.querySelector("object");
-        object.style.backgroundColor = item.color ?? "#757575";
         if (empty) {
             object.classList.add("empty");
         } else {

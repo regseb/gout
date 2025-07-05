@@ -13,6 +13,7 @@ Les options sont dans un objet
 [YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -50,7 +51,7 @@ suivantes :
         laissé vide.
       </p>
       <p>
-        Exemple : <code>title: "(aucun élément)"</code>
+        Exemple : <code>title: (aucun élément)</code>
       </p>
     </td>
   </tr>
@@ -70,6 +71,7 @@ retourner. La méthode doit retourner une
 contenant un tableau dont chaque élément est un objet ayant les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -185,10 +187,10 @@ Ce widget affiche un lien vers un article au hasard de
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/single/single.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/single/single.js
     options:
       cron: "*/5 * * * *"
     scrapers:
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/scraper/single/articleauhasard/articleauhasard.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/scraper/single/articleauhasard/articleauhasard.js
 </script>
 ```

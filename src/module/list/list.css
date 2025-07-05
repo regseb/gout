@@ -1,4 +1,5 @@
 ul {
+    background-color: var(--color);
     background-position: right 8px center;
     background-repeat: no-repeat;
     background-size: auto calc(100% - 16px);
@@ -13,9 +14,6 @@ ul {
 li {
     align-items: center;
     display: flex;
-}
-li.empty {
-    font-style: italic;
 }
 
 img {
@@ -34,14 +32,22 @@ a {
     overflow: hidden;
     text-decoration: none;
     /* Utiliser une ellipse en attendant que le fondu soit implémenté.
-      https://bugzil.la/1688566 */
+       https://bugzil.la/1688566 */
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 a:visited,
 li.empty a {
-    color: black;
+    color: color-mix(in oklch, white 50%, var(--color) 50%);
 }
 a[href]:hover {
     text-decoration: underline;
+}
+a[href]:visited:hover,
+li.empty a[href]:hover {
+    color: color-mix(in oklch, white 80%, var(--color) 20%);
+}
+
+.empty {
+    font-style: italic;
 }

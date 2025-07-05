@@ -13,6 +13,7 @@ Les options sont dans un objet
 [YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -30,7 +31,7 @@ suivantes :
         utilisée.
       </p>
       <p>
-        Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>
+        Exemples : <code>"#673ab7"</code>, <code>chocolate</code>
       </p>
     </td>
   </tr>
@@ -65,7 +66,7 @@ suivantes :
         laissé vide.
       </p>
       <p>
-        Exemple : <code>title: "(aucun élément)"</code>
+        Exemple : <code>title: (aucun élément)</code>
       </p>
     </td>
   </tr>
@@ -82,7 +83,7 @@ suivantes :
         affichée.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo/bar.svg"</code>
+        Exemple : <code>https://example.com/foo/bar.svg</code>
       </p>
     </td>
   </tr>
@@ -115,6 +116,7 @@ La méthode doit retourner une
 contenant un tableau dont chaque élément est un objet ayant les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -242,14 +244,14 @@ Ce widget affiche les deux derniers épisodes des
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/podcast/podcast.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/podcast/podcast.js
     options:
       cron: "@daily"
       max: 2
-      color: "black"
+      color: black
     scrapers:
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js
         options:
-          url: "https://lescastcodeurs.com/podcast-rss"
+          url: https://lescastcodeurs.com/podcast-rss
 </script>
 ```

@@ -25,16 +25,16 @@ Ce widget affiche une liste avec deux liens allant vers
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js
     options:
       color: "#f0a30a"
     scrapers:
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js
         options:
           extract:
-            - title: "Facebook"
-              link: "https://www.facebook.com/"
-            - title: "Instagram"
-              link: "https://www.instagram.com/"
+            - title: Facebook
+              link: https://www.facebook.com/
+            - title: Instagram
+              link: https://www.instagram.com/
 </script>
 ```

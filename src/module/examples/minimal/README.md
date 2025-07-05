@@ -25,6 +25,6 @@ Ce widget ne fait rien et n'affiche rien.
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/examples/minimal/minimal.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/examples/minimal/minimal.js
 </script>
 ```

@@ -42,8 +42,9 @@ export default class AudioModule extends HTMLElement {
     }
 
     #display(item, empty = false) {
+        this.style.setProperty("--color", item.color ?? "#757575");
+
         const div = this.shadowRoot.querySelector("div");
-        div.style.backgroundColor = item.color ?? "#757575";
         if (empty) {
             div.classList.add("empty");
         } else {

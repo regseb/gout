@@ -25,6 +25,6 @@ Ce widget affiche un _hello world_ développé avec Preact.
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/examples/preact/helloworld/helloworld.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/examples/preact/helloworld/helloworld.js
 </script>
 ```

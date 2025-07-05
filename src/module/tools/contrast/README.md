@@ -6,8 +6,7 @@
 > [_gout-module-tools-contrast_](https://github.com/search?q=_gout-module-tools-contrast_+language%3AMarkdown&type=Code&l=Markdown).
 
 Ce module affiche un champ pour saisir une couleur et il retourne la couleur la
-plus proche ayant un rapport de contraste supérieur à 4,5 avec le noir et le
-blanc (cf.
+plus proche ayant un rapport de contraste supérieur à 4,5 avec le blanc (cf.
 [WebAIM: Contrast Checker](https://webaim.org/resources/contrastchecker/)).
 
 ## Options
@@ -25,6 +24,6 @@ Ce widget affiche le module.
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/tools/conntrast/contrast.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/tools/contrast/contrast.js
 </script>
 ```

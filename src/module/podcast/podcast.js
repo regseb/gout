@@ -185,6 +185,8 @@ export default class PodcastModule extends HTMLElement {
         this.attachShadow({ mode: "open" });
         this.shadowRoot.append(template.content.cloneNode(true));
 
+        this.style.setProperty("--color", this.#options.color ?? "#757575");
+
         const link = document.createElement("link");
         link.rel = "stylesheet";
         link.href = import.meta.resolve("./podcast.css");
@@ -193,10 +195,9 @@ export default class PodcastModule extends HTMLElement {
         this.#max = this.#options.max ?? Number.MAX_SAFE_INTEGER;
         this.#empty = this.#options.empty ?? {};
 
-        const ul = this.shadowRoot.querySelector("ul");
-        ul.style.backgroundColor = this.#options.color ?? "#757575";
         if (undefined !== this.#options.icon) {
-            ul.style.backgroundImage = `url("${this.#options.icon}")`;
+            this.shadowRoot.querySelector("ul").style.backgroundImage =
+                `url("${this.#options.icon}")`;
         }
 
         if (undefined !== this.#options.cron) {

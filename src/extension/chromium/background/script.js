@@ -58,6 +58,9 @@ const updateRule = async (tabIds) => {
                         },
                     ],
                 },
+                // Filtrer sur les onglets, car il n'est pas possible de filtrer
+                // sur les URLs des initiateurs.
+                // https://issues.chromium.org/40640241
                 condition: {
                     tabIds,
                     urlFilter: "|http*",
@@ -128,7 +131,7 @@ const updateWatchedUrls = async () => {
         return;
     }
 
-    // Surveiller quand un onglet arrive sur une URL d'un dashboards.
+    // Surveiller quand un onglet arrive sur une URL d'un dashboard.
     browser.webNavigation.onBeforeNavigate.addListener(addWatchedTabs, {
         url: urls.map((u) => ({ urlEquals: u })),
     });

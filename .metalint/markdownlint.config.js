@@ -41,7 +41,7 @@ export default {
     "list-marker-space": false,
     "blanks-around-fences": false,
     "blanks-around-lists": false,
-    "no-inline-html": false,
+    "no-inline-html": true,
     "no-bare-urls": true,
     "hr-style": false,
     "no-emphasis-as-heading": true,
@@ -81,4 +81,5 @@ export default {
     "table-pipe-style": { style: "leading_and_trailing" },
     "table-column-count": true,
     "blanks-around-tables": false,
+    "descriptive-link-text": true,
 };

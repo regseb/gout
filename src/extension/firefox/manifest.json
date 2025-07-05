@@ -2,7 +2,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "gout@regseb.github.io",
-      "strict_min_version": "132.0"
+      "strict_min_version": "140.0"
     },
     "gecko_android": {
       "strict_min_version": "140.0"
@@ -35,7 +35,7 @@
     "type": "module"
   },
   "homepage_url": "https://github.com/regseb/gout",
-  "minimum_chrome_version": "130",
+  "minimum_chrome_version": "138",
   "permissions": [
     "<all_urls>",
     "activeTab",

@@ -5,8 +5,8 @@
  */
 
 import { html } from "https://esm.sh/htm@3.1.1/react";
-import { createRoot } from "https://esm.sh/react-dom@18.3.1";
-import { useState } from "https://esm.sh/react@18.3.1";
+import { createRoot } from "https://esm.sh/react-dom@19.1.0/client";
+import { useState } from "https://esm.sh/react@19.1.0";
 
 const calculateWinner = (squares) => {
     const lines = [

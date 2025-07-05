@@ -18,6 +18,7 @@ Les options sont dans un objet
 [YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -35,7 +36,7 @@ suivantes :
         utilisée.
       </p>
       <p>
-        Exemples : <code>"#673ab7"</code>, <code>"chocolate"</code>
+        Exemples : <code>"#673ab7"</code>, <code>chocolate</code>
       </p>
     </td>
   </tr>
@@ -52,7 +53,7 @@ suivantes :
         affichée.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo/bar.svg"</code>
+        Exemple : <code>https://example.com/foo/bar.svg</code>
       </p>
     </td>
   </tr>
@@ -65,7 +66,7 @@ suivantes :
         aucune infobulle n'est affichée.
       </p>
       <p>
-        Exemple : <code>"Ce top10 des choses incroyables est incroyable"</code>
+        Exemple : <code>Ce top10 des choses incroyables est incroyable</code>
       </p>
     </td>
   </tr>
@@ -92,7 +93,7 @@ suivantes :
         L'indication affichée dans le bloc-notes quand celui-ci est vide.
       </p>
       <p>
-        Exemple : <code>"La 7e va vous étonner"</code>
+        Exemple : <code>La 7e va vous étonner</code>
       </p>
     </td>
   </tr>
@@ -109,10 +110,10 @@ Ce widget affiche un bloc-notes pour une liste de courses.
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/notepad/notepad.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/notepad/notepad.js
     options:
       color: "#607d8b"
-      desc: "Liste de courses"
-      title: "..."
+      desc: Liste de courses
+      title: ...
 </script>
 ```

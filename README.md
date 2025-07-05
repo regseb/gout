@@ -117,15 +117,15 @@ liens.
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js
     options:
       cron: "0 * * * *"
       max: 5
       color: "#ffc107"
     scrapers:
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js
         options:
-          url: "https://linuxfr.org/news.atom"
+          url: https://linuxfr.org/news.atom
 </script>
 ```
 
@@ -165,7 +165,7 @@ affichée dans un bloc bleu `#2196f3` et actualisée toutes les dix minutes
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js
     options:
       cron: "*/10 * * * *"
       max: 5
@@ -200,12 +200,12 @@ des chaines YouTube [ARTE Cinema](https://www.youtube.com/@artecinemafr) et
     url: # ...
     options: # ...
     scrapers
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js
         options:
-          url: "https://www.youtube.com/feeds/videos.xml?channel_id=UClo03hULFynpoX3w1Jv7fhw"
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"
+          url: https://www.youtube.com/feeds/videos.xml?channel_id=UClo03hULFynpoX3w1Jv7fhw
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js
         options:
-          url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCzaf-8cAEiXfynukcmV5MXw"
+          url: https://www.youtube.com/feeds/videos.xml?channel_id=UCzaf-8cAEiXfynukcmV5MXw
 </script>
 ```
 

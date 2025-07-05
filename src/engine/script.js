@@ -4,8 +4,8 @@
  * @author Sébastien Règne
  */
 
-import JFather from "https://esm.sh/jfather@0.3.0";
-import YAML from "https://esm.sh/yaml@2.4.2";
+import JFather from "https://esm.sh/jfather@0.4.0";
+import YAML from "https://esm.sh/yaml@2.8.0";
 
 const hashCode = function (text) {
     return Math.abs(
@@ -13,6 +13,25 @@ const hashCode = function (text) {
             return (code << 5) - code + character.codePointAt(0);
         }, 0),
     ).toString(36);
+};
+
+/**
+ * Requête la configuration d'un widget, en gérant les formats JSON et YAML.
+ *
+ * @param {string} url L'URL de la configuration.
+ * @returns {Promise<Record<string, Object>>} Une promesse contenant la
+ *                                            configuration du widget.
+ */
+const request = async function (url) {
+    const response = await fetch(url);
+    try {
+        return await response.json();
+    } catch {
+        // Si la configuration n'est pas du JSON, essayer avec du YAML et
+        // retourner son équivalent en JSON.
+        const yaml = await response.text();
+        return YAML.parse(yaml);
+    }
 };
 
 /**
@@ -61,26 +80,20 @@ const liven = async function (script) {
         if ("application/yaml" === script.type) {
             config =
                 "" === script.src
-                    ? await JFather.extend(YAML.parse(script.text))
-                    : await JFather.load(script.src, {
-                          request: async (url) => {
-                              const response = await fetch(url);
-                              const yaml = await response.text();
-                              return YAML.parse(yaml);
-                          },
-                      });
+                    ? await JFather.extend(YAML.parse(script.text), { request })
+                    : await JFather.load(script.src, { request });
         } else {
             config =
                 "" === script.src
-                    ? await JFather.parse(script.text)
-                    : await JFather.load(script.src);
+                    ? await JFather.parse(script.text, { request })
+                    : await JFather.load(script.src, { request });
         }
         const widget = await loadWidget(config);
         widget.classList.add("widget");
         script.after(widget);
     } catch (err) {
         // eslint-disable-next-line no-console
-        console.log(script.src, script.text, err);
+        console.error(script.src, script.text, err);
     }
 };
 

@@ -28,8 +28,8 @@ Steps to reproduce the behavior:
 
 ### Environment
 
-- Gout extension version<!-- e.g. 0.13.0 -->:
-- Browser version<!-- e.g. Chrome 130.0.6723.91, Firefox 132.0 -->:
+- Gout extension version<!-- e.g. 0.14.0 -->:
+- Browser version<!-- e.g. Chrome 138.0.7204.49, Firefox 140.0 -->:
 
 ### Additional context
 

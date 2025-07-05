@@ -7,7 +7,7 @@
 /* eslint-disable max-classes-per-file */
 
 import htm from "https://esm.sh/htm@3.1.1";
-import { Component, h, render } from "https://esm.sh/preact@10.22.0";
+import { Component, h, render } from "https://esm.sh/preact@10.26.9";
 
 // Initialize htm with Preact
 const html = htm.bind(h);

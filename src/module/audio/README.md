@@ -13,6 +13,7 @@ Les options sont dans un objet
 [YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -45,7 +46,7 @@ suivantes :
         laissé vide.
       </p>
       <p>
-        Exemple : <code>title: "(aucun élément)"</code>
+        Exemple : <code>title: (aucun élément)</code>
       </p>
     </td>
   </tr>
@@ -66,6 +67,7 @@ une
 contenant un tableau dont chaque élément est un objet ayant les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -181,14 +183,14 @@ Ce widget affiche un cadre pour écouter la radio [Fip](https://www.fip.fr/).
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/audio/audio.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/audio/audio.js
     scrapers:
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/tools/repeater/repeater.js
         options:
           extract:
-            - audio: "https://direct.radiofrance.fr/live/fip-hifi.aac"
+            - audio: https://direct.radiofrance.fr/live/fip-hifi.aac
               color: "#e2007a"
-              link: "https://www.radiofrance.fr/fip"
-              title: "Fip"
+              link: https://www.radiofrance.fr/fip
+              title: Fip
 </script>
 ```

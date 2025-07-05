@@ -1,4 +1,8 @@
 div {
+    background-color: var(--color);
+    background-position: right 8px center;
+    background-repeat: no-repeat;
+    background-size: auto calc(100% - 16px);
     font-family: sans-serif;
     font-size: 12px;
     line-height: 16px;
@@ -8,7 +12,7 @@ div {
 input {
     background-color: inherit;
     border: none;
-    border-bottom: 1px solid rgba(255 255 255 / 80%);
+    border-bottom: 1px solid rgb(255 255 255 / 80%);
     color: white;
     flex-grow: 1;
     padding: 0;
@@ -69,8 +73,16 @@ a {
 }
 a:visited,
 li.empty a {
-    color: black;
+    color: color-mix(in oklch, white 50%, var(--color) 50%);
 }
 a[href]:hover {
     text-decoration: underline;
+}
+a[href]:visited:hover,
+li.empty a[href]:hover {
+    color: color-mix(in oklch, white 80%, var(--color) 20%);
+}
+
+.empty {
+    font-style: italic;
 }

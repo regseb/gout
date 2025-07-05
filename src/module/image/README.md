@@ -13,6 +13,7 @@ Les options sont dans un objet
 [YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -50,7 +51,7 @@ suivantes :
         laissé vide.
       </p>
       <p>
-        Exemple : <code>title: "(aucun élément)"</code>
+        Exemple : <code>title: (aucun élément)</code>
       </p>
     </td>
   </tr>
@@ -83,6 +84,7 @@ La méthode doit retourner une
 contenant un tableau dont chaque élément est un objet ayant les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -183,11 +185,11 @@ Ce widget affiche les `3` dernières images du site
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/image/image.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/image/image.js
     options:
       cron: "@daily"
       max: 3
     scrapers:
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/scraper/image/commitstrip/commitstrip.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/scraper/image/commitstrip/commitstrip.js
 </script>
 ```

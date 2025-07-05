@@ -17,6 +17,7 @@ Les options sont dans un objet
 [YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -32,7 +33,7 @@ suivantes :
         qui sera remplacée par les termes recherchés.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo.html?q={searchTerms}"</code>
+        Exemple : <code>https://example.com/foo.html?q={searchTerms}</code>
       </p>
     </td>
   </tr>
@@ -47,7 +48,7 @@ suivantes :
         remontée.
       </p>
       <p>
-        Exemple : <code>"https://example.com/foo.html?q={searchTerms}"</code>
+        Exemple : <code>https://example.com/foo.html?q={searchTerms}</code>
       </p>
     </td>
   </tr>
@@ -60,11 +61,10 @@ suivantes :
         <a href="../../../module/search#scrapers"><code>info()</code></a>.
       </p>
       <p>
-        Exemple : <pre><code>
-title: "Google"
-color: "#2196f3"
-        </code></pre>
+        Exemple :
       </p>
+      <pre><code>title: Google
+color: "#2196f3"</code></pre>
     </td>
   </tr>
 </table>
@@ -77,21 +77,21 @@ Ce widget fourni un champ pour faire une recherche avec
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/search/search.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/search/search.js
     scrapers:
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js
         options:
-          url: "https://www.google.com/search?q={searchTerms}"
-          suggestions: "https://www.google.com/complete/search?client=firefox&q={searchTerms}"
+          url: https://www.google.com/search?q={searchTerms}
+          suggestions: https://www.google.com/complete/search?client=firefox&q={searchTerms}
           complements:
-            title: "Google"
+            title: Google
             color: "#2196f3"
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js
         options:
-          url: "https://www.bing.com/search?q={searchTerms}"
-          suggestions: "https://www.bing.com/osjson.aspx?query={searchTerms}"
+          url: https://www.bing.com/search?q={searchTerms}
+          suggestions: https://www.bing.com/osjson.aspx?query={searchTerms}
           complements:
-            title: "Bing"
+            title: Bing
             color: "#ffc107"
 </script>
 ```

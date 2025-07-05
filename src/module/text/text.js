@@ -22,14 +22,15 @@ export default class TextModule extends HTMLElement {
     }
 
     #display(item, empty = false) {
+        this.style.setProperty("--color", item.color ?? "#757575");
+        this.style.setProperty("--align", item.align ?? "left");
+
         const div = this.shadowRoot.querySelector("div");
-        div.style.backgroundColor = item.color ?? "#757575";
         div.textContent = Array.isArray(item.title)
             ? item.title.join("")
             : item.title;
         div.style.backgroundImage =
             undefined === item.icon ? "none" : `url("${item.icon}")`;
-        div.style.textAlign = item.align ?? "left";
         if (empty) {
             div.classList.add("empty");
         } else {

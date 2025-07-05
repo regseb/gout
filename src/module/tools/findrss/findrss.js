@@ -98,10 +98,11 @@ export default class FindRSSModule extends HTMLElement {
         this.#max = this.#options.max ?? Number.MAX_SAFE_INTEGER;
         this.#empty = this.#options.empty ?? { title: "(aucun flux)" };
 
-        const div = this.shadowRoot.querySelector("div");
-        div.style.backgroundColor = this.#options.color ?? "#757575";
+        this.style.setProperty("--color", this.#options.color ?? "#757575");
+
         if (undefined !== this.#options.icon) {
-            div.style.backgroundImage = `url("${this.#options.icon}")`;
+            this.shadowRoot.querySelector("div").style.backgroundImage =
+                `url("${this.#options.icon}")`;
         }
 
         const input = this.shadowRoot.querySelector("input");

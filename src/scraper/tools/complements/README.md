@@ -28,6 +28,7 @@ Les options sont dans un objet
 [YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
 suivantes :
 
+<!-- markdownlint-disable no-inline-html-->
 <table>
   <tr>
     <th>Nom</th>
@@ -43,7 +44,7 @@ suivantes :
         défaut aucune propriété n'est ajoutée.
       </p>
       <p>
-        Exemple : <code>icon: "https://example.com/foo/bar.svg"</code>
+        Exemple : <code>icon: https://example.com/foo/bar.svg</code>
       </p>
     </td>
   </tr>
@@ -60,24 +61,29 @@ du tableau.
 
 ## Exemple
 
-Ce widget affiche les dernières vidéos de la chaine YouTube de
-[Arte](https://www.youtube.com/@arte) en ajoutant le logo de Arte à chaque
-élément. L'option `complements` est passée au scraper
+Ce widget affiche les dernièrs articles des sites [Slate](https://www.slate.fr/)
+et [korii](https://korii.slate.fr/) en ajoutant les logos des icônes à chaque
+élément. L'option `complements` est passée aux scrapers
 [_list/rss_](../../list/rss#readme) car ce scraper utilise _tools/complements_.
 
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js
     options:
       cron: "@hourly"
-      max: 5
-      color: "#e23014"
+      max: 4
+      color: "#b95270"
     scrapers:
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js
         options:
-          url: "https://www.youtube.com/feeds/videos.xml?user=arte"
+          url: https://www.slate.fr/rss.xml
           complements:
-            icon: "https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/widget/arte/arte_wc.svg"
+            icon: https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/widget/slate/slate_fff.svg
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js
+        options:
+          url: https://korii.slate.fr/rss.xml
+          complements:
+            icon: https://cdn.jsdelivr.net/gh/regseb/gout-regseb@0/src/widget/slate/korii_fff.svg
 </script>
 ```

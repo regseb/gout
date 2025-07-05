@@ -113,10 +113,7 @@ for (let r = 0; 255 > r; r += 1) {
         for (let b = 0; 255 > b; b += 1) {
             const rgb = { r, g, b };
             const luminous = calculateLuminous(rgb);
-            if (
-                4.5 <= calculateContrast(luminous, 0) &&
-                4.5 <= calculateContrast(luminous, 1)
-            ) {
+            if (4.5 <= calculateContrast(luminous, 1)) {
                 CONTRASTED_COLORS.push({
                     hex: rgb2hex(rgb),
                     lab: rgb2lab(rgb),
@@ -143,8 +140,8 @@ export default class ContrastModule extends HTMLElement {
             }
         }
 
-        const div = this.shadowRoot.querySelector("div");
-        div.style.backgroundColor = closed.color;
+        this.style.setProperty("--color", closed.color);
+
         const span = this.shadowRoot.querySelector("span");
         span.textContent = closed.color;
     }

@@ -39,14 +39,14 @@ Ce widget fourni un champ pour faire une recherche avec
 ```html
 <script type="application/yaml">
   module:
-    url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/search/search.js"
+    url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/search/search.js
     scrapers:
-      - url: "https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js"
+      - url: https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/search/opensearch/opensearch.js
         options:
-          url: "https://duckduckgo.com/?q={searchTerms}"
-          suggestions: "https://ac.duckduckgo.com/ac/?q={searchTerms}&type=list"
+          url: https://duckduckgo.com/?q={searchTerms}
+          suggestions: https://ac.duckduckgo.com/ac/?q={searchTerms}&type=list
           complements:
-            title: "DuckDuckGo"
+            title: DuckDuckGo
             color: "#f44336"
 </script>
 ```
