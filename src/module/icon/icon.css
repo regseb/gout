@@ -1,12 +1,12 @@
 div {
-    background-color: var(--color);
     display: flex;
+    background-color: var(--color);
 }
 
 a {
     display: flex;
-    opacity: 80%;
     padding: 8px;
+    opacity: 80%;
     transition: 0.2s ease-out;
 }
 a[href]:hover {
@@ -14,7 +14,7 @@ a[href]:hover {
 }
 
 img {
-    width: 100%;
+    inline-size: 100%;
 }
 img[src=""] {
     display: none;

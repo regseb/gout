@@ -1,5 +1,5 @@
 iframe {
-    border: none;
+    inline-size: 100%;
     vertical-align: top;
-    width: 100%;
+    border: none;
 }

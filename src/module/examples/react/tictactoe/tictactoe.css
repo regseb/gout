@@ -3,28 +3,28 @@
 }
 
 .square {
-    background: white;
-    border: 1px solid #999999;
     float: left;
+    inline-size: 34px;
+    block-size: 34px;
+    padding: 0;
+    margin-block-start: -1px;
+    margin-inline-end: -1px;
     font-size: 24px;
     font-weight: bold;
-    height: 34px;
     line-height: 34px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
     text-align: center;
-    width: 34px;
+    background: white;
+    border: 1px solid #999999;
 }
 
 .board-row::after {
     clear: both;
-    content: "";
     display: table;
+    content: "";
 }
 
 .status {
-    margin-bottom: 10px;
+    margin-block-end: 10px;
 }
 
 .game {
@@ -33,5 +33,5 @@
 }
 
 .game-info {
-    margin-left: 20px;
+    margin-inline-start: 20px;
 }

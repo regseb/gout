@@ -4,6 +4,8 @@
  * @author Sébastien Règne
  */
 
+import styleSheet from "./search.css" with { type: "css" };
+
 export default class SearchModule extends HTMLElement {
     #scrapers;
 
@@ -91,12 +93,8 @@ export default class SearchModule extends HTMLElement {
             .querySelector("template");
 
         this.attachShadow({ mode: "open" });
-        this.shadowRoot.append(template.content.cloneNode(true));
-
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = import.meta.resolve("./search.css");
-        this.shadowRoot.append(link);
+        this.shadowRoot.append(document.importNode(template.content, true));
+        this.shadowRoot.adoptedStyleSheets.push(styleSheet);
 
         this.shadowRoot
             .querySelector("form")

@@ -5,6 +5,7 @@
  */
 
 import Cron from "https://esm.sh/cronnor@2";
+import styleSheet from "./single.css" with { type: "css" };
 
 export default class SingleModule extends HTMLElement {
     #options;
@@ -25,11 +26,7 @@ export default class SingleModule extends HTMLElement {
         this.style.setProperty("--color", item.color ?? "#757575");
 
         const div = this.shadowRoot.querySelector("div");
-        if (empty) {
-            div.classList.add("empty");
-        } else {
-            div.classList.remove("empty");
-        }
+        div.classList.toggle("empty", empty);
 
         const img = this.shadowRoot.querySelector("img");
         img.src = item.icon ?? "";
@@ -84,12 +81,8 @@ export default class SingleModule extends HTMLElement {
             .querySelector("template");
 
         this.attachShadow({ mode: "open" });
-        this.shadowRoot.append(template.content.cloneNode(true));
-
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = import.meta.resolve("./single.css");
-        this.shadowRoot.append(link);
+        this.shadowRoot.append(document.importNode(template.content, true));
+        this.shadowRoot.adoptedStyleSheets.push(styleSheet);
 
         this.#empty = this.#options.empty ?? {};
 

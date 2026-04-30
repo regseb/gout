@@ -5,6 +5,7 @@
  */
 
 import Cron from "https://esm.sh/cronnor@2";
+import styleSheet from "./clock.css" with { type: "css" };
 
 const animate = function (time, center) {
     const element = document.createElementNS(
@@ -38,11 +39,7 @@ export default class ClockModule extends HTMLElement {
         this.style.setProperty("--color", item.color ?? "#757575");
 
         const object = this.shadowRoot.querySelector("object");
-        if (empty) {
-            object.classList.add("empty");
-        } else {
-            object.classList.remove("empty");
-        }
+        object.classList.toggle("empty", empty);
 
         const response = await fetch(
             item.icon ?? import.meta.resolve("./img/default.svg"),
@@ -122,12 +119,8 @@ export default class ClockModule extends HTMLElement {
             .querySelector("template");
 
         this.attachShadow({ mode: "open" });
-        this.shadowRoot.append(template.content.cloneNode(true));
-
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = import.meta.resolve("./clock.css");
-        this.shadowRoot.append(link);
+        this.shadowRoot.append(document.importNode(template.content, true));
+        this.shadowRoot.adoptedStyleSheets.push(styleSheet);
 
         this.#empty = this.#options.empty ?? {};
 

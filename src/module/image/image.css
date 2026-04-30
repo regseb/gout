@@ -2,16 +2,16 @@ div {
     position: relative;
 }
 span {
-    background-color: black;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 50% 50%;
-    cursor: pointer;
-    height: 32px;
-    opacity: 0%;
     position: absolute;
-    top: calc(50% - 16px);
-    width: 32px;
+    inset-block-start: calc(50% - 16px);
+    inline-size: 32px;
+    block-size: 32px;
+    cursor: pointer;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50% 50%;
+    opacity: 0%;
 }
 span.not-allowed {
     cursor: not-allowed;
@@ -23,17 +23,17 @@ span:hover {
     opacity: 100%;
 }
 span:first-of-type {
+    inset-inline-start: 0;
     background-image: url("img/left.svg");
-    left: 0;
 }
 span:last-of-type {
+    inset-inline-end: 0;
     background-image: url("img/right.svg");
-    right: 0;
 }
 
 ul {
+    padding-inline-start: 0;
     margin: 0;
-    padding-left: 0;
 }
 li {
     display: none;
@@ -43,5 +43,5 @@ li.active {
 }
 img {
     display: block;
-    width: 100%;
+    inline-size: 100%;
 }

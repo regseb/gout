@@ -5,6 +5,7 @@
  */
 
 import Cron from "https://esm.sh/cronnor@2";
+import styleSheet from "./image.css" with { type: "css" };
 
 const hashCode = function (item) {
     return Math.abs(
@@ -98,11 +99,7 @@ export default class ImageModule extends HTMLElement {
 
         li.dataset.guid = guid;
         li.dataset.date = item.date?.toString() ?? "0";
-        if (empty) {
-            li.classList.add("empty");
-        } else {
-            li.classList.remove("empty");
-        }
+        li.classList.toggle("empty", empty);
 
         const a = li.querySelector("a");
         if (undefined === item.link) {
@@ -180,12 +177,8 @@ export default class ImageModule extends HTMLElement {
             .querySelector("template");
 
         this.attachShadow({ mode: "open" });
-        this.shadowRoot.append(template.content.cloneNode(true));
-
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = import.meta.resolve("./image.css");
-        this.shadowRoot.append(link);
+        this.shadowRoot.append(document.importNode(template.content, true));
+        this.shadowRoot.adoptedStyleSheets.push(styleSheet);
 
         this.#max = this.#options.max ?? Number.MAX_SAFE_INTEGER;
         this.#empty = this.#options.empty ?? {};

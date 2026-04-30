@@ -5,6 +5,8 @@
  * @author Sébastien Règne
  */
 
+import styleSheet from "./contrast.css" with { type: "css" };
+
 /**
  * Convertit une couleur du format RGB vers de l'hexadécimal (avec le préfixe
  * `"#"`).
@@ -154,12 +156,8 @@ export default class ContrastModule extends HTMLElement {
             .querySelector("template");
 
         this.attachShadow({ mode: "open" });
-        this.shadowRoot.append(template.content.cloneNode(true));
-
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = import.meta.resolve("./contrast.css");
-        this.shadowRoot.append(link);
+        this.shadowRoot.append(document.importNode(template.content, true));
+        this.shadowRoot.adoptedStyleSheets.push(styleSheet);
 
         const input = this.shadowRoot.querySelector("input");
         input.addEventListener("input", this.#calculate.bind(this));

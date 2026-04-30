@@ -20,10 +20,10 @@
 }
 
 body {
-    background-color: var(--background-color);
-    color: var(--color);
     font-family: sans-serif;
     font-size: 14px;
+    color: var(--color);
+    background-color: var(--background-color);
 }
 
 a,
@@ -35,8 +35,8 @@ a:hover {
 }
 
 header {
-    border-bottom: 1px solid var(--line-color);
     text-align: center;
+    border-block-end: 1px solid var(--line-color);
 }
 h1 {
     font-size: 14px;
@@ -44,8 +44,8 @@ h1 {
 
 main {
     display: none;
+    inline-size: 340px;
     margin: 0 8px;
-    width: 340px;
 }
 main.visible {
     display: block;
@@ -58,17 +58,17 @@ form {
 }
 
 label.switch {
-    align-items: center;
-    background-color: var(--inactive-color);
-    border-radius: 64px;
-    color: var(--color);
+    position: relative;
     display: flex;
+    align-items: center;
+    inline-size: 164px;
+    block-size: 64px;
     font-size: 22px;
     font-weight: 600;
-    height: 64px;
-    position: relative;
+    color: var(--color);
+    background-color: var(--inactive-color);
+    border-radius: 64px;
     transition: 0.4s;
-    width: 164px;
 }
 
 label.switch input {
@@ -76,20 +76,20 @@ label.switch input {
 }
 
 label.switch::before {
+    position: absolute;
+    inset-block-end: 8px;
+    inset-inline-start: 8px;
+    inline-size: 48px;
+    block-size: 48px;
+    content: "";
     background: url("./img/checkmark.svg") center / 50% no-repeat var(--color);
     border-radius: 50%;
-    bottom: 8px;
-    content: "";
-    height: 48px;
-    left: 8px;
-    position: absolute;
     transition: 0.4s;
-    width: 48px;
 }
 
 label.switch:has(input:checked) {
-    background-color: var(--accent-color);
     color: var(--background-color);
+    background-color: var(--accent-color);
 }
 label.switch:has(input:hover) {
     background-color: var(--inactive-color-hover);
@@ -103,11 +103,11 @@ label.switch:has(input:checked)::before {
 }
 
 label.switch input ~ span {
-    box-sizing: border-box;
-    padding: 0 25px;
     position: absolute;
+    box-sizing: border-box;
+    inline-size: 100%;
+    padding: 0 25px;
     transition: 0.4s;
-    width: 100%;
 }
 label.switch input ~ span:first-of-type {
     text-align: right;

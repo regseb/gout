@@ -5,6 +5,8 @@
  */
 
 const hashCode = function (item) {
+import styleSheet from "./notepad.css" with { type: "css" };
+
     return Math.abs(
         Array.from(item.guid ?? JSON.stringify(item)).reduce(
             (code, character) => {
@@ -46,21 +48,20 @@ export default class NotepadModule extends HTMLElement {
             .querySelector("template");
 
         this.attachShadow({ mode: "open" });
-        this.shadowRoot.append(template.content.cloneNode(true));
+        this.shadowRoot.append(document.importNode(template.content, true));
+        this.shadowRoot.adoptedStyleSheets.push(styleSheet);
 
         this.style.setProperty("--color", this.#options.color ?? "#757575");
-
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = import.meta.resolve("./notepad.css");
-        this.shadowRoot.append(link);
+        this.style.setProperty(
+            "--icon",
+            undefined === this.#options.icon
+                ? "none"
+                : `url("${new URL(this.#options.icon, location.href)}")`,
+        );
 
         this.#guid = hashCode(this.#options);
 
         const textarea = this.shadowRoot.querySelector("textarea");
-        if (undefined !== this.#options.icon) {
-            textarea.style.backgroundImage = `url("${this.#options.icon}")`;
-        }
         textarea.value = localStorage.getItem(import.meta.url + this.#guid);
         textarea.title = this.#options.desc ?? "";
         textarea.placeholder = this.#options.title ?? "";

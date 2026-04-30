@@ -1,75 +1,73 @@
 div {
-    background-color: var(--color);
-    background-position: right 8px center;
-    background-repeat: no-repeat;
-    background-size: auto calc(100% - 16px);
+    padding: 8px;
     font-family: sans-serif;
     font-size: 12px;
     line-height: 16px;
-    padding: 8px;
+    background: var(--color) var(--icon) no-repeat right 8px center / auto
+        calc(100% - 16px);
 }
 
 input {
+    flex-grow: 1;
+    inline-size: 100%;
+    padding: 0;
+    color: white;
     background-color: inherit;
     border: none;
-    border-bottom: 1px solid rgb(255 255 255 / 80%);
-    color: white;
-    flex-grow: 1;
-    padding: 0;
+    border-block-end: 1px solid rgb(255 255 255 / 80%);
     transition: 0.2s ease-out;
-    width: 100%;
 }
 input::placeholder {
     opacity: 80%;
     transition: 0.2s ease-out;
 }
 input:focus {
-    border-bottom-color: white;
     outline: none;
+    border-block-end-color: white;
 }
 input:focus::placeholder {
     opacity: 20%;
 }
 
 ul {
-    background-position: right 8px center;
-    background-repeat: no-repeat;
-    background-size: auto calc(100% - 16px);
+    padding: 8px 0 0;
+    margin: 0;
     font-family: sans-serif;
     font-size: 12px;
     line-height: 16px;
     list-style-type: none;
-    margin: 0;
-    padding: 8px 0 0;
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: auto calc(100% - 16px);
 }
 
 li {
-    align-items: center;
     display: flex;
+    align-items: center;
 }
 li.empty {
     font-style: italic;
 }
 
 img {
-    height: 12px;
-    margin-right: 4px;
+    inline-size: 12px;
+    block-size: 12px;
+    margin-inline-end: 4px;
     opacity: 80%;
-    width: 12px;
 }
 img[src=""] {
     display: none;
 }
 
 a {
-    color: white;
     flex-grow: 1;
     overflow: hidden;
-    text-decoration: none;
     /* Utiliser une ellipse en attendant que le fondu soit implémenté.
       https://bugzil.la/1688566 */
     text-overflow: ellipsis;
+    color: white;
     white-space: nowrap;
+    text-decoration: none;
 }
 a:visited,
 li.empty a {

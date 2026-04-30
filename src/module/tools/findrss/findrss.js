@@ -5,6 +5,8 @@
  */
 
 const extract = async function (url) {
+import styleSheet from "./findrss.css" with { type: "css" };
+
     const response = await fetch(url);
     const text = await response.text();
     const doc = new DOMParser().parseFromString(text, "text/html");
@@ -42,11 +44,7 @@ export default class FindRSSModule extends HTMLElement {
             .content.querySelector("li")
             .cloneNode(true);
 
-        if (empty) {
-            li.classList.add("empty");
-        } else {
-            li.classList.remove("empty");
-        }
+        li.classList.toggle("empty", empty);
 
         const img = li.querySelector("img");
         img.src = item.icon ?? "";
@@ -88,22 +86,19 @@ export default class FindRSSModule extends HTMLElement {
             .querySelector("template");
 
         this.attachShadow({ mode: "open" });
-        this.shadowRoot.append(template.content.cloneNode(true));
-
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = import.meta.resolve("./findrss.css");
-        this.shadowRoot.append(link);
+        this.shadowRoot.append(document.importNode(template.content, true));
+        this.shadowRoot.adoptedStyleSheets.push(styleSheet);
 
         this.#max = this.#options.max ?? Number.MAX_SAFE_INTEGER;
         this.#empty = this.#options.empty ?? { title: "(aucun flux)" };
 
         this.style.setProperty("--color", this.#options.color ?? "#757575");
-
-        if (undefined !== this.#options.icon) {
-            this.shadowRoot.querySelector("div").style.backgroundImage =
-                `url("${this.#options.icon}")`;
-        }
+        this.style.setProperty(
+            "--icon",
+            undefined === this.#options.icon
+                ? "none"
+                : `url("${new URL(this.#options.icon, location.href)}")`,
+        );
 
         const input = this.shadowRoot.querySelector("input");
         input.addEventListener("input", this.#update.bind(this));

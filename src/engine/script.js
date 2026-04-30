@@ -6,6 +6,7 @@
 
 import JFather from "https://esm.sh/jfather@0.4.0";
 import YAML from "https://esm.sh/yaml@2.8.0";
+import styleSheet from "./style.css" with { type: "css" };
 
 const hashCode = function (text) {
     return Math.abs(
@@ -98,10 +99,7 @@ const liven = async function (script) {
 };
 
 // Ajouter la feuille de style.
-const link = document.createElement("link");
-link.rel = "stylesheet";
-link.href = import.meta.resolve("./style.css");
-document.head.append(link);
+document.adoptedStyleSheets.push(styleSheet);
 
 // Activer les widgets.
 Array.from(

@@ -1,9 +1,9 @@
 object {
-    background-color: var(--color);
     display: block;
     padding: 8px;
+    background-color: var(--color);
 }
 
 svg {
-    width: 100%;
+    inline-size: 100%;
 }

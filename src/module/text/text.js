@@ -5,6 +5,7 @@
  */
 
 import Cron from "https://esm.sh/cronnor@2";
+import styleSheet from "./text.css" with { type: "css" };
 
 export default class TextModule extends HTMLElement {
     #options;
@@ -31,11 +32,7 @@ export default class TextModule extends HTMLElement {
             : item.title;
         div.style.backgroundImage =
             undefined === item.icon ? "none" : `url("${item.icon}")`;
-        if (empty) {
-            div.classList.add("empty");
-        } else {
-            div.classList.remove("empty");
-        }
+        div.classList.toggle("empty", empty);
         div.title = item.desc ?? "";
     }
 
@@ -78,12 +75,8 @@ export default class TextModule extends HTMLElement {
             .querySelector("template");
 
         this.attachShadow({ mode: "open" });
-        this.shadowRoot.append(template.content.cloneNode(true));
-
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = import.meta.resolve("./text.css");
-        this.shadowRoot.append(link);
+        this.shadowRoot.append(document.importNode(template.content, true));
+        this.shadowRoot.adoptedStyleSheets.push(styleSheet);
 
         this.#empty = this.#options.empty ?? {};
 

@@ -1,12 +1,12 @@
 div {
-    background-color: var(--color);
     position: relative;
+    background-color: var(--color);
 }
 
 a {
     display: flex;
-    opacity: 80%;
     padding: 8px;
+    opacity: 80%;
     transition: 0.2s ease-out;
 }
 a[href]:hover {
@@ -14,40 +14,40 @@ a[href]:hover {
 }
 
 img {
-    width: 100%;
+    inline-size: 100%;
 }
 img[src=""] {
     display: none;
 }
 
 input {
-    background-color: rgb(0 0 0 / 50%);
-    bottom: 0;
-    cursor: pointer;
-    height: 24px;
-    margin: 0;
-    opacity: 0%;
-    padding: 0;
     position: absolute;
-    transition: 0.2s ease-out;
-    width: 100%;
+    inset-block-end: 0;
     z-index: 1;
+    inline-size: 100%;
+    block-size: 24px;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    background-color: rgb(0 0 0 / 50%);
+    opacity: 0%;
+    transition: 0.2s ease-out;
 }
 input::-moz-range-track {
+    block-size: 2px;
     background-color: black;
     border-radius: 1px;
-    height: 2px;
 }
 input::-moz-range-progress {
+    block-size: 2px;
     background-color: white;
     border-radius: 1px;
-    height: 2px;
 }
 input::-moz-range-thumb {
+    inline-size: 12px;
+    block-size: 12px;
     background-color: white;
     border: 0;
-    height: 12px;
-    width: 12px;
 }
 div:hover input,
 input.active {

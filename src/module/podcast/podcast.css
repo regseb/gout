@@ -1,45 +1,43 @@
 ul {
-    background-color: var(--color);
-    background-position: right 8px center;
-    background-repeat: no-repeat;
-    background-size: auto calc(100% - 16px);
+    padding: 8px;
+    margin: 0;
     font-family: sans-serif;
     font-size: 12px;
     line-height: 16px;
     list-style-type: none;
-    margin: 0;
-    padding: 8px;
+    background: var(--color) var(--icon) no-repeat right 8px center / auto
+        calc(100% - 16px);
 }
 
 li {
-    align-items: center;
     display: flex;
+    align-items: center;
 }
 li.empty {
     font-style: italic;
 }
 
 img {
+    inline-size: 12px;
+    block-size: 12px;
+    margin-inline-end: 4px;
     cursor: pointer;
-    height: 12px;
-    margin-right: 4px;
     opacity: 80%;
     transition: 0.2s ease-out;
-    width: 12px;
 }
 img:hover {
     opacity: 100%;
 }
 
 a {
-    color: white;
     flex-grow: 1;
     overflow: hidden;
-    text-decoration: none;
     /* Utiliser une ellipse en attendant que le fondu soit implémenté.
       https://bugzil.la/1688566 */
     text-overflow: ellipsis;
+    color: white;
     white-space: nowrap;
+    text-decoration: none;
 }
 a:visited,
 li.empty a {
@@ -54,27 +52,27 @@ li.empty a[href]:hover {
 }
 
 input {
-    background-color: transparent;
-    cursor: pointer;
     display: none;
-    height: 12px;
-    width: 100%;
+    inline-size: 100%;
+    block-size: 12px;
+    cursor: pointer;
+    background-color: transparent;
 }
 input::-moz-range-track {
+    block-size: 2px;
     background-color: black;
     border-radius: 1px;
-    height: 2px;
 }
 input::-moz-range-progress {
+    block-size: 2px;
     background-color: white;
     border-radius: 1px;
-    height: 2px;
 }
 input::-moz-range-thumb {
+    inline-size: 12px;
+    block-size: 12px;
     background-color: white;
     border: 0;
-    height: 12px;
-    width: 12px;
 }
 
 .empty {

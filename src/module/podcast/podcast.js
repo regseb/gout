@@ -5,6 +5,7 @@
  */
 
 import Cron from "https://esm.sh/cronnor@2";
+import styleSheet from "./podcast.css" with { type: "css" };
 
 const hashCode = function (item) {
     return Math.abs(
@@ -93,11 +94,7 @@ export default class PodcastModule extends HTMLElement {
 
         li.dataset.guid = guid;
         li.dataset.date = item.date?.toString() ?? "0";
-        if (empty) {
-            li.classList.add("empty");
-        } else {
-            li.classList.remove("empty");
-        }
+        li.classList.toggle("empty", empty);
 
         const img = li.querySelector("img");
         img.src = item.icon ?? import.meta.resolve("./img/play.svg");
@@ -183,22 +180,19 @@ export default class PodcastModule extends HTMLElement {
             .querySelector("template");
 
         this.attachShadow({ mode: "open" });
-        this.shadowRoot.append(template.content.cloneNode(true));
+        this.shadowRoot.append(document.importNode(template.content, true));
+        this.shadowRoot.adoptedStyleSheets.push(styleSheet);
 
         this.style.setProperty("--color", this.#options.color ?? "#757575");
-
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = import.meta.resolve("./podcast.css");
-        this.shadowRoot.append(link);
+        this.style.setProperty(
+            "--icon",
+            undefined === this.#options.icon
+                ? "none"
+                : `url("${new URL(this.#options.icon, location.href)}")`,
+        );
 
         this.#max = this.#options.max ?? Number.MAX_SAFE_INTEGER;
         this.#empty = this.#options.empty ?? {};
-
-        if (undefined !== this.#options.icon) {
-            this.shadowRoot.querySelector("ul").style.backgroundImage =
-                `url("${this.#options.icon}")`;
-        }
 
         if (undefined !== this.#options.cron) {
             this.#cron = new Cron(this.#options.cron, this.#update.bind(this));

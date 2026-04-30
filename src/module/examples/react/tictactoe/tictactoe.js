@@ -7,6 +7,7 @@
 import { html } from "https://esm.sh/htm@3.1.1/react";
 import { createRoot } from "https://esm.sh/react-dom@19.1.0/client";
 import { useState } from "https://esm.sh/react@19.1.0";
+import styleSheet from "./tictactoe.css" with { type: "css" };
 
 const calculateWinner = (squares) => {
     const lines = [
@@ -159,11 +160,7 @@ const Game = () => {
 export default class TicTacToeModule extends HTMLElement {
     connectedCallback() {
         this.attachShadow({ mode: "open" });
-
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = import.meta.resolve("./tictactoe.css");
-        this.shadowRoot.append(link);
+        this.shadowRoot.adoptedStyleSheets.push(styleSheet);
 
         createRoot(this.shadowRoot).render(html`<${Game} />`);
     }
