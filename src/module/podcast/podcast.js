@@ -7,7 +7,7 @@
 import Cron from "https://esm.sh/cronnor@2";
 import styleSheet from "./podcast.css" with { type: "css" };
 
-const hashCode = function (item) {
+const hashCode = (item) => {
     return Math.abs(
         Array.from(item.guid ?? JSON.stringify(item)).reduce(
             (code, character) => {
@@ -18,7 +18,7 @@ const hashCode = function (item) {
     ).toString(36);
 };
 
-const playPause = function (event) {
+const playPause = (event) => {
     const li = event.target.closest("li");
     const audio = li.querySelector("audio");
     if (audio.paused) {
@@ -28,7 +28,7 @@ const playPause = function (event) {
     }
 };
 
-const change = function (event) {
+const change = (event) => {
     const li = event.target.closest("li");
     const img = li.querySelector("img");
     const a = li.querySelector("a");
@@ -46,13 +46,13 @@ const change = function (event) {
     }
 };
 
-const elapse = function (event) {
+const elapse = (event) => {
     const li = event.target.closest("li");
     const audio = li.querySelector("audio");
     li.querySelector("input").valueAsNumber = audio.currentTime;
 };
 
-const move = function (event) {
+const move = (event) => {
     const li = event.target.closest("li");
     const audio = li.querySelector("audio");
     audio.currentTime = li.querySelector("input").valueAsNumber;
@@ -86,7 +86,7 @@ export default class PodcastModule extends HTMLElement {
         const ul = this.shadowRoot.querySelector("ul");
         const guid = hashCode(item);
         const li =
-            ul.querySelector(`li[data-guid="${guid}"]`) ??
+            ul.querySelector(`li[data-guid="${CSS.escape(guid)}"]`) ??
             this.shadowRoot
                 .querySelector("template")
                 .content.querySelector("li")
@@ -151,7 +151,7 @@ export default class PodcastModule extends HTMLElement {
         );
         const items = results
             .flat()
-            .sort((i1, i2) => (i2.date ?? 0) - (i1.date ?? 0))
+            .toSorted((i1, i2) => (i2.date ?? 0) - (i1.date ?? 0))
             .slice(0, this.#max);
 
         if (0 === items.length) {

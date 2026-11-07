@@ -7,14 +7,14 @@
 import Cron from "https://esm.sh/cronnor@2";
 import styleSheet from "./clock.css" with { type: "css" };
 
-const animate = function (time, center) {
+const animate = (time, center) => {
     const element = document.createElementNS(
         "http://www.w3.org/2000/svg",
         "animateTransform",
     );
     element.setAttribute("attributeName", "transform");
     element.setAttribute("type", "rotate");
-    element.setAttribute("dur", time + "s");
+    element.setAttribute("dur", `${time}s`);
     element.setAttribute("values", center);
     element.setAttribute("repeatCount", "indefinite");
     return element;
@@ -57,28 +57,33 @@ export default class ClockModule extends HTMLElement {
         svg.querySelector("#minute").append(animate(3600, center));
         svg.querySelector("#hour").append(animate(43_200, center));
 
-        const date = new Date(item.date ?? Date.now());
-        const seconds = date.getSeconds();
+        const date =
+            undefined === item.date
+                ? Temporal.Now.zonedDateTimeISO()
+                : Temporal.Instant.fromEpochMilliseconds(
+                      item.date,
+                  ).toZonedDateTimeISO(Temporal.Now.timeZoneId());
+        const second = date.second;
         for (const child of svg.querySelector("#second").children) {
             child.setAttribute(
                 "transform",
-                `rotate(${seconds * 6}, ${cx}, ${cy})`,
+                `rotate(${second * 6}, ${cx}, ${cy})`,
             );
         }
 
-        const minutes = date.getMinutes() + seconds / 60;
+        const minute = date.minute + date.second / 60;
         for (const child of svg.querySelector("#minute").children) {
             child.setAttribute(
                 "transform",
-                `rotate(${minutes * 6}, ${cx}, ${cy})`,
+                `rotate(${minute * 6}, ${cx}, ${cy})`,
             );
         }
 
-        const hours = date.getHours() + minutes / 60;
+        const hour = date.hour + minute / 60;
         for (const child of svg.querySelector("#hour").children) {
             child.setAttribute(
                 "transform",
-                `rotate(${hours * 30}, ${cx}, ${cy})`,
+                `rotate(${hour * 30}, ${cx}, ${cy})`,
             );
         }
     }

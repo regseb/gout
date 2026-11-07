@@ -4,9 +4,9 @@
  * @author Sébastien Règne
  */
 
-const extract = async function (url) {
 import styleSheet from "./findrss.css" with { type: "css" };
 
+const extract = async (url) => {
     const response = await fetch(url);
     const text = await response.text();
     const doc = new DOMParser().parseFromString(text, "text/html");

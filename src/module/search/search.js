@@ -26,13 +26,13 @@ export default class SearchModule extends HTMLElement {
         const target = info.target ?? "_blank";
         if ("_blank" === target) {
             // Ouvrir le résultat de la recherche dans un nouvel onglet.
-            window.open(url);
+            open(url);
             input.value = "";
             input.blur();
 
             this.shadowRoot.querySelector("datalist").replaceChildren();
         } else {
-            globalThis.location.assign(url);
+            location.assign(url);
         }
     }
 

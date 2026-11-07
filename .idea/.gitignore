@@ -1,0 +1,12 @@
+# https://intellij-support.jetbrains.com/hc/articles/206544839
+/*
+
+!/dictionaries/
+!/runConfigurations/
+!/stylesheetLinters/
+!/.gitignore
+!/gout.iml
+!/icon.svg
+!/jsonSchemas.xml
+!/modules.xml
+!/vcs.xml

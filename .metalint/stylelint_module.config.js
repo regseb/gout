@@ -1,5 +1,6 @@
 /**
  * @license MIT
+ * @see https://stylelint.io/user-guide/rules
  * @author Sébastien Règne
  */
 

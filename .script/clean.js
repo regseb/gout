@@ -12,13 +12,13 @@ import fs from "node:fs/promises";
  */
 const PATHS = [
     // Supprimer les répertoires et les fichiers générés.
-    ".stryker/",
+    ".tmp/",
     "build/",
     "jsdocs/",
     "node_modules/",
     "stryker.log",
     // Supprimer les autres lockfiles.
-    "bun.lockb",
+    "bun.lock",
     "pnpm-lock.yaml",
     "yarn.lock",
 ];

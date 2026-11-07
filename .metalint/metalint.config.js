@@ -1,5 +1,6 @@
 /**
  * @license MIT
+ * @see https://github.com/regseb/metalint
  * @author Sébastien Règne
  */
 
@@ -15,7 +16,8 @@ export default {
         "**",
         // Ignorer les répertoires et les fichiers générés.
         "!/.git/**",
-        "!/.stryker/**",
+        "!/.tmp/**",
+        "!/build/**",
         "!/jsdocs/**",
         "!/node_modules/**",
         "!/src/extension/polyfill/lib/**",
@@ -28,18 +30,27 @@ export default {
         // Ignorer les fichiers temporaires de Vim.
         "!*.swp",
         // Ignorer les autres lockfiles.
-        "!/bun.lockb",
+        "!/bun.lock",
         "!/pnpm-lock.yaml",
         "!/yarn.lock",
     ],
     checkers: [
+        {
+            patterns: "*",
+            linters: "secretlint",
+        },
         {
             patterns: "/src/extension/*/",
             linters: "addons-linter",
         },
         {
             patterns: "*.js",
-            linters: ["prettier", "prettier_javascript", "eslint"],
+            linters: [
+                "prettier",
+                "prettier_javascript",
+                "eslint",
+                "biomejs__js-api",
+            ],
             overrides: [
                 {
                     patterns: "/src/extension/**",
@@ -98,10 +109,20 @@ export default {
         {
             patterns: "*.md",
             linters: ["prettier", "markdownlint"],
+            overrides: {
+                patterns: "/.github/ISSUE_TEMPLATE/**",
+                linters: {
+                    wrapper: "markdownlint",
+                    options: {
+                        // eslint-disable-next-line camelcase
+                        "heading-increment": { front_matter_title: "" },
+                    },
+                },
+            },
         },
         {
             patterns: "*.json",
-            linters: ["prettier", "prantlf__jsonlint"],
+            linters: ["prettier", "prantlf__jsonlint", "biomejs__js-api"],
             overrides: {
                 patterns: "/package.json",
                 linters: "npm-package-json-lint",

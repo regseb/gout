@@ -13,7 +13,7 @@ Les options sont dans un objet
 [YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
 suivantes :
 
-<!-- markdownlint-disable no-inline-html-->
+<!-- markdownlint-disable no-inline-html -->
 <table>
   <tr>
     <th>Nom</th>
@@ -67,7 +67,7 @@ une
 contenant un tableau dont chaque élément est un objet ayant les propriétés
 suivantes :
 
-<!-- markdownlint-disable no-inline-html-->
+<!-- markdownlint-disable no-inline-html -->
 <table>
   <tr>
     <th>Nom</th>
@@ -96,7 +96,8 @@ suivantes :
       <p>
         Le nombre de millisecondes depuis le 1<sup>er</sup> janvier 1970 à
         00:00:00 UTC (cf.
-        <a href="https://developer.mozilla.org/JavaScript/Reference/Global_Objects/Date/getTime"><code>Date.prototype.getTime()</code></a>).
+        <a href="https://developer.mozilla.org/Web/JavaScript/Reference/Global_Objects/Temporal/ZonedDateTime/epochMilliseconds"><code>ZonedDateTime.epochMilliseconds</code></a>,
+        <a href="https://developer.mozilla.org/Web/JavaScript/Reference/Global_Objects/Temporal/Instant/epochMilliseconds"><code>Instant.epochMilliseconds</code></a>).
         Cette valeur est utilisée comme heure de l'horloge. Par défaut, l'heure
         courante est utilisée.
       </p>

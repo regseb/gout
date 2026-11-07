@@ -5,11 +5,20 @@
 
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
+import "../../../polyfill/regexp-escape.js";
 import FilterScraper from "../../../../src/scraper/tools/filter/filter.js";
 
+/**
+ * Vérifie que le filtre est appliqué correctement.
+ *
+ * @param {Object[]}           value    Valeurs d'entrée.
+ * @param {string | undefined} filter   Éventuel filtre.
+ * @param {Object[]}           expected Valeurs filtrées.
+ * @returns {Promise<void>} Promesse de l'assert.
+ */
 const check = async (value, filter, expected) => {
     const subScraper = {
-        extract(_max) {
+        extract(/** @type {number} */ _max) {
             return value;
         },
     };
@@ -295,7 +304,7 @@ describe("scraper/tools/filter/filter.js", () => {
 
         it("should limit items", async () => {
             const subScraper = {
-                extract(_max) {
+                extract(/** @type {number} */ _max) {
                     return [{ foo: 1 }, { foo: 2 }, { foo: 3 }, { foo: 4 }];
                 },
             };

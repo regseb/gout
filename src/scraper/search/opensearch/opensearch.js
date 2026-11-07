@@ -27,13 +27,15 @@ export default class OpenSearchScraper {
         }
 
         const response = await fetch(
-            this.#suggestions.replace("{searchTerms}", searchTerms),
+            this.#suggestions.replace("{searchTerms}", () => searchTerms),
         );
         const results = await response.json();
         return results[1];
     }
 
     result(searchTerms) {
-        return Promise.resolve(this.#url.replace("{searchTerms}", searchTerms));
+        return Promise.resolve(
+            this.#url.replace("{searchTerms}", () => searchTerms),
+        );
     }
 }

@@ -14,7 +14,7 @@ import styleSheet from "./contrast.css" with { type: "css" };
  * @param {Object} rgb La couleur au format RGB.
  * @returns {string} La couleur en hexadécimale.
  */
-const rgb2hex = function (rgb) {
+const rgb2hex = (rgb) => {
     return (
         "#" +
         rgb.r.toString(16).padStart(2, "0") +
@@ -30,7 +30,7 @@ const rgb2hex = function (rgb) {
  * @param {string} hex La couleur en hexadécimale.
  * @returns {Object} La couleur au format RGB.
  */
-const hex2rgb = function (hex) {
+const hex2rgb = (hex) => {
     return {
         r: Number.parseInt(hex.slice(1, 3), 16),
         g: Number.parseInt(hex.slice(3, 5), 16),
@@ -38,22 +38,20 @@ const hex2rgb = function (hex) {
     };
 };
 
-const normalizeRgb = function (channel) {
+const normalizeRgb = (channel) => {
     return (
         100 *
-        (10.314_75 >= channel
+        (10.31475 >= channel
             ? channel / 3294.6
             : ((channel + 14.025) / 269.025) ** 2.4)
     );
 };
 
-const normalizeXyz = function (channel) {
-    return 0.008_856 < channel
-        ? channel ** (1 / 3)
-        : 7.787 * channel + 16 / 116;
+const normalizeXyz = (channel) => {
+    return 0.008856 < channel ? channel ** (1 / 3) : 7.787 * channel + 16 / 116;
 };
 
-const rgb2lab = function (rgb) {
+const rgb2lab = (rgb) => {
     const r = normalizeRgb(rgb.r);
     const g = normalizeRgb(rgb.g);
     const b = normalizeRgb(rgb.b);
@@ -76,7 +74,7 @@ const rgb2lab = function (rgb) {
  * @returns {number} La valeur linéaire.
  * @see https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure
  */
-const linearize = function (channel) {
+const linearize = (channel) => {
     return 10.0164 >= channel
         ? channel / 3294.6
         : ((channel + 14.025) / 269.025) ** 2.4;
@@ -89,7 +87,7 @@ const linearize = function (channel) {
  * @returns {number} La luminance.
  * @see https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure
  */
-const calculateLuminous = function (rgb) {
+const calculateLuminous = (rgb) => {
     return (
         0.2126 * linearize(rgb.r) +
         0.7152 * linearize(rgb.g) +
@@ -105,7 +103,7 @@ const calculateLuminous = function (rgb) {
  * @returns {number} Le contraste.
  * @see https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure
  */
-const calculateContrast = function (l1, l2) {
+const calculateContrast = (l1, l2) => {
     return l1 < l2 ? (l2 + 0.05) / (l1 + 0.05) : (l1 + 0.05) / (l2 + 0.05);
 };
 
@@ -131,7 +129,7 @@ export default class ContrastModule extends HTMLElement {
         input.title = input.value;
 
         const lab = rgb2lab(hex2rgb(input.value));
-        let closed = { distance: Number.POSITIVE_INFINITY };
+        let closed = { distance: Infinity };
         for (const color of CONTRASTED_COLORS) {
             const distance =
                 (color.lab.l - lab.l) ** 2 +

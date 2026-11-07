@@ -1,7 +1,14 @@
 /**
  * @license MIT
+ * @see https://stylelint.io/user-guide/rules
+ * @see https://github.com/hudochenkov/stylelint-order#rules
+ * @see https://github.com/stormwarning/stylelint-config-recess-order
  * @author Sébastien Règne
  */
+
+// @ts-expect-error -- Le paquet ne fournit pas de types.
+// https://github.com/stormwarning/stylelint-config-recess-order/issues/470
+import propertyGroups from "stylelint-config-recess-order/groups";
 
 /**
  * @import { Config } from "stylelint"
@@ -13,14 +20,24 @@
 export default {
     plugins: ["stylelint-order"],
 
+    languageOptions: {
+        directionality: {
+            block: "top-to-bottom",
+            inline: "left-to-right",
+        },
+    },
+
     rules: {
         // AVOID ERRORS.
         // Deprecated.
         "at-rule-no-deprecated": true,
         "declaration-property-value-keyword-no-deprecated": true,
+        "media-type-no-deprecated": true,
+        "property-no-deprecated": true,
+        "selector-no-deprecated": true,
 
         // Descending.
-        "no-descending-specificity": null,
+        "no-descending-specificity": undefined,
 
         // Duplicate.
         "declaration-block-no-duplicate-custom-properties": true,
@@ -44,6 +61,8 @@ export default {
         "named-grid-areas-no-invalid": true,
         "no-invalid-double-slash-comments": true,
         "no-invalid-position-at-import-rule": true,
+        "no-invalid-position-declaration": true,
+        "selector-no-invalid": true,
         "string-no-newline": true,
         "syntax-string-no-invalid": true,
 
@@ -53,6 +72,7 @@ export default {
         // Missing.
         "custom-property-no-missing-var-function": true,
         "font-family-no-missing-generic-family-keyword": true,
+        "nesting-selector-no-missing-scoping-root": true,
 
         // Non-standard.
         "function-linear-gradient-no-nonstandard-direction": true,
@@ -62,6 +82,7 @@ export default {
 
         // Unmatchable
         "selector-anb-no-unmatchable": true,
+        "selector-no-unmatchable": true,
 
         // Unknown.
         "annotation-no-unknown": true,
@@ -84,15 +105,15 @@ export default {
         // ENFORCE NON-STYLISTIC CONVENTIONS.
         // Allowed, disallowed & required.
         // At-rule.
-        "at-rule-allowed-list": null,
-        "at-rule-disallowed-list": null,
+        "at-rule-allowed-list": undefined,
+        "at-rule-disallowed-list": undefined,
         "at-rule-no-vendor-prefix": true,
-        "at-rule-property-required-list": null,
+        "at-rule-property-required-list": undefined,
 
         // Color.
-        "color-hex-alpha": null,
+        "color-hex-alpha": undefined,
         "color-named": "always-where-possible",
-        "color-no-hex": null,
+        "color-no-hex": undefined,
 
         // Comment.
         "comment-word-disallowed-list": [
@@ -104,58 +125,54 @@ export default {
 
         // Declaration.
         "declaration-no-important": true,
-        "declaration-property-unit-allowed-list": null,
-        "declaration-property-unit-disallowed-list": null,
-        "declaration-property-value-allowed-list": null,
-        "declaration-property-value-disallowed-list": null,
+        "declaration-property-unit-allowed-list": undefined,
+        "declaration-property-unit-disallowed-list": undefined,
+        "declaration-property-value-allowed-list": undefined,
+        "declaration-property-value-disallowed-list": undefined,
 
         // Function.
-        "function-allowed-list": null,
-        "function-disallowed-list": null,
-        "function-url-no-scheme-relative": null,
-        "function-url-scheme-allowed-list": null,
-        "function-url-scheme-disallowed-list": null,
+        "function-allowed-list": undefined,
+        "function-disallowed-list": undefined,
+        "function-url-no-scheme-relative": undefined,
+        "function-url-scheme-allowed-list": undefined,
+        "function-url-scheme-disallowed-list": undefined,
 
         // Length.
         "length-zero-no-unit": true,
 
         // Media feature.
-        "media-feature-name-allowed-list": null,
-        "media-feature-name-disallowed-list": null,
+        "media-feature-name-allowed-list": undefined,
+        "media-feature-name-disallowed-list": undefined,
         "media-feature-name-no-vendor-prefix": true,
-        "media-feature-name-unit-allowed-list": null,
-        "media-feature-name-value-allowed-list": null,
+        "media-feature-name-unit-allowed-list": undefined,
+        "media-feature-name-value-allowed-list": undefined,
 
         // Property.
-        "property-allowed-list": null,
-        "property-disallowed-list": null,
-        "property-no-vendor-prefix": [
-            true,
-            {
-                ignoreProperties: ["appearance"],
-            },
-        ],
+        "property-allowed-list": undefined,
+        "property-disallowed-list": undefined,
+        "property-no-vendor-prefix": true,
 
         // Rules.
-        "rule-selector-property-disallowed-list": null,
+        "rule-nesting-at-rule-required-list": undefined,
+        "rule-selector-property-disallowed-list": undefined,
 
         // Selector.
-        "selector-attribute-name-disallowed-list": null,
-        "selector-attribute-operator-allowed-list": null,
-        "selector-attribute-operator-disallowed-list": null,
-        "selector-combinator-allowed-list": null,
-        "selector-combinator-disallowed-list": null,
-        "selector-disallowed-list": null,
-        "selector-no-qualifying-type": null,
+        "selector-attribute-name-disallowed-list": undefined,
+        "selector-attribute-operator-allowed-list": undefined,
+        "selector-attribute-operator-disallowed-list": undefined,
+        "selector-combinator-allowed-list": undefined,
+        "selector-combinator-disallowed-list": undefined,
+        "selector-disallowed-list": undefined,
+        "selector-no-qualifying-type": undefined,
         "selector-no-vendor-prefix": true,
-        "selector-pseudo-class-allowed-list": null,
-        "selector-pseudo-class-disallowed-list": null,
-        "selector-pseudo-element-allowed-list": null,
-        "selector-pseudo-element-disallowed-list": null,
+        "selector-pseudo-class-allowed-list": undefined,
+        "selector-pseudo-class-disallowed-list": undefined,
+        "selector-pseudo-element-allowed-list": undefined,
+        "selector-pseudo-element-disallowed-list": undefined,
 
         // Unit.
-        "unit-allowed-list": null,
-        "unit-disallowed-list": null,
+        "unit-allowed-list": undefined,
+        "unit-disallowed-list": undefined,
 
         // Value.
         "value-no-vendor-prefix": true,
@@ -166,25 +183,30 @@ export default {
         "value-keyword-case": "lower",
 
         // Empty lines.
-        "at-rule-empty-line-before": null,
-        "comment-empty-line-before": null,
-        "custom-property-empty-line-before": null,
+        "at-rule-empty-line-before": undefined,
+        "comment-empty-line-before": undefined,
+        "custom-property-empty-line-before": undefined,
         "declaration-empty-line-before": true,
-        "rule-empty-line-before": null,
+        "rule-empty-line-before": undefined,
+
+        // Layout mappings.
+        "property-layout-mappings": "flow-relative",
+        "unit-layout-mappings": "flow-relative",
+        "value-keyword-layout-mappings": "flow-relative",
 
         // Max & min.
         "declaration-block-single-line-max-declarations": 1,
-        "declaration-property-max-values": null,
-        "max-nesting-depth": null,
+        "declaration-property-max-values": undefined,
+        "max-nesting-depth": undefined,
         "number-max-precision": 2,
-        "selector-max-attribute": null,
-        "selector-max-class": null,
-        "selector-max-combinators": null,
-        "selector-max-compound-selectors": null,
+        "selector-max-attribute": undefined,
+        "selector-max-class": undefined,
+        "selector-max-combinators": undefined,
+        "selector-max-compound-selectors": undefined,
         "selector-max-id": 1,
-        "selector-max-pseudo-class": 3,
-        "selector-max-specificity": null,
-        "selector-max-type": null,
+        "selector-max-pseudo-class": undefined,
+        "selector-max-specificity": undefined,
+        "selector-max-type": undefined,
         "selector-max-universal": 1,
         "time-min-milliseconds": 100,
 
@@ -204,19 +226,20 @@ export default {
         "keyframe-selector-notation": "keyword",
         "lightness-notation": "percentage",
         "media-feature-range-notation": "context",
+        "relative-selector-nesting-notation": "implicit",
         "selector-not-notation": "complex",
         "selector-pseudo-element-colon-notation": "double",
 
         // Pattern.
-        "comment-pattern": null,
+        "comment-pattern": undefined,
         "container-name-pattern": /^[a-z][0-9a-z]*(?:-[0-9a-z]+)*$/v,
-        "custom-media-pattern": null,
-        "custom-property-pattern": null,
+        "custom-media-pattern": undefined,
+        "custom-property-pattern": undefined,
         "keyframes-name-pattern": /^[a-z][0-9a-z]*(?:-[0-9a-z]+)*$/v,
         "layer-name-pattern": /^[a-z][0-9a-z]*(?:-[0-9a-z]+)*$/v,
         "selector-class-pattern": /^[a-z][0-9a-z]*(?:-[0-9a-z]+)*$/v,
         "selector-id-pattern": /^[a-z][0-9a-z]*(?:-[0-9a-z]+)*$/v,
-        "selector-nested-pattern": null,
+        "selector-nested-pattern": undefined,
 
         // Quotes.
         "font-family-name-quotes": "always-where-recommended",
@@ -224,6 +247,7 @@ export default {
         "selector-attribute-quotes": "always",
 
         // Redundant.
+        "block-no-redundant-nested-style-rules": true,
         "declaration-block-no-redundant-longhand-properties": true,
         "shorthand-property-no-redundant-values": true,
 
@@ -231,6 +255,7 @@ export default {
         "comment-whitespace-inside": "always",
 
         // PLUGIN STYLELINT-ORDER.
+        "order/custom-properties-alphabetical-order": undefined,
         "order/order": [
             "custom-properties",
             "dollar-variables",
@@ -239,7 +264,14 @@ export default {
             "rules",
             "at-rules",
         ],
-        "order/properties-order": null,
-        "order/properties-alphabetical-order": true,
+        // @ts-expect-error -- Le paquet ne fournit pas de types.
+        // https://github.com/stormwarning/stylelint-config-recess-order/issues/470
+        "order/properties-order": propertyGroups.map((group) => ({
+            ...group,
+            noEmptyLineBetween: true,
+        })),
+        // Désactiver cette règle en faveur d'un ordre prédéfini (avec la règle
+        // order/properties-order).
+        "order/properties-alphabetical-order": undefined,
     },
 };

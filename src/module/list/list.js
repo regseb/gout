@@ -7,7 +7,7 @@
 import Cron from "https://esm.sh/cronnor@2";
 import styleSheet from "./list.css" with { type: "css" };
 
-const hashCode = function (item) {
+const hashCode = (item) => {
     return Math.abs(
         Array.from(item.guid ?? JSON.stringify(item)).reduce(
             (code, character) => {
@@ -46,7 +46,7 @@ export default class ListModule extends HTMLElement {
         const ul = this.shadowRoot.querySelector("ul");
         const guid = hashCode(item);
         const li =
-            ul.querySelector(`li[data-guid="${guid}"]`) ??
+            ul.querySelector(`li[data-guid="${CSS.escape(guid)}"]`) ??
             this.shadowRoot
                 .querySelector("template")
                 .content.querySelector("li")
@@ -107,7 +107,7 @@ export default class ListModule extends HTMLElement {
         );
         const items = results
             .flat()
-            .sort((i1, i2) => (i2.date ?? 0) - (i1.date ?? 0))
+            .toSorted((i1, i2) => (i2.date ?? 0) - (i1.date ?? 0))
             .slice(0, this.#max);
 
         if (0 === items.length) {

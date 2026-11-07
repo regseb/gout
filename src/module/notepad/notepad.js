@@ -4,9 +4,9 @@
  * @author Sébastien Règne
  */
 
-const hashCode = function (item) {
 import styleSheet from "./notepad.css" with { type: "css" };
 
+const hashCode = (item) => {
     return Math.abs(
         Array.from(item.guid ?? JSON.stringify(item)).reduce(
             (code, character) => {
@@ -37,7 +37,7 @@ export default class NotepadModule extends HTMLElement {
         // Adapter la hauteur de zone de saisie en fonction du nombre de lignes.
         const textarea = this.shadowRoot.querySelector("textarea");
         textarea.style.height = "auto";
-        textarea.style.height = 7 + textarea.scrollHeight + "px";
+        textarea.style.height = `${7 + textarea.scrollHeight}px`;
     }
 
     async connectedCallback() {

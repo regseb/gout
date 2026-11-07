@@ -1,5 +1,10 @@
 # Gout
 
+<!-- Utiliser du HTML (avec l'attribut "align" obsolète) pour faire flotter
+     l'image à droite. -->
+<!-- markdownlint-disable-next-line no-inline-html -->
+<img src="src/engine/img/icon.svg" align="right" width="100" height="100" alt="">
+
 [![firefox][img-firefox]][link-firefox] [![build][img-build]][link-build]
 [![coverage][img-coverage]][link-coverage]
 
@@ -143,7 +148,7 @@ est intégré dans le dashboard :
 ```
 
 Si vous voulez des widgets, vous pouvez chercher
-[`_gout-widget_`](https://github.com/search?q=_gout-widget_+language%3AMarkdown&type=Code&l=Markdown)
+[_gout-widget_](https://github.com/search?q=_gout-widget_+language%3AMarkdown&type=Code&l=Markdown)
 dans GitHub.
 
 ### Module
@@ -154,13 +159,13 @@ trois propriétés :
 
 - `url` : L'URL du fichier JavaScript du module (par exemple pour le module
   [_list_](src/module/list#readme) :
-  `"https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js"`).
+  `https://cdn.jsdelivr.net/gh/regseb/gout@0/src/module/list/list.js`).
 - `options` : Les options du module (qui sont spécifiques pour chaque module).
 - `scrapers` : La liste des [scrapers](#scraper) associés au module.
 
 Dans cet exemple, le module est une liste (avec au maximum `5` éléments)
-affichée dans un bloc bleu `#2196f3` et actualisée toutes les dix minutes
-[`*/10 * * * *`](https://crontab.guru/#*/10_*_*_*_*).
+affichée dans un bloc bleu `"#2196f3"` et actualisée toutes les dix minutes
+[`"*/10 * * * *"`](https://crontab.guru/#*/10_*_*_*_*).
 
 ```html
 <script type="application/yaml">
@@ -175,7 +180,7 @@ affichée dans un bloc bleu `#2196f3` et actualisée toutes les dix minutes
 ```
 
 Si vous voulez des modules, vous pouvez chercher
-[`_gout-module_`](https://github.com/search?q=_gout-module_+language%3AMarkdown&type=Code&l=Markdown)
+[_gout-module_](https://github.com/search?q=_gout-module_+language%3AMarkdown&type=Code&l=Markdown)
 dans GitHub.
 
 ### Scraper
@@ -187,7 +192,7 @@ scrapers sont définis dans une liste ou chaque élément a deux propriétés :
 
 - `url` : L'URL du fichier JavaScript du scraper (par exemple pour le scraper
   [_list/rss_](src/scraper/list/rss#readme) :
-  `"https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js"`).
+  `https://cdn.jsdelivr.net/gh/regseb/gout@0/src/scraper/list/rss/rss.js`).
 - `options` : Les options du scraper (qui sont spécifiques pour chaque scraper).
 
 Dans cet exemple, deux scrapers sont définis pour récupérer les dernières vidéos
@@ -210,15 +215,15 @@ des chaines YouTube [ARTE Cinema](https://www.youtube.com/@artecinemafr) et
 ```
 
 Si vous voulez des scrapers, vous pouvez chercher
-[`_gout-scraper_`](https://github.com/search?q=_gout-scraper_+language%3AMarkdown&type=Code&l=Markdown)
+[_gout-scraper_](https://github.com/search?q=_gout-scraper_+language%3AMarkdown&type=Code&l=Markdown)
 dans GitHub.
 
 [img-firefox]:
-  https://img.shields.io/amo/v/gout.svg?label=add-on&logo=firefox-browser&logoColor=whitesmoke
+  https://img.shields.io/amo/v/gout?style=flat-square&label=add-on&logo=firefox-browser&logoColor=whitesmoke
 [img-build]:
-  https://img.shields.io/github/actions/workflow/status/regseb/gout/ci.yml?branch=main&logo=github&logoColor=whitesmoke
+  https://img.shields.io/github/actions/workflow/status/regseb/gout/ci.yml?branch=main&style=flat-square&logo=github&logoColor=whitesmoke
 [img-coverage]:
-  https://img.shields.io/endpoint?label=coverage&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fregseb%2Fgout%2Fmain
+  https://img.shields.io/endpoint?url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fregseb%2Fgout%2Fmain&style=flat-square&label=coverage
 [link-firefox]: https://addons.mozilla.org/addon/gout/
 [link-build]:
   https://github.com/regseb/gout/actions/workflows/ci.yml?query=branch%3Amain

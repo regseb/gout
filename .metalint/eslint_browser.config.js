@@ -1,5 +1,6 @@
 /**
  * @license MIT
+ * @see https://github.com/un-ts/eslint-plugin-import-x#rules
  * @author Sébastien Règne
  */
 
@@ -18,16 +19,15 @@ export default {
     },
 
     rules: {
-        // Plugin eslint-plugin-import.
+        // Plugin eslint-plugin-import-x.
         // Static analysis.
-        "import/no-unresolved": [
+        "importX/no-unresolved": [
             "error",
             {
                 // Utiliser des chaines de caractères, car les expressions
                 // rationnelles ne sont pas supportées.
-                // https://github.com/import-js/eslint-plugin-import/issues/3087
                 // Ne pas utiliser le drapeau "v", car la RegExp est créée sans
-                // drapeau (dans eslint-plugin-import).
+                // drapeau (dans eslint-plugin-import-x).
                 // eslint-disable-next-line require-unicode-regexp
                 ignore: [/^https:\/\/esm\.sh\//.source],
                 caseSensitiveStrict: true,

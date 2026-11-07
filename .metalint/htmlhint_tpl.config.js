@@ -1,5 +1,6 @@
 /**
  * @license MIT
+ * @see https://htmlhint.com/rules/
  * @author Sébastien Règne
  */
 

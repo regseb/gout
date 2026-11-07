@@ -13,6 +13,7 @@ export default {
     "meta-charset-require": true,
     "meta-description-require": true,
     "meta-viewport-require": true,
+    "link-rel-canonical-require": false,
     "script-disabled": false,
     "style-disabled": true,
     "title-require": true,
@@ -30,6 +31,9 @@ export default {
     "attr-value-single-quotes": false,
     "attr-whitespace": true,
     "button-type-require": true,
+    // Désactiver cette règle, car les formulaires ne sont pas soumis (les
+    // valeurs sont récupérées en JavaScript).
+    "form-method-require": false,
     "input-requires-label": false,
 
     // Tags.

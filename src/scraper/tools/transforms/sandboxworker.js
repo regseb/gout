@@ -9,27 +9,35 @@
  */
 export default class SandboxWorker {
     /**
-     * Worker où sera exécuté le code.
+     * Worker servant de bac à sable et où sera exécuté le code.
      *
      * @type {Worker}
      */
     #worker;
 
     /**
-     * L'identifiant de la précédente exécution.
+     * Identifiant de la précédente exécution.
      *
      * @type {number}
      */
     #id = 0;
 
     /**
-     * La liste des promesses en attente d'être réalisées.
+     * Liste des promesses en attente d'être réalisées.
      *
      * @type {Map<number, Object<string, Function>>}
      */
     #promises = new Map();
 
-    constructor(fn, init = () => {}, data = []) {
+    /**
+     * Construit le worker bac à sable.
+     *
+     * @param {Function} fn     Fonction à exécuter dans le bac à sable.
+     * @param {Function} [init] Fonction d'initialisation du bac à sable.
+     * @param {any[]}    [data] Données à fournir à la fonction
+     *                          d'initialisation.
+     */
+    constructor(fn, init = () => undefined, data = []) {
         const code = `
             (${init.toString()})(...${JSON.stringify(data)});
             const fn = ${fn.toString()};
@@ -54,6 +62,13 @@ export default class SandboxWorker {
         );
     }
 
+    /**
+     * Envoie une exécution au worker.
+     *
+     * @param {any[]} args Paramètres de l'exécution.
+     * @returns {Promise<any>} Une promesse contenant le résultat de
+     *                         l'exécution.
+     */
     exec(...args) {
         return new Promise((resolve, reject) => {
             this.#promises.set(++this.#id, { resolve, reject });
@@ -65,9 +80,9 @@ export default class SandboxWorker {
     }
 
     /**
-     * Répartit un message à une promesse ou une notification.
+     * Répartit un message à une promesse.
      *
-     * @param {MessageEvent} message Le message reçu du serveur.
+     * @param {MessageEvent} message Le message reçu du worker.
      */
     #handleMessage({ data }) {
         if ("error" in data) {

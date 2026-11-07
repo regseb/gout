@@ -20,7 +20,7 @@ import TransformsScraper from "../../tools/transforms/transforms.js";
  * @returns {string} La chaîne de caractères avec la première lettre en
  *                   majuscule.
  */
-const capitalize = function (input) {
+const capitalize = (input) => {
     return input.charAt(0).toUpperCase() + input.slice(1);
 };
 
@@ -43,13 +43,14 @@ const DaysScraper = class {
      * @param {Object} options        Les options du scraper (qui ont été
      *                                définies dans la configuration du widget).
      * @param {string} [options.lang] Le code ISO 639-1 de la langue (qui a été
-     *                                renseigné dans la propriété "lang" dans la
-     *                                configuration du widget).
+     *                                renseigné dans la propriété `"lang"` dans
+     *                                la configuration du widget). La valeur
+     *                                `"fr"` (pour le français) est utilisée par
+     *                                défaut.
      */
-    constructor({ lang }) {
+    constructor({ lang = "fr" }) {
         // Récupérer le code ISO 639-1 de la langue dans les options du scraper.
-        // Si la langue n'est pas définie, utiliser le français par défaut.
-        this.#lang = lang ?? "fr";
+        this.#lang = lang;
     }
 
     /**
@@ -67,10 +68,11 @@ const DaysScraper = class {
             // semaine ("Lundi", "Mardi"...).
             [1, 2, 3, 4, 5, 6, 7]
                 .map((i) => {
-                    const day = new Date();
-                    day.setDate(day.getDate() + i);
+                    const date = Temporal.Now.zonedDateTimeISO().add({
+                        days: i,
+                    });
                     const title = capitalize(
-                        day.toLocaleDateString(this.#lang, { weekday: "long" }),
+                        date.toLocaleString(this.#lang, { weekday: "long" }),
                     );
 
                     // Regrouper les informations dans un objet.
@@ -83,7 +85,7 @@ const DaysScraper = class {
                         // format est plus facile à manipuler). Cette propriété
                         // est utilisée pour trier les éléments du plus récent
                         // au plus ancien.
-                        date: day.getTime(),
+                        date: date.epochMilliseconds,
                     };
                 })
                 // Limiter le nombre d'éléments à retourner (dans le cas où le
@@ -95,7 +97,6 @@ const DaysScraper = class {
 
 // Chainer les scrapers pour ajouter les fonctionnalités de filtrage, de
 // complétion et de transformation dans DaysScraper.
-// eslint-disable-next-line import/no-anonymous-default-export
 export default chain(
     TransformsScraper,
     FilterScraper,

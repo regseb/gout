@@ -22,19 +22,19 @@ const JSONFeedScraper = class {
 
         return json.items
             .map((item) => ({
-                date: new Date(item.date_published).getTime(),
+                date: Temporal.ZonedDateTime.from(item.date_published)
+                    .epochMilliseconds,
                 desc: item.summary,
                 guid: this.#url + item.id,
                 img: item.image,
                 link: item.url,
                 title: item.title,
             }))
-            .sort((i1, i2) => i2.date - i1.date)
+            .toSorted((i1, i2) => i2.date - i1.date)
             .slice(0, max);
     }
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default chain(
     TransformsScraper,
     FilterScraper,

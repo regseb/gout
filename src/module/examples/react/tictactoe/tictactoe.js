@@ -22,7 +22,7 @@ const calculateWinner = (squares) => {
     ];
     for (const [a, b, c] of lines) {
         if (
-            squares[a] &&
+            undefined !== squares[a] &&
             squares[a] === squares[b] &&
             squares[a] === squares[c]
         ) {
@@ -40,7 +40,7 @@ const Square = ({ value, onSquareClick }) => {
 
 const Board = ({ xIsNext, squares, onPlay }) => {
     const handleClick = (i) => {
-        if (calculateWinner(squares) || squares[i]) {
+        if (calculateWinner(squares) || undefined !== squares[i]) {
             return;
         }
         const nextSquares = squares.slice();
@@ -57,7 +57,7 @@ const Board = ({ xIsNext, squares, onPlay }) => {
     if (winner) {
         status = `Winner: ${winner}`;
     } else {
-        status = "Next player: " + (xIsNext ? "X" : "O");
+        status = `Next player: ${xIsNext ? "X" : "O"}`;
     }
 
     return html`
@@ -109,7 +109,7 @@ const Board = ({ xIsNext, squares, onPlay }) => {
 
 const Game = () => {
     const [history, setHistory] = useState([
-        Array.from({ length: 9 }).fill(undefined),
+        Array.from({ length: 9 }, () => undefined),
     ]);
     const [currentMove, setCurrentMove] = useState(0);
     const xIsNext = 0 === currentMove % 2;

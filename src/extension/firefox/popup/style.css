@@ -110,10 +110,10 @@ label.switch input ~ span {
     transition: 0.4s;
 }
 label.switch input ~ span:first-of-type {
-    text-align: right;
+    text-align: end;
 }
 label.switch input ~ span:last-of-type {
-    text-align: left;
+    text-align: start;
 }
 label.switch input ~ span:last-of-type,
 label.switch input:checked ~ span:first-of-type {

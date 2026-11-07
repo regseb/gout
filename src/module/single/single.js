@@ -56,7 +56,7 @@ export default class SingleModule extends HTMLElement {
         );
         const items = results
             .flat()
-            .sort((i1, i2) => (i2.date ?? 0) - (i1.date ?? 0))
+            .toSorted((i1, i2) => (i2.date ?? 0) - (i1.date ?? 0))
             .slice(0, 1);
 
         if (0 === items.length) {

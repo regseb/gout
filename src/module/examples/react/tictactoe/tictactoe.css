@@ -3,7 +3,7 @@
 }
 
 .square {
-    float: left;
+    float: inline-start;
     inline-size: 34px;
     block-size: 34px;
     padding: 0;

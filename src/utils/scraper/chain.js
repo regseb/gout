@@ -7,9 +7,9 @@
 /**
  * Envoie les options à tous les scrapers.
  *
- * @param {any} options Les options des scrapers.
- * @returns {Object} Une simulation d'un tableau dont la méthode `pop()`
- *                   retourne toujours toutes les options.
+ * @param {any} options Options des scrapers.
+ * @returns {any[]} Simulation d'un tableau dont la méthode `pop()` retourne
+ *                  toujours toutes les options.
  */
 const DEFAULT_DISPATCH = (options) => ({ pop: () => options });
 
@@ -27,7 +27,7 @@ export default function chain(FirstScraper, ...others) {
         if ("function" === typeof other) {
             AllScraperss.unshift([other]);
         } else if (Array.isArray(other)) {
-            AllScraperss.unshift(other.reverse());
+            AllScraperss.unshift(other.toReversed());
         } else {
             dispatch = other.dispatch;
         }

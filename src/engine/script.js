@@ -4,11 +4,11 @@
  * @author Sébastien Règne
  */
 
-import JFather from "https://esm.sh/jfather@0.4.0";
-import YAML from "https://esm.sh/yaml@2.8.0";
+import JFather from "https://esm.sh/jfather@0.5.1";
+import YAML from "https://esm.sh/yaml@2.9.1";
 import styleSheet from "./style.css" with { type: "css" };
 
-const hashCode = function (text) {
+const hashCode = (text) => {
     return Math.abs(
         Array.from(text).reduce((code, character) => {
             return (code << 5) - code + character.codePointAt(0);
@@ -23,7 +23,7 @@ const hashCode = function (text) {
  * @returns {Promise<Record<string, Object>>} Une promesse contenant la
  *                                            configuration du widget.
  */
-const request = async function (url) {
+const request = async (url) => {
     const response = await fetch(url);
     const text = await response.text();
     // Utiliser un parseur YAML pour parser le JSON et le YAML, car le YAML est
@@ -37,12 +37,12 @@ const request = async function (url) {
  * @param {Object[]} scrapers La liste des configurations des scrapers.
  * @returns {Promise<Object[]>} Les scrapers.
  */
-const loadScrapers = function (scrapers) {
+const loadScrapers = (scrapers) => {
     return Promise.all(
         scrapers.map(async (scraper) => {
             const subScrapers = await loadScrapers(scraper.scrapers ?? []);
 
-            // eslint-disable-next-line no-unsanitized/method
+            // eslint-disable-next-line noUnsanitized/method
             const { default: Scraper } = await import(scraper.url);
             return new Scraper(scraper.options ?? {}, subScrapers);
         }),
@@ -56,10 +56,10 @@ const loadScrapers = function (scrapers) {
  *                        scrapers).
  * @returns {Promise<HTMLElement>} L'élément HTML du widget.
  */
-const loadWidget = async function (widget) {
+const loadWidget = async (widget) => {
     const scrapers = await loadScrapers(widget.module.scrapers ?? []);
 
-    // eslint-disable-next-line no-unsanitized/method
+    // eslint-disable-next-line noUnsanitized/method
     const { default: Module } = await import(widget.module.url);
     if (null === customElements.getName(Module)) {
         customElements.define(
@@ -71,7 +71,7 @@ const loadWidget = async function (widget) {
     return new Module(widget.module.options ?? {}, scrapers);
 };
 
-const liven = async function (script) {
+const liven = async (script) => {
     try {
         let config;
         if ("application/yaml" === script.type) {

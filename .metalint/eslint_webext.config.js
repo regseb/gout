@@ -1,5 +1,6 @@
 /**
  * @license MIT
+ * @see https://eslint.org/docs/latest/rules/
  * @author Sébastien Règne
  */
 
@@ -18,12 +19,5 @@ export default {
             ...globals.browser,
             ...globals.webextensions,
         },
-    },
-
-    rules: {
-        // Suggestions.
-        // Ne pas utiliser le drapeau "v", car Add-ons Linter ne le supporte
-        // pas. https://github.com/mozilla/addons-linter/issues/5462
-        "require-unicode-regexp": ["error", { requireFlag: "u" }],
     },
 };

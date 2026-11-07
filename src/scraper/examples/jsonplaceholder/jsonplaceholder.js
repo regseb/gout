@@ -81,7 +81,6 @@ const JSONPlaceholderScraper = class {
 
 // Chainer les scrapers pour ajouter les fonctionnalités de filtrage, de
 // complétion et de transformation dans JSONPlaceholderScraper.
-// eslint-disable-next-line import/no-anonymous-default-export
 export default chain(
     TransformsScraper,
     FilterScraper,

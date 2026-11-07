@@ -17,7 +17,7 @@ const RSSScraper = class {
     }
 
     #extractRSS(xml, max) {
-        // eslint-disable-next-line array-func/from-map
+        // eslint-disable-next-line arrayFunc/from-map
         return Array.from(xml.querySelectorAll("item"), (item) => ({
             audio: item
                 .querySelector('enclosure[type^="audio/"]')
@@ -37,6 +37,10 @@ const RSSScraper = class {
         }))
             .map((item) => ({
                 audio: item.audio,
+                // Utiliser l'ancienne classe Date, car Temporal ne peut pas
+                // parser une date au format RFC 822
+                // ("Sat, 07 Sep 2002 00:00:01 GMT").
+                // eslint-disable-next-line unicorn/prefer-temporal
                 date: new Date(item.date).getTime(),
                 desc: new DOMParser()
                     .parseFromString(item.desc, "text/html")
@@ -49,7 +53,7 @@ const RSSScraper = class {
                 link: item.link,
                 title: item.title,
             }))
-            .sort((i1, i2) => i2.date - i1.date)
+            .toSorted((i1, i2) => i2.date - i1.date)
             .slice(0, max);
     }
 
@@ -79,7 +83,7 @@ const RSSScraper = class {
                     entry.querySelector("thumbnail")?.getAttribute("url"),
             }))
             .map((item) => ({
-                date: new Date(item.date).getTime(),
+                date: Temporal.Instant.from(item.date).epochMilliseconds,
                 desc: new DOMParser()
                     .parseFromString(
                         /^\s*$/v.test(item.summary)
@@ -116,7 +120,6 @@ const RSSScraper = class {
     }
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default chain(
     TransformsScraper,
     FilterScraper,

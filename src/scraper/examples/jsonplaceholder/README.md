@@ -25,7 +25,7 @@ Les options sont dans un objet
 [YAML](https://yaml.org/ "YAML Ain't Markup Language") avec les propriétés
 suivantes :
 
-<!-- markdownlint-disable no-inline-html-->
+<!-- markdownlint-disable no-inline-html -->
 <table>
   <tr>
     <th>Nom</th>
