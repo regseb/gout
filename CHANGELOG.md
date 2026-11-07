@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.14.1](https://github.com/regseb/gout/compare/v0.14.0...v0.14.1) (2026-11-07)
+
+### Bug Fixes
+
+- Gérer les filtres insensibles à la casse.
+  ([ea04f18](https://github.com/regseb/gout/commit/ea04f18c0562ca38aaed2fa7bb589525ee95cf3f))
+- Support les configurations YAML héritées.
+  ([6b04dca](https://github.com/regseb/gout/commit/6b04dca4afa02044123d013e939c40257c9d2aca))
+
 ## [0.14.0](https://github.com/regseb/gout/compare/v0.13.0...v0.14.0) (2025-07-05)
 
 ### Features
