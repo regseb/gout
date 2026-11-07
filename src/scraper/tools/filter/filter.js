@@ -4,25 +4,17 @@
  * @author Sébastien Règne
  */
 
-// Créer une prothèse pour la méthode `RegExp.escape`.
-// https://github.com/tc39/proposal-regex-escaping
-// https://issues.chromium.org/353856236
-// https://bugzil.la/1918235
-if (undefined === RegExp.escape) {
-    /**
-     * Protège les caractères spéciaux d'une chaine de caractères pour les
-     * expressions rationnelles.
-     *
-     * @param {string} s La chaine de caractères.
-     * @returns {string} La chaine de caractères avec les caractères spéciaux
-     *                   protégés.
-     */
-    RegExp.escape = (s) =>
-        s.replaceAll(/[$\(\)*+.?\[\\\]^\{\|\}]/gv, String.raw`\$&`);
-}
+/**
+ * Type du sous-scraper.
+ *
+ * @typedef {Object} Scraper
+ * @prop {(max: number) => Promise<Record<string, any>[]>} extract Méthode pour
+ *                                                                 extrait des
+ *                                                                 éléments.
+ */
 
 /**
- * Les opérations de comparaison avec des chaines de caractères.
+ * Opérations de comparaison avec des chaines de caractères.
  *
  * @type {Object<string, Object<string, Function>>}
  */
@@ -37,7 +29,7 @@ const STRING_OP = Object.fromEntries(
             prepare: (e, f) =>
                 new RegExp(
                     String.raw`(?:^|\s)${RegExp.escape(e)}(?:$|\s)`,
-                    f + "v",
+                    `${f.includes("i") ? "i" : ""}v`,
                 ),
             test: (a, e) => "string" === typeof a && e.test(a),
         },
@@ -53,23 +45,23 @@ const STRING_OP = Object.fromEntries(
 );
 
 /**
- * Les opérations de comparaison avec des expressions rationnelles.
+ * Opérations de comparaison avec des expressions rationnelles.
  *
  * @type {Object<string, Object<string, Function>>}
  */
 const REGEX_OP = {
     "==": {
-        prepare: (e, f) => new RegExp(e, f + "v"),
+        prepare: (e, f) => new RegExp(e, `${f}v`),
         test: (a, e) => "string" === typeof a && e.test(a),
     },
     "!=": {
-        prepare: (e, f) => new RegExp(e, f + "v"),
+        prepare: (e, f) => new RegExp(e, `${f}v`),
         test: (a, e) => !("string" === typeof a && e.test(a)),
     },
 };
 
 /**
- * Les opérations de comparaison avec des nombres.
+ * Opérations de comparaison avec des nombres.
  *
  * @type {Object<string, Object<string, Function>>}
  */
@@ -85,46 +77,48 @@ const NUMBER_OP = Object.fromEntries(
 );
 
 /**
- * Le motif pour les filtres avec des chaines de caractères (entre guillemets
- * simples).
+ * Motif pour les filtres avec des chaines de caractères (entre guillemets
+ * simples). Le format est inspiré des
+ * [sélecteurs d'attributs](https://developer.mozilla.org/Web/CSS/Reference/Selectors/Attribute_selectors)
+ * en CSS.
  *
  * @type {RegExp}
  */
 const STRING_PATTERN = new RegExp(
-    String.raw`^\s*(?<prop>[a-zA-Z_][a-zA-Z_0-9]*)\s*` +
+    String.raw`^\s*(?<prop>[A-Z_a-z]\w*)\s*` +
         "(?<op>(?:" +
         Object.keys(STRING_OP).map(RegExp.escape).join("|") +
         String.raw`))\s*` +
-        String.raw`'(?<val>.*)'` +
-        String.raw`(?<flag>i?)\s*$`,
+        String.raw`'(?<val>.*)'\s*` +
+        String.raw`(?<flag>[ISis]?)\s*$`,
     "v",
 );
 
 /**
- * Le motif pour les filtres avec des expressions rationnelles (entre barres
- * obliques, mais sans les marqueurs).
+ * Motif pour les filtres avec des expressions rationnelles (entre barres
+ * obliques et avec une sélection de marqueurs).
  *
  * @type {RegExp}
  */
 const REGEX_PATTERN = new RegExp(
-    String.raw`^\s*(?<prop>[a-zA-Z_][a-zA-Z_0-9]*)\s*` +
+    String.raw`^\s*(?<prop>[A-Z_a-z]\w*)\s*` +
         "(?<op>(?:" +
         Object.keys(REGEX_OP).map(RegExp.escape).join("|") +
         String.raw`))\s*` +
-        String.raw`/(?<val>.*)/` +
+        "/(?<val>.*)/" +
         String.raw`(?<flag>[ims]*)\s*$`,
     "v",
 );
 
 /**
- * Le motif pour les filtres avec des nombres. Les nombres peuvent être entiers
+ * Motif pour les filtres avec des nombres. Les nombres peuvent être entiers
  * (`123`, `123.`), décimaux (`123.456`, `.456`), positifs (`+123`) ou négatifs
  * (`-123`).
  *
  * @type {RegExp}
  */
 const NUMBER_PATTERN = new RegExp(
-    String.raw`^\s*(?<prop>[a-zA-Z_][a-zA-Z_0-9]*)\s*` +
+    String.raw`^\s*(?<prop>[A-Z_a-z]\w*)\s*` +
         "(?<op>(?:" +
         Object.keys(NUMBER_OP).map(RegExp.escape).join("|") +
         String.raw`))\s*` +
@@ -168,7 +162,7 @@ const compile = (filter) => {
 
 export default class FilterScraper {
     /**
-     * La fonction pour filtrer prenant en argument un élément et retournant un
+     * Fonction pour filtrer prenant en argument un élément et retournant un
      * booléen.
      *
      * @type {Function}
@@ -176,17 +170,32 @@ export default class FilterScraper {
     #filter;
 
     /**
-     * Le sous-scraper.
+     * Sous-scraper.
      *
-     * @type {Object}
+     * @type {Scraper}
      */
     #scraper;
 
+    /**
+     * Crée le scraper de filtrage.
+     *
+     * @param {Object}    options        Options du scraper.
+     * @param {string}    options.filter Filtre des éléments.
+     * @param {[Scraper]} scrapers       Sous-scraper. Il ne peut en avoir
+     *                                   qu'un.
+     */
     constructor({ filter }, scrapers) {
         this.#filter = compile(filter);
         this.#scraper = scrapers[0];
     }
 
+    /**
+     * Extrait et filtre les éléments du sous-scraper.
+     *
+     * @param {number} [max] Nombre maximum d'éléments à retourner.
+     * @returns {Promise<Record<string, any>[]>} Promesse contenant les éléments
+     *                                           filtrés.
+     */
     async extract(max = Number.MAX_SAFE_INTEGER) {
         if (undefined === this.#filter) {
             return this.#scraper.extract(max);
