@@ -25,14 +25,10 @@ const hashCode = function (text) {
  */
 const request = async function (url) {
     const response = await fetch(url);
-    try {
-        return await response.json();
-    } catch {
-        // Si la configuration n'est pas du JSON, essayer avec du YAML et
-        // retourner son équivalent en JSON.
-        const yaml = await response.text();
-        return YAML.parse(yaml);
-    }
+    const text = await response.text();
+    // Utiliser un parseur YAML pour parser le JSON et le YAML, car le YAML est
+    // un sur-ensemble du JSON.
+    return YAML.parse(text);
 };
 
 /**
